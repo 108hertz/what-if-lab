@@ -7,6 +7,23 @@ showing where they diverge. No AI, no network data: everything is rule-based and
 
 Inspirations: scaleofuniverse.com (zoom), Universe Sandbox (gravity), Primer (blob agent sims).
 
+## Product direction (read `docs/PLAN.md`)
+
+Goal: maximum traffic; revenue from **side-rail ads** (≥1280 px, never near the stage) and **Premium at
+$15/year** (no ads + power tools). **No backend of our own**: static export; payments/licensing via a
+hosted merchant-of-record, client-side license unlock (`docs/decisions/0002-…`). The simulation stays
+pure variable changes → rule-based outcomes. UI is **Apple-grade** (`docs/design/apple-design-language.md`).
+
+## Working agreement
+
+- **Plan before building.** Any non-trivial change (multi-file behaviour, new dependency, UI layout,
+  new world, ads/premium/SEO/hosting) needs a change doc in `docs/changes/` approved by the user first —
+  use the `plan-change` skill. Small fixes don't.
+- **Document features** in `docs/features/` (`document-feature` skill); update them when a change ships.
+- **Hard-to-reverse choices** (vendors, hosting, data formats) get an ADR in `docs/decisions/`.
+- **UI work** follows the `apple-ui-ux` skill. **New worlds** follow the `add-sandbox` skill.
+- Never introduce a server, API route, server action, or secret in client code without a superseding ADR.
+
 ## Commands
 
 ```bash
@@ -36,6 +53,8 @@ lib/sim/                  framework-free simulation code (no React)
   sandboxes/*.ts          one file per world: galaxy, solar, earth, country, animals, child, person
 lib/scale/                scale explorer objects + renderer
 tests/                    vitest
+docs/                     PLAN.md, features/, changes/, decisions/ (ADRs), design/
+.claude/skills/           plan-change, document-feature, apple-ui-ux, add-sandbox
 ```
 
 ### The Sandbox contract (`lib/sim/types.ts`)
@@ -84,11 +103,6 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   curves + life-event deltas that partly fade. 120 children per world.
 - **person**: 100 versions; daily quit hazard high early, falling after ~66 days for good habits.
 
-## Ideas / roadmap
+## Roadmap
 
-- Shareable scenarios: encode params + what-if + fork time in the URL hash.
-- Timeline scrubbing / replay (store snapshots every N seconds).
-- Move `SimEngine.tick` into a Web Worker with OffscreenCanvas for heavier sims.
-- More worlds from the original brief: countries on a map, cities, ecosystems by biome, history scenarios.
-- Multiple what-ifs at once (more than two parallel worlds), and Monte-Carlo runs with outcome ranges.
-- Mobile layout polish, keyboard shortcuts (space = play/pause, F = fork).
+The roadmap lives in `docs/PLAN.md` (phases) and `docs/changes/` (planned work). Don't keep a second list here.

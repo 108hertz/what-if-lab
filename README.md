@@ -9,10 +9,16 @@ Worlds: **Galaxies** (Milky Way × Andromeda), **Solar system** (N-body gravity,
 
 Everything is rule-based and runs locally in the browser, with no AI calls and no external data.
 
+**Business model:** free and ad-supported (side rails on wide screens only), with an optional
+**Premium** plan at **$15 / year** (no ads + power tools). No backend of our own: static site on a CDN;
+payments and licensing through a hosted merchant-of-record. See [`docs/PLAN.md`](./docs/PLAN.md).
+
 ## Getting started
 
+Requires Node 20+.
+
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -27,4 +33,24 @@ Open http://localhost:3000.
 
 Stack: Next.js 15 (App Router, static), React 19, TypeScript, Canvas 2D, Vitest.
 
-See [`CLAUDE.md`](./CLAUDE.md) for architecture, the sandbox contract, and how to add a new world.
+## Project layout
+
+| Path | What |
+| --- | --- |
+| `app/`, `components/` | Next.js routes and React UI |
+| `lib/sim/` | Framework-free simulation engine and worlds |
+| `lib/scale/` | Scale explorer |
+| `tests/` | Vitest suite |
+| [`docs/`](./docs/README.md) | Plan, feature specs, change proposals, decisions (ADRs), design language |
+| `.claude/skills/` | Claude Code skills: `plan-change`, `document-feature`, `apple-ui-ux`, `add-sandbox` |
+| [`CLAUDE.md`](./CLAUDE.md) | Architecture, sandbox contract, how to add a world |
+
+## How we work
+
+Features are documented in [`docs/features/`](./docs/features/README.md) and every non-trivial change
+is planned in [`docs/changes/`](./docs/changes/README.md) **before** code is written. Hard-to-reverse
+choices get a decision record in [`docs/decisions/`](./docs/decisions/). UI follows the
+[Apple-inspired design language](./docs/design/apple-design-language.md).
+
+With Claude Code: `/plan-change <idea>` drafts a change doc, `/document-feature`, `/apple-ui-ux` and
+`/add-sandbox` cover the rest.
