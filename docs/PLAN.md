@@ -17,7 +17,7 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
    See [ADR 0001](./decisions/0001-static-site-no-backend.md) and
    [ADR 0002](./decisions/0002-payments-and-premium-unlock.md).
 3. **Darkroom experience.** Calm, clear, fast. The simulation is the object; every tool is on one screen.
-   See [design/design-system.md](./design/design-system.md).
+   See [DESIGN.md](../DESIGN.md).
 4. **Free is genuinely great.** Every world and every what-if is free. Premium removes ads and adds
    power-user depth; it never paywalls the core "fork and compare" moment that drives sharing.
 5. **Ads never touch the simulation.** Ads live in side rails only, never over or inside the stage,

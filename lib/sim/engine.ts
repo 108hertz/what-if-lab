@@ -40,7 +40,7 @@ export class SimEngine {
   readonly ui: InteractionState = { drag: null, cams: [null, null], pending: null };
   private acc = 0;
 
-  constructor(sb: AnySandbox, params: Params, private seed = DEFAULT_SEED) {
+  constructor(sb: AnySandbox, params: Params, readonly seed = DEFAULT_SEED) {
     this.sb = sb;
     this.params = params;
     this.speedIdx = sb.defaultSpeed;
@@ -154,11 +154,11 @@ export class SimEngine {
       ctx.beginPath(); ctx.rect(0, 0, r.w, r.h); ctx.clip();
       this.sb.draw({ ctx, w: r.w, h: r.h, p: this.params, isAlt: r.alt, ui: this.ui }, r.world);
       const label = r.alt ? "What if: " + this.whatIfLabel() : this.alt ? "No change" : "Now · pick a what-if to fork this world";
-      const lw = chip(ctx, label.toUpperCase(), 8, 8, r.alt ? STAGE.alt : STAGE.base, "500 11px " + FONT.body, r.w - 32);
+      const lw = chip(ctx, label.toUpperCase(), 8, 8, r.alt ? STAGE.alt : STAGE.base, "500 12px " + FONT.body, r.w - 32);
       const time = this.sb.fmtT(r.world.t);
-      ctx.font = "500 11px " + FONT.mono;
+      ctx.font = "500 12px " + FONT.mono;
       const tw = ctx.measureText(time).width;
-      if (r.w > lw + tw + 50) chip(ctx, time, r.w - tw - 24, 8, STAGE.ink, "500 11px " + FONT.mono);
+      if (r.w > lw + tw + 50) chip(ctx, time, r.w - tw - 24, 8, STAGE.ink, "500 12px " + FONT.mono);
       ctx.restore();
     }
     if (this.alt) {

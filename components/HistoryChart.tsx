@@ -24,11 +24,11 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
     const COL = { base: token("--base"), alt: token("--alt"), grid: token("--separator"), text: token("--label-2") };
     const h = engine.history, b = h.base[m.k], a = h.alt[m.k], n = h.t.length;
     const vals = [...b, ...a].filter((v): v is number => v != null && isFinite(v));
-    if (!vals.length || n < 2) { c.fillStyle = COL.text; c.font = "13px " + FONT.body; c.fillText("Collecting data…", 10, 20); return; }
+    if (!vals.length || n < 2) { c.fillStyle = COL.text; c.font = "14px " + FONT.body; c.fillText("Collecting data…", 10, 20); return; }
     let lo = Math.min(...vals), hi = Math.max(...vals);
     if (hi - lo < 1e-9) { hi += 1; lo -= 1; }
     const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
-    c.font = "500 11px " + FONT.body;
+    c.font = "500 12px " + FONT.body;
     const labels = [0, 1, 2, 3].map((k) => lo + ((hi - lo) * k) / 3);
     const L = Math.max(...labels.map((v) => c.measureText(m.fmt(v)).width)) + 10, R = 6, T = 6, B = 20, pw = W - L - R, ph = H - T - B;
     const t0 = h.t[0], t1 = h.t[n - 1];

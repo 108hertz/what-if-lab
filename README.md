@@ -50,7 +50,7 @@ Stack: Next.js 15 (App Router, static), React 19, TypeScript, Canvas 2D, Vitest.
 Features are documented in [`docs/features/`](./docs/features/README.md) and every non-trivial change
 is planned in [`docs/changes/`](./docs/changes/README.md) **before** code is written. Hard-to-reverse
 choices get a decision record in [`docs/decisions/`](./docs/decisions/). UI follows the
-[Darkroom design system](./docs/design/design-system.md).
+[Darkroom design system](./DESIGN.md).
 
 With Claude Code: `/plan-change <idea>` drafts a change doc, `/document-feature`, `/darkroom-ui` and
 `/add-sandbox` cover the rest.

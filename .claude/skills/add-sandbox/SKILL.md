@@ -17,7 +17,7 @@ A world is pure variable changes → deterministic outcomes. No AI, no network d
      stable text. `read()` returns finite numbers or `null`. Sub-step in `step()` for stability.
    - `draw()` uses `STAGE` colours and `FONT` from `lib/sim/draw.ts` and the `darkroom-ui` rules: calm,
      legible, base vs what-if clearly distinguished. Add a world glyph to `components/ui/Icon.tsx`.
-   - Controls must fit the console's Tune column (see `docs/design/design-system.md`).
+   - Controls must fit the console's Tune column (see `DESIGN.md` → Layout).
    - Optionally link from `lib/scale/objects.ts`.
 3. **Verify:** `npm run typecheck && npm test` (the suite auto-covers every sandbox × what-if). Add a
    behaviour test if the model has a stability property worth guarding (like animals coexistence).

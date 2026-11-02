@@ -29,3 +29,8 @@ We keep no Apple branding or naming in the design docs.
 - Delete `docs/design/apple-design-language.md` and the `apple-ui-ux` skill; drop change 0001.
 - Working screens (`/`, `/lab/*`) are fixed-viewport consoles; reading screens may scroll.
 - Implemented by [change 0004](../changes/0004-single-screen-console.md).
+- Amended by [change 0005](../changes/0005-darkroom-oryzo-alignment.md): aligned with the ORYZO style reference (two surfaces, no tracking, the reference type scale, dashed-underline selection); deviations are listed in the design doc.
+- Amended by [change 0006](../changes/0006-design-md-canonical.md) (2026-11-02): the rules moved from
+  `docs/design/design-system.md` to the root [`DESIGN.md`](../../DESIGN.md), which is now the single design
+  source (portable DESIGN.md format, `.impeccable/design.json` sidecar). Runtime tokens stay in
+  `app/globals.css`; a token change updates both in the same commit. No rule changed.

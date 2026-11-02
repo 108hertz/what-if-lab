@@ -12,7 +12,7 @@ Inspirations: scaleofuniverse.com (zoom), Universe Sandbox (gravity), Primer (bl
 Goal: maximum traffic; revenue from **side-rail ads** (≥1280 px, never near the stage) and **Premium at
 $15/year** (no ads + power tools). **No backend of our own**: static export; payments/licensing via a
 hosted merchant-of-record, client-side license unlock (`docs/decisions/0002-…`). The simulation stays
-pure variable changes → rule-based outcomes. UI follows the **Darkroom** design system (`docs/design/design-system.md`); working screens are
+pure variable changes → rule-based outcomes. UI follows the **Darkroom** design system (`DESIGN.md`); working screens are
 one-viewport consoles with no page scroll.
 
 ## Working agreement
@@ -54,7 +54,8 @@ lib/sim/                  framework-free simulation code (no React)
   sandboxes/*.ts          one file per world: galaxy, solar, earth, country, animals, child, person
 lib/scale/                scale explorer objects + renderer
 tests/                    vitest
-docs/                     PLAN.md, features/, changes/, decisions/ (ADRs), design/
+PRODUCT.md / DESIGN.md    product truth / canonical Darkroom design system (tokens mirror app/globals.css)
+docs/                     PLAN.md, features/, changes/, decisions/ (ADRs)
 .claude/skills/           plan-change, document-feature, darkroom-ui, add-sandbox
 ```
 

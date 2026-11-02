@@ -6,3 +6,8 @@ next-env.d.ts
 .DS_Store
 .env*.local
 coverage
+.vercel
+
+# Impeccable: platform binary is re-downloaded and checksum-verified by the launcher; local config stays local
+.claude/skills/impeccable/scripts/bin/
+.impeccable/config.local.json

@@ -184,10 +184,11 @@ export default function Lab({ mode }: { mode: Mode }) {
         <section className="centre">
           <div className="stage">
             <canvas ref={canvasRef} aria-label="Simulation stage" />
+            {engine && <span className="micro edge" aria-hidden="true">What-If Lab · Seed {engine.seed}</span>}
             {!engine && (
               <div className={heroOff ? "hero hide" : "hero"} aria-hidden={heroOff}>
                 <h1 className="display">What happens if…</h1>
-                <p className="desc">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, ask it a question, and watch both futures run side by side.</p>
+                <p className="desc-lg">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, ask it a question, and watch both futures run side by side.</p>
               </div>
             )}
           </div>

@@ -28,7 +28,7 @@ This is the product. The divergence moment is what people screenshot and share.
 - Worlds keep running across tab switches (module-level engine singletons).
 - **One-screen console** (change 0004): desktop shows Ask (what-ifs, readouts, info) · stage + transport +
   chart/timeline · Tune (all variables) without page scroll; phones/tablets show the stage with a dock
-  (Ask · Tune · Read · Log). See `docs/design/design-system.md` → Layout.
+  (Ask · Tune · Read · Log). See `DESIGN.md` → Layout.
 
 ## Out of scope
 

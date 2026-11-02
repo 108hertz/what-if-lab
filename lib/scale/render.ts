@@ -167,8 +167,8 @@ export class ScaleView {
       const ly = Math.min(H - 44, cy + Math.max(d / 2, 8) + 18);
       ctx.textAlign = "center";
       ctx.fillStyle = STAGE.ink; ctx.font = "500 12px " + FONT.body; ctx.fillText(o.name.toUpperCase(), x, ly);
-      ctx.fillStyle = STAGE.ink2; ctx.font = "11px " + FONT.mono; ctx.fillText(fmtLen(o.size), x, ly + 16);
-      if (o.sandbox) { ctx.fillStyle = this.hover === o ? STAGE.alt : "rgba(255,200,87,.85)"; ctx.font = "500 11px " + FONT.body; ctx.fillText("OPEN WORLD →", x, ly + 32); }
+      ctx.fillStyle = STAGE.ink2; ctx.font = "12px " + FONT.mono; ctx.fillText(fmtLen(o.size), x, ly + 16);
+      if (o.sandbox) { ctx.fillStyle = this.hover === o ? STAGE.alt : "rgba(255,200,87,.85)"; ctx.font = "500 12px " + FONT.body; ctx.fillText("OPEN WORLD →", x, ly + 32); }
       ctx.textAlign = "left";
       this.hits.push({ o, x, y: cy, r: Math.max(d / 2, 10), ly });
     });
