@@ -101,7 +101,11 @@ export function TunePanel({ engine, onChange }: P) {
     <section>
       <h3 className="headline">Variables</h3>
       <ControlsForm engine={engine} onChange={onChange} />
-      <p className="small">Changing these restarts the world.</p>
+      <p className="small">
+        {engine.sb.controls.some((c) => c.type === "range" && c.live)
+          ? "Starting-world changes restart it. What-if settings apply the next time you pick a what-if."
+          : "Changing these restarts the world."}
+      </p>
     </section>
   );
 }

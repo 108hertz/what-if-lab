@@ -118,6 +118,8 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 ## Model notes (so changes stay plausible)
 
 - **galaxy**: test-particle stars around softened point-mass cores; crude dynamical friction merges cores.
+  Up to 10 galaxies (owner indices never reused), ~4,000-star budget; what-if settings are `live` controls
+  read in `apply()`. Fast passes escape friction only well above escape speed (fly-through aims 80 kly off).
 - **solar**: leapfrog N-body, G = 4π² (AU, yr, M☉), dt ≤ 0.0015 yr; merges on collision radius.
 - **earth**: 0-D carbon/temperature model, 35-yr thermal lag, sea level from expansion + ice above 2 °C.
 - **country**: aggregate growth model + 260 household agents (tax, corruption skim, yard-sale trades);

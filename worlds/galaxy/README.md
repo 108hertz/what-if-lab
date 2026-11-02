@@ -21,6 +21,15 @@ Each galaxy starts as a compact bulge (15 % of stars) plus an exponential disc (
 Variables: stars, Andromeda mass, dark matter, approach speed (km/s), aim off-centre (kly) and Andromeda's spin
 (change 0010). The defaults reproduce the original path. Seven speeds, 5 Myr/s–1 Gyr/s, use the transport stepper.
 
+Change 0011 added Andromeda's shape (spiral or elliptical), neighbours at start (Triangulum, the LMC), a
+"Galaxies left" metric and twelve what-ifs in all: the original six plus more galaxies falling in, a dwarf
+punching through our centre (an expanding ring, like the Cartwheel), a galaxy shooting straight through,
+Andromeda stopping dead or turning around, and the Milky Way spinning the other way. **What-if settings**
+are live sliders (count and size of incoming galaxies, fly-through speed, black hole mass, gravity left
+without dark matter): they don't restart the world and apply at the next fork. Up to 10 galaxies and a
+4,000-star budget; owner indices are never reused, so tints (`TINT`, 10 colours) and events stay stable.
+The camera follows cores within 640 kly of the heaviest; escapees leave the view.
+
 ## How the stage is drawn (change 0009)
 
 Like a long-exposure telescope photo, with everything derived from star-index hashes and sim time (never the RNG):
@@ -35,6 +44,7 @@ passage (`Core.pt`), and merged cores flare (`Core.mt`). Pausing freezes all of 
 - What happens when Andromeda hits us — and what if it missed?
 - What does dark matter actually do to a galaxy?
 - What if a giant black hole sat at our centre?
+- What happens when a whole group of galaxies falls together, or a small one hits us dead centre?
 
 ## What "excellent" means here
 

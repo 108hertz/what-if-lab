@@ -4,7 +4,11 @@ import { FONT, STAGE } from "@/lib/sim/draw";
 import { meta } from "./meta";
 
 /** Units: G = 1, Milky Way mass = 1, 1 length unit ≈ 40,000 ly, 1 time unit = 100 Myr. */
-type P = { stars: number; mass: number; dm: number; speed: number; aim: number; spin: string };
+type P = {
+  stars: number; mass: number; dm: number; speed: number; aim: number; spin: string; neigh: string; shape: string;
+  /** What-if settings (live): how many fall in, their size, fly-through speed, black hole mass, gravity left without dark matter. */
+  count: number; size: number; fly: number; bhm: number; dmleft: number;
+};
 
 interface Core {
   x: number; y: number; vx: number; vy: number; m: number;
@@ -24,11 +28,19 @@ interface W extends BaseWorld {
   k: Uint8Array;
   /** Camera half-width in length units, eased in step() so the view follows the action. */
   cam: number;
+  /** Owner index of the dwarf in the "ring" what-if, until its ring is logged. */
+  ro?: number;
 }
 
 const EPS2 = 0.01;
+/** At most this many galaxies ever, and about this many stars in all. */
+const MAX_GALAXIES = 10, MAX_STARS = 4000;
+/** km/s → length units per 100 Myr (110 km/s ≈ 0.297, the default approach speed). */
+const KMS = Math.hypot(0.28, 0.1) / 110;
 
-function addGalaxy(w: W, cx: number, cy: number, vx: number, vy: number, m: number, dir: number, n: number, owner: number) {
+type Shape = { rs?: number; ell?: boolean };
+
+function addGalaxy(w: W, cx: number, cy: number, vx: number, vy: number, m: number, dir: number, n: number, owner: number, { rs = 1, ell = false }: Shape = {}) {
   w.cores.push({ x: cx, y: cy, vx, vy, m, o: owner, dir, ax: 0, ay: 0 });
   const start = w.o.length;
   const s = new Float64Array((start + n) * 4);
@@ -40,12 +52,15 @@ function addGalaxy(w: W, cx: number, cy: number, vx: number, vy: number, m: numb
   const nb = Math.round(n * 0.15), L = 0.75;
   for (let i = 0; i < n; i++) {
     // A compact Plummer-like bulge (15%) and an exponential disc (scale length ≈ 30,000 ly, cut at 58,000)
-    const bulge = i < nb, u = rng(w), a = rng(w) * TAU;
-    const r = bulge
-      ? clamp(0.1 / Math.sqrt(Math.pow(0.0001 + 0.9 * u, -2 / 3) - 1), 0.05, 0.4)
-      : 0.12 - L * Math.log(1 - u * (1 - Math.exp(-1.33 / L)));
+    // An elliptical is all "bulge": a wider ball of old stars, orbiting either way
+    const bulge = ell || i < nb, u = rng(w), a = rng(w) * TAU;
+    const r = rs * (ell
+      ? clamp(0.25 / Math.sqrt(Math.pow(0.0001 + 0.9 * u, -2 / 3) - 1), 0.05, 1.1)
+      : bulge
+        ? clamp(0.1 / Math.sqrt(Math.pow(0.0001 + 0.9 * u, -2 / 3) - 1), 0.05, 0.4)
+        : 0.12 - L * Math.log(1 - u * (1 - Math.exp(-1.33 / L))));
     // Bulge stars are partly pressure-supported: slower, and some orbit the other way
-    const d = bulge && rng(w) < 0.35 ? -dir : dir;
+    const d = bulge && rng(w) < (ell ? 0.5 : 0.35) ? -dir : dir;
     const v = ((bulge ? 0.85 : 1) * r * Math.sqrt(m)) / Math.pow(r * r + EPS2, 0.75);
     const j = (start + i) * 4;
     s[j] = cx + r * Math.cos(a);
@@ -60,14 +75,25 @@ function addGalaxy(w: W, cx: number, cy: number, vx: number, vy: number, m: numb
   w.k = k;
 }
 
-/** Camera half-width that keeps every core in view with room for its disc. */
-function camTarget(w: W): number {
-  let M = 0, cx = 0, cy = 0, far = 0;
-  w.cores.forEach((c) => { M += c.m; cx += c.m * c.x; cy += c.m * c.y; });
-  cx /= M; cy /= M;
-  w.cores.forEach((c) => (far = Math.max(far, Math.hypot(c.x - cx, c.y - cy))));
-  return clamp(far * 0.85 + 2.2, 3, 9.5);
+/** The group the camera follows: cores within 16 units (640 kly) of the heaviest. Escapees leave the view. */
+function view(w: W) {
+  const big = w.cores.reduce((a, c) => (c.m > a.m ? c : a), w.cores[0]);
+  const near = w.cores.filter((c) => Math.hypot(c.x - big.x, c.y - big.y) < 16);
+  let M = 0, cx = 0, cy = 0, vx = 0, vy = 0, far = 0;
+  near.forEach((c) => { M += c.m; cx += c.m * c.x; cy += c.m * c.y; vx += c.m * c.vx; vy += c.m * c.vy; });
+  cx /= M; cy /= M; vx /= M; vy /= M;
+  near.forEach((c) => (far = Math.max(far, Math.hypot(c.x - cx, c.y - cy))));
+  return { M, cx, cy, vx, vy, far };
 }
+
+/** Camera half-width that keeps every core in view with room for its disc. */
+const camTarget = (w: W) => clamp(view(w).far * 0.85 + 2.2, 3, 14);
+
+/** Next free galaxy index (owners are never reused, so colours and events stay put). */
+const nextOwner = (w: W) => 1 + Math.max(...w.cores.flatMap((c) => c.os ?? [c.o]));
+/** Smaller galaxies: fewer stars, a smaller disc, within the total star budget. */
+const starsFor = (w: W, p: P, size: number) => Math.max(40, Math.min(Math.round(p.stars * clamp(size / 0.9, 0.15, 0.6)), MAX_STARS - w.o.length));
+const discFor = (size: number) => clamp(Math.sqrt(size / 0.45), 0.3, 1.2);
 
 const coreOf = (w: W, o: number) => w.cores.find((c) => c.o === o || (c.os && c.os.includes(o)));
 const owns = (c: Core, o: number) => (c.os ?? [c.o]).includes(o);
@@ -82,7 +108,7 @@ const GLOW_COL = ["#FFCF96", "#FFE6CC", "#A9C2FF"];
 /** Two-arm log spiral: winding (1 / tan 18° pitch) and pattern speed (rad per 100 Myr). */
 const WIND = 3.1, PATTERN = 0.5;
 /** Per-galaxy tint, so you can still tell whose stars are whose. */
-const TINT = ["#BCD0FF", "#FFCF9E", "#B8F5CF"];
+const TINT = ["#BCD0FF", "#FFCF9E", "#B8F5CF", "#FFB8C8", "#D4C2FF", "#A8EEF2", "#FFE3A3", "#C9F2A8", "#F2C4E8", "#B8DCFF"];
 /** Stellar populations: old warm bulge, cream disc, young blue disc, pink star-forming knot. */
 const POP = ["#FFC98A", "#FFF1DC", "#9DBBFF", "#FF6FA0"];
 
@@ -160,12 +186,21 @@ export const galaxy: Sandbox<W, P> = {
   ...meta,
   intro: "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
   controls: [
+    { type: "heading", label: "Starting world" },
     { type: "range", id: "stars", label: "Stars per galaxy", min: 300, max: 1500, step: 100, val: 900 },
     { type: "range", id: "mass", label: "Andromeda mass", min: 0.5, max: 2, step: 0.1, val: 1.2, unit: "× Milky Way" },
     { type: "range", id: "dm", label: "Dark matter", min: 0.5, max: 2, step: 0.1, val: 1, unit: "×" },
     { type: "range", id: "speed", label: "Approach speed", min: 60, max: 200, step: 10, val: 110, unit: "km/s" },
     { type: "range", id: "aim", label: "Aim off-centre", min: 0, max: 250, step: 10, val: 110, unit: "kly" },
     { type: "select", id: "spin", label: "Andromeda spins", options: [["against", "Against ours"], ["same", "Same way as ours"]], val: "against" },
+    { type: "select", id: "shape", label: "Andromeda's shape", options: [["spiral", "Spiral"], ["elliptical", "Elliptical"]], val: "spiral" },
+    { type: "select", id: "neigh", label: "Neighbours at start", options: [["none", "None"], ["m33", "Triangulum"], ["m33lmc", "Triangulum + LMC"]], val: "none" },
+    { type: "heading", label: "What-if settings" },
+    { type: "range", id: "count", label: "Galaxies that fall in", min: 1, max: 6, step: 1, val: 3, live: true },
+    { type: "range", id: "size", label: "Their size", min: 0.1, max: 1.5, step: 0.05, val: 0.45, unit: "× Milky Way", live: true },
+    { type: "range", id: "fly", label: "Fly-through speed", min: 200, max: 1500, step: 50, val: 800, unit: "km/s", live: true },
+    { type: "range", id: "bhm", label: "Black hole mass", min: 0.1, max: 4, step: 0.1, val: 1.5, unit: "× Milky Way", live: true },
+    { type: "range", id: "dmleft", label: "Gravity left", min: 0, max: 90, step: 5, val: 30, unit: "%", live: true },
   ],
   whatifs: [
     ["headon", "Aim Andromeda dead centre"],
@@ -174,6 +209,12 @@ export const galaxy: Sandbox<W, P> = {
     ["bh", "A galaxy-heavy black hole appears at our centre"],
     ["third", "A third galaxy joins"],
     ["freeze", "Milky Way stars stop orbiting"],
+    ["swarm", "More galaxies fall in"],
+    ["ring", "A small galaxy punches through our centre"],
+    ["bullet", "A galaxy shoots straight through"],
+    ["stop", "Andromeda stops dead"],
+    ["reverse", "Andromeda turns around"],
+    ["flipmw", "The Milky Way spins the other way"],
   ],
   speeds: [[0.05, "5 Myr/s"], [0.1, "10 Myr/s"], [0.25, "25 Myr/s"], [0.5, "50 Myr/s"], [1.5, "150 Myr/s"], [4, "400 Myr/s"], [10, "1 Gyr/s"]],
   defaultSpeed: 3,
@@ -182,6 +223,7 @@ export const galaxy: Sandbox<W, P> = {
     { k: "sep", label: "Separation", unit: "kly", fmt: (v) => fmtNum(v) },
     { k: "disc", label: "Stars in a disc", unit: "%", fmt: (v) => fmtNum(v) },
     { k: "thrown", label: "Stars thrown out", unit: "%", fmt: (v) => fmtNum(v, 1) },
+    { k: "galaxies", label: "Galaxies left", unit: "", fmt: (v) => fmtNum(v) },
   ],
 
   init(p, seed) {
@@ -190,13 +232,24 @@ export const galaxy: Sandbox<W, P> = {
     const dx = 7.5, dy = -3.2, d = Math.hypot(dx, dy), ux = dx / d, uy = dy / d;
     // Defaults (110 km/s, 110 kly) give the original path: 0.28 units along the line of centres, 0.1 across.
     // Aim: Andromeda heads for a point ~aim kly to the side of our centre (sin of the angle scales with it).
-    const v = Math.hypot(0.28, 0.1) * (p.speed / 110);
+    const v = KMS * p.speed;
     const sa = clamp((p.aim / 110) * (0.1 / Math.hypot(0.28, 0.1)), 0, 1), ca = Math.sqrt(1 - sa * sa);
     const rvx = v * (ux * ca - uy * sa), rvy = v * (uy * ca + ux * sa);
     addGalaxy(w, 0, 0, (-m1 / M) * rvx, (-m1 / M) * rvy, m0, 1, p.stars, 0);
-    addGalaxy(w, -dx, -dy, (m0 / M) * rvx, (m0 / M) * rvy, m1, p.spin === "same" ? 1 : -1, p.stars, 1);
-    w.cam = camTarget(w);
+    addGalaxy(w, -dx, -dy, (m0 / M) * rvx, (m0 / M) * rvy, m1, p.spin === "same" ? 1 : -1, p.stars, 1, { ell: p.shape === "elliptical" });
     note(w, `Andromeda is closing in at about ${p.speed} km/s`);
+    if (p.neigh !== "none") {
+      const g = view(w);
+      addGalaxy(w, g.cx + 7, g.cy - 6, g.vx - 0.22, g.vy + 0.2, 0.45 * p.dm, 1, starsFor(w, p, 0.45), 2);
+      note(w, "Triangulum drifts in from the side");
+    }
+    if (p.neigh === "m33lmc") {
+      // The Large Magellanic Cloud on a near-circular orbit around the Milky Way, about 160,000 ly out
+      const mw = w.cores[0], r = 4, a = 2.2, vc = (r * Math.sqrt(mw.m)) / Math.pow(r * r + 0.09, 0.75);
+      addGalaxy(w, mw.x + r * Math.cos(a), mw.y + r * Math.sin(a), mw.vx - vc * Math.sin(a), mw.vy + vc * Math.cos(a), 0.1 * p.dm, 1, starsFor(w, p, 0.1), 3, { rs: discFor(0.1) });
+      note(w, "The Large Magellanic Cloud circles the Milky Way");
+    }
+    w.cam = camTarget(w);
     return w;
   },
 
@@ -253,6 +306,25 @@ export const galaxy: Sandbox<W, P> = {
       if (d < 1.8) note(w, "First pass: the galaxies plunge through each other", "p1");
       if (w.f.p1 && d > 3.5) note(w, "They swing apart, trailing long tidal tails of stars", "tails");
     }
+    // Ring what-if: once the dwarf has passed our centre, watch for the disc rebounding outward together
+    const mw = coreOf(w, 0), dw = w.ro == null ? null : coreOf(w, w.ro);
+    if (mw && dw) {
+      if (Math.hypot(dw.x - mw.x, dw.y - mw.y) < 0.4) w.f.rp = 1;
+      if (w.f.rp) {
+        let all = 0, outward = 0;
+        for (let i = 0; i < N; i++) {
+          if (w.o[i] !== 0 || w.k[i] !== 1) continue;
+          const j = i * 4, dx = s[j] - mw.x, dy = s[j + 1] - mw.y, r = Math.hypot(dx, dy);
+          if (r < 0.3 || r > 2.5) continue;
+          all++;
+          if ((dx * (s[j + 2] - mw.vx) + dy * (s[j + 3] - mw.vy)) / r > 0.05) outward++;
+        }
+        if (all > 20 && outward > 0.6 * all) {
+          note(w, "Our disc rebounds into an expanding ring of stars");
+          delete w.ro;
+        }
+      }
+    }
   },
 
   apply(w, id, p) {
@@ -269,17 +341,56 @@ export const galaxy: Sandbox<W, P> = {
       kick(1, a.vx + nv[0] - b.vx, a.vy + nv[1] - b.vy);
       note(w, id === "headon" ? "Andromeda turns straight for our centre" : "Andromeda is nudged onto a fly-by path");
     }
-    if (id === "nodm") { w.cores.forEach((c) => (c.m *= 0.3)); note(w, "Dark matter vanishes: gravity drops to 30%, stars are suddenly too fast"); }
-    if (id === "bh" && a) { a.m += 1.5 * p.dm; note(w, "A black hole as heavy as a galaxy appears at the Milky Way’s centre"); }
-    if (id === "third") {
-      let M = 0, cx = 0, cy = 0;
-      w.cores.forEach((c) => { M += c.m; cx += c.m * c.x; cy += c.m * c.y; });
-      addGalaxy(w, cx / M + 7, cy / M - 6, -0.22, 0.2, 0.45 * p.dm, 1, Math.round(p.stars / 2), 2);
+    if (id === "nodm") {
+      const left = Math.max(5, p.dmleft);
+      w.cores.forEach((c) => (c.m *= left / 100));
+      note(w, `${left < 50 ? "Dark matter vanishes" : "Some dark matter vanishes"}: gravity drops to ${left}%, stars are suddenly too fast`);
+    }
+    if (id === "bh" && a) {
+      a.m += p.bhm * p.dm;
+      note(w, p.bhm >= 1 ? `A black hole ${fmtNum(p.bhm, 1)}× as heavy as the Milky Way appears at its centre` : `A black hole of ${Math.round(p.bhm * 100)}% the Milky Way’s mass appears at its centre`);
+    }
+    const free = MAX_GALAXIES - nextOwner(w);
+    if (id === "third" && free > 0) {
+      const g = view(w);
+      addGalaxy(w, g.cx + 7, g.cy - 6, -0.22, 0.2, p.size * p.dm, 1, starsFor(w, p, p.size), nextOwner(w), { rs: discFor(p.size) });
       note(w, "A third galaxy (like Triangulum) falls in");
     }
     if (id === "freeze" && a) {
       for (let i = 0; i < w.o.length; i++) if (w.o[i] === 0) { w.s[i * 4 + 2] = a.vx; w.s[i * 4 + 3] = a.vy; }
       note(w, "Every Milky Way star stops orbiting");
+    }
+    if (id === "swarm" && free > 0) {
+      // Evenly spaced around the group, falling in on curving paths rather than straight at the centre
+      const g = view(w), n = Math.min(p.count, free), R = 7, vc = Math.sqrt(g.M / R);
+      for (let i = 0; i < n; i++) {
+        const th = (TAU * i) / n + 0.6, ux = Math.cos(th), uy = Math.sin(th);
+        const vx = g.vx + vc * (-0.6 * ux - 0.45 * uy), vy = g.vy + vc * (-0.6 * uy + 0.45 * ux);
+        addGalaxy(w, g.cx + R * ux, g.cy + R * uy, vx, vy, p.size * p.dm, i % 2 ? -1 : 1, starsFor(w, p, p.size), nextOwner(w), { rs: discFor(p.size) });
+      }
+      note(w, n === 1 ? "Another galaxy falls in" : `${n} more galaxies fall in`);
+    }
+    if (id === "ring" && a && free > 0) {
+      const o = nextOwner(w);
+      addGalaxy(w, a.x, a.y + 2.5, a.vx, a.vy - 0.9, 0.5 * p.dm, 1, 120, o, { rs: 0.3 });
+      w.ro = o;
+      note(w, "A dwarf galaxy punches through our centre");
+    }
+    if (id === "bullet" && free > 0) {
+      const g = view(w);
+      addGalaxy(w, g.cx - 8, g.cy + 2, g.vx + KMS * p.fly, g.vy, p.size * p.dm, 1, starsFor(w, p, p.size), nextOwner(w), { rs: discFor(p.size) });
+      note(w, `A galaxy shoots straight through at ${p.fly} km/s`);
+    }
+    if ((id === "stop" || id === "reverse") && a && b && a !== b) {
+      const k = id === "stop" ? 1 : 2;
+      kick(1, k * (a.vx - b.vx), k * (a.vy - b.vy));
+      note(w, id === "stop" ? "Andromeda stops dead, then starts to fall" : "Andromeda turns around and heads away");
+    }
+    if (id === "flipmw" && a) {
+      for (let i = 0; i < w.o.length; i++)
+        if (w.o[i] === 0) { const j = i * 4; w.s[j + 2] = 2 * a.vx - w.s[j + 2]; w.s[j + 3] = 2 * a.vy - w.s[j + 3]; }
+      if (!a.os) a.dir = -a.dir;
+      note(w, "Every Milky Way star reverses its orbit");
     }
   },
 
@@ -294,7 +405,7 @@ export const galaxy: Sandbox<W, P> = {
       if (E < 0 && bd < 3) bound++;
       else if (bd > 5 && E > 0) out++;
     }
-    return { sep: a && b && a !== b ? Math.hypot(a.x - b.x, a.y - b.y) * 40 : 0, disc: (bound / N) * 100, thrown: (out / N) * 100 };
+    return { sep: a && b && a !== b ? Math.hypot(a.x - b.x, a.y - b.y) * 40 : 0, disc: (bound / N) * 100, thrown: (out / N) * 100, galaxies: w.cores.length };
   },
 
   draw({ ctx, w: W, h: H }, w) {
@@ -302,14 +413,12 @@ export const galaxy: Sandbox<W, P> = {
     ctx.fillRect(0, 0, W, H);
     drawBackdrop(ctx, W, H);
 
-    let M = 0, cx = 0, cy = 0;
-    w.cores.forEach((c) => { M += c.m; cx += c.m * c.x; cy += c.m * c.y; });
-    cx /= M; cy /= M;
+    const { cx, cy } = view(w);
     const sc = Math.min(W, H / TILT) / 2 / (w.cam ?? 8.5), s = w.s, N = w.o.length, t = w.t;
     const X = (x: number) => W / 2 + (x - cx) * sc, Y = (y: number) => H / 2 + (y - cy) * sc * TILT;
 
     // Per galaxy: how calm its disc still is (spiral arms) and how recent its starburst is
-    const state = [0, 1, 2].map((o) => {
+    const state = Array.from({ length: nextOwner(w) }, (_, o) => {
       const c = coreOf(w, o);
       if (!c) return null;
       let near = Infinity;
