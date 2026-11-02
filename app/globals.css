@@ -108,9 +108,9 @@ html, body { height: 100%; }
 .app {
   height: 100vh; height: 100dvh; overflow: hidden;
   display: grid; grid-template-rows: auto minmax(0, 1fr); grid-template-columns: minmax(0, 1fr);
-  padding: 0 max(var(--s-3), env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(var(--s-3), env(safe-area-inset-left, 0px));
+  padding: env(safe-area-inset-top, 0px) max(var(--s-3), env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(var(--s-3), env(safe-area-inset-left, 0px));
 }
-.nav { display: flex; align-items: center; gap: var(--s-3) var(--s-4); min-height: 56px; min-width: 0; }
+.nav { position: relative; display: flex; align-items: center; gap: var(--s-3) var(--s-4); min-height: 56px; min-width: 0; }
 .brand { display: grid; gap: 2px; flex: 0 0 auto; }
 .brand .credit { display: none; }
 @media (min-width: 1280px) { .brand .credit { display: block; } }
@@ -123,8 +123,10 @@ html, body { height: 100%; }
 .iconbtn:hover { background: color-mix(in srgb, var(--label) 8%, transparent); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* World switcher: icons always; names when there is room; subtitles on wide screens */
-.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1 1 auto; }
+/* World switcher: phones get the world menu; from 768 px a glyph strip, names from 1280, subtitles from 1600 */
+.tabs { display: none; }
+@media (min-width: 768px) { .tabs { display: flex; } .nav .worldmenu { display: none; } }
+.tabs { gap: 2px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1 1 auto; }
 .tabs::-webkit-scrollbar { display: none; }
 .tabs a {
   position: relative; flex: 0 0 auto; display: flex; align-items: center; gap: var(--s-2); min-height: 44px; min-width: 44px; padding: 0 var(--s-3);
@@ -134,9 +136,33 @@ html, body { height: 100%; }
 .tabs .tab-text { display: grid; gap: 2px; }
 .tabs .tab-text .micro { display: none; }
 .tabs a:not([aria-current="page"]) .tab-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-@media (min-width: 1440px) { .tabs a:not([aria-current="page"]) .tab-text { position: static; width: auto; height: auto; overflow: visible; clip: auto; } }
+@media (min-width: 1280px) { .tabs a:not([aria-current="page"]) .tab-text { position: static; width: auto; height: auto; overflow: visible; clip: auto; } }
 @media (min-width: 1600px) { .tabs .tab-text .micro { display: block; } }
 .tabs a:hover { color: var(--label); }
+/* Phone world menu: the current world as a button; every world, named, in a popover */
+.worldmenu { flex: 1 1 auto; min-width: 0; display: flex; }
+.worldmenu-btn {
+  display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; min-width: 0; padding: 0 var(--s-3); border: 0; border-radius: var(--r-ghost);
+  background: transparent; color: var(--label); cursor: pointer; transition: background-color var(--d-fast) var(--ease-out);
+}
+.worldmenu-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.worldmenu-btn:hover { background: color-mix(in srgb, var(--label) 8%, transparent); }
+.worldmenu-btn .icon:last-child { color: var(--label-2); transition: transform var(--d-ctl) var(--ease-out); }
+.worldmenu-btn[aria-expanded="true"] .icon:last-child { transform: rotate(180deg); }
+.worldmenu-list {
+  z-index: 20; top: 100%; left: 0; right: auto; width: min(320px, 100%); max-height: calc(100dvh - 72px); overflow-y: auto;
+  margin: 0; padding: var(--s-2); list-style: none; gap: 0;
+}
+.worldmenu-list a {
+  position: relative; display: grid; grid-template-columns: 20px 1fr; align-items: center; gap: 2px var(--s-3); min-height: 48px; padding: var(--s-2) var(--s-3);
+  border-radius: var(--r-ghost); color: var(--label-2); text-decoration: none; transition: background-color var(--d-fast) var(--ease-out), color var(--d-fast) var(--ease-out);
+}
+.worldmenu-list a .icon { grid-row: span 2; }
+.worldmenu-list a .sub { font-size: var(--t-small); line-height: 1.3; color: var(--label-2); }
+.worldmenu-list a:hover { color: var(--label); background: color-mix(in srgb, var(--label) 8%, transparent); }
+.worldmenu-list a[aria-current="page"] { color: var(--label); }
+.worldmenu-list a[aria-current="page"] .lbl { justify-self: start; padding-bottom: 3px; border-bottom: 1px dashed currentColor; }
+
 /* Selected = cream text + dashed underline (the reference's active-nav mark). Bark fill is reserved for Play. */
 .tabs a[aria-current="page"], .seg button[aria-pressed="true"], .seg button[aria-selected="true"], .mtabs button[aria-pressed="true"] { color: var(--label); }
 .tabs a[aria-current="page"]::after, .seg button[aria-pressed="true"]::after, .seg button[aria-selected="true"]::after, .mtabs button[aria-pressed="true"]::after {
@@ -160,7 +186,7 @@ html, body { height: 100%; }
 /* Desktop console: Ask | centre | Tune */
 @media (min-width: 1024px) {
   .app { padding-left: max(var(--s-4), env(safe-area-inset-left, 0px)); padding-right: max(var(--s-4), env(safe-area-inset-right, 0px)); }
-  .console { display: grid; grid-template-columns: 280px minmax(0, 1fr) 300px; gap: var(--pad-card); padding-bottom: var(--s-4); }
+  .console { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: var(--pad-card); padding-bottom: var(--s-4); }
   .is-scale .console { grid-template-columns: minmax(0, 1fr) 340px; }
   .centre { flex: none; }
   .stage { min-height: 240px; }
@@ -168,15 +194,12 @@ html, body { height: 100%; }
   .results > * { min-width: 0; min-height: 0; padding: var(--s-3) var(--s-4); }
   .results > * + * { border-left: 1px dashed var(--separator); }
 }
+/* 1024–1279: the right column is a dock (Ask · Tune · Read); >= 1280 every tool is on screen */
+@media (min-width: 1280px) { .console { grid-template-columns: 280px minmax(0, 1fr) 300px; } }
 @media (min-width: 1440px) { .results { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); } }
 .now-box { overflow-y: auto; }
 @media (min-width: 1024px) and (max-height: 760px) { .results { flex-basis: 160px; } }
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .console { grid-template-columns: 240px minmax(0, 1fr) 240px; }
-  .console .transport { flex-wrap: wrap; }
-  .console .transport .hint { display: none; }
-  .tl li { grid-template-columns: 48px 12px 1fr; }
-}
+@media (min-width: 1024px) and (max-width: 1279px) { .console .transport .hint { display: none; } }
 
 /* Phone/tablet dock */
 .dock { flex: 1 1 45%; min-height: 0; display: flex; flex-direction: column; }
@@ -186,13 +209,23 @@ html, body { height: 100%; }
 .dock-panel > * + * { border-top: 1px dashed var(--separator); padding-top: var(--gap); }
 .dock .chart-box { height: 200px; flex: 0 0 auto; }
 
+/* Short screens below 1024 (phones held sideways): stage and transport beside the dock, never stacked */
+@media (max-width: 1023px) and (max-height: 520px) {
+  .nav { min-height: 48px; }
+  .console { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(240px, 1fr); gap: var(--s-3); }
+  .centre { flex: none; }
+  .stage { min-height: 0; }
+  .dock-panel { padding-top: var(--s-3); }
+  .hint { display: none; }
+}
+
 /* Scale hero overlays the stage until the first interaction */
 .hero { position: absolute; left: var(--s-5); top: var(--s-5); max-width: min(600px, 80%); display: grid; gap: var(--s-3); pointer-events: none;
   color: var(--stage-ink); transition: opacity 400ms var(--ease-out); }
 .hero .desc-lg { color: var(--stage-ink-2); }
 @media (max-width: 1439px) { .hero { max-width: min(520px, 80%); } .hero .desc-lg { font-size: var(--t-body); line-height: 1.4; } }
 .hero.hide { opacity: 0; }
-@media (max-width: 767px) { .hero { left: var(--s-4); top: var(--s-4); } .hero .display { font-size: var(--t-heading); } .hero .desc-lg { display: none; } }
+@media (max-width: 767px), (max-height: 520px) { .hero { left: var(--s-4); top: var(--s-4); } .hero .display { font-size: var(--t-heading); } .hero .desc-lg { display: none; } }
 
 /* World header with the about popover */
 .world-head { position: relative; display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-2); }
@@ -219,6 +252,11 @@ html, body { height: 100%; }
 @media (max-width: 1439px) { .transport .btn-text { display: none; } .transport .btn:not(.primary) { width: 44px; padding: 0; } }
 @media (max-width: 767px) { .hint { display: none; } }
 @media (min-width: 768px) { .transport .seg { flex: 0 0 auto; } }
+/* Narrow transports: the speed control scrolls sideways with a fade; Restart and Close stay whole beside it */
+@media (max-width: 767px), (max-width: 1023px) and (max-height: 520px) {
+  .transport .seg { flex: 1 1 auto; padding-right: 20px;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 20px), transparent); }
+}
 .btn.primary:hover { border-color: transparent; background: color-mix(in srgb, var(--stage-bark) 85%, var(--stage-ink)); }
 .seg { display: inline-flex; gap: 2px; min-width: 0; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
 .seg::-webkit-scrollbar { display: none; }
@@ -328,6 +366,7 @@ td.a { color: var(--alt); }
 .tl .both .dot { background: linear-gradient(90deg, var(--label) 50%, transparent 50%); border-color: var(--label); }
 .tl .who { display: block; margin-top: 2px; }
 .empty { color: var(--label-2); font-size: var(--t-small); margin: 0; }
+.tl .empty { grid-column: 1 / -1; }
 
 .credit { color: var(--ember); }
 

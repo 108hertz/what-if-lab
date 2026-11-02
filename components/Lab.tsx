@@ -8,6 +8,7 @@ import { modeHref } from "@/lib/sim/registry";
 import { getEngine, getScaleView, prepareSandbox } from "./engines";
 import { setCanvasFont } from "@/lib/sim/draw";
 import Tabs from "./Tabs";
+import WorldMenu from "./WorldMenu";
 import Transport from "./Transport";
 import ScaleTransport from "./ScaleTransport";
 import { InfoBlocks, Readouts, TunePanel, WhatIfList, WorldHeader } from "./panels";
@@ -149,7 +150,10 @@ export default function Lab({ mode }: { mode: Mode }) {
     };
   }, [engine, scale, openSandbox]);
 
+  // Bands (DESIGN.md → Layout): < 1024 dock under/beside the stage; 1024–1279 stage + dock column;
+  // >= 1280 Ask · centre · Tune; >= 1440 readouts join the results strip.
   const desk = useMedia("(min-width: 1024px)");
+  const full = useMedia("(min-width: 1280px)");
   const wide = useMedia("(min-width: 1440px)");
   const touched = useRef(false);
   const [heroOff, setHeroOff] = useState(false);
@@ -177,10 +181,11 @@ export default function Lab({ mode }: { mode: Mode }) {
           <span className="micro credit">No AI · No live data · Same seed, same future</span>
         </div>
         <Tabs mode={mode} />
+        <WorldMenu mode={mode} />
         <ThemeToggle />
       </header>
       <main className="console">
-        {desk && engine ? <aside className="col ask scrolly">{ask}{!wide && now}{info}</aside> : null}
+        {full && engine ? <aside className="col ask scrolly">{ask}{!wide && now}{info}</aside> : null}
         <section className="centre">
           <div className="stage">
             <canvas ref={canvasRef} aria-label="Simulation stage" />
@@ -199,16 +204,18 @@ export default function Lab({ mode }: { mode: Mode }) {
           )}
           {desk && engine ? <div className="results">{chart}{wide && <div className="now-box">{now}</div>}{log}</div> : null}
         </section>
-        {desk ? (
+        {full || (desk && !engine) ? (
           <aside className="col tune scrolly">
             {engine ? tune : <ScalePanel scale={scale} onOpen={openSandbox} />}
           </aside>
         ) : (
           <Dock
-            key={mode}
-            tabs={engine
-              ? [["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}{chart}</>], ["Log", log]]
-              : [["In view", <ScalePanel key="s" scale={scale} onOpen={openSandbox} />]]}
+            key={`${mode}-${desk}`}
+            tabs={!engine
+              ? [["In view", <ScalePanel key="s" scale={scale} onOpen={openSandbox} />]]
+              : desk
+                ? [["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}</>]]
+                : [["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}{chart}</>], ["Log", log]]}
           />
         )}
       </main>

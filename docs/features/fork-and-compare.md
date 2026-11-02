@@ -26,9 +26,11 @@ This is the product. The divergence moment is what people screenshot and share.
 - Metrics (`read`) are finite or `null`; chart plots both worlds; timeline marks events as
   both / no-change only / what-if only.
 - Worlds keep running across tab switches (module-level engine singletons).
-- **One-screen console** (change 0004): desktop shows Ask (what-ifs, readouts, info) · stage + transport +
-  chart/timeline · Tune (all variables) without page scroll; phones/tablets show the stage with a dock
-  (Ask · Tune · Read · Log). See `DESIGN.md` → Layout.
+- **One-screen console** (changes 0004, 0007): at ≥ 1280 px Ask (what-ifs, readouts, info) · stage +
+  transport + chart/timeline · Tune (all variables) without page scroll; at 1024–1279 px the stage, chart
+  and timeline with an Ask · Tune · Read dock beside them; below 1024 px the stage with a dock
+  (Ask · Tune · Read · Log) under it, or beside it on short (≤ 520 px tall) screens. Phones switch worlds
+  from a world menu. See `DESIGN.md` → Layout.
 
 ## Out of scope
 

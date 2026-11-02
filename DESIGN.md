@@ -310,15 +310,18 @@ Nothing in between; weights 400 and 500 only.
 
 Working screens (the scale view `/` and every `/lab/*` world) fill exactly one viewport (`100dvh`) and
 never scroll the page. Only named regions scroll internally, with a 20px fade mask at the cut edge: the
-timeline list, the phone dock panel, the Ask column below the what-if list on short screens, the Tune
+timeline list, the dock panel, the Ask column below the what-if list on short screens, the Tune
 column on desktops under ~860px tall, and the phone speed control (sideways). Reading screens (about,
 what-if landing pages, premium, legal) scroll normally.
 
-- **Desktop console (≥ 1024px):** three columns, Ask 280px · centre · Tune 300px (240 / 240 at
-  1024–1279px, where the transport may wrap to two rows). The centre is the stage, the transport under
-  it, then a 200px results strip (160px under 760px tall): chart | timeline, and chart | RIGHT NOW
-  readouts | timeline at ≥ 1440px. Below 1440px the readouts sit in Ask under the what-ifs. Tools never
-  hide: the what-if list, transport and all variables are on screen at once.
+- **Desktop console (≥ 1280px):** three columns, Ask 280px · centre · Tune 300px. The centre is the
+  stage, the transport under it, then a 200px results strip (160px under 760px tall): chart | timeline,
+  and chart | RIGHT NOW readouts | timeline at ≥ 1440px. Below 1440px the readouts sit in Ask under the
+  what-ifs. Tools never hide: the what-if list, transport and all variables are on screen at once.
+- **Compact desktop (1024–1279px, tablet landscape and small laptops):** two columns, centre · a 300px
+  dock with Ask · Tune · Read (readouts + info; Ask is the default). The centre keeps the stage, a
+  one-row transport and the chart | timeline strip. This is the one band where tools sit behind tabs,
+  in exchange for a wider stage ([change 0007](docs/changes/0007-adaptive-console.md)).
 
 ```
 ┌ WHAT-IF LAB · credit   [world switcher]                                       ☀ ┐ nav
@@ -332,7 +335,11 @@ what-if landing pages, premium, legal) scroll normally.
 - **Scale view desktop:** stage plus a 340px "In view" panel on the right.
 - **Phone / tablet (< 1024px):** stage on top (≈ 50–55% of height), transport under it, then a dock with
   four tabs, Ask · Tune · Read · Log. The dock panel is the only scrolling region.
-- **Progressive disclosure by width:** world names in the switcher at ≥ 1440px, subtitles at ≥ 1600px;
+- **Short screens (< 1024px wide and ≤ 520px tall, phones held sideways):** the stage and transport sit
+  beside the dock (≈ 58 / 42), so Play is always on screen; the nav drops to 48px and the scale hero to
+  its phone size.
+- **Progressive disclosure by width:** the world menu below 768px; a glyph strip with the active name at
+  768–1279px; every world name at ≥ 1280px, subtitles at ≥ 1600px;
   transport secondary buttons are icon-only below 1440px; the credit line and stage edge label appear
   at ≥ 1280px.
 - **Rhythm:** 4-pt spacing (`spacing.s-1` … `spacing.s-8`). Card padding and element gap are 24 / 18 at
@@ -396,9 +403,12 @@ glyph added there. Always paired with text or an `aria-label`.
 - **Focus:** a 2px cream outline offset 2px on every focusable element.
 
 ### Navigation
-- Wordmark **WHAT-IF LAB** in Small 500 uppercase; ember credit line under it at ≥ 1280px. The world
-  switcher shows glyphs always, the active world's name always, other names at ≥ 1440px. Theme toggle
-  is an icon button pushed to the far right.
+- Wordmark **WHAT-IF LAB** in Small 500 uppercase; ember credit line under it at ≥ 1280px. Theme toggle
+  is an icon button pushed to the far right. The nav clears the top safe area (notch).
+- **World menu (< 768px):** one button with the current world's glyph, name and a chevron. It opens a
+  popover (nav-wide, max 320px) listing every world as a 48px row: glyph, Label name, Small subtitle;
+  the current world gets the dashed underline. Arrow keys move, Esc closes and returns focus.
+- **World strip (≥ 768px):** glyphs always, the active world's name always, other names at ≥ 1280px.
 
 ### What-if row (signature)
 A fork glyph and the mixed-case question in Small text, wrapping to two lines if needed, 40px minimum.
