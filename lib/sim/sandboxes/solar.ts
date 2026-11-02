@@ -1,6 +1,6 @@
 import type { BaseWorld, InfoBlock, InfoRow, Sandbox } from "../types";
 import { TAU, fmtDur, fmtNum, note, rng } from "../core";
-import { FONT } from "../draw";
+import { FONT, STAGE } from "../draw";
 
 /** Units: AU, years, solar masses → G = 4π². Leapfrog (kick-drift-kick) integrator. */
 type P = { sunm: number; view: string };
@@ -48,9 +48,9 @@ const BG = Array.from({ length: 140 }, (_, i) => [((Math.sin(i * 12.9898) * 4375
 export const solar: Sandbox<W, P> = {
   key: "solar",
   name: "Solar system",
-  sub: "Gravity sandbox",
+  sub: "Gravity",
   intro: "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
-  hint: "Drag on the stage to throw a planet",
+  hint: "Drag on the stage to throw a planet.",
   controls: [
     { type: "range", id: "sunm", label: "Sun mass", min: 0.5, max: 2, step: 0.05, val: 1, unit: "× Sun" },
     { type: "select", id: "view", label: "View", live: true, options: [["inner", "Inner planets"], ["mid", "Out to Jupiter"], ["outer", "Whole system"]], val: "inner" },
@@ -168,7 +168,7 @@ export const solar: Sandbox<W, P> = {
   },
 
   draw({ ctx, w: W, h: H, p, isAlt, ui }, w) {
-    ctx.fillStyle = "#03050B";
+    ctx.fillStyle = STAGE.void;
     ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = "rgba(220,225,255,.5)";
     BG.forEach(([x, y], i) => ctx.fillRect(x * W, y * H, i % 7 ? 1 : 1.6, i % 7 ? 1 : 1.6));
@@ -196,7 +196,7 @@ export const solar: Sandbox<W, P> = {
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 3, 0, TAU); ctx.fill();
         ctx.fillStyle = o.c; ctx.globalAlpha = o.giant ? 0.7 : 1; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.globalAlpha = 1;
       } else if (o.bh) {
-        ctx.strokeStyle = "#FFC857"; ctx.lineWidth = 2; ctx.fillStyle = "#000"; ctx.beginPath(); ctx.arc(x, y, 6, 0, TAU); ctx.fill(); ctx.stroke(); ctx.lineWidth = 1;
+        ctx.strokeStyle = STAGE.alt; ctx.lineWidth = 2; ctx.fillStyle = "#000"; ctx.beginPath(); ctx.arc(x, y, 6, 0, TAU); ctx.fill(); ctx.stroke(); ctx.lineWidth = 1;
       } else {
         ctx.fillStyle = o.c; ctx.beginPath(); ctx.arc(x, y, o.px, 0, TAU); ctx.fill();
       }

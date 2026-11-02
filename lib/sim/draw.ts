@@ -1,9 +1,30 @@
 import { TAU } from "./core";
 
+/** Canvas fonts. One family (Inter via the page); `mono` is kept as a role for numbers. */
 export const FONT = {
-  body: '"Instrument Sans", system-ui, sans-serif',
-  mono: '"JetBrains Mono", ui-monospace, monospace',
-  display: '"Bricolage Grotesque", system-ui, sans-serif',
+  body: "system-ui, sans-serif",
+  mono: "system-ui, sans-serif",
+  display: "system-ui, sans-serif",
+};
+
+export function setCanvasFont(family: string): void {
+  FONT.body = FONT.mono = FONT.display = family;
+}
+
+/**
+ * Stage palette. The stage is always the "darkroom" (both page themes), so these are fixed values
+ * mirroring the dark tokens in app/globals.css.
+ */
+export const STAGE = {
+  void: "#100904",
+  panel: "#1A110A",
+  ink: "#FFEDD7",
+  ink2: "#A89A8A",
+  line: "#40372E",
+  muted: "#6C5F51",
+  base: "#A9B1D6",
+  alt: "#FFC857",
+  scrim: "rgba(16,9,4,.78)",
 };
 
 /** Primer-style creature: a coloured circle with eyes that look along (lx, ly) and an optional mood mouth (0–100). */
@@ -30,14 +51,14 @@ export function blob(
   ctx.arc(x - ex, y + ey, er, 0, TAU);
   ctx.arc(x + ex, y + ey, er, 0, TAU);
   ctx.fill();
-  ctx.fillStyle = "#10131C";
+  ctx.fillStyle = STAGE.void;
   ctx.beginPath();
   ctx.arc(x - ex + dx, y + ey + dy, er * 0.5, 0, TAU);
   ctx.arc(x + ex + dx, y + ey + dy, er * 0.5, 0, TAU);
   ctx.fill();
   if (mood != null && r >= 7) {
     const c = (mood - 50) / 50, my = y + r * 0.42;
-    ctx.strokeStyle = "#10131C";
+    ctx.strokeStyle = STAGE.void;
     ctx.lineWidth = Math.max(1, r * 0.1);
     ctx.beginPath();
     ctx.moveTo(x - r * 0.28, my);
@@ -46,12 +67,14 @@ export function blob(
   }
 }
 
-/** Dark label chip, used for HUD text on the stage. */
+/** Darkroom label chip, used for HUD text on the stage. */
 export function chip(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, color: string, font: string, maxW = Infinity): number {
   ctx.font = font;
   const tw = Math.min(ctx.measureText(text).width, maxW);
-  ctx.fillStyle = "rgba(10,14,28,.78)";
-  ctx.fillRect(x, y, tw + 16, 22);
+  ctx.fillStyle = STAGE.scrim;
+  ctx.beginPath();
+  ctx.roundRect(x, y, tw + 16, 22, 11);
+  ctx.fill();
   ctx.fillStyle = color;
   if (isFinite(maxW)) ctx.fillText(text, x + 8, y + 15, maxW);
   else ctx.fillText(text, x + 8, y + 15);

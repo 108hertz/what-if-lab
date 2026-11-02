@@ -7,3 +7,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | --- | --- | --- | --- |
 | [0001](./0001-apple-ui-redesign.md) | Apple-grade UI redesign | 1 | proposed |
 | [0002](./0002-static-export-and-hosting.md) | Static export, hosting, cookieless analytics | 0 | proposed |
+| [0003](./0003-darkroom-visual-language.md) | "Darkroom" visual language: type, copy, icons | 1 | shipped |

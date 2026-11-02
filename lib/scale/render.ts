@@ -1,5 +1,5 @@
 import { TAU, clamp, fmtLen, lerp, mix } from "../sim/core";
-import { FONT, blob } from "../sim/draw";
+import { FONT, blob, STAGE } from "../sim/draw";
 import { SCALE_OBJECTS, ZOOM_MAX, ZOOM_MIN, type ScaleObject } from "./objects";
 
 /** Precomputed decorative point sets (deterministic). */
@@ -51,7 +51,7 @@ export function drawGlyph(ctx: CanvasRenderingContext2D, o: ScaleObject, x: numb
       ctx.strokeStyle = o.color; ctx.lineWidth = Math.max(1, r * 0.03);
       for (let i = 0; i < 3; i++) { ctx.beginPath(); ctx.ellipse(x, y, r, r * 0.35, (i * Math.PI) / 3, 0, TAU); ctx.stroke(); }
       ctx.fillStyle = "#FF9A8B"; ctx.beginPath(); ctx.arc(x, y, Math.max(1.5, r * 0.08), 0, TAU); ctx.fill();
-      ctx.fillStyle = "#E7EAF6"; ctx.beginPath(); ctx.arc(x + r, y, Math.max(1.5, r * 0.05), 0, TAU); ctx.fill();
+      ctx.fillStyle = STAGE.ink; ctx.beginPath(); ctx.arc(x + r, y, Math.max(1.5, r * 0.05), 0, TAU); ctx.fill();
       break;
     case "helix":
       ctx.lineWidth = Math.max(1, r * 0.12);
@@ -67,7 +67,7 @@ export function drawGlyph(ctx: CanvasRenderingContext2D, o: ScaleObject, x: numb
       ctx.fillStyle = o.color; ctx.beginPath(); ctx.arc(x, y, r * 0.72, 0, TAU); ctx.fill();
       break;
     case "cell":
-      ctx.fillStyle = mix(o.color, "#0A0E1C", 0.45); ctx.strokeStyle = o.color; ctx.lineWidth = Math.max(1, r * 0.06);
+      ctx.fillStyle = mix(o.color, STAGE.void, 0.45); ctx.strokeStyle = o.color; ctx.lineWidth = Math.max(1, r * 0.06);
       ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
       ctx.fillStyle = o.color; ctx.beginPath(); ctx.arc(x + r * 0.15, y - r * 0.1, r * 0.28, 0, TAU); ctx.fill();
       break;
@@ -144,7 +144,7 @@ export class ScaleView {
   /** Returns true when the focused object changed (so the UI can re-render). */
   draw(ctx: CanvasRenderingContext2D, W: number, H: number, dt: number): boolean {
     this.z += (this.zt - this.z) * Math.min(1, dt * 8);
-    ctx.fillStyle = "#05070F"; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = STAGE.void; ctx.fillRect(0, 0, W, H);
     const objs = SCALE_OBJECTS, span = W * 0.62, target = this.z - 0.35;
     let i = 0;
     while (i < objs.length - 2 && objs[i + 1].L < target) i++;
@@ -166,14 +166,14 @@ export class ScaleView {
       ctx.globalAlpha = Math.min(1, a * 1.2);
       const ly = Math.min(H - 44, cy + Math.max(d / 2, 8) + 18);
       ctx.textAlign = "center";
-      ctx.fillStyle = "#E7EAF6"; ctx.font = "500 13px " + FONT.body; ctx.fillText(o.name, x, ly);
-      ctx.fillStyle = "#8F98BC"; ctx.font = "11px " + FONT.mono; ctx.fillText(fmtLen(o.size), x, ly + 15);
-      if (o.sandbox) { ctx.fillStyle = this.hover === o ? "#FFC857" : "rgba(255,200,87,.85)"; ctx.font = "600 11.5px " + FONT.body; ctx.fillText("Open sandbox ›", x, ly + 31); }
+      ctx.fillStyle = STAGE.ink; ctx.font = "500 12px " + FONT.body; ctx.fillText(o.name.toUpperCase(), x, ly);
+      ctx.fillStyle = STAGE.ink2; ctx.font = "11px " + FONT.mono; ctx.fillText(fmtLen(o.size), x, ly + 16);
+      if (o.sandbox) { ctx.fillStyle = this.hover === o ? STAGE.alt : "rgba(255,200,87,.85)"; ctx.font = "500 11px " + FONT.body; ctx.fillText("OPEN WORLD →", x, ly + 32); }
       ctx.textAlign = "left";
       this.hits.push({ o, x, y: cy, r: Math.max(d / 2, 10), ly });
     });
     ctx.globalAlpha = 1;
-    ctx.fillStyle = "#8F98BC"; ctx.font = "12px " + FONT.mono;
+    ctx.fillStyle = STAGE.ink2; ctx.font = "12px " + FONT.mono;
     ctx.fillText("Screen width ≈ " + fmtLen(Math.pow(10, this.z) / 0.62), 14, 22);
     return prevFocus !== this.focus;
   }

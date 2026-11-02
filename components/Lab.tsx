@@ -1,10 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useReducer, useRef } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Mode } from "@/lib/sim/registry";
 import { modeHref } from "@/lib/sim/registry";
 import { getEngine, getScaleView, prepareSandbox } from "./engines";
+import { setCanvasFont } from "@/lib/sim/draw";
 import Tabs from "./Tabs";
 import Transport from "./Transport";
 import ScaleTransport from "./ScaleTransport";
@@ -12,6 +14,7 @@ import SidePanel from "./SidePanel";
 import ScalePanel from "./ScalePanel";
 import HistoryChart from "./HistoryChart";
 import Timeline from "./Timeline";
+import ThemeToggle from "./ThemeToggle";
 
 const UI_REFRESH_MS = 300;
 
@@ -35,6 +38,9 @@ export default function Lab({ mode }: { mode: Mode }) {
   const scale = getScaleView();
 
   const openSandbox = useCallback((ref: string) => router.push(modeHref(prepareSandbox(ref))), [router]);
+
+  // Canvas text uses the page font (next/font gives it a generated family name).
+  useEffect(() => setCanvasFont(getComputedStyle(document.body).fontFamily), []);
 
   // Render loop
   useEffect(() => {
@@ -143,10 +149,16 @@ export default function Lab({ mode }: { mode: Mode }) {
 
   return (
     <div className="wrap">
-      <header className="header">
-        <h1>What-If <em>Lab</em></h1>
-        <p className="tag">Zoom from a proton to the observable universe. Open a world, fork it with a &ldquo;what if&rdquo;, and watch both futures run side by side.</p>
+      <header className="nav">
+        <Link className="wordmark" href="/">What-If Lab</Link>
+        <ThemeToggle />
       </header>
+      {!engine && (
+        <div className="hero">
+          <h1 className="display">What happens if…</h1>
+          <p className="desc">Zoom from a proton to the observable universe. Open a world, ask it a question, and watch both futures run side by side.</p>
+        </div>
+      )}
       <Tabs mode={mode} />
       <main className="lab">
         <section className="card stage">
@@ -164,13 +176,17 @@ export default function Lab({ mode }: { mode: Mode }) {
       {engine && (
         <section className="below">
           <div className="card"><HistoryChart engine={engine} /></div>
-          <div className="card"><h3>Timeline</h3><Timeline engine={engine} /></div>
+          <div className="card"><h3 className="headline">Timeline</h3><Timeline engine={engine} /></div>
         </section>
       )}
       <footer className="footer">
-        Everything runs from built-in rules and simplified data, live in your browser, with no AI and no internet data. Gravity is real Newtonian physics;
-        living things are simple agents with energy, senses and mutations. Results show plausible behaviour, not forecasts.
+        <span className="micro credit">No AI · No live data · Same seed, same future</span>
+        <p className="desc">
+          Everything runs from built-in rules and simplified data, live in your browser. Gravity is real Newtonian physics;
+          living things are simple agents with energy, senses and mutations. Results show plausible behaviour, not forecasts.
+        </p>
       </footer>
+      <span className="edge micro" aria-hidden="true">What-If Lab · 7 worlds · Rule-based</span>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import type { BaseWorld, Sandbox } from "../types";
 import { clamp, fmtDur, fmtNum, gauss, mix, note, rng } from "../core";
-import { FONT, blob } from "../draw";
+import { FONT, blob, STAGE } from "../draw";
 import { HABITS } from "../data/personality";
 
 /**
@@ -106,15 +106,15 @@ export const person: Sandbox<W, P> = {
   },
 
   draw({ ctx, w: W, h: H, p }, w) {
-    ctx.fillStyle = "#0F1528"; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = STAGE.void; ctx.fillRect(0, 0, W, H);
     const cell = Math.min((W - 24) / 10, (H - 56) / 10), ox = (W - cell * 10) / 2, oy = 14;
     const good = w.habit ? HABITS[w.habit][5] : 1;
     w.v.forEach((v, i) => {
       const x = ox + ((i % 10) + 0.5) * cell, y = oy + (((i / 10) | 0) + 0.5) * cell;
-      const col = !w.habit ? "#A9B1D6" : v.kept ? (good ? "#FFC857" : "#FF8A7A") : "#5D6688";
+      const col = !w.habit ? "#A9B1D6" : v.kept ? (good ? STAGE.alt : "#FF8A7A") : STAGE.muted;
       blob(ctx, x, y, cell * 0.36, mix("#2A3150", col, 0.35 + versionValue(w, v, 1, p) / 150), 0, 0, versionValue(w, v, 0, p));
     });
-    ctx.font = "12.5px " + FONT.body; ctx.fillStyle = "#8F98BC";
+    ctx.font = "12.5px " + FONT.body; ctx.fillStyle = STAGE.ink2;
     const kept = w.v.filter((v) => v.kept).length;
     ctx.fillText(w.habit ? `${kept} of 100 still doing it · smile = wellbeing · brightness = health` : "No new habit yet · smile = wellbeing · brightness = health", ox, H - 14);
   },

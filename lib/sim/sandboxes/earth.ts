@@ -1,6 +1,6 @@
 import type { BaseWorld, Sandbox } from "../types";
 import { TAU, clamp, fmtCalendar, fmtNum, mix, note } from "../core";
-import { FONT } from "../draw";
+import { FONT, STAGE } from "../draw";
 
 /**
  * Zero-dimensional climate model:
@@ -151,8 +151,8 @@ export const earth: Sandbox<W, P> = {
     for (let x = W * 0.58; x <= W; x += 6) { const y = seaY + Math.sin(x * 0.08 + w.t * 3) * 1.5; x === W * 0.58 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
     ctx.stroke();
     if (off < 0) { ctx.fillStyle = `rgba(140,140,150,${Math.min(0.5, -off * 0.18)})`; ctx.fillRect(0, 0, W, H); }
-    ctx.fillStyle = "rgba(10,14,28,.6)"; ctx.fillRect(10, H - 34, Math.min(W - 20, 300), 24);
-    ctx.fillStyle = "#E7EAF6"; ctx.font = "12px " + FONT.mono;
+    ctx.fillStyle = "rgba(16,9,4,.6)"; ctx.fillRect(10, H - 34, Math.min(W - 20, 300), 24);
+    ctx.fillStyle = STAGE.ink; ctx.font = "12px " + FONT.mono;
     ctx.fillText(`+${To.toFixed(1)} °C  sea +${w.S.toFixed(2)} m  ${Math.round(w.C)} ppm`, 18, H - 18);
   },
 };

@@ -26,7 +26,7 @@ layout, accessibility). **Read it first.** This skill is the working checklist.
   One hairline where separation is needed.
 - **Materials** for floating chrome (nav bar, transport pill, sheets) with an opaque fallback.
 - **Controls:** segmented controls for 2–5 mutually exclusive options; sliders show their value; 44 px
-  minimum hit targets; pill primary button in `--accent`.
+  minimum hit targets; one filled bark primary (36 px radius), ghost secondaries; no shadows.
 - **Motion:** use the motion tokens; animate `transform`/`opacity` only; respect
   `prefers-reduced-motion`. The fork split is the signature moment — don't compete with it.
 - **Mobile:** full-bleed stage, floating transport, inspector in a bottom sheet. No hover-only
@@ -50,4 +50,6 @@ layout, accessibility). **Read it first.** This skill is the working checklist.
 - Don't copy Apple logos, SF Symbols, product imagery or ship SF Pro font files.
 - Don't add a UI library or CSS framework without an ADR.
 - Don't put more than one primary button on a view.
-- Don't use all-caps labels larger than 12 px, emoji as icons, or exclamation marks in chrome.
+- Don't hard-code uppercase strings (use the `.lbl`/`.headline`/`.title` classes), put reading text in
+  uppercase, use `--ember` or `--muted-line` for interactive/readable text, use emoji or third-party icon
+  sets as icons (add a glyph to `components/ui/Icon.tsx`), or exclamation marks in chrome.

@@ -1,6 +1,6 @@
 import type { BaseWorld, Sandbox } from "../types";
 import { clamp, fmtCalendar, fmtNum, gauss, mix, note, rng } from "../core";
-import { FONT, blob } from "../draw";
+import { FONT, blob, STAGE } from "../draw";
 import { COUNTRY_NAMES, COUNTRY_PRESETS } from "../data/countries";
 
 /**
@@ -180,24 +180,24 @@ export const country: Sandbox<W, P> = {
   },
 
   draw({ ctx, w: W, h: H }, w) {
-    ctx.fillStyle = "#0F1424"; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = STAGE.void; ctx.fillRect(0, 0, W, H);
     const fh = H - 78, pad = 18;
-    ctx.fillStyle = "#141B33"; ctx.fillRect(pad / 2, pad / 2, W - pad, fh - pad / 2);
+    ctx.fillStyle = STAGE.panel; ctx.fillRect(pad / 2, pad / 2, W - pad, fh - pad / 2);
     const protest = w.stab < 30;
     for (const a of w.a) {
       const x = pad + a.x * (W - pad * 2), y = pad + a.y * (fh - pad * 2);
       const r = clamp(2.4 + 1.7 * Math.sqrt(a.w / Math.max(w.mean, 1e-9)), 2.2, 8);
-      const col = a.rk < 0.5 ? mix("#E8836F", "#B3BCE0", a.rk * 2) : mix("#B3BCE0", "#FFC857", (a.rk - 0.5) * 2);
+      const col = a.rk < 0.5 ? mix("#E8836F", "#B3BCE0", a.rk * 2) : mix("#B3BCE0", STAGE.alt, (a.rk - 0.5) * 2);
       blob(ctx, x, y, r, col, a.vx * 3, a.vy * 3);
       if (protest && a.rk < 0.6 && a.sk > 0.9) { ctx.fillStyle = "#FF8A7A"; ctx.fillRect(x - 4, y - r - 9, 8, 5); }
     }
     const bw = (W - 40) / 10;
     w.dec.forEach((s, i) => {
       const bh = Math.min(46, s * 120);
-      ctx.fillStyle = i < 5 ? "#E8836F" : i < 9 ? "#B3BCE0" : "#FFC857";
+      ctx.fillStyle = i < 5 ? "#E8836F" : i < 9 ? "#B3BCE0" : STAGE.alt;
       ctx.fillRect(20 + i * bw + 2, H - 14 - bh, bw - 4, bh);
     });
-    ctx.font = "10.5px " + FONT.body; ctx.fillStyle = "#8F98BC";
+    ctx.font = "10.5px " + FONT.body; ctx.fillStyle = STAGE.ink2;
     ctx.fillText("Share of wealth held by each tenth, poorest → richest", 20, H - 62);
   },
 };

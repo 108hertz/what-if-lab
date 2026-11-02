@@ -1,6 +1,6 @@
 import type { BaseWorld, InfoBlock, Params, Sandbox } from "../types";
 import { TAU, fmtNum, gauss, mix, note, num, rng } from "../core";
-import { FONT, blob } from "../draw";
+import { FONT, blob, STAGE } from "../draw";
 import { HOME, KID_EVENTS, MATURATION, SIBLINGS, STYLE, TRAITS, TRAIT_NAME, TRAIT_WORDS, level, type Trait, type TraitDelta } from "../data/personality";
 
 /**
@@ -113,24 +113,24 @@ export const child: Sandbox<W, P> = {
   },
 
   draw({ ctx, w: W, h: H, p, isAlt }, w) {
-    ctx.fillStyle = "#0F1528"; ctx.fillRect(0, 0, W, H);
-    const top = 86, col = isAlt ? "#FFC857" : "#A9B1D6";
+    ctx.fillStyle = STAGE.void; ctx.fillRect(0, 0, W, H);
+    const top = 86, col = isAlt ? STAGE.alt : "#A9B1D6";
     const parentColor = (pre: string) => mix("#7AA6FF", "#FF9D7A", num(p, pre + "E") / 100);
-    ctx.font = "11px " + FONT.body; ctx.textAlign = "center"; ctx.fillStyle = "#8F98BC";
+    ctx.font = "11px " + FONT.body; ctx.textAlign = "center"; ctx.fillStyle = STAGE.ink2;
     blob(ctx, W * 0.16, 44, 17, parentColor("a"), 0.4, 0);
     blob(ctx, W * 0.36, 44, 17, parentColor("b"), -0.4, 0);
-    ctx.fillStyle = "#8F98BC";
+    ctx.fillStyle = STAGE.ink2;
     ctx.fillText("Parent A", W * 0.16, 76); ctx.fillText("Parent B", W * 0.36, 76);
     ctx.font = "18px " + FONT.display; ctx.fillText("+", W * 0.26, 50); ctx.fillText("=", W * 0.47, 50);
     const r = child.read(w, p), cr = 6 + Math.min(w.t, 18) * 0.75;
     blob(ctx, W * 0.6, 44 + 17 - cr, cr, mix("#7AA6FF", "#FF9D7A", (r.E ?? 50) / 100), 0, 0, 100 - (r.N ?? 50));
-    ctx.font = "11px " + FONT.body; ctx.fillStyle = "#8F98BC";
+    ctx.font = "11px " + FONT.body; ctx.fillStyle = STAGE.ink2;
     ctx.fillText("Typical child, age " + Math.floor(w.t), W * 0.6, 76);
     ctx.textAlign = "left";
     const sh = (H - top - 12) / 5, x0 = Math.max(92, W * 0.2), x1 = W - 16;
     TRAITS.forEach((k, i) => {
       const yc = top + sh * i + sh / 2;
-      ctx.fillStyle = "#8F98BC"; ctx.font = (W < 420 ? "10px " : "11.5px ") + FONT.body; ctx.fillText(TRAIT_NAME[k], 10, yc + 4);
+      ctx.fillStyle = STAGE.ink2; ctx.font = (W < 420 ? "10px " : "11.5px ") + FONT.body; ctx.fillText(TRAIT_NAME[k], 10, yc + 4);
       ctx.strokeStyle = "#253056"; ctx.beginPath(); ctx.moveTo(x0, yc); ctx.lineTo(x1, yc); ctx.stroke();
       ctx.fillStyle = col; ctx.globalAlpha = 0.65;
       for (const kid of w.k) {
@@ -139,10 +139,10 @@ export const child: Sandbox<W, P> = {
       }
       ctx.globalAlpha = 1;
       const mx = x0 + ((x1 - x0) * (r[k] ?? 50)) / 100;
-      ctx.strokeStyle = "#E7EAF6"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(mx, yc - sh * 0.38); ctx.lineTo(mx, yc + sh * 0.38); ctx.stroke(); ctx.lineWidth = 1;
-      ctx.fillStyle = "#E7EAF6"; ctx.font = "10.5px " + FONT.mono; ctx.fillText(String(Math.round(r[k] ?? 0)), mx + 4, yc - sh * 0.28);
+      ctx.strokeStyle = STAGE.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(mx, yc - sh * 0.38); ctx.lineTo(mx, yc + sh * 0.38); ctx.stroke(); ctx.lineWidth = 1;
+      ctx.fillStyle = STAGE.ink; ctx.font = "10.5px " + FONT.mono; ctx.fillText(String(Math.round(r[k] ?? 0)), mx + 4, yc - sh * 0.28);
     });
-    ctx.fillStyle = "#5D6688"; ctx.font = "10px " + FONT.mono;
+    ctx.fillStyle = STAGE.muted; ctx.font = "10px " + FONT.mono;
     ctx.fillText("low", x0, H - 4); ctx.textAlign = "right"; ctx.fillText("high", x1, H - 4); ctx.textAlign = "left";
   },
 };

@@ -2,6 +2,7 @@
 
 import type { SimEngine } from "@/lib/sim/engine";
 import ControlsForm from "./ControlsForm";
+import { Icon } from "./ui/Icon";
 
 export default function SidePanel({ engine, onChange }: { engine: SimEngine; onChange: () => void }) {
   const { sb } = engine;
@@ -10,21 +11,22 @@ export default function SidePanel({ engine, onChange }: { engine: SimEngine; onC
   return (
     <>
       <div>
-        <p className="sbname">{sb.name}</p>
+        <h2 className="title">{sb.name}</h2>
         <p className="intro">{sb.intro}</p>
       </div>
       <div>
-        <h3>What if…</h3>
+        <h3 className="headline">What if</h3>
         <div className="forks">
           {sb.whatifs.map(([id, label]) => (
             <button key={id} className="fork" aria-pressed={engine.whatIf === id} onClick={() => { engine.fork(id); onChange(); }}>
+              <Icon name="fork" />
               {label}
             </button>
           ))}
         </div>
       </div>
       <div>
-        <h3>Right now</h3>
+        <h3 className="headline">Right now</h3>
         <table>
           <thead><tr><th /><th>No change</th>{alt && <th>What if</th>}</tr></thead>
           <tbody>
@@ -42,7 +44,7 @@ export default function SidePanel({ engine, onChange }: { engine: SimEngine; onC
         <div className="info">
           {info.map((block, i) => (
             <div key={i}>
-              {block.heading && <h3 style={block.accent ? { color: "var(--alt)" } : undefined}>{block.heading}</h3>}
+              {block.heading && <h3 className={block.accent ? "headline accent" : "headline"}>{block.heading}</h3>}
               <dl>
                 {block.rows.map((r, j) => (
                   <div key={j}>
@@ -56,7 +58,7 @@ export default function SidePanel({ engine, onChange }: { engine: SimEngine; onC
         </div>
       )}
       <details open={sb.key === "animals" || sb.key === "country"}>
-        <summary>Starting conditions</summary>
+        <summary><h3 className="headline">Starting conditions</h3><Icon name="chevron" /></summary>
         <ControlsForm engine={engine} onChange={onChange} />
         <p className="small">Changing these restarts the world.</p>
       </details>

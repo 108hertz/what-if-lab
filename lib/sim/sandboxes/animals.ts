@@ -1,6 +1,6 @@
 import type { BaseWorld, Sandbox } from "../types";
 import { TAU, clamp, fmtNum, gauss, note, rng } from "../core";
-import { FONT, blob } from "../draw";
+import { FONT, blob, STAGE } from "../draw";
 import { SPECIES, type Species } from "../data/species";
 
 /**
@@ -114,7 +114,7 @@ function tick(w: W, h: number, p: P, sp: Species, clim: number) {
 export const animals: Sandbox<W, P> = {
   key: "animals",
   name: "Animals",
-  sub: "Evolution & food chains",
+  sub: "Evolution",
   intro: "Each blob has its own speed, size and senses. They eat, flee, hunt, and pass slightly mutated traits to their young.",
   controls: [
     { type: "select", id: "species", label: "Species", options: Object.entries(SPECIES).map(([k, s]) => [k, s.name]), val: "wolf" },
@@ -236,7 +236,7 @@ export const animals: Sandbox<W, P> = {
       blob(ctx, ox + c.x * s, oy + c.y * s, clamp(4.2 * c.sz * k * (focal ? 1.1 : 1), 1.6, 14), col, Math.cos(c.a), Math.sin(c.a));
     }
     const r = animals.read(w, p);
-    ctx.fillStyle = "rgba(10,14,28,.65)"; ctx.fillRect(10, H - 32, Math.min(W - 20, 280), 22);
+    ctx.fillStyle = "rgba(16,9,4,.65)"; ctx.fillRect(10, H - 32, Math.min(W - 20, 280), 22);
     ctx.font = "12px " + FONT.mono;
     const a = `${sp.name}: ${r.focal}`;
     ctx.fillStyle = sp.col; ctx.fillText(a, 18, H - 17);

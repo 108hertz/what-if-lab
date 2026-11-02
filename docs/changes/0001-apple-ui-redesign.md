@@ -65,3 +65,4 @@ Follows [design/apple-design-language.md](../design/apple-design-language.md).
 ## Log
 
 - 2026-11-02 — proposed.
+- 2026-11-02 — colour/type/icon values to come from [change 0003](./0003-darkroom-visual-language.md); step 1 here shrinks to wiring them in.

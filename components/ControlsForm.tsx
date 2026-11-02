@@ -4,6 +4,7 @@ import { useRef } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import type { Control } from "@/lib/sim/types";
 import { fmtNum } from "@/lib/sim/core";
+import { Icon } from "./ui/Icon";
 
 const RESTART_DEBOUNCE_MS = 150;
 
@@ -32,9 +33,12 @@ export default function ControlsForm({ engine, onChange }: { engine: SimEngine; 
           return (
             <label key={c.id} className="ctl" htmlFor={id}>
               <span className="ctl-l">{c.label}</span>
-              <select id={id} value={String(v)} onChange={(e) => set(c.id, e.target.value)}>
-                {c.options.map(([val, lab]) => <option key={val} value={val}>{lab}</option>)}
-              </select>
+              <span className="select">
+                <select id={id} value={String(v)} onChange={(e) => set(c.id, e.target.value)}>
+                  {c.options.map(([val, lab]) => <option key={val} value={val}>{lab}</option>)}
+                </select>
+                <Icon name="chevron" size={18} />
+              </span>
             </label>
           );
         return (

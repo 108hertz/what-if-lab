@@ -1,6 +1,6 @@
 import type { BaseWorld, Sandbox } from "../types";
 import { TAU, fmtNum, fmtYears, note, rng } from "../core";
-import { FONT } from "../draw";
+import { FONT, STAGE } from "../draw";
 
 /** Units: G = 1, Milky Way mass = 1, 1 length unit ≈ 40,000 ly, 1 time unit = 100 Myr. */
 type P = { stars: number; mass: number; dm: number };
@@ -174,7 +174,7 @@ export const galaxy: Sandbox<W, P> = {
   },
 
   draw({ ctx, w: W, h: H }, w) {
-    ctx.fillStyle = "#04060D";
+    ctx.fillStyle = STAGE.void;
     ctx.fillRect(0, 0, W, H);
     let M = 0, cx = 0, cy = 0;
     w.cores.forEach((c) => { M += c.m; cx += c.m * c.x; cy += c.m * c.y; });

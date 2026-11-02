@@ -1,5 +1,5 @@
 import type { AnySandbox, BaseWorld, InteractionState, Params, Readout } from "./types";
-import { chip, FONT } from "./draw";
+import { chip, FONT, STAGE } from "./draw";
 
 export const DEFAULT_SEED = 20261101;
 const MAX_HISTORY = 600;
@@ -146,7 +146,7 @@ export class SimEngine {
   }
 
   draw(ctx: CanvasRenderingContext2D, W: number, H: number): void {
-    ctx.fillStyle = "#05070F";
+    ctx.fillStyle = STAGE.void;
     ctx.fillRect(0, 0, W, H);
     for (const r of this.rects(W, H)) {
       ctx.save();
@@ -154,12 +154,20 @@ export class SimEngine {
       ctx.beginPath(); ctx.rect(0, 0, r.w, r.h); ctx.clip();
       this.sb.draw({ ctx, w: r.w, h: r.h, p: this.params, isAlt: r.alt, ui: this.ui }, r.world);
       const label = r.alt ? "What if: " + this.whatIfLabel() : this.alt ? "No change" : "Now · pick a what-if to fork this world";
-      const lw = chip(ctx, label, 8, 8, r.alt ? "#FFC857" : "#C9CFEA", "600 12px " + FONT.body, r.w - 32);
+      const lw = chip(ctx, label.toUpperCase(), 8, 8, r.alt ? STAGE.alt : STAGE.base, "500 11px " + FONT.body, r.w - 32);
       const time = this.sb.fmtT(r.world.t);
-      ctx.font = "12px " + FONT.mono;
+      ctx.font = "500 11px " + FONT.mono;
       const tw = ctx.measureText(time).width;
-      if (r.w > lw + tw + 50) chip(ctx, time, r.w - tw - 24, 8, "#E7EAF6", "12px " + FONT.mono);
+      if (r.w > lw + tw + 50) chip(ctx, time, r.w - tw - 24, 8, STAGE.ink, "500 11px " + FONT.mono);
       ctx.restore();
+    }
+    if (this.alt) {
+      // Dashed hairline in the split gap
+      const v = W >= 640;
+      ctx.strokeStyle = STAGE.line; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      if (v) { ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); } else { ctx.moveTo(0, H / 2); ctx.lineTo(W, H / 2); }
+      ctx.stroke(); ctx.setLineDash([]);
     }
   }
 }
