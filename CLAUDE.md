@@ -23,6 +23,7 @@ one-viewport consoles with no page scroll.
 - **Document features** in `docs/features/` (`document-feature` skill); update them when a change ships.
 - **Hard-to-reverse choices** (vendors, hosting, data formats) get an ADR in `docs/decisions/`.
 - **UI work** follows the `darkroom-ui` skill. **New worlds** follow the `add-sandbox` skill.
+- **Worlds are separate projects** (`worlds/<key>/`); improve them one at a time, each with its own change doc.
 - Never introduce a server, API route, server action, or secret in client code without a superseding ADR.
 
 ## Commands
@@ -34,30 +35,50 @@ npm run typecheck  # tsc --noEmit
 npm test           # vitest: every sandbox × every what-if, determinism, engine behaviour
 ```
 
-Run `npm run typecheck && npm test` after any change to `lib/`.
+Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.
 
 ## Architecture
 
 ```
-app/                      Next.js App Router (static). / = scale, /lab/[world] = sandbox
-components/               React UI. Client-only (LabClient wraps Lab with ssr:false)
-  Lab.tsx                 render loop (requestAnimationFrame), pointer/wheel input, layout
-  engines.ts              module-level SimEngine + ScaleView singletons (worlds keep running across tabs)
-  SidePanel / ControlsForm / Transport / HistoryChart / Timeline / ScalePanel / ScaleTransport / Tabs
-lib/sim/                  framework-free simulation code (no React)
-  types.ts                Sandbox interface, BaseWorld, Control, Metric…
-  core.ts                 seeded RNG (rng/gauss), note(), mix(), formatters
+app/                      Next.js App Router (static). / = scale, /lab/[world] = a world
+components/
+  shell/                  Lab (nav, world switcher, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu, ThemeToggle
+  console/                shared world-console blocks: StandardConsole, Stage (+ StageInteraction), Transport,
+                          HistoryChart, Timeline, panels, ControlsForm, Dock, AdSlot, engines (singletons + useWorldEngine)
+  scale/                  ScaleConsole (the / page), ScalePanel, ScaleTransport
+  ui/                     primitives: Icon, useMedia, canvas (fitCanvas, useCanvasLoop)
+worlds/                   one folder per world = one project (change 0008)
+  <key>/sim.ts            the Sandbox (framework-free, deterministic)
+  <key>/meta.ts           name + subtitle for the nav (loaded on every page)
+  <key>/data.ts           static data (optional)
+  <key>/Console.tsx       the world's screen (starts as StandardConsole; must keep its ad slots)
+  <key>/README.md         the world's brief: audience, questions, model, what "excellent" means
+  registry.ts             WORLDS meta map (tab order), MODES, routes
+  views.tsx               per-world code-split consoles (next/dynamic)
+  sims.ts                 all sims in one map — tests only
+lib/sim/                  framework-free engine shared by all worlds (no React)
+  types.ts                Sandbox interface, BaseWorld, WorldMeta, Control, Metric…
+  core.ts                 seeded RNG (rng/gauss), note(), mix(), defaultParams, formatters
   draw.ts                 blob() creature drawing, chip(), FONT
   engine.ts               SimEngine: base/alt worlds, fork, history, timeline merge, split-stage drawing
-  registry.ts             SANDBOXES map (tab order), defaultParams, routes
-  data/                   predefined data sets (species, personality research constants, country presets)
-  sandboxes/*.ts          one file per world: galaxy, solar, earth, country, animals, child, person
 lib/scale/                scale explorer objects + renderer
-tests/                    vitest
+tests/                    vitest: every world × every what-if, determinism, world boundaries, ad slots
 PRODUCT.md / DESIGN.md    product truth / canonical Darkroom design system (tokens mirror app/globals.css)
 docs/                     PLAN.md, features/, changes/, decisions/ (ADRs)
 .claude/skills/           plan-change, document-feature, darkroom-ui, add-sandbox
 ```
+
+### Worlds are separate projects (change 0008)
+
+- Shared between worlds: tokens (`app/globals.css`), `components/ui/`, `components/console/`, `lib/sim/`.
+  Everything else a world needs lives in `worlds/<key>/`. A world never imports another world; shared
+  code never imports a world (`tests/structure.test.ts` enforces both).
+- A world changes its screen by writing its own `Console.tsx` from the console blocks (copy
+  `StandardConsole` as the template). Per-world work touches only its folder; if a shared block needs a
+  new option, add it without changing the other worlds' output.
+- **Ad slots (ADR 0007):** every world console keeps a 300×250 `AdSlot` at the foot of its right column
+  (1024–1599 px) and a 320×50 banner under the dock (< 1024 px, hidden on phones held sideways). The
+  shell adds two 160×600 rails at ≥ 1600 px × ≥ 700 px tall. Never on or next to the stage or transport.
 
 ### The Sandbox contract (`lib/sim/types.ts`)
 
@@ -73,23 +94,26 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 ### Rules
 
-- **Determinism**: never use `Math.random()` in `lib/sim`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
+- **Determinism**: never use `Math.random()` in `lib/sim` or `worlds/*/sim.ts`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
   so forks and tests are reproducible. Decorative-only randomness in `draw` must be derived from index/hash.
 - Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
   matching text and time, so keep event text stable for the same event.
 - Time units are per sandbox (`fmtT` formats them): galaxy 100 Myr, solar years, earth years, country
   years, animals days, child age in years, person years.
-- Keep sim code pure TypeScript so it can move into a Web Worker later.
+- Keep sim code (`worlds/*/sim.ts`, `lib/sim`) pure TypeScript so it can move into a Web Worker later.
 - UI colours come from CSS tokens in `app/globals.css`; canvas code uses the same hex values
   (`--base` #A9B1D6 = no-change world, `--alt` #FFC857 = what-if world).
 
 ## Adding a sandbox (checklist)
 
 1. Add the key to `SandboxKey` in `lib/sim/types.ts`.
-2. Create `lib/sim/sandboxes/<key>.ts` exporting a `Sandbox<W, P>`; put static data in `lib/sim/data/`.
-3. Register it in `SANDBOXES` in `lib/sim/registry.ts` (order = tab order).
-4. Optionally link it from a scale object in `lib/scale/objects.ts` (`sandbox: "<key>"` or `"<key>:<preset>"`).
-5. `npm run typecheck && npm test` — the test suite automatically covers the new sandbox.
+2. Create `worlds/<key>/`: `meta.ts` (`WorldMeta`), `sim.ts` exporting a `Sandbox<W, P>` (spread `...meta`),
+   optional `data.ts`, `Console.tsx` (start with `StandardConsole` + `useWorldEngine`), `README.md` brief.
+3. Register it in `WORLDS` (`worlds/registry.ts`, order = tab order), `WORLD_VIEWS` (`worlds/views.tsx`)
+   and `SANDBOXES` (`worlds/sims.ts`).
+4. Optionally link it from a scale object in `lib/scale/objects.ts` (`sandbox: "<key>"` or `"<key>:<preset>"`;
+   a preset sets `meta.presetParam`).
+5. `npm run typecheck && npm test` — the test suite automatically covers the new world.
 
 ## Model notes (so changes stay plausible)
 

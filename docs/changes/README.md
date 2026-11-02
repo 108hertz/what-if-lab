@@ -12,3 +12,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0005](./0005-darkroom-oryzo-alignment.md) | Align Darkroom with the ORYZO style reference | 1 | shipped |
 | [0006](./0006-design-md-canonical.md) | DESIGN.md becomes the canonical design system | 1 | shipped |
 | [0007](./0007-adaptive-console.md) | Adaptive console: navigation and layout per screen | 1 | shipped |
+| [0008](./0008-worlds-as-projects.md) | Worlds as projects, with reserved ad slots | 1 · 3 | shipped |

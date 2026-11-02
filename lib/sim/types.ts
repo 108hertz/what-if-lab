@@ -94,6 +94,15 @@ export interface InfoBlock {
 
 export type SandboxKey = "galaxy" | "solar" | "earth" | "country" | "animals" | "child" | "person";
 
+/** What the nav needs to know about a world without loading it (worlds/<key>/meta.ts). */
+export interface WorldMeta {
+  key: SandboxKey;
+  name: string;
+  sub: string;
+  /** Param set by scale-explorer links like "animals:wolf". */
+  presetParam?: string;
+}
+
 export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Params> {
   key: SandboxKey;
   name: string;

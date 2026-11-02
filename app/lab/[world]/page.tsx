@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Lab from "@/components/LabClient";
-import { SANDBOXES, SANDBOX_KEYS, isSandboxKey } from "@/lib/sim/registry";
+import Lab from "@/components/shell/LabClient";
+import { WORLDS, SANDBOX_KEYS, isSandboxKey } from "@/worlds/registry";
 
 export function generateStaticParams() {
   return SANDBOX_KEYS.map((world) => ({ world }));
@@ -9,7 +9,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ world: string }> }): Promise<Metadata> {
   const { world } = await params;
-  return { title: isSandboxKey(world) ? `${SANDBOXES[world].name} · What-If Lab` : "What-If Lab" };
+  return { title: isSandboxKey(world) ? `${WORLDS[world].name} · What-If Lab` : "What-If Lab" };
 }
 
 export default async function WorldPage({ params }: { params: Promise<{ world: string }> }) {

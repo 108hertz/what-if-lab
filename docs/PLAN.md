@@ -20,15 +20,15 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
    See [DESIGN.md](../DESIGN.md).
 4. **Free is genuinely great.** Every world and every what-if is free. Premium removes ads and adds
    power-user depth; it never paywalls the core "fork and compare" moment that drives sharing.
-5. **Ads never touch the simulation.** Ads live in side rails only, never over or inside the stage,
-   never cause layout shift, and never appear for Premium users. See
-   [ADR 0003](./decisions/0003-advertising.md).
+5. **Ads never touch the simulation.** Ads live in reserved slots away from the stage (rails, column
+   foot, under the dock), never over or beside the stage, never cause layout shift, and never appear for
+   Premium users. See [ADR 0003](./decisions/0003-advertising.md) and [ADR 0007](./decisions/0007-ad-slots-per-world.md).
 
 ## Business model
 
 | Tier | Price | What you get |
 | --- | --- | --- |
-| Free | $0 | All worlds, all what-ifs, scale explorer, share links. Side-rail ads on wide screens. |
+| Free | $0 | All worlds, all what-ifs, scale explorer, share links. Ads in reserved slots away from the stage. |
 | Premium | $15 / year | No ads · up to 4 parallel what-ifs · Monte-Carlo outcome ranges · timeline scrubbing/replay · saved scenarios · export (PNG, GIF, CSV) · early access to new worlds |
 
 Feature specs: [ads](./features/ads.md), [premium](./features/premium.md).
@@ -56,6 +56,8 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 ### Phase 1 — Darkroom UI
 - [x] Design tokens, themes, typography, icons — [change 0003](./changes/0003-darkroom-visual-language.md)
 - [x] Single-screen console, dock on phones, darkroom-only design system — [change 0004](./changes/0004-single-screen-console.md)
+- [x] Worlds as separate projects, ad slots reserved in every world — [change 0008](./changes/0008-worlds-as-projects.md)
+- [ ] Per-world excellence pass, one world at a time (solar → earth → animals → country → galaxy → child → person)
 - [ ] Motion system, reduced-motion, keyboard shortcuts (Space play/pause, F fork)
 
 ### Phase 2 — Traffic

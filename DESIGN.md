@@ -344,7 +344,13 @@ what-if landing pages, premium, legal) scroll normally.
   at ≥ 1280px.
 - **Rhythm:** 4-pt spacing (`spacing.s-1` … `spacing.s-8`). Card padding and element gap are 24 / 18 at
   ≥ 1280px and 16 / 16 below. Page gutter 12px on phones, 16px from 1024px.
-- **Ads:** side rails only at ≥ 1600px, outside the console, reserved size, never over the stage or in the dock.
+- **Ads ([ADR 0007](docs/decisions/0007-ad-slots-per-world.md)):** every world reserves fixed-size slots,
+  never on or beside the stage or transport: two 160×600 rails outside the console at ≥ 1600px wide and
+  ≥ 700px tall; otherwise a 300×250 box at the foot of the Tune column (1280–1599) or under the dock
+  (1024–1279); a 320×50 banner under the dock below 1024px; none on phones held sideways. An empty slot
+  is a dashed cork hole with a Micro "Ad" label; at most one per screen adds the quiet Premium line.
+- **Per-world consoles:** each world owns its layout (`worlds/<key>/Console.tsx`) within these bands and
+  tokens; `StandardConsole` is the default.
 
 ## Elevation & Depth
 

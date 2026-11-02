@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { SANDBOXES, SANDBOX_KEYS, defaultParams } from "@/lib/sim/registry";
+import { SANDBOX_KEYS } from "@/worlds/registry";
+import { SANDBOXES } from "@/worlds/sims";
+import { defaultParams } from "@/lib/sim/core";
 import { SimEngine } from "@/lib/sim/engine";
 
 const FRAME = 1 / 60;

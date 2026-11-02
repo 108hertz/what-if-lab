@@ -1,14 +1,14 @@
-# Side-rail ads
+# Ads in reserved slots
 
-- **Status:** planned (Phase 3)
+- **Status:** slots reserved (change 0008); ad loading planned (Phase 3)
 - **Tier:** free only
-- **Owner area:** `components/AdRail.tsx` (new), `app/layout.tsx`, `public/ads.txt`, third-party (AdSense + CMP)
-- **Changes:** —
-- **Decision:** [ADR 0003](../decisions/0003-advertising.md)
+- **Owner area:** `components/console/AdSlot.tsx`, `components/console/StandardConsole.tsx`, `components/shell/Lab.tsx`, `public/ads.txt` (todo), third-party (AdSense + CMP)
+- **Changes:** [0008](../changes/0008-worlds-as-projects.md)
+- **Decision:** [ADR 0003](../decisions/0003-advertising.md), [ADR 0007](../decisions/0007-ad-slots-per-world.md)
 
 ## What it is
 
-Vertical ad units in the left and right gutters of wide screens, funding the free tier.
+Fixed-size ad units reserved in every world console, away from the stage, funding the free tier.
 
 ## Why
 
@@ -16,15 +16,19 @@ Revenue scales with traffic without a paywall. Must not reduce traffic by hurtin
 
 ## Behaviour
 
-- Shown only when viewport ≥ 1600 px (change 0004: the console needs the width below that) **and** user is not Premium **and** consent state allows
-  (personalised or non-personalised per CMP answer).
-- Shell becomes `rail (160–300 px) | console | rail`. Rails are **sticky** within the
-  viewport and have **reserved fixed dimensions** → CLS = 0.
-- Ad script injected after the first sim frame via `requestIdleCallback`; never on the critical path.
-- Empty rail (dev, no-fill, ad-blocker, Premium) shows nothing — or a subtle "Go ad-free · $15/yr" card
-  styled per the design language (at most one, never animated).
-- Never: over/inside the stage, inside sheets/modals, in embeds (`/embed/*`), on mobile sim view,
-  interstitials, sticky bottom banners, auto-refresh faster than network policy allows.
+- **Slots are reserved now, filled later** (change 0008, [ADR 0007](../decisions/0007-ad-slots-per-world.md)).
+  `components/console/AdSlot.tsx` renders fixed-size boxes; every world console keeps them:
+  - ≥ 1600 px wide and ≥ 700 px tall: two 160×600 rails outside the console (shell, also on the scale view).
+  - 1280–1599 px (and wide-but-short screens): one 300×250 box at the foot of the Tune column.
+  - 1024–1279 px: one 300×250 box under the dock.
+  - < 1024 px: one 320×50 banner under the dock; hidden on phones held sideways (≤ 520 px tall).
+- Fixed dimensions → CLS = 0. Pages still never scroll.
+- Empty slot (today, dev, no-fill, ad-blocker): dashed cork outline with a Micro "Ad" label; at most one per
+  screen adds the quiet "Ad-free with Premium · $15/yr" line. Never animated.
+- **Not yet built (Phase 3):** consent (CMP), loading the ad script on `requestIdleCallback` after the first
+  sim frame, hiding slots for Premium (decided before first paint), `public/ads.txt`.
+- Never: over/inside the stage, between the stage and the transport, in popovers or modals, in embeds
+  (`/embed/*`), interstitials, sticky overlays, auto-refresh faster than network policy allows.
 - One below-the-fold unit allowed on long-form what-if article pages only.
 
 ## Out of scope
@@ -35,5 +39,6 @@ Native/sponsored content, affiliate links, video ads.
 
 - [ ] Lighthouse CLS stays 0 with ads on and off.
 - [ ] No ad network requests for Premium or before consent (check Network panel).
-- [ ] At 1599 px wide: no rails. At 1600 px: rails visible, console still fits without page scroll.
+- [x] At 1599 px wide: no rails. At 1600 px: rails visible, console still fits without page scroll (checked 1680×1050, 2026-11-02).
+- [x] Every world reserves its slot at every band; none on phones held sideways (`tests/structure.test.ts` + browser check, 2026-11-02).
 - [ ] `ads.txt` served at `/ads.txt`.

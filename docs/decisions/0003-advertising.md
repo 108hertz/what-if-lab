@@ -1,6 +1,6 @@
 # 0003 — Advertising: side rails only, consent first
 
-- **Status:** accepted (network choice proposed: Google AdSense to start)
+- **Status:** accepted (network choice proposed: Google AdSense to start) · placement amended by [ADR 0007](./0007-ad-slots-per-world.md)
 - **Date:** 2026-11-02
 
 ## Context

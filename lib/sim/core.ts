@@ -1,4 +1,4 @@
-import type { BaseWorld } from "./types";
+import type { AnySandbox, BaseWorld, Params } from "./types";
 
 export const TAU = Math.PI * 2;
 export const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -85,3 +85,10 @@ export function fmtLen(m: number): string {
 
 /** Read a numeric param that may be typed loosely. */
 export const num = (p: Record<string, unknown>, k: string) => Number(p[k]);
+
+/** Each control's starting value. */
+export function defaultParams(sb: AnySandbox): Params {
+  const p: Params = {};
+  for (const c of sb.controls) if (c.type !== "heading") p[c.id] = c.val;
+  return p;
+}

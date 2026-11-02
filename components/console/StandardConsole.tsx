@@ -1,0 +1,67 @@
+"use client";
+
+import type { ReactNode } from "react";
+import type { SimEngine } from "@/lib/sim/engine";
+import { useMedia } from "../ui/useMedia";
+import Stage, { type StageInteraction } from "./Stage";
+import Transport from "./Transport";
+import HistoryChart from "./HistoryChart";
+import Timeline from "./Timeline";
+import Dock from "./Dock";
+import AdSlot, { RAILS_QUERY } from "./AdSlot";
+import { InfoBlocks, Readouts, TunePanel, WhatIfList, WorldHeader } from "./panels";
+
+/**
+ * The default world console (DESIGN.md → Layout). A world starts from this and copies it into its own
+ * Console.tsx when it needs a different composition. Every band keeps its ad slot (ADR 0007):
+ * rails (shell) ≥ 1600 · box at the foot of Tune 1280–1599 · box under the dock 1024–1279 · banner under the dock < 1024.
+ */
+export default function StandardConsole({ engine, onChange, interaction }: { engine: SimEngine; onChange: () => void; interaction?: StageInteraction }) {
+  const desk = useMedia("(min-width: 1024px)");
+  const full = useMedia("(min-width: 1280px)");
+  const wide = useMedia("(min-width: 1440px)");
+  const rails = useMedia(RAILS_QUERY);
+
+  const ask = <><WorldHeader engine={engine} /><WhatIfList engine={engine} onChange={onChange} /></>;
+  const now = <Readouts engine={engine} />;
+  const info = <InfoBlocks engine={engine} />;
+  const tune = <TunePanel engine={engine} onChange={onChange} />;
+  const chart = <div className="chart-box"><HistoryChart engine={engine} /></div>;
+  const log = <div className="log-box"><h3 className="headline">Timeline</h3><Timeline engine={engine} /></div>;
+
+  let side: ReactNode;
+  if (full) {
+    side = (
+      <aside className="col tune">
+        <div className="col-body scrolly">{tune}</div>
+        {!rails && <AdSlot size="box" promo />}
+      </aside>
+    );
+  } else if (desk) {
+    side = (
+      <div className="dock-col">
+        <Dock key="desk" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}</>]]} />
+        <AdSlot size="box" promo />
+      </div>
+    );
+  } else {
+    side = (
+      <>
+        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}{chart}</>], ["Log", log]]} />
+        <AdSlot size="banner" />
+      </>
+    );
+  }
+
+  return (
+    <main className="console">
+      {full && <aside className="col ask scrolly">{ask}{!wide && now}{info}</aside>}
+      <section className="centre">
+        <Stage engine={engine} interaction={interaction} onChange={onChange} />
+        <Transport engine={engine} onChange={onChange} />
+        {desk && <div className="results">{chart}{wide && <div className="now-box">{now}</div>}{log}</div>}
+      </section>
+      {side}
+    </main>
+  );
+}
