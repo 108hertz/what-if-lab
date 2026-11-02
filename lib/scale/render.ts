@@ -174,7 +174,7 @@ export class ScaleView {
     });
     ctx.globalAlpha = 1;
     ctx.fillStyle = STAGE.ink2; ctx.font = "12px " + FONT.mono;
-    ctx.fillText("Screen width ≈ " + fmtLen(Math.pow(10, this.z) / 0.62), 14, 22);
+    ctx.fillText("Screen width ≈ " + fmtLen(Math.pow(10, this.z) / 0.62), 14, H - 14);
     return prevFocus !== this.focus;
   }
 

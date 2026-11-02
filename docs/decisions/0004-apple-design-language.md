@@ -1,6 +1,6 @@
 # 0004 — Apple-inspired design language
 
-- **Status:** accepted (colour, type, depth and icons amended by [ADR 0005](./0005-darkroom-visual-language.md))
+- **Status:** superseded by [0006](./0006-darkroom-design-system.md)
 - **Date:** 2026-11-02
 
 ## Context

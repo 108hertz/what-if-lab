@@ -16,8 +16,8 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
    services are for **payments**, **(optional) accounts**, **ads** and **privacy-friendly analytics**.
    See [ADR 0001](./decisions/0001-static-site-no-backend.md) and
    [ADR 0002](./decisions/0002-payments-and-premium-unlock.md).
-3. **Apple-grade experience.** Calm, clear, fast, delightful. Content first, chrome second. See
-   [design/apple-design-language.md](./design/apple-design-language.md).
+3. **Darkroom experience.** Calm, clear, fast. The simulation is the object; every tool is on one screen.
+   See [design/design-system.md](./design/design-system.md).
 4. **Free is genuinely great.** Every world and every what-if is free. Premium removes ads and adds
    power-user depth; it never paywalls the core "fork and compare" moment that drives sharing.
 5. **Ads never touch the simulation.** Ads live in side rails only, never over or inside the stage,
@@ -53,9 +53,9 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [ ] Static export + hosting ([ADR 0001](./decisions/0001-static-site-no-backend.md)) — change 0002
 - [ ] Privacy-friendly analytics (cookieless) — change 0002
 
-### Phase 1 — Apple-grade UI
-- [ ] Design tokens, light + dark themes, typography, materials — [change 0001](./changes/0001-apple-ui-redesign.md)
-- [ ] App shell: translucent nav bar, segmented world switcher, inspector sheet on mobile
+### Phase 1 — Darkroom UI
+- [x] Design tokens, themes, typography, icons — [change 0003](./changes/0003-darkroom-visual-language.md)
+- [x] Single-screen console, dock on phones, darkroom-only design system — [change 0004](./changes/0004-single-screen-console.md)
 - [ ] Motion system, reduced-motion, keyboard shortcuts (Space play/pause, F fork)
 
 ### Phase 2 — Traffic

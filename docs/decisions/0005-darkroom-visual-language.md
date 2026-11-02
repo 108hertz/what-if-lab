@@ -1,6 +1,6 @@
 # 0005 — "Darkroom" visual language on top of the Apple design language
 
-- **Status:** accepted
+- **Status:** superseded by [0006](./0006-darkroom-design-system.md)
 - **Date:** 2026-11-02
 - **Amends:** [ADR 0004](./0004-apple-design-language.md) (colour, typography, depth, icons; principles unchanged)
 

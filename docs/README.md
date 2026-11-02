@@ -8,7 +8,7 @@ This folder is the source of truth for **what** we build and **why**. Code says 
 | [`features/`](./features/) | One spec per user-facing feature: what it does, rules, status | Before building a feature, and when its behaviour changes |
 | [`changes/`](./changes/) | Change proposals: one per planned piece of work, with scope, steps, risks | **Before** any non-trivial change. Updated as it ships |
 | [`decisions/`](./decisions/) | Architecture/product decision records (ADRs): context, options, choice | When a choice is hard to reverse (vendors, hosting, data model) |
-| [`design/`](./design/) | Design language, tokens, layout and component rules | Before UI work |
+| [`design/`](./design/) | Design system (darkroom): tokens, layout and component rules | Before UI work |
 
 ## How work flows
 
@@ -35,4 +35,4 @@ Templates: [`features/_TEMPLATE.md`](./features/_TEMPLATE.md), [`changes/_TEMPLA
 [`decisions/_TEMPLATE.md`](./decisions/_TEMPLATE.md).
 
 Claude Code skills in [`/.claude/skills`](../.claude/skills) automate this flow (`plan-change`,
-`document-feature`, `apple-ui-ux`, `add-sandbox`).
+`document-feature`, `darkroom-ui`, `add-sandbox`).

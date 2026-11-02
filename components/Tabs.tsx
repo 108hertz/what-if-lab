@@ -10,9 +10,9 @@ export default function Tabs({ mode }: { mode: Mode }) {
       {MODES.map((m) => {
         const [name, sub] = label(m);
         return (
-          <Link key={m} href={modeHref(m)} aria-current={m === mode ? "page" : undefined}>
+          <Link key={m} href={modeHref(m)} aria-current={m === mode ? "page" : undefined} title={`${name} · ${sub}`}>
             <Icon name={m} />
-            <span>
+            <span className="tab-text">
               <b className="lbl">{name}</b>
               <small className="micro">{sub}</small>
             </span>

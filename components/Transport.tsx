@@ -18,8 +18,8 @@ export default function Transport({ engine, onChange }: { engine: SimEngine; onC
           </button>
         ))}
       </div>
-      <button className="btn" onClick={act(() => engine.restart())}><Icon name="restart" size={18} />Restart</button>
-      {engine.alt && <button className="btn" onClick={act(() => engine.dropFork())}><Icon name="close" size={18} />Close what-if</button>}
+      <button className="btn" aria-label="Restart" title="Restart" onClick={act(() => engine.restart())}><Icon name="restart" size={18} /><span className="btn-text">Restart</span></button>
+      {engine.alt && <button className="btn" aria-label="Close what-if" title="Close what-if" onClick={act(() => engine.dropFork())}><Icon name="close" size={18} /><span className="btn-text">Close what-if</span></button>}
       <span className="hint">{engine.sb.hint ?? "Pick a question. The world splits here."}</span>
     </div>
   );

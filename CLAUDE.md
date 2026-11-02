@@ -12,7 +12,8 @@ Inspirations: scaleofuniverse.com (zoom), Universe Sandbox (gravity), Primer (bl
 Goal: maximum traffic; revenue from **side-rail ads** (≥1280 px, never near the stage) and **Premium at
 $15/year** (no ads + power tools). **No backend of our own**: static export; payments/licensing via a
 hosted merchant-of-record, client-side license unlock (`docs/decisions/0002-…`). The simulation stays
-pure variable changes → rule-based outcomes. UI is **Apple-grade** (`docs/design/apple-design-language.md`).
+pure variable changes → rule-based outcomes. UI follows the **Darkroom** design system (`docs/design/design-system.md`); working screens are
+one-viewport consoles with no page scroll.
 
 ## Working agreement
 
@@ -21,7 +22,7 @@ pure variable changes → rule-based outcomes. UI is **Apple-grade** (`docs/desi
   use the `plan-change` skill. Small fixes don't.
 - **Document features** in `docs/features/` (`document-feature` skill); update them when a change ships.
 - **Hard-to-reverse choices** (vendors, hosting, data formats) get an ADR in `docs/decisions/`.
-- **UI work** follows the `apple-ui-ux` skill. **New worlds** follow the `add-sandbox` skill.
+- **UI work** follows the `darkroom-ui` skill. **New worlds** follow the `add-sandbox` skill.
 - Never introduce a server, API route, server action, or secret in client code without a superseding ADR.
 
 ## Commands
@@ -54,7 +55,7 @@ lib/sim/                  framework-free simulation code (no React)
 lib/scale/                scale explorer objects + renderer
 tests/                    vitest
 docs/                     PLAN.md, features/, changes/, decisions/ (ADRs), design/
-.claude/skills/           plan-change, document-feature, apple-ui-ux, add-sandbox
+.claude/skills/           plan-change, document-feature, darkroom-ui, add-sandbox
 ```
 
 ### The Sandbox contract (`lib/sim/types.ts`)

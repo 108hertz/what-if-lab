@@ -3,7 +3,7 @@
 - **Status:** live
 - **Tier:** free
 - **Owner area:** `lib/scale`, `components/ScalePanel.tsx`, `components/ScaleTransport.tsx`, `app/page.tsx`
-- **Changes:** —
+- **Changes:** [0004](../changes/0004-single-screen-console.md) (one-screen layout, hero overlay)
 
 ## What it is
 

@@ -21,7 +21,7 @@ touching ads, premium, payments, SEO or hosting. Typos and one-line fixes skip t
    - Why (goal from PLAN.md), Scope in/out, Design (files touched, data shapes, UI states),
    - Steps small enough that each ends green on `npm run typecheck && npm test && npm run build`,
    - Risks, Verification (automated + manual viewports/themes), Log entry with today's date.
-   UI work must follow the `apple-ui-ux` skill.
+   UI work must follow the `darkroom-ui` skill.
 4. **Register** it: add a row to `docs/changes/README.md`; if it's a new feature, create its feature
    doc (status `planned`) via the `document-feature` skill and link both ways.
 5. **Stop and ask for approval.** Summarise the plan in 3–5 lines and ask the user to approve. Do not

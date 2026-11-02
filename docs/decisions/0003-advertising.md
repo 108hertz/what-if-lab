@@ -6,7 +6,7 @@
 ## Context
 
 Ads fund the free tier. They must not damage the experience that creates traffic in the first place
-(Apple-grade calm UI, fast Core Web Vitals, sims that run at 60 fps). In the EEA/UK/Switzerland, ad
+(calm darkroom UI, fast Core Web Vitals, sims that run at 60 fps). In the EEA/UK/Switzerland, ad
 personalisation requires a certified consent management platform (IAB TCF v2.2); some US states require
 opt-out handling.
 
@@ -22,7 +22,7 @@ opt-out handling.
 
 - Start with **AdSense** (manual ad units, **no Auto ads**) and Google's CMP. Re-evaluate premium
   networks once traffic qualifies.
-- **Placement:** two vertical **side rails** (160×600 / 300×600) only on viewports ≥ 1280 px wide, plus
+- **Placement:** two vertical **side rails** (160×600 / 300×600) only on viewports ≥ 1600 px wide (raised from 1280 px by change 0004 so the console keeps its width), plus
   at most one unit below the fold on long-form what-if article pages. **Never** on the stage, transport,
   inspector, over the canvas, in modals, or on mobile in the sim view.
 - **No layout shift:** rails are fixed-size reserved boxes rendered by the layout; the ad fills them.
@@ -32,6 +32,6 @@ opt-out handling.
 ## Consequences
 
 - `public/ads.txt` required; privacy policy + cookie/consent page required before ads go live.
-- Layout grows a 3-column shell at ≥1280 px: `rail | content | rail`. The design spec must make empty
+- Layout grows a 3-column shell at ≥1600 px: `rail | content | rail`. The design spec must make empty
   rails look intentional (they will be empty in dev, for Premium, and on no-fill).
 - Spec lives in [features/ads.md](../features/ads.md).

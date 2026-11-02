@@ -5,6 +5,7 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 
 | # | Change | Phase | Status |
 | --- | --- | --- | --- |
-| [0001](./0001-apple-ui-redesign.md) | Apple-grade UI redesign | 1 | proposed |
+| [0001](./0001-apple-ui-redesign.md) | Apple-grade UI redesign | 1 | dropped |
 | [0002](./0002-static-export-and-hosting.md) | Static export, hosting, cookieless analytics | 0 | proposed |
 | [0003](./0003-darkroom-visual-language.md) | "Darkroom" visual language: type, copy, icons | 1 | shipped |
+| [0004](./0004-single-screen-console.md) | Single-screen console; darkroom-only design system | 1 | shipped |

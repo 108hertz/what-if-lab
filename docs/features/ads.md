@@ -16,9 +16,9 @@ Revenue scales with traffic without a paywall. Must not reduce traffic by hurtin
 
 ## Behaviour
 
-- Shown only when viewport ≥ 1280 px **and** user is not Premium **and** consent state allows
+- Shown only when viewport ≥ 1600 px (change 0004: the console needs the width below that) **and** user is not Premium **and** consent state allows
   (personalised or non-personalised per CMP answer).
-- Shell becomes `rail (160–300 px) | content (max 1180 px) | rail`. Rails are **sticky** within the
+- Shell becomes `rail (160–300 px) | console | rail`. Rails are **sticky** within the
   viewport and have **reserved fixed dimensions** → CLS = 0.
 - Ad script injected after the first sim frame via `requestIdleCallback`; never on the critical path.
 - Empty rail (dev, no-fill, ad-blocker, Premium) shows nothing — or a subtle "Go ad-free · $15/yr" card
@@ -35,5 +35,5 @@ Native/sponsored content, affiliate links, video ads.
 
 - [ ] Lighthouse CLS stays 0 with ads on and off.
 - [ ] No ad network requests for Premium or before consent (check Network panel).
-- [ ] At 1279 px wide: no rails. At 1280 px: rails visible, content width unchanged.
+- [ ] At 1599 px wide: no rails. At 1600 px: rails visible, console still fits without page scroll.
 - [ ] `ads.txt` served at `/ads.txt`.

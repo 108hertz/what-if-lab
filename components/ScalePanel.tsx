@@ -10,10 +10,6 @@ export default function ScalePanel({ scale, onOpen }: { scale: ScaleView; onOpen
   const o = scale.focus;
   return (
     <>
-      <div>
-        <h2 className="title">Scale of everything</h2>
-        <p className="intro">Each step of the slider is ten times bigger or smaller. Labels in gold are live worlds you can experiment on.</p>
-      </div>
       {o && (
         <div className="focus">
           <span className="micro">In view</span>

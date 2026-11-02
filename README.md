@@ -42,7 +42,7 @@ Stack: Next.js 15 (App Router, static), React 19, TypeScript, Canvas 2D, Vitest.
 | `lib/scale/` | Scale explorer |
 | `tests/` | Vitest suite |
 | [`docs/`](./docs/README.md) | Plan, feature specs, change proposals, decisions (ADRs), design language |
-| `.claude/skills/` | Claude Code skills: `plan-change`, `document-feature`, `apple-ui-ux`, `add-sandbox` |
+| `.claude/skills/` | Claude Code skills: `plan-change`, `document-feature`, `darkroom-ui`, `add-sandbox` |
 | [`CLAUDE.md`](./CLAUDE.md) | Architecture, sandbox contract, how to add a world |
 
 ## How we work
@@ -50,7 +50,7 @@ Stack: Next.js 15 (App Router, static), React 19, TypeScript, Canvas 2D, Vitest.
 Features are documented in [`docs/features/`](./docs/features/README.md) and every non-trivial change
 is planned in [`docs/changes/`](./docs/changes/README.md) **before** code is written. Hard-to-reverse
 choices get a decision record in [`docs/decisions/`](./docs/decisions/). UI follows the
-[Apple-inspired design language](./docs/design/apple-design-language.md).
+[Darkroom design system](./docs/design/design-system.md).
 
-With Claude Code: `/plan-change <idea>` drafts a change doc, `/document-feature`, `/apple-ui-ux` and
+With Claude Code: `/plan-change <idea>` drafts a change doc, `/document-feature`, `/darkroom-ui` and
 `/add-sandbox` cover the rest.

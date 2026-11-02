@@ -1,6 +1,6 @@
 # 0001 — Apple-grade UI redesign
 
-- **Status:** proposed
+- **Status:** dropped — replaced by [0003](./0003-darkroom-visual-language.md) and [0004](./0004-single-screen-console.md)
 - **Phase:** 1
 - **Features:** [scale explorer](../features/scale-explorer.md), [fork and compare](../features/fork-and-compare.md)
 - **Decisions:** [ADR 0004](../decisions/0004-apple-design-language.md)

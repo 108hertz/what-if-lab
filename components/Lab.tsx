@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useReducer, useRef } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Mode } from "@/lib/sim/registry";
@@ -10,7 +10,9 @@ import { setCanvasFont } from "@/lib/sim/draw";
 import Tabs from "./Tabs";
 import Transport from "./Transport";
 import ScaleTransport from "./ScaleTransport";
-import SidePanel from "./SidePanel";
+import { InfoBlocks, Readouts, TunePanel, WhatIfList, WorldHeader } from "./panels";
+import Dock from "./Dock";
+import { useMedia } from "./useMedia";
 import ScalePanel from "./ScalePanel";
 import HistoryChart from "./HistoryChart";
 import Timeline from "./Timeline";
@@ -147,46 +149,68 @@ export default function Lab({ mode }: { mode: Mode }) {
     };
   }, [engine, scale, openSandbox]);
 
+  const desk = useMedia("(min-width: 1024px)");
+  const wide = useMedia("(min-width: 1440px)");
+  const touched = useRef(false);
+  const [heroOff, setHeroOff] = useState(false);
+  useEffect(() => {
+    const cv = canvasRef.current;
+    if (!cv || engine) return;
+    const hide = () => { if (!touched.current) { touched.current = true; setHeroOff(true); } };
+    cv.addEventListener("pointerdown", hide);
+    cv.addEventListener("wheel", hide, { passive: true });
+    return () => { cv.removeEventListener("pointerdown", hide); cv.removeEventListener("wheel", hide); };
+  }, [engine]);
+
+  const ask = engine && <><WorldHeader engine={engine} /><WhatIfList engine={engine} onChange={rerender} /></>;
+  const now = engine && <Readouts engine={engine} />;
+  const info = engine && <InfoBlocks engine={engine} />;
+  const tune = engine && <TunePanel engine={engine} onChange={rerender} />;
+  const chart = engine && <div className="chart-box"><HistoryChart engine={engine} /></div>;
+  const log = engine && <div className="log-box"><h3 className="headline">Timeline</h3><Timeline engine={engine} /></div>;
+
   return (
-    <div className="wrap">
+    <div className={engine ? "app" : "app is-scale"}>
       <header className="nav">
-        <Link className="wordmark" href="/">What-If Lab</Link>
+        <div className="brand">
+          <Link className="wordmark" href="/">What-If Lab</Link>
+          <span className="micro credit">No AI · No live data · Same seed, same future</span>
+        </div>
+        <Tabs mode={mode} />
         <ThemeToggle />
       </header>
-      {!engine && (
-        <div className="hero">
-          <h1 className="display">What happens if…</h1>
-          <p className="desc">Zoom from a proton to the observable universe. Open a world, ask it a question, and watch both futures run side by side.</p>
-        </div>
-      )}
-      <Tabs mode={mode} />
-      <main className="lab">
-        <section className="card stage">
-          <canvas ref={canvasRef} aria-label="Simulation stage" />
+      <main className="console">
+        {desk && engine ? <aside className="col ask scrolly">{ask}{!wide && now}{info}</aside> : null}
+        <section className="centre">
+          <div className="stage">
+            <canvas ref={canvasRef} aria-label="Simulation stage" />
+            {!engine && (
+              <div className={heroOff ? "hero hide" : "hero"} aria-hidden={heroOff}>
+                <h1 className="display">What happens if…</h1>
+                <p className="desc">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, ask it a question, and watch both futures run side by side.</p>
+              </div>
+            )}
+          </div>
           {engine ? (
             <Transport engine={engine} onChange={rerender} />
           ) : (
             <ScaleTransport scale={scale} inputRef={zoomRef} outputRef={zoomOutRef} />
           )}
+          {desk && engine ? <div className="results">{chart}{wide && <div className="now-box">{now}</div>}{log}</div> : null}
         </section>
-        <aside className="card side">
-          {engine ? <SidePanel engine={engine} onChange={rerender} /> : <ScalePanel scale={scale} onOpen={openSandbox} />}
-        </aside>
+        {desk ? (
+          <aside className="col tune scrolly">
+            {engine ? tune : <ScalePanel scale={scale} onOpen={openSandbox} />}
+          </aside>
+        ) : (
+          <Dock
+            key={mode}
+            tabs={engine
+              ? [["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}{chart}</>], ["Log", log]]
+              : [["In view", <ScalePanel key="s" scale={scale} onOpen={openSandbox} />]]}
+          />
+        )}
       </main>
-      {engine && (
-        <section className="below">
-          <div className="card"><HistoryChart engine={engine} /></div>
-          <div className="card"><h3 className="headline">Timeline</h3><Timeline engine={engine} /></div>
-        </section>
-      )}
-      <footer className="footer">
-        <span className="micro credit">No AI · No live data · Same seed, same future</span>
-        <p className="desc">
-          Everything runs from built-in rules and simplified data, live in your browser. Gravity is real Newtonian physics;
-          living things are simple agents with energy, senses and mutations. Results show plausible behaviour, not forecasts.
-        </p>
-      </footer>
-      <span className="edge micro" aria-hidden="true">What-If Lab · 7 worlds · Rule-based</span>
     </div>
   );
 }

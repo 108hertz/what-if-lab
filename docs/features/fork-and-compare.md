@@ -2,8 +2,8 @@
 
 - **Status:** live
 - **Tier:** free (multiple simultaneous what-ifs are premium — see [premium](./premium.md))
-- **Owner area:** `lib/sim`, `components/Lab.tsx`, `components/SidePanel.tsx`, `HistoryChart`, `Timeline`
-- **Changes:** —
+- **Owner area:** `lib/sim`, `components/Lab.tsx`, `components/panels.tsx`, `Dock`, `HistoryChart`, `Timeline`
+- **Changes:** [0003](../changes/0003-darkroom-visual-language.md), [0004](../changes/0004-single-screen-console.md)
 
 ## What it is
 
@@ -26,6 +26,9 @@ This is the product. The divergence moment is what people screenshot and share.
 - Metrics (`read`) are finite or `null`; chart plots both worlds; timeline marks events as
   both / no-change only / what-if only.
 - Worlds keep running across tab switches (module-level engine singletons).
+- **One-screen console** (change 0004): desktop shows Ask (what-ifs, readouts, info) · stage + transport +
+  chart/timeline · Tune (all variables) without page scroll; phones/tablets show the stage with a dock
+  (Ask · Tune · Read · Log). See `docs/design/design-system.md` → Layout.
 
 ## Out of scope
 
