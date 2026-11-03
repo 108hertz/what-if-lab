@@ -29,7 +29,7 @@ one-viewport consoles with no page scroll.
 ## Commands
 
 ```bash
-npm run dev        # http://localhost:3000
+npm run dev        # http://localhost:5050
 npm run build      # production build (must pass before committing)
 npm run typecheck  # tsc --noEmit
 npm test           # vitest: every sandbox × every what-if, determinism, engine behaviour
