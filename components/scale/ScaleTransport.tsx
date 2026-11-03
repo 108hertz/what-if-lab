@@ -4,9 +4,10 @@ import type { RefObject } from "react";
 import type { ScaleView } from "@/lib/scale/render";
 import { ZOOM_MAX, ZOOM_MIN } from "@/lib/scale/objects";
 import { Icon } from "../ui/Icon";
+import { FullscreenButton } from "../console/fullscreen";
 
 /** Zoom controls. Values are pushed into the refs by the render loop, so this never re-renders per frame. */
-export default function ScaleTransport({ scale, inputRef, outputRef }: { scale: ScaleView; inputRef: RefObject<HTMLInputElement | null>; outputRef: RefObject<HTMLOutputElement | null> }) {
+export default function ScaleTransport({ scale, inputRef, outputRef, fullscreen }: { scale: ScaleView; inputRef: RefObject<HTMLInputElement | null>; outputRef: RefObject<HTMLOutputElement | null>; fullscreen?: { on: boolean; toggle: () => void } }) {
   return (
     <div className="transport">
       <div className="zoomrow">
@@ -16,6 +17,7 @@ export default function ScaleTransport({ scale, inputRef, outputRef }: { scale: 
         <output ref={outputRef} />
       </div>
       <span className="hint">Scroll, pinch or drag. Tap a gold label to open its world.</span>
+      {fullscreen && <FullscreenButton {...fullscreen} />}
     </div>
   );
 }

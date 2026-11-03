@@ -394,6 +394,16 @@ td.a { color: var(--alt); }
 
 .credit { color: var(--ember); }
 
+/* Full screen (change 0013): only the main UI, stage + transport. `.full` is the fallback where the API is missing */
+.transport .fs-btn { width: 44px; padding: 0; }
+.transport .hint + .fs-btn { margin-left: 0; }
+@media (max-width: 767px) { .transport .fs-btn { margin-left: auto; } }
+.centre:fullscreen, .centre.full { width: 100vw; height: 100dvh; border: 0; border-radius: 0; }
+.centre.full { position: fixed; inset: 0; z-index: 50; }
+.centre:fullscreen .stage, .centre.full .stage { min-height: 0; }
+.centre:fullscreen .transport, .centre.full .transport { padding-bottom: max(var(--s-2), env(safe-area-inset-bottom, 0px)); }
+@media (min-width: 768px) { .centre:fullscreen .transport .hint, .centre.full .transport .hint { display: block; } }
+
 /* Edge label: the stage's serial number, running down its right edge (decorative) */
 .edge { display: none; position: absolute; right: var(--s-2); top: 50%; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
   color: var(--stage-ink-2); pointer-events: none; white-space: nowrap; }

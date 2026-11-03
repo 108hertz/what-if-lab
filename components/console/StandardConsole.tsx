@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import { useMedia } from "../ui/useMedia";
 import Stage, { type StageInteraction } from "./Stage";
@@ -9,6 +9,7 @@ import HistoryChart from "./HistoryChart";
 import Timeline from "./Timeline";
 import Dock from "./Dock";
 import AdSlot, { RAILS_QUERY } from "./AdSlot";
+import { useFullscreen } from "./fullscreen";
 import { InfoBlocks, Readouts, TunePanel, WhatIfList, WorldHeader } from "./panels";
 
 /**
@@ -21,6 +22,8 @@ export default function StandardConsole({ engine, onChange, interaction }: { eng
   const full = useMedia("(min-width: 1280px)");
   const wide = useMedia("(min-width: 1440px)");
   const rails = useMedia(RAILS_QUERY);
+  const centre = useRef<HTMLElement>(null);
+  const fs = useFullscreen(centre);
 
   const ask = <><WorldHeader engine={engine} /><WhatIfList engine={engine} onChange={onChange} /></>;
   const now = <Readouts engine={engine} />;
@@ -56,10 +59,10 @@ export default function StandardConsole({ engine, onChange, interaction }: { eng
   return (
     <main className="console">
       {full && <aside className="col ask scrolly">{ask}{!wide && now}{info}</aside>}
-      <section className="centre">
+      <section className="centre" ref={centre}>
         <Stage engine={engine} interaction={interaction} onChange={onChange} />
-        <Transport engine={engine} onChange={onChange} />
-        {desk && <div className="results">{chart}{wide && <div className="now-box">{now}</div>}{log}</div>}
+        <Transport engine={engine} onChange={onChange} fullscreen={fs} />
+        {desk && !fs.on && <div className="results">{chart}{wide && <div className="now-box">{now}</div>}{log}</div>}
       </section>
       {side}
     </main>

@@ -2,8 +2,9 @@
 
 import type { SimEngine } from "@/lib/sim/engine";
 import { Icon } from "../ui/Icon";
+import { FullscreenButton } from "./fullscreen";
 
-export default function Transport({ engine, onChange }: { engine: SimEngine; onChange: () => void }) {
+export default function Transport({ engine, onChange, fullscreen }: { engine: SimEngine; onChange: () => void; fullscreen?: { on: boolean; toggle: () => void } }) {
   const act = (fn: () => void) => () => { fn(); onChange(); };
   const speeds = engine.sb.speeds;
   return (
@@ -31,7 +32,8 @@ export default function Transport({ engine, onChange }: { engine: SimEngine; onC
       )}
       <button className="btn" aria-label="Restart" title="Restart" onClick={act(() => engine.restart())}><Icon name="restart" size={18} /><span className="btn-text">Restart</span></button>
       {engine.alt && <button className="btn" aria-label="Close what-if" title="Close what-if" onClick={act(() => engine.dropFork())}><Icon name="close" size={18} /><span className="btn-text">Close what-if</span></button>}
-      <span className="hint">{engine.sb.hint ?? "Pick a question. The world splits here."}</span>
+      <span className="hint">{engine.sb.hint ?? (fullscreen?.on ? "Leave full screen to ask a what-if." : "Pick a question. The world splits here.")}</span>
+      {fullscreen && <FullscreenButton {...fullscreen} />}
     </div>
   );
 }

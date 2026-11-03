@@ -16,3 +16,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0009](./0009-galaxy-realistic-stage.md) | Galaxy world: a stage that looks like real galaxies | 1 | shipped |
 | [0010](./0010-galaxy-variables-and-speeds.md) | Galaxy world: more variables and more speeds | 1 | shipped |
 | [0011](./0011-galaxy-more-whatifs.md) | Galaxy world: more what-ifs, more galaxies, settings for each | 1 | shipped |
+| [0013](./0013-full-screen-stage.md) | Full-screen stage in every world | 1 | shipped |

@@ -9,6 +9,7 @@ import { queuePreset } from "../console/engines";
 import { useCanvasLoop } from "../ui/canvas";
 import { useMedia } from "../ui/useMedia";
 import Dock from "../console/Dock";
+import { useFullscreen } from "../console/fullscreen";
 import ScalePanel from "./ScalePanel";
 import ScaleTransport from "./ScaleTransport";
 
@@ -20,6 +21,8 @@ export default function ScaleConsole() {
   const router = useRouter();
   const scale = (view ??= new ScaleView());
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const centre = useRef<HTMLElement>(null);
+  const fs = useFullscreen(centre);
   const zoomRef = useRef<HTMLInputElement>(null);
   const zoomOutRef = useRef<HTMLOutputElement>(null);
   const [, rerender] = useReducer((x: number) => x + 1, 0);
@@ -101,7 +104,7 @@ export default function ScaleConsole() {
   const panel = <ScalePanel scale={scale} onOpen={open} />;
   return (
     <main className="console">
-      <section className="centre">
+      <section className="centre" ref={centre}>
         <div className="stage">
           <canvas ref={canvasRef} aria-label="Simulation stage" />
           <div className={heroOff ? "hero hide" : "hero"} aria-hidden={heroOff}>
@@ -109,7 +112,7 @@ export default function ScaleConsole() {
             <p className="desc-lg">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, ask it a question, and watch both futures run side by side.</p>
           </div>
         </div>
-        <ScaleTransport scale={scale} inputRef={zoomRef} outputRef={zoomOutRef} />
+        <ScaleTransport scale={scale} inputRef={zoomRef} outputRef={zoomOutRef} fullscreen={fs} />
       </section>
       {desk ? <aside className="col tune scrolly">{panel}</aside> : <Dock tabs={[["In view", panel]]} />}
     </main>
