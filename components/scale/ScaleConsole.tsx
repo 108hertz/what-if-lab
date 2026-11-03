@@ -24,6 +24,8 @@ export default function ScaleConsole() {
   const zoomOutRef = useRef<HTMLOutputElement>(null);
   const [, rerender] = useReducer((x: number) => x + 1, 0);
   const desk = useMedia("(min-width: 1024px)");
+  // Objects hold a still pose under reduced motion; zoom easing stays (it is feedback)
+  scale.reducedMotion = useMedia("(prefers-reduced-motion: reduce)");
 
   /** Open a world from a scale-object reference like "animals:wolf". */
   const open = useCallback((ref: string) => {
