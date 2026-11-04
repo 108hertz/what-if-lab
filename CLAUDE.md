@@ -96,7 +96,7 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 - **Determinism**: never use `Math.random()` in `lib/sim` or `worlds/*/sim.ts`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
   so forks and tests are reproducible. Decorative-only randomness in `draw` must be derived from index/hash.
-- **Stacking** (`Sandbox.stack`, change 0015): solar, galaxy, country and animals show one world; what-ifs add up via
+- **Stacking** (`Sandbox.stack`, change 0015): solar, galaxy, country, animals and child show one world; what-ifs add up via
   `engine.change()`, so their `apply()` must work on an already-changed world. Other worlds split and re-fork.
 - Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
   matching text and time, so keep event text stable for the same event.
@@ -142,8 +142,15 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   hunter capped by its share of prey (`prey/4`), ~30 % hunt success, recolonisation (≤ 3 times, not after "remove").
   Changes stack via `w.mods`. Stage in `scene.ts` (habitat backdrops, silhouettes, renderer clock); the world owns its
   chart, story and timeline (`Chart.tsx`, `parts.tsx`). Tests: `tests/animals*.test.ts` (every pair of species).
-- **child**: trait = 50 + 0.45·(midparent − 50) + noise σ9 + age-weighted environment + maturation
-  curves + life-event deltas that partly fade. 120 children per world.
+- **child** (change 0018): 120 possible kids of the same two parents, ages 1–60. Per trait (model O C E A N; shown as
+  Curious, Organised, Outgoing, Kind and Calm = 100 − N): family start 50 + h·(midparent − 50) + genes (each kid's own mix,
+  σ from "How much is inherited") + home (style, siblings, home life, money, place, school, screens; age-weighted) + life
+  (your changes and everyday ups and downs, part lasting, part fading) + chance (start + drift) + maturation. The four parts
+  are kept separately (`model.ts`) so "Why are these kids different?" is computed from their variances. Changes stack via
+  `w.mods` (soft cap ±14 per kid, style switches ±7) and can be scheduled for a later age (`s_age`). Everyday events use
+  `rng(w)` per kid and are only summed up in the timeline ("By 10, 31 of 100 kids…"). Stage in `scene.ts` (home backdrop,
+  a growing child, crowd strips easing on a renderer clock); the world owns its chart, story and timeline (`Chart.tsx`,
+  `parts.tsx`). Tests: `tests/child.test.ts`.
 - **person**: 100 versions; daily quit hazard high early, falling after ~66 days for good habits.
 
 ## Roadmap

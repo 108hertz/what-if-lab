@@ -6,10 +6,10 @@ import { SimEngine } from "@/lib/sim/engine";
 
 const FRAME = 1 / 60;
 const run = (e: SimEngine, n: number) => { for (let i = 0; i < n; i++) e.tick(FRAME); };
-const STACKING = ["solar", "galaxy", "country", "animals"] as const;
+const STACKING = ["solar", "galaxy", "country", "animals", "child"] as const;
 
 describe("stacked changes (change 0015)", () => {
-  it("only solar, galaxy, country and animals stack", () => {
+  it("only solar, galaxy, country, animals and child stack", () => {
     for (const k of SANDBOX_KEYS) expect(!!SANDBOXES[k].stack, k).toBe((STACKING as readonly string[]).includes(k));
   });
 
