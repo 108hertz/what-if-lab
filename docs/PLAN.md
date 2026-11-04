@@ -57,7 +57,7 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [x] Design tokens, themes, typography, icons — [change 0003](./changes/0003-darkroom-visual-language.md)
 - [x] Single-screen console, dock on phones, darkroom-only design system — [change 0004](./changes/0004-single-screen-console.md)
 - [x] Worlds as separate projects, ad slots reserved in every world — [change 0008](./changes/0008-worlds-as-projects.md)
-- [ ] Per-world excellence pass, one world at a time (solar → earth → animals → country → galaxy → child → person)
+- [ ] Per-world excellence pass, one world at a time (solar → earth → animals → country → galaxy → child → person); done: earth (0014), solar/galaxy stacking (0015), country (0016), animals ([0017](./changes/0017-animals-living-ecosystem.md))
 - [x] Full-screen stage in every world (`F`) — [change 0013](./changes/0013-full-screen-stage.md)
 - [ ] Motion system, reduced-motion, keyboard shortcuts (Space play/pause; fork needs a key other than F, now full screen)
 

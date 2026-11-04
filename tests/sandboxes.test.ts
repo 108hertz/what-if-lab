@@ -69,6 +69,6 @@ describe("engine", () => {
     e.speedIdx = 3;
     runFrames(e, 60 * 20); // ~600 sim days
     const r = e.readouts().base;
-    expect((r.focal ?? 0) + (r.other ?? 0)).toBeGreaterThan(0);
+    expect((r.n0 ?? 0) + (r.n1 ?? 0)).toBeGreaterThan(0);
   });
 });

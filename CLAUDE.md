@@ -96,7 +96,7 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 - **Determinism**: never use `Math.random()` in `lib/sim` or `worlds/*/sim.ts`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
   so forks and tests are reproducible. Decorative-only randomness in `draw` must be derived from index/hash.
-- **Stacking** (`Sandbox.stack`, change 0015): solar, galaxy and country show one world; what-ifs add up via
+- **Stacking** (`Sandbox.stack`, change 0015): solar, galaxy, country and animals show one world; what-ifs add up via
   `engine.change()`, so their `apply()` must work on an already-changed world. Other worlds split and re-fork.
 - Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
   matching text and time, so keep event text stable for the same event.
@@ -133,9 +133,15 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   of 100, rich–poor income gap, out of work of 100, lifespan, peace. Policies stack via `w.mods`; six have
   live "how much" sizes. Stage (`scene.ts`): a street poorest → richest over "100 people"; the hidden
   no-change world arrives as `DrawContext.base` for the comparison numbers.
-- **animals**: Primer-like agents; cost ∝ size³·speed² + senses; mutation σ 7%. Stabilisers (keep them
-  unless replacing with something better): cover patches, predator territory cap (`nc < nh/4`),
-  hunt success 30%, recolonisation from outside. A test checks long-run coexistence.
+- **animals** (change 0017): a cast of 1–5 of 21 species (`data.ts`: food web `eats`, size, top speed, comfort range,
+  drawing spec, kid facts) in one arena; ready-made worlds + "Build your own" (`world` / `cast` params; the old
+  `species` preset maps to a ready-made world). Four heritable traits: speed, size, senses, coat; cost ∝ size³·speed²
+  + senses, × climate cost (coat shifts the temperature felt). Hunters take prey < 1.4× their size (pack 2.5×).
+  Everyone forages at one walking pace (top speed only to chase/flee); rare plant-eaters get more from food (niche
+  sharing) so several coexist. Stabilisers (keep them unless replacing with something better): cover patches, each
+  hunter capped by its share of prey (`prey/4`), ~30 % hunt success, recolonisation (≤ 3 times, not after "remove").
+  Changes stack via `w.mods`. Stage in `scene.ts` (habitat backdrops, silhouettes, renderer clock); the world owns its
+  chart, story and timeline (`Chart.tsx`, `parts.tsx`). Tests: `tests/animals*.test.ts` (every pair of species).
 - **child**: trait = 50 + 0.45·(midparent − 50) + noise σ9 + age-weighted environment + maturation
   curves + life-event deltas that partly fade. 120 children per world.
 - **person**: 100 versions; daily quit hazard high early, falling after ~66 days for good habits.

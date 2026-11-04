@@ -1,53 +1,213 @@
 import type { BaseWorld, Sandbox } from "@/lib/sim/types";
 import { TAU, clamp, fmtNum, gauss, note, rng } from "@/lib/sim/core";
-import { FONT, blob, STAGE } from "@/lib/sim/draw";
 import { meta } from "./meta";
-import { SPECIES, type Species } from "./data";
+import { ARENA_RATIO, COVER, FOOD_NAME, HAB_T, HABITATS, LEGACY, MAX_CAST, READY, SPECIES, castString, parseCast, type Habitat } from "./data";
+import { drawAnimals, type View } from "./scene";
 
 /**
- * Primer-style agent model. Plant-eaters (k=0) eat food pellets; meat-eaters (k=1) hunt smaller
- * plant-eaters. Energy cost ∝ size³·speed² + senses; offspring inherit mutated traits.
- * Stabilisers: cover patches (prey are safe inside), predator territory limit, recolonisation.
+ * Primer-style ecosystem (change 0017). A cast of up to five species shares one arena. Who eats whom comes from the
+ * food web in data.ts: hunters chase prey they can take (under 1.4× their size, 2.5× for pack hunters), plant-eaters
+ * graze food pellets, and everyone flees from the species that eat them. Every animal carries four heritable traits —
+ * speed, size, senses and coat — and pays for them: cost ∝ size³·speed² + senses + coat mismatch with the temperature.
+ * Babies inherit mutated traits, so the bodies that fit best spread.
+ *
+ * Stabilisers keep long runs alive: cover patches where prey are safe, each hunter's numbers capped by the prey it can
+ * eat, ~30 % hunt success per lunge, and recolonisation by a wandering pair when a species died out (unless a change
+ * removed it). Changes stack (`stack: true`): every click adds to `w.mods`, and every rule reads them all.
  */
-type P = { species: string; food: number; herb: number; carn: number; hab: number; dT: number; human: number };
+export type P = {
+  world?: string; from?: string; cast?: string; species?: string;
+  habitat: Habitat; food: number; hab: number; dT: number; seasons: string; human: string; mut: string;
+  target?: string; newcomer?: string; s_sick: number; s_new: number;
+};
 
-interface Creature { k: number; x: number; y: number; a: number; e: number; sp: number; sz: number; se: number; age: number; rv: number; d?: number }
-interface W extends BaseWorld { c: Creature[]; food: number[]; hab: number; foodMul: number; mod: string | null; noHuman: number; gone: number[] }
-
-export const ARENA_RATIO = 0.6;
-const AR = ARENA_RATIO;
-export const COVER: [number, number][] = [[0.12, 0.12], [0.45, 0.08], [0.8, 0.15], [0.25, 0.48], [0.6, 0.4], [0.9, 0.5]];
-const inCover = (o: Creature) => COVER.some(([x, y]) => (o.x - x) ** 2 + (o.y - y) ** 2 < 0.0016);
-
-function creature(w: W, k: number, sp: number, sz: number, se: number, x?: number, y?: number, rv = 0): Creature {
-  return { k, x: x ?? rng(w) * w.hab, y: y ?? rng(w) * AR, a: rng(w) * TAU, e: k ? 1.8 : 1.2, sp, sz, se, age: rng(w) * 10, rv };
+/** One animal: cast slot, position, heading `a` and turn rate `va`, eased speed `v`, energy, four traits, age, gait phase. */
+export interface Cr { s: number; id: number; x: number; y: number; a: number; va: number; v: number; e: number; sp: number; sz: number; se: number; co: number; age: number; ph: number; d?: number }
+export interface Mod { id: string; t0: number; s: number; sp: string; x0: number }
+export interface W extends BaseWorld {
+  cast: string[]; start: number[]; av0: number[][]; tc: number[];
+  c: Cr[]; food: number[]; hab: number; habit: Habitat; mods: Mod[]; gone: string[];
+  nid: number; fxn: number; fx: number[];
+  /** Per slot, decayed death counts: caught, hungry, climate, old age, hunted by people. */
+  dead: number[][]; kill: number[];
+  /** Highest count of each slot since the start or the latest change. */
+  peak: number[]; reco: number[]; alive: number[]; outWhy: string[];
 }
 
-function tick(w: W, h: number, p: P, sp: Species, clim: number) {
-  const fk = sp.kind, hab = w.hab, GX = 12, GY = 8;
-  // food growth
-  let ex = (60 * p.food) / 100 * w.foodMul * hab * h;
-  while (ex > 0) { if (rng(w) < ex && w.food.length < 700) w.food.push(rng(w) * hab, rng(w) * AR); ex -= 1; }
-  // spatial buckets
+const AR = ARENA_RATIO;
+const COVER_R2 = 0.0016;
+const inCover = (o: Cr) => COVER.some(([x, y]) => (o.x - x) ** 2 + (o.y - y) ** 2 < COVER_R2);
+const MAX_ANIMALS = 600, MAX_GRAZERS = 450, MAX_FOOD = 700, FX_KEEP = 48;
+/** Food bits that grow per day on the whole land at 100 %. Everyone forages at the same walking pace, so plant-eaters share it. */
+const FOOD_RATE = 150, WALK = 0.1;
+const MUT: Record<string, number> = { small: 0.035, normal: 0.07, big: 0.14 };
+const HUNT: Record<string, number> = { "0": 0, "10": 10, "30": 30, "60": 60 };
+const SEASON: Record<string, number> = { off: 0, gentle: 0.35, strong: 0.7 };
+/** Effect kinds in `w.fx` (seq, x, y, kind): a soft puff where an animal left, a "nom" where food was eaten. */
+export const FX_PUFF = 1, FX_NOM = 2;
+
+/* ───────────── params → world ───────────── */
+
+export function worldName(p: Pick<P, "world" | "from">): string {
+  const w = p.world ?? "yellowstone";
+  if (w !== "custom") return READY[w]?.name ?? "Your own world";
+  const from = p.from && READY[p.from]?.name;
+  return from ? `Your own world (based on ${from})` : "Your own world";
+}
+
+/** The cast the params ask for: the edited cast string, or the ready-made world's. */
+export function castOf(p: Pick<P, "world" | "cast">): [string, number][] {
+  const c = parseCast(p.cast);
+  if (c.length) return c;
+  return READY[p.world && p.world !== "custom" ? p.world : "yellowstone"]?.cast ?? READY.yellowstone.cast;
+}
+
+const habitatOf = (p: Pick<P, "habitat" | "world">): Habitat =>
+  (p.habitat as Habitat) ?? READY[p.world ?? "yellowstone"]?.habitat ?? "forest";
+
+/* ───────────── per-step species info ───────────── */
+
+interface Slot { id: string; meta: number; size: number; speed: number; pack: boolean; plants: boolean; eat: number; fear: number; lo: number; hi: number; tol: number; hunted: boolean; clim: number; base: number }
+
+/** Temperature right now: habitat + setting + warm / cool / opposite-climate changes. */
+export function tempOf(w: W, p: P): number {
+  let T = HAB_T[w.habit] + Number(p.dT);
+  for (const m of w.mods) {
+    if (m.id === "warm") T += 3;
+    if (m.id === "cool") T -= 4;
+    if (m.id === "move") T += m.s;
+  }
+  return T;
+}
+
+/** Energy multiplier for living at temperature T with a coat of `co` (1 = the coat it started with). */
+export function climateCost(sl: Pick<Slot, "lo" | "hi" | "tol">, tc: number, T: number, co: number): number {
+  const Te = T + 10 * (co - 1);
+  const out = Math.max(0, sl.lo - Te, Te - sl.hi);
+  return Math.min(8, 1 + ((Te - tc) / (sl.tol * 1.5)) ** 2 + (out / 3) ** 2);
+}
+
+function slots(w: W, p: P): Slot[] {
+  const T = tempOf(w, p);
+  const S = w.cast.map((id, i) => {
+    const sp = SPECIES[id];
+    return { id, meta: sp.meta, size: sp.size, speed: sp.speed, pack: !!sp.pack, plants: sp.diet !== "meat", eat: 0, fear: 0, lo: sp.lo, hi: sp.hi, tol: sp.tol, hunted: sp.hunted, clim: 1, base: w.tc[i] };
+  });
+  S.forEach((a, i) => S.forEach((b, j) => { if (SPECIES[a.id].eats.includes(b.id)) { a.eat |= 1 << j; b.fear |= 1 << i; } }));
+  for (const s of S) s.clim = climateCost(s, s.base, T, 1);
+  return S;
+}
+
+/** Food growth multiplier from the changes (drought, rain, reserve, warming…). */
+function foodMul(w: W): number {
+  let f = 1;
+  for (const m of w.mods) {
+    const d = w.t - m.t0;
+    if (m.id === "warm") f *= 0.9;
+    if (m.id === "cool") f *= 0.75;
+    if (m.id === "reserve") f *= 1.25;
+    if (m.id === "drought") f *= d < 365 ? 0.4 : d < 485 ? 0.4 + (0.6 * (d - 365)) / 120 : 1;
+    if (m.id === "rain") f *= d < 730 ? 1.6 : 1;
+  }
+  return f;
+}
+
+/** How well burnt land grows back at x (0 = bare, 1 = normal), over months. */
+export function burnt(w: W, x: number): number {
+  let g = 1;
+  for (const m of w.mods) {
+    if (m.id !== "fire" || x < m.x0 || x > m.x0 + m.s) continue;
+    const d = w.t - m.t0;
+    g = Math.min(g, d < 40 ? 0 : clamp((d - 40) / 160, 0, 1));
+  }
+  return g;
+}
+
+export const seasonOf = (w: Pick<W, "t">, p: Pick<P, "seasons">) => Math.sin((TAU * w.t) / 365) * (SEASON[p.seasons] ?? 0);
+
+/* ───────────── creatures ───────────── */
+
+function creature(w: W, s: number, x?: number, y?: number, tr?: { sp: number; sz: number; se: number; co: number }): Cr {
+  const j = () => (tr ? 1 : Math.exp(gauss(w) * 0.04));
+  const m = SPECIES[w.cast[s]].meta;
+  return {
+    s, id: w.nid++, x: x ?? rng(w) * w.hab, y: y ?? rng(w) * AR, a: rng(w) * TAU, va: 0, v: 0.7, e: m ? 1.8 : 1.2,
+    sp: (tr?.sp ?? 1) * j(), sz: (tr?.sz ?? 1) * j(), se: (tr?.se ?? 1) * j(), co: (tr?.co ?? 1) * j(), age: rng(w) * 10, ph: rng(w) * TAU,
+  };
+}
+
+function fx(w: W, x: number, y: number, kind: number) {
+  w.fx.push(w.fxn++, x, y, kind);
+  if (w.fx.length > FX_KEEP * 4) w.fx.splice(0, w.fx.length - FX_KEEP * 4);
+}
+
+const wrap = (a: number) => Math.atan2(Math.sin(a), Math.cos(a));
+const TURN = 10, GX = 12, GY = 8;
+/** Spatial buckets, reused every sub-step (scratch only; never part of the world). */
+const FB: number[][] = Array.from({ length: GX * GY }, () => []), CB: number[][] = Array.from({ length: GX * GY }, () => []);
+
+/** Rules that stay fixed for one step() call (changes only arrive between steps). */
+interface Env { S: Slot[]; T: number; grow: number; hunting: number[] | null; fast: number[] }
+
+function env(w: W, p: P): Env {
+  const S = slots(w, p);
+  return {
+    S, T: tempOf(w, p), grow: FOOD_RATE * (Number(p.food) / 100) * foodMul(w) * (1 + seasonOf(w, p)),
+    hunting: S.some((s) => s.hunted) ? huntRates(w, p, S) : null,
+    fast: S.map((s) => (w.mods.some((m) => m.id === "invasive" && m.sp === s.id) ? 0.75 : 1)),
+  };
+}
+
+function tick(w: W, h: number, p: P, E: Env) {
+  const { S, T, hunting, fast } = E, hab = w.hab, mut = MUT[p.mut] ?? 0.07;
+  // Food grows (seasons, changes, burnt land)
+  let ex = E.grow * hab * h;
+  while (ex > 0) {
+    if (rng(w) < ex && w.food.length < MAX_FOOD * 2) {
+      const x = rng(w) * hab, y = rng(w) * AR;
+      if (rng(w) < burnt(w, x)) w.food.push(x, y);
+    }
+    ex -= 1;
+  }
+  // Spatial buckets
   const cid = (x: number, y: number) => clamp((x * GX) | 0, 0, GX - 1) + clamp(((y / AR) * GY) | 0, 0, GY - 1) * GX;
-  const fb: number[][] = [], cb: number[][] = [];
-  for (let i = 0; i < GX * GY; i++) { fb.push([]); cb.push([]); }
+  for (let i = 0; i < GX * GY; i++) { FB[i].length = 0; CB[i].length = 0; }
+  const fb = FB, cb = CB;
   for (let i = 0; i < w.food.length; i += 2) fb[cid(w.food[i], w.food[i + 1])].push(i);
-  const C = w.c;
+  const C = w.c, n = S.length;
   for (let i = 0; i < C.length; i++) cb[cid(C[i].x, C[i].y)].push(i);
-  const eaten = new Set<number>(), born: Creature[] = [];
-  let nh = 0, nc = 0;
-  for (const c of C) c.k ? nc++ : nh++;
+  const eaten = new Set<number>(), born: Cr[] = [];
+  const cnt = new Array(n).fill(0);
+  let grazers = 0;
+  for (const c of C) { cnt[c.s]++; if (!S[c.s].meta) grazers++; }
+  // Hunters' caps: the prey each can eat, shared between the hunters of that prey
+  const hunters = new Array(n).fill(0);
+  for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) if (S[i].eat & (1 << j) && cnt[i] > 0) hunters[j]++;
+  const cap = S.map((s) => {
+    if (!s.meta) return Infinity;
+    let prey = 0;
+    for (let j = 0; j < n; j++) if (s.eat & (1 << j)) prey += cnt[j] / Math.max(1, hunters[j]);
+    return Math.min(120, prey / 4 + (s.plants ? 3 : 0));
+  });
+  // Rare plant-eaters find their favourite plants with less competition (niche sharing), so several can live together
+  const gz = S.map((s, i) => (!s.meta && s.plants && cnt[i] > 0 ? cnt[i] : 0)), gzN = gz.filter((k) => k > 0).length, gzT = gz.reduce((a, b) => a + b, 0) || 1;
+  const gain = S.map((s, i) => (s.meta ? 0.15 : 0.6 * clamp(1 + 1.2 * (1 / Math.max(1, gzN) - gz[i] / gzT), 0.5, 1.6)));
+  const decay = Math.exp(-h / 60);
+  for (const d of w.dead) for (let k = 0; k < d.length; k++) d[k] *= decay;
+  for (let k = 0; k < w.kill.length; k++) w.kill[k] *= decay;
+  const kill = (o: Cr, why: number) => { o.d = 1; w.dead[o.s][why]++; fx(w, o.x, o.y, FX_PUFF); };
 
   for (let i = 0; i < C.length; i++) {
     const c = C[i];
     if (c.d) continue;
-    const r = 0.07 * c.se, r2 = r * r, gx = (c.x * GX) | 0, gy = ((c.y / AR) * GY) | 0, rc = Math.ceil(r * GX);
-    let best = -1, bd = r2, flee: Creature | null = null, fd = r2;
-    for (let y = gy - rc; y <= gy + rc; y++) {
-      if (y < 0 || y >= GY) continue;
-      for (let x = gx - rc; x <= gx + rc; x++) {
-        if (x < 0 || x >= GX) continue;
+    const sl = S[c.s], body = sl.size * c.sz, hungry = c.e < (sl.meta ? 2.6 : sl.plants ? 1.2 : 2);
+    // Only the bucket cells the senses circle overlaps
+    const r = 0.07 * c.se, r2 = r * r;
+    const x0 = Math.max(0, ((c.x - r) * GX) | 0), x1 = Math.min(GX - 1, ((c.x + r) * GX) | 0);
+    const y0 = Math.max(0, (((c.y - r) / AR) * GY) | 0), y1 = Math.min(GY - 1, (((c.y + r) / AR) * GY) | 0);
+    let best = -1, bd = r2, prey = false, flee: Cr | null = null, fd = r2 * 0.12, mate = false;
+    for (let y = y0; y <= y1; y++) {
+      for (let x = x0; x <= x1; x++) {
         const cell = x + y * GX;
         for (const j of cb[cell]) {
           if (j === i) continue;
@@ -55,44 +215,72 @@ function tick(w: W, h: number, p: P, sp: Species, clim: number) {
           if (o.d) continue;
           const dx = o.x - c.x, dy = o.y - c.y, d2 = dx * dx + dy * dy;
           if (d2 >= r2) continue;
-          if (c.k === 0 && o.k === 1 && o.sz > 1.15 * c.sz && d2 < fd * 0.12) { fd = d2; flee = o; }
-          if (c.k === 1 && o.k === 0 && c.e < 2.6 && c.sz > 1.15 * o.sz && d2 < bd && !inCover(o)) { bd = d2; best = j; }
+          if (o.s === c.s) { if (d2 < 0.0036) mate = true; continue; }
+          if (sl.fear & (1 << o.s) && d2 < fd) {
+            const ob = S[o.s].size * o.sz;
+            if (body < ob * (S[o.s].pack ? 2.5 : 1.4)) { fd = d2; flee = o; }
+          }
+          if (hungry && sl.eat & (1 << o.s) && d2 < bd && !inCover(o)) {
+            const ob = S[o.s].size * o.sz;
+            if (ob < body * (sl.pack ? 2.5 : 1.4)) { bd = d2; best = j; prey = true; }
+          }
         }
-        if (c.k === 0)
+        if (sl.plants)
           for (const fi of fb[cell]) {
             if (eaten.has(fi)) continue;
             const dx = w.food[fi] - c.x, dy = w.food[fi + 1] - c.y, d2 = dx * dx + dy * dy;
-            if (d2 < bd) { bd = d2; best = fi; }
+            if (d2 < bd) { bd = d2; best = fi; prey = false; }
           }
       }
     }
-    if (flee) c.a = Math.atan2(c.y - flee.y, c.x - flee.x);
+    // Steering: ease the turn rate toward the wanted heading (curves, not zig-zags)
+    // Walking pace while grazing or wandering; the species' own top speed only when chasing or fleeing
+    let want = NaN, vt = WALK / Math.max(WALK, sl.speed);
+    if (flee) { want = Math.atan2(c.y - flee.y, c.x - flee.x); vt = 1; }
     else if (best >= 0) {
-      const ox = c.k ? C[best].x : w.food[best], oy = c.k ? C[best].y : w.food[best + 1];
-      c.a = Math.atan2(oy - c.y, ox - c.x);
-      if (Math.sqrt(bd) < (c.k ? 0.018 : 0.012) + c.sz * 0.004) {
-        if (c.k) { if (rng(w) < (0.3 * h) / 0.05) { C[best].d = 1; c.e += 1.1; } }
-        else { eaten.add(best); c.e += 0.6; }
+      const ox = prey ? C[best].x : w.food[best], oy = prey ? C[best].y : w.food[best + 1];
+      want = Math.atan2(oy - c.y, ox - c.x); if (prey) vt = 1;
+      if (Math.sqrt(bd) < (prey ? 0.018 : 0.012) + body * 0.004) {
+        if (prey) {
+          const o = C[best], ratio = (S[o.s].size * o.sz) / body;
+          // Packs help with big prey: a packmate nearby, or the odds drop
+          const odds = Math.min(1, (1.2 / ratio) ** 2) * (sl.pack && ratio > 1.4 && !mate ? 0.4 : 1) * SPECIES[S[o.s].id].guard;
+          if (rng(w) < ((0.3 * h) / 0.05) * odds) { kill(o, 0); w.kill[c.s * MAX_CAST + o.s]++; c.e += 1.1; }
+        } else { eaten.add(best); c.e += gain[c.s]; if (rng(w) < 0.08) fx(w, w.food[best], w.food[best + 1], FX_NOM); }
       }
-    } else c.a += gauss(w) * 1.2 * Math.sqrt(h);
+    }
+    if (want === want) {
+      const tv = clamp(wrap(want - c.a) * 8, -TURN, TURN);
+      c.va += (tv - c.va) * Math.min(1, h * 14);
+    } else {
+      c.va += gauss(w) * 3 * Math.sqrt(h);
+      c.va *= Math.exp(-2 * h);
+    }
+    c.a = wrap(c.a + c.va * h);
+    c.v += (vt - c.v) * Math.min(1, h * 6);
+    const step = Math.max(WALK, sl.speed) * c.sp * c.v * h;
+    c.x += Math.cos(c.a) * step; c.y += Math.sin(c.a) * step;
+    c.ph += (step * 900) / Math.max(0.4, sl.size * c.sz);
+    if (c.x < 0) { c.x = 0; c.a = Math.PI - c.a; c.va *= -0.5; }
+    if (c.x > hab) { c.x = hab; c.a = Math.PI - c.a; c.va *= -0.5; }
+    if (c.y < 0) { c.y = 0; c.a = -c.a; c.va *= -0.5; }
+    if (c.y > AR) { c.y = AR; c.a = -c.a; c.va *= -0.5; }
 
-    const v = (c.k ? 0.19 : 0.11) * c.sp;
-    c.x += Math.cos(c.a) * v * h; c.y += Math.sin(c.a) * v * h;
-    if (c.x < 0) { c.x = 0; c.a = Math.PI - c.a; }
-    if (c.x > hab) { c.x = hab; c.a = Math.PI - c.a; }
-    if (c.y < 0) { c.y = 0; c.a = -c.a; }
-    if (c.y > AR) { c.y = AR; c.a = -c.a; }
-
-    const climate = c.k === fk && !c.rv ? clim : 1 + (clim - 1) * 0.3;
-    c.e -= h * (0.1 + 0.35 * c.sz ** 3 * c.sp ** 2 + 0.12 * c.se + 0.12 * c.sp) * climate * (c.k ? 0.22 : 1);
+    const clim = climateCost(sl, sl.base, T, c.co);
+    c.e -= h * (0.1 + 0.35 * c.sz ** 3 * c.sp ** 2 + 0.12 * c.se + 0.12 * c.sp) * clim * (sl.meta ? 0.22 : 1);
     c.age += h;
-    if (c.e <= 0 || c.age > (c.k ? 80 : 50)) { c.d = 1; continue; }
-    if (c.k === fk && !c.rv && !w.noHuman && rng(w) < (p.human / 100) * 0.02 * h) { c.d = 1; continue; }
-    if (c.e > (c.k ? 3.4 : 2.4) && (c.k ? nc < Math.min(120, nh / 4) : nh < 450)) {
+    if (c.e <= 0) { kill(c, clim > 2 ? 2 : 1); continue; }
+    if (c.age > (sl.meta ? 80 : 50)) { kill(c, 3); continue; }
+    if (hunting && hunting[c.s] && rng(w) < hunting[c.s] * h) { kill(c, 4); continue; }
+    if (c.e > (sl.meta ? 3.4 : 2.4) * fast[c.s] && C.length + born.length < MAX_ANIMALS && (sl.meta ? cnt[c.s] < cap[c.s] : grazers < MAX_GRAZERS)) {
       c.e /= 2;
-      const mu = (x: number) => x * Math.exp(gauss(w) * 0.07);
-      born.push({ k: c.k, x: c.x, y: c.y, a: rng(w) * TAU, e: c.e, sp: clamp(mu(c.sp), 0.3, 2.2), sz: clamp(mu(c.sz), 0.55, 3), se: clamp(mu(c.se), 0.3, 3), age: 0, rv: c.rv });
-      c.k ? nc++ : nh++;
+      const mu = (x: number) => x * Math.exp(gauss(w) * mut);
+      born.push({
+        s: c.s, id: w.nid++, x: clamp(c.x + gauss(w) * 0.01, 0, hab), y: clamp(c.y + gauss(w) * 0.01, 0, AR), a: rng(w) * TAU, va: 0, v: 0.5, e: c.e,
+        sp: clamp(mu(c.sp), 0.3, 2.2), sz: clamp(mu(c.sz), 0.55, 3), se: clamp(mu(c.se), 0.3, 3), co: clamp(mu(c.co), 0.3, 2.5), age: 0, ph: rng(w) * TAU,
+      });
+      cnt[c.s]++;
+      if (!sl.meta) grazers++;
     }
   }
   if (eaten.size) {
@@ -102,143 +290,389 @@ function tick(w: W, h: number, p: P, sp: Species, clim: number) {
   }
   w.c = C.filter((c) => !c.d).concat(born);
   w.t += h;
-  // recolonisation from outside the arena
-  for (const k of [0, 1]) {
-    if (w.gone.includes(k)) continue;
-    if ((k ? p.carn : p.herb) > 0 && !w.c.some((c) => c.k === k && !c.rv) && rng(w) < 0.03 * h) {
-      for (let q = 0; q < 2; q++) w.c.push(creature(w, k, 1, k ? 1.3 : 1, 1, k ? w.hab * 0.98 : 0.02));
-      w.log.push({ t: w.t, txt: `A pair of ${(k === fk ? sp.pl : sp.other.pl).toLowerCase()} wanders in from outside` });
-    }
+  recolonise(w, h, p, S, T);
+}
+
+/** Chance a day that people take one animal of each slot (setting + "hunt" changes; a reserve stops all hunting). */
+function huntRates(w: W, p: P, S: Slot[]): number[] {
+  if (w.mods.some((m) => m.id === "reserve")) return S.map(() => 0);
+  const base = ((HUNT[p.human] ?? Number(p.human)) / 100) * 0.02;
+  return S.map((s) => (s.hunted ? base : 0) + w.mods.filter((m) => m.id === "hunt" && m.sp === s.id).length * 0.012);
+}
+
+/** A pair wanders in from outside when a species has died out here, if there is something to eat and the climate allows. */
+function recolonise(w: W, h: number, p: P, S: Slot[], T: number) {
+  for (let i = 0; i < S.length; i++) {
+    const sl = S[i];
+    if (!w.start[i] || w.reco[i] >= 3 || w.gone.includes(sl.id) || w.c.some((c) => c.s === i)) continue;
+    const prey = w.c.filter((c) => sl.eat & (1 << c.s)).length;
+    const ok = (sl.plants && w.food.length / 2 > 40) || prey >= 6;
+    if (!ok || climateCost(sl, sl.base, T, 1) > 2.5 || rng(w) >= 0.03 * h) continue;
+    for (let q = 0; q < 2; q++) w.c.push(creature(w, i, sl.meta ? w.hab * 0.98 : 0.02));
+    w.reco[i]++;
+    note(w, `A pair of ${SPECIES[sl.id].many} wanders in from outside`);
   }
 }
 
+/* ───────────── readouts ───────────── */
+
+/** Average traits of slot i, or null when none are alive. */
+export function traits(w: W, i: number): { sp: number; sz: number; se: number; co: number; n: number } | null {
+  let sp = 0, sz = 0, se = 0, co = 0, n = 0;
+  for (const c of w.c) if (c.s === i) { sp += c.sp; sz += c.sz; se += c.se; co += c.co; n++; }
+  if (!n) return null;
+  const a = w.av0[i];
+  return { sp: sp / n / a[0], sz: sz / n / a[1], se: se / n / a[2], co: co / n / a[3], n };
+}
+
+export const counts = (w: W) => { const n = w.cast.map(() => 0); for (const c of w.c) n[c.s]++; return n; };
+
+function addSlot(w: W, id: string, k: number, T: number): number {
+  const i = w.cast.length;
+  const sp = SPECIES[id];
+  w.cast.push(id); w.start.push(k); w.tc.push(clamp(T, sp.lo, sp.hi));
+  w.dead.push([0, 0, 0, 0, 0]); w.peak.push(k); w.reco.push(0); w.alive.push(k > 0 ? 1 : 0); w.outWhy.push("");
+  for (let j = 0; j < k; j++) w.c.push(creature(w, i));
+  w.av0.push([1, 1, 1, 1]);
+  const t = traits(w, i);
+  if (t) w.av0[i] = [t.sp, t.sz, t.se, t.co];
+  return i;
+}
+
+/** The animal a targeted change applies to: the chosen one if it lives here, else the first hunter, else the first. */
+export function targetOf(w: Pick<W, "cast">, p: Pick<P, "target">): string {
+  if (p.target && w.cast.includes(p.target)) return p.target;
+  return w.cast.find((id) => SPECIES[id].diet === "meat") ?? w.cast[0];
+}
+/** Who moves in with "add": the chosen newcomer, else the first animal from this habitat that is not here yet. */
+export function newcomerOf(w: Pick<W, "cast" | "habit">, p: Pick<P, "newcomer">): string {
+  if (p.newcomer && SPECIES[p.newcomer]) return p.newcomer;
+  return Object.values(SPECIES).find((s) => s.home === w.habit && !w.cast.includes(s.id))?.id ?? "rabbit";
+}
+
+const why = ["were caught", "went hungry", "found the weather too hard", "grew old", "were hunted by people"];
+
+function words(id: string) { return SPECIES[id].many; }
+const Cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+export const WHATIF_GROUPS: [string, string[]][] = [
+  ["Animals", ["remove", "add", "disease", "invasive"]],
+  ["Climate", ["warm", "cool", "drought", "rain", "fire"]],
+  ["People", ["habitat", "reserve", "hunt", "move"]],
+];
+
+/** The question each change asks, with the chosen animals filled in. */
+export function question(id: string, w: Pick<W, "cast" | "habit">, p: P): string {
+  const t = words(targetOf(w, p)), nc = SPECIES[newcomerOf(w, p)];
+  switch (id) {
+    case "remove": return `What if the ${t} disappeared?`;
+    case "add": return w.cast.includes(nc.id) ? `What if more ${nc.many} moved in?` : `What if ${nc.many} moved in?`;
+    case "disease": return `What if a sickness spread among the ${t}?`;
+    case "invasive": return "What if a fast-breeding newcomer arrived?";
+    case "warm": return "What if it got 3 °C warmer?";
+    case "cool": return "What if an ice age began?";
+    case "drought": return "What if it stopped raining for a year?";
+    case "rain": return "What if there were years of good rain?";
+    case "fire": return "What if a wildfire burned a third of the land?";
+    case "habitat": return "What if half the land became farms and roads?";
+    case "reserve": return "What if it became a protected reserve?";
+    case "hunt": return `What if people hunted the ${t}?`;
+    case "move": return "What if they were moved to the opposite climate?";
+    default: return id;
+  }
+}
+
+const metricsFor = (k: string, label: string, unit: string, d: number) =>
+  [0, 1, 2, 3, 4].map((i) => ({ k: `${k}${i}`, label: `${label} (animal ${i + 1})`, unit, fmt: (v: number | null) => fmtNum(v, d) }));
+
 export const animals: Sandbox<W, P> = {
   ...meta,
-  intro: "Each blob has its own speed, size and senses. They eat, flee, hunt, and pass slightly mutated traits to their young.",
+  stack: true,
+  intro: "Up to five kinds of animal share one place. Each animal is a little different; the ones that fit best have more babies, so bodies change over time. Pick a world or build your own, then make changes: they add up.",
+  hint: "Each animal is a little different. The ones that fit best have more babies. Press play and pick a change.",
   controls: [
-    { type: "select", id: "species", label: "Species", options: Object.entries(SPECIES).map(([k, s]) => [k, s.name]), val: "wolf" },
-    { type: "range", id: "food", label: "Food growth", min: 20, max: 200, step: 5, val: 100, unit: "%" },
-    { type: "range", id: "herb", label: "Plant-eaters at start", min: 5, max: 150, step: 5, val: 60 },
-    { type: "range", id: "carn", label: "Meat-eaters at start", min: 0, max: 30, step: 1, val: 8 },
-    { type: "range", id: "hab", label: "Habitat intact", min: 20, max: 100, step: 5, val: 100, unit: "%" },
-    { type: "range", id: "dT", label: "Temperature change", min: -4, max: 6, step: 0.5, val: 0, unit: "°C" },
-    { type: "range", id: "human", label: "Human hunting", min: 0, max: 100, step: 5, val: 10, unit: "%" },
+    { type: "heading", label: "The place" },
+    { type: "select", id: "habitat", label: "Habitat", options: HABITATS, val: "forest" },
+    { type: "range", id: "food", label: "Food growth", min: 20, max: 200, step: 5, val: 100, unit: "% of normal" },
+    { type: "range", id: "hab", label: "Room to roam", min: 20, max: 100, step: 5, val: 100, unit: "% of the land" },
+    { type: "range", id: "dT", label: "Temperature change", min: -6, max: 6, step: 0.5, val: 0, unit: "°C" },
+    { type: "select", id: "seasons", label: "Seasons", options: [["off", "Off: food grows evenly"], ["gentle", "Gentle"], ["strong", "Strong: lean winters"]], val: "off" },
+    { type: "heading", label: "People and babies" },
+    { type: "select", id: "human", label: "People hunting", options: [["0", "None"], ["10", "A little"], ["30", "Some"], ["60", "A lot"]], val: "10" },
+    { type: "select", id: "mut", label: "How different babies are", options: [["small", "A little (slow change)"], ["normal", "Normal"], ["big", "Very (fast change)"]], val: "normal" },
+    { type: "heading", label: "Change settings (used by your next click)" },
+    { type: "range", id: "s_sick", label: "Sickness strength", min: 10, max: 90, step: 5, val: 40, unit: "% fall ill and die", live: true },
+    { type: "range", id: "s_new", label: "Newcomers", min: 5, max: 40, step: 1, val: 12, unit: "animals", live: true },
   ],
   whatifs: [
-    ["removePred", "Remove the predators"], ["addPred", "Introduce a new predator"], ["warm", "Climate warms 3 °C"],
-    ["habitat", "Lose half the habitat"], ["protect", "Create a protected reserve"], ["disease", "Disease kills 40%"],
-    ["relocate", "Move them to the opposite climate"],
+    ["remove", "An animal disappears"], ["add", "An animal moves in"], ["disease", "A sickness spreads"], ["invasive", "A fast-breeding newcomer"],
+    ["warm", "3 °C warmer"], ["cool", "An ice age"], ["drought", "A year without rain"], ["rain", "Years of good rain"], ["fire", "A wildfire"],
+    ["habitat", "Half the land lost"], ["reserve", "A protected reserve"], ["hunt", "People hunt an animal"], ["move", "The opposite climate"],
   ],
-  speeds: [[2, "2 days/s"], [6, "6 days/s"], [15, "15 days/s"], [30, "30 days/s"]],
+  speeds: [[2, "2 d/s"], [6, "6 d/s"], [15, "15 d/s"], [30, "30 d/s"]],
   defaultSpeed: 1,
   fmtT: (t) => "Day " + Math.floor(t),
   metrics: [
-    { k: "focal", label: "Your species", unit: "", fmt: (v) => fmtNum(v) },
-    { k: "other", label: "Other species", unit: "", fmt: (v) => fmtNum(v) },
-    { k: "speed", label: "Avg speed", unit: "×", fmt: (v) => fmtNum(v, 2) },
-    { k: "size", label: "Avg size", unit: "×", fmt: (v) => fmtNum(v, 2) },
-    { k: "food", label: "Food", unit: "", fmt: (v) => fmtNum(v) },
+    ...[0, 1, 2, 3, 4].map((i) => ({ k: `n${i}`, label: `Animal ${i + 1}`, unit: "animals", fmt: (v: number | null) => fmtNum(v) })),
+    { k: "food", label: "Food", unit: "bits", fmt: (v) => fmtNum(v) },
+    ...metricsFor("sp", "Speed", "× day 0", 2), ...metricsFor("sz", "Size", "× day 0", 2),
+    ...metricsFor("se", "Senses", "× day 0", 2), ...metricsFor("co", "Coat", "× day 0", 2),
   ],
 
+  onParamChange(p, id) {
+    if (id === "species") {
+      const wk = LEGACY[String(p.species)];
+      return wk ? { ...p, world: wk, from: wk, cast: castString(READY[wk].cast), habitat: READY[wk].habitat, target: undefined } : p;
+    }
+    if (id === "world") {
+      const r = READY[String(p.world)];
+      return r ? { ...p, from: p.world, cast: castString(r.cast), habitat: r.habitat, species: undefined, target: undefined } : p;
+    }
+    if (id === "cast" || id === "habitat") {
+      const wk = p.world ?? "yellowstone";
+      const base = { ...p, species: undefined, cast: p.cast ?? castString(castOf(p)) };
+      return wk === "custom" ? base : { ...base, world: "custom", from: wk };
+    }
+    return p;
+  },
+
   init(p, seed) {
-    const w: W = { t: 0, rs: seed, log: [], f: {}, c: [], food: [], hab: p.hab / 100, foodMul: 1, mod: null, noHuman: 0, gone: [] };
-    for (let i = 0; i < p.herb; i++) w.c.push(creature(w, 0, 1, 1, 1));
-    for (let i = 0; i < p.carn; i++) w.c.push(creature(w, 1, 1, 1.3, 1));
-    for (let i = 0; i < 150; i++) w.food.push(rng(w) * w.hab, rng(w) * AR);
+    const habit = habitatOf(p), T0 = HAB_T[habit];
+    const w: W = {
+      t: 0, rs: seed, log: [], f: {}, cast: [], start: [], av0: [], tc: [], c: [], food: [], hab: Number(p.hab) / 100, habit, mods: [], gone: [],
+      nid: 0, fxn: 0, fx: [], dead: [], kill: new Array(MAX_CAST * MAX_CAST).fill(0), peak: [], reco: [], alive: [], outWhy: [],
+    };
+    for (const [id, k] of castOf(p)) addSlot(w, id, k, T0);
+    for (let i = 0; i < 120; i++) w.food.push(rng(w) * w.hab, rng(w) * AR);
     return w;
   },
 
   step(w, dt, p) {
-    const sp = SPECIES[p.species], n = Math.ceil(dt / 0.05), h = dt / n, fk = sp.kind;
-    const dT = p.dT + (w.mod === "warm" ? 3 : 0) + (w.mod === "relocate" ? (sp.climate === "hot" ? -9 : 9) : 0);
-    const clim = 1 + (dT / (sp.tol * 1.5)) ** 2;
-    for (let s = 0; s < n; s++) tick(w, h, p, sp, clim);
-    const r = animals.read(w, p);
-    if (r.focal === 0) note(w, `${sp.pl} die out here`, "fx");
-    if (r.other === 0 && w.c.length) note(w, `${sp.other.pl} die out here`, "ox");
-    if ((r.speed ?? 1) > 1.2) note(w, `Natural selection: the average ${sp.name.toLowerCase()} is now 20% faster`, "spd");
-    if ((r.speed ?? 1) < 0.8) note(w, `Natural selection: ${sp.pl.toLowerCase()} get slower to save energy`, "slw");
-    if ((r.size ?? 1) > 1.2 && fk === 0) note(w, `${sp.pl} grow 20% bigger on average`, "big");
-    if ((r.size ?? 1) < 0.82 && fk === 0) note(w, `${sp.pl} shrink on average`, "sml");
+    const n = Math.ceil(dt / 0.05), h = dt / n;
+    const E = env(w, p);
+    for (let s = 0; s < n; s++) tick(w, h, p, E);
+    const cnt = counts(w);
+    w.cast.forEach((id, i) => {
+      const sp = SPECIES[id], k = cnt[i];
+      w.peak[i] = Math.max(w.peak[i], k);
+      if (k > 0) w.alive[i] = 1;
+      if (k === 0 && w.alive[i]) {
+        w.alive[i] = 0;
+        const d = w.dead[i], top = d.indexOf(Math.max(...d));
+        w.outWhy[i] = why[top];
+        if (!w.gone.includes(id)) note(w, `The ${sp.many} have died out here: most ${why[top]}`, `out-${i}-${w.reco[i]}`);
+      }
+      if (w.start[i] >= 5 && k >= 2 * w.start[i] && k >= 20) note(w, `${Cap(sp.one)} numbers have doubled`, `boom-${i}`);
+      const t = k >= 6 ? traits(w, i) : null;
+      if (!t) return;
+      if (t.sp > 1.2) note(w, `Natural selection: the average ${sp.one} is now 20% faster`, `spd-${i}`);
+      if (t.sp < 0.8) note(w, `Natural selection: ${sp.many} get slower to save energy`, `slw-${i}`);
+      if (t.sz > 1.2) note(w, `${Cap(sp.many)} grow 20% bigger on average`, `big-${i}`);
+      if (t.sz < 0.82) note(w, `${Cap(sp.many)} shrink on average`, `sml-${i}`);
+      if (t.co < 0.8) note(w, `Coats get thinner: ${sp.many} now have 20% less ${sp.coat}`, `thin-${i}`);
+      if (t.co > 1.2) note(w, `Coats get thicker: ${sp.many} now have 20% more ${sp.coat}`, `thick-${i}`);
+      if (t.se > 1.2) note(w, `${Cap(sp.many)} now notice food and danger 20% farther away`, `sense-${i}`);
+    });
   },
 
   apply(w, id, p) {
-    const sp = SPECIES[p.species], fk = sp.kind;
-    w.mod = id;
-    if (id === "removePred") {
-      if (fk === 1) { w.noHuman = 1; note(w, `Hunting stops: nobody culls the ${sp.pl.toLowerCase()} any more`); }
-      else { w.c = w.c.filter((c) => c.k !== 1); w.gone = [1]; note(w, `All ${sp.other.pl.toLowerCase()} removed`); }
+    const tgt = targetOf(w, p), tsp = SPECIES[tgt], T = tempOf(w, p);
+    const mod: Mod = { id, t0: w.t, s: 1, sp: tgt, x0: 0 };
+    const slotOf = (sid: string) => w.cast.indexOf(sid);
+    switch (id) {
+      case "remove": {
+        const i = slotOf(tgt);
+        let k = 0;
+        for (const c of w.c) if (c.s === i) { c.d = 1; k++; fx(w, c.x, c.y, FX_PUFF); }
+        w.c = w.c.filter((c) => !c.d);
+        if (!w.gone.includes(tgt)) w.gone.push(tgt);
+        note(w, k ? `All ${tsp.many} removed` : `There are no ${tsp.many} here to take away`);
+        break;
+      }
+      case "add":
+      case "invasive": {
+        let sid = id === "add" ? newcomerOf(w, p) : "rabbit";
+        if (id === "invasive" && !w.cast.includes(sid) && w.cast.length >= MAX_CAST)
+          sid = SPECIES[tgt].diet === "plants" ? tgt : w.cast.find((x) => SPECIES[x].diet === "plants") ?? tgt;
+        const k = Number(p.s_new) || 12;
+        mod.sp = sid; mod.s = k;
+        let i = slotOf(sid);
+        if (i < 0 && w.cast.length >= MAX_CAST) { note(w, "There is no room for a sixth kind of animal"); break; }
+        if (i < 0) i = addSlot(w, sid, 0, HAB_T[w.habit]);
+        const edge = SPECIES[sid].meta ? w.hab * 0.97 : 0.03;
+        for (let q = 0; q < k; q++) w.c.push(creature(w, i, edge + gauss(w) * 0.02 * (SPECIES[sid].meta ? -1 : 1), undefined));
+        for (const c of w.c) if (c.s === i) c.x = clamp(c.x, 0, w.hab);
+        if (!w.start[i]) w.start[i] = k;
+        w.gone = w.gone.filter((x) => x !== sid);
+        w.alive[i] = 1;
+        note(w, id === "invasive" ? `${k} fast-breeding ${SPECIES[sid].many} arrive` : `${k} ${SPECIES[sid].many} move in`);
+        break;
+      }
+      case "disease": {
+        const i = slotOf(tgt), share = (Number(p.s_sick) || 40) / 100;
+        let k = 0;
+        for (const c of w.c) if (c.s === i && rng(w) < share) { c.d = 1; k++; fx(w, c.x, c.y, FX_PUFF); }
+        w.c = w.c.filter((c) => !c.d);
+        mod.s = share;
+        note(w, `Disease outbreak kills ${k} ${tsp.many}`);
+        break;
+      }
+      case "warm": note(w, "Climate warms 3 °C: more energy needed, less food"); break;
+      case "cool": note(w, "An ice age begins: 4 °C colder, less food"); break;
+      case "drought": {
+        const f: number[] = [];
+        for (let i = 0; i < w.food.length; i += 2) if (rng(w) < 0.5) f.push(w.food[i], w.food[i + 1]);
+        w.food = f;
+        note(w, "The rain stops for a year: food halves");
+        break;
+      }
+      case "rain": note(w, "Years of good rain begin: food grows faster"); break;
+      case "fire": {
+        mod.s = w.hab / 3; mod.x0 = rng(w) * (w.hab - mod.s);
+        const f: number[] = [];
+        for (let i = 0; i < w.food.length; i += 2) if (w.food[i] < mod.x0 || w.food[i] > mod.x0 + mod.s) f.push(w.food[i], w.food[i + 1]);
+        w.food = f;
+        note(w, "A wildfire burns a third of the land");
+        break;
+      }
+      case "habitat": {
+        w.hab *= 0.5;
+        for (const c of w.c) c.x = Math.min(c.x, w.hab);
+        const f: number[] = [];
+        for (let i = 0; i < w.food.length; i += 2) if (w.food[i] < w.hab) f.push(w.food[i], w.food[i + 1]);
+        w.food = f;
+        note(w, "Half the habitat is lost to farms and roads");
+        break;
+      }
+      case "reserve": note(w, "Protected reserve: hunting stops, vegetation recovers"); break;
+      case "hunt": note(w, `People start hunting the ${tsp.many}`); break;
+      case "move": mod.s = T > 15 ? -9 : 9; note(w, "Moved to the opposite climate: everything costs far more energy"); break;
     }
-    if (id === "addPred") {
-      for (let i = 0; i < 8; i++) w.c.push(creature(w, 1, 1.05, 1.35, 1.1, undefined, undefined, fk === 1 ? 1 : 0));
-      note(w, fk === 1 ? "A rival predator moves in" : `Eight extra ${sp.other.pl.toLowerCase()} arrive`);
-    }
-    if (id === "warm") { w.foodMul *= 0.8; note(w, "Climate warms 3 °C: more energy needed, less food"); }
-    if (id === "habitat") {
-      w.hab *= 0.5;
-      for (const c of w.c) c.x = Math.min(c.x, w.hab);
-      const f: number[] = [];
-      for (let i = 0; i < w.food.length; i += 2) if (w.food[i] < w.hab) f.push(w.food[i], w.food[i + 1]);
-      w.food = f;
-      note(w, "Half the habitat is lost to farms and roads");
-    }
-    if (id === "protect") { w.noHuman = 1; w.foodMul *= 1.25; note(w, "Protected reserve: hunting stops, vegetation recovers"); }
-    if (id === "disease") {
-      let k = 0;
-      for (const c of w.c) if (c.k === fk && !c.rv && rng(w) < 0.4) { c.d = 1; k++; }
-      w.c = w.c.filter((c) => !c.d);
-      note(w, `Disease outbreak kills ${k} ${sp.pl.toLowerCase()}`);
-    }
-    if (id === "relocate") note(w, "Moved to the opposite climate: everything costs far more energy");
+    w.mods.push(mod);
+    // Peaks are counted again from each change, so the story can say "then they multiplied"
+    w.peak = counts(w);
   },
 
-  read(w, p) {
-    const fk = SPECIES[p.species].kind;
-    const F = w.c.filter((c) => c.k === fk && !c.rv), O = w.c.filter((c) => c.k !== fk || c.rv);
-    const avg = (k: "sp" | "sz") => (F.length ? F.reduce((s, c) => s + c[k], 0) / F.length : null);
-    return { focal: F.length, other: O.length, speed: avg("sp"), size: avg("sz"), food: w.food.length / 2 };
+  read(w) {
+    const r: Record<string, number | null> = { food: w.food.length / 2 };
+    const cnt = counts(w);
+    for (let i = 0; i < MAX_CAST; i++) {
+      const has = i < w.cast.length, t = has ? traits(w, i) : null;
+      r[`n${i}`] = has ? cnt[i] : null;
+      r[`sp${i}`] = t?.sp ?? null; r[`sz${i}`] = t?.sz ?? null; r[`se${i}`] = t?.se ?? null; r[`co${i}`] = t?.co ?? null;
+    }
+    return r;
   },
 
-  info(_b, _a, p) {
-    const sp = SPECIES[p.species];
-    return [{
-      rows: [
-        { label: sp.kind ? "Meat-eater" : "Plant-eater", text: sp.name, color: sp.col },
-        { label: sp.kind ? "Prey" : "Predator", text: sp.other.name, color: sp.other.col },
-        { label: "Where", text: sp.where },
-        { label: "Social order", text: sp.social },
-        { label: "Diet", text: sp.diet },
-        { label: "Lifespan", text: sp.life },
-        { label: "Role in nature", text: sp.role },
-      ],
-    }];
-  },
-
-  draw({ ctx, w: W, h: H, p }, w) {
-    const sp = SPECIES[p.species], fk = sp.kind, s = Math.min(W - 16, (H - 16) / AR), ox = (W - s) / 2, oy = (H - s * AR) / 2;
-    ctx.fillStyle = "#0C1512"; ctx.fillRect(0, 0, W, H);
-    ctx.fillStyle = "#14251D"; ctx.fillRect(ox, oy, s, s * AR);
-    if (w.hab < 1) {
-      ctx.fillStyle = "#262A2F"; ctx.fillRect(ox + w.hab * s, oy, s * (1 - w.hab), s * AR);
-      ctx.save(); ctx.beginPath(); ctx.rect(ox + w.hab * s, oy, s * (1 - w.hab), s * AR); ctx.clip();
-      ctx.strokeStyle = "rgba(255,255,255,.06)"; ctx.beginPath();
-      for (let x = w.hab * s; x < s + s * AR; x += 10) { ctx.moveTo(ox + x, oy); ctx.lineTo(ox + x - s * AR, oy + s * AR); }
-      ctx.stroke(); ctx.restore();
-    }
-    ctx.fillStyle = "#1E3A2B";
-    for (const [x, y] of COVER) if (x < w.hab) { ctx.beginPath(); ctx.arc(ox + x * s, oy + y * s, 0.04 * s, 0, TAU); ctx.fill(); }
-    ctx.fillStyle = "#86E08F";
-    for (let i = 0; i < w.food.length; i += 2) ctx.fillRect(ox + w.food[i] * s - 1, oy + w.food[i + 1] * s - 1, 2.2, 2.2);
-    const k = s / 700;
-    for (const c of w.c) {
-      const focal = c.k === fk && !c.rv, col = c.rv ? "#FF7A7A" : c.k === fk ? sp.col : sp.other.col;
-      blob(ctx, ox + c.x * s, oy + c.y * s, clamp(4.2 * c.sz * k * (focal ? 1.1 : 1), 1.6, 14), col, Math.cos(c.a), Math.sin(c.a));
-    }
-    const r = animals.read(w, p);
-    ctx.fillStyle = "rgba(16,9,4,.65)"; ctx.fillRect(10, H - 32, Math.min(W - 20, 280), 22);
-    ctx.font = "12px " + FONT.mono;
-    const a = `${sp.name}: ${r.focal}`;
-    ctx.fillStyle = sp.col; ctx.fillText(a, 18, H - 17);
-    ctx.fillStyle = sp.other.col; ctx.fillText(`${sp.other.name}: ${r.other}`, 18 + ctx.measureText(a + "   ").width, H - 17);
+  draw({ ctx, w: Wd, h: Hd, p, base }, w) {
+    const fires = w.mods.filter((m) => m.id === "fire").map((m) => [m.x0, m.x0 + m.s, burnt(w, m.x0 + m.s / 2)] as [number, number, number]);
+    const view: View = { season: seasonOf(w, p), T: tempOf(w, p), fires, food: FOOD_NAME[w.habit] };
+    drawAnimals(ctx, Wd, Hd, w, (base as W | undefined) ?? null, view);
   },
 };
+
+/* ───────────── words: the story and the portrait caption ───────────── */
+
+const list = (xs: string[]) => (xs.length < 2 ? xs.join("") : xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1]);
+const pct = (v: number) => Math.round(Math.abs(v - 1) * 100);
+
+/** "Now 18% faster, ears bigger, coat thinner" for one animal, compared with day 0. */
+export function caption(id: string, t: { sp: number; sz: number; se: number; co: number } | null): string {
+  if (!t) return `No ${SPECIES[id].many} live here right now.`;
+  const look = SPECIES[id].look, organ = look.ears === "none" || look.form === "fish" || look.form === "orca" || look.form === "insect" || look.form === "seal" || look.form === "penguin" || look.form === "scorpion" ? "eyes" : "ears";
+  const out: string[] = [];
+  if (pct(t.sp) >= 3) out.push(`${pct(t.sp)}% ${t.sp > 1 ? "faster" : "slower"}`);
+  if (pct(t.sz) >= 3) out.push(`${pct(t.sz)}% ${t.sz > 1 ? "bigger" : "smaller"}`);
+  if (pct(t.se) >= 3) out.push(`${organ} ${t.se > 1 ? "bigger (notices more)" : "smaller (notices less)"}`);
+  if (pct(t.co) >= 3) out.push(`${SPECIES[id].coat} ${t.co > 1 ? "thicker" : "thinner"}`);
+  return out.length ? `Now ${list(out)}.` : "About the same as on day 0. Bodies change over many generations.";
+}
+
+interface StoryIn { b: W; a: W | null; p: P }
+
+/** 3–5 plain sentences about what happened and why, in the model's own terms. Never predictions. */
+export function story({ b, a, p }: StoryIn): string[] {
+  const w = a ?? b, day = Math.floor(w.t), cntW = counts(w), cntB = counts(b), food = FOOD_NAME[w.habit];
+  const out: string[] = [];
+  const many = (i: number, k: number) => `${fmtNum(k)} ${k === 1 ? SPECIES[w.cast[i]].one : SPECIES[w.cast[i]].many}`;
+  if (!a) {
+    const alive = w.cast.map((_, i) => i).filter((i) => cntW[i] > 0);
+    out.push(alive.length ? `Day ${day}: ${list(alive.map((i) => many(i, cntW[i])))} live here.` : `Day ${day}: no animals are left here.`);
+  } else {
+    out.push(`Compared with the same place with no change, on day ${day}:`);
+    const diffs = w.cast.map((_, i) => [i, cntW[i] - (i < b.cast.length ? cntB[i] : 0)] as [number, number]).filter(([, d]) => d !== 0)
+      .sort((x, y) => Math.abs(y[1]) - Math.abs(x[1])).slice(0, 3);
+    if (diffs.length) out.push(`There ${Math.abs(diffs[0][1]) === 1 && diffs[0][1] > 0 ? "is" : "are"} ${list(diffs.map(([i, d]) => `${fmtNum(Math.abs(d))} ${d > 0 ? "more" : "fewer"} ${Math.abs(d) === 1 ? SPECIES[w.cast[i]].one : SPECIES[w.cast[i]].many}`))}.`);
+    else out.push("The numbers of animals are the same so far.");
+  }
+  const why2: string[] = [];
+  const has = (id: string) => w.mods.some((m) => m.id === id);
+  // Hunters gone → prey boom → hunger
+  for (const m of w.mods.filter((m) => m.id === "remove")) {
+    const hs = SPECIES[m.sp];
+    for (const pid of hs.eats) {
+      const j = w.cast.indexOf(pid);
+      if (j < 0 || !a) continue;
+      const bj = j < b.cast.length ? cntB[j] : 0;
+      if (w.peak[j] > bj * 1.3 && w.peak[j] > 10) {
+        why2.push(`With no ${hs.many} to chase them, the ${SPECIES[pid].many} multiplied.`);
+        if (cntW[j] < w.peak[j] * 0.7) why2.push(`Then they ate the ${food} faster than it grew, and many went hungry.`);
+        break;
+      }
+    }
+    // Prey gone → hunters go hungry
+    w.cast.forEach((hid, i) => {
+      if (SPECIES[hid].eats.includes(m.sp) && a && cntW[i] < (i < b.cast.length ? cntB[i] : 0)) why2.push(`With no ${hs.many} left to catch, the ${SPECIES[hid].many} have less to eat.`);
+    });
+  }
+  if (has("warm") || has("move") || has("cool")) {
+    const T = tempOf(w, p), worst = w.cast.map((id, i) => [i, climateCost(slotLite(id), w.tc[i], T, traits(w, i)?.co ?? 1)] as [number, number]).sort((x, y) => y[1] - x[1])[0];
+    if (worst && worst[1] > 1.3) why2.push(`The ${T > HAB_T[w.habit] ? "hotter" : "colder"} weather is hard on the ${SPECIES[w.cast[worst[0]]].many}: they burn more food just to keep going.`);
+  }
+  if (has("drought") || has("fire") || has("habitat")) why2.push(`With less ${food} to go round, there is room for fewer animals.`);
+  if (has("rain") || has("reserve")) if (a && (a.food.length > b.food.length * 1.2 || cntW.reduce((s, k) => s + k, 0) > cntB.reduce((s, k) => s + k, 0))) why2.push(`More ${food} means more babies survive.`);
+  for (const m of w.mods.filter((m) => m.id === "hunt")) { const i = w.cast.indexOf(m.sp); if (i >= 0 && w.dead[i][4] > 1) why2.push(`People hunting take many ${SPECIES[m.sp].many}.`); }
+  for (const m of w.mods.filter((m) => m.id === "add" || m.id === "invasive")) {
+    const i = w.cast.indexOf(m.sp);
+    if (i >= 0 && !cntW[i]) why2.push(`The ${SPECIES[m.sp].many} that moved in could not survive here: most ${w.outWhy[i] || "went hungry"}.`);
+  }
+  // Died out (and why)
+  w.cast.forEach((id, i) => {
+    if (cntW[i] || !w.outWhy[i] || w.gone.includes(id)) return;
+    if (a && i < b.cast.length && !cntB[i]) return;
+    if (w.mods.some((m) => (m.id === "add" || m.id === "invasive") && m.sp === id)) return;
+    why2.push(`The ${SPECIES[id].many} died out: most ${w.outWhy[i]}${a ? ", which did not happen without your changes" : ""}.`);
+  });
+  // Plant-eaters running out of food
+  if (!a && w.food.length / 2 < 40 && w.c.some((c) => SPECIES[w.cast[c.s]].diet !== "meat")) why2.push(`There are so many plant-eaters that the ${food} runs short.`);
+  // Hunting pressure in the no-change world
+  if (!a) {
+    let top = 0, hi = -1, pi = -1;
+    for (let i = 0; i < w.cast.length; i++) for (let j = 0; j < w.cast.length; j++) if (w.kill[i * MAX_CAST + j] > top) { top = w.kill[i * MAX_CAST + j]; hi = i; pi = j; }
+    if (hi >= 0 && top > 2) why2.push(`The ${SPECIES[w.cast[hi]].many} mostly catch ${SPECIES[w.cast[pi]].many}; the ${SPECIES[w.cast[pi]].many} hide in the ${w.habit === "ocean" || w.habit === "ice" ? "kelp and rocks" : "bushes"} to stay safe.`);
+  }
+  // Evolution: the biggest body change (vs day 0, or vs no change)
+  let best: [number, string] | null = null;
+  const cmp = a ? "than without your changes" : "than on day 0";
+  w.cast.forEach((id, i) => {
+    const t = traits(w, i), tb = a && i < b.cast.length ? traits(b, i) : null;
+    if (!t || t.n < 6) return;
+    const ref = tb ?? { sp: 1, sz: 1, se: 1, co: 1 }, M = Cap(SPECIES[id].many);
+    const fear = w.cast.some((h) => SPECIES[h].eats.includes(id));
+    const r = (k: "sp" | "sz" | "se" | "co") => t[k] / ref[k];
+    const n = (v: number) => Math.round(Math.abs(v - 1) * 100);
+    const cand: [number, string][] = [
+      [r("sp"), r("sp") > 1 ? `${M} are ${n(r("sp"))}% faster ${cmp}: ${fear ? "the quick ones get away more often and have more babies" : "the quick ones reach food first"}.` : `${M} are ${n(r("sp"))}% slower ${cmp}: moving slowly saves energy.`],
+      [r("sz"), r("sz") > 1 ? `${M} are ${n(r("sz"))}% bigger ${cmp}${fear ? ": big ones are harder to catch" : ""}.` : `${M} are ${n(r("sz"))}% smaller ${cmp}: small bodies need less food.`],
+      [r("co"), r("co") > 1 ? `${M} have ${n(r("co"))}% more ${SPECIES[id].coat} ${cmp}: it keeps them warm.` : `${M} have ${n(r("co"))}% less ${SPECIES[id].coat} ${cmp}: it keeps them cool.`],
+      [r("se"), r("se") > 1 ? `${M} notice food and danger ${n(r("se"))}% farther away ${cmp}.` : `${M} notice ${n(r("se"))}% less ${cmp}: big eyes and ears cost energy.`],
+    ];
+    for (const [v, txt] of cand) if (Math.abs(v - 1) >= 0.06 && (!best || Math.abs(v - 1) > best[0])) best = [Math.abs(v - 1), txt];
+  });
+  if (best) why2.push((best as [number, string])[1]);
+  const lines = [...out, ...why2.slice(0, 5 - out.length)];
+  if (lines.length < 3) lines.push(a ? "Give it time: many changes show up only after a few generations." : "Pick a change to see what would be different.");
+  return lines;
+}
+
+const slotLite = (id: string) => ({ lo: SPECIES[id].lo, hi: SPECIES[id].hi, tol: SPECIES[id].tol });
