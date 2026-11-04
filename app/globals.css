@@ -316,6 +316,7 @@ input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius
 .fork:hover .icon { color: var(--label); }
 .fork[aria-pressed="true"] { border-left-color: var(--alt); }
 .fork[aria-pressed="true"] .icon { color: var(--alt); }
+.fork .count { margin-left: auto; padding-right: var(--s-2); font-size: var(--t-micro); font-weight: 500; color: var(--alt); font-variant-numeric: tabular-nums; }
 
 .ctls { display: flex; flex-direction: column; }
 .ctl { display: flex; flex-direction: column; }

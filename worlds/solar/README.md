@@ -19,6 +19,10 @@ Students and space fans asking "what if the Sun…" questions — the most searc
 
 Leapfrog N-body, G = 4π² (AU, yr, M☉), dt ≤ 0.0015 yr; bodies merge on collision radius. Drag on the stage throws a planet (`interaction.ts`).
 
+**Changes add up** (`stack: true`, change 0015): one world on the stage; every what-if and every thrown
+planet is applied to the same changed world. The no-change world runs hidden for the chart, readouts and
+timeline; "Undo all changes" returns to it.
+
 ## Questions it should answer best
 
 - What if the Sun disappeared / doubled / became a red giant?

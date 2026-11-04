@@ -49,7 +49,8 @@ const BG = Array.from({ length: 140 }, (_, i) => [((Math.sin(i * 12.9898) * 4375
 export const solar: Sandbox<W, P> = {
   ...meta,
   intro: "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
-  hint: "Drag on the stage to throw a planet.",
+  hint: "Drag to throw a planet. Changes add up.",
+  stack: true,
   controls: [
     { type: "range", id: "sunm", label: "Sun mass", min: 0.5, max: 2, step: 0.05, val: 1, unit: "× Sun" },
     { type: "select", id: "view", label: "View", live: true, options: [["inner", "Inner planets"], ["mid", "Out to Jupiter"], ["outer", "Whole system"]], val: "inner" },

@@ -34,6 +34,8 @@ export class SimEngine {
   base!: BaseWorld;
   alt: BaseWorld | null = null;
   whatIf: string | null = null;
+  /** What-ifs applied to the changed world, in order (one entry unless the sandbox stacks). */
+  applied: string[] = [];
   history!: History;
   speedIdx: number;
   playing = true;
@@ -55,6 +57,7 @@ export class SimEngine {
     this.base = this.sb.init(this.params, this.seed);
     this.alt = null;
     this.whatIf = null;
+    this.applied = [];
     this.history = { t: [], base: {}, alt: {}, forkT: null };
     for (const m of this.sb.metrics) { this.history.base[m.k] = []; this.history.alt[m.k] = []; }
     this.sample();
@@ -65,6 +68,7 @@ export class SimEngine {
     this.alt = structuredClone(this.base);
     this.sb.apply(this.alt, id, this.params, this.ui);
     this.whatIf = id;
+    this.applied = [id];
     this.history.forkT = this.base.t;
     for (const m of this.sb.metrics) this.history.alt[m.k] = this.history.t.map(() => null);
     this.sample();
@@ -75,11 +79,19 @@ export class SimEngine {
   applyToAlt(id: string): void {
     if (!this.alt) return this.fork(id);
     this.sb.apply(this.alt, id, this.params, this.ui);
+    this.applied.push(id);
+  }
+
+  /** A what-if click: re-forks in split worlds; adds to the changed world in stacking ones. */
+  change(id: string): void {
+    if (this.sb.stack && this.alt) { this.applyToAlt(id); this.playing = true; }
+    else this.fork(id);
   }
 
   dropFork(): void {
     this.alt = null;
     this.whatIf = null;
+    this.applied = [];
     this.history.forkT = null;
     for (const m of this.sb.metrics) this.history.alt[m.k] = this.history.t.map(() => null);
   }
@@ -121,9 +133,17 @@ export class SimEngine {
     return { base: this.sb.read(this.base, this.params), alt: this.alt ? this.sb.read(this.alt, this.params) : null };
   }
 
+  labelOf(id: string): string {
+    if (id === "throw") return "Throw in a planet";
+    return this.sb.whatifs.find((x) => x[0] === id)?.[1] ?? "";
+  }
+
+  /** "A", or for stacked changes "A + B ×2 + C" in first-applied order. */
   whatIfLabel(): string {
-    if (this.whatIf === "throw") return "Throw in a planet";
-    return this.sb.whatifs.find((x) => x[0] === this.whatIf)?.[1] ?? "";
+    const ids = this.applied.length ? this.applied : this.whatIf ? [this.whatIf] : [];
+    const n = new Map<string, number>();
+    for (const id of ids) n.set(id, (n.get(id) ?? 0) + 1);
+    return [...n].map(([id, k]) => this.labelOf(id) + (k > 1 ? " ×" + k : "")).join(" + ");
   }
 
   /** Merge both worlds' logs: shared history, base-only and what-if-only events. */
@@ -138,6 +158,7 @@ export class SimEngine {
   }
 
   rects(W: number, H: number): StageRect[] {
+    if (this.sb.stack) return [{ x: 0, y: 0, w: W, h: H, world: this.alt ?? this.base, alt: !!this.alt }];
     if (!this.alt) return [{ x: 0, y: 0, w: W, h: H, world: this.base, alt: false }];
     const g = 6;
     return W >= 640
@@ -153,7 +174,9 @@ export class SimEngine {
       ctx.translate(r.x, r.y);
       ctx.beginPath(); ctx.rect(0, 0, r.w, r.h); ctx.clip();
       this.sb.draw({ ctx, w: r.w, h: r.h, p: this.params, isAlt: r.alt, ui: this.ui }, r.world);
-      const label = r.alt ? "What if: " + this.whatIfLabel() : this.alt ? "No change" : "Now · pick a what-if to fork this world";
+      const label = r.alt
+        ? (this.sb.stack ? "Changed: " : "What if: ") + this.whatIfLabel()
+        : this.alt ? "No change" : this.sb.stack ? "Now · pick changes to make" : "Now · pick a what-if to fork this world";
       const lw = chip(ctx, label.toUpperCase(), 8, 8, r.alt ? STAGE.alt : STAGE.base, "500 12px " + FONT.body, r.w - 32);
       const time = this.sb.fmtT(r.world.t);
       ctx.font = "500 12px " + FONT.mono;
@@ -161,7 +184,7 @@ export class SimEngine {
       if (r.w > lw + tw + 50) chip(ctx, time, r.w - tw - 24, 8, STAGE.ink, "500 12px " + FONT.mono);
       ctx.restore();
     }
-    if (this.alt) {
+    if (this.alt && !this.sb.stack) {
       // Dashed hairline in the split gap
       const v = W >= 640;
       ctx.strokeStyle = STAGE.line; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);

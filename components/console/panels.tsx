@@ -37,16 +37,22 @@ export function WorldHeader({ engine }: { engine: SimEngine }) {
 }
 
 export function WhatIfList({ engine, onChange }: P) {
+  const stack = !!engine.sb.stack;
+  const count = (id: string) => engine.applied.filter((x) => x === id).length;
   return (
     <section>
-      <h3 className="headline">What if</h3>
+      <h3 className="headline">{stack ? "Make changes" : "What if"}</h3>
       <div className="forks">
-        {engine.sb.whatifs.map(([id, label]) => (
-          <button key={id} className="fork" aria-pressed={engine.whatIf === id} onClick={() => { engine.fork(id); onChange(); }}>
-            <Icon name="fork" />
-            {label}
-          </button>
-        ))}
+        {engine.sb.whatifs.map(([id, label]) => {
+          const n = stack ? count(id) : engine.whatIf === id ? 1 : 0;
+          return (
+            <button key={id} className="fork" aria-pressed={n > 0} onClick={() => { engine.change(id); onChange(); }}>
+              <Icon name="fork" />
+              {label}
+              {n > 1 && <span className="count" aria-label={`applied ${n} times`}>×{n}</span>}
+            </button>
+          );
+        })}
       </div>
     </section>
   );
@@ -59,7 +65,7 @@ export function Readouts({ engine }: { engine: SimEngine }) {
     <section>
       <h3 className="headline">Right now</h3>
       <table>
-        <thead><tr><th /><th>No change</th>{alt && <th>What if</th>}</tr></thead>
+        <thead><tr><th /><th>No change</th>{alt && <th>{sb.stack ? "With changes" : "What if"}</th>}</tr></thead>
         <tbody>
           {sb.metrics.map((m) => (
             <tr key={m.k}>

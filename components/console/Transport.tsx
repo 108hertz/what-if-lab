@@ -7,6 +7,8 @@ import { FullscreenButton } from "./fullscreen";
 export default function Transport({ engine, onChange, fullscreen }: { engine: SimEngine; onChange: () => void; fullscreen?: { on: boolean; toggle: () => void } }) {
   const act = (fn: () => void) => () => { fn(); onChange(); };
   const speeds = engine.sb.speeds;
+  const stack = !!engine.sb.stack;
+  const close = stack ? "Undo all changes" : "Close what-if";
   return (
     // "tight": a stepper plus Close what-if; on narrow screens Play/Pause goes icon-only to keep one row
     <div className={speeds.length > 4 && engine.alt ? "transport tight" : "transport"}>
@@ -31,8 +33,8 @@ export default function Transport({ engine, onChange, fullscreen }: { engine: Si
         </div>
       )}
       <button className="btn" aria-label="Restart" title="Restart" onClick={act(() => engine.restart())}><Icon name="restart" size={18} /><span className="btn-text">Restart</span></button>
-      {engine.alt && <button className="btn" aria-label="Close what-if" title="Close what-if" onClick={act(() => engine.dropFork())}><Icon name="close" size={18} /><span className="btn-text">Close what-if</span></button>}
-      <span className="hint">{engine.sb.hint ?? (fullscreen?.on ? "Leave full screen to ask a what-if." : "Pick a question. The world splits here.")}</span>
+      {engine.alt && <button className="btn" aria-label={close} title={close} onClick={act(() => engine.dropFork())}><Icon name="close" size={18} /><span className="btn-text">{close}</span></button>}
+      <span className="hint">{engine.sb.hint ?? (fullscreen?.on ? "Leave full screen to ask a what-if." : stack ? "Pick changes. They add up in this world." : "Pick a question. The world splits here.")}</span>
       {fullscreen && <FullscreenButton {...fullscreen} />}
     </div>
   );

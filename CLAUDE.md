@@ -96,6 +96,8 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 - **Determinism**: never use `Math.random()` in `lib/sim` or `worlds/*/sim.ts`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
   so forks and tests are reproducible. Decorative-only randomness in `draw` must be derived from index/hash.
+- **Stacking** (`Sandbox.stack`, change 0015): solar and galaxy show one world; what-ifs add up via
+  `engine.change()`, so their `apply()` must work on an already-changed world. Other worlds split and re-fork.
 - Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
   matching text and time, so keep event text stable for the same event.
 - Time units are per sandbox (`fmtT` formats them): galaxy 100 Myr, solar years, earth years, country
@@ -121,7 +123,10 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   Up to 10 galaxies (owner indices never reused), ~4,000-star budget; what-if settings are `live` controls
   read in `apply()`. Fast passes escape friction only well above escape speed (fly-through aims 80 kly off).
 - **solar**: leapfrog N-body, G = 4π² (AU, yr, M☉), dt ≤ 0.0015 yr; merges on collision radius.
-- **earth**: 0-D carbon/temperature model, 35-yr thermal lag, sea level from expansion + ice above 2 °C.
+- **earth**: 0-D CO₂ + methane model, forcing (incl. pollution haze ∝ emissions) → temperature with a 35-yr lag;
+  sea level from expansion + ice above 2 °C (+ Greenland/West Antarctica when tipping points are on). The
+  stage (`worlds/earth/scene.ts`) is a painted fjord town; ambient motion uses a draw-only renderer clock.
+  `mix` ("Build my own future") snapshots the live "My future" settings into the world at the fork.
 - **country**: aggregate growth model + 260 household agents (tax, corruption skim, yard-sale trades);
   Gini/poverty emerge from agents and feed back into stability.
 - **animals**: Primer-like agents; cost ∝ size³·speed² + senses; mutation σ 7%. Stabilisers (keep them

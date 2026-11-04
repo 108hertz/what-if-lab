@@ -61,7 +61,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
             <button key={x.k} aria-pressed={x === m} onClick={() => setMetric(i)}>{x.label}</button>
           ))}
         </div>
-        <div className="legend micro"><span><i className="b" />No change</span><span><i />What if</span></div>
+        <div className="legend micro"><span><i className="b" />No change</span><span><i />{engine.sb.stack ? "With changes" : "What if"}</span></div>
       </div>
       <canvas ref={ref} className="chart" aria-label={`${m.label} over time`} />
     </>

@@ -115,6 +115,8 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   defaultSpeed: number;
   /** Stop advancing once world.t reaches this. */
   maxT?: number;
+  /** Changes add up in one world: no split stage, every what-if applies to the changed world (change 0015). */
+  stack?: boolean;
   metrics: Metric[];
   fmtT(t: number): string;
   init(p: P, seed: number): W;

@@ -18,7 +18,7 @@ export const throwPlanet: StageInteraction = {
     if (!cam || Math.hypot(d.x1 - d.x0, d.y1 - d.y0) <= 2) return false;
     const k = 4 / cam.sc;
     engine.ui.pending = { x: cam.cx + (d.x0 - cam.W / 2) / cam.sc, y: cam.cy + (d.y0 - cam.H / 2) / cam.sc, vx: (d.x1 - d.x0) * k, vy: (d.y1 - d.y0) * k };
-    if (d.alt && engine.alt) engine.applyToAlt("throw");
+    if (engine.sb.stack || (d.alt && engine.alt)) engine.change("throw");
     else engine.fork("throw");
     return true;
   },
