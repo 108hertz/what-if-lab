@@ -153,28 +153,38 @@ export interface Change {
   d: TraitDelta;      // effect in trait points at "medium"
   pf: number;         // how much lasts (0–1)
   style?: string;     // parenting-style changes: the effect is the difference from the current style
+  len: number;        // how long it usually goes on, in years (0 = a moment, FOREVER = for good) (change 0019)
+  stop: string;       // timeline line when you stop it (stable text)
 }
+/** "For good": a length longer than any life in the model. */
+export const FOREVER = 999;
+/** "How long" settings (used by your next click); "usual" takes each change's own length. */
+export const LEN: Record<string, number> = { moment: 0, year: 1, few: 3, good: FOREVER };
+export const LEN_WORD: Record<string, string> = { usual: "The usual", moment: "A moment", year: "About a year", few: "A few years", good: "For good" };
+/** "for about a year", "for good"… for a length in years. */
+export const lenWord = (len: number) => (len >= FOREVER ? "for good" : len <= 0 ? "just once" : len <= 1 ? "for about a year" : `for about ${Math.round(len)} years`);
+
 export const CHANGES: Record<string, Change> = {
-  authoritative: { q: "What if the parents became warm and firm?", txt: "Parents become warm and firm: clear rules, lots of love", past: "the parents became warm and firm", cap: "parents become warm and firm", kind: "home", d: {}, pf: 1, style: "authoritative" },
-  strict: { q: "What if the parents got much stricter?", txt: "Parents get much stricter", past: "the parents got stricter", cap: "parents get stricter", kind: "home", d: {}, pf: 1, style: "authoritarian" },
-  sibling: { q: "What if a little brother or sister arrived?", txt: "A little brother or sister arrives", past: "a little brother or sister arrived", cap: "a little brother or sister arrives", kind: "home", d: { A: 3, N: 2, E: 1 }, pf: 0.6 },
-  divorce: { q: "What if the parents separated?", txt: "The parents separate and set up two homes", past: "the parents separated", cap: "the parents separate", kind: "home", d: { N: 6, A: -2, C: -2 }, pf: 0.35 },
-  grandparent: { q: "What if a grandparent moved in?", txt: "A grandparent moves in", past: "a grandparent moved in", cap: "a grandparent moves in", kind: "home", d: { A: 3, N: -2, O: 1 }, pf: 0.6 },
-  pet: { q: "What if the family got a dog?", txt: "The family gets a dog", past: "the family got a dog", cap: "the family gets a dog", kind: "home", d: { A: 3, N: -2, C: 1, E: 1 }, pf: 0.6 },
-  money: { q: "What if money got tight for a few years?", txt: "Money gets tight for a few years", past: "money got tight", cap: "money gets tight for a while", kind: "home", d: { N: 4, C: 1, O: -2 }, pf: 0.3 },
-  illness: { q: "What if a parent got seriously ill for a year?", txt: "A parent is seriously ill for a year, then gets better", past: "a parent was ill for a year", cap: "a parent is ill for a year", kind: "home", d: { N: 4, A: 2, C: 2 }, pf: 0.4 },
-  bullied: { q: "What if they were bullied for a year?", txt: "Bullied at school for a year", past: "they were bullied for a year", cap: "bullied at school for a year", kind: "school", d: { N: 6, E: -4, A: -1 }, pf: 0.4 },
-  bestfriend: { q: "What if they found a best friend?", txt: "Finds a best friend", past: "they found a best friend", cap: "finds a best friend", kind: "school", d: { E: 4, N: -3, A: 2 }, pf: 0.6 },
-  teacher: { q: "What if they had a great teacher?", txt: "Has a great teacher", past: "they had a great teacher", cap: "has a great teacher", kind: "school", d: { O: 4, C: 4, N: -1 }, pf: 0.7 },
-  newschool: { q: "What if they changed schools?", txt: "Changes schools", past: "they changed schools", cap: "changes schools", kind: "school", d: { O: 2, N: 3, E: -2 }, pf: 0.3 },
-  mentor: { q: "What if a mentor took an interest in them?", txt: "A mentor takes an interest in them", past: "a mentor took an interest", cap: "a mentor takes an interest", kind: "school", d: { C: 5, O: 4, N: -2 }, pf: 0.7 },
-  sport: { q: "What if they joined a team sport?", txt: "Joins a team sport", past: "they joined a team sport", cap: "joins a team sport", kind: "activity", d: { C: 4, E: 5, N: -3, A: 2 }, pf: 0.6 },
-  music: { q: "What if they learned an instrument?", txt: "Learns an instrument", past: "they learned an instrument", cap: "learns an instrument", kind: "activity", d: { C: 4, O: 4, N: -1 }, pf: 0.7 },
-  reading: { q: "What if they read every night?", txt: "Starts reading every night", past: "they started reading every night", cap: "reads every night", kind: "activity", d: { O: 5, C: 2, A: 1 }, pf: 0.8 },
-  screen: { q: "What if they got lots of screen time?", txt: "Lots of screen time every day begins", past: "lots of screen time began", cap: "lots of screen time begins", kind: "activity", d: { C: -5, N: 4, E: -2, O: -1 }, pf: 0.5 },
-  nature: { q: "What if they spent lots of time outdoors?", txt: "Starts spending lots of time outdoors", past: "they started spending time outdoors", cap: "spends lots of time outdoors", kind: "activity", d: { N: -4, O: 3, C: 1 }, pf: 0.6 },
-  move: { q: "What if the family moved to another country?", txt: "The family moves to another country", past: "the family moved to another country", cap: "the family moves abroad", kind: "move", d: { O: 6, N: 4, E: -3 }, pf: 0.5 },
-  volunteer: { q: "What if they started helping others (volunteering)?", txt: "Starts helping others as a volunteer", past: "they started volunteering", cap: "starts volunteering", kind: "move", d: { A: 5, E: 2, N: -1, C: 1 }, pf: 0.7 },
+  authoritative: { q: "What if the parents became warm and firm?", txt: "Parents become warm and firm: clear rules, lots of love", past: "the parents became warm and firm", cap: "parents become warm and firm", kind: "home", d: {}, pf: 0.5, style: "authoritative", len: FOREVER, stop: "The parents stop being so warm and firm" },
+  strict: { q: "What if the parents got much stricter?", txt: "Parents get much stricter", past: "the parents got stricter", cap: "parents get stricter", kind: "home", d: {}, pf: 0.5, style: "authoritarian", len: FOREVER, stop: "The parents stop being so strict" },
+  sibling: { q: "What if a little brother or sister arrived?", txt: "A little brother or sister arrives", past: "a little brother or sister arrived", cap: "a little brother or sister arrives", kind: "home", d: { A: 3, N: 2, E: 1 }, pf: 0.6, len: FOREVER, stop: "The little brother or sister moves out" },
+  divorce: { q: "What if the parents separated?", txt: "The parents separate and set up two homes", past: "the parents separated", cap: "the parents separate", kind: "home", d: { N: 6, A: -2, C: -2 }, pf: 0.35, len: 0, stop: "The parents get back together" },
+  grandparent: { q: "What if a grandparent moved in?", txt: "A grandparent moves in", past: "a grandparent moved in", cap: "a grandparent moves in", kind: "home", d: { A: 3, N: -2, O: 1 }, pf: 0.6, len: FOREVER, stop: "The grandparent moves out" },
+  pet: { q: "What if the family got a dog?", txt: "The family gets a dog", past: "the family got a dog", cap: "the family gets a dog", kind: "home", d: { A: 3, N: -2, C: 1, E: 1 }, pf: 0.6, len: FOREVER, stop: "The dog goes to live on a farm" },
+  money: { q: "What if money got tight for a few years?", txt: "Money gets tight for a few years", past: "money got tight", cap: "money gets tight for a while", kind: "home", d: { N: 4, C: 1, O: -2 }, pf: 0.3, len: 3, stop: "Money is OK again" },
+  illness: { q: "What if a parent got seriously ill for a year?", txt: "A parent is seriously ill for a year, then gets better", past: "a parent was ill for a year", cap: "a parent is ill for a year", kind: "home", d: { N: 4, A: 2, C: 2 }, pf: 0.4, len: 1, stop: "The parent is well again" },
+  bullied: { q: "What if they were bullied for a year?", txt: "Bullied at school for a year", past: "they were bullied for a year", cap: "bullied at school for a year", kind: "school", d: { N: 6, E: -4, A: -1 }, pf: 0.4, len: 1, stop: "The bullying stops" },
+  bestfriend: { q: "What if they found a best friend?", txt: "Finds a best friend", past: "they found a best friend", cap: "finds a best friend", kind: "school", d: { E: 4, N: -3, A: 2 }, pf: 0.6, len: 5, stop: "The best friend moves away" },
+  teacher: { q: "What if they had a great teacher?", txt: "Has a great teacher", past: "they had a great teacher", cap: "has a great teacher", kind: "school", d: { O: 4, C: 4, N: -1 }, pf: 0.7, len: 1, stop: "The great teacher leaves" },
+  newschool: { q: "What if they changed schools?", txt: "Changes schools", past: "they changed schools", cap: "changes schools", kind: "school", d: { O: 2, N: 3, E: -2 }, pf: 0.3, len: 0, stop: "Settles in at the new school" },
+  mentor: { q: "What if a mentor took an interest in them?", txt: "A mentor takes an interest in them", past: "a mentor took an interest", cap: "a mentor takes an interest", kind: "school", d: { C: 5, O: 4, N: -2 }, pf: 0.7, len: 3, stop: "The mentor moves on" },
+  sport: { q: "What if they joined a team sport?", txt: "Joins a team sport", past: "they joined a team sport", cap: "joins a team sport", kind: "activity", d: { C: 4, E: 5, N: -3, A: 2 }, pf: 0.6, len: FOREVER, stop: "Stops the team sport" },
+  music: { q: "What if they learned an instrument?", txt: "Learns an instrument", past: "they learned an instrument", cap: "learns an instrument", kind: "activity", d: { C: 4, O: 4, N: -1 }, pf: 0.7, len: FOREVER, stop: "Stops playing the instrument" },
+  reading: { q: "What if they read every night?", txt: "Starts reading every night", past: "they started reading every night", cap: "reads every night", kind: "activity", d: { O: 5, C: 2, A: 1 }, pf: 0.8, len: FOREVER, stop: "Stops reading every night" },
+  screen: { q: "What if they got lots of screen time?", txt: "Lots of screen time every day begins", past: "lots of screen time began", cap: "lots of screen time begins", kind: "activity", d: { C: -5, N: 4, E: -2, O: -1 }, pf: 0.5, len: FOREVER, stop: "Screen time is cut back" },
+  nature: { q: "What if they spent lots of time outdoors?", txt: "Starts spending lots of time outdoors", past: "they started spending time outdoors", cap: "spends lots of time outdoors", kind: "activity", d: { N: -4, O: 3, C: 1 }, pf: 0.6, len: FOREVER, stop: "Stops spending so much time outdoors" },
+  move: { q: "What if the family moved to another country?", txt: "The family moves to another country", past: "the family moved to another country", cap: "the family moves abroad", kind: "move", d: { O: 6, N: 4, E: -3 }, pf: 0.5, len: 0, stop: "The family moves back home" },
+  volunteer: { q: "What if they started helping others (volunteering)?", txt: "Starts helping others as a volunteer", past: "they started volunteering", cap: "starts volunteering", kind: "move", d: { A: 5, E: 2, N: -1, C: 1 }, pf: 0.7, len: FOREVER, stop: "Stops volunteering" },
 };
 export const CHANGE_GROUPS: [string, string[]][] = [
   ["Home", ["authoritative", "strict", "sibling", "divorce", "grandparent", "pet", "money", "illness"]],

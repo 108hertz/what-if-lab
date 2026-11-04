@@ -5,10 +5,11 @@ import type { SimEngine } from "@/lib/sim/engine";
 import type { Control } from "@/lib/sim/types";
 import { Icon } from "@/components/ui/Icon";
 import {
-  CHANGES, ENDS, FAMILIES, HOME_OPTIONS, SCIENCE, SHOW, STEPS, STEP_VALUES, TRAITS, WORD, kidName, stepOf, stepWord, type Show,
+  CHANGES, ENDS, FAMILIES, FOREVER, HOME_OPTIONS, LEN_WORD, lenWord, SCIENCE, SHOW, STEPS, STEP_VALUES, TRAITS, WORD, kidName, stepOf, stepWord, type Show,
 } from "./data";
-import { child, familyName, kidLine, planned, story, typicalKid, values, whenOf, why, kindOf, WHATIF_GROUPS, type P as Params, type W } from "./sim";
+import { endOf, child, familyName, kidLine, planned, story, typicalKid, values, whenOf, why, kindOf, WHATIF_GROUPS, type P as Params, type W } from "./sim";
 import { drawPerson, parentLook, reducedMotion, type Look } from "./scene";
+import { stopChange, undoChange } from "./edit";
 import s from "./child.module.css";
 
 type P = { engine: SimEngine; onChange: () => void };
@@ -197,7 +198,16 @@ function ChangeSettings({ engine, onChange }: P) {
           <Icon name="chevron" size={18} />
         </span>
       </label>
-      <p className={`small ${s.whenLine}`}>{later ? `Your next click happens at age ${Math.floor(at)}.` : "Your next click happens now."}</p>
+      <label className="ctl" htmlFor="child-len">
+        <span className="ctl-l">How long</span>
+        <span className="select">
+          <select id="child-len" value={p.s_len ?? "usual"} onChange={(e) => set("s_len", e.target.value)}>
+            {Object.entries(LEN_WORD).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+          </select>
+          <Icon name="chevron" size={18} />
+        </span>
+      </label>
+      <p className={`small ${s.whenLine}`}>{later ? `Your next click happens at age ${Math.floor(at)}.` : "Your next click happens now."}{(p.s_len ?? "usual") === "usual" ? " Each change lasts as long as it usually does." : ""}</p>
     </div>
   );
 }
@@ -212,7 +222,6 @@ export function ChangeList({ engine, onChange }: P) {
     engine.change(id); onChange();
     setPressed(id); setTimeout(() => setPressed((x) => (x === id ? null : x)), 600);
   };
-  const next = planned(w);
   return (
     <section className={s.changes}>
       <h3 className="headline">Things that can happen</h3>
@@ -233,13 +242,42 @@ export function ChangeList({ engine, onChange }: P) {
           })}
         </div>
       ))}
-      {next.length > 0 && (
-        <div className={s.coming}>
-          <span className="ctl-head">Coming up</span>
-          {next.map((m, i) => <p key={i}>Age {Math.floor(m.age)}: {CHANGES[m.id].cap}</p>)}
-        </div>
-      )}
+      <YourChanges engine={engine} onChange={onChange} />
     </section>
+  );
+}
+
+/** Every change made so far, in order: when, how long, whether it is still going on; stop or undo each one (change 0019). */
+function YourChanges({ engine, onChange }: P) {
+  const alt = engine.alt as W | null;
+  if (!alt || !alt.mods.length) return null;
+  const t = alt.t;
+  const state = (m: W["mods"][number]) => {
+    if (!m.on) return "coming up";
+    if (m.stop <= t) return `stopped at ${Math.floor(m.stop)}`;
+    if (endOf(m) >= FOREVER) return "going on";
+    if (endOf(m) > t) return `until about ${Math.round(endOf(m))}`;
+    return "over";
+  };
+  return (
+    <div className={s.coming}>
+      <span className="ctl-head">Your changes</span>
+      <ul className={s.mine}>
+        {alt.mods.map((m, i) => {
+          const canStop = m.on && !m.sn && m.stop >= FOREVER && endOf(m) > t;
+          return (
+            <li key={i}>
+              <span className={s.mineTxt}>
+                <span>Age {Math.floor(m.age)}: {CHANGES[m.id].cap}</span>
+                <span className="small">{lenWord(m.end - m.age)} · {state(m)}</span>
+              </span>
+              {canStop && <button type="button" className="btn" onClick={() => { stopChange(engine, i); onChange(); }} aria-label={`Stop: ${CHANGES[m.id].cap}`}>Stop</button>}
+              <button type="button" className="btn" onClick={() => { undoChange(engine, i); onChange(); }} aria-label={`Undo: ${CHANGES[m.id].cap}`}>Undo</button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
@@ -341,7 +379,7 @@ export function AboutScience() {
 
 /* ───────────── Tune ───────────── */
 
-const TUNE_IDS = ["inherit", "luck", "fade", "events", "s_age", "s_size"];
+const TUNE_IDS = ["inherit", "luck", "fade", "events", "s_age", "s_size", "s_len"];
 
 export function ChildTune({ engine, onChange }: P) {
   const ctls = child.controls.filter((c): c is Extract<Control, { type: "select" }> => c.type === "select" && TUNE_IDS.includes(c.id));

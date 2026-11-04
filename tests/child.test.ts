@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { SimEngine } from "@/lib/sim/engine";
 import { defaultParams } from "@/lib/sim/core";
-import { averages, child, compare, kidLine, story, values, why, type P, type W } from "@/worlds/child/sim";
+import { averages, child, compare, kidLine, readAt, stopMod, story, values, why, type P, type W } from "@/worlds/child/sim";
+import { undoChange } from "@/worlds/child/edit";
 import { CHANGES, CHANGE_GROUPS, CHANGE_IDS, FAMILIES, FAMILY_IDS, TRAITS } from "@/worlds/child/data";
 
 const FRAME = 1 / 60;
@@ -183,5 +184,127 @@ describe("child: words", () => {
     expect(story({ b, a, p }).join(" ")).toMatch(/little brother or sister/);
     expect(compare(a, b).up.length + compare(a, b).same.length).toBe(5);
     expect(kidLine(0, 12, [80, 50, 75, 50, 30])).toMatch(/^\w+, 12: /);
+  });
+});
+
+describe("child: how long, stop and undo (change 0019)", () => {
+  const UI = { drag: null, cams: [null, null] as [null, null], pending: null };
+  const avg = (w: W, k: string) => child.read(w, params())[k] ?? NaN;
+
+  it("every change has a usual length and a stop line", () => {
+    for (const id of CHANGE_IDS) {
+      expect(CHANGES[id].len).toBeGreaterThanOrEqual(0);
+      expect(CHANGES[id].stop.length).toBeGreaterThan(5);
+    }
+  });
+
+  it("a lasting change keeps its full effect; a one-off fades back towards its lasting part", () => {
+    const run = (len: string) => {
+      const p = params({ s_len: len, fade: "fast" });
+      const w = child.init(p, 8);
+      to(w, p, 6);
+      child.apply(w, "sport", p, UI);
+      to(w, p, 30);
+      return avg(w, "E");
+    };
+    const p = params();
+    const b = child.init(p, 8);
+    to(b, p, 30);
+    const base = avg(b, "E"), good = run("good"), moment = run("moment");
+    expect(good).toBeGreaterThan(moment);
+    expect(moment).toBeGreaterThan(base);
+  });
+
+  it("stopping a lasting change: the lasting part stays, the rest fades, and the stop is noted once", () => {
+    const p = params({ s_len: "good" });
+    const b = child.init(p, 9);
+    to(b, p, 6);
+    const a = structuredClone(b);
+    child.apply(a, "sport", p, UI);
+    const s = structuredClone(a);
+    to(s, p, 10);
+    stopMod(s, 0);
+    expect(s.log.filter((e) => e.txt === CHANGES.sport.stop)).toHaveLength(1);
+    stopMod(s, 0);
+    expect(s.log.filter((e) => e.txt === CHANGES.sport.stop)).toHaveLength(1);
+    for (const w of [a, b, s]) to(w, p, 35);
+    const [kept, stopped, none] = [avg(a, "E"), avg(s, "E"), avg(b, "E")];
+    expect(kept).toBeGreaterThan(stopped);
+    expect(stopped).toBeGreaterThan(none);
+  });
+
+  it("a stop set for a later age happens and is noted then; past ages mean now", () => {
+    const p = params({ s_len: "good" });
+    const w = child.init(p, 3);
+    to(w, p, 5);
+    child.apply(w, "music", p, UI);
+    stopMod(w, 0, 12);
+    expect(w.mods[0].stop).toBe(12);
+    to(w, p, 11.5);
+    expect(w.log.some((e) => e.txt === CHANGES.music.stop)).toBe(false);
+    to(w, p, 12.5);
+    const e = w.log.find((x) => x.txt === CHANGES.music.stop);
+    expect(e && e.t).toBeGreaterThanOrEqual(12);
+  });
+
+  it("the random draws never depend on changes (so undo can take one out)", () => {
+    const p = params();
+    const b = child.init(p, 21);
+    to(b, p, 4);
+    const a = structuredClone(b);
+    for (const id of ["sport", "bullied", "divorce", "reading"]) child.apply(a, id, p, UI);
+    to(a, p, 20); to(b, p, 20);
+    expect(a.rs).toBe(b.rs);
+    expect(a.k).toEqual(b.k);
+  });
+
+  /** Same ticks every time; the click at index `skip` is left out. */
+  const session = (ids: string[], skip = -1) => {
+    const e = new SimEngine(child, params(), 42);
+    for (let i = 0; i < 90; i++) e.tick(FRAME);
+    for (const [k, id] of ids.entries()) {
+      if (k === 1) e.setParam("s_age", "9");
+      if (k !== skip) e.change(id);
+      for (let i = 0; i < 40; i++) e.tick(FRAME);
+    }
+    e.speedIdx = 3;
+    for (let i = 0; i < 300; i++) e.tick(FRAME);
+    return e;
+  };
+
+  it("undo one change = the same run without that click (now exactly, the past closely)", () => {
+    for (const [all, drop] of [[["sport", "bullied", "sibling"], 1], [["authoritative", "strict", "pet"], 0], [["pet", "pet", "music"], 1]] as [string[], number][]) {
+      const a = session(all), b = session(all, drop);
+      undoChange(a, drop);
+      expect(a.readouts()).toEqual(b.readouts());
+      expect(a.applied).toEqual(b.applied);
+      expect((a.alt as W).mods).toEqual((b.alt as W).mods);
+      expect(a.timeline().map((x) => x.txt)).toEqual(b.timeline().map((x) => x.txt));
+      // The past is recomputed from yearly snapshots: close, not exact
+      const ha = a.history.alt.Calm, hb = b.history.alt.Calm;
+      const last = (h: (number | null)[]) => h.filter((v): v is number => v != null);
+      const xa = last(ha), xb = last(hb);
+      expect(xa.length).toBeGreaterThan(10);
+      const n = Math.min(xa.length, xb.length);
+      for (let i = 0; i < n; i++) expect(Math.abs(xa[xa.length - 1 - i] - xb[xb.length - 1 - i])).toBeLessThan(1.5);
+    }
+  });
+
+  it("undoing the only change goes back to no changes", () => {
+    const e = session(["sport"]);
+    undoChange(e, 0);
+    expect(e.alt).toBeNull();
+    expect(e.applied).toEqual([]);
+  });
+
+  it("past values from snapshots match the values that were read then", () => {
+    const p = params();
+    const w = child.init(p, 13);
+    const seen: [number, Record<string, number | null>][] = [];
+    while (w.t < 30) { child.step(w, 0.37, p); seen.push([w.t, child.read(w, p)]); }
+    for (const [t, r] of seen.filter((_, i) => i % 9 === 0)) {
+      const q = readAt(w, t);
+      for (const k of ["O", "C", "E", "A", "Calm"]) expect(Math.abs((q[k] ?? NaN) - (r[k] ?? NaN))).toBeLessThan(1.5);
+    }
   });
 });

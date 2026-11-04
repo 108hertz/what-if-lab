@@ -423,7 +423,7 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
   right.forEach((r, k) => drawPerson(c, spots[k], fy, r.h, r.look, { t }));
 
   // Props from changes and traits
-  const has = (id: string) => w.mods.some((m) => m.id === id && m.on && w.t >= m.age);
+  const has = (id: string) => during(w, id);
   const hold: Hold = has("music") ? "violin" : has("reading") ? "book" : has("screen") ? "tablet" : cO >= 55 && A > 3 ? "magnifier" : null;
   const wavePhase = (t + 1.3) % 5.2, waving = !reduced && cE >= 55 && wavePhase < 1.6 ? Math.sin((wavePhase / 1.6) * Math.PI) : cE >= 62 && reduced ? 1 : 0;
   const reach = kind && right.length ? 1 : 0;

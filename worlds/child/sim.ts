@@ -2,10 +2,12 @@ import type { Params, Sandbox } from "@/lib/sim/types";
 import { fmtNum, gauss, note, num, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
 import {
-  CALMER_AGAIN, CHANGES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LOW, LUCK,
+  CALMER_AGAIN, CHANGES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
   MILESTONES, MORE, PHRASE, SHORT, SHOW, SIZE, STEPS, STYLE, TALLY_AGES, TRAITS, WORD, kidName, stepWord, type Show, type TraitDelta,
 } from "./data";
-import { averages, counts, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, values, type Kid, type W } from "./model";
+import {
+  averages, counts, endOf, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, snapshot, SNAP_AGES, values, valuesAt, type Kid, type W,
+} from "./model";
 
 export * from "./model";
 import { drawChild } from "./scene";
@@ -23,7 +25,7 @@ import { drawChild } from "./scene";
  */
 export type P = Params & {
   family: string; from?: string; style: string; sib: string; home: string; money: string; place: string; school: string; screens: string;
-  inherit: string; luck: string; fade: string; events: string; s_age: string; s_size: string;
+  inherit: string; luck: string; fade: string; events: string; s_age: string; s_size: string; s_len?: string;
 };
 
 /* ───────────── params → world ───────────── */
@@ -53,6 +55,12 @@ export const WHATIF_GROUPS = [
 export function whenOf(w: Pick<W, "t">, p: Pick<P, "s_age">): number {
   const a = p.s_age === "now" || p.s_age == null ? NaN : Number(p.s_age);
   return Number.isFinite(a) && a > w.t ? a : w.t;
+}
+
+/** How long a click's change goes on, in years, from the "How long" setting ("usual" = the change's own length). */
+export function lenOf(id: string, p: Pick<P, "s_len">): number {
+  const v = String(p.s_len ?? "usual");
+  return v in LEN ? LEN[v] : CHANGES[id]?.len ?? 0;
 }
 
 /* ───────────── the sandbox ───────────── */
@@ -95,6 +103,7 @@ export const child: Sandbox<W, P> = {
     { type: "heading", label: "Change settings (used by your next click)" },
     { type: "select", id: "s_age", label: "When it happens", options: [["now", "Now"], ...Array.from({ length: 17 }, (_, i) => [String(i + 1), `At age ${i + 1}`] as [string, string])], val: "now", live: true },
     { type: "select", id: "s_size", label: "How big", options: [["small", "Small"], ["medium", "Medium"], ["big", "Big"]], val: "medium", live: true },
+    { type: "select", id: "s_len", label: "How long", options: Object.entries(LEN_WORD) as [string, string][], val: "usual", live: true },
   ],
   whatifs: CHANGE_IDS.map((id) => [id, SHORT[id]]),
   speeds: [[0.5, "½ yr/s"], [1, "1 yr/s"], [2, "2 yr/s"], [5, "5 yr/s"]],
@@ -122,6 +131,7 @@ export const child: Sandbox<W, P> = {
       t: 1, rs: seed, log: [], f: {}, k: [], mods: [],
       b0: TRAITS.map((k) => 50 + h * ((num(p, "a" + k) + num(p, "b" + k)) / 2 - 50)),
       env: envOf(p), tau, pk, luck, evMul: EVERYDAY_MUL[String(p.events)] ?? 1, style: String(p.style ?? HOME_DEFAULTS.style), c15: NaN,
+      snap: new Float32Array(SNAP_AGES * N_KIDS * 5).fill(NaN),
     };
     for (let j = 0; j < N_KIDS; j++) {
       const kid: Kid = { gd: [], z0: [], z: [], r: [], evL: [], evF: [], em: 0, j: 0 };
@@ -131,6 +141,7 @@ export const child: Sandbox<W, P> = {
       kid.j = rng(w);
       w.k.push(kid);
     }
+    snapshot(w, 1);
     note(w, MILESTONES[0][1], MILESTONES[0][2]);
     return w;
   },
@@ -153,8 +164,12 @@ export const child: Sandbox<W, P> = {
         }
       }
       w.t = Math.min(60, w.t + h);
-      // Scheduled changes happen when the clock reaches their age
-      for (const m of w.mods) if (!m.on && w.t >= m.age) { m.on = 1; note(w, CHANGES[m.id].txt); }
+      snapshot(w, Math.floor(w.t + 1e-9));
+      // Scheduled changes happen when the clock reaches their age; changes you stopped for a later age stop then
+      for (const m of w.mods) {
+        if (!m.on && w.t >= m.age) { m.on = 1; note(w, CHANGES[m.id].txt); }
+        if (m.on && !m.sn && m.stop < FOREVER && w.t >= m.stop) { m.sn = 1; note(w, CHANGES[m.id].stop); }
+      }
       for (const [age, txt, key] of MILESTONES) if (w.t >= age) note(w, txt, key);
       if (w.t >= 15 && !Number.isFinite(w.c15)) w.c15 = calmAvg(w);
       if (w.t >= 23 && !w.f.calm && Number.isFinite(w.c15) && calmAvg(w) > w.c15 + 1) note(w, CALMER_AGAIN, "calm");
@@ -165,7 +180,7 @@ export const child: Sandbox<W, P> = {
   apply(w, id, p) {
     const c = CHANGES[id];
     if (!c) return;
-    const size = String(p.s_size ?? "medium"), s = SIZE[size] ?? 1, age = whenOf(w, p), pf = lasting(c.pf, w.pk);
+    const size = String(p.s_size ?? "medium"), s = SIZE[size] ?? 1, age = whenOf(w, p), pf = lasting(c.pf, w.pk), len = lenOf(id, p);
     let d: TraitDelta = {};
     if (c.style) {
       for (const k of TRAITS) d[k] = Math.max(-7, Math.min(7, (STYLE[c.style][k] ?? 0) - (STYLE[w.style]?.[k] ?? 0))) * s; // a style switch is one change: kept within ±7 points
@@ -173,24 +188,70 @@ export const child: Sandbox<W, P> = {
     } else for (const k of TRAITS) if (c.d[k]) d[k] = c.d[k]! * s;
     if (!Object.values(d).some((x) => x)) d = {};
     const on = age <= w.t ? 1 : 0;
-    w.mods.push({ id, age, s: size, d, pf: c.style ? 1 : pf, on });
-    if (on) note(w, c.style && !Object.keys(d).length ? "The parents were already raising them this way" : c.txt);
+    w.mods.push({ id, age, s: size, d, pf, on, end: age + len, stop: FOREVER, sn: 0 });
+    if (on) note(w, c.style && !Object.keys(d).length ? ALREADY : c.txt);
   },
 
   read(w) {
-    const v = values(w), r: Record<string, number> = {};
-    SHOW.forEach((s, i) => {
-      const xs = v[i];
-      r[s] = mean(xs); r[`${s}_lo`] = quant(xs, 0.25); r[`${s}_hi`] = quant(xs, 0.75);
-      r[`hi${s}`] = xs.filter((x) => x >= HIGH).length; r[`lo${s}`] = xs.filter((x) => x <= LOW).length;
-    });
-    return r;
+    return metricsOf(values(w));
   },
 
   draw({ ctx, w: Wd, h: Hd, p, base }, w) {
     drawChild(ctx, Wd, Hd, w, (base as W | undefined) ?? null, p);
   },
 };
+
+/** The metrics for a set of display values v[trait][kid]. */
+function metricsOf(v: number[][]): Record<string, number> {
+  const r: Record<string, number> = {};
+  SHOW.forEach((s, i) => {
+    const xs = v[i];
+    r[s] = mean(xs); r[`${s}_lo`] = quant(xs, 0.25); r[`${s}_hi`] = quant(xs, 0.75);
+    r[`hi${s}`] = xs.filter((x) => x >= HIGH).length; r[`lo${s}`] = xs.filter((x) => x <= LOW).length;
+  });
+  return r;
+}
+
+/** The metrics at a past age (≤ now), recomputed from the yearly snapshots and the changes as they are now. */
+export const readAt = (w: W, a: number) => metricsOf(valuesAt(w, a));
+
+/* ───────────── editing changes (change 0019) ───────────── */
+
+const near = (x: number, y: number) => Math.abs(x - y) < 0.25;
+const ALREADY = "The parents were already raising them this way";
+
+/** Stop a change at an age (now, or later; never in the past). Noted when it happens. */
+export function stopMod(w: W, idx: number, age = w.t) {
+  const m = w.mods[idx];
+  if (!m || m.sn) return;
+  const at = Math.max(age, w.t, m.age);
+  if (at >= endOf(m)) return; // it ends by itself before then
+  m.stop = at;
+  if (m.on && w.t >= at) { m.sn = 1; note(w, CHANGES[m.id].stop); }
+}
+
+/**
+ * Take one change out of the changed world as if it never happened. The random draws never depend on changes, so the kids'
+ * own parts are untouched; parenting-style changes are worked out again from the start, and its timeline lines go.
+ */
+export function removeMod(w: W, start: Pick<W, "style">, idx: number) {
+  const [m] = w.mods.splice(idx, 1);
+  if (!m) return;
+  const c = CHANGES[m.id], drop = (txts: string[], t: number) => {
+    for (let i = w.log.length - 1; i >= 0; i--) if (txts.includes(w.log[i].txt) && near(w.log[i].t, t)) { w.log.splice(i, 1); return; }
+  };
+  if (m.on) drop([c.txt, ALREADY], m.age);
+  if (m.sn) drop([c.stop], m.stop);
+  let style = start.style;
+  for (const x of w.mods) {
+    const cx = CHANGES[x.id];
+    if (!cx.style) continue;
+    const s = SIZE[x.s] ?? 1, d: TraitDelta = {};
+    for (const k of TRAITS) { const v = Math.max(-7, Math.min(7, (STYLE[cx.style][k] ?? 0) - (STYLE[style]?.[k] ?? 0))) * s; if (v) d[k] = v; }
+    x.d = d; style = cx.style;
+  }
+  w.style = style;
+}
 
 function calmAvg(w: W) { return mean(w.k.map((kid) => 100 - kidValue(w, kid, 4))); }
 
@@ -249,9 +310,9 @@ export function story({ b, a, p }: { b: W; a: W | null; p: P }): string[] {
     for (const m of happened(a)) {
       if (seen.has(m.id) || out.length >= 4) continue;
       seen.add(m.id);
-      const ch = CHANGES[m.id], e = Math.floor(w.t - m.age), worry = (m.d.N ?? 0) > 2;
+      const ch = CHANGES[m.id], end = endOf(m), worry = (m.d.N ?? 0) > 2;
       if (!Object.keys(m.d).length) continue;
-      const fadeTxt = m.pf < 0.5 && e > 6 ? (worry ? ", then most bounced back" : ", and much of it faded later") : "";
+      const fadeTxt = m.stop <= w.t ? `, until it stopped at ${Math.floor(m.stop)}` : m.pf < 0.5 && w.t - end > 6 ? (worry ? ", then most bounced back" : ", and much of it faded later") : "";
       const at = Math.floor(m.age);
       out.push(`When ${ch.past} at ${at}, most kids became ${effectWords(m.d)}${fadeTxt}.`);
     }

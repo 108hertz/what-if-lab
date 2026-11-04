@@ -1,22 +1,34 @@
 import type { BaseWorld } from "@/lib/sim/types";
-import { HIGH, LOW, MATURATION, SHOW, TRAITS, type Show, type TraitDelta } from "./data";
+import { FOREVER, HIGH, LOW, MATURATION, SHOW, TRAITS, type Show, type TraitDelta } from "./data";
 
 /**
  * The child model's maths (change 0018), shared by the rules (sim.ts) and the stage (scene.ts). Framework-free.
  */
 /** One possible kid. Per trait (model order O C E A N): genes, chance start, chance drift, how strongly life affects them, lasting and fading parts of everyday events. */
 export interface Kid { gd: number[]; z0: number[]; z: number[]; r: number[]; evL: number[]; evF: number[]; em: number; j: number }
-/** A change: when it happens (age), its effect per trait (already × size), how much lasts, whether it has happened yet. */
-export interface Mod { id: string; age: number; s: string; d: TraitDelta; pf: number; on: 0 | 1 }
+/**
+ * A change: when it happens (age), its effect per trait (already × size), how much lasts, whether it has happened yet.
+ * Change 0019: `end` = when the cause stops by itself (age + its length; FOREVER = for good), `stop` = the age you stopped it
+ * at (FOREVER = not stopped), `sn` = the stop has been noted. While the cause goes on the full effect stays; after it ends
+ * the lasting part `pf` stays and the rest fades.
+ */
+export interface Mod { id: string; age: number; s: string; d: TraitDelta; pf: number; on: 0 | 1; end: number; stop: number; sn: 0 | 1 }
 export interface W extends BaseWorld {
   k: Kid[]; mods: Mod[];
   /** Family starting point per trait, home effect per trait, fading time scale, lasting-part shift, everyday-event rate. */
   b0: number[]; env: number[]; tau: number; pk: number; evMul: number; luck: number; style: string;
   /** Average calm at 15 (for the "calmer again" milestone). */
   c15: number;
+  /**
+   * Yearly snapshots of each kid's chance-and-everyday part (z + evL + evF) at whole ages 0…60, kid-major × 5 traits; NaN
+   * until reached. Lets past values be recomputed exactly enough when a change is undone (change 0019). The random draws do
+   * not depend on changes, so the changed world and the no-change world share these numbers.
+   */
+  snap: Float32Array;
 }
 
 export const N_KIDS = 120;
+export const SNAP_AGES = 61;
 const CAP = 14;
 const clamp99 = (v: number) => Math.max(1, Math.min(99, v));
 const ageW = (a: number) => (a < 18 ? Math.max(0, Math.min(1, (a - 1) / 6)) : Math.max(0.35, 1 - (a - 18) / 15));
@@ -24,18 +36,47 @@ export const lasting = (pf: number, k: number) => (k >= 0 ? pf + (1 - pf) * k : 
 
 /* ───────────── values ───────────── */
 
+/** When a change's cause stops: by itself or because you stopped it. */
+export const endOf = (m: Mod) => Math.min(m.end, m.stop);
+
+/** How much of one change's full effect is there at age a (0–1): ramps up over a year, fades after the cause ends. */
+export function strength(m: Mod, a: number, tau: number): number {
+  if (!m.on || a < m.age) return 0;
+  const end = endOf(m), rampEnd = end > m.age ? end : m.age + 1; // a one-off still builds up over a year; a stopped one stops building
+  const ramp = Math.min(1, Math.min(a, rampEnd) - m.age), since = Math.max(0, a - end);
+  return ramp * (m.pf + (1 - m.pf) * Math.exp(-since / tau)) * (m.age < 18 ? 1 : 0.6);
+}
+
 /** Sum of every change that has happened, for one kid and trait at age a, softly capped so stacks stay plausible. */
 function modPart(w: W, kid: Kid, i: number, a: number): number {
   let raw = 0;
   const k = TRAITS[i];
   for (const m of w.mods) {
-    if (!m.on || a < m.age) continue;
     const dv = m.d[k];
     if (!dv) continue;
-    const e = a - m.age, ramp = Math.min(1, e / 1), fade = m.pf + (1 - m.pf) * Math.exp(-e / w.tau);
-    raw += dv * kid.r[i] * ramp * fade * (m.age < 18 ? 1 : 0.6);
+    raw += dv * kid.r[i] * strength(m, a, w.tau);
   }
   return CAP * Math.tanh(raw / CAP);
+}
+
+/** Keep a yearly snapshot of the chance-and-everyday part of every kid (called by the rules as whole ages pass). */
+export function snapshot(w: W, age: number) {
+  if (age < 0 || age >= SNAP_AGES || !Number.isNaN(w.snap[age * N_KIDS * 5])) return;
+  w.k.forEach((kid, j) => { for (let i = 0; i < 5; i++) w.snap[(age * N_KIDS + j) * 5 + i] = kid.z[i] + kid.evL[i] + kid.evF[i]; });
+}
+
+/** Display values of every kid at a past age a ≤ w.t, from the snapshots (between them: straight lines, ending at now). */
+export function valuesAt(w: W, a: number): number[][] {
+  if (a >= w.t - 1e-9) return values(w);
+  const y0 = Math.max(0, Math.floor(a)), y1 = y0 + 1;
+  const at = (y: number, j: number, i: number) => w.snap[(y * N_KIDS + j) * 5 + i];
+  const now = (kid: Kid, i: number) => kid.z[i] + kid.evL[i] + kid.evF[i];
+  const has1 = y1 < SNAP_AGES && !Number.isNaN(at(y1, 0, 0)), t1 = has1 ? y1 : w.t, g = t1 > y0 ? Math.min(1, (a - y0) / (t1 - y0)) : 1;
+  return SHOW.map((_, i) => w.k.map((kid, j) => {
+    const r1 = has1 ? at(y1, j, i) : now(kid, i), r0 = Number.isNaN(at(y0, j, i)) ? r1 : at(y0, j, i), rest = r0 + (r1 - r0) * g;
+    const x = clamp99(w.b0[i] + kid.gd[i] + kid.z0[i] + ageW(a) * w.env[i] * kid.r[i] + rest + modPart(w, kid, i, a) + MATURATION[TRAITS[i]](a));
+    return i === 4 ? 100 - x : x;
+  }));
 }
 
 /** The four parts of one kid's trait (model order) at age a. */
@@ -96,6 +137,9 @@ export const of100 = (n: number) => Math.round((n * 100) / N_KIDS);
 /** Changes that have happened (in order), and those still waiting for their age. */
 export const happened = (w: W) => w.mods.filter((m) => m.on);
 export const planned = (w: W) => w.mods.filter((m) => !m.on);
-/** Is a change in effect at age a (for `span` years, if given)? */
-export const during = (w: W, id: string, span = Infinity, a = w.t) => w.mods.some((m) => m.id === id && m.on && a >= m.age && a - m.age < span);
+/** Is a change in effect at age a (for `span` years, if given, and not stopped by you)? */
+export const during = (w: W, id: string, span = Infinity, a = w.t) => w.mods.some((m) => m.id === id && m.on && a >= m.age && a - m.age < span && a < m.stop);
+/** Is a change's cause still going on (not ended by itself or stopped)? */
+export const ongoing = (m: Mod, a: number) => m.on === 1 && a >= m.age && a < endOf(m);
+export { FOREVER };
 

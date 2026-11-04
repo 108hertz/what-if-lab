@@ -47,6 +47,11 @@
 @keyframes pop { from { transform: scale(1.5); opacity: 0.4; } }
 .coming { padding-top: var(--s-2); }
 .coming p { margin: var(--s-1) 0 0; font-size: var(--t-small); }
+.mine { list-style: none; margin: var(--s-1) 0 0; padding: 0; display: grid; gap: var(--s-1); }
+.mine li { display: flex; align-items: center; gap: var(--s-2); min-height: 44px; }
+.mine .btn { height: 32px; padding: 0 var(--s-3); font-size: var(--t-label); flex: none; }
+.mineTxt { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; font-size: var(--t-small); }
+.mineTxt .small { color: var(--label-2); font-size: var(--t-label); }
 
 /* ── Story ── */
 .story p { margin: 0 0 var(--s-2); font-size: var(--t-small); line-height: 1.45; }
