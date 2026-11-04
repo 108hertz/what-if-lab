@@ -173,7 +173,7 @@ export class SimEngine {
       ctx.save();
       ctx.translate(r.x, r.y);
       ctx.beginPath(); ctx.rect(0, 0, r.w, r.h); ctx.clip();
-      this.sb.draw({ ctx, w: r.w, h: r.h, p: this.params, isAlt: r.alt, ui: this.ui }, r.world);
+      this.sb.draw({ ctx, w: r.w, h: r.h, p: this.params, isAlt: r.alt, ui: this.ui, base: r.alt && this.sb.stack ? this.base : undefined }, r.world);
       const label = r.alt
         ? (this.sb.stack ? "Changed: " : "What if: ") + this.whatIfLabel()
         : this.alt ? "No change" : this.sb.stack ? "Now · pick changes to make" : "Now · pick a what-if to fork this world";

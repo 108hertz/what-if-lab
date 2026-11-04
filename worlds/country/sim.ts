@@ -1,40 +1,96 @@
-import type { BaseWorld, Sandbox } from "@/lib/sim/types";
-import { clamp, fmtCalendar, fmtNum, gauss, mix, note, rng } from "@/lib/sim/core";
-import { FONT, blob, STAGE } from "@/lib/sim/draw";
+import type { BaseWorld, InfoBlock, Sandbox } from "@/lib/sim/types";
+import { clamp, fmtCalendar, fmtNum, gauss, note, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
-import { COUNTRY_NAMES, COUNTRY_PRESETS } from "./data";
+import { COUNTRIES, COUNTRY_GROUPS, COUNTRY_OPTIONS, profileParams, type Gov } from "./data";
+import { drawCountry, type Figure, type Look, type Tally } from "./scene";
 
 /**
- * Hybrid model:
- * - Aggregate economy (income growth, population, stability) from simple growth rules.
- * - 260 household agents: earn by skill, pay tax, lose income to corruption, trade (yard-sale),
- *   consume. Inequality (Gini), poverty and protests emerge from the agents.
+ * Hybrid model (change 0016):
+ * - Aggregate economy: income growth, population, jobs, lifespan and peace from simple rules.
+ * - 260 household agents earn by skill (if they have a job), pay tax, lose income to corruption, get help
+ *   from the shared pool, and trade. Poverty, the rich–poor gap and family income emerge from them.
+ * - Policies stack (`stack: true`): every click adds a modifier to `w.mods`, and every rule reads them all.
  */
-type Gov = "dem" | "hybrid" | "auto";
-type P = { preset: string; gdp: number; pop: number; popg: number; edu: number; corr: number; res: number; gov: Gov };
-
-interface Agent { x: number; y: number; vx: number; vy: number; w: number; sk: number; ret: number; rk: number }
-interface W extends BaseWorld {
-  g: number; pop: number; edu: number; corr: number; res: number; stab: number; ps: number;
-  mod: string | null; tf: number; pk: number; tpk: number;
-  edu0: number; corr0: number; g0: number;
-  a: Agent[]; gini: number; top10: number; mean: number; cut95: number; dec: number[];
-}
-
-const GOV_GROWTH: Record<Gov, number> = { dem: 0.002, hybrid: 0, auto: -0.002 };
-const GOV_STAB: Record<Gov, number> = { dem: 12, hybrid: 3, auto: 6 };
-const GOV_TAX: Record<Gov, number> = { dem: 0.3, hybrid: 0.2, auto: 0.18 };
-const APPLY_TEXT: Record<string, string> = {
-  edu: "Education budget doubles", corr: "Anti-corruption drive begins", ubi: "Basic income starts: poverty drops, taxes rise",
-  oil: "Oil found: export boom", war: "War breaks out: the economy shrinks fast", aging: "Birth rate collapses",
-  open: "Borders open: 50 new households arrive",
+type P = {
+  preset: string; from?: string; gdp: number; pop: number; popg: number; edu: number; life: number; corr: number; res: number;
+  tax: number; jobless: number; gov: Gov;
+  s_ubi: number; s_wage: number; s_rich: number; s_cut: number; s_open: number; s_war: number;
 };
 
-function agent(w: W, wealth: number, sk?: number): Agent {
-  return { x: rng(w), y: rng(w), vx: (rng(w) - 0.5) * 0.2, vy: (rng(w) - 0.5) * 0.2, w: wealth, sk: sk ?? clamp(1 + gauss(w) * 0.25, 0.3, 2), ret: rng(w) < 0.12 ? 1 : 0, rk: 0.5 };
+interface Mod { id: string; t0: number; s: number; e0: number; c0: number; l0: number }
+interface Agent { w: number; sk: number; ret: number; job: number; y: number; rk: number }
+interface W extends BaseWorld {
+  g: number; g0: number; pop: number; edu: number; corr: number; res: number; life: number; tax: number; jl: number;
+  stab: number; ps: number; kid: number;
+  eduB: number; corrB: number; resB: number; lifeB: number; taxB: number; jlB: number; pov0: number;
+  mods: Mod[]; pk: number; tpk: number; q: number; spread: number; skLo: number;
+  a: Agent[]; gini: number; top10: number; cut95: number;
 }
 
-/** Rank agents, compute Gini, top-10% share, deciles. */
+const N = 260;
+const GOV_GROWTH: Record<Gov, number> = { dem: 0.002, hybrid: 0, auto: -0.002 };
+const GOV_STAB: Record<Gov, number> = { dem: 12, hybrid: 3, auto: 6 };
+/** Mean household money a month in $ per k$ of income per person (55 % reaches households, 2.3 people each). */
+const HH_DOLLARS = (1000 * 0.55 * 2.3) / 12;
+/** A family is poor below this ($ a month), or below 40 % of the typical family. */
+const POOR_LINE = 250;
+
+/** Size settings each sized policy reads when it is clicked. */
+const SIZE: Record<string, keyof P> = { ubi: "s_ubi", minwage: "s_wage", taxrich: "s_rich", taxcut: "s_cut", open: "s_open", war: "s_war" };
+
+export const WHATIF_GROUPS: [string, string[]][] = [
+  ["Money", ["ubi", "minwage", "taxrich", "taxcut"]],
+  ["Services", ["edu", "health", "build", "corr"]],
+  ["Society", ["open", "aging", "robots", "trade"]],
+  ["Shocks", ["oil", "war", "pandemic", "drought"]],
+];
+
+function applyText(id: string, s: number): string {
+  switch (id) {
+    case "edu": return "Education budget doubles";
+    case "corr": return "Anti-corruption drive begins";
+    case "ubi": return "Basic income starts: poverty drops, taxes rise";
+    case "oil": return "Oil found: export boom";
+    case "war": return "War breaks out: the economy shrinks fast";
+    case "aging": return "Birth rate collapses";
+    case "open": return `Borders open: ${s} new households arrive`;
+    case "health": return "Healthcare becomes free for everyone";
+    case "minwage": return "The minimum wage goes up";
+    case "taxrich": return "The richest pay more tax";
+    case "taxcut": return "Taxes are cut for everyone";
+    case "build": return "Building starts on roads, rail and power lines";
+    case "robots": return "Robots arrive in the factories";
+    case "pandemic": return "A pandemic hits: schools and shops close";
+    case "trade": return "Borders close to trade: imports cost more";
+    case "drought": return "A long drought begins";
+    default: return id;
+  }
+}
+
+/** Equilibrium chance of being out of work for a skill, given the job-market pressure q (low skill is hit first). */
+const jobless = (q: number, sk: number) => q / (q + (1 - q) * sk);
+
+/** Skill (earning power) is log-normal: wider in more unequal, more corrupt countries. */
+const skill = (w: W, spread: number) => clamp(Math.exp(gauss(w) * spread - (spread * spread) / 2), 0.12, 6);
+
+function agent(w: W, wealth: number, sk: number): Agent {
+  const ret = rng(w) < 0.12 ? 1 : 0;
+  return { w: wealth, sk, ret, job: rng(w) < jobless(pressure(w), sk) ? 0 : 1, y: 0, rk: 0.5 };
+}
+
+/** The job-market pressure that makes the average jobless share equal w.jl for this population. */
+function pressure(w: W): number {
+  if (!w.a.length) return w.jl;
+  let lo = 0.0005, hi = 0.95;
+  for (let k = 0; k < 24; k++) {
+    const q = (lo + hi) / 2;
+    const m = w.a.reduce((s, a) => s + (a.ret ? 0 : jobless(q, a.sk)), 0) / Math.max(1, w.a.filter((a) => !a.ret).length);
+    if (m > w.jl) hi = q; else lo = q;
+  }
+  return (lo + hi) / 2;
+}
+
+/** Rank agents by wealth; Gini, top-10 % share and the richest-5 % cut-off. */
 function rank(w: W) {
   const s = w.a.map((a, i) => [a.w, i] as [number, number]).sort((x, y) => x[0] - y[0]);
   const n = s.length;
@@ -42,161 +98,405 @@ function rank(w: W) {
   s.forEach(([v, idx], r) => { w.a[idx].rk = r / (n - 1); tot += v; cum += v * (r + 1); });
   w.gini = tot > 0 ? (2 * cum) / (n * tot) - (n + 1) / n : 0;
   w.top10 = tot > 0 ? s.slice(Math.floor(n * 0.9)).reduce((q, x) => q + x[0], 0) / tot : 0;
-  w.mean = tot / n;
   w.cut95 = s[Math.floor(n * 0.95)][0];
-  w.dec = [];
-  for (let d = 0; d < 10; d++) w.dec.push(s.slice(Math.floor((n * d) / 10), Math.floor((n * (d + 1)) / 10)).reduce((q, x) => q + x[0], 0) / Math.max(tot, 1e-9));
 }
 
+/* ───────────── income statistics (cached per world and time) ───────────── */
+
+export interface Stats { fam: number; line: number; pov: number; gap: number; jobless: number; ys: number[]; scale: number }
+const cache = new WeakMap<W, { t: number; n: number; s: Stats }>();
+
+function stats(w: W): Stats {
+  const hit = cache.get(w);
+  if (hit && hit.t === w.t && hit.n === w.a.length) return hit.s;
+  const ys = w.a.map((a) => a.y).sort((x, y) => x - y), n = ys.length;
+  const mean = ys.reduce((q, v) => q + v, 0) / n || 1e-9;
+  const scale = (w.g * HH_DOLLARS) / mean;
+  const med = ys[n >> 1] * scale;
+  const line = Math.max(POOR_LINE, 0.5 * med);
+  const pov = (ys.filter((v) => v * scale < line).length / n) * 100;
+  const k = Math.max(1, Math.round(n / 10));
+  const lo = ys.slice(0, k).reduce((q, v) => q + v, 0) / k, hi = ys.slice(n - k).reduce((q, v) => q + v, 0) / k;
+  const gap = hi / Math.max(lo, mean * 0.02);
+  const adults = w.a.filter((a) => !a.ret);
+  const jl = adults.length ? (adults.filter((a) => !a.job).length / adults.length) * 100 : 0;
+  const s = { fam: med, line, pov, gap, jobless: jl, ys, scale };
+  cache.set(w, { t: w.t, n, s });
+  return s;
+}
+
+/** Peace: schools, honesty, government, wealth; minus a wide rich–poor income gap and joblessness. */
 const stabTarget = (w: W, p: P, adj: number) =>
-  clamp(30 + 0.35 * w.edu - 0.4 * w.corr + GOV_STAB[p.gov] + 6 * Math.log10(Math.max(1, w.g)) - 60 * Math.max(0, w.gini - 0.42) + adj, 0, 100);
+  clamp(40 + 0.35 * w.edu - 0.4 * w.corr + GOV_STAB[p.gov] + 6 * Math.log10(Math.max(1, w.g)) - 4 * Math.max(0, Math.log2(stats(w).gap / 5)) - 80 * Math.max(0, w.jl - 0.1) + adj, 0, 100);
+
+/** Is a modifier active (for the stage)? */
+const active = (w: W, id: string, len: number) => w.mods.some((m) => m.id === id && w.t - m.t0 < len);
+
+/* ───────────── one sub-step (h years, f months) ───────────── */
+
+function sub(w: W, h: number, f: number, p: P) {
+  const t = w.t, A = w.a;
+  let gr = 0.012 + 0.035 * (1 - w.g / 110) * (w.edu / 100) - (0.03 * w.corr) / 100 + ((0.006 * w.res) / 100) * (1 - w.corr / 100) + GOV_GROWTH[p.gov] - 0.008 * (w.tax - 0.3);
+  let pg = (p.popg / 100) * (1 - Math.min(0.7, t / 120)), pgAdd = 0, agingCap = Infinity, adj = 0;
+  let jlT = w.jlB, lifeT = w.lifeB + clamp(3 * Math.log2(Math.max(0.1, w.g / w.g0)), -6, 6);
+  let eduAdd = 0, corrAdd = 0, resAdd = 0, taxAdd = 0, ubiTax = 0, ill = 0, wageUp = 0, richTax = 0, skilledUp = 0, skillUps = 0;
+  let rentPool = 0, rentElite = 0, war = false, dry = false, aging = false;
+
+  for (const m of w.mods) {
+    const d = t - m.t0, s = m.s;
+    switch (m.id) {
+      case "edu": eduAdd += (Math.min(100, m.e0 * 1.4 + 10) - m.e0) * Math.min(1, d / 15); if (d < 8) gr -= 0.003; if (d >= 15) jlT -= 0.01; skillUps++; break;
+      case "corr": corrAdd -= (m.c0 / 2) * Math.min(1, d / 10); break;
+      case "ubi": ubiTax += (0.15 * s) / 25; gr -= (0.004 * s) / 25; adj += Math.min(14, (10 * s) / 25); jlT += (0.005 * s) / 25; break;
+      case "oil":
+        resAdd += 50; if (d < 15) gr += 0.02;
+        if (m.c0 > 40) { rentElite += 0.28; rentPool += 0.12; if (d >= 5) { corrAdd += 15 * Math.min(1, (d - 5) / 5); adj -= 8; } } else rentPool += 0.4;
+        break;
+      case "war":
+        if (d < s) { gr -= 0.09; pgAdd -= 0.012; adj -= 35; jlT += 0.12; lifeT -= 8; war = true; } else if (d < s + 8) gr += 0.035;
+        break;
+      case "aging": agingCap = Math.min(agingCap, -0.007 * Math.min(1, d / 10)); gr -= 0.004 * Math.min(1, d / 20); aging = true; break;
+      case "open":
+        pgAdd += ((0.01 * s) / 50) * Math.max(0.2, 1 - d / 30); gr += (0.002 * s) / 50; adj -= ((4 * s) / 50) * Math.max(0.25, 1 - d / 15);
+        if (d < 5) jlT += ((0.01 * s) / 50) * (1 - d / 5);
+        break;
+      case "health": taxAdd += 0.04; lifeT += (85 - m.l0) * 0.35 * Math.min(1, d / 10); jlT -= 0.005; gr += d < 3 ? -0.002 : 0.002 * Math.min(1, (d - 3) / 7); adj += 4; break;
+      case "minwage": wageUp += s / 100; jlT += (0.015 * s) / 50; adj += 2; break;
+      case "taxrich": richTax += s / 100; gr -= (0.0015 * s) / 15; adj += ((3 * s) / 15) * (w.gini > 0.3 ? 1 : 0.5); break;
+      case "taxcut": taxAdd -= s / 100; gr += d < 6 ? (0.006 * s) / 10 : (0.002 * s) / 10; adj -= (2 * s) / 10; lifeT -= ((0.5 * s) / 10) * Math.min(1, d / 10); jlT -= 0.005; break;
+      case "build": if (d < 6) { gr -= 0.006; jlT -= 0.02; } else gr += 0.006 * Math.min(1, (d - 6) / 4); break;
+      case "robots": gr += d < 10 ? 0.01 : 0.004; jlT += 0.06 * Math.max(0.35, 1 - d / 15); skilledUp += 0.3; adj -= d < 10 ? 4 : 1; break;
+      case "pandemic": if (d < 2) { gr -= 0.05; jlT += 0.08; lifeT -= 3; adj -= 6; ill += 0.15; } else if (d < 4) gr += 0.03; break;
+      case "trade": gr -= d < 3 ? 0.02 : 0.012; jlT += d < 5 ? 0.02 : 0.01; adj -= 2; break;
+      case "drought": if (d < 6) { gr -= 0.015; jlT += 0.02; lifeT -= 1; adj -= 5; dry = true; } break;
+    }
+  }
+  w.edu = clamp(w.eduB + eduAdd, 0, 100);
+  w.corr = clamp(w.corrB + corrAdd, 0, 100);
+  w.res = clamp(w.resB + resAdd, 0, 100);
+  w.tax = clamp(w.taxB + taxAdd, 0.05, 0.7);
+  const ubiRate = Math.min(ubiTax, 0.75 - w.tax);
+  if (aging) pg = Math.min(pg, agingCap);
+  pg += pgAdd;
+
+  w.g = Math.max(0.3, w.g * (1 + gr * h));
+  w.pop *= 1 + pg * h;
+  w.jl += (clamp(jlT, 0.01, 0.6) - w.jl) * Math.min(1, h / 1);
+  w.life += (clamp(lifeT, 40, 88) - w.life) * Math.min(1, h / 4);
+  w.kid += (clamp(0.14 + pg * 9, 0.08, 0.45) - w.kid) * Math.min(1, h / 10);
+
+  // Household money for this sub-step (f months)
+  const inc = (w.g / 12) * f, leak = (w.corr / 100) * 0.5, n = A.length;
+  const net = new Float64Array(n);
+  let pool = 0, cash = 0, elite = 0, idle = 0;
+  for (let i = 0; i < n; i++) {
+    const a = A[i];
+    if (a.ret || !a.job) { idle += Math.sqrt(a.sk); continue; }
+    let earn = inc * a.sk * (war ? 0.5 : 1) * (1 - ill);
+    if (wageUp && a.sk < w.skLo) earn *= 1 + wageUp;
+    if (skilledUp && a.sk > 1.2) earn *= 1 + skilledUp;
+    if (dry && a.sk < w.skLo) earn *= 0.7;
+    const skim = ((earn * w.corr) / 100) * 0.25, base = earn - skim;
+    const tx = base * w.tax, tu = base * ubiRate, tr = a.rk >= 0.9 ? base * richTax : 0;
+    net[i] = base - tx - tu - tr; pool += tx * (1 - leak); cash += (tu + tr * 0.5) * (1 - leak); elite += skim + (tx + tu + tr) * leak;
+  }
+  pool += inc * rentPool * n; elite += inc * rentElite * n;
+  // Taxes: about two thirds pay for services (schools, roads, clinics), a fifth comes back as cash to all, the rest helps those without work
+  const equal = (pool * 0.2 + cash) / n, help = (pool * 0.15) / Math.max(1, idle);
+  const richCount = Math.max(1, A.filter((a) => a.w >= w.cut95).length), es = elite / richCount;
+  const k = 1 - Math.exp(-f / 2);
+  for (let i = 0; i < n; i++) {
+    const a = A[i];
+    // Everyone also has a little informal income (home farming, odd jobs, family help), untaxed
+    // Pensions and job-seeker help follow what the household used to earn
+    const got = net[i] + 0.07 * inc + equal + (a.ret || !a.job ? help * Math.sqrt(a.sk) : 0) + (a.w >= w.cut95 ? es : 0);
+    a.w = Math.max(0, a.w + got - 0.75 * inc - 0.008 * f * a.w);
+    a.y += (got / f - a.y) * k;
+  }
+  // Yard-sale trades
+  const trades = Math.round(22 * f + (rng(w) < (22 * f) % 1 ? 1 : 0));
+  for (let q = 0; q < trades; q++) {
+    const i = A[(rng(w) * n) | 0], j = A[(rng(w) * n) | 0];
+    if (i === j) continue;
+    const st = 0.08 * Math.min(i.w, j.w);
+    if (rng(w) < 0.5 + 0.12 * (i.sk - j.sk)) { i.w += st; j.w -= st; } else { i.w -= st; j.w += st; }
+  }
+  // Jobs: lose or find one, at rates that settle to the jobless rate (low skill is hit first)
+  if (Math.abs(w.jl - w.jlB) > 1e-4 || w.q <= 0) w.q = pressure(w);
+  const r = 0.15 * f, q = w.q;
+  for (const a of A) {
+    if (a.ret) continue;
+    if (a.job) { if (rng(w) < (r * q) / Math.sqrt(a.sk)) a.job = 0; }
+    else if (rng(w) < r * (1 - q) * Math.sqrt(a.sk)) a.job = 1;
+  }
+  if (war) { const mean = A.reduce((q, a) => q + a.w, 0) / n; for (const a of A) { a.w *= 1 - 0.015 * f; if (rng(w) < 0.004 * f) { a.w = mean * 0.1; a.sk = skill(w, w.spread); } } }
+  if (aging) { const retired = A.filter((x) => x.ret).length; for (const a of A) if (!a.ret && retired < n * 0.4 && rng(w) < 0.002 * f) a.ret = 1; }
+  for (let u = 0; u < skillUps; u++) for (const a of A) if (rng(w) < 0.004 * f) a.sk = Math.min(6, a.sk * 1.12 + 0.05);
+
+  rank(w);
+  w.stab += ((stabTarget(w, p, adj) - w.stab) / 4) * h;
+  w.t += h;
+
+  if (w.g >= 2 * w.g0) note(w, "Income per person doubles", "dbl");
+  if (w.g0 < 14 && w.g >= 14) note(w, "Becomes a high-income country", "hi");
+  if (w.ps >= 30 && w.stab < 30) note(w, "Unrest: mass protests fill the streets", "u");
+  if (w.ps >= 15 && w.stab < 15) note(w, "High risk of coup or state collapse", "c");
+  if (w.top10 > 0.5) note(w, "Richest 10% now own half of all wealth", "t10");
+  if (w.pop > w.pk) { w.pk = w.pop; w.tpk = w.t; }
+  else if (w.tpk > 0 && w.pop < w.pk * 0.997) note(w, `Population peaks at ${fmtNum(w.pk, w.pk < 20 ? 1 : 0)} m`, "pk", w.tpk);
+  for (const m of w.mods) {
+    const d = w.t - m.t0;
+    if (m.id === "war" && d >= m.s) note(w, "War ends; rebuilding boom begins", "wend");
+    if (m.id === "oil" && m.c0 > 40 && d >= 5) note(w, "Resource curse: oil money feeds corruption", "curse");
+    if (m.id === "edu" && d >= 15) note(w, "First generation from the better schools starts work", "eduw");
+    if (m.id === "build" && d >= 6) note(w, "New roads, rail and power lines open", "built");
+    if (m.id === "robots" && d >= 12) note(w, "New kinds of jobs appear around the robots", "robo2");
+    if (m.id === "pandemic" && d >= 2) note(w, "The pandemic ends; shops and schools reopen", "pand");
+    if (m.id === "drought" && d >= 6) note(w, "The rains return", "rain");
+  }
+  w.ps = w.stab;
+}
+
+/* ───────────── people on the stage ───────────── */
+
+const hash = (i: number, k: number) => { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return x - Math.floor(x); };
+
+/** 100 people sampled at income percentiles, poorest first, each with a state the stage can draw. */
+function people(w: W): { figs: Figure[]; tally: Tally } {
+  const s = stats(w);
+  const order = w.a.map((a, i) => i).sort((i, j) => w.a[i].y - w.a[j].y);
+  const war = active(w, "war", w.mods.find((m) => m.id === "war")?.s ?? 0), sick = active(w, "pandemic", 2);
+  const out = clamp(((100 - w.edu) / 100) * 0.85 + (war ? 0.3 : 0) + (sick ? 0.5 : 0), 0, 0.95);
+  const figs: Figure[] = [];
+  const poor = Math.round(s.pov);
+  let kidsOut = 0;
+  for (let i = 0; i < 100; i++) {
+    const a = w.a[order[Math.min(order.length - 1, Math.floor(((i + 0.5) / 100) * order.length))]];
+    const usd = a.y * s.scale;
+    const band = i < poor ? 0 : usd > 2 * s.fam ? 2 : 1;
+    let kind: Figure["kind"];
+    if (hash(i, 1) < w.kid) { kind = hash(i, 2) < out * (1.6 - (1.2 * i) / 100) ? "kidOut" : "kid"; if (kind === "kidOut") kidsOut++; }
+    else if (a.ret) kind = "retired";
+    else if (!a.job) kind = "jobless";
+    else kind = "work";
+    figs.push({ band, kind, protest: w.stab < 30 && band < 2 && kind !== "kid" && kind !== "kidOut" && hash(i, 3) < 0.55 });
+  }
+  return { figs, tally: { poor, jobless: Math.round(s.jobless), kidsOut, fam: s.fam } };
+}
+
+/* ───────────── sandbox ───────────── */
 
 export const country: Sandbox<W, P> = {
   ...meta,
-  intro: "Each blob is a household; colour shows how rich it is. Wealth flows through work, trade, taxes and corruption.",
+  stack: true,
+  intro: "A street in the country, and the same country as 100 people from poorest to richest. Pick a country, then make changes: they add up.",
   controls: [
-    { type: "select", id: "preset", label: "Country profile", options: COUNTRY_NAMES, val: "dk" },
-    { type: "range", id: "gdp", label: "Income per person", min: 1, max: 100, step: 1, val: 68, unit: "k$" },
-    { type: "range", id: "pop", label: "Population", min: 1, max: 1500, step: 1, val: 6, unit: "m" },
-    { type: "range", id: "popg", label: "Population growth", min: -1, max: 3, step: 0.1, val: 0.4, unit: "%/yr" },
-    { type: "range", id: "edu", label: "Education quality", min: 0, max: 100, step: 1, val: 92 },
-    { type: "range", id: "corr", label: "Corruption", min: 0, max: 100, step: 1, val: 10 },
-    { type: "range", id: "res", label: "Natural resources", min: 0, max: 100, step: 1, val: 30 },
-    { type: "select", id: "gov", label: "Government", options: [["dem", "Democracy"], ["hybrid", "Hybrid regime"], ["auto", "Autocracy"]], val: "dem" },
+    { type: "select", id: "preset", label: "Country", options: COUNTRY_OPTIONS, groups: COUNTRY_GROUPS, val: "dk" },
+    { type: "heading", label: "People" },
+    { type: "range", id: "pop", label: "Population", min: 1, max: 1500, step: 1, val: 6, unit: "million" },
+    { type: "range", id: "popg", label: "Population growth", min: -1, max: 3, step: 0.1, val: 0.5, unit: "% a year" },
+    { type: "heading", label: "Money" },
+    { type: "range", id: "gdp", label: "Income per person", min: 1, max: 100, step: 0.5, val: 68, unit: "k$ a year" },
+    { type: "range", id: "tax", label: "Taxes", min: 5, max: 55, step: 1, val: 47, unit: "% of income" },
+    { type: "range", id: "jobless", label: "Out of work", min: 1, max: 35, step: 1, val: 5, unit: "%" },
+    { type: "range", id: "res", label: "Natural resources (oil, metals)", min: 0, max: 100, step: 1, val: 30, unit: "/100" },
+    { type: "heading", label: "Public life" },
+    { type: "range", id: "edu", label: "Schools", min: 0, max: 100, step: 1, val: 92, unit: "/100" },
+    { type: "range", id: "life", label: "Healthcare: lifespan", min: 45, max: 85, step: 1, val: 81, unit: "years" },
+    { type: "range", id: "corr", label: "Corruption", min: 0, max: 100, step: 1, val: 10, unit: "/100" },
+    { type: "select", id: "gov", label: "Government", options: [["dem", "Democracy"], ["hybrid", "Mixed: elections, few freedoms"], ["auto", "One ruler or party"]], val: "dem" },
+    { type: "heading", label: "Policy sizes (used by your next click)" },
+    { type: "range", id: "s_ubi", label: "Basic income size", min: 10, max: 50, step: 5, val: 25, unit: "% of average income", live: true },
+    { type: "range", id: "s_wage", label: "Minimum wage rise", min: 10, max: 100, step: 5, val: 30, unit: "%", live: true },
+    { type: "range", id: "s_rich", label: "Extra tax on the richest", min: 5, max: 30, step: 1, val: 15, unit: "points", live: true },
+    { type: "range", id: "s_cut", label: "Tax cut", min: 5, max: 20, step: 1, val: 10, unit: "points", live: true },
+    { type: "range", id: "s_open", label: "Newcomer households", min: 10, max: 100, step: 10, val: 50, live: true },
+    { type: "range", id: "s_war", label: "War length", min: 1, max: 10, step: 1, val: 5, unit: "years", live: true },
   ],
   whatifs: [
-    ["edu", "Double education spending"], ["corr", "Cut corruption in half"], ["ubi", "Universal basic income"],
-    ["oil", "Discover huge oil reserves"], ["war", "Fight a five-year war"], ["aging", "Birth rate collapses"],
-    ["open", "Open the borders to migrants"],
+    ["ubi", "Universal basic income"], ["minwage", "Raise the minimum wage"], ["taxrich", "Tax the richest more"], ["taxcut", "Cut taxes for everyone"],
+    ["edu", "Double education spending"], ["health", "Free healthcare for everyone"], ["build", "Build roads, rail and power"], ["corr", "Cut corruption in half"],
+    ["open", "Open the borders to migrants"], ["aging", "Birth rate collapses"], ["robots", "Robots do half the factory work"], ["trade", "Close the borders to trade"],
+    ["oil", "Discover huge oil reserves"], ["war", "Fight a war"], ["pandemic", "A pandemic hits"], ["drought", "Years of drought"],
   ],
   speeds: [[0.25, "3 mo/s"], [1, "1 yr/s"], [3, "3 yr/s"], [8, "8 yr/s"]],
   defaultSpeed: 1,
   fmtT: fmtCalendar,
   metrics: [
-    { k: "gdp", label: "Income per person", unit: "k$", fmt: (v) => fmtNum(v, 1) },
-    { k: "gini", label: "Inequality (Gini)", unit: "", fmt: (v) => fmtNum(v, 2) },
-    { k: "pov", label: "Poverty", unit: "%", fmt: (v) => fmtNum(v) },
-    { k: "stab", label: "Stability", unit: "/100", fmt: (v) => fmtNum(v) },
-    { k: "pop", label: "Population", unit: "m", fmt: (v) => fmtNum(v, v != null && v < 20 ? 1 : 0) },
+    {
+      k: "fam", label: "Family income", unit: "$ a month", fmt: (v) => (v == null ? "—" : "$" + fmtNum(v)), better: "up",
+      help: "Money a typical family has each month, after tax and help.",
+      diff: (d) => (Math.abs(d) < 5 ? "" : `$${fmtNum(Math.abs(d))} ${d > 0 ? "more" : "less"} a month`),
+    },
+    {
+      k: "pov", label: "Poor", unit: "of 100", fmt: (v) => fmtNum(v), better: "down",
+      help: "Out of 100 people, how many live on less than about $250 a family a month, or far less than most families around them.",
+      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? `${n} ${d < 0 ? "fewer" : "more"} ${n === 1 ? "person" : "people"} out of 100 ${n === 1 ? "is" : "are"} poor` : ""; },
+    },
+    {
+      k: "gap", label: "Rich–poor gap", unit: "", fmt: (v) => (v == null ? "—" : fmtNum(v, 1) + "×"), better: "down",
+      help: "How many times more the richest 10 people get than the poorest 10.",
+      diff: (d) => (Math.abs(d) < 0.1 ? "" : `the gap is ${fmtNum(Math.abs(d), 1)}× ${d < 0 ? "smaller" : "bigger"}`),
+    },
+    {
+      k: "jobless", label: "Out of work", unit: "of 100", fmt: (v) => fmtNum(v), better: "down",
+      help: "Out of 100 adults who want a job, how many cannot find one.",
+      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? `${n} ${d < 0 ? "fewer" : "more"} ${n === 1 ? "adult" : "adults"} out of 100 ${n === 1 ? "has" : "have"} no job` : ""; },
+    },
+    {
+      k: "life", label: "Lifespan", unit: "years", fmt: (v) => fmtNum(v, 1), better: "up",
+      help: "How many years a baby born now can expect to live.",
+      diff: (d) => (Math.abs(d) < 0.1 ? "" : `${fmtNum(Math.abs(d), 1)} years ${d > 0 ? "longer" : "shorter"} lives`),
+    },
+    {
+      k: "calm", label: "Peace", unit: "/100", fmt: (v) => fmtNum(v), better: "up",
+      help: "How calm and trusting the country is: 100 is peaceful, under 30 means protests in the streets.",
+      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? `${n} ${n === 1 ? "point" : "points"} ${d > 0 ? "calmer" : "less calm"}` : ""; },
+    },
+    {
+      k: "pop", label: "People", unit: "million", fmt: (v) => fmtNum(v, v != null && v < 20 ? 1 : 0),
+      help: "How many people live in the country, in millions.",
+      diff: (d) => (Math.abs(d) < 0.05 ? "" : `${fmtNum(Math.abs(d), Math.abs(d) < 20 ? 1 : 0)} million ${d > 0 ? "more" : "fewer"} people`),
+    },
   ],
 
   onParamChange(p, id) {
     if (id === "preset") {
-      const pr = COUNTRY_PRESETS[p.preset];
-      return pr ? { ...p, ...pr } : p;
+      const pr = profileParams(p.preset);
+      return pr ? { ...p, ...pr, from: p.preset } : p;
     }
-    return p.preset === "custom" ? p : { ...p, preset: "custom" };
+    if (id.startsWith("s_")) return p;
+    return p.preset === "custom" ? p : { ...p, preset: "custom", from: p.preset };
   },
 
   init(p, seed) {
+    const tax = p.tax / 100, jl = p.jobless / 100;
     const w: W = {
-      t: 0, rs: seed, log: [], f: {}, g: p.gdp, pop: p.pop, edu: p.edu, corr: p.corr, res: p.res, stab: 50, ps: 50,
-      mod: null, tf: 0, pk: p.pop, tpk: 0, edu0: p.edu, corr0: p.corr, g0: p.gdp,
-      a: [], gini: 0.35, top10: 0.3, mean: 1, cut95: 1, dec: [],
+      t: 0, rs: seed, log: [], f: {},
+      g: p.gdp, g0: p.gdp, pop: p.pop, edu: p.edu, corr: p.corr, res: p.res, life: p.life, tax, jl, stab: 50, ps: 50,
+      kid: clamp(0.14 + (p.popg / 100) * 9, 0.08, 0.45),
+      eduB: p.edu, corrB: p.corr, resB: p.res, lifeB: p.life, taxB: tax, jlB: jl, pov0: 0,
+      mods: [], pk: p.pop, tpk: 0, q: 0, skLo: 0.7, spread: 0.45 + (p.corr / 100) * 0.55, a: [], gini: 0.35, top10: 0.3, cut95: 1,
     };
     const sg = 0.45 + (p.corr / 100) * 0.5;
-    for (let i = 0; i < 260; i++) w.a.push(agent(w, (w.g / 12) * 31 * Math.exp(gauss(w) * sg - (sg * sg) / 2)));
+    for (let i = 0; i < N; i++) w.a.push(agent(w, (w.g / 12) * 31 * Math.exp(gauss(w) * sg - (sg * sg) / 2), skill(w, w.spread)));
+    w.skLo = w.a.map((a) => a.sk).sort((x, y) => x - y)[Math.floor(N * 0.3)];
+    w.q = pressure(w);
+    for (const a of w.a) a.job = a.ret || rng(w) >= jobless(w.q, a.sk) ? 1 : 0;
     rank(w);
+    // Settle incomes for a simulated year before the clock starts, so the first readouts are real
+    for (let m = 0; m < 12; m++) { sub(w, 1 / 12, 1, p); }
+    w.t = 0; w.log = []; w.f = {}; w.g = p.gdp; w.pop = p.pop; w.pk = p.pop; w.tpk = 0;
     w.stab = w.ps = stabTarget(w, p, 0);
+    w.pov0 = stats(w).pov;
     return w;
   },
 
   step(w, dt, p) {
-    const n = Math.ceil(dt * 12), h = dt / n, f = h * 12, m = w.mod, A = w.a;
-    for (let k = 0; k < n; k++) {
-      const t = w.t, d = t - w.tf;
-      if (m === "edu") w.edu = Math.min(100, w.edu0 + (Math.min(100, w.edu0 * 1.4 + 10) - w.edu0) * Math.min(1, d / 15));
-      if (m === "corr") w.corr = w.corr0 / 2 + (w.corr0 / 2) * Math.max(0, 1 - d / 10);
-      if (m === "oil") { w.res = Math.min(100, p.res + 50); if (w.corr0 > 40 && d >= 5) w.corr = Math.min(100, w.corr0 + 15 * Math.min(1, (d - 5) / 5)); }
-      const war = m === "war" && d < 5;
-      let gr = 0.012 + 0.035 * (1 - w.g / 110) * (w.edu / 100) - (0.03 * w.corr) / 100 + ((0.006 * w.res) / 100) * (1 - w.corr / 100) + GOV_GROWTH[p.gov];
-      let pg = (p.popg / 100) * (1 - Math.min(0.7, t / 120)), adj = 0;
-      if (m === "edu" && d < 8) gr -= 0.003;
-      if (m === "ubi") { gr -= 0.004; adj += 10; }
-      if (m === "oil" && d < 15) gr += 0.02;
-      if (m === "oil" && w.corr0 > 40 && d >= 5) adj -= 8;
-      if (m === "war") { if (war) { gr -= 0.09; pg -= 0.012; adj -= 35; } else if (d < 13) gr += 0.035; }
-      if (m === "aging") { pg = Math.min(pg, -0.007 * Math.min(1, d / 10)); gr -= 0.004 * Math.min(1, d / 20); }
-      if (m === "open") { pg += 0.01; gr += 0.002; adj -= 4; }
-      w.g *= 1 + gr * h;
-      w.pop *= 1 + pg * h;
-
-      // household economy (flows scaled to fraction-of-month f)
-      const inc = (w.g / 12) * f, tax = GOV_TAX[p.gov] + (m === "ubi" ? 0.15 : 0), leak = (w.corr / 100) * 0.5;
-      let pool = 0, elite = 0;
-      for (const a of A) {
-        const earn = a.ret ? 0 : inc * a.sk * (war ? 0.5 : 1), skim = (earn * w.corr) / 100 * 0.25, tx = (earn - skim) * tax;
-        a.w += earn - skim - tx; pool += tx * (1 - leak); elite += skim + tx * leak;
-      }
-      if (m === "oil") { const rent = inc * 0.4 * A.length; if (w.corr0 > 40) { elite += rent * 0.7; pool += rent * 0.3; } else pool += rent; }
-      const share = pool / A.length, richCount = Math.max(1, A.filter((a) => a.w >= w.cut95).length), es = elite / richCount;
-      for (const a of A) { a.w += share; if (a.w >= w.cut95) a.w += es; a.w = Math.max(0, a.w - 0.75 * inc - 0.008 * f * a.w); }
-      const trades = Math.round(22 * f + (rng(w) < (22 * f) % 1 ? 1 : 0));
-      for (let q = 0; q < trades; q++) {
-        const i = A[(rng(w) * A.length) | 0], j = A[(rng(w) * A.length) | 0];
-        if (i === j) continue;
-        const st = 0.08 * Math.min(i.w, j.w);
-        if (rng(w) < 0.5 + 0.12 * (i.sk - j.sk)) { i.w += st; j.w -= st; } else { i.w -= st; j.w += st; }
-      }
-      if (war) for (const a of A) { a.w *= 1 - 0.015 * f; if (rng(w) < 0.004 * f) { a.w = w.mean * 0.1; a.sk = clamp(1 + gauss(w) * 0.25, 0.3, 2); } }
-      if (m === "aging") { const retired = A.filter((x) => x.ret).length; for (const a of A) if (!a.ret && retired < A.length * 0.4 && rng(w) < 0.002 * f) a.ret = 1; }
-      if (m === "edu") for (const a of A) if (rng(w) < 0.004 * f) a.sk = Math.min(2.2, a.sk + 0.15);
-
-      rank(w);
-      w.stab += ((stabTarget(w, p, adj) - w.stab) / 4) * h;
-      w.t += h;
-
-      if (w.g >= 2 * w.g0) note(w, "Income per person doubles", "dbl");
-      if (w.g0 < 14 && w.g >= 14) note(w, "Becomes a high-income country", "hi");
-      if (w.ps >= 30 && w.stab < 30) note(w, "Unrest: mass protests fill the streets", "u");
-      if (w.ps >= 15 && w.stab < 15) note(w, "High risk of coup or state collapse", "c");
-      if (w.top10 > 0.5) note(w, "Richest 10% now own half of all wealth", "t10");
-      if (w.pop > w.pk) { w.pk = w.pop; w.tpk = w.t; }
-      else if (w.tpk > 0 && w.pop < w.pk * 0.997) note(w, `Population peaks at ${fmtNum(w.pk, w.pk < 20 ? 1 : 0)} m`, "pk", w.tpk);
-      if (m === "war" && d >= 5) note(w, "War ends; rebuilding boom begins", "wend");
-      if (m === "oil" && w.corr0 > 40 && d >= 5) note(w, "Resource curse: oil money feeds corruption", "curse");
-      if (m === "edu" && d >= 15) note(w, "First generation from the better schools starts work", "eduw");
-      w.ps = w.stab;
-    }
-    // movement (visual only, but uses the world RNG so forks stay deterministic)
-    const protest = w.stab < 30;
-    for (const a of A) {
-      if (protest && a.rk < 0.6 && a.sk > 0.9) { a.vx += (0.5 - a.x) * 1.5 * dt; a.vy += (0.5 - a.y) * 1.5 * dt; }
-      a.vx += (rng(w) - 0.5) * 0.6 * Math.sqrt(dt); a.vy += (rng(w) - 0.5) * 0.6 * Math.sqrt(dt);
-      a.vx *= 0.9; a.vy *= 0.9;
-      a.x = clamp(a.x + a.vx * dt * 0.3, 0, 1); a.y = clamp(a.y + a.vy * dt * 0.3, 0, 1);
-    }
+    const n = Math.ceil(dt * 12), h = dt / n;
+    for (let k = 0; k < n; k++) sub(w, h, h * 12, p);
+    const s = stats(w);
+    if (w.pov0 >= 8 && s.pov <= w.pov0 / 2) note(w, `Poverty has halved since 2026`, "povh");
+    if (w.jlB < 0.14 && w.jl >= 0.15) note(w, "1 in 7 adults is now out of work", "jl15");
+    if (w.life >= w.lifeB + 5) note(w, "People now live 5 years longer than in 2026", "life5");
+    if (w.life <= w.lifeB - 5) note(w, "Lifespans fall by 5 years", "lifed");
   },
 
-  apply(w, id) {
-    w.mod = id; w.tf = w.t; w.edu0 = w.edu; w.corr0 = w.corr; w.g0 = w.g;
-    if (id === "open") for (let i = 0; i < 50; i++) w.a.push(agent(w, w.mean * 0.15, clamp(1 + gauss(w) * 0.3, 0.4, 2)));
-    note(w, APPLY_TEXT[id] ?? id);
+  apply(w, id, p) {
+    const key = SIZE[id], s = key ? Number(p[key]) : 1;
+    w.mods.push({ id, t0: w.t, s, e0: w.edu, c0: w.corr, l0: w.life });
+    if (id === "open") for (let i = 0; i < s; i++) w.a.push(agent(w, 0.15 * (w.a.reduce((q, a) => q + a.w, 0) / w.a.length), skill(w, w.spread * 1.1)));
+    note(w, applyText(id, s));
   },
 
   read(w) {
-    return { gdp: w.g, gini: w.gini, pov: (w.a.filter((a) => a.w < w.mean * 0.25).length / w.a.length) * 100, stab: w.stab, pop: w.pop };
+    const s = stats(w);
+    return { fam: s.fam, pov: s.pov, gap: s.gap, jobless: s.jobless, life: w.life, calm: w.stab, pop: w.pop };
   },
 
-  draw({ ctx, w: W, h: H }, w) {
-    ctx.fillStyle = STAGE.void; ctx.fillRect(0, 0, W, H);
-    const fh = H - 78, pad = 18;
-    ctx.fillStyle = STAGE.panel; ctx.fillRect(pad / 2, pad / 2, W - pad, fh - pad / 2);
-    const protest = w.stab < 30;
-    for (const a of w.a) {
-      const x = pad + a.x * (W - pad * 2), y = pad + a.y * (fh - pad * 2);
-      const r = clamp(2.4 + 1.7 * Math.sqrt(a.w / Math.max(w.mean, 1e-9)), 2.2, 8);
-      const col = a.rk < 0.5 ? mix("#E8836F", "#B3BCE0", a.rk * 2) : mix("#B3BCE0", STAGE.alt, (a.rk - 0.5) * 2);
-      blob(ctx, x, y, r, col, a.vx * 3, a.vy * 3);
-      if (protest && a.rk < 0.6 && a.sk > 0.9) { ctx.fillStyle = "#FF8A7A"; ctx.fillRect(x - 4, y - r - 9, 8, 5); }
+  info(base, alt, p) {
+    const name = countryName(p);
+    const b = country.read(base, p), y = fmtCalendar(base.t);
+    const blocks: InfoBlock[] = [];
+    if (alt) {
+      blocks.push({ heading: "What changed", accent: true, rows: story(b, country.read(alt, p), y).map((text) => ({ text })) });
     }
-    const bw = (W - 40) / 10;
-    w.dec.forEach((s, i) => {
-      const bh = Math.min(46, s * 120);
-      ctx.fillStyle = i < 5 ? "#E8836F" : i < 9 ? "#B3BCE0" : STAGE.alt;
-      ctx.fillRect(20 + i * bw + 2, H - 14 - bh, bw - 4, bh);
+    blocks.push({
+      heading: alt ? `With no change, ${y}` : `${name}, ${y}`,
+      rows: [
+        { text: `${fmtNum(b.pop, b.pop! < 20 ? 1 : 0)} million people. A typical family lives on $${fmtNum(b.fam)} a month.` },
+        { text: `${fmtNum(b.pov)} out of 100 people are poor; ${fmtNum(b.jobless)} out of 100 adults are out of work.` },
+        { text: `People live about ${fmtNum(b.life)} years. ${calmWords(b.calm!)}` },
+      ],
     });
-    ctx.font = "10.5px " + FONT.body; ctx.fillStyle = STAGE.ink2;
-    ctx.fillText("Share of wealth held by each tenth, poorest → richest", 20, H - 62);
+    blocks.push({
+      heading: "About the numbers",
+      rows: [
+        { text: "Starting figures are rounded, approximate values from the mid-2020s. After that the country runs on simple rules: it shows how things push each other, not a forecast." },
+        { label: "For the curious", text: `Wealth Gini ${fmtNum(base.gini, 2)} · richest 10% own ${fmtNum(base.top10 * 100)}% of wealth` },
+      ],
+    });
+    return blocks;
+  },
+
+  draw({ ctx, w: Wd, h: Hd, p, isAlt, base }, w) {
+    const pp = people(w);
+    const bp = base ? people(base as W).tally : null;
+    const s = stats(w), n = s.ys.length;
+    const dec: number[] = [];
+    for (let d = 0; d < 10; d++) dec.push(s.ys[Math.min(n - 1, Math.floor(((d + 0.5) / 10) * n))] * s.scale);
+    const warM = w.mods.find((m) => m.id === "war");
+    const build = w.mods.find((m) => m.id === "build");
+    const look: Look = {
+      dec0: dec[0], dec1: dec[1], dec2: dec[2], dec3: dec[3], dec4: dec[4], dec5: dec[5], dec6: dec[6], dec7: dec[7], dec8: dec[8], dec9: dec[9],
+      g: w.g, edu: w.edu, life: w.life, jl: w.jl, calm: w.stab,
+      war: warM && w.t - warM.t0 < warM.s ? 1 : 0,
+      sick: active(w, "pandemic", 2) ? 1 : 0,
+      dry: active(w, "drought", 6) ? 1 : 0,
+      robots: w.mods.some((m) => m.id === "robots") ? 1 : 0,
+      building: build && w.t - build.t0 < 6 ? 1 : 0,
+      built: build && w.t - build.t0 >= 6 ? 1 : 0,
+      oil: clamp((w.res - 60) / 30, 0, 1),
+      trade: w.mods.some((m) => m.id === "trade") ? 1 : 0,
+    };
+    drawCountry(ctx, Wd, Hd, look, COUNTRIES[p.preset]?.climate ?? COUNTRIES[p.from ?? ""]?.climate ?? "mild", pp.figs, pp.tally, bp, isAlt ? 1 : 0, fmtCalendar(w.t));
   },
 };
+
+/* ───────────── words ───────────── */
+
+export function countryName(p: { preset: string; from?: string }): string {
+  if (p.preset !== "custom") return COUNTRIES[p.preset]?.name ?? "This country";
+  const from = p.from && COUNTRIES[p.from]?.name;
+  return from ? `Your own country (from ${from})` : "Your own country";
+}
+
+function calmWords(c: number): string {
+  return c >= 70 ? "Life is calm and people mostly trust each other." : c >= 45 ? "Life is mostly calm, with some anger at the top." : c >= 30 ? "Many people are angry; protests are close." : "Protests fill the streets.";
+}
+
+type R = Record<string, number | null>;
+
+/** Plain sentences for the biggest differences between the changed world and the no-change world. */
+export function story(b: R, a: R, year: string): string[] {
+  const out: [number, string][] = [];
+  const v = (r: R, k: string) => r[k] ?? 0;
+  const dF = v(a, "fam") - v(b, "fam"), rel = dF / Math.max(1, v(b, "fam"));
+  if (Math.abs(rel) >= 0.02) out.push([Math.abs(rel) * 10, `A typical family has $${fmtNum(Math.abs(dF))} ${dF > 0 ? "more" : "less"} a month.`]);
+  const dP = Math.round(v(a, "pov") - v(b, "pov"));
+  if (dP) { const n = Math.abs(dP); out.push([n / 2, `${n} ${dP > 0 ? "more" : "fewer"} ${n === 1 ? "person" : "people"} out of 100 ${n === 1 ? "is" : "are"} poor.`]); }
+  const dJ = Math.round(v(a, "jobless") - v(b, "jobless"));
+  if (dJ) { const n = Math.abs(dJ); out.push([n / 2, `${n} ${dJ > 0 ? "more" : "fewer"} ${n === 1 ? "adult" : "adults"} out of 100 ${n === 1 ? "is" : "are"} out of work.`]); }
+  const dL = v(a, "life") - v(b, "life");
+  if (Math.abs(dL) >= 0.3) out.push([Math.abs(dL), `People live ${fmtNum(Math.abs(dL), 1)} years ${dL > 0 ? "longer" : "shorter"}.`]);
+  const ca = v(a, "calm"), cb = v(b, "calm");
+  if (ca < 30 && cb >= 30) out.push([8, "Protests fill the streets."]);
+  else if (cb < 30 && ca >= 30) out.push([8, "The protests have stopped."]);
+  else if (Math.abs(ca - cb) >= 5) out.push([Math.abs(ca - cb) / 5, ca > cb ? "The country is calmer." : "People are angrier."]);
+  const dG = v(a, "gap") - v(b, "gap");
+  if (Math.abs(dG) >= 0.3) out.push([Math.abs(dG), `The gap between rich and poor is ${dG > 0 ? "bigger" : "smaller"}.`]);
+  const dPop = v(a, "pop") - v(b, "pop"), rp = dPop / Math.max(0.1, v(b, "pop"));
+  if (Math.abs(rp) >= 0.02) out.push([Math.abs(rp) * 20, `${fmtNum(Math.abs(dPop), Math.abs(dPop) < 20 ? 1 : 0)} million ${dPop > 0 ? "more" : "fewer"} people live here.`]);
+  const lines = out.sort((x, y) => y[0] - x[0]).slice(0, 5).map((x) => x[1]);
+  return [`Compared with the same country with no change, in ${year}:`, ...(lines.length ? lines : ["Not much is different yet. Give it a few years."])];
+}

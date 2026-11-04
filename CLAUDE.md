@@ -96,7 +96,7 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 - **Determinism**: never use `Math.random()` in `lib/sim` or `worlds/*/sim.ts`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
   so forks and tests are reproducible. Decorative-only randomness in `draw` must be derived from index/hash.
-- **Stacking** (`Sandbox.stack`, change 0015): solar and galaxy show one world; what-ifs add up via
+- **Stacking** (`Sandbox.stack`, change 0015): solar, galaxy and country show one world; what-ifs add up via
   `engine.change()`, so their `apply()` must work on an already-changed world. Other worlds split and re-fork.
 - Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
   matching text and time, so keep event text stable for the same event.
@@ -127,8 +127,12 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   sea level from expansion + ice above 2 °C (+ Greenland/West Antarctica when tipping points are on). The
   stage (`worlds/earth/scene.ts`) is a painted fjord town; ambient motion uses a draw-only renderer clock.
   `mix` ("Build my own future") snapshots the live "My future" settings into the world at the fork.
-- **country**: aggregate growth model + 260 household agents (tax, corruption skim, yard-sale trades);
-  Gini/poverty emerge from agents and feed back into stability.
+- **country** (change 0016): 41 rounded country profiles (`data.ts`); aggregate growth + 260 household agents
+  with log-normal skill, jobs (hazards calibrated to the jobless rate), tax split (services / cash to all /
+  help for those without work), corruption skim, yard-sale trades. Metrics are human: family $ a month, poor
+  of 100, rich–poor income gap, out of work of 100, lifespan, peace. Policies stack via `w.mods`; six have
+  live "how much" sizes. Stage (`scene.ts`): a street poorest → richest over "100 people"; the hidden
+  no-change world arrives as `DrawContext.base` for the comparison numbers.
 - **animals**: Primer-like agents; cost ∝ size³·speed² + senses; mutation σ 7%. Stabilisers (keep them
   unless replacing with something better): cover patches, predator territory cap (`nc < nh/4`),
   hunt success 30%, recolonisation from outside. A test checks long-run coexistence.

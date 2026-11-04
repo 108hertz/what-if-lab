@@ -1,11 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
+import type { Metric } from "@/lib/sim/types";
 import { FONT } from "@/lib/sim/draw";
 
 /** Chart lives in the page chrome, so it follows the theme tokens rather than the stage palette. */
 const token = (k: string) => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
+
+/** One plain sentence under the chart: what the metric means, then the gap right now (change 0016). Only for metrics with `help`. */
+function ChartNote({ engine, m }: { engine: SimEngine; m: Metric }) {
+  const { base, alt } = engine.readouts();
+  const b = base[m.k], a = alt?.[m.k];
+  let gap: ReactNode = null;
+  if (alt && b != null && a != null && m.diff) {
+    const d = a - b, txt = m.diff(d);
+    const good = m.better && txt ? (m.better === "up" ? d > 0 : d < 0) : null;
+    gap = <>{engine.sb.stack ? "With changes" : "In the what-if"}: <span className={good == null ? undefined : good ? "good" : "bad"}>{txt || "no real difference yet"}</span>. </>;
+  }
+  return <p className="chart-note" title={m.help}>{gap}{m.help}</p>;
+}
 
 export default function HistoryChart({ engine }: { engine: SimEngine }) {
   const [metric, setMetric] = useState(0);
@@ -64,6 +78,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
         <div className="legend micro"><span><i className="b" />No change</span><span><i />{engine.sb.stack ? "With changes" : "What if"}</span></div>
       </div>
       <canvas ref={ref} className="chart" aria-label={`${m.label} over time`} />
+      {m.help && <ChartNote engine={engine} m={m} />}
     </>
   );
 }

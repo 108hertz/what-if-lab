@@ -35,7 +35,9 @@ export default function ControlsForm({ engine, onChange }: { engine: SimEngine; 
               <span className="ctl-l">{c.label}</span>
               <span className="select">
                 <select id={id} value={String(v)} onChange={(e) => set(c.id, e.target.value)}>
-                  {c.options.map(([val, lab]) => <option key={val} value={val}>{lab}</option>)}
+                  {c.groups
+                    ? c.groups.map(([g, opts]) => <optgroup key={g} label={g}>{opts.map(([val, lab]) => <option key={val} value={val}>{lab}</option>)}</optgroup>)
+                    : c.options.map(([val, lab]) => <option key={val} value={val}>{lab}</option>)}
                 </select>
                 <Icon name="chevron" size={18} />
               </span>

@@ -19,3 +19,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0013](./0013-full-screen-stage.md) | Full-screen stage in every world | 1 | shipped |
 | [0014](./0014-earth-fjord-town.md) | Earth world: a living fjord town, more levers, build-your-own future | 1 | shipped |
 | [0015](./0015-stacked-changes-one-world.md) | Solar system and galaxies: stack several changes in one world | 1 | shipped |
+| [0016](./0016-country-people-first.md) | Countries world: 41 countries, a street and 100 people, stacking policies | 1 | shipped |

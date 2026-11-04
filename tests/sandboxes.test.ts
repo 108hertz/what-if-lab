@@ -57,9 +57,10 @@ describe("engine", () => {
     const sb = SANDBOXES.country;
     const e = new SimEngine(sb, defaultParams(sb));
     e.setParam("preset", "ng");
-    expect(e.params.gdp).toBe(2);
+    expect(e.params.gdp).toBe(1.6);
     e.setParam("gdp", 5);
     expect(e.params.preset).toBe("custom");
+    expect(e.params.from).toBe("ng");
   });
 
   it("animal predators and prey coexist for a long run", () => {

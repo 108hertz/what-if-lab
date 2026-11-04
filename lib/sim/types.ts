@@ -26,7 +26,11 @@ export type Params = Record<string, ParamValue>;
 export type Control =
   | { type: "heading"; label: string }
   | { type: "range"; id: string; label: string; min: number; max: number; step: number; val: number; unit?: string; live?: boolean }
-  | { type: "select"; id: string; label: string; options: [value: string, label: string][]; val: string; live?: boolean };
+  | {
+      type: "select"; id: string; label: string; options: [value: string, label: string][]; val: string; live?: boolean;
+      /** Optional option groups (rendered as <optgroup>); every value must also be in `options`. */
+      groups?: [label: string, options: [value: string, label: string][]][];
+    };
 
 export type WhatIf = [id: string, label: string];
 export type Speed = [unitsPerSecond: number, label: string];
@@ -36,6 +40,12 @@ export interface Metric {
   label: string;
   unit: string;
   fmt: (v: number | null) => string;
+  /** Optional plain-language meaning, shown under the chart (change 0016). */
+  help?: string;
+  /** Which direction is better, so a difference can be marked good or bad. */
+  better?: "up" | "down";
+  /** Optional sentence for a difference (what-if − no change), e.g. "4 fewer people out of 100 are poor". */
+  diff?: (d: number) => string;
 }
 
 export type Readout = Record<string, number | null>;
@@ -79,6 +89,8 @@ export interface DrawContext<P> {
   p: P;
   isAlt: boolean;
   ui: InteractionState;
+  /** In stacking worlds, the hidden no-change world while the changed one is drawn (for comparisons). */
+  base?: BaseWorld;
 }
 
 export interface InfoRow {
