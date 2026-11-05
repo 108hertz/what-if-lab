@@ -3,7 +3,7 @@
 - **Status:** live
 - **Tier:** free (several what-if worlds running side by side are premium — see [premium](./premium.md); stacking changes into one world in solar, galaxy, countries, animals and child is free)
 - **Owner area:** `lib/sim`, `worlds/<key>/`, `components/console/` (StandardConsole, Stage, panels, Dock, HistoryChart, Timeline)
-- **Changes:** [0003](../changes/0003-darkroom-visual-language.md), [0004](../changes/0004-single-screen-console.md), [0008](../changes/0008-worlds-as-projects.md), [0015](../changes/0015-stacked-changes-one-world.md), [0016](../changes/0016-country-people-first.md), [0017](../changes/0017-animals-living-ecosystem.md), [0018](../changes/0018-child-growing-up.md)
+- **Changes:** [0003](../changes/0003-darkroom-visual-language.md), [0004](../changes/0004-single-screen-console.md), [0008](../changes/0008-worlds-as-projects.md), [0015](../changes/0015-stacked-changes-one-world.md), [0016](../changes/0016-country-people-first.md), [0017](../changes/0017-animals-living-ecosystem.md), [0018](../changes/0018-child-growing-up.md), [0019](../changes/0019-child-characters-second-pass.md)
 
 ## What it is
 
@@ -35,7 +35,11 @@ This is the product. The divergence moment is what people screenshot and share.
   hidden no-change world as `DrawContext.base`, and animals and child own their charts (solid lines with the
   no change as faint dashed lines of the same colour) and a plain-sentence story. Child changes can also be
   scheduled for a later age ("When it happens: at age 10"): they wait in the changed world and happen, with a
-  timeline line and a stage caption, when the clock reaches that age.
+  timeline line and a stage caption, when the clock reaches that age. Since change 0019 a child change also has a
+  length ("How long"), and each one can be stopped, moved (while planned, on the life ruler) or undone on its own
+  (exact, because the child's random draws never depend on changes); a stop, move or undo clears the export recipe so
+  exports start from now. Optional `Sandbox.pace()` lets a world slow the live clock for a moment (child: ¼ speed for
+  1.2 s when a change happens); exports and tests never read it.
 - Worlds keep running across tab switches (module-level engine singletons).
 - **One-screen console** (changes 0004, 0007): at ≥ 1280 px Ask (what-ifs, readouts, info) · stage +
   transport + chart/timeline · Tune (all variables) without page scroll; at 1024–1279 px the stage, chart

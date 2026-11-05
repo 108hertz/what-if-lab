@@ -80,8 +80,8 @@ export const child: Sandbox<W, P> = {
   ...meta,
   stack: true,
   pace: scenePace,
-  intro: "The same two parents could have many different children. Here are 120 of them, growing up from age 1 to 60. Genes, home, things that happen and plain chance all shape who they become. Pick a family, then try changes: they add up, and you can set the age they happen at.",
-  hint: "These are 120 kids the same two parents could have. Press play to watch them grow up, then try a change.",
+  intro: "The same two parents could have many different kids. Here are 120 of them, growing up from 1 to 60. Genes, home, the things that happen and plain luck all shape who they become. Press play, then try changes: they add up, and you choose when they happen and how long they last. Tap a face in \"All 120 kids\" to follow one kid.",
+  hint: "Press play to watch them grow up, then try a change.",
   controls: [
     { type: "select", id: "family", label: "Family", options: [...Object.entries(FAMILIES).map(([id, f]) => [id, f.name] as [string, string]), ["custom", "Build your own"]], val: "everyday" },
     { type: "heading", label: "Parent A" }, ...parentCtl("a", FAMILIES.everyday.a),

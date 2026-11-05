@@ -1,10 +1,10 @@
 # 0019 — Child world, second pass: one life told well, ripples and buffers, results in everyday words
 
-- **Status:** in-progress
+- **Status:** shipped
 - **Phase:** 1 (per-world excellence pass, see [PLAN.md](../PLAN.md))
 - **Features:** [Fork and compare](../features/fork-and-compare.md) (child stays a stacking world)
 - **Decisions:** —
-- **Created:** 2026-11-04 · **Shipped:** —
+- **Created:** 2026-11-04 · **Shipped:** 2026-11-05
 - **Builds on:** [0018](./0018-child-growing-up.md) (structure, plain-word traits, stacking, crowd, two chart views)
 
 ## Why
@@ -269,7 +269,7 @@ limit and leave a working world.
 7. ✅ **Stage: "All 120 kids" piles** + tap to meet a kid.
 8. ✅ **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
 9. ✅ **Ask: Family / Changes tabs, card grid, life ruler** (drag, keyboard, phone sheet), glossary.
-10. **Layout + copy pass** (impeccable critique → fixes), README, CLAUDE.md, feature doc, PLAN.md.
+10. ✅ **Layout + copy pass** (impeccable critique → fixes), README, CLAUDE.md, feature doc, PLAN.md.
 
 ## Risks and mitigations
 
@@ -286,13 +286,21 @@ limit and leave a working world.
 
 ## Verification
 
-- [ ] Automated: undo-one replay, stop-at-age, ripples/buffers/combos, every change × age × size, options, determinism,
-      contributions sum, structure + ad-slot tests still pass.
-- [ ] Manual: 375 × 812, 768 × 1024, 1024 × 768, 1280 × 800, 1440 × 900, 1920 × 1080; light + dark; reduced motion;
-      keyboard-only life ruler; a 10-year-old-style read-through of every sentence.
-- [ ] Docs: README brief, CLAUDE.md child note, fork-and-compare feature doc, PLAN.md.
+- [x] Automated: undo-one replay, stop-at-age, ripples/buffers/combos, every new change at 9 and all 38 stacked (big),
+      options, determinism, contributions sum, pace, export recipe cleared; structure + ad-slot tests pass (533 tests).
+- [ ] Manual — done: 375 × 812, 768 × 1024, 1024 × 768, 1280 × 800, 1440 × 900 (no page scroll; stage, crowd, chart
+      Now / Every day / Growing up, Ask tabs, ruler and its panel), dark and light. Not done: 1920 × 1080, reduced motion
+      in a browser, a keyboard-only pass of the life ruler (arrow keys are implemented, not walked), "What mattered" with
+      data (the browser pane was hidden, so the sim did not run), a read-aloud pass with a real 10-year-old.
+- [x] Docs: README brief, CLAUDE.md child note, fork-and-compare feature doc, PLAN.md.
 
-## Open questions for the user
+## Open questions for the user (answered 2026-11-05)
+
+Kept "first crush" and "failed a big test" (user, 2026-11-05). Default stage view: One child (as proposed). Name: the
+world stays **Child**, subtitle "Who will they become?" — another change added a separate "Character" tab, so renaming
+would collide.
+
+### As asked
 
 1. **Name.** You called it the "defining characters" tab. Rename the world in the nav (e.g. *Character* · "Who will they
    become?") or keep *Child* · "120 possible kids"?
@@ -375,3 +383,9 @@ limit and leave a working world.
   stop now / undo). It replaces step 1's temporary list. Glossary "What do the five words mean?" (meaning + two examples)
   in Read. `moveMod` / `moveChange` move a planned change; `usually()` words what a change usually does. Checked in the
   browser at 1280 wide (tabs, groups, rows, ruler, panel).
+- 2026-11-05 — step 10 done and shipped: impeccable polish pass (no interview: the user asked to finish without
+  approvals). Fixed: the chart sentence was cut off with "…" (now up to two lines); the transport hint was cut to
+  "These ar…" (shorter hint); timeline filter labels clipped (All / Changes / Effects / Growing up); the results strip
+  gets 240 px (196 px on short screens) so "Growing up" shows every trait; new subtitle and intro. Found, not fixed (shared
+  code from change 0020): at exactly 1440 px the transport overflows — "Undo all changes" and the new Export button are
+  cut off, because button text only hides below 1440 px. Docs updated; 533 tests, typecheck and build green.

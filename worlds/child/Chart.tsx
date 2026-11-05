@@ -104,7 +104,7 @@ function drawGrowing(cv: HTMLCanvasElement, engine: SimEngine, trait: number, ma
   const h = engine.history, n = h.t.length;
   c.font = "500 12px " + font; c.textBaseline = "middle";
   if (n < 2) { c.fillStyle = COL.text2; c.fillText("Press play to watch them grow up…", 4, 14); return; }
-  const rows = H < 150 ? [trait] : [0, 1, 2, 3, 4];
+  const rows = H < 112 ? [trait] : [0, 1, 2, 3, 4];
   const Lw = W < 420 ? 84 : 92, top = 14, x0 = Lw, x1 = W - 6, rh = (H - top - 14) / rows.length;
   const t0 = h.t[0], t1 = Math.max(h.t[n - 1], t0 + 1e-6), forked = h.forkT;
   const X = (t: number) => x0 + ((x1 - x0) * (t - t0)) / (t1 - t0);

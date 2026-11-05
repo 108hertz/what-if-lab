@@ -156,8 +156,14 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   (your changes and everyday ups and downs, part lasting, part fading) + chance (start + drift) + maturation. The four parts
   are kept separately (`model.ts`) so "Why are these kids different?" is computed from their variances. Changes stack via
   `w.mods` (soft cap ±14 per kid, style switches ±7) and can be scheduled for a later age (`s_age`). Everyday events use
-  `rng(w)` per kid and are only summed up in the timeline ("By 10, 31 of 100 kids…"). Stage in `scene.ts` (home backdrop,
-  a growing child, crowd strips easing on a renderer clock); the world owns its chart, story and timeline (`Chart.tsx`,
+  `rng(w)` per kid and are only summed up in the timeline ("By 10, 31 of 100 kids…"). Change 0019: each change has a
+  length (`end`), can be stopped / moved / undone on its own (`edit.ts`; exact because draws never depend on changes — keep
+  it so: anything change-dependent uses `hash01`, never `rng(w)`), sensitive-age weights, ~100 per-kid follow-on events
+  (`RIPPLES`, hash-based), buffers (`BUFFERS`: a friend, calm home, big family… soften hard changes) and combos; options
+  baby temperament, family shape, time together, sensitivity; 38 changes with youngest ages. `contributions()` shares the
+  soft cap out per change ("What mattered"); `BEHAVIOURS` = everyday "likely to, out of 100". Stage in `scene/` (rooms of a
+  life, the typical or picked kid as hero, meters, props, the change moment via `pace()`; "All 120 kids" as piles). The
+  world owns its chart (Now, Growing up, Every day, What mattered), story, timeline and life ruler (`Chart.tsx`,
   `parts.tsx`). Tests: `tests/child.test.ts`.
 - **person**: 100 versions; daily quit hazard high early, falling after ~66 days for good habits.
 

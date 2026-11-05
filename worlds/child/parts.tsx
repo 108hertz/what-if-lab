@@ -509,9 +509,9 @@ function TlGlyph({ kind }: { kind: ReturnType<typeof kindOf> }) {
 
 /** Timeline filters (change 0019): which kinds of lines each one keeps. */
 const TL_FILTERS: [string, (k: ReturnType<typeof kindOf>) => boolean][] = [
-  ["Everything", () => true],
-  ["Your changes", (k) => ["home", "school", "activity", "move", "luck", "change"].includes(k)],
-  ["What followed", (k) => k === "ripple" || k === "together"],
+  ["All", () => true],
+  ["Changes", (k) => ["home", "school", "activity", "move", "luck", "change"].includes(k)],
+  ["Effects", (k) => k === "ripple" || k === "together"],
   ["Growing up", (k) => k === "milestone" || k === "everyday"],
 ];
 

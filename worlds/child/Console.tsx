@@ -129,7 +129,7 @@ export default function ChildConsole() {
           <StageControls view={sview} setView={pickView} trait={trait} setTrait={setTrait} kid={kid} setKid={setKid} />
         </Stage>
         <Transport engine={engine} onChange={onChange} fullscreen={fs} />
-        {desk && !fs.on && <div className="results country-results">{chart}{log}</div>}
+        {desk && !fs.on && <div className={`results country-results ${s.results}`}>{chart}{log}</div>}
       </section>
       {side}
     </main>

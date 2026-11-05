@@ -4,5 +4,5 @@ import type { WorldMeta } from "@/lib/sim/types";
 export const meta: WorldMeta = {
   key: "child",
   name: "Child",
-  sub: "120 possible kids",
+  sub: "Who will they become?",
 };
