@@ -389,3 +389,7 @@ would collide.
   gets 240 px (196 px on short screens) so "Growing up" shows every trait; new subtitle and intro. Found, not fixed (shared
   code from change 0020): at exactly 1440 px the transport overflows — "Undo all changes" and the new Export button are
   cut off, because button text only hides below 1440 px. Docs updated; 533 tests, typecheck and build green.
+- 2026-11-05 — follow-up (user asked to fix it here): the transport no longer overflows. Button labels and the Export
+  label now follow the centre column's own width (`.centre` is a size container; labels need ≥ 920 px) instead of only
+  the window width, so wide windows with side columns or ad rails go icon-only. Checked: child, galaxy and countries at
+  1440 × 900 with a what-if open, child at 1280 and 1920 — no overflow.

@@ -172,7 +172,7 @@ html, body { height: 100%; }
 
 /* Console */
 .console { min-height: 0; display: flex; flex-direction: column; gap: var(--s-2); padding-bottom: var(--s-2); }
-.centre { min-height: 0; display: flex; flex-direction: column; flex: 1 1 55%; border-radius: var(--r-card); overflow: hidden; background: var(--stage); border: 1px solid var(--stage-line); }
+.centre { min-height: 0; display: flex; flex-direction: column; flex: 1 1 55%; border-radius: var(--r-card); overflow: hidden; background: var(--stage); border: 1px solid var(--stage-line); container-type: inline-size; }
 .stage { position: relative; flex: 1 1 auto; min-height: 200px; background: var(--stage); }
 .stage canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; touch-action: none; background: var(--stage); }
 /* Columns are type on the walnut canvas, not boxes: no fill, dashed hairlines between sections */
@@ -266,6 +266,8 @@ html, body { height: 100%; }
 .btn:active { transform: scale(0.97); }
 .btn.primary { background: var(--stage-bark); border-color: transparent; color: var(--stage-ink); border-radius: var(--r-pill); padding: 0 var(--s-5) 0 var(--s-4); }
 @media (max-width: 1439px) { .transport .btn-text { display: none; } .transport .btn:not(.primary) { width: 44px; padding: 0; } }
+/* Wide windows can still have a narrow centre (side columns, ad rails): labels only when the row has room for them */
+@container (max-width: 919px) { .transport .btn-text { display: none; } .transport .btn:not(.primary) { width: 44px; padding: 0; } }
 @media (max-width: 767px) { .hint { display: none; } }
 @media (min-width: 768px) { .transport .seg { flex: 0 0 auto; } }
 /* Narrow transports: the speed control scrolls sideways with a fade; Restart and Close stay whole beside it */
@@ -493,7 +495,7 @@ td.a { color: var(--alt); }
 
 /* Export sheet */
 .transport .export-btn { width: 44px; padding: 0; }
-@media (min-width: 1440px) { .transport .export-btn { width: auto; padding: 0 var(--s-4); } }
+@container (min-width: 920px) { .transport .export-btn { width: auto; padding: 0 var(--s-4); } }
 @media (max-width: 767px) { .transport .export-btn { margin-left: auto; } .transport .export-btn + .fs-btn { margin-left: 0; } }
 .export-kinds { margin: 0 calc(-1 * var(--s-3)); }
 .export-kinds button { display: inline-flex; align-items: center; gap: var(--s-2); }
