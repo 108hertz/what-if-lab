@@ -427,11 +427,27 @@ function TlGlyph({ kind }: { kind: ReturnType<typeof kindOf> }) {
   return <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d[kind]}</svg>;
 }
 
+/** Timeline filters (change 0019): which kinds of lines each one keeps. */
+const TL_FILTERS: [string, (k: ReturnType<typeof kindOf>) => boolean][] = [
+  ["Everything", () => true],
+  ["Your changes", (k) => ["home", "school", "activity", "move", "luck", "change"].includes(k)],
+  ["What followed", (k) => k === "ripple" || k === "together"],
+  ["Growing up", (k) => k === "milestone" || k === "everyday"],
+];
+
 export function ChildTimeline({ engine }: { engine: SimEngine }) {
-  const items = engine.timeline();
+  const [f, setF] = useState(0);
+  const items = engine.timeline(80).filter((e) => TL_FILTERS[f][1](kindOf(e.txt))).slice(0, 40);
   const who = { both: engine.alt ? "Both" : "", base: "Only with no changes", alt: "Only with your changes" };
-  if (!items.length) return <ul className={s.tl}><li><p className="empty">Nothing yet. Press play, or try a change.</p></li></ul>;
+  const bar = (
+    <div className={`seg ${s.tlFilter}`} role="group" aria-label="Show in the timeline">
+      {TL_FILTERS.map(([l], i) => <button key={l} type="button" aria-pressed={f === i} onClick={() => setF(i)}>{l}</button>)}
+    </div>
+  );
+  if (!items.length) return <>{bar}<ul className={s.tl}><li><p className="empty">{f ? "Nothing of this kind yet." : "Nothing yet. Press play, or try a change."}</p></li></ul></>;
   return (
+    <>
+    {bar}
     <ul className={s.tl}>
       {items.map((e, i) => {
         const k = kindOf(e.txt);
@@ -444,5 +460,6 @@ export function ChildTimeline({ engine }: { engine: SimEngine }) {
         );
       })}
     </ul>
+    </>
   );
 }

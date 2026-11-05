@@ -267,7 +267,7 @@ limit and leave a working world.
 5. ✅ **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
 6. ✅ **Motion: springs, change-moment choreography, reduced motion.**
 7. ✅ **Stage: "All 120 kids" piles** + tap to meet a kid.
-8. **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
+8. ✅ **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
 9. **Ask: Family / Changes tabs, card grid, life ruler** (drag, keyboard, phone sheet), glossary.
 10. **Layout + copy pass** (impeccable critique → fixes), README, CLAUDE.md, feature doc, PLAN.md.
 
@@ -357,3 +357,12 @@ limit and leave a working world.
   hollow dots in the no-change world) and in "Meet the child"; "Back to the typical kid" on the stage. The change card
   sits above the piles; chips wait for it. Checked in the browser at 1024 wide and 375 × 812 (no page scroll).
   Dev-only note: the user's dev server sometimes drops the world's CSS chunk after hot reloads; a full reload fixes it.
+- 2026-11-05 — step 8 done: the chart has four tabs — Now (each trait's row: the 120 kids as faint marks, the middle half as
+  a band, the big dot for the typical or picked kid, the hollow no-change dot, a word), Growing up (small multiples, one row
+  per trait or only the picked one when short, life stages in the background, pins for changes, point at an age for a
+  sentence), Every day (six everyday things as 100 dots filling left to right, "was N" tick in the no-change colour), What
+  mattered (a signed bar per change and combo for the picked trait against a band of how much kids differ anyway, "still
+  there / mostly faded / going on"). The trait colours fail the colour-blind check (dataviz validator: orange/green
+  ΔE 3.1), so no view relies on colour: every row is labelled with glyph and word. Timeline filter: Everything / Your
+  changes / What followed / Growing up. Checked in the browser: Now and Every day (the pane was hidden, so Growing up and
+  What mattered were not seen with data).
