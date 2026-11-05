@@ -5,11 +5,12 @@ import type { SimEngine } from "@/lib/sim/engine";
 import type { Control } from "@/lib/sim/types";
 import { Icon } from "@/components/ui/Icon";
 import {
-  CHANGES, ENDS, FAMILIES, FOREVER, HOME_OPTIONS, LEN_WORD, lenWord, SCIENCE, SHOW, STEPS, STEP_VALUES, TRAITS, WORD, kidName, stepOf, stepWord, type Show,
+  CHANGES, ENDS, FAMILIES, FOREVER, GLOSSARY, HOME_OPTIONS, LEN_WORD, lenWord, SCIENCE, SHORT, SHOW, STEPS, STEP_VALUES, TRAITS, WORD, bestAges, kidName, stepOf, stepWord,
+  type Show,
 } from "./data";
-import { endOf, child, familyName, kidLine, planned, story, typicalKid, values, whenOf, why, kindOf, WHATIF_GROUPS, type P as Params, type W } from "./sim";
-import { drawPerson, parentLook, reducedMotion, type Look } from "./scene";
-import { stopChange, undoChange } from "./edit";
+import { endOf, child, familyName, kidLine, story, typicalKid, usually, values, whenOf, why, kindOf, WHATIF_GROUPS, type P as Params, type W } from "./sim";
+import { drawPerson, drawThing, parentLook, reducedMotion, CHANGE_THING, type Look } from "./scene";
+import { moveChange, stopChange, undoChange } from "./edit";
 import s from "./child.module.css";
 
 type P = { engine: SimEngine; onChange: () => void };
@@ -212,10 +213,32 @@ function ChangeSettings({ engine, onChange }: P) {
   );
 }
 
+/** A change's little picture: the thing it brings into the room, or its kind's glyph. */
+function ChangeIcon({ id, size = 22 }: { id: string; size?: number }) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  const th = CHANGE_THING[id];
+  useEffect(() => {
+    const cv = ref.current;
+    if (!cv || !th) return;
+    const dpr = window.devicePixelRatio || 1;
+    cv.width = size * dpr; cv.height = size * dpr;
+    const c = cv.getContext("2d")!;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, size, size);
+    drawThing(c, th, size / 2, size * 0.92, size * 0.8);
+  }, [th, size]);
+  if (!th) return <span className={s.cIcon} style={{ width: size, height: size }}><TlGlyph kind={CHANGES[id]?.kind ?? "change"} /></span>;
+  return <canvas ref={ref} className={s.cIcon} style={{ width: size, height: size }} aria-hidden="true" />;
+}
+
+/**
+ * Things that can happen (change 0019): the settings for the next click, the life ruler with your changes, then each
+ * group of changes behind its own heading (Home open at first), every row a question with what it usually does and its
+ * best ages.
+ */
 export function ChangeList({ engine, onChange }: P) {
   const w = shown(engine);
   const mods = engine.alt ? (engine.alt as W).mods : [];
-  const count = (id: string) => engine.applied.filter((x) => x === id).length;
+  const count = (id: string) => mods.filter((m) => m.id === id).length;
   const ages = (id: string) => mods.filter((m) => m.id === id).map((m) => Math.floor(m.age));
   const [pressed, setPressed] = useState<string | null>(null);
   const click = (id: string) => {
@@ -225,59 +248,116 @@ export function ChangeList({ engine, onChange }: P) {
   return (
     <section className={s.changes}>
       <h3 className="headline">Things that can happen</h3>
-      <p className="small hint-line">They add up. Click one again to make it stronger.</p>
+      <p className="small hint-line">They add up. Pick when, how big and how long, then click.</p>
       <ChangeSettings engine={engine} onChange={onChange} />
-      {WHATIF_GROUPS.map(([g, ids]) => (
-        <div key={g} className="forks">
-          <span className="ctl-head">{g}</span>
-          {ids.map((id) => {
-            const n = count(id), a = ages(id);
-            return (
-              <button key={id} className={`fork ${pressed === id ? s.pressed : ""}`} aria-pressed={n > 0} onClick={() => click(id)}>
-                <Icon name="fork" />
-                <span className={s.q}>{CHANGES[id].q}{a.length > 0 && <span className={s.age}>{a.length > 1 ? `ages ${[...new Set(a)].join(", ")}` : `age ${a[0]}`}</span>}</span>
-                {n > 1 && <span key={n} className={`count ${s.pop}`} aria-label={`applied ${n} times`}>×{n}</span>}
-              </button>
-            );
-          })}
-        </div>
-      ))}
-      <YourChanges engine={engine} onChange={onChange} />
+      <LifeRuler engine={engine} onChange={onChange} />
+      {WHATIF_GROUPS.map(([g, ids], gi) => {
+        const n = ids.reduce((a, id) => a + count(id), 0);
+        return (
+          <details key={g} className={s.group} open={gi === 0}>
+            <summary><span className="ctl-head">{g}</span><span className={s.groupN}>{n ? `${n} made` : `${ids.length} to try`}</span><Icon name="chevron" size={16} /></summary>
+            <div className="forks">
+              {ids.map((id) => {
+                const k = count(id), a = ages(id), best = bestAges(id), min = CHANGES[id].min;
+                return (
+                  <button key={id} className={`fork ${pressed === id ? s.pressed : ""}`} aria-pressed={k > 0} onClick={() => click(id)}>
+                    <ChangeIcon id={id} />
+                    <span className={s.q}>
+                      {CHANGES[id].q}
+                      <span className={s.usually}>Usually: {usually(id, w)}{best ? ` · ${best}` : ""}{min && w.t < min ? ` · from ${min}` : ""}</span>
+                      {a.length > 0 && <span className={s.age}>{a.length > 1 ? `ages ${[...new Set(a)].join(", ")}` : `age ${a[0]}`}</span>}
+                    </span>
+                    {k > 1 && <span key={k} className={`count ${s.pop}`} aria-label={`made ${k} times`}>×{k}</span>}
+                  </button>
+                );
+              })}
+            </div>
+          </details>
+        );
+      })}
     </section>
   );
 }
 
-/** Every change made so far, in order: when, how long, whether it is still going on; stop or undo each one (change 0019). */
-function YourChanges({ engine, onChange }: P) {
+/**
+ * The life ruler (change 0019): a line from birth to 18 (longer once they are older) with every change at its age and a
+ * bar for how long it goes on. Planned changes can be dragged (mouse or pen) or moved with the arrow keys; tap or Enter
+ * opens a small panel to move, stop or undo one.
+ */
+function LifeRuler({ engine, onChange }: P) {
   const alt = engine.alt as W | null;
-  if (!alt || !alt.mods.length) return null;
-  const t = alt.t;
-  const state = (m: W["mods"][number]) => {
-    if (!m.on) return "coming up";
-    if (m.stop <= t) return `stopped at ${Math.floor(m.stop)}`;
-    if (endOf(m) >= FOREVER) return "going on";
-    if (endOf(m) > t) return `until about ${Math.round(endOf(m))}`;
-    return "over";
-  };
+  const [sel, setSel] = useState(-1);
+  const box = useRef<HTMLDivElement>(null);
+  const drag = useRef<{ idx: number; moved: boolean } | null>(null);
+  if (!alt || !alt.mods.length) return <p className={`small ${s.rulerEmpty}`}>Your changes will appear here, on a line from birth to 18.</p>;
+  const t = alt.t, mods = alt.mods;
+  const span = Math.min(60, Math.max(18, Math.ceil(Math.max(t, ...mods.map((m) => m.age)) + 1)));
+  const P = (a: number) => `${(Math.max(0, Math.min(span, a)) / span) * 100}%`;
+  // Lanes so icons never overlap
+  const order = mods.map((m, i) => [i, m.age] as [number, number]).sort((a, b) => a[1] - b[1]);
+  const lane: number[] = [], laneEnd: number[] = [];
+  for (const [i, a] of order) { let l = 0; while ((laneEnd[l] ?? -99) > a - span * 0.07) l++; lane[i] = l; laneEnd[l] = a; }
+  const lanes = Math.max(1, ...lane.map((l) => l + 1));
+  const ticks = span <= 18 ? [0, 5, 10, 15, 18] : [0, 10, 18, ...[30, 45, 60].filter((x) => x <= span)];
+  const ageAt = (clientX: number) => { const r = box.current!.getBoundingClientRect(); return Math.round(((clientX - r.left) / r.width) * span); };
+  const move = (i: number, a: number) => { moveChange(engine, i, a); onChange(); };
+  const m = mods[sel];
+  const endA = (x: typeof m) => Math.min(endOf(x) > x.age ? endOf(x) : x.age + 0.4, span);
   return (
-    <div className={s.coming}>
+    <div className={s.ruler}>
       <span className="ctl-head">Your changes</span>
-      <ul className={s.mine}>
-        {alt.mods.map((m, i) => {
-          const canStop = m.on && !m.sn && m.stop >= FOREVER && endOf(m) > t;
+      <div ref={box} className={s.rulerTrack} style={{ height: 22 + lanes * 30 }}>
+        {ticks.map((a) => <span key={a} className={s.rulerTick} style={{ left: P(a) }}>{a}</span>)}
+        <span className={s.rulerNow} style={{ left: P(t) }} aria-hidden="true" />
+        {mods.map((x, i) => (
+          <span key={`b${i}`} className={`${s.rulerBar} ${x.on ? "" : s.planned}`} style={{ left: P(x.age), width: `calc(${P(endA(x))} - ${P(x.age)})`, top: 22 + lane[i] * 30 + 13 }} aria-hidden="true" />
+        ))}
+        {mods.map((x, i) => {
+          const label = `${CHANGES[x.id].cap}, age ${Math.floor(x.age)}, ${lenWord(x.end - x.age)}${x.on ? "" : ", planned: arrow keys move it"}`;
           return (
-            <li key={i}>
-              <span className={s.mineTxt}>
-                <span>Age {Math.floor(m.age)}: {CHANGES[m.id].cap}</span>
-                <span className="small">{lenWord(m.end - m.age)} · {state(m)}</span>
-              </span>
-              {canStop && <button type="button" className="btn" onClick={() => { stopChange(engine, i); onChange(); }} aria-label={`Stop: ${CHANGES[m.id].cap}`}>Stop</button>}
-              <button type="button" className="btn" onClick={() => { undoChange(engine, i); onChange(); }} aria-label={`Undo: ${CHANGES[m.id].cap}`}>Undo</button>
-            </li>
+            <button key={`i${i}`} type="button" className={`${s.rulerIcon} ${x.on ? "" : s.planned} ${sel === i ? s.selected : ""}`}
+              style={{ left: P(x.age), top: 22 + lane[i] * 30 }} aria-label={label} title={label}
+              onPointerDown={(e) => { if (!x.on && e.pointerType !== "touch") { drag.current = { idx: i, moved: false }; e.currentTarget.setPointerCapture(e.pointerId); } }}
+              onPointerMove={(e) => { const d = drag.current; if (d && d.idx === i) { const a = ageAt(e.clientX); if (a !== Math.floor(x.age)) { d.moved = true; move(i, a); } } }}
+              onPointerUp={() => { const d = drag.current; drag.current = null; if (!d?.moved) setSel(sel === i ? -1 : i); }}
+              onKeyDown={(e) => {
+                if (!x.on && (e.key === "ArrowLeft" || e.key === "ArrowRight")) { e.preventDefault(); move(i, Math.floor(x.age) + (e.key === "ArrowRight" ? 1 : -1)); }
+                if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSel(sel === i ? -1 : i); }
+              }}>
+              <ChangeIcon id={x.id} size={18} />
+            </button>
           );
         })}
-      </ul>
+      </div>
+      {m && (
+        <div className={s.rulerPanel}>
+          <p><b>{SHORT[m.id]}</b> · age {Math.floor(m.age)} · {lenWord(m.end - m.age)} · {!m.on ? "planned" : m.stop <= t ? `stopped at ${Math.floor(m.stop)}` : endOf(m) > t && endOf(m) > m.age ? "going on" : "over"}</p>
+          <div className={s.rulerBtns}>
+            {!m.on && <button type="button" className="btn" onClick={() => move(sel, Math.floor(m.age) - 1)} aria-label="One year earlier"><Icon name="minus" size={16} />Earlier</button>}
+            {!m.on && <button type="button" className="btn" onClick={() => move(sel, Math.floor(m.age) + 1)} aria-label="One year later"><Icon name="plus" size={16} />Later</button>}
+            {m.on && !m.sn && m.stop >= FOREVER && endOf(m) > t && endOf(m) > m.age && <button type="button" className="btn" onClick={() => { stopChange(engine, sel); onChange(); }}>Stop now</button>}
+            <button type="button" className="btn" onClick={() => { undoChange(engine, sel); setSel(-1); onChange(); }}>Undo</button>
+          </div>
+        </div>
+      )}
     </div>
+  );
+}
+
+/** What the five words mean (change 0019): one line and two examples each. */
+export function Glossary() {
+  return (
+    <details className={s.glossary}>
+      <summary><span className="ctl-head">What do the five words mean?</span><Icon name="chevron" size={16} /></summary>
+      <dl>
+        {SHOW.map((t) => (
+          <div key={t}>
+            <dt><TraitGlyph t={t} size={14} />{WORD[t]}</dt>
+            <dd>{GLOSSARY[t][0]} For example, a kid who {GLOSSARY[t][1][0]}, or {GLOSSARY[t][1][1]}.</dd>
+          </div>
+        ))}
+      </dl>
+    </details>
   );
 }
 

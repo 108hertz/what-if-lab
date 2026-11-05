@@ -1,5 +1,5 @@
 import type { SimEngine } from "@/lib/sim/engine";
-import { readAt, removeMod, stopMod, type W } from "./sim";
+import { moveMod, readAt, removeMod, stopMod, type W } from "./sim";
 
 /**
  * Editing the changes already made (change 0019), on the shared engine's public state only. The changed world's random
@@ -33,4 +33,12 @@ export function stopChange(engine: SimEngine, idx: number, age?: number): void {
   if (!alt) return;
   stopMod(alt, idx, age);
   engine.origin = null; // a stop is not a click: exports start from now so they show it
+}
+
+/** Move planned change number `idx` to another age (from the life ruler). */
+export function moveChange(engine: SimEngine, idx: number, age: number): void {
+  const alt = engine.alt as W | null;
+  if (!alt) return;
+  moveMod(alt, idx, age);
+  engine.origin = null; // the export recipe no longer matches: exports start from now
 }

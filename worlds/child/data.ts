@@ -454,3 +454,12 @@ export const BEHAVIOURS: Behaviour[] = [
   { key: "b_proj", traits: ["C", "Calm"], kid: "finish a long school project", grown: "finish a long project" },
 ];
 export const behaviourWord = (b: Behaviour, age: number) => (age < 18 ? b.kid : b.grown);
+
+/** What the five words mean, with two everyday examples each (the glossary, change 0019). */
+export const GLOSSARY: Record<Show, [meaning: string, examples: [string, string]]> = {
+  O: ["Loves new ideas, places and things to try.", ["asks lots of \"why?\" questions", "wants to taste the strange new fruit"]],
+  C: ["Keeps things in order and finishes what they start.", ["packs their school bag the night before", "does homework before playing"]],
+  E: ["Gets energy from being with people.", ["talks to the new kid first", "loves a big birthday party"]],
+  A: ["Cares about others and likes to get along.", ["shares the last biscuit", "helps a friend who fell over"]],
+  Calm: ["Stays steady when things go wrong.", ["sleeps fine the night before a test", "shrugs off a lost game"]],
+};

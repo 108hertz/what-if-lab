@@ -12,7 +12,7 @@ import { useFullscreen } from "@/components/console/fullscreen";
 import { WorldHeader } from "@/components/console/panels";
 import { child } from "./sim";
 import ChildChart from "./Chart";
-import { AboutScience, ChangeList, ChildTimeline, ChildTune, FamilyPicker, HomeSettings, MeetChild, NatureBar, ParentCards, Story } from "./parts";
+import { AboutScience, ChangeList, ChildTimeline, ChildTune, FamilyPicker, Glossary, HomeSettings, MeetChild, NatureBar, ParentCards, Story } from "./parts";
 import { SHOW, WORD } from "./data";
 import { pointAt, setHeroKid, setStageTrait, setStageView, stageView, tapAt, type StageView } from "./scene";
 import s from "./child.module.css";
@@ -47,7 +47,7 @@ function StageControls({ view, setView, trait, setTrait, kid, setKid }: {
 
 /**
  * The child world's console (change 0018), copied from StandardConsole's bands with animals' as the reference.
- * Ask: family → parents → home → things that can happen (stacking, with an age) → story; Meet the child, why they differ
+ * Ask (change 0019): two tabs — Changes (settings, life ruler, grouped changes, story) and Family (family, parents, home); Meet the child, why they differ
  * and the science sit in Ask at ≥ 1280 and in Read below that. The world owns its chart (two views + a sentence) and
  * timeline. Ad slots kept (ADR 0007).
  */
@@ -76,11 +76,23 @@ export default function ChildConsole() {
     up: () => false,
   }), []);
 
-  const ask = <><WorldHeader engine={engine} /><FamilyPicker engine={engine} onChange={onChange} /><ParentCards engine={engine} onChange={onChange} /><HomeSettings engine={engine} onChange={onChange} /><ChangeList engine={engine} onChange={onChange} /></>;
+  // Ask in two tabs (change 0019): what happens in their life, and the family they start in
+  const [askTab, setAskTab] = useState(0);
   const story = <Story engine={engine} />;
+  const ask = (
+    <>
+      <WorldHeader engine={engine} />
+      <div className={`mtabs ${s.askTabs}`} role="group" aria-label="Ask">
+        {["Changes", "Family"].map((l, i) => <button key={l} type="button" aria-pressed={askTab === i} onClick={() => setAskTab(i)}>{l}</button>)}
+      </div>
+      {askTab === 0
+        ? <><ChangeList engine={engine} onChange={onChange} />{story}</>
+        : <><FamilyPicker engine={engine} onChange={onChange} /><ParentCards engine={engine} onChange={onChange} /><HomeSettings engine={engine} onChange={onChange} /></>}
+    </>
+  );
   const meet = <MeetChild engine={engine} kid={kid} setKid={setKid} />;
   const why = <NatureBar engine={engine} />;
-  const science = <AboutScience />;
+  const science = <><Glossary /><AboutScience /></>;
   const tune = <ChildTune engine={engine} onChange={onChange} />;
   const chart = <ChildChart engine={engine} view={view} setView={setView} trait={trait} setTrait={setTrait} />;
   const log = <div className="log-box"><h3 className="headline">Timeline</h3><ChildTimeline engine={engine} /></div>;
@@ -96,14 +108,14 @@ export default function ChildConsole() {
   } else if (desk) {
     side = (
       <div className="dock-col">
-        <Dock key="desk" tabs={[["Ask", <>{ask}{story}</>], ["Tune", tune], ["Read", <>{meet}{why}{science}</>]]} />
+        <Dock key="desk" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{meet}{why}{science}</>]]} />
         <AdSlot size="box" promo />
       </div>
     );
   } else {
     side = (
       <>
-        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{meet}{story}{chart}{why}{science}</>], ["Log", log]]} />
+        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{meet}{chart}{why}{science}</>], ["Log", log]]} />
         <AdSlot size="banner" />
       </>
     );
@@ -111,7 +123,7 @@ export default function ChildConsole() {
 
   return (
     <main className={`console ${s.vars}`}>
-      {full && <aside className="col ask scrolly">{ask}{story}{meet}{why}{science}</aside>}
+      {full && <aside className="col ask scrolly">{ask}{meet}{why}{science}</aside>}
       <section className="centre" ref={centre}>
         <Stage engine={engine} onChange={onChange} interaction={stageInput}>
           <StageControls view={sview} setView={pickView} trait={trait} setTrait={setTrait} kid={kid} setKid={setKid} />

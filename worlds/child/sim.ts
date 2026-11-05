@@ -232,6 +232,28 @@ export const readAt = (w: W, a: number) => metricsOf(valuesAt(w, a));
 const near = (x: number, y: number) => Math.abs(x - y) < 0.25;
 const ALREADY = "The parents were already raising them this way";
 
+/** Move a planned change to another age (now or later, not before its youngest age); its length moves with it. */
+export function moveMod(w: W, idx: number, age: number) {
+  const m = w.mods[idx];
+  if (!m || m.on) return;
+  const at = Math.max(age, w.t, CHANGES[m.id]?.min ?? 0), len = m.end - m.age;
+  m.age = at; m.end = at + len;
+  if (m.stop < FOREVER) m.stop = Math.max(m.stop, at);
+  refresh(w);
+}
+
+/** "more outgoing and a bit calmer": what a change usually does, in a few words (parenting styles: compared with the start). */
+export function usually(id: string, w?: Pick<W, "style">): string {
+  const c = CHANGES[id];
+  if (!c) return "";
+  if (c.style) {
+    const d: TraitDelta = {};
+    for (const k of TRAITS) d[k] = (STYLE[c.style][k] ?? 0) - (STYLE[w?.style ?? "authoritarian"]?.[k] ?? 0);
+    return effectWords(d);
+  }
+  return effectWords(c.d);
+}
+
 /** Stop a change at an age (now, or later; never in the past). Noted when it happens. */
 export function stopMod(w: W, idx: number, age = w.t) {
   const m = w.mods[idx];

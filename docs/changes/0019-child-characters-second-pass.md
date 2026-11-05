@@ -268,7 +268,7 @@ limit and leave a working world.
 6. ✅ **Motion: springs, change-moment choreography, reduced motion.**
 7. ✅ **Stage: "All 120 kids" piles** + tap to meet a kid.
 8. ✅ **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
-9. **Ask: Family / Changes tabs, card grid, life ruler** (drag, keyboard, phone sheet), glossary.
+9. ✅ **Ask: Family / Changes tabs, card grid, life ruler** (drag, keyboard, phone sheet), glossary.
 10. **Layout + copy pass** (impeccable critique → fixes), README, CLAUDE.md, feature doc, PLAN.md.
 
 ## Risks and mitigations
@@ -366,3 +366,12 @@ limit and leave a working world.
   ΔE 3.1), so no view relies on colour: every row is labelled with glyph and word. Timeline filter: Everything / Your
   changes / What followed / Growing up. Checked in the browser: Now and Every day (the pane was hidden, so Growing up and
   What mattered were not seen with data).
+- 2026-11-05 — step 9 done: Ask has two tabs, Changes (settings, life ruler, the five groups behind open/close headings —
+  Home open — each row with the change's picture, "Usually: …", best ages and youngest age, then the story) and Family
+  (family, parents, home). Design change: the "card grid" became richer rows in the existing what-if row style (the
+  design system's signature row), grouped, which fits a 280 px column better than cards. The life ruler: 0–18 (longer when
+  older), each change an icon at its age with a bar for how long it goes on (dashed while planned), the "now" line, lanes
+  so icons never overlap; planned ones drag (mouse/pen) or move with arrow keys; tap/Enter opens a panel (earlier / later /
+  stop now / undo). It replaces step 1's temporary list. Glossary "What do the five words mean?" (meaning + two examples)
+  in Read. `moveMod` / `moveChange` move a planned change; `usually()` words what a change usually does. Checked in the
+  browser at 1280 wide (tabs, groups, rows, ruler, panel).

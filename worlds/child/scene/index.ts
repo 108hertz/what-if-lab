@@ -3,3 +3,4 @@ export { drawChild, heroKid, scenePace, setHeroKid, setStageView, stageView, typ
 export { kidAt, pointAt, setStageTrait, stageTrait, tapAt } from "./crowd";
 export { drawGlyph, drawPerson, isFamily, parentLook, type Hold, type Look, type Pose } from "./people";
 export { reducedMotion } from "./motion";
+export { CHANGE_THING, drawThing, type Thing } from "./props";
