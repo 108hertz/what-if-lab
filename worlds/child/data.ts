@@ -213,6 +213,14 @@ export const EVERYDAY: Everyday[] = [
   { id: "friend", from: 6, to: 18, rate: 0.04, d: { E: -2, N: 2 }, pf: 0.2, have: "have had a close friend move away" },
   { id: "camp", from: 8, to: 16, rate: 0.08, d: { E: 2, O: 2, N: -1 }, pf: 0.4, have: "have been to summer camp" },
   { id: "pet", from: 3, to: 15, rate: 0.04, d: { A: 2, N: -1, C: 1 }, pf: 0.5, have: "have got a pet" },
+  // change 0019: more everyday ups and downs
+  { id: "bike", from: 3, to: 9, rate: 0.12, d: { C: 1, N: -1 }, pf: 0.3, have: "have learned to ride a bike" },
+  { id: "team", from: 8, to: 17, rate: 0.04, d: { E: 2, C: 1, N: -1 }, pf: 0.4, have: "have made a school team" },
+  { id: "holiday", from: 2, to: 18, rate: 0.06, d: { O: 2, N: -1 }, pf: 0.3, have: "have been on a family holiday far away" },
+  { id: "play", from: 6, to: 16, rate: 0.03, d: { E: 2, O: 1 }, pf: 0.4, have: "have had a part in a school play" },
+  { id: "glasses", from: 5, to: 16, rate: 0.02, d: { N: 1 }, pf: 0.1, have: "have got glasses" },
+  { id: "visits", from: 1, to: 14, rate: 0.03, d: { A: 2, N: -1 }, pf: 0.5, have: "have a grandparent who visits often" },
+  { id: "cousin", from: 5, to: 15, rate: 0.03, d: { E: 1, A: 1 }, pf: 0.3, have: "have had a cousin come to stay for a summer" },
 ];
 export const EVERYDAY_MUL: Record<string, number> = { off: 0, normal: 1, lots: 2 };
 
@@ -261,3 +269,82 @@ export function kidShort(vs: number[]): string {
   const ext = SHOW.map((s, i) => [s, vs[i]] as [Show, number]).sort((x, y) => Math.abs(y[1] - 50) - Math.abs(x[1] - 50)).slice(0, 2);
   return ext.map(([s, x]) => stepWord(s, x)).join(", ");
 }
+
+/* ───────────── ripples, buffers, sensitive ages, combos (change 0019) ───────────── */
+
+/**
+ * Things that follow from a change, per kid: with chance `p`, between `delay` years after it, an extra small effect
+ * (part lasts `pf`). `have` finishes "61 of 100 kids …". A ripple of a change that goes on only happens while it goes on.
+ */
+export interface Ripple { id: string; p: number; delay: [number, number]; d: TraitDelta; pf: number; have: string }
+const R = (id: string, p: number, delay: [number, number], d: TraitDelta, pf: number, have: string): Ripple => ({ id, p, delay, d, pf, have });
+export const RIPPLES: Record<string, Ripple[]> = {
+  authoritative: [R("rules", 0.7, [0.5, 2], { N: -1, C: 1 }, 0.5, "knew what to expect at home")],
+  strict: [R("quiet", 0.4, [0.5, 3], { E: -1, A: -1 }, 0.4, "started keeping things to themselves"), R("rules", 0.5, [0.5, 2], { C: 1 }, 0.5, "got very good at following rules")],
+  sibling: [R("jealous", 0.4, [0, 1], { N: 2, A: -1 }, 0.1, "felt jealous at first"), R("close", 0.6, [3, 6], { A: 2, N: -1 }, 0.7, "became close to their little brother or sister"), R("carer", 0.4, [0.5, 3], { C: 2, A: 2 }, 0.5, "helped look after the baby")],
+  divorce: [R("worried", 0.3, [0, 1], { N: 2 }, 0.1, "wondered for a while if it was their fault (it never is)"), R("twohomes", 0.7, [1, 3], { N: -2, C: 1 }, 0.5, "got used to two homes and two birthdays"), R("closer", 0.4, [0.5, 2], { A: 1, N: -1 }, 0.5, "got closer to one parent")],
+  grandparent: [R("stories", 0.7, [0.3, 2], { O: 2, A: 1 }, 0.6, "heard lots of family stories"), R("cook", 0.4, [0.5, 3], { C: 2 }, 0.6, "learned to cook with their grandparent")],
+  pet: [R("walks", 0.6, [0.2, 1], { C: 2, N: -1 }, 0.5, "walked the dog every day"), R("buddy", 0.5, [0.2, 1], { N: -2, A: 1 }, 0.5, "say the dog is their best friend")],
+  money: [R("help", 0.5, [0.2, 1.5], { C: 2, A: 1 }, 0.5, "helped out more at home"), R("worry", 0.4, [0, 1], { N: 2 }, 0.2, "worried about money"), R("fewer", 0.5, [0, 1], { O: -1, E: -1 }, 0.2, "had fewer clubs and trips for a while")],
+  illness: [R("care", 0.5, [0, 1], { A: 2, C: 1 }, 0.6, "helped care for the parent"), R("grownup", 0.4, [0.5, 1], { C: 1, N: 1 }, 0.4, "felt more grown-up")],
+  bullied: [R("told", 0.6, [0.2, 1], { N: -2 }, 0.5, "told someone, and it got better"), R("hand", 0.4, [0.2, 1], { E: -2 }, 0.3, "stopped putting their hand up in class for a while"), R("kinder", 0.3, [1, 4], { A: 3 }, 0.7, "became kinder to kids who are left out")],
+  bestfriend: [R("brave", 0.6, [0.2, 1], { E: 2, N: -1 }, 0.5, "felt braver at school"), R("adventures", 0.5, [0.5, 3], { O: 2 }, 0.4, "went on adventures together")],
+  teacher: [R("subject", 0.6, [0.2, 1], { O: 2, C: 2 }, 0.7, "found a subject they love"), R("believe", 0.4, [0.5, 2], { N: -2, C: 1 }, 0.5, "started believing they could do hard things")],
+  newschool: [R("friends", 0.5, [0.2, 1], { E: 2, N: -1 }, 0.4, "made new friends quickly"), R("miss", 0.5, [0, 0.5], { N: 1, E: -1 }, 0.1, "missed their old friends")],
+  mentor: [R("goal", 0.6, [0.5, 2], { C: 3 }, 0.6, "found a goal to work towards"), R("try", 0.4, [0.5, 3], { O: 2, E: 1 }, 0.5, "tried things they never would have")],
+  sport: [R("team", 0.6, [0.2, 1], { E: 3, A: 1, N: -1 }, 0.5, "made friends on the team"), R("injury", 0.1, [0.5, 4], { N: 2 }, 0.1, "got a sports injury and got better"), R("win", 0.4, [0.5, 3], { N: -2, C: 1 }, 0.3, "won a match they still talk about")],
+  music: [R("concert", 0.5, [1, 4], { E: 2, N: -2, C: 1 }, 0.4, "played in a concert"), R("boring", 0.4, [0.5, 2], { C: -1 }, 0.1, "found practising boring for a while")],
+  reading: [R("library", 0.5, [0.2, 1.5], { O: 2, C: 1 }, 0.5, "used their library card a lot"), R("write", 0.25, [1, 5], { O: 3 }, 0.5, "started writing their own stories")],
+  screen: [R("sleep", 0.5, [0.2, 1], { N: 2, C: -1 }, 0.2, "slept less"), R("online", 0.3, [0.5, 3], { E: 1 }, 0.3, "made friends online"), R("game", 0.4, [0.5, 3], { C: 1, O: 1 }, 0.3, "got really good at a game")],
+  nature: [R("names", 0.5, [0.5, 3], { O: 2 }, 0.6, "learned the names of birds and trees"), R("camping", 0.5, [0.3, 2], { N: -2, E: 1 }, 0.4, "went camping and loved it")],
+  move: [R("language", 0.8, [0.5, 3], { O: 3, C: 1 }, 0.8, "learned the new language"), R("lonely", 0.5, [0, 0.5], { N: 3, E: -2 }, 0.1, "felt lonely the first year"), R("newbest", 0.5, [0.5, 2.5], { E: 2, N: -2 }, 0.4, "made a new best friend there")],
+  volunteer: [R("thanks", 0.7, [0.2, 1], { A: 2, N: -1 }, 0.5, "were thanked by someone they helped"), R("lead", 0.2, [1, 4], { C: 2, E: 2 }, 0.5, "started leading other volunteers")],
+};
+
+/**
+ * Things that protect: a hard change hurts less (× factor) if, when it happens, `by` is there — another change still
+ * going on, or a home setting ("style:authoritative" also counts a switch to warm and firm). Factors multiply (floor 0.4).
+ */
+export interface Buffer { protects: string; by: string; factor: number; why: string }
+export const BUFFERS: Buffer[] = [
+  { protects: "bullied", by: "bestfriend", factor: 0.6, why: "Having a best friend made being bullied hurt less" },
+  { protects: "bullied", by: "school:great", factor: 0.8, why: "Great teachers stepped in, so being bullied hurt less" },
+  { protects: "bullied", by: "home:stable", factor: 0.85, why: "A calm home helped them get through being bullied" },
+  { protects: "divorce", by: "style:authoritative", factor: 0.7, why: "Warm, firm parents made the separation easier" },
+  { protects: "money", by: "style:authoritative", factor: 0.8, why: "Warm, firm parents kept money worries from hurting too much" },
+  { protects: "money", by: "grandparent", factor: 0.85, why: "A grandparent at home helped when money was tight" },
+  { protects: "illness", by: "grandparent", factor: 0.75, why: "A grandparent at home helped while the parent was ill" },
+  { protects: "move", by: "sibling", factor: 0.85, why: "Moving with a brother or sister was easier" },
+  { protects: "newschool", by: "sport", factor: 0.85, why: "Their team helped them settle in at the new school" },
+  { protects: "screen", by: "reading", factor: 0.8, why: "Reading every night balanced the screen time" },
+  { protects: "screen", by: "screens:strict", factor: 0.8, why: "Clear screen rules kept screen time from taking over" },
+];
+export const BUFFER_FLOOR = 0.4;
+
+/** Sensitive ages: each change matters most between these ages (× 1.2), less far from them (down to × 0.7). */
+export const AGES: Record<string, [number, number]> = {
+  authoritative: [2, 12], strict: [2, 12], sibling: [2, 6], divorce: [6, 14], grandparent: [3, 12], pet: [5, 12], money: [6, 16],
+  illness: [6, 16], bullied: [9, 15], bestfriend: [6, 13], teacher: [7, 16], newschool: [10, 15], mentor: [12, 18], sport: [6, 14],
+  music: [5, 12], reading: [4, 10], screen: [8, 16], nature: [4, 12], move: [11, 15], volunteer: [12, 18],
+};
+export function ageWeight(id: string, age: number): number {
+  const w = AGES[id];
+  if (!w) return age < 18 ? 1 : 0.6;
+  const d = age < w[0] ? w[0] - age : age > w[1] ? age - w[1] : 0;
+  return 0.7 + 0.5 * Math.exp(-((d / 4) ** 2));
+}
+/** "strongest around 11–15" for a change. */
+export const bestAges = (id: string) => (AGES[id] ? `strongest around ${AGES[id][0]}–${AGES[id][1]}` : "");
+
+/** Two changes that go on at the same time add a little extra together (from when both are there, while both go on). */
+export interface Combo { a: string; b: string; d: TraitDelta; pf: number; txt: string }
+export const COMBOS: Combo[] = [
+  { a: "sport", b: "bestfriend", d: { E: 2, N: -1 }, pf: 0.6, txt: "Team sport and a best friend: they played on the team together" },
+  { a: "reading", b: "teacher", d: { O: 2, C: 1 }, pf: 0.6, txt: "Reading every night and a great teacher: they started loving to learn" },
+  { a: "music", b: "mentor", d: { C: 2, N: -1 }, pf: 0.6, txt: "An instrument and a mentor: practice started to pay off" },
+  { a: "move", b: "bestfriend", d: { N: -2, E: 1 }, pf: 0.5, txt: "A new country and a best friend: settling in got easier" },
+  { a: "pet", b: "nature", d: { N: -1, C: 1 }, pf: 0.6, txt: "A dog and time outdoors: long walks every day" },
+  { a: "volunteer", b: "grandparent", d: { A: 2 }, pf: 0.6, txt: "Volunteering and a grandparent at home: helping became a habit" },
+  { a: "screen", b: "nature", d: { N: -1, C: 1 }, pf: 0.5, txt: "Screens and time outdoors: the outdoors balanced the screens" },
+  { a: "sibling", b: "authoritative", d: { A: 2, N: -1 }, pf: 0.6, txt: "A little sibling and warm, firm parents: the kids got along well" },
+];

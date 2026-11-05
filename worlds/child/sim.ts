@@ -2,11 +2,12 @@ import type { Params, Sandbox } from "@/lib/sim/types";
 import { fmtNum, gauss, note, num, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
 import {
-  CALMER_AGAIN, CHANGES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
+  BUFFERS, CALMER_AGAIN, CHANGES, COMBOS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
   MILESTONES, MORE, PHRASE, SHORT, SHOW, SIZE, STEPS, STYLE, TALLY_AGES, TRAITS, WORD, kidName, stepWord, type Show, type TraitDelta,
 } from "./data";
 import {
-  averages, counts, endOf, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, snapshot, SNAP_AGES, values, valuesAt, type Kid, type W,
+  averages, counts, endOf, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, refresh, rippleCount, snapshot, SNAP_AGES, values, valuesAt,
+  type Kid, type Mod, type W,
 } from "./model";
 
 export * from "./model";
@@ -132,6 +133,7 @@ export const child: Sandbox<W, P> = {
       b0: TRAITS.map((k) => 50 + h * ((num(p, "a" + k) + num(p, "b" + k)) / 2 - 50)),
       env: envOf(p), tau, pk, luck, evMul: EVERYDAY_MUL[String(p.events)] ?? 1, style: String(p.style ?? HOME_DEFAULTS.style), c15: NaN,
       snap: new Float32Array(SNAP_AGES * N_KIDS * 5).fill(NaN),
+      hs: Object.fromEntries(Object.keys(HOME_DEFAULTS).map((k) => [k, String(p[k] ?? HOME_DEFAULTS[k])])), cmb: [],
     };
     for (let j = 0; j < N_KIDS; j++) {
       const kid: Kid = { gd: [], z0: [], z: [], r: [], evL: [], evF: [], em: 0, j: 0 };
@@ -170,6 +172,7 @@ export const child: Sandbox<W, P> = {
         if (!m.on && w.t >= m.age) { m.on = 1; note(w, CHANGES[m.id].txt); }
         if (m.on && !m.sn && m.stop < FOREVER && w.t >= m.stop) { m.sn = 1; note(w, CHANGES[m.id].stop); }
       }
+      if (w.mods.length) syncDerived(w);
       for (const [age, txt, key] of MILESTONES) if (w.t >= age) note(w, txt, key);
       if (w.t >= 15 && !Number.isFinite(w.c15)) w.c15 = calmAvg(w);
       if (w.t >= 23 && !w.f.calm && Number.isFinite(w.c15) && calmAvg(w) > w.c15 + 1) note(w, CALMER_AGAIN, "calm");
@@ -188,8 +191,9 @@ export const child: Sandbox<W, P> = {
     } else for (const k of TRAITS) if (c.d[k]) d[k] = c.d[k]! * s;
     if (!Object.values(d).some((x) => x)) d = {};
     const on = age <= w.t ? 1 : 0;
-    w.mods.push({ id, age, s: size, d, pf, on, end: age + len, stop: FOREVER, sn: 0 });
-    if (on) note(w, c.style && !Object.keys(d).length ? ALREADY : c.txt);
+    w.mods.push({ id, age, s: size, d, pf, on, end: age + len, stop: FOREVER, sn: 0, h: 0, b: 1, bi: [], aw: 1 });
+    refresh(w);
+    if (on) { note(w, c.style && !Object.keys(d).length ? ALREADY : c.txt); syncDerived(w); }
   },
 
   read(w) {
@@ -227,7 +231,44 @@ export function stopMod(w: W, idx: number, age = w.t) {
   const at = Math.max(age, w.t, m.age);
   if (at >= endOf(m)) return; // it ends by itself before then
   m.stop = at;
+  refresh(w);
   if (m.on && w.t >= at) { m.sn = 1; note(w, CHANGES[m.id].stop); }
+}
+
+/* ───────────── lines that follow from the changes: ripples, buffers, combos ───────────── */
+
+/** Ripples common enough to get a timeline line. */
+const TALLY_P = 0.4;
+/** "After they joined a team sport at 6, 61 of 100 kids made friends on the team." */
+export const rippleLine = (m: Mod, r: number, n: number) => `After ${CHANGES[m.id].past} at ${Math.floor(m.age)}, ${of100(n)} of 100 kids ${RIPPLES[m.id][r].have}`;
+/** When a ripple's line is due: when every kid it can happen to has had it. */
+const rippleDue = (m: Mod, r: number) => { const R = RIPPLES[m.id][r]; const t = m.age + R.delay[1]; return endOf(m) > m.age ? Math.min(t, endOf(m)) : t; };
+
+/**
+ * Note every line that follows from the changes and is due by now, each once, at the age it belongs to. Everything here is
+ * worked out from the changes alone, so after an undo the lines can be cleared and noted again.
+ */
+function syncDerived(w: W) {
+  for (const m of w.mods) {
+    if (!m.on || w.t < m.age) continue;
+    for (const bi of m.bi) note(w, BUFFERS[bi].why, `d|${BUFFERS[bi].why}|${m.h}`, m.age);
+    (RIPPLES[m.id] ?? []).forEach((R, r) => {
+      if (R.p < TALLY_P || w.f[`d|r|${m.h}|${r}`]) return;
+      const due = rippleDue(m, r);
+      if (w.t < due) return;
+      w.f[`d|r|${m.h}|${r}`] = 1;
+      const n = rippleCount(w, m, r, due);
+      if (n > 0) note(w, rippleLine(m, r, n), `d|${rippleLine(m, r, n)}|${m.h}`, due);
+    });
+  }
+  for (const c of w.cmb) if (w.t >= c.start) note(w, COMBOS[c.c].txt, `d|${COMBOS[c.c].txt}|${c.start}`, c.start);
+}
+
+/** Forget every line that follows from the changes (they are noted again from the changes as they are now). */
+function clearDerived(w: W) {
+  const txts = new Set<string>();
+  for (const key of Object.keys(w.f)) if (key.startsWith("d|")) { const t = key.split("|")[1]; if (t !== "r") txts.add(t); delete w.f[key]; }
+  w.log = w.log.filter((e) => !txts.has(e.txt));
 }
 
 /**
@@ -251,6 +292,10 @@ export function removeMod(w: W, start: Pick<W, "style">, idx: number) {
     x.d = d; style = cx.style;
   }
   w.style = style;
+  refresh(w);
+  clearDerived(w);
+  syncDerived(w);
+  w.log.sort((x, y) => x.t - y.t);
 }
 
 function calmAvg(w: W) { return mean(w.k.map((kid) => 100 - kidValue(w, kid, 4))); }
@@ -314,8 +359,13 @@ export function story({ b, a, p }: { b: W; a: W | null; p: P }): string[] {
       if (!Object.keys(m.d).length) continue;
       const fadeTxt = m.stop <= w.t ? `, until it stopped at ${Math.floor(m.stop)}` : m.pf < 0.5 && w.t - end > 6 ? (worry ? ", then most bounced back" : ", and much of it faded later") : "";
       const at = Math.floor(m.age);
-      out.push(`When ${ch.past} at ${at}, most kids became ${effectWords(m.d)}${fadeTxt}.`);
+      // The most common thing that followed, so far
+      const rip = (RIPPLES[m.id] ?? []).map((R, r) => [r, rippleCount(w, m, r)] as [number, number]).filter(([, n]) => n > 0).sort((x, y) => y[1] - x[1])[0];
+      const ripTxt = rip ? `, and ${of100(rip[1])} of 100 ${RIPPLES[m.id][rip[0]].have}` : "";
+      out.push(`When ${ch.past} at ${at}, most kids became ${effectWords(m.d)}${fadeTxt}${ripTxt}.`);
+      if (m.bi.length && out.length < 4) out.push(`${BUFFERS[m.bi[0]].why}.`);
     }
+    for (const c of a.cmb) if (a.t >= c.start && out.length < 4) out.push(`${COMBOS[c.c].txt}.`);
     const next = planned(a)[0];
     if (next && out.length < 5) out.push(`Planned for age ${Math.floor(next.age)}: ${CHANGES[next.id].cap}.`);
   }
@@ -338,9 +388,11 @@ export function kidLine(j: number, age: number, vs: number[]): string {
 }
 
 /** The kind of a timeline line, for its glyph. */
-export function kindOf(txt: string): "milestone" | "home" | "school" | "activity" | "move" | "everyday" | "change" {
+export function kindOf(txt: string): "milestone" | "home" | "school" | "activity" | "move" | "everyday" | "change" | "ripple" | "together" {
   if (MILESTONES.some(([, t]) => t === txt) || txt === CALMER_AGAIN) return "milestone";
   if (txt.startsWith("By ")) return "everyday";
+  if (txt.startsWith("After ")) return "ripple";
+  if (BUFFERS.some((b) => b.why === txt) || COMBOS.some((c) => c.txt === txt)) return "together";
   for (const c of Object.values(CHANGES)) if (c.txt === txt) return c.kind;
   return "change";
 }

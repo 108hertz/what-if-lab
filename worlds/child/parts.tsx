@@ -420,6 +420,8 @@ function TlGlyph({ kind }: { kind: ReturnType<typeof kindOf> }) {
     move: <><path d="M5 12h14" /><path d="M14 7l5 5-5 5" /></>,
     everyday: <><circle cx="7" cy="12" r="1.2" /><circle cx="12" cy="12" r="1.2" /><circle cx="17" cy="12" r="1.2" /></>,
     change: <><circle cx="6" cy="12" r="1.6" /><path d="M7.6 12H11c2 0 2.6-5 5-5h2.5" /><path d="M11 12c2 0 2.6 5 5 5h2.5" /></>,
+    ripple: <><circle cx="12" cy="12" r="2" /><path d="M7.5 8.5a6 6 0 0 0 0 7M16.5 8.5a6 6 0 0 1 0 7" /><path d="M4.5 6a10 10 0 0 0 0 12M19.5 6a10 10 0 0 1 0 12" /></>,
+    together: <><path d="M12 20s-6.5-4-6.5-9A3.5 3.5 0 0 1 12 8.5 3.5 3.5 0 0 1 18.5 11c0 5-6.5 9-6.5 9z" /></>,
   };
   return <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d[kind]}</svg>;
 }

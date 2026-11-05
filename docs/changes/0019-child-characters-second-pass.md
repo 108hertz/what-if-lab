@@ -259,7 +259,7 @@ limit and leave a working world.
 
 1. ✅ **Model: length, stop, undo-one.** `len` / `until` on mods, `s_len` setting, replay-based undo. Tests: stop truncates
    effect; undo-one equals a fresh run with the remaining mods.
-2. **Model: ripples, buffers, sensitive ages, combos** + more everyday events. Tests: determinism, buffers reduce effect,
+2. ✅ **Model: ripples, buffers, sensitive ages, combos** + more everyday events. Tests: determinism, buffers reduce effect,
    ripples reported once with stable text, every change × ripple finite.
 3. **Model: options** (`baby`, `shape`, `time`, `sens`) and **16 new changes**. Tests: every change at ages 1/8/15,
    every option, average shift ≤ 10.
@@ -307,3 +307,8 @@ limit and leave a working world.
   past lines from yearly snapshots); a temporary "Your changes" list with Stop / Undo under the changes (the life ruler
   replaces it in step 9). Usual lengths change 0018's numbers for lasting changes (activities, pet, sibling, grandparent
   stay at full strength instead of fading). 9 new tests; 461 tests, typecheck and build green.
+- 2026-11-04 — step 2 done in code: 50 ripples (hash-based per kid, never the shared random stream, so undo stays exact),
+  11 buffers (changes or home settings present when a hard change happens), sensitive-age weights per change (replaces the
+  old ×0.6 for adults), 8 combos, 7 more everyday ups and downs, timeline lines ("After …, 61 of 100 kids …", buffer and
+  combo lines with new glyphs), story chains. Tests, typecheck and build green; checked in the browser;
+  committed.

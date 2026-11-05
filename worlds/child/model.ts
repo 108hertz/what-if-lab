@@ -1,5 +1,7 @@
 import type { BaseWorld } from "@/lib/sim/types";
-import { FOREVER, HIGH, LOW, MATURATION, SHOW, TRAITS, type Show, type TraitDelta } from "./data";
+import {
+  BUFFER_FLOOR, BUFFERS, CHANGES, COMBOS, FOREVER, HIGH, LOW, MATURATION, RIPPLES, SHOW, SIZE, TRAITS, ageWeight, type Show, type TraitDelta,
+} from "./data";
 
 /**
  * The child model's maths (change 0018), shared by the rules (sim.ts) and the stage (scene.ts). Framework-free.
@@ -12,7 +14,14 @@ export interface Kid { gd: number[]; z0: number[]; z: number[]; r: number[]; evL
  * at (FOREVER = not stopped), `sn` = the stop has been noted. While the cause goes on the full effect stays; after it ends
  * the lasting part `pf` stays and the rest fades.
  */
-export interface Mod { id: string; age: number; s: string; d: TraitDelta; pf: number; on: 0 | 1; end: number; stop: number; sn: 0 | 1 }
+export interface Mod {
+  id: string; age: number; s: string; d: TraitDelta; pf: number; on: 0 | 1; end: number; stop: number; sn: 0 | 1;
+  /** Worked out again by `refresh` whenever the changes change: hash key for its ripples (same change at the same age = same
+   *  draws, whatever else was clicked), how much buffers soften it and which ones, and its sensitive-age weight. */
+  h: number; b: number; bi: number[]; aw: number;
+}
+/** Two changes going on together (`COMBOS[c]`), from `start` while both go on (to `end`). */
+export interface ComboOn { c: number; start: number; end: number }
 export interface W extends BaseWorld {
   k: Kid[]; mods: Mod[];
   /** Family starting point per trait, home effect per trait, fading time scale, lasting-part shift, everyday-event rate. */
@@ -25,6 +34,8 @@ export interface W extends BaseWorld {
    * not depend on changes, so the changed world and the no-change world share these numbers.
    */
   snap: Float32Array;
+  /** Home settings the world started with (for buffers like "a calm home"), and the combos in effect. */
+  hs: Record<string, string>; cmb: ComboOn[];
 }
 
 export const N_KIDS = 120;
@@ -39,22 +50,101 @@ export const lasting = (pf: number, k: number) => (k >= 0 ? pf + (1 - pf) * k : 
 /** When a change's cause stops: by itself or because you stopped it. */
 export const endOf = (m: Mod) => Math.min(m.end, m.stop);
 
-/** How much of one change's full effect is there at age a (0–1): ramps up over a year, fades after the cause ends. */
+/** Something that starts at `start` and goes on to `end`: full while it goes on (after a one-year ramp), then the lasting part stays. */
+function pulse(start: number, end: number, pf: number, a: number, tau: number): number {
+  if (a < start) return 0;
+  const rampEnd = end > start ? end : start + 1; // a one-off still builds up over a year; a stopped one stops building
+  const ramp = Math.min(1, Math.min(a, rampEnd) - start), since = Math.max(0, a - end);
+  return ramp * (pf + (1 - pf) * Math.exp(-since / tau));
+}
+
+/** How much of one change's full effect is there at age a (0–1, before buffers and sensitive ages). */
 export function strength(m: Mod, a: number, tau: number): number {
-  if (!m.on || a < m.age) return 0;
-  const end = endOf(m), rampEnd = end > m.age ? end : m.age + 1; // a one-off still builds up over a year; a stopped one stops building
-  const ramp = Math.min(1, Math.min(a, rampEnd) - m.age), since = Math.max(0, a - end);
-  return ramp * (m.pf + (1 - m.pf) * Math.exp(-since / tau)) * (m.age < 18 ? 1 : 0.6);
+  return m.on ? pulse(m.age, endOf(m), m.pf, a, tau) : 0;
+}
+
+/* ───────────── ripples, buffers, combos (change 0019) ───────────── */
+
+/** A number in [0, 1) from integers: the same inputs always give the same number (never the shared random stream, so undo stays exact). */
+export function hash01(a: number, b: number, c: number, d: number): number {
+  let h = Math.imul(a ^ 0x9e3779b9, 0x85ebca6b) ^ Math.imul(b + 0x27d4eb2f, 0xc2b2ae35);
+  h = Math.imul(h ^ (h >>> 15), 0x2c1b3c6d) ^ Math.imul(c + 0x165667b1, 0x27d4eb2f);
+  h = Math.imul(h ^ (h >>> 13), 0x297a2d39) ^ Math.imul(d + 0x61c88647, 0x9e3779b1);
+  h ^= h >>> 16;
+  return (h >>> 0) / 4294967296;
+}
+const strHash = (s: string) => { let h = 2166136261; for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619); return h >>> 0; };
+const kidKey = (kid: Kid) => Math.floor(kid.j * 4294967296) >>> 0;
+
+/** When ripple r of change m happens for this kid (age), or −1 if it doesn't. A ripple of a lasting change only happens while it goes on. */
+export function rippleAt(kid: Kid, m: Mod, r: number): number {
+  const R = RIPPLES[m.id]?.[r];
+  if (!R) return -1;
+  const k = kidKey(kid);
+  if (hash01(k, m.h, r, 0) >= R.p) return -1;
+  const when = m.age + R.delay[0] + (R.delay[1] - R.delay[0]) * hash01(k, m.h, r, 1);
+  return endOf(m) > m.age && when >= endOf(m) ? -1 : when;
+}
+/** How many of the kids a ripple has happened to by age a. */
+export const rippleCount = (w: W, m: Mod, r: number, a = w.t) => w.k.filter((kid) => { const x = rippleAt(kid, m, r); return x >= 0 && x <= a; }).length;
+
+/** For combos and buffers a one-off counts as there for two years. */
+const presentEnd = (m: Mod) => (endOf(m) > m.age ? endOf(m) : m.age + 2);
+/** The parenting style at an age: the start, or the last switch made by then (and not stopped). */
+export function styleAt(w: W, a: number): string {
+  let st = w.hs.style;
+  for (const x of w.mods) { const c = CHANGES[x.id]; if (c?.style && x.age <= a && a < x.stop) st = c.style; }
+  return st;
+}
+function present(w: W, by: string, a: number, not: Mod): boolean {
+  const [key, val] = by.split(":");
+  if (val != null) return key === "style" ? styleAt(w, a) === val : w.hs[key] === val;
+  return w.mods.some((x) => x !== not && x.id === by && x.age <= a && a < presentEnd(x));
+}
+
+/** Work out again everything that depends on the set of changes: ripple keys, buffers, sensitive ages, combos. Pure. */
+export function refresh(w: W) {
+  const seen = new Map<string, number>();
+  for (const m of w.mods) {
+    const key = `${m.id}|${Math.round(m.age * 1000)}`, nth = seen.get(key) ?? 0;
+    seen.set(key, nth + 1);
+    m.h = (strHash(key) ^ Math.imul(nth + 1, 0x9e3779b1)) >>> 0;
+    m.aw = ageWeight(m.id, m.age);
+    m.b = 1; m.bi = [];
+    BUFFERS.forEach((B, bi) => { if (B.protects === m.id && present(w, B.by, m.age, m)) { m.b *= B.factor; m.bi.push(bi); } });
+    m.b = Math.max(BUFFER_FLOOR, m.b);
+  }
+  w.cmb = [];
+  COMBOS.forEach((C, c) => {
+    const first = (id: string) => w.mods.filter((m) => m.id === id).sort((x, y) => x.age - y.age)[0];
+    const a = first(C.a), b = first(C.b);
+    if (!a || !b) return;
+    const start = Math.max(a.age, b.age), end = Math.min(presentEnd(a), presentEnd(b));
+    if (start < end) w.cmb.push({ c, start, end });
+  });
 }
 
 /** Sum of every change that has happened, for one kid and trait at age a, softly capped so stacks stay plausible. */
 function modPart(w: W, kid: Kid, i: number, a: number): number {
   let raw = 0;
   const k = TRAITS[i];
+  const r = kid.r[i];
   for (const m of w.mods) {
+    if (!m.on || a < m.age) continue;
     const dv = m.d[k];
-    if (!dv) continue;
-    raw += dv * kid.r[i] * strength(m, a, w.tau);
+    if (dv) raw += dv * r * strength(m, a, w.tau) * m.b * m.aw;
+    const rs = RIPPLES[m.id];
+    if (!rs) continue;
+    for (let q = 0; q < rs.length; q++) {
+      const rv = rs[q].d[k];
+      if (!rv) continue;
+      const when = rippleAt(kid, m, q);
+      if (when >= 0 && a >= when) raw += rv * r * (SIZE[m.s] ?? 1) * pulse(when, when, rs[q].pf, a, w.tau);
+    }
+  }
+  for (const c of w.cmb) {
+    const dv = COMBOS[c.c].d[k];
+    if (dv && a >= c.start) raw += dv * r * pulse(c.start, c.end, COMBOS[c.c].pf, a, w.tau);
   }
   return CAP * Math.tanh(raw / CAP);
 }

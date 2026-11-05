@@ -3,7 +3,8 @@ import { SimEngine } from "@/lib/sim/engine";
 import { defaultParams } from "@/lib/sim/core";
 import { averages, child, compare, kidLine, readAt, stopMod, story, values, why, type P, type W } from "@/worlds/child/sim";
 import { undoChange } from "@/worlds/child/edit";
-import { CHANGES, CHANGE_GROUPS, CHANGE_IDS, FAMILIES, FAMILY_IDS, TRAITS } from "@/worlds/child/data";
+import { AGES, BUFFERS, CHANGES, CHANGE_GROUPS, CHANGE_IDS, COMBOS, EVERYDAY, FAMILIES, FAMILY_IDS, RIPPLES, TRAITS } from "@/worlds/child/data";
+import { rippleCount } from "@/worlds/child/model";
 
 const FRAME = 1 / 60;
 const params = (over: Partial<P> = {}) => {
@@ -273,7 +274,7 @@ describe("child: how long, stop and undo (change 0019)", () => {
   };
 
   it("undo one change = the same run without that click (now exactly, the past closely)", () => {
-    for (const [all, drop] of [[["sport", "bullied", "sibling"], 1], [["authoritative", "strict", "pet"], 0], [["pet", "pet", "music"], 1]] as [string[], number][]) {
+    for (const [all, drop] of [[["sport", "bullied", "sibling"], 1], [["authoritative", "strict", "pet"], 0], [["pet", "pet", "music"], 1], [["sport", "newschool"], 0], [["sport", "bestfriend"], 1], [["bestfriend", "sport", "reading"], 0]] as [string[], number][]) {
       const a = session(all), b = session(all, drop);
       undoChange(a, drop);
       expect(a.readouts()).toEqual(b.readouts());
@@ -306,5 +307,99 @@ describe("child: how long, stop and undo (change 0019)", () => {
       const q = readAt(w, t);
       for (const k of ["O", "C", "E", "A", "Calm"]) expect(Math.abs((q[k] ?? NaN) - (r[k] ?? NaN))).toBeLessThan(1.5);
     }
+  });
+});
+
+describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)", () => {
+  const UI = { drag: null, cams: [null, null] as [null, null], pending: null };
+  const BANNED = /\b(die|died|death|dead|kill|abuse|drug|alcohol|drunk|hit|violence|blood|suicide|will|should|must)\b/i;
+  /** World at `start` with changes applied at the given ages, run to `end`. */
+  const life = (changes: [string, number][], end: number, over: Partial<P> = {}, seed = 17) => {
+    const p = params(over);
+    const w = child.init(p, seed);
+    to(w, p, 2);
+    for (const [id, age] of changes) child.apply(w, id, { ...p, s_age: String(age) }, UI);
+    to(w, p, end);
+    return { w, p };
+  };
+
+  it("data: every ripple, buffer, combo and age window names a real change, in kid-safe words", () => {
+    for (const id of Object.keys(RIPPLES)) expect(CHANGES[id]).toBeDefined();
+    for (const id of Object.keys(AGES)) expect(CHANGES[id]).toBeDefined();
+    for (const id of CHANGE_IDS) { expect(AGES[id]).toBeDefined(); expect(RIPPLES[id]?.length).toBeGreaterThan(0); }
+    for (const b of BUFFERS) { expect(CHANGES[b.protects]).toBeDefined(); expect(b.factor).toBeGreaterThan(0); expect(b.factor).toBeLessThan(1); expect(b.why).not.toMatch(BANNED); }
+    for (const c of COMBOS) { expect(CHANGES[c.a]).toBeDefined(); expect(CHANGES[c.b]).toBeDefined(); expect(c.txt).not.toMatch(BANNED); }
+    for (const rs of Object.values(RIPPLES)) for (const r of rs) { expect(r.have).not.toMatch(BANNED); expect(r.p).toBeGreaterThan(0); expect(r.p).toBeLessThanOrEqual(1); }
+    expect(Object.values(RIPPLES).flat().length).toBeGreaterThanOrEqual(45);
+    expect(EVERYDAY.length).toBeGreaterThanOrEqual(14);
+  });
+
+  it("ripples: about the expected share of kids, a timeline line, and the same kids every run", () => {
+    const { w } = life([["sport", 6]], 9);
+    const n = rippleCount(w, w.mods[0], 0);
+    expect(n).toBeGreaterThan(0.45 * 120);
+    expect(n).toBeLessThan(0.75 * 120);
+    expect(w.log.some((e) => /^After they joined a team sport at 6, \d+ of 100 kids made friends on the team$/.test(e.txt))).toBe(true);
+    expect(life([["sport", 6]], 9).w.log).toEqual(w.log);
+  });
+
+  it("a ripple of a lasting change only happens while it goes on", () => {
+    const p = params({ s_len: "good" });
+    const w = child.init(p, 17);
+    to(w, p, 6);
+    child.apply(w, "sport", p, UI);
+    const kept = structuredClone(w);
+    to(w, p, 6.3);
+    stopMod(w, 0);
+    to(w, p, 9); to(kept, p, 9);
+    expect(rippleCount(w, w.mods[0], 0)).toBeLessThan(rippleCount(kept, kept.mods[0], 0));
+  });
+
+  it("buffers: a best friend before being bullied makes it hurt less; after, it does not", () => {
+    const calm = (w: W) => child.read(w, params()).Calm ?? NaN;
+    const none = life([], 12).w, alone = life([["bullied", 10]], 12).w, friend = life([["bestfriend", 8], ["bullied", 10]], 12).w;
+    const late = life([["bullied", 10], ["bestfriend", 11]], 12).w;
+    expect(friend.mods.find((m) => m.id === "bullied")!.bi).toContain(0);
+    expect(late.mods.find((m) => m.id === "bullied")!.bi).not.toContain(0);
+    expect(friend.log.some((e) => e.txt === BUFFERS[0].why)).toBe(true);
+    // bullying's direct effect is smaller with the friend (compare the hurt, leaving out the friend's own good effect)
+    const fOnly = life([["bestfriend", 8]], 12).w;
+    expect(calm(fOnly) - calm(friend)).toBeLessThan(calm(none) - calm(alone));
+  });
+
+  it("buffers from home settings: great teachers soften being bullied", () => {
+    const { w } = life([["bullied", 10]], 11, { school: "great" });
+    expect(w.mods[0].b).toBeLessThan(1);
+    expect(w.log.some((e) => e.txt === BUFFERS[1].why)).toBe(true);
+  });
+
+  it("sensitive ages: the same change counts more in its window than far from it", () => {
+    const shift = (age: number) => {
+      const { w, p } = life([["reading", age]], age + 3, { s_len: "moment" });
+      const b = life([], age + 3).w;
+      return (child.read(w, p).O ?? 0) - (child.read(b, p).O ?? 0);
+    };
+    expect(shift(6)).toBeGreaterThan(shift(17) * 1.2);
+  });
+
+  it("combos: two changes together add a line and a little extra; undoing one takes the line away", () => {
+    const e = new SimEngine(child, params(), 42);
+    for (let i = 0; i < 60; i++) e.tick(FRAME);
+    e.change("sport");
+    e.change("bestfriend");
+    for (let i = 0; i < 60; i++) e.tick(FRAME);
+    const a = e.alt as W;
+    expect(a.cmb.length).toBe(1);
+    expect(a.log.some((x) => x.txt === COMBOS[0].txt)).toBe(true);
+    undoChange(e, 1);
+    expect((e.alt as W).cmb.length).toBe(0);
+    expect((e.alt as W).log.some((x) => x.txt === COMBOS[0].txt)).toBe(false);
+  });
+
+  it("everything stacked, with ripples, buffers and combos, stays finite and in 1–99", () => {
+    const { w, p } = life(CHANGE_IDS.map((id, i) => [id, 2 + (i % 14)] as [string, number]), 60, { s_size: "big" });
+    expect(finite(child.read(w, p))).toBe(true);
+    expect(inRange(w)).toBe(true);
+    for (let a = 2; a < 60; a += 7) expect(finite(readAt(w, a))).toBe(true);
   });
 });
