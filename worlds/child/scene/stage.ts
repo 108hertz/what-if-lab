@@ -1,11 +1,11 @@
 import { TAU, clamp, lerp, mix } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import type { Params } from "@/lib/sim/types";
-import { CHANGES, COLOR, SHOW, TRACK, TRAITS, WORD, stepWord } from "../data";
+import { BUFFERS, CHANGES, COLOR, COMBOS, SHOW, TRACK, TRAITS, WORD, stepWord, type TraitDelta } from "../data";
 import { during, endOf, happened, mean, quant, values, type Mod, type W } from "../model";
 import { drawCrowd } from "./crowd";
 import { clock, easeOut, realNow, reducedMotion, spring } from "./motion";
-import { COOL, HAIR, SKIN, WARM, cloud, drawDog, drawGlyph, drawPerson, hash, hexMix, parentLook, strHash, type Hold, type Look } from "./people";
+import { COOL, HAIR, SKIN, WARM, cloud, drawDog, drawGlyph, drawPerson, hash, heart, hexMix, parentLook, strHash, type Hold, type Look } from "./people";
 import { CHANGE_THING, drawThing, type Thing } from "./props";
 import { FLOOR_Y, LIFE_WORD, SPOT, STAND_Y, lifeOf, room, type Life } from "./rooms";
 
@@ -28,8 +28,32 @@ export function setStageView(v: StageView) { view = v; }
 
 let lastNow = 0, shownAge = 1;
 let lastOn = -1, lastAll = -1, lastT = 0;
-interface Cap { txt: string; traits: number[]; t0: number; soft: boolean }
+type React = "jump" | "slump" | "wave" | null;
+interface Cap { txt: string; traits: number[]; t0: number; soft: boolean; react: React }
 const caps: Cap[] = [];
+/** The change moment (change 0019): when it started and how the child reacts. */
+let momentT0 = -10, react: React = null;
+/** What followed a change, shown as small chips under the card: "61 of 100 kids made friends on the team". */
+interface Chip { txt: string; t0: number; warm: boolean }
+const chips: Chip[] = [];
+let lastLog = -1;
+const SOFT_TXT = new Set([...BUFFERS.map((b) => b.why), ...COMBOS.map((c) => c.txt)]);
+
+/** How the child reacts to a change: a jump when it helps, a slump when it is hard, a wave when it is about others. */
+function reactionOf(d: TraitDelta): React {
+  if ((d.N ?? 0) >= 2) return "slump";
+  if ((d.A ?? 0) >= 3 && (d.A ?? 0) >= (d.E ?? 0)) return "wave";
+  if ((d.E ?? 0) > 0 || (d.N ?? 0) < 0 || (d.C ?? 0) > 0 || (d.O ?? 0) > 0) return "jump";
+  return null;
+}
+
+/** Live pacing: a quarter speed for 1.2 s after a change happens, then back to normal over 0.4 s. Never with reduced motion. */
+export function scenePace(): number {
+  if (reducedMotion()) return 1;
+  const e = realNow() - momentT0;
+  if (e < 0 || e > 1.6) return 1;
+  return e < 1.2 ? 0.25 : lerp(0.25, 1, easeOut((e - 1.2) / 0.4));
+}
 /** When each trait was last touched by a change (for the glow). */
 const pulse = new Float64Array(5).fill(-10);
 /** Eased meter dots: [0..4] with changes, [5..9] without. */
@@ -54,19 +78,51 @@ function updateCaptions(w: W) {
   const on = happened(w), all = w.mods.length;
   if (lastOn < 0 || w.t < lastT - 0.5 || on.length < lastOn || all < lastAll) { lastOn = on.length; lastAll = all; caps.length = 0; }
   else {
-    if (on.length > lastOn) for (const m of on.slice(lastOn)) caps.push({ txt: `Age ${Math.floor(m.age)} — ${CHANGES[m.id].cap}`, traits: TRAITS.map((k, i) => (m.d[k] ? i : -1)).filter((i) => i >= 0), t0: -1, soft: false });
-    if (all - on.length > lastAll - lastOn) for (const m of w.mods.filter((m) => !m.on).slice(-(all - on.length - (lastAll - lastOn)))) caps.push({ txt: `Planned for age ${Math.floor(m.age)} — ${CHANGES[m.id].cap}`, traits: [], t0: -1, soft: true });
+    if (on.length > lastOn) for (const m of on.slice(lastOn)) caps.push({ txt: `Age ${Math.floor(m.age)} — ${CHANGES[m.id].cap}`, traits: TRAITS.map((k, i) => (m.d[k] ? i : -1)).filter((i) => i >= 0), t0: -1, soft: false, react: reactionOf(m.d) });
+    if (all - on.length > lastAll - lastOn) for (const m of w.mods.filter((m) => !m.on).slice(-(all - on.length - (lastAll - lastOn)))) caps.push({ txt: `Planned for age ${Math.floor(m.age)} — ${CHANGES[m.id].cap}`, traits: [], t0: -1, soft: true, react: null });
     lastOn = on.length; lastAll = all;
     if (caps.length > 3) caps.splice(1, caps.length - 3);
   }
   lastT = w.t;
+  // New lines that followed from the changes become chips (not on the first frame, or after a restart or undo)
+  if (lastLog < 0 || w.log.length < lastLog) lastLog = w.log.length;
+  for (const e of w.log.slice(lastLog)) {
+    if (e.txt.startsWith("After ")) { const k = e.txt.indexOf(", "); chips.push({ txt: k > 0 ? e.txt.slice(k + 2) : e.txt, t0: -1, warm: false }); }
+    else if (SOFT_TXT.has(e.txt)) chips.push({ txt: e.txt, t0: -1, warm: true });
+  }
+  lastLog = w.log.length;
+  if (chips.length > 3) chips.splice(0, chips.length - 3);
+}
+
+/** The chip under the card: one at a time, a little after the card, for 3 s. */
+function drawChip(c: CanvasRenderingContext2D, cx: number, maxW: number, y: number, now: number, reduced: boolean) {
+  const ch = chips[0];
+  if (!ch) return;
+  if (caps[0] && !caps[0].soft && caps[0].t0 >= 0 && now - caps[0].t0 < 0.9) return; // let the card land first
+  if (ch.t0 < 0) ch.t0 = now;
+  const e = now - ch.t0, life = chips.length > 1 ? 2.2 : 3.2;
+  if (e > life) { chips.shift(); return; }
+  const k = reduced ? 1 : easeOut(e / 0.3), aout = clamp((life - e) / 0.4, 0, 1);
+  c.globalAlpha = Math.min(k, aout);
+  c.font = "500 12px " + FONT.body;
+  const pad = ch.warm ? 30 : 14, tw = Math.min(c.measureText(ch.txt).width, maxW - 40 - pad), yy = y + (reduced ? 0 : (1 - k) * 6);
+  const x0 = cx - (tw + pad + 14) / 2;
+  c.fillStyle = STAGE.scrim; c.beginPath(); c.roundRect(x0, yy, tw + pad + 14, 26, 13); c.fill();
+  c.strokeStyle = STAGE.line; c.lineWidth = 1; c.stroke();
+  if (ch.warm) heart(c, x0 + 16, yy + 13, 5, "#FF8FA3");
+  c.fillStyle = STAGE.ink; c.textAlign = "left"; c.textBaseline = "middle"; c.fillText(ch.txt, x0 + pad, yy + 13.5, tw);
+  c.globalAlpha = 1;
 }
 
 /** The change card: slides in, holds, fades; the traits it touches glow once. */
 function drawCaption(c: CanvasRenderingContext2D, cx: number, maxW: number, y0: number, now: number, reduced: boolean) {
   const cap = caps[0];
   if (!cap) return;
-  if (cap.t0 < 0) { cap.t0 = now; for (const i of cap.traits) pulse[i] = now; }
+  if (cap.t0 < 0) {
+    cap.t0 = now;
+    for (const i of cap.traits) pulse[i] = now;
+    if (!cap.soft) { momentT0 = now; react = reduced ? null : cap.react; }
+  }
   const e = now - cap.t0, life = caps.length > 1 ? 1.8 : 3.0;
   if (e > life) { caps.shift(); return; }
   const k = reduced ? 1 : easeOut(e / 0.25), aout = clamp((life - e) / 0.45, 0, 1);
@@ -165,6 +221,7 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
   if (view === "all") {
     drawCrowd(c, W, H, 40, w, base, v, avg, bavg, now, dt, reduced, pulse);
     drawCaption(c, W / 2, W, 44, now, reduced);
+    drawChip(c, W / 2, W, 80, now, reduced);
     c.textAlign = "left"; c.textBaseline = "alphabetic";
     return;
   }
@@ -285,9 +342,17 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
   // ── The hero ──
   const reach = cA >= 58 && right.length ? 1 : 0;
   const wavePhase = (t + 1.3) % 5.2, waving = !reduced && cE >= 55 && wavePhase < 1.6 ? Math.sin((wavePhase / 1.6) * Math.PI) : cE >= 62 && reduced ? 1 : 0;
-  const me = drawPerson(c, cx, fy, ch, kidLook, {
-    t, hold: reach ? null : hold, wave: reach ? 0 : waving, reach, bag: cC >= 55 && A >= 5 && A < 19, badge: inRoom.includes("star"),
+  // The change moment: a jump, a slump or a wave for about a second
+  const me0 = now - momentT0, live = !reduced && react && me0 >= 0 && me0 < 1.4;
+  const bell = live ? Math.sin(Math.PI * clamp(me0 / 1.4, 0, 1)) : 0;
+  const jumpY = live && react === "jump" ? -Math.abs(Math.sin((me0 * Math.PI) / 0.45)) * ch * 0.07 * (1 - me0 / 1.4) : 0;
+  c.save();
+  if (live && react === "slump") { c.translate(cx, fy); c.scale(1 + 0.03 * bell, 1 - 0.06 * bell); c.translate(-cx, -fy); }
+  const me = drawPerson(c, cx, fy + jumpY, ch, kidLook, {
+    t, hold: reach ? null : hold, wave: live && react === "wave" ? 1 : reach ? 0 : waving, reach: live && react === "wave" ? 0 : reach,
+    bag: cC >= 55 && A >= 5 && A < 19, badge: inRoom.includes("star"),
   });
+  c.restore();
   if (cCalm < 40 || during(w, "bullied", 1) || during(w, "fallout", 0.5) || during(w, "exam", 0.4)) {
     const a = cCalm < 40 ? clamp((40 - cCalm) / 20, 0.25, 0.5) : 0.4;
     cloud(c, cx + (reduced ? 0 : Math.sin(t * 0.8) * 3), me.top - 14, Math.min(16, ch * 0.16), a);
@@ -299,5 +364,6 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
   if (wide) drawMeters(c, SW, 8, panelW, H - 16, v, !!base, now, reduced);
   else drawMiniMeters(c, W, 38, !!base);
   drawCaption(c, SW / 2, SW, wide ? 40 : 76, now, reduced);
+  drawChip(c, SW / 2, SW, wide ? 76 : 112, now, reduced);
   c.textAlign = "left"; c.textBaseline = "alphabetic";
 }

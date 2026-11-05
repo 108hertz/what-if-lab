@@ -11,7 +11,7 @@ import {
 } from "./model";
 
 export * from "./model";
-import { drawChild } from "./scene";
+import { drawChild, scenePace } from "./scene";
 
 /**
  * 120 possible children of the same two parents (change 0018). Each child, for each trait:
@@ -79,6 +79,7 @@ const metricFor = (s: Show) => [
 export const child: Sandbox<W, P> = {
   ...meta,
   stack: true,
+  pace: scenePace,
   intro: "The same two parents could have many different children. Here are 120 of them, growing up from age 1 to 60. Genes, home, things that happen and plain chance all shape who they become. Pick a family, then try changes: they add up, and you can set the age they happen at.",
   hint: "These are 120 kids the same two parents could have. Press play to watch them grow up, then try a change.",
   controls: [

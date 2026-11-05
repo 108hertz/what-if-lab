@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { SimEngine } from "@/lib/sim/engine";
 import { defaultParams } from "@/lib/sim/core";
 import { averages, child, compare, kidLine, readAt, stopMod, story, values, why, type P, type W } from "@/worlds/child/sim";
-import { undoChange } from "@/worlds/child/edit";
+import { stopChange, undoChange } from "@/worlds/child/edit";
 import { AGES, BEHAVIOURS, BUFFERS, behaviourWord, CHANGES, CHANGE_GROUPS, CHANGE_IDS, COMBOS, EVERYDAY, FAMILIES, FAMILY_IDS, RIPPLES, TRAITS } from "@/worlds/child/data";
 import { behaviourCounts, contributions, rippleCount } from "@/worlds/child/model";
 
@@ -513,5 +513,30 @@ describe("child: what made the difference, in everyday life (change 0019 step 4)
     expect(behaviourCounts([[50], [50], [50], [50], [50]])).toEqual(BEHAVIOURS.map(() => 50));
     expect(behaviourWord(BEHAVIOURS[0], 12)).toMatch(/class/);
     expect(behaviourWord(BEHAVIOURS[0], 30)).not.toMatch(/class/);
+  });
+});
+
+describe("child: the change moment (change 0019 step 6)", () => {
+  it("the engine's live clock follows a sandbox's pace; the child's pace is 1 when nothing is happening", () => {
+    expect(child.pace!()).toBe(1);
+    const run = (pace: number) => {
+      const e = new SimEngine({ ...child, pace: () => pace }, params(), 3);
+      for (let i = 0; i < 30; i++) e.tick(FRAME);
+      return e.base.t - 1;
+    };
+    expect(run(0.25)).toBeCloseTo(run(1) * 0.25, 6);
+  });
+
+  it("stopping or undoing a change clears the export recipe (exports then start from now)", () => {
+    const e = new SimEngine(child, params(), 42);
+    for (let i = 0; i < 300; i++) e.tick(FRAME);
+    e.change("sport");
+    e.change("music");
+    expect(e.origin).not.toBeNull();
+    stopChange(e, 0);
+    expect(e.origin).toBeNull();
+    e.change("pet");
+    undoChange(e, 2);
+    expect(e.origin).toBeNull();
   });
 });

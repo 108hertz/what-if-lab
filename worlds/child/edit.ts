@@ -13,6 +13,7 @@ export function undoChange(engine: SimEngine, idx: number): void {
   if (!alt || !alt.mods[idx]) return;
   const id = alt.mods[idx].id, nth = alt.mods.slice(0, idx).filter((m) => m.id === id).length;
   removeMod(alt, engine.base as W, idx);
+  engine.origin = null; // the export recipe no longer matches: exports start from now
   // engine.applied lists clicks in order; drop the matching click (the nth of this id)
   let seen = 0;
   const at = engine.applied.findIndex((x) => x === id && seen++ === nth);
@@ -29,5 +30,7 @@ export function undoChange(engine: SimEngine, idx: number): void {
 /** Stop change number `idx` now (or at a later age). Its lasting part stays; the rest fades from then. */
 export function stopChange(engine: SimEngine, idx: number, age?: number): void {
   const alt = engine.alt as W | null;
-  if (alt) stopMod(alt, idx, age);
+  if (!alt) return;
+  stopMod(alt, idx, age);
+  engine.origin = null; // a stop is not a click: exports start from now so they show it
 }

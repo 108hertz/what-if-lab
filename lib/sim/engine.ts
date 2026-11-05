@@ -145,7 +145,7 @@ export class SimEngine {
   tick(dtReal: number): void {
     if (!this.playing) return;
     if (this.sb.maxT != null && this.base.t >= this.sb.maxT) return;
-    const dt = dtReal * this.speed;
+    const dt = dtReal * this.speed * (this.sb.pace?.() ?? 1);
     this.sb.step(this.base, dt, this.params);
     if (this.alt) this.sb.step(this.alt, dt, this.params);
     this.acc += dtReal;

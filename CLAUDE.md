@@ -97,7 +97,8 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 - `apply(w, id, p, ui)` applies a what-if to a freshly cloned world. Log it with `note()`.
 - `read(w, p)` → `{metricKey: number | null}`; must be finite or `null`.
 - `draw({ctx, w, h, p, isAlt, ui}, world)` draws into a clipped rect at (0,0). No React, no DOM.
-- Optional: `info()` structured side-panel blocks, `onParamChange()` (e.g. presets), `maxT`, `hint`.
+- Optional: `info()` structured side-panel blocks, `onParamChange()` (e.g. presets), `maxT`, `hint`, `pace()` (a live-only
+  slow-motion hint, 0–1, multiplied into the engine's clock; exports and tests never read it — child uses it, change 0019).
 
 ### Rules
 

@@ -265,7 +265,7 @@ limit and leave a working world.
    every option, average shift ≤ 10.
 4. ✅ **Contributions + behaviour metrics.** Tests: contributions sum to the change part of the average (± rounding).
 5. ✅ **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
-6. **Motion: springs, change-moment choreography, reduced motion.**
+6. ✅ **Motion: springs, change-moment choreography, reduced motion.**
 7. **Stage: "All 120 kids" piles** + tap to meet a kid.
 8. **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
 9. **Ask: Family / Changes tabs, card grid, life ruler** (drag, keyboard, phone sheet), glossary.
@@ -340,3 +340,10 @@ limit and leave a working world.
   changes); no page scroll at 375 × 812, 768 × 1024, 1024 × 768, 1440 × 900; switch buttons 44 px. Not yet looked at: the
   crowd view and the phone's mini meters (the browser pane was hidden, so no frames were drawn), light theme around the
   stage. 531 tests, typecheck and build green.
+- 2026-11-05 — step 6 done: a change that happens slows the live clock to ¼ for 1.2 s and eases back over 0.4 s (new
+  optional `Sandbox.pace()`, multiplied into `SimEngine.tick` only; exports step the sandbox directly, so results never
+  depend on it); the card slides in; the child jumps (helps), slumps (hard) or waves (about others) for ~1.4 s; the
+  meters glow and their dots glide from the "without" dot; follow-on lines, buffers and combos arrive as chips under the
+  card ("58 of 100 kids made friends on the team", a heart for buffers and combos). Reduced motion: no slow-down, no
+  reaction, cards and chips static. Also fixed: stop and undo now clear the engine's export recipe (`origin`), so an export
+  never replays a change you undid or misses a stop. Checked in the browser (card, jump, meters, combo chip). 533 tests.

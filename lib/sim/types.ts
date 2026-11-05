@@ -129,6 +129,11 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   maxT?: number;
   /** Changes add up in one world: no split stage, every what-if applies to the changed world (change 0015). */
   stack?: boolean;
+  /**
+   * Live pacing hint, 0–1 (e.g. slow motion for a moment after a change, change 0019). Multiplies the live clock only;
+   * exports and tests step the sandbox directly and never read it, so it cannot change results.
+   */
+  pace?(): number;
   metrics: Metric[];
   fmtT(t: number): string;
   init(p: P, seed: number): W;
