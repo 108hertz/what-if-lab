@@ -2,7 +2,7 @@ import type { Params, Sandbox } from "@/lib/sim/types";
 import { fmtNum, gauss, note, num, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
 import {
-  BUFFERS, CALMER_AGAIN, CHANGES, COMBOS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
+  BABY, BUFFERS, CALMER_AGAIN, CHANGE_GROUPS, CHANGES, SENS, COMBOS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
   MILESTONES, MORE, PHRASE, SHORT, SHOW, SIZE, STEPS, STYLE, TALLY_AGES, TRAITS, WORD, kidName, stepWord, type Show, type TraitDelta,
 } from "./data";
 import {
@@ -27,6 +27,7 @@ import { drawChild } from "./scene";
 export type P = Params & {
   family: string; from?: string; style: string; sib: string; home: string; money: string; place: string; school: string; screens: string;
   inherit: string; luck: string; fade: string; events: string; s_age: string; s_size: string; s_len?: string;
+  baby?: string; shape?: string; time?: string; sens?: string;
 };
 
 /* ───────────── params → world ───────────── */
@@ -45,17 +46,13 @@ const pick = <T,>(tab: Record<string, T>, v: unknown, d: string): T => tab[Strin
 
 /* ───────────── what-ifs ───────────── */
 
-export const WHATIF_GROUPS = [
-  ["Home", ["authoritative", "strict", "sibling", "divorce", "grandparent", "pet", "money", "illness"]],
-  ["School and friends", ["bullied", "bestfriend", "teacher", "newschool", "mentor"]],
-  ["Activities", ["sport", "music", "reading", "screen", "nature"]],
-  ["Big moves", ["move", "volunteer"]],
-] as [string, string[]][];
+export const WHATIF_GROUPS = CHANGE_GROUPS;
 
-/** The age a click would happen at, from the "When" setting. */
-export function whenOf(w: Pick<W, "t">, p: Pick<P, "s_age">): number {
+/** The age a click would happen at, from the "When" setting (and, for a change, not before its youngest age). */
+export function whenOf(w: Pick<W, "t">, p: Pick<P, "s_age">, id?: string): number {
   const a = p.s_age === "now" || p.s_age == null ? NaN : Number(p.s_age);
-  return Number.isFinite(a) && a > w.t ? a : w.t;
+  const at = Number.isFinite(a) && a > w.t ? a : w.t, min = id ? CHANGES[id]?.min ?? 0 : 0;
+  return Math.max(at, min);
 }
 
 /** How long a click's change goes on, in years, from the "How long" setting ("usual" = the change's own length). */
@@ -89,6 +86,9 @@ export const child: Sandbox<W, P> = {
     { type: "heading", label: "Parent A" }, ...parentCtl("a", FAMILIES.everyday.a),
     { type: "heading", label: "Parent B" }, ...parentCtl("b", FAMILIES.everyday.b),
     { type: "heading", label: "Home" },
+    homeCtl("baby", "What were they like as a baby?", [["mixed", "Each one different"], ["easy", "Easy-going"], ["slow", "Slow to warm up"], ["energy", "Full of energy"]]),
+    homeCtl("shape", "Who they live with", [["two", "Two parents"], ["one", "One parent"], ["twohomes", "Two homes"], ["big", "A big family under one roof"]]),
+    homeCtl("time", "Time together", [["long", "Parents work long hours"], ["ordinary", "Ordinary"], ["lots", "Lots of family time"]]),
     homeCtl("style", "How the parents raise them", [["authoritative", "Warm and firm"], ["authoritarian", "Strict"], ["permissive", "Easy-going"], ["neglectful", "Distant"]]),
     homeCtl("sib", "Brothers and sisters", [["0", "None"], ["older", "One older"], ["1", "One younger"], ["2", "Two or more"]]),
     homeCtl("home", "Home life", [["stable", "Calm"], ["busy", "Busy"], ["unstable", "Lots of arguing"]]),
@@ -100,6 +100,7 @@ export const child: Sandbox<W, P> = {
     { type: "select", id: "inherit", label: "How much is inherited", options: [["25", "Low (25 %)"], ["40", "Normal (40 %)"], ["55", "High (55 %)"]], val: "40" },
     { type: "select", id: "luck", label: "How much chance and luck", options: [["small", "Small"], ["normal", "Normal"], ["big", "Big"]], val: "normal" },
     { type: "select", id: "fade", label: "How long effects last", options: [["fast", "They fade fast"], ["normal", "Normal"], ["stick", "They stick"]], val: "normal" },
+    { type: "select", id: "sens", label: "How much life affects them", options: [["same", "The same for every kid"], ["some", "Some kids feel things much more"], ["all", "All kids are very sensitive"]], val: "some" },
     { type: "select", id: "events", label: "Everyday ups and downs", options: [["off", "Off"], ["normal", "Normal"], ["lots", "Lots"]], val: "normal" },
     { type: "heading", label: "Change settings (used by your next click)" },
     { type: "select", id: "s_age", label: "When it happens", options: [["now", "Now"], ...Array.from({ length: 17 }, (_, i) => [String(i + 1), `At age ${i + 1}`] as [string, string])], val: "now", live: true },
@@ -134,11 +135,13 @@ export const child: Sandbox<W, P> = {
       env: envOf(p), tau, pk, luck, evMul: EVERYDAY_MUL[String(p.events)] ?? 1, style: String(p.style ?? HOME_DEFAULTS.style), c15: NaN,
       snap: new Float32Array(SNAP_AGES * N_KIDS * 5).fill(NaN),
       hs: Object.fromEntries(Object.keys(HOME_DEFAULTS).map((k) => [k, String(p[k] ?? HOME_DEFAULTS[k])])), cmb: [],
+      bb: TRAITS.map((k) => pick(BABY, p.baby, "mixed")[k] ?? 0),
     };
+    const [rLo, rSpan] = pick(SENS, p.sens, "some");
     for (let j = 0; j < N_KIDS; j++) {
       const kid: Kid = { gd: [], z0: [], z: [], r: [], evL: [], evF: [], em: 0, j: 0 };
       for (let i = 0; i < 5; i++) {
-        kid.gd.push(gauss(w) * sg); kid.z0.push(gauss(w) * sc); kid.z.push(0); kid.r.push(0.5 + rng(w)); kid.evL.push(0); kid.evF.push(0);
+        kid.gd.push(gauss(w) * sg); kid.z0.push(gauss(w) * sc); kid.z.push(0); kid.r.push(rLo + rSpan * rng(w)); kid.evL.push(0); kid.evF.push(0);
       }
       kid.j = rng(w);
       w.k.push(kid);
@@ -183,7 +186,7 @@ export const child: Sandbox<W, P> = {
   apply(w, id, p) {
     const c = CHANGES[id];
     if (!c) return;
-    const size = String(p.s_size ?? "medium"), s = SIZE[size] ?? 1, age = whenOf(w, p), pf = lasting(c.pf, w.pk), len = lenOf(id, p);
+    const size = String(p.s_size ?? "medium"), s = SIZE[size] ?? 1, age = whenOf(w, p, id), pf = lasting(c.pf, w.pk), len = lenOf(id, p);
     let d: TraitDelta = {};
     if (c.style) {
       for (const k of TRAITS) d[k] = Math.max(-7, Math.min(7, (STYLE[c.style][k] ?? 0) - (STYLE[w.style]?.[k] ?? 0))) * s; // a style switch is one change: kept within ±7 points
@@ -388,7 +391,7 @@ export function kidLine(j: number, age: number, vs: number[]): string {
 }
 
 /** The kind of a timeline line, for its glyph. */
-export function kindOf(txt: string): "milestone" | "home" | "school" | "activity" | "move" | "everyday" | "change" | "ripple" | "together" {
+export function kindOf(txt: string): "milestone" | "home" | "school" | "activity" | "move" | "everyday" | "change" | "ripple" | "together" | "luck" {
   if (MILESTONES.some(([, t]) => t === txt) || txt === CALMER_AGAIN) return "milestone";
   if (txt.startsWith("By ")) return "everyday";
   if (txt.startsWith("After ")) return "ripple";

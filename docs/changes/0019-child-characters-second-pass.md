@@ -261,7 +261,7 @@ limit and leave a working world.
    effect; undo-one equals a fresh run with the remaining mods.
 2. ✅ **Model: ripples, buffers, sensitive ages, combos** + more everyday events. Tests: determinism, buffers reduce effect,
    ripples reported once with stable text, every change × ripple finite.
-3. **Model: options** (`baby`, `shape`, `time`, `sens`) and **16 new changes**. Tests: every change at ages 1/8/15,
+3. ✅ **Model: options** (`baby`, `shape`, `time`, `sens`) and **16 new changes**. Tests: every change at ages 1/8/15,
    every option, average shift ≤ 10.
 4. **Contributions + behaviour metrics.** Tests: contributions sum to the change part of the average (± rounding).
 5. **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
@@ -312,3 +312,11 @@ limit and leave a working world.
   old ×0.6 for adults), 8 combos, 7 more everyday ups and downs, timeline lines ("After …, 61 of 100 kids …", buffer and
   combo lines with new glyphs), story chains. Tests, typecheck and build green; checked in the browser;
   committed.
+- 2026-11-05 — step 3 done: "What were they like as a baby?" (`baby`; shifts the start, 60 % fades by the teens), "Who
+  they live with" (`shape`), "Time together" (`time`), Tune "How much life affects them" (`sens`; the default keeps 0018's
+  draws). 18 new changes (the 16 planned + "Good luck": wins a competition, the best summer ever) → 38 in 5 groups, each with
+  a usual length, stop line, follow-on events and best ages; youngest ages (`min`) on new and old changes, so an early click
+  waits (e.g. first crush at 13, weekend job at 15). 11 more buffers (incl. big family, lots of family time, enough sleep)
+  and 2 more combos. "First crush" and "failed a big test" are in, written gently, pending the user's answer to open
+  question 3. The stacking test's time limit is raised to 30 s (1,444 pairs). 474 tests, typecheck and build green;
+  checked in the browser; committed.

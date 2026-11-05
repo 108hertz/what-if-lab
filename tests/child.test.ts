@@ -18,9 +18,10 @@ const finite = (r: Record<string, number | null>) => Object.entries(r).every(([,
 const inRange = (w: W) => values(w).every((xs) => xs.every((x) => x >= 1 && x <= 99));
 
 describe("child: data (change 0018)", () => {
-  it("has ~20 changes, each in exactly one group, with kid-safe words", () => {
-    expect(CHANGE_IDS.length).toBe(20);
-    expect(new Set(CHANGE_IDS).size).toBe(20);
+  it("has 38 changes (change 0019), each in exactly one group, with kid-safe words", () => {
+    expect(CHANGE_IDS.length).toBe(38);
+    expect(new Set(CHANGE_IDS).size).toBe(38);
+    expect(Object.keys(CHANGES).sort()).toEqual([...CHANGE_IDS].sort());
     expect(child.whatifs.map(([id]) => id)).toEqual(CHANGE_IDS);
     for (const id of CHANGE_IDS) {
       const c = CHANGES[id];
@@ -28,7 +29,7 @@ describe("child: data (change 0018)", () => {
       for (const txt of [c.q, c.txt, c.past, c.cap]) expect(txt).not.toMatch(/\b(abuse|death|die|drug|violence|kill)/i);
       for (const k of TRAITS) expect(Math.abs(c.d[k] ?? 0), `${id}.${k}`).toBeLessThanOrEqual(6);
     }
-    expect(CHANGE_GROUPS.length).toBe(4);
+    expect(CHANGE_GROUPS.length).toBe(5);
   });
 
   it("keeps the eight old what-if ids", () => {
@@ -387,7 +388,8 @@ describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)",
     for (let i = 0; i < 60; i++) e.tick(FRAME);
     e.change("sport");
     e.change("bestfriend");
-    for (let i = 0; i < 60; i++) e.tick(FRAME);
+    e.speedIdx = 3;
+    for (let i = 0; i < 40; i++) e.tick(FRAME);
     const a = e.alt as W;
     expect(a.cmb.length).toBe(1);
     expect(a.log.some((x) => x.txt === COMBOS[0].txt)).toBe(true);
@@ -401,5 +403,60 @@ describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)",
     expect(finite(child.read(w, p))).toBe(true);
     expect(inRange(w)).toBe(true);
     for (let a = 2; a < 60; a += 7) expect(finite(readAt(w, a))).toBe(true);
+  });
+});
+
+describe("child: more options and changes (change 0019 step 3)", () => {
+  const UI = { drag: null, cams: [null, null] as [null, null], pending: null };
+  const run = (over: Partial<P>, age: number, seed = 5) => { const p = params(over); const w = child.init(p, seed); to(w, p, age); return { w, p }; };
+
+  it("a change clicked before its youngest age waits for that age", () => {
+    const { w, p } = run({}, 2);
+    child.apply(w, "firstlove", p, UI);
+    child.apply(w, "job", p, UI);
+    expect(w.mods.map((m) => [m.on, m.age])).toEqual([[0, 13], [0, 15]]);
+    to(w, p, 15.5);
+    expect(w.mods.every((m) => m.on)).toBe(true);
+  });
+
+  it("every new change runs to 60 with finite readouts in 1–99, and moves the average ≤ ~10 points", () => {
+    const fresh = CHANGE_IDS.slice(20);
+    const p = params();
+    const b = child.init(p, 11);
+    to(b, p, 9);
+    for (const id of fresh) {
+      const a = structuredClone(b);
+      child.apply(a, id, p, UI);
+      const bb = structuredClone(b);
+      to(a, p, 30); to(bb, p, 30);
+      expect(finite(child.read(a, p)), id).toBe(true);
+      expect(inRange(a), id).toBe(true);
+      const A = averages(a), B = averages(bb);
+      for (let i = 0; i < 5; i++) expect(Math.abs(A[i] - B[i]), `${id} ${i}`).toBeLessThanOrEqual(10);
+    }
+  });
+
+  it("baby temperament shifts the start; most of it fades but a part stays", () => {
+    const mixed = run({}, 3).w, easy = run({ baby: "easy" }, 3).w, mixedOld = run({}, 40).w, easyOld = run({ baby: "easy" }, 40).w;
+    const calm = (w: W) => averages(w)[4];
+    const young = calm(easy) - calm(mixed), old = calm(easyOld) - calm(mixedOld);
+    expect(young).toBeGreaterThan(3);
+    expect(old).toBeGreaterThan(0.5);
+    expect(old).toBeLessThan(young);
+  });
+
+  it("family shape and time together feed the home, and a big family softens hard times", () => {
+    expect(run({ time: "lots" }, 12).w.env[4]).toBeLessThan(run({}, 12).w.env[4]);
+    const { w, p } = run({ shape: "big" }, 8);
+    child.apply(w, "illness", p, UI);
+    expect(w.mods[0].bi.length).toBeGreaterThan(0);
+  });
+
+  it("'the same for every kid' makes life affect everyone equally; the default keeps 0018's draws", () => {
+    expect(run({ sens: "same" }, 2).w.k.every((k) => k.r.every((r) => r === 1))).toBe(true);
+    const some = run({}, 2).w.k.flatMap((k) => k.r);
+    expect(Math.min(...some)).toBeGreaterThanOrEqual(0.5);
+    expect(Math.max(...some)).toBeLessThan(1.5);
+    expect(Math.min(...run({ sens: "all" }, 2).w.k.flatMap((k) => k.r))).toBeGreaterThanOrEqual(1);
   });
 });

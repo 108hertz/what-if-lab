@@ -36,6 +36,8 @@ export interface W extends BaseWorld {
   snap: Float32Array;
   /** Home settings the world started with (for buffers like "a calm home"), and the combos in effect. */
   hs: Record<string, string>; cmb: ComboOn[];
+  /** What they were like as a baby: a shift of every kid's start per trait (model order); most of it fades with age. */
+  bb: number[];
 }
 
 export const N_KIDS = 120;
@@ -164,10 +166,13 @@ export function valuesAt(w: W, a: number): number[][] {
   const has1 = y1 < SNAP_AGES && !Number.isNaN(at(y1, 0, 0)), t1 = has1 ? y1 : w.t, g = t1 > y0 ? Math.min(1, (a - y0) / (t1 - y0)) : 1;
   return SHOW.map((_, i) => w.k.map((kid, j) => {
     const r1 = has1 ? at(y1, j, i) : now(kid, i), r0 = Number.isNaN(at(y0, j, i)) ? r1 : at(y0, j, i), rest = r0 + (r1 - r0) * g;
-    const x = clamp99(w.b0[i] + kid.gd[i] + kid.z0[i] + ageW(a) * w.env[i] * kid.r[i] + rest + modPart(w, kid, i, a) + MATURATION[TRAITS[i]](a));
+    const x = clamp99(startAt(w, i, a) + kid.gd[i] + kid.z0[i] + ageW(a) * w.env[i] * kid.r[i] + rest + modPart(w, kid, i, a) + MATURATION[TRAITS[i]](a));
     return i === 4 ? 100 - x : x;
   }));
 }
+
+/** The family's starting point at age a: the parents' mix plus the baby temperament (60 % of it fades by the teens). */
+export const startAt = (w: W, i: number, a: number) => w.b0[i] + (w.bb?.[i] ?? 0) * (0.4 + 0.6 * Math.exp(-(a - 1) / 8));
 
 /** The four parts of one kid's trait (model order) at age a. */
 export function parts(w: W, kid: Kid, i: number, a = w.t) {
@@ -179,7 +184,7 @@ export function parts(w: W, kid: Kid, i: number, a = w.t) {
 /** One kid's trait in model order (N = worry) at age a. */
 export function kidValue(w: W, kid: Kid, i: number, a = w.t): number {
   const q = parts(w, kid, i, a);
-  return clamp99(w.b0[i] + q.genes + q.home + q.life + q.chance + MATURATION[TRAITS[i]](a));
+  return clamp99(startAt(w, i, a) + q.genes + q.home + q.life + q.chance + MATURATION[TRAITS[i]](a));
 }
 
 /** Display values (Curious, Organised, Outgoing, Kind, Calm) for every kid: v[trait][kid]. */

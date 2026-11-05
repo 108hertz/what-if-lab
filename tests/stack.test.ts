@@ -56,7 +56,7 @@ describe("stacked changes (change 0015)", () => {
       const r = sb.read(w, e0.params);
       for (const m of sb.metrics) if (r[m.k] != null) expect(Number.isFinite(r[m.k]!), `${key} ${a}+${b} ${m.k}`).toBe(true);
     }
-  });
+  }, 30_000); // the child world has 38 changes: 1,444 pairs
 
   it("split worlds still re-fork on each pick", () => {
     const sb = SANDBOXES.earth;
