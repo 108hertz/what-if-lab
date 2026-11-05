@@ -26,6 +26,10 @@ export const ENDS: Record<Show, [less: string, more: string]> = {
   A: ["says what they think, likes to win", "very kind"],
   Calm: ["worries a lot", "very calm"],
 };
+/** The two ends of each trait's meter on the stage, in one or two words (change 0019). */
+export const TRACK: Record<Show, [less: string, more: string]> = {
+  O: ["likes the usual", "curious"], C: ["messy", "organised"], E: ["shy", "outgoing"], A: ["own way", "kind"], Calm: ["worried", "calm"],
+};
 /** Short words for the "less" end, used for counts ("12 of 100 are quiet"). */
 export const LOW_WORD: Record<Show, string> = { O: "stick to what they know", C: "go with the flow", E: "are quiet", A: "say what they think", Calm: "worry a lot" };
 export const LOW_KEY: Record<Show, string> = { O: "sticks to what they know", C: "goes with the flow", E: "quiet", A: "says what they think", Calm: "worries a lot" };

@@ -264,7 +264,7 @@ limit and leave a working world.
 3. ✅ **Model: options** (`baby`, `shape`, `time`, `sens`) and **16 new changes**. Tests: every change at ages 1/8/15,
    every option, average shift ≤ 10.
 4. ✅ **Contributions + behaviour metrics.** Tests: contributions sum to the change part of the average (± rounding).
-5. **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
+5. ✅ **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
 6. **Motion: springs, change-moment choreography, reduced motion.**
 7. **Stage: "All 120 kids" piles** + tap to meet a kid.
 8. **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
@@ -327,3 +327,16 @@ limit and leave a working world.
   kid, stay calm before a test, finish a long project), counted as "likely to, out of 100" with a smooth curve around 50,
   words switching at 18; metrics `b_hand b_tidy b_food b_help b_calm b_proj`. 531 tests (incl. change 0020's from another
   session), typecheck and build green; committed. No UI yet (step 8 draws them).
+- 2026-11-05 — step 5 done: `scene.ts` split into `scene/` (stage, rooms, people, props, crowd, motion). "One child" is
+  the default view: five cached rooms (nursery, family kitchen, teen bedroom, first flat, own home) cross-fading in 600 ms
+  with the same bones (shelf left, window middle, door right); the typical child up to 80 % of the stage height as an adult;
+  parents behind, smaller, stepping out between 14 and 18 (one parent / two homes / big family shown); books on the shelf
+  (curious, tilted when messy), mess on the floor (organised), friends in the doorway (outgoing), a hand held out (kind), the
+  face and a worry cloud (calm); 20 changes bring a thing into the room and leave it on the shelf when they end; your own kid
+  from 31. Meters in a column beside the room (or a mini row on small stages): word, less ↔ more ends, the middle half of
+  the kids as a band, a filled dot with changes and a hollow one without, "a bit more" in amber, a legend. The crowd strips
+  live on as "All 120 kids" (redone in step 7); the switch is a DOM segment on the stage via a new optional `children`
+  prop on the shared `Stage` (other worlds unchanged). Checked in the browser at 1280 × 800 (rooms, props, meters with
+  changes); no page scroll at 375 × 812, 768 × 1024, 1024 × 768, 1440 × 900; switch buttons 44 px. Not yet looked at: the
+  crowd view and the phone's mini meters (the browser pane was hidden, so no frames were drawn), light theme around the
+  stage. 531 tests, typecheck and build green.

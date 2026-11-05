@@ -131,3 +131,7 @@
   .drawer, .bar span { transition: none; }
   .changes :global(.fork):active { transform: none; }
 }
+
+/* ── Stage view switch (change 0019): on the stage, bottom left; fixed darkroom colours in both themes ── */
+.viewSeg { position: absolute; left: var(--s-2); bottom: var(--s-2); z-index: 1; --label: var(--stage-ink); --label-2: var(--stage-ink-2);
+  background: color-mix(in srgb, var(--stage) 78%, transparent); border-radius: var(--r-pill); padding: 0 var(--s-1); }

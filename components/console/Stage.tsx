@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import { useCanvasLoop } from "../ui/canvas";
 
@@ -12,8 +12,11 @@ export interface StageInteraction {
   up?(engine: SimEngine, x: number, y: number, done: boolean): boolean;
 }
 
-/** The simulation canvas: runs and draws the engine every frame, and forwards pointer input to the world. */
-export default function Stage({ engine, interaction, onChange }: { engine: SimEngine; interaction?: StageInteraction; onChange: () => void }) {
+/**
+ * The simulation canvas: runs and draws the engine every frame, and forwards pointer input to the world. A world may put
+ * its own on-stage controls over the canvas as `children` (e.g. the child world's view switch).
+ */
+export default function Stage({ engine, interaction, onChange, children }: { engine: SimEngine; interaction?: StageInteraction; onChange: () => void; children?: ReactNode }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useCanvasLoop(ref, (ctx, W, H, dt) => {
     engine.tick(dt);
@@ -43,6 +46,7 @@ export default function Stage({ engine, interaction, onChange }: { engine: SimEn
     <div className="stage">
       <canvas ref={ref} aria-label="Simulation stage" />
       <span className="micro edge" aria-hidden="true">What-If Lab · Seed {engine.seed}</span>
+      {children}
     </div>
   );
 }

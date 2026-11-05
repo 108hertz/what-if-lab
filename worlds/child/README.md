@@ -9,7 +9,8 @@ here; it may use the shared tokens (`app/globals.css`), primitives (`components/
 | `sim.ts` | The rules: `Sandbox` (init, step, apply, read, draw), the story, sentences and timeline kinds. Framework-free, deterministic. |
 | `model.ts` | The maths shared by the rules and the stage: kid values, the four parts (genes, home, life, chance), typical kid, "why they differ". |
 | `data.ts` | Plain-word traits, ready-made families, home options, the 20 changes, everyday events, milestones, names, settings. |
-| `scene.ts` | The stage: home backdrop (cached), parents and family, the growing child, the 120 faces on strips, captions, hover. |
+| `scene/` | The stage (change 0019): `stage.ts` (one child: room, family, props, meters; or the crowd), `rooms.ts` (a room per part of life, cached), `people.ts` (characters, glyphs), `props.ts` (things from changes), `crowd.ts` (all 120 kids), `motion.ts` (draw-only clock, springs). |
+| `edit.ts` | Undo one change / stop one change on the engine (change 0019). |
 | `Chart.tsx` | "Growing up" (lines + band + change ticks) and "Out of 100 kids" (unit chart) with one sentence. |
 | `parts.tsx` | Family picker, parent cards, home, things that can happen, story, meet the child, why they differ, science, Tune, timeline. |
 | `Console.tsx` | This world's screen, copied from `StandardConsole`. Keeps its ad slots (ADR 0007). |

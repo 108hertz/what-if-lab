@@ -13,15 +13,26 @@ import { WorldHeader } from "@/components/console/panels";
 import { child } from "./sim";
 import ChildChart from "./Chart";
 import { AboutScience, ChangeList, ChildTimeline, ChildTune, FamilyPicker, HomeSettings, MeetChild, NatureBar, ParentCards, Story } from "./parts";
-import { pointAt, setStageTrait, tapAt } from "./scene";
+import { pointAt, setStageTrait, setStageView, stageView, tapAt, type StageView } from "./scene";
 import s from "./child.module.css";
 
-/** Hover shows a kid's name and traits; a tap does the same, or switches the strip on small stages. */
+/** In "All 120 kids": hover shows a kid's name and traits; a tap does the same, or switches the strip on small stages. */
 const STAGE_INPUT: StageInteraction = {
-  down: (_e: SimEngine, x, y) => tapAt(x, y),
-  move: (_e: SimEngine, x, y) => pointAt(x, y),
+  down: (_e: SimEngine, x, y) => { if (stageView() === "all") tapAt(x, y); },
+  move: (_e: SimEngine, x, y) => { if (stageView() === "all") pointAt(x, y); },
   up: () => false,
 };
+
+/** On-stage switch between the one typical child and the whole crowd (change 0019). */
+function ViewSwitch({ view, setView }: { view: StageView; setView: (v: StageView) => void }) {
+  return (
+    <div className={`seg ${s.viewSeg}`} role="group" aria-label="What the stage shows">
+      {([["one", "One child"], ["all", "All 120 kids"]] as [StageView, string][]).map(([v, l]) => (
+        <button key={v} type="button" aria-pressed={view === v} onClick={() => setView(v)}>{l}</button>
+      ))}
+    </div>
+  );
+}
 
 /**
  * The child world's console (change 0018), copied from StandardConsole's bands with animals' as the reference.
@@ -40,6 +51,8 @@ export default function ChildConsole() {
   const [trait, setTraitState] = useState(0);
   const [kid, setKid] = useState(-1);
   const setTrait = (i: number) => { setTraitState(i); setStageTrait(i); };
+  const [sview, setSview] = useState<StageView>(stageView());
+  const pickView = (v: StageView) => { setSview(v); setStageView(v); };
 
   const ask = <><WorldHeader engine={engine} /><FamilyPicker engine={engine} onChange={onChange} /><ParentCards engine={engine} onChange={onChange} /><HomeSettings engine={engine} onChange={onChange} /><ChangeList engine={engine} onChange={onChange} /></>;
   const story = <Story engine={engine} />;
@@ -78,7 +91,7 @@ export default function ChildConsole() {
     <main className={`console ${s.vars}`}>
       {full && <aside className="col ask scrolly">{ask}{story}{meet}{why}{science}</aside>}
       <section className="centre" ref={centre}>
-        <Stage engine={engine} onChange={onChange} interaction={STAGE_INPUT} />
+        <Stage engine={engine} onChange={onChange} interaction={STAGE_INPUT}><ViewSwitch view={sview} setView={pickView} /></Stage>
         <Transport engine={engine} onChange={onChange} fullscreen={fs} />
         {desk && !fs.on && <div className="results country-results">{chart}{log}</div>}
       </section>
