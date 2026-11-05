@@ -1,6 +1,6 @@
 import type { BaseWorld } from "@/lib/sim/types";
 import {
-  BUFFER_FLOOR, BUFFERS, CHANGES, COMBOS, FOREVER, HIGH, LOW, MATURATION, RIPPLES, SHOW, SIZE, TRAITS, ageWeight, type Show, type TraitDelta,
+  BEHAVIOURS, BUFFER_FLOOR, BUFFERS, CHANGES, COMBOS, FOREVER, HIGH, LOW, MATURATION, RIPPLES, SHOW, SIZE, TRAITS, ageWeight, type Show, type TraitDelta,
 } from "./data";
 
 /**
@@ -127,28 +127,80 @@ export function refresh(w: W) {
 }
 
 /** Sum of every change that has happened, for one kid and trait at age a, softly capped so stacks stay plausible. */
-function modPart(w: W, kid: Kid, i: number, a: number): number {
+/**
+ * Sum of every change that has happened (its own effect, what followed from it, and combos), for one kid and trait at age a,
+ * before the soft cap. If `rows` is given, each change's share is added at its index (its ripples also into `rip`), and
+ * each combo's at `mods.length + combo index`.
+ */
+function modRaw(w: W, kid: Kid, i: number, a: number, rows?: Float64Array, rip?: Float64Array): number {
   let raw = 0;
   const k = TRAITS[i];
   const r = kid.r[i];
-  for (const m of w.mods) {
-    if (!m.on || a < m.age) continue;
+  w.mods.forEach((m, mi) => {
+    if (!m.on || a < m.age) return;
     const dv = m.d[k];
-    if (dv) raw += dv * r * strength(m, a, w.tau) * m.b * m.aw;
+    if (dv) { const x = dv * r * strength(m, a, w.tau) * m.b * m.aw; raw += x; if (rows) rows[mi] += x; }
     const rs = RIPPLES[m.id];
-    if (!rs) continue;
+    if (!rs) return;
     for (let q = 0; q < rs.length; q++) {
       const rv = rs[q].d[k];
       if (!rv) continue;
       const when = rippleAt(kid, m, q);
-      if (when >= 0 && a >= when) raw += rv * r * (SIZE[m.s] ?? 1) * pulse(when, when, rs[q].pf, a, w.tau);
+      if (when < 0 || a < when) continue;
+      const x = rv * r * (SIZE[m.s] ?? 1) * pulse(when, when, rs[q].pf, a, w.tau);
+      raw += x;
+      if (rows) { rows[mi] += x; rip![mi] += x; }
     }
-  }
-  for (const c of w.cmb) {
+  });
+  w.cmb.forEach((c, ci) => {
     const dv = COMBOS[c.c].d[k];
-    if (dv && a >= c.start) raw += dv * r * pulse(c.start, c.end, COMBOS[c.c].pf, a, w.tau);
+    if (!dv || a < c.start) return;
+    const x = dv * r * pulse(c.start, c.end, COMBOS[c.c].pf, a, w.tau);
+    raw += x;
+    if (rows) rows[w.mods.length + ci] += x;
+  });
+  return raw;
+}
+
+/** The changes' part of one kid's trait, softly capped so stacks stay plausible. */
+function modPart(w: W, kid: Kid, i: number, a: number): number {
+  return CAP * Math.tanh(modRaw(w, kid, i, a) / CAP);
+}
+
+/** One row of "What made the difference": a change (with what followed from it) or a combo, per display trait. */
+export interface Contribution { kind: "change" | "combo"; idx: number; id: string; d: number[]; rip: number[] }
+/**
+ * How much each change (and each combo) moves the average of each display trait at age a, in trait points (Calm = −worry).
+ * Each kid's soft cap is shared out in proportion, so the rows add up to the changes' part of the average (before the 1–99
+ * clamp). Works for past ages too: the changes' part does not depend on chance.
+ */
+export function contributions(w: W, a = w.t): Contribution[] {
+  const nm = w.mods.length, n = nm + w.cmb.length, acc = SHOW.map(() => new Float64Array(n)), accR = SHOW.map(() => new Float64Array(nm));
+  const rows = new Float64Array(n), rip = new Float64Array(Math.max(1, nm));
+  for (const kid of w.k) for (let i = 0; i < 5; i++) {
+    rows.fill(0); rip.fill(0);
+    const raw = modRaw(w, kid, i, a, rows, rip);
+    if (!raw) continue;
+    const f = (CAP * Math.tanh(raw / CAP)) / raw, sign = i === 4 ? -1 : 1;
+    for (let q = 0; q < n; q++) acc[i][q] += (sign * rows[q] * f) / w.k.length;
+    for (let q = 0; q < nm; q++) accR[i][q] += (sign * rip[q] * f) / w.k.length;
   }
-  return CAP * Math.tanh(raw / CAP);
+  const out: Contribution[] = w.mods.map((m, q) => ({ kind: "change", idx: q, id: m.id, d: acc.map((x) => x[q]), rip: accR.map((x) => x[q]) }));
+  w.cmb.forEach((c, q) => out.push({ kind: "combo", idx: c.c, id: `${COMBOS[c.c].a}+${COMBOS[c.c].b}`, d: acc.map((x) => x[nm + q]), rip: [0, 0, 0, 0, 0] }));
+  return out;
+}
+
+/* ───────────── in everyday life (change 0019) ───────────── */
+
+/** How likely one kid is to do an everyday thing, from a display value (50 = as likely as not). */
+export const likely = (v: number) => 1 / (1 + Math.exp(-(v - 50) / 8));
+/** Out of 100 kids, how many are likely to do each everyday thing (`BEHAVIOURS` order), from display values v[trait][kid]. */
+export function behaviourCounts(v: number[][]): number[] {
+  return BEHAVIOURS.map((b) => {
+    const idx = b.traits.map((t) => SHOW.indexOf(t));
+    const p = v[0].map((_, j) => likely(idx.reduce((s, i) => s + v[i][j], 0) / idx.length));
+    return Math.round(100 * mean(p));
+  });
 }
 
 /** Keep a yearly snapshot of the chance-and-everyday part of every kid (called by the rules as whole ages pass). */

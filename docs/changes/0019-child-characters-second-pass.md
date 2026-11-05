@@ -263,7 +263,7 @@ limit and leave a working world.
    ripples reported once with stable text, every change × ripple finite.
 3. ✅ **Model: options** (`baby`, `shape`, `time`, `sens`) and **16 new changes**. Tests: every change at ages 1/8/15,
    every option, average shift ≤ 10.
-4. **Contributions + behaviour metrics.** Tests: contributions sum to the change part of the average (± rounding).
+4. ✅ **Contributions + behaviour metrics.** Tests: contributions sum to the change part of the average (± rounding).
 5. **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
 6. **Motion: springs, change-moment choreography, reduced motion.**
 7. **Stage: "All 120 kids" piles** + tap to meet a kid.
@@ -320,3 +320,10 @@ limit and leave a working world.
   and 2 more combos. "First crush" and "failed a big test" are in, written gently, pending the user's answer to open
   question 3. The stacking test's time limit is raised to 30 s (1,444 pairs). 474 tests, typecheck and build green;
   checked in the browser; committed.
+- 2026-11-05 — step 4 done: `contributions(w, age)` gives one row per change (its own effect plus what followed, with the
+  follow-on part also apart) and one per combo, per display trait, sharing each kid's soft cap out in proportion so the rows
+  add up to the changes' part of the average (within 0.35 points with the 1–99 clamp); works for past ages. "In everyday
+  life": `BEHAVIOURS` (put their hand up in class / speak up in a group, keep their room tidy, try a new food, help a new
+  kid, stay calm before a test, finish a long project), counted as "likely to, out of 100" with a smooth curve around 50,
+  words switching at 18; metrics `b_hand b_tidy b_food b_help b_calm b_proj`. 531 tests (incl. change 0020's from another
+  session), typecheck and build green; committed. No UI yet (step 8 draws them).

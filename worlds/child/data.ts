@@ -433,3 +433,20 @@ export const COMBOS: Combo[] = [
   { a: "drama", b: "leader", d: { E: 2, N: -1 }, pf: 0.6, txt: "Drama club and being class captain: speaking up got easy" },
   { a: "coding", b: "mentor", d: { C: 2, O: 1 }, pf: 0.6, txt: "A coding club and a mentor: they built something real" },
 ];
+
+/* ───────────── in everyday life (change 0019) ───────────── */
+
+/**
+ * What the traits look like day to day: "out of 100 kids, how many are likely to …" (`kid` before 18, `grown` after).
+ * `key` is the metric key; a behaviour with two traits uses their average. Phrased as "likely to", never a diagnosis.
+ */
+export interface Behaviour { key: string; traits: Show[]; kid: string; grown: string }
+export const BEHAVIOURS: Behaviour[] = [
+  { key: "b_hand", traits: ["E"], kid: "put their hand up in class", grown: "speak up in a group" },
+  { key: "b_tidy", traits: ["C"], kid: "keep their room tidy", grown: "keep their home tidy" },
+  { key: "b_food", traits: ["O"], kid: "try a food they've never had", grown: "try a food they've never had" },
+  { key: "b_help", traits: ["A"], kid: "help a new kid at school", grown: "help a new neighbour" },
+  { key: "b_calm", traits: ["Calm"], kid: "stay calm before a test", grown: "stay calm before a big day" },
+  { key: "b_proj", traits: ["C", "Calm"], kid: "finish a long school project", grown: "finish a long project" },
+];
+export const behaviourWord = (b: Behaviour, age: number) => (age < 18 ? b.kid : b.grown);

@@ -2,11 +2,11 @@ import type { Params, Sandbox } from "@/lib/sim/types";
 import { fmtNum, gauss, note, num, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
 import {
-  BABY, BUFFERS, CALMER_AGAIN, CHANGE_GROUPS, CHANGES, SENS, COMBOS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
+  BABY, BEHAVIOURS, BUFFERS, CALMER_AGAIN, CHANGE_GROUPS, CHANGES, SENS, COMBOS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
   MILESTONES, MORE, PHRASE, SHORT, SHOW, SIZE, STEPS, STYLE, TALLY_AGES, TRAITS, WORD, kidName, stepWord, type Show, type TraitDelta,
 } from "./data";
 import {
-  averages, counts, endOf, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, refresh, rippleCount, snapshot, SNAP_AGES, values, valuesAt,
+  averages, behaviourCounts, counts, endOf, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, refresh, rippleCount, snapshot, SNAP_AGES, values, valuesAt,
   type Kid, type Mod, type W,
 } from "./model";
 
@@ -112,7 +112,10 @@ export const child: Sandbox<W, P> = {
   defaultSpeed: 1,
   maxT: 60,
   fmtT: (t) => "Age " + Math.floor(t),
-  metrics: SHOW.flatMap(metricFor),
+  metrics: [
+    ...SHOW.flatMap(metricFor),
+    ...BEHAVIOURS.map((b) => ({ k: b.key, label: `Likely to ${b.kid} (of 100)`, unit: "kids", fmt: (v: number | null) => fmtNum(v) })),
+  ],
 
   onParamChange(p, id) {
     if (id === "family") {
@@ -216,6 +219,7 @@ function metricsOf(v: number[][]): Record<string, number> {
     r[s] = mean(xs); r[`${s}_lo`] = quant(xs, 0.25); r[`${s}_hi`] = quant(xs, 0.75);
     r[`hi${s}`] = xs.filter((x) => x >= HIGH).length; r[`lo${s}`] = xs.filter((x) => x <= LOW).length;
   });
+  behaviourCounts(v).forEach((n, q) => { r[BEHAVIOURS[q].key] = n; });
   return r;
 }
 

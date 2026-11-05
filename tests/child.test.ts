@@ -3,8 +3,8 @@ import { SimEngine } from "@/lib/sim/engine";
 import { defaultParams } from "@/lib/sim/core";
 import { averages, child, compare, kidLine, readAt, stopMod, story, values, why, type P, type W } from "@/worlds/child/sim";
 import { undoChange } from "@/worlds/child/edit";
-import { AGES, BUFFERS, CHANGES, CHANGE_GROUPS, CHANGE_IDS, COMBOS, EVERYDAY, FAMILIES, FAMILY_IDS, RIPPLES, TRAITS } from "@/worlds/child/data";
-import { rippleCount } from "@/worlds/child/model";
+import { AGES, BEHAVIOURS, BUFFERS, behaviourWord, CHANGES, CHANGE_GROUPS, CHANGE_IDS, COMBOS, EVERYDAY, FAMILIES, FAMILY_IDS, RIPPLES, TRAITS } from "@/worlds/child/data";
+import { behaviourCounts, contributions, rippleCount } from "@/worlds/child/model";
 
 const FRAME = 1 / 60;
 const params = (over: Partial<P> = {}) => {
@@ -458,5 +458,60 @@ describe("child: more options and changes (change 0019 step 3)", () => {
     expect(Math.min(...some)).toBeGreaterThanOrEqual(0.5);
     expect(Math.max(...some)).toBeLessThan(1.5);
     expect(Math.min(...run({ sens: "all" }, 2).w.k.flatMap((k) => k.r))).toBeGreaterThanOrEqual(1);
+  });
+});
+
+describe("child: what made the difference, in everyday life (change 0019 step 4)", () => {
+  const UI = { drag: null, cams: [null, null] as [null, null], pending: null };
+  const pair = (ids: [string, number][], end: number, seed = 31) => {
+    const p = params();
+    const b = child.init(p, seed);
+    to(b, p, 4);
+    const a = structuredClone(b);
+    for (const [id, age] of ids) child.apply(a, id, { ...p, s_age: String(age) }, UI);
+    to(a, p, end); to(b, p, end);
+    return { a, b, p };
+  };
+
+  it("the rows add up to how much the changes moved each average", () => {
+    for (const ids of [[["sport", 6], ["bestfriend", 7], ["bullied", 10]], [["divorce", 8], ["reading", 5], ["move", 12], ["screen", 9]]] as [string, number][][]) {
+      const { a, b } = pair(ids, 22);
+      const rows = contributions(a), A = averages(a), B = averages(b);
+      expect(rows.length).toBe(a.mods.length + a.cmb.length);
+      for (let i = 0; i < 5; i++) {
+        const sum = rows.reduce((s, r) => s + r.d[i], 0);
+        expect(Math.abs(sum - (A[i] - B[i])), `trait ${i}`).toBeLessThan(0.35);
+      }
+      for (const r of rows) for (const x of [...r.d, ...r.rip]) expect(Number.isFinite(x)).toBe(true);
+    }
+  });
+
+  it("a change's row points the right way, and its ripples are part of it", () => {
+    const { a } = pair([["sport", 6]], 10);
+    const [row] = contributions(a);
+    expect(row.id).toBe("sport");
+    expect(row.d[2]).toBeGreaterThan(1); // more outgoing
+    expect(row.d[4]).toBeGreaterThan(0); // calmer (Calm = −worry)
+    expect(Math.abs(row.rip[2])).toBeGreaterThan(0);
+    expect(Math.abs(row.rip[2])).toBeLessThan(Math.abs(row.d[2]));
+  });
+
+  it("works for a past age, and a planned change counts nothing yet", () => {
+    const { a } = pair([["sport", 6], ["music", 30]], 20);
+    const now = contributions(a), then = contributions(a, 5);
+    expect(now[1].d.every((x) => x === 0)).toBe(true);
+    expect(then[0].d.every((x) => x === 0)).toBe(true);
+  });
+
+  it("everyday life: counts of 100, sport raises speaking up, words change at 18", () => {
+    const { a, b, p } = pair([["sport", 6], ["drama", 7]], 14);
+    const ra = child.read(a, p), rb = child.read(b, p);
+    for (const bh of BEHAVIOURS) {
+      for (const r of [ra, rb]) { expect(r[bh.key]).toBeGreaterThanOrEqual(0); expect(r[bh.key]).toBeLessThanOrEqual(100); }
+    }
+    expect(ra.b_hand!).toBeGreaterThan(rb.b_hand!);
+    expect(behaviourCounts([[50], [50], [50], [50], [50]])).toEqual(BEHAVIOURS.map(() => 50));
+    expect(behaviourWord(BEHAVIOURS[0], 12)).toMatch(/class/);
+    expect(behaviourWord(BEHAVIOURS[0], 30)).not.toMatch(/class/);
   });
 });
