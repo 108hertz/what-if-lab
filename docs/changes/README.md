@@ -23,3 +23,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0017](./0017-animals-living-ecosystem.md) | Animals world: any ecosystem, visible evolution, picture-book results | 1 | shipped |
 | [0018](./0018-child-growing-up.md) | Child world: kids growing up, plain words, stacking life events | 1 | shipped |
 | [0019](./0019-child-characters-second-pass.md) | Child world, second pass: one life told well, ripples and buffers, everyday results | 1 | in-progress |
+| [0020](./0020-accounts-premium-exports.md) | Accounts (Clerk), Premium subscription, video and slide exports | 3 | shipped |

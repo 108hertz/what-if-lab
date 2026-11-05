@@ -3,6 +3,7 @@
 import type { SimEngine } from "@/lib/sim/engine";
 import { Icon } from "../ui/Icon";
 import { FullscreenButton } from "./fullscreen";
+import { ExportButton } from "./export/ExportDialog";
 
 export default function Transport({ engine, onChange, fullscreen }: { engine: SimEngine; onChange: () => void; fullscreen?: { on: boolean; toggle: () => void } }) {
   const act = (fn: () => void) => () => { fn(); onChange(); };
@@ -10,8 +11,8 @@ export default function Transport({ engine, onChange, fullscreen }: { engine: Si
   const stack = !!engine.sb.stack;
   const close = stack ? "Undo all changes" : "Close what-if";
   return (
-    // "tight": a stepper plus Close what-if; on narrow screens Play/Pause goes icon-only to keep one row
-    <div className={speeds.length > 4 && engine.alt ? "transport tight" : "transport"}>
+    // "tight": with a what-if open (Close + Export on the row), narrow screens take Play/Pause to icon-only to keep one row
+    <div className={engine.alt ? "transport tight" : "transport"}>
       <button className="btn primary" aria-label={engine.playing ? "Pause" : "Play"} onClick={act(() => (engine.playing = !engine.playing))}>
         <Icon name={engine.playing ? "pause" : "play"} />
         <span className="primary-text">{engine.playing ? "Pause" : "Play"}</span>
@@ -35,6 +36,7 @@ export default function Transport({ engine, onChange, fullscreen }: { engine: Si
       <button className="btn" aria-label="Restart" title="Restart" onClick={act(() => engine.restart())}><Icon name="restart" size={18} /><span className="btn-text">Restart</span></button>
       {engine.alt && <button className="btn" aria-label={close} title={close} onClick={act(() => engine.dropFork())}><Icon name="close" size={18} /><span className="btn-text">{close}</span></button>}
       <span className="hint">{engine.sb.hint ?? (fullscreen?.on ? "Leave full screen to ask a what-if." : stack ? "Pick changes. They add up in this world." : "Pick a question. The world splits here.")}</span>
+      <ExportButton engine={engine} />
       {fullscreen && <FullscreenButton {...fullscreen} />}
     </div>
   );

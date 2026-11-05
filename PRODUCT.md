@@ -41,16 +41,15 @@ every surface should lead toward.
 ## Capabilities and Constraints
 
 - Static export only; no backend, API route, server action or client-side secret without a superseding
-  ADR. Payments via a hosted merchant-of-record with client-side license unlock.
+  ADR. Accounts and the yearly Premium plan via Clerk (hosted sign-in and checkout), checked in the browser (ADR 0008).
 - Free is genuinely complete: every world and every what-if is free. Premium removes ads and adds power
-  tools (more parallel what-ifs, outcome ranges, scrubbing, saved scenarios, export); it never paywalls
+  tools (video and slide exports today; more parallel what-ifs, outcome ranges, scrubbing, saved scenarios later); it never paywalls
   the fork-and-compare moment.
 - Ads live only in side rails at ≥ 1280 px, never over or near the stage, never cause layout shift,
   never for Premium.
 - Core Web Vitals targets: LCP < 2.0 s, CLS 0, INP < 200 ms on mid-range mobile.
 - Terminology: "world"/"sandbox", "what-if", "fork", "no-change world" vs "what-if world".
-- Open: payment provider (Lemon Squeezy vs Paddle), hosting (Cloudflare Pages vs Vercel), whether
-  accounts are ever needed.
+- Open: hosting (Cloudflare Pages vs Vercel); sales tax handling for Clerk Billing (not merchant of record).
 
 ## Brand Commitments
 

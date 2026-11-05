@@ -15,7 +15,8 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
 2. **No backend of our own.** The site is a static export (HTML/JS/CSS on a CDN). The only third-party
    services are for **payments**, **(optional) accounts**, **ads** and **privacy-friendly analytics**.
    See [ADR 0001](./decisions/0001-static-site-no-backend.md) and
-   [ADR 0002](./decisions/0002-payments-and-premium-unlock.md).
+   [ADR 0002](./decisions/0002-payments-and-premium-unlock.md), superseded for accounts/billing by
+   [ADR 0008](./decisions/0008-accounts-and-billing-clerk.md) (Clerk, checked in the browser).
 3. **Darkroom experience.** Calm, clear, fast. The simulation is the object; every tool is on one screen.
    See [DESIGN.md](../DESIGN.md).
 4. **Free is genuinely great.** Every world and every what-if is free. Premium removes ads and adds
@@ -29,7 +30,7 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
 | Tier | Price | What you get |
 | --- | --- | --- |
 | Free | $0 | All worlds, all what-ifs, scale explorer, share links. Ads in reserved slots away from the stage. |
-| Premium | $15 / year | No ads · up to 4 parallel what-ifs · Monte-Carlo outcome ranges · timeline scrubbing/replay · saved scenarios · export (PNG, GIF, CSV) · early access to new worlds |
+| Premium | $15 / year | No ads · up to 4 parallel what-ifs · Monte-Carlo outcome ranges · timeline scrubbing/replay · saved scenarios · export (phone video, YouTube video, slides PDF — built; PNG, GIF, CSV later) · early access to new worlds |
 
 Feature specs: [ads](./features/ads.md), [premium](./features/premium.md).
 
@@ -69,16 +70,15 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 
 ### Phase 3 — Revenue
 - [ ] Consent management + side-rail ads ([ADR 0003](./decisions/0003-advertising.md))
-- [ ] Premium checkout + license unlock ([ADR 0002](./decisions/0002-payments-and-premium-unlock.md))
-- [ ] Premium features: multi what-if, Monte-Carlo, scrubbing, saved scenarios, export
+- [x] Accounts + Premium checkout with Clerk, no ads for Premium ([ADR 0008](./decisions/0008-accounts-and-billing-clerk.md), [change 0020](./changes/0020-accounts-premium-exports.md)); goes live when the Clerk key is set
+- [x] Premium exports: phone video, YouTube video, slides ([change 0020](./changes/0020-accounts-premium-exports.md))
+- [ ] Premium features: multi what-if, Monte-Carlo, scrubbing, saved scenarios
 
 ### Phase 4 — Scale
 - [ ] Web Worker + OffscreenCanvas engine
 - [ ] Localisation (top 5 languages by traffic)
-- [ ] Optional accounts for cross-device Premium (only if license keys prove insufficient)
 
 ## Open questions
 
-- Payment provider final pick (Lemon Squeezy vs Paddle) — needs a pricing/fees check at signup time.
+- Sales tax / VAT: Clerk Billing is not merchant of record (ADR 0008). Confirm Stripe Tax or a merchant of record before live keys.
 - Hosting: Cloudflare Pages vs Vercel — both fine for a static export; pick on analytics/CDN cost.
-- Do we need accounts at all, or are license keys enough? Decide after first 100 Premium buyers.

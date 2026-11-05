@@ -24,6 +24,10 @@ export const STAGE = {
   muted: "#6C5F51",
   base: "#A9B1D6",
   alt: "#FFC857",
+  /** --good, --bad and --ember (dark values); used by export captions drawn on the stage palette. */
+  good: "#8FD18C",
+  bad: "#FF8A6A",
+  ember: "#DC5000",
   scrim: "rgba(16,9,4,.78)",
 };
 

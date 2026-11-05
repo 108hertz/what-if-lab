@@ -10,8 +10,8 @@ Inspirations: scaleofuniverse.com (zoom), Universe Sandbox (gravity), Primer (bl
 ## Product direction (read `docs/PLAN.md`)
 
 Goal: maximum traffic; revenue from **side-rail ads** (≥1280 px, never near the stage) and **Premium at
-$15/year** (no ads + power tools). **No backend of our own**: static export; payments/licensing via a
-hosted merchant-of-record, client-side license unlock (`docs/decisions/0002-…`). The simulation stays
+$15/year** (no ads + power tools). **No backend of our own**: static export; accounts and the Premium plan via
+Clerk + Clerk Billing, checked in the browser (`docs/decisions/0008-…`, change 0020). The simulation stays
 pure variable changes → rule-based outcomes. UI follows the **Darkroom** design system (`DESIGN.md`); working screens are
 one-viewport consoles with no page scroll.
 
@@ -25,6 +25,9 @@ one-viewport consoles with no page scroll.
 - **UI work** follows the `darkroom-ui` skill. **New worlds** follow the `add-sandbox` skill.
 - **Worlds are separate projects** (`worlds/<key>/`); improve them one at a time, each with its own change doc.
 - Never introduce a server, API route, server action, or secret in client code without a superseding ADR.
+  Only the Clerk **publishable** key is read (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, see `.env.example`).
+- Premium gating goes through `useAccount()` / `adsAllowed` / `canExport`; never import `@clerk/*` outside
+  `components/account/clerk.tsx`. Exports must never change sim behaviour (`tests/export.test.ts`).
 
 ## Commands
 
@@ -42,9 +45,12 @@ Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.
 ```
 app/                      Next.js App Router (static). / = scale, /lab/[world] = a world
 components/
-  shell/                  Lab (nav, world switcher, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu, ThemeToggle
+  shell/                  Lab (nav, world switcher, account menu, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu, ThemeToggle
+  account/                useAccount() adapter: state.ts (pure rules), context.tsx (provider), clerk.tsx (the only Clerk import,
+                          lazy), AccountMenu, PremiumDialog. No key ⇒ everything free, as before
   console/                shared world-console blocks: StandardConsole, Stage (+ StageInteraction), Transport,
-                          HistoryChart, Timeline, panels, ControlsForm, Dock, AdSlot, engines (singletons + useWorldEngine)
+                          HistoryChart, Timeline, panels, ControlsForm, Dock, AdSlot (null for Premium), engines (singletons +
+                          useWorldEngine), export/ (Premium video + slides sheet, MediaRecorder, jsPDF)
   scale/                  ScaleConsole (the / page), ScalePanel, ScaleTransport
   ui/                     primitives: Icon, useMedia, canvas (fitCanvas, useCanvasLoop)
 worlds/                   one folder per world = one project (change 0008)
@@ -60,7 +66,8 @@ lib/sim/                  framework-free engine shared by all worlds (no React)
   types.ts                Sandbox interface, BaseWorld, WorldMeta, Control, Metric…
   core.ts                 seeded RNG (rng/gauss), note(), mix(), defaultParams, formatters
   draw.ts                 blob() creature drawing, chip(), FONT
-  engine.ts               SimEngine: base/alt worlds, fork, history, timeline merge, split-stage drawing
+  engine.ts               SimEngine: base/alt worlds, fork, history, timeline merge, split-stage drawing, `origin` (replay recipe)
+lib/export/               deterministic replay of a fork + video frames and slides drawn with each sandbox's draw()
 lib/scale/                scale explorer objects + renderer
 tests/                    vitest: every world × every what-if, determinism, world boundaries, ad slots
 PRODUCT.md / DESIGN.md    product truth / canonical Darkroom design system (tokens mirror app/globals.css)

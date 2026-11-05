@@ -18,6 +18,32 @@ export interface TimelineItem {
   who: "both" | "base" | "alt";
 }
 
+/** One change as it was made, so exports can re-run the fork exactly (change 0020). */
+export interface ChangeRecord {
+  /** Sim time of the changed world when the change was made. */
+  t: number;
+  id: string;
+  params: Params;
+  ui: InteractionState;
+}
+
+/** Recipe to re-run the fork from its start: the no-change world just before the first change, then every change. */
+export interface ReplayOrigin {
+  world: BaseWorld;
+  changes: ChangeRecord[];
+}
+
+/** Merge two worlds' logs into one timeline: shared history, no-change-only and what-if-only events. */
+export function mergeTimeline(B: BaseWorld["log"], A: BaseWorld["log"] | null, now: number, limit = 40): TimelineItem[] {
+  const tol = 1e-6 + Math.abs(now) * 0.03;
+  const same = (x: { t: number; txt: string }, y: { t: number; txt: string }) => x.txt === y.txt && Math.abs(x.t - y.t) < tol;
+  const alt = A ?? [];
+  const items: TimelineItem[] = [];
+  for (const e of B) items.push({ ...e, who: !A || alt.some((a) => same(a, e)) ? "both" : "base" });
+  for (const e of alt) if (!B.some((b) => same(b, e))) items.push({ ...e, who: "alt" });
+  return items.sort((a, b) => b.t - a.t).slice(0, limit);
+}
+
 export interface StageRect {
   x: number; y: number; w: number; h: number;
   world: BaseWorld;
@@ -40,6 +66,8 @@ export class SimEngine {
   speedIdx: number;
   playing = true;
   readonly ui: InteractionState = { drag: null, cams: [null, null], pending: null };
+  /** How to re-run the current fork from its start (exports). Null without a fork; the simulation never reads it. */
+  origin: ReplayOrigin | null = null;
   private acc = 0;
 
   constructor(sb: AnySandbox, params: Params, readonly seed = DEFAULT_SEED) {
@@ -58,6 +86,7 @@ export class SimEngine {
     this.alt = null;
     this.whatIf = null;
     this.applied = [];
+    this.origin = null;
     this.history = { t: [], base: {}, alt: {}, forkT: null };
     for (const m of this.sb.metrics) { this.history.base[m.k] = []; this.history.alt[m.k] = []; }
     this.sample();
@@ -65,6 +94,7 @@ export class SimEngine {
 
   /** Clone the baseline right now and apply a what-if to the clone. */
   fork(id: string): void {
+    this.origin = { world: structuredClone(this.base), changes: [this.record(this.base.t, id)] };
     this.alt = structuredClone(this.base);
     this.sb.apply(this.alt, id, this.params, this.ui);
     this.whatIf = id;
@@ -78,8 +108,13 @@ export class SimEngine {
   /** Apply an extra change to the existing what-if world without re-forking. */
   applyToAlt(id: string): void {
     if (!this.alt) return this.fork(id);
+    this.origin?.changes.push(this.record(this.alt.t, id));
     this.sb.apply(this.alt, id, this.params, this.ui);
     this.applied.push(id);
+  }
+
+  private record(t: number, id: string): ChangeRecord {
+    return { t, id, params: { ...this.params }, ui: structuredClone(this.ui) };
   }
 
   /** A what-if click: re-forks in split worlds; adds to the changed world in stacking ones. */
@@ -92,6 +127,7 @@ export class SimEngine {
     this.alt = null;
     this.whatIf = null;
     this.applied = [];
+    this.origin = null;
     this.history.forkT = null;
     for (const m of this.sb.metrics) this.history.alt[m.k] = this.history.t.map(() => null);
   }
@@ -148,13 +184,7 @@ export class SimEngine {
 
   /** Merge both worlds' logs: shared history, base-only and what-if-only events. */
   timeline(limit = 40): TimelineItem[] {
-    const B = this.base.log, A = this.alt?.log ?? [];
-    const tol = 1e-6 + Math.abs(this.base.t) * 0.03;
-    const same = (x: { t: number; txt: string }, y: { t: number; txt: string }) => x.txt === y.txt && Math.abs(x.t - y.t) < tol;
-    const items: TimelineItem[] = [];
-    for (const e of B) items.push({ ...e, who: !this.alt || A.some((a) => same(a, e)) ? "both" : "base" });
-    for (const e of A) if (!B.some((b) => same(b, e))) items.push({ ...e, who: "alt" });
-    return items.sort((a, b) => b.t - a.t).slice(0, limit);
+    return mergeTimeline(this.base.log, this.alt?.log ?? null, this.base.t, limit);
   }
 
   rects(W: number, H: number): StageRect[] {

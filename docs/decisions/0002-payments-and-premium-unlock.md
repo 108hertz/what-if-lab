@@ -1,6 +1,6 @@
 # 0002 — Payments and Premium unlock without a backend
 
-- **Status:** proposed (confirm provider fees/terms at signup)
+- **Status:** superseded by [ADR 0008](./0008-accounts-and-billing-clerk.md) (accounts + Clerk Billing instead of license keys; the 14-day offline grace and "client-side gating is acceptable" carry over)
 - **Date:** 2026-11-02
 
 ## Context

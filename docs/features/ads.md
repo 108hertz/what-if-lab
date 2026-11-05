@@ -3,7 +3,7 @@
 - **Status:** slots reserved (change 0008); ad loading planned (Phase 3)
 - **Tier:** free only
 - **Owner area:** `components/console/AdSlot.tsx`, `components/console/StandardConsole.tsx`, `components/shell/Lab.tsx`, `public/ads.txt` (todo), third-party (AdSense + CMP)
-- **Changes:** [0008](../changes/0008-worlds-as-projects.md)
+- **Changes:** [0008](../changes/0008-worlds-as-projects.md), [0020](../changes/0020-accounts-premium-exports.md) (hidden for Premium)
 - **Decision:** [ADR 0003](../decisions/0003-advertising.md), [ADR 0007](../decisions/0007-ad-slots-per-world.md)
 
 ## What it is
@@ -24,9 +24,12 @@ Revenue scales with traffic without a paywall. Must not reduce traffic by hurtin
   - < 1024 px: one 320×50 banner under the dock; hidden on phones held sideways (≤ 520 px tall).
 - Fixed dimensions → CLS = 0. Pages still never scroll.
 - Empty slot (today, dev, no-fill, ad-blocker): dashed cork outline with a Micro "Ad" label; at most one per
-  screen adds the quiet "Ad-free with Premium · $15/yr" line. Never animated.
+  screen adds the quiet "Ad-free with Premium · $15/yr" line (a button that opens the Premium sheet when the build sells
+  Premium, plain text otherwise). Never animated.
+- **Premium (change 0020):** `AdSlot` renders nothing and the shell drops its rail columns; columns and the dock
+  take the space. A device that recently had Premium hides slots while the account service is still loading.
 - **Not yet built (Phase 3):** consent (CMP), loading the ad script on `requestIdleCallback` after the first
-  sim frame, hiding slots for Premium (decided before first paint), `public/ads.txt`.
+  sim frame, `public/ads.txt`.
 - Never: over/inside the stage, between the stage and the transport, in popovers or modals, in embeds
   (`/embed/*`), interstitials, sticky overlays, auto-refresh faster than network policy allows.
 - One below-the-fold unit allowed on long-form what-if article pages only.

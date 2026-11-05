@@ -375,7 +375,7 @@ seam, the what-if chart line, the active tab).
 
 Icons are an in-house set (`components/ui/Icon.tsx`): 24px grid, 1.5px stroke, round caps and joins,
 `currentColor`, geometric primitives only. UI glyphs: play, pause, restart, fork, close, chevron, plus,
-minus, arrow, info, sun, moon; plus one abstract glyph per world, keyed by `Mode`. A new world needs a
+minus, arrow, info, sun, moon, expand, shrink, user, download, phone, wide, slides, check, noads; plus one abstract glyph per world, keyed by `Mode`. A new world needs a
 glyph added there. Always paired with text or an `aria-label`.
 
 ## Components
@@ -402,6 +402,13 @@ glyph added there. Always paired with text or an `aria-label`.
 - **Stage:** 12px radius, walnut in both themes, 1px cork outline, clips its canvas. The only container.
 - **Popover:** walnut raised, 12px radius, 1px cork border, no shadow, card padding; Esc or an outside
   click closes it.
+- **Sheet** (`components/ui/Dialog.tsx`, change 0020): the popover's material as a modal `<dialog>`, max
+  480px, over a 78% walnut scrim; Headline title with a close icon button. Only where focus must be
+  protected: buying Premium and rendering an export. Below 768px it docks to the bottom edge, full width.
+  Inside a sheet the one filled bark button is the sheet's main action; everything else is ghost.
+- **Premium upsell:** one sheet, never an interstitial or countdown: price ($15 at Heading size, "a year ·
+  cancel any time" in Small), perks as dashed-hairline rows (glyph · Label · Small), and the line "Every
+  world and every what-if stays free". Its button follows the account state.
 
 ### Inputs / Fields
 - **Slider:** 1px driftwood track, 20px cream thumb, 24px tall with a 44px hit area across the row.
@@ -415,6 +422,10 @@ glyph added there. Always paired with text or an `aria-label`.
   popover (nav-wide, max 320px) listing every world as a 48px row: glyph, Label name, Small subtitle;
   the current world gets the dashed underline. Arrow keys move, Esc closes and returns focus.
 - **World strip (≥ 768px):** glyphs always, the active world's name always, other names at ≥ 1280px.
+- **Account (change 0020):** a user-glyph icon button left of the theme toggle (with the name and a Micro
+  "Premium" from 1600px). Its popover (right-aligned, max 320px): who, plan, one Small status line, then
+  44px menu rows under a dashed hairline. Hidden in production builds without accounts.
+- **Export:** a download icon button on the transport before full screen ("Export" text at ≥ 1440px).
 
 ### What-if row (signature)
 A fork glyph and the mixed-case question in Small text, wrapping to two lines if needed, 40px minimum.

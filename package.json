@@ -11,9 +11,11 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@clerk/react": "6.17.8",
+    "jspdf": "4.2.1",
     "next": "15.5.28",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react": "19.1.4",
+    "react-dom": "19.1.4"
   },
   "devDependencies": {
     "@types/node": "22.15.30",

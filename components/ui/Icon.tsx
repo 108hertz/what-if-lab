@@ -17,6 +17,14 @@ const GLYPHS = {
   moon: <path d="M18.5 14.5A7 7 0 0 1 9.5 5.5a7 7 0 1 0 9 9z" />,
   expand: <path d="M4.5 9V4.5H9M15 4.5h4.5V9M19.5 15v4.5H15M9 19.5H4.5V15" />,
   shrink: <path d="M9 4.5V9H4.5M19.5 9H15V4.5M15 19.5V15h4.5M4.5 15H9v4.5" />,
+  // Account and exports (change 0020)
+  user: <><circle cx="12" cy="9" r="3.5" /><path d="M5.5 19.5c1-3.5 3.6-5 6.5-5s5.5 1.5 6.5 5" /></>,
+  download: <><path d="M12 4.5v10" /><path d="M7.5 10.5l4.5 4.5 4.5-4.5" /><path d="M5 19.5h14" /></>,
+  phone: <><rect x="8" y="3.5" width="8" height="17" rx="1.5" /><path d="M8 12h8" strokeDasharray="1.5 1.5" /></>,
+  wide: <><rect x="3" y="7" width="18" height="10" rx="1.5" /><path d="M12 7v10" strokeDasharray="1.5 1.5" /></>,
+  slides: <><rect x="3.5" y="5" width="17" height="11" rx="1.5" /><path d="M12 16v3.5M8.5 19.5h7M7 9h6M7 12h4" /></>,
+  check: <path d="M5.5 12.5l4 4 9-9" />,
+  noads: <><rect x="4" y="6" width="16" height="12" rx="1.5" strokeDasharray="2 2" /><path d="M5 19L19 5" /></>,
 
   // World glyphs
   scale: <><path d="M3.5 16h17" /><path d="M5 16v-3M8.5 16v-5M12 16v-7M15.5 16v-5M19 16v-3" /></>,
