@@ -1,127 +1,190 @@
 import { TAU, clamp } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
-import { COLOR, SHOW, WORD, kidName, kidShort } from "../data";
-import type { W } from "../model";
-import { realNow, spring } from "./motion";
-import { drawGlyph, hash } from "./people";
+import { HIGH, LOW, SHOW, TRACK, WORD, kidName, kidShort } from "../data";
+import { of100, type W } from "../model";
+import { realNow } from "./motion";
 
 /**
- * "All 120 kids" (changes 0018, 0019): the possible kids as tiny faces on five plain-word strips (one strip on small stages),
- * easing to their new places every frame; hover or tap a face for its name. Step 7 of change 0019 turns this into piles.
+ * "All 120 kids" (change 0019): for the picked trait, the 120 possible kids as little faces in three piles — less, in
+ * between, more — with the count of 100 above each. Without changes the piles are the no-change world; with changes the
+ * no-change piles stay behind as faint rings, so a pile that grew or shrank shows at a glance. When a change or the trait
+ * moves a kid to another pile, its face walks there (spring, staggered, ≤ 0.7 s). Hover a face for its name; tap to meet it.
  */
 
 const NK = 120;
-const pos = new Float64Array(5 * NK), vel = new Float64Array(5 * NK);
-const mk = new Float64Array(10), mv = new Float64Array(10);
-let eased = false;
-const fxp = new Float32Array(5 * NK * 2);
-let fxn = 0, faceR = 3;
+const px = new Float64Array(NK), py = new Float64Array(NK), vx = new Float64Array(NK), vy = new Float64Array(NK);
+const tx = new Float64Array(NK), ty = new Float64Array(NK), go = new Float64Array(NK);
+let eased = false, lastKey = "";
+/** Which pile and slot each kid has; which kid sits in each slot of each pile (−1 = free). Kids keep their slot while they
+ *  stay in a pile, so only the ones that change pile walk; gaps are filled one face at a time. */
+const pileOf = new Int8Array(NK).fill(-1), slotOf = new Int16Array(NK).fill(-1), seat = new Int16Array(3 * NK).fill(-1);
+const lastFill = new Float64Array(3);
+const fx = new Float32Array(NK * 2);
+let faceR = 4, nFaces = 0;
 let hover: { x: number; y: number; at: number } | null = null;
 let selTrait = 0;
-let selBox: [number, number, number, number] | null = null;
 
-/** Pointer over the stage (from the console's stage interaction). */
+/** Pointer over the stage. */
 export function pointAt(x: number, y: number) { hover = { x, y, at: realNow() }; }
-/** A tap: cycles the shown strip when the strip label is tapped on small stages, else points at a face. */
-export function tapAt(x: number, y: number) {
-  if (selBox && x >= selBox[0] && x <= selBox[0] + selBox[2] && y >= selBox[1] && y <= selBox[1] + selBox[3]) { selTrait = (selTrait + 1) % 5; return; }
-  pointAt(x, y);
+/** The kid under a point (or −1). */
+export function kidAt(x: number, y: number): number {
+  let best = -1, bd = (faceR + 4) ** 2;
+  for (let j = 0; j < nFaces; j++) { const d = (fx[j * 2] - x) ** 2 + (fx[j * 2 + 1] - y) ** 2; if (d < bd) { bd = d; best = j; } }
+  return best;
 }
+/** A tap: the kid under it, if any (the console then shows that kid in "One child"). */
+export function tapAt(x: number, y: number): number { pointAt(x, y); return kidAt(x, y); }
 export const stageTrait = () => selTrait;
 export function setStageTrait(i: number) { selTrait = ((i % 5) + 5) % 5; }
 
-/** Draw the strips from `top` to the bottom of the stage. `pulse[i]` is when trait i last changed (for a soft glow). */
-export function drawCrowd(c: CanvasRenderingContext2D, W: number, H: number, top: number, w: W, base: W | null, v: number[][], avg: number[], bavg: number[] | null, now: number, dt: number, reduced: boolean, pulse: Float64Array) {
-  const compact = H - top < 300 || W < 520;
-  // ── Crowd strips ──
-  c.fillStyle = STAGE.void; c.fillRect(0, top, W, H - top);
-  const rows = compact ? [selTrait] : [0, 1, 2, 3, 4];
-  const labW = compact ? 118 : W < 700 ? 104 : 116, x0 = labW + 10, x1 = W - 16;
-  const rh = (H - top - (compact ? 22 : 24)) / rows.length;
-  faceR = clamp(rh * 0.09, 2.4, 4);
-  const col = base ? STAGE.alt : STAGE.base;
-  const X = (val: number) => x0 + ((x1 - x0) * val) / 100;
-  // Easing: the crowd glides to its new places; snap on the first frame and with reduced motion
-  for (let i = 0; i < 5; i++) for (let j = 0; j < Math.min(NK, w.k.length); j++) {
-    const q = i * NK + j;
-    if (!eased || reduced) { pos[q] = v[i][j]; vel[q] = 0; } else spring(pos, vel, q, v[i][j], dt);
+const pile = (v: number) => (v <= LOW ? 0 : v >= HIGH ? 2 : 1);
+
+/** Pile geometry for a stage of W × H below `top`, leaving `bottom` px for the on-stage switches. */
+function layout(W: number, H: number, top: number, bottom: number, need: number) {
+  const gap = W < 520 ? 10 : 20, m = W < 520 ? 8 : 16, pw = (W - 2 * m - 2 * gap) / 3;
+  const y0 = top + (H - top < 300 ? 50 : 66), y1 = H - bottom, ph = Math.max(40, y1 - y0);
+  // Faces as big as possible while the biggest pile still fits (`need`, rounded up so sizes rarely change)
+  let d = Math.sqrt((pw * ph) / (need * 1.07));
+  while (d > 6 && Math.floor(pw / d) * Math.floor(ph / d) < need) d -= 0.5;
+  d = clamp(d, 6, 26);
+  const cols = Math.max(1, Math.floor(pw / d));
+  return { m, gap, pw, y0, y1, d, cols, x0: (b: number) => m + b * (pw + gap) };
+}
+
+/** Draw the piles. `pulse[i]` is when trait i last changed (a soft glow on the counts). */
+export function drawCrowd(c: CanvasRenderingContext2D, W: number, H: number, top: number, base: W | null, v: number[][], bv: number[][] | null, now: number, dt: number, reduced: boolean, pulse: Float64Array) {
+  c.fillStyle = STAGE.void; c.fillRect(0, 0, W, H);
+  const i = selTrait, s = SHOW[i], xs = v[i], n = Math.min(NK, xs.length);
+  const sizes = [0, 0, 0];
+  for (let j = 0; j < n; j++) sizes[pile(xs[j])]++;
+  const need = Math.min(NK, Math.max(40, Math.ceil((Math.max(...sizes) + 4) / 20) * 20));
+  const L = layout(W, H, top, W < 640 ? 112 : 64, need); // phones: the trait switch sits on its own row
+  faceR = Math.max(2.4, L.d / 2 - 1.2);
+
+  // Each kid's place: its pile, then its number in the pile (stable, so faces only walk when a kid changes pile), rows from the bottom
+  const slot = (b: number, k: number) => {
+    const row = Math.floor(k / L.cols), col = k % L.cols, inRow = Math.min(L.cols, NK);
+    const left = L.x0(b) + (L.pw - inRow * L.d) / 2;
+    return [left + L.d / 2 + col * L.d, L.y1 - L.d / 2 - row * L.d] as const;
+  };
+  const key = `${i}|${W}|${H}|${n}|${need}`, fresh = key !== lastKey || !eased;
+  const place = (j: number, b: number, k: number, delay: number) => {
+    pileOf[j] = b; slotOf[j] = k; seat[b * NK + k] = j;
+    const [x, y] = slot(b, k);
+    tx[j] = x; ty[j] = y; go[j] = now + delay;
+    if (!eased || reduced) { px[j] = x; py[j] = y; vx[j] = vy[j] = 0; }
+  };
+  const freeSlot = (b: number) => { for (let k = 0; k < NK; k++) if (seat[b * NK + k] < 0) return k; return NK - 1; };
+  if (fresh) {
+    // A new trait or size: everyone finds a place again, walking there one after another
+    seat.fill(-1);
+    const cnt = [0, 0, 0];
+    for (let j = 0; j < n; j++) { const b = pile(xs[j]); place(j, b, cnt[b]++, Math.min(0.35, j * 0.003)); }
+  } else {
+    let moved = 0;
+    for (let j = 0; j < n; j++) {
+      const b = pile(xs[j]);
+      if (b === pileOf[j]) continue;
+      seat[pileOf[j] * NK + slotOf[j]] = -1;
+      place(j, b, freeSlot(b), Math.min(0.35, moved++ * 0.02));
+    }
+    // Fill gaps: the last face of a pile steps into its lowest free slot, one at a time
+    for (let b = 0; b < 3; b++) {
+      if (now - lastFill[b] < 0.12) continue;
+      const hole = freeSlot(b);
+      let last = -1;
+      for (let k = NK - 1; k > hole; k--) if (seat[b * NK + k] >= 0) { last = k; break; }
+      if (last > hole) { const j = seat[b * NK + last]; seat[b * NK + last] = -1; place(j, b, hole, 0); lastFill[b] = now; }
+    }
   }
-  for (let i = 0; i < 5; i++) {
-    if (!eased || reduced) { mk[i] = avg[i]; mv[i] = 0; mk[5 + i] = bavg ? bavg[i] : avg[i]; mv[5 + i] = 0; }
-    else { spring(mk, mv, i, avg[i], dt); spring(mk, mv, 5 + i, bavg ? bavg[i] : avg[i], dt); }
-  }
-  eased = true;
-  fxn = 0;
-  selBox = null;
-  c.textBaseline = "middle";
-  rows.forEach((i, r) => {
-    const s = SHOW[i], y0 = top + 8 + r * rh, yc = y0 + rh / 2;
-    // A soft pulse when a change touches this trait
-    const pq = (now - pulse[i]) / 0.9;
-    if (!reduced && pq >= 0 && pq < 1) { c.fillStyle = `rgba(255,200,87,${(0.12 * (1 - pq)).toFixed(3)})`; c.fillRect(0, y0, W, rh); }
-    // Label: glyph + word (on small stages a chip you can tap to switch)
-    c.font = "500 12px " + FONT.body; c.textAlign = "left";
-    if (compact) {
-      const lw = c.measureText(WORD[s]).width + 48;
-      c.fillStyle = STAGE.scrim; c.beginPath(); c.roundRect(8, yc - 13, lw, 26, 13); c.fill();
-      c.strokeStyle = STAGE.line; c.stroke();
-      drawGlyph(c, s, 22, yc, 16, COLOR[s]);
-      c.fillStyle = STAGE.ink; c.fillText(WORD[s], 34, yc + 0.5);
-      c.strokeStyle = STAGE.ink2; c.lineWidth = 1.4; c.beginPath(); c.moveTo(lw - 4, yc - 2); c.lineTo(lw, yc + 2); c.lineTo(lw + 4, yc - 2); c.stroke(); c.lineWidth = 1;
-      selBox = [8, yc - 16, lw + 8, 32];
-    } else {
-      drawGlyph(c, s, 18, yc, 16, COLOR[s]);
-      c.fillStyle = STAGE.ink; c.fillText(WORD[s], 32, yc + 0.5);
-    }
-    // Track with the "in between" middle lightly marked
-    c.fillStyle = "rgba(255,237,215,.035)"; c.fillRect(X(35), y0 + 2, X(65) - X(35), rh - 4);
-    c.strokeStyle = STAGE.line; c.beginPath(); c.moveTo(x0, yc); c.lineTo(x1, yc); c.stroke();
-    // Faces
-    const amp = Math.max(0, rh / 2 - faceR - 3);
-    c.fillStyle = col; c.globalAlpha = 0.85; c.beginPath();
-    for (let j = 0; j < w.k.length && j < NK; j++) {
-      const fx = X(pos[i * NK + j]), fyy = yc + ((w.k[j].j + hash(j * 5 + i)) / 2 - 0.5) * 2 * amp;
-      c.moveTo(fx + faceR, fyy); c.arc(fx, fyy, faceR, 0, TAU);
-      fxp[fxn * 2] = fx; fxp[fxn * 2 + 1] = fyy; fxn++;
-    }
-    c.fill(); c.globalAlpha = 1;
-    if (faceR >= 3.4) {
-      c.fillStyle = STAGE.void; c.beginPath();
-      const start = fxn - Math.min(NK, w.k.length);
-      for (let q = start; q < fxn; q++) { const fx = fxp[q * 2], fyy = fxp[q * 2 + 1]; c.moveTo(fx, fyy); c.arc(fx - faceR * 0.36, fyy - faceR * 0.12, faceR * 0.2, 0, TAU); c.moveTo(fx + faceR * 0.56, fyy); c.arc(fx + faceR * 0.36, fyy - faceR * 0.12, faceR * 0.2, 0, TAU); }
-      c.fill();
-    }
-    // Typical kid marker (and the no-change one, dashed)
-    if (base) {
-      const bx = X(mk[5 + i]);
-      c.strokeStyle = STAGE.base; c.lineWidth = 1.5; c.setLineDash([3, 3]); c.beginPath(); c.moveTo(bx, y0 + 2); c.lineTo(bx, y0 + rh - 2); c.stroke(); c.setLineDash([]);
-    }
-    const mx = X(mk[i]);
-    c.strokeStyle = STAGE.ink; c.lineWidth = 2; c.beginPath(); c.moveTo(mx, y0 + 4); c.lineTo(mx, y0 + rh - 2); c.stroke(); c.lineWidth = 1;
-    c.fillStyle = STAGE.ink; c.beginPath(); c.moveTo(mx - 4, y0 + 1); c.lineTo(mx + 4, y0 + 1); c.lineTo(mx, y0 + 6); c.fill();
-  });
-  // Ends of the scale in words
-  c.font = "500 10px " + FONT.body; c.fillStyle = STAGE.ink2; c.textBaseline = "alphabetic";
-  c.textAlign = "left"; c.fillText("← less", x0, H - 7);
-  c.textAlign = "right"; c.fillText("more →", x1, H - 7);
-  if (x1 - x0 > 380) {
-    c.textAlign = "center";
-    c.fillText(base ? "Each face is one possible kid · line: typical kid · dashed: no change" : "Each face is one possible kid · line: the typical kid", (x0 + x1) / 2, H - 7, x1 - x0 - 110);
+  if (reduced) for (let j = 0; j < n; j++) { px[j] = tx[j]; py[j] = ty[j]; vx[j] = vy[j] = 0; }
+  const count = [0, 0, 0];
+  for (let j = 0; j < n; j++) count[pileOf[j]]++;
+  eased = true; lastKey = key;
+
+  // Without changes: the no-change piles as faint rings, and the counts they had
+  const bcount = [0, 0, 0];
+  if (bv) for (const x of bv[i].slice(0, n)) bcount[pile(x)]++;
+  if (bv) {
+    c.strokeStyle = STAGE.base; c.globalAlpha = 0.35; c.lineWidth = 1; c.beginPath();
+    for (let b = 0; b < 3; b++) for (let k = 0; k < bcount[b]; k++) { const [x, y] = slot(b, k); c.moveTo(x + faceR, y); c.arc(x, y, faceR, 0, TAU); }
+    c.stroke(); c.globalAlpha = 1;
   }
 
-  // Hover / tap label on a face
+  // Labels: the word for each pile, the count of 100 (and what it was)
+  const glow = (now - pulse[i]) / 0.9;
+  const words = [TRACK[s][0], "in between", TRACK[s][1]];
+  c.textAlign = "center"; c.textBaseline = "alphabetic";
+  for (let b = 0; b < 3; b++) {
+    const cx = L.x0(b) + L.pw / 2;
+    c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink2; c.fillText(words[b], cx, top + 14, L.pw);
+    const n100 = of100(count[b]), big = H - top >= 300 ? 24 : 18;
+    c.font = `500 ${big}px ${FONT.body}`;
+    c.fillStyle = !reduced && glow >= 0 && glow < 1 ? STAGE.alt : STAGE.ink;
+    const ty0 = top + 14 + big + 6;
+    const numW = c.measureText(String(n100)).width;
+    c.font = "500 12px " + FONT.body; const restW = c.measureText(" of 100").width;
+    const x0 = cx - (numW + restW) / 2;
+    c.font = `500 ${big}px ${FONT.body}`; c.textAlign = "left"; c.fillText(String(n100), x0, ty0);
+    c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink2; c.fillText(" of 100", x0 + numW, ty0);
+    if (bv && Math.abs(of100(bcount[b]) - n100) >= 1) {
+      c.textAlign = "center"; c.fillStyle = STAGE.base; c.fillText(`was ${of100(bcount[b])}`, cx, ty0 + 16, L.pw);
+    }
+    c.textAlign = "center";
+  }
+
+  // Faces walk to their places (with a little bob while they walk)
+  const col = base ? STAGE.alt : STAGE.base;
+  nFaces = n;
+  for (let j = 0; j < n; j++) {
+    if (!reduced && now >= go[j]) {
+      const w0 = 11;
+      vx[j] += (w0 * w0 * (tx[j] - px[j]) - 2 * w0 * vx[j]) * dt; vy[j] += (w0 * w0 * (ty[j] - py[j]) - 2 * w0 * vy[j]) * dt;
+      px[j] += vx[j] * dt; py[j] += vy[j] * dt;
+    }
+    const sp = Math.hypot(vx[j], vy[j]), bob = reduced ? 0 : -Math.abs(Math.sin(now * 14 + j)) * Math.min(faceR * 0.6, sp * 0.012);
+    fx[j * 2] = px[j]; fx[j * 2 + 1] = py[j] + bob;
+  }
+  c.fillStyle = col; c.globalAlpha = 0.9; c.beginPath();
+  for (let j = 0; j < n; j++) { const x = fx[j * 2], y = fx[j * 2 + 1]; c.moveTo(x + faceR, y); c.arc(x, y, faceR, 0, TAU); }
+  c.fill(); c.globalAlpha = 1;
+  if (faceR >= 3.4) {
+    c.fillStyle = STAGE.void; c.beginPath();
+    for (let j = 0; j < n; j++) {
+      const x = fx[j * 2], y = fx[j * 2 + 1], e = faceR * 0.36, er = Math.max(0.6, faceR * 0.16);
+      c.moveTo(x - e + er, y - faceR * 0.12); c.arc(x - e, y - faceR * 0.12, er, 0, TAU);
+      c.moveTo(x + e + er, y - faceR * 0.12); c.arc(x + e, y - faceR * 0.12, er, 0, TAU);
+    }
+    c.fill();
+  }
+  if (faceR >= 6) {
+    // A smile that follows each kid's calm
+    c.strokeStyle = STAGE.void; c.lineWidth = Math.max(1, faceR * 0.12); c.beginPath();
+    for (let j = 0; j < n; j++) {
+      const x = fx[j * 2], y = fx[j * 2 + 1] + faceR * 0.38, k = clamp((v[4][j] - 40) / 50, -0.6, 1) * faceR * 0.28;
+      c.moveTo(x - faceR * 0.28, y); c.quadraticCurveTo(x, y + k, x + faceR * 0.28, y);
+    }
+    c.stroke();
+  }
+
+  // What a face is, once, small, between the stage chips and the pile words
+  if (W >= 420) {
+    c.textAlign = "center"; c.font = "500 10px " + FONT.body; c.fillStyle = STAGE.ink2;
+    c.fillText(`${WORD[s]} · each face is one possible kid · tap one to meet them`, W / 2, top - 4, W - 260);
+  }
+
+  // Hover: name and a few words; tap to meet
   if (hover && now - hover.at < 2.5) {
-    let best = -1, bd = Math.max(8, faceR + 4) ** 2;
-    for (let q = 0; q < fxn; q++) { const d = (fxp[q * 2] - hover.x) ** 2 + (fxp[q * 2 + 1] - hover.y) ** 2; if (d < bd) { bd = d; best = q; } }
-    if (best >= 0) {
-      const j = best % Math.min(NK, w.k.length), hx = fxp[best * 2], hy = fxp[best * 2 + 1];
-      c.strokeStyle = STAGE.ink; c.lineWidth = 1.5; c.beginPath(); c.arc(hx, hy, faceR + 2.5, 0, TAU); c.stroke();
-      const txt = `Kid #${j + 1} · ${kidName(j)}: ${kidShort(v.map((xs) => xs[j]))}`;
+    const j = kidAt(hover.x, hover.y);
+    if (j >= 0) {
+      const x = fx[j * 2], y = fx[j * 2 + 1];
+      c.strokeStyle = STAGE.ink; c.lineWidth = 1.5; c.beginPath(); c.arc(x, y, faceR + 2.5, 0, TAU); c.stroke();
+      const txt = `${kidName(j)}: ${kidShort(v.map((xx) => xx[j]))} · tap to meet`;
       c.font = "500 12px " + FONT.body;
-      const tw = Math.min(c.measureText(txt).width, W - 32), bx = clamp(hx - tw / 2 - 8, 8, W - tw - 24), by = Math.max(top + 2, hy - faceR - 32);
+      const tw = Math.min(c.measureText(txt).width, W - 32), bx = clamp(x - tw / 2 - 8, 8, W - tw - 24), by = Math.max(top, y - faceR - 32);
       c.fillStyle = STAGE.scrim; c.beginPath(); c.roundRect(bx, by, tw + 16, 24, 12); c.fill();
       c.fillStyle = STAGE.ink; c.textAlign = "left"; c.textBaseline = "middle"; c.fillText(txt, bx + 8, by + 12.5, tw);
     }
   }
-
+  c.textAlign = "left"; c.textBaseline = "alphabetic";
 }

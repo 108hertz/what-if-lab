@@ -266,7 +266,7 @@ limit and leave a working world.
 4. ✅ **Contributions + behaviour metrics.** Tests: contributions sum to the change part of the average (± rounding).
 5. ✅ **Stage: hero child, life-stage scenes, meters, props** (`scene/`). Manual check at 4 widths.
 6. ✅ **Motion: springs, change-moment choreography, reduced motion.**
-7. **Stage: "All 120 kids" piles** + tap to meet a kid.
+7. ✅ **Stage: "All 120 kids" piles** + tap to meet a kid.
 8. **Chart: four views** (dataviz skill), scrub sentence, timeline filter, story chains.
 9. **Ask: Family / Changes tabs, card grid, life ruler** (drag, keyboard, phone sheet), glossary.
 10. **Layout + copy pass** (impeccable critique → fixes), README, CLAUDE.md, feature doc, PLAN.md.
@@ -347,3 +347,13 @@ limit and leave a working world.
   card ("58 of 100 kids made friends on the team", a heart for buffers and combos). Reduced motion: no slow-down, no
   reaction, cards and chips static. Also fixed: stop and undo now clear the engine's export recipe (`origin`), so an export
   never replays a change you undid or misses a stop. Checked in the browser (card, jump, meters, combo chip). 533 tests.
+- 2026-11-05 — step 7 done: "All 120 kids" is three piles (less / in between / more, by the same 35/65 lines as the
+  counts) for the trait picked on the stage (a DOM segment, shared with the chart's trait), the count of 100 above each
+  pile and "was N" in the no-change colour, the no-change piles as faint rings behind. Each kid keeps its slot while it
+  stays in a pile; a kid that changes pile takes the lowest free slot and walks there (spring, staggered, a little bob);
+  gaps fill one face at a time — so only movers move (the first try, ordering by value or by number, made the whole pile
+  churn as values drift). Faces are sized for the biggest pile present (rounded up to 20) and smile by calm when big
+  enough. Hover shows a name; a tap shows that kid in "One child" (meters titled "Dani, one of the 120", the same kid's
+  hollow dots in the no-change world) and in "Meet the child"; "Back to the typical kid" on the stage. The change card
+  sits above the piles; chips wait for it. Checked in the browser at 1024 wide and 375 × 812 (no page scroll).
+  Dev-only note: the user's dev server sometimes drops the world's CSS chunk after hot reloads; a full reload fixes it.

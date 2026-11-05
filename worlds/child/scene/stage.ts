@@ -1,7 +1,7 @@
 import { TAU, clamp, lerp, mix } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import type { Params } from "@/lib/sim/types";
-import { BUFFERS, CHANGES, COLOR, COMBOS, SHOW, TRACK, TRAITS, WORD, stepWord, type TraitDelta } from "../data";
+import { BUFFERS, CHANGES, COLOR, COMBOS, SHOW, TRACK, TRAITS, WORD, kidName, stepWord, type TraitDelta } from "../data";
 import { during, endOf, happened, mean, quant, values, type Mod, type W } from "../model";
 import { drawCrowd } from "./crowd";
 import { clock, easeOut, realNow, reducedMotion, spring } from "./motion";
@@ -23,6 +23,10 @@ export type StageView = "one" | "all";
 let view: StageView = "one";
 export const stageView = () => view;
 export function setStageView(v: StageView) { view = v; }
+/** Which kid "One child" shows: −1 = the typical kid (the average of the 120), else one of them (tapped in the crowd). */
+let hero = -1;
+export const heroKid = () => hero;
+export function setHeroKid(j: number) { hero = j; }
 
 /* ───────────── renderer memory ───────────── */
 
@@ -145,7 +149,7 @@ function drawMeters(c: CanvasRenderingContext2D, x: number, y: number, w: number
   c.strokeStyle = STAGE.line; c.setLineDash([3, 3]); c.beginPath(); c.moveTo(x + 0.5, 0); c.lineTo(x + 0.5, y + h + 999); c.stroke(); c.setLineDash([]);
   const px = x + 16, pw = w - 30;
   c.font = "500 12px " + FONT.body; c.textBaseline = "alphabetic"; c.textAlign = "left";
-  c.fillStyle = STAGE.ink2; c.fillText("The typical kid of the 120", px, y + 14, pw - 70);
+  c.fillStyle = STAGE.ink2; c.fillText(hero >= 0 ? `${kidName(hero)}, one of the 120` : "The typical kid of the 120", px, y + 14, pw - 70);
   const legendH = hasBase ? 22 : 0, top = y + 26, rh = Math.min(64, (h - 26 - legendH) / 5);
   SHOW.forEach((s, i) => {
     const ry = top + i * rh;
@@ -207,7 +211,10 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
   const reduced = reducedMotion(), t = clock(), now = realNow();
   const dt = clamp(now - lastNow, 0, 0.05); lastNow = now;
   const dpr = (typeof window !== "undefined" && window.devicePixelRatio) || 1;
-  const v = values(w), avg = v.map(mean), bavg = base ? values(base).map(mean) : null;
+  const v = values(w), bv = base ? values(base) : null;
+  const one = hero >= 0 && hero < w.k.length;
+  // "One child" shows the typical kid, or the kid you picked in the crowd (the same kid in the no-change world for the hollow dots)
+  const avg = one ? v.map((xs) => xs[hero]) : v.map(mean), bavg = bv ? (one ? bv.map((xs) => xs[hero]) : bv.map(mean)) : null;
   updateCaptions(w);
 
   // Meter dots ease toward the averages (snap on the first frame and with reduced motion)
@@ -219,9 +226,10 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
   meterEased = true;
 
   if (view === "all") {
-    drawCrowd(c, W, H, 40, w, base, v, avg, bavg, now, dt, reduced, pulse);
-    drawCaption(c, W / 2, W, 44, now, reduced);
-    drawChip(c, W / 2, W, 80, now, reduced);
+    // The piles start below the card; a chip waits until the card has gone, in the same place
+    drawCrowd(c, W, H, 84, base, v, bv, now, dt, reduced, pulse);
+    drawCaption(c, W / 2, W, 40, now, reduced);
+    if (!caps.length) drawChip(c, W / 2, W, 40, now, reduced);
     c.textAlign = "left"; c.textBaseline = "alphabetic";
     return;
   }

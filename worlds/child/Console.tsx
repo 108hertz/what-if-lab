@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import { useWorldEngine } from "@/components/console/engines";
 import { useMedia } from "@/components/ui/useMedia";
@@ -13,24 +13,35 @@ import { WorldHeader } from "@/components/console/panels";
 import { child } from "./sim";
 import ChildChart from "./Chart";
 import { AboutScience, ChangeList, ChildTimeline, ChildTune, FamilyPicker, HomeSettings, MeetChild, NatureBar, ParentCards, Story } from "./parts";
-import { pointAt, setStageTrait, setStageView, stageView, tapAt, type StageView } from "./scene";
+import { SHOW, WORD } from "./data";
+import { pointAt, setHeroKid, setStageTrait, setStageView, stageView, tapAt, type StageView } from "./scene";
 import s from "./child.module.css";
 
-/** In "All 120 kids": hover shows a kid's name and traits; a tap does the same, or switches the strip on small stages. */
-const STAGE_INPUT: StageInteraction = {
-  down: (_e: SimEngine, x, y) => { if (stageView() === "all") tapAt(x, y); },
-  move: (_e: SimEngine, x, y) => { if (stageView() === "all") pointAt(x, y); },
-  up: () => false,
-};
-
-/** On-stage switch between the one typical child and the whole crowd (change 0019). */
-function ViewSwitch({ view, setView }: { view: StageView; setView: (v: StageView) => void }) {
+/**
+ * On-stage controls (change 0019): switch between one child and the whole crowd; in the crowd, which trait the piles show;
+ * with a picked kid, a way back to the typical one.
+ */
+function StageControls({ view, setView, trait, setTrait, kid, setKid }: {
+  view: StageView; setView: (v: StageView) => void; trait: number; setTrait: (i: number) => void; kid: number; setKid: (j: number) => void;
+}) {
   return (
-    <div className={`seg ${s.viewSeg}`} role="group" aria-label="What the stage shows">
-      {([["one", "One child"], ["all", "All 120 kids"]] as [StageView, string][]).map(([v, l]) => (
-        <button key={v} type="button" aria-pressed={view === v} onClick={() => setView(v)}>{l}</button>
-      ))}
-    </div>
+    <>
+      <div className={`seg ${s.viewSeg}`} role="group" aria-label="What the stage shows">
+        {([["one", "One child"], ["all", "All 120 kids"]] as [StageView, string][]).map(([v, l]) => (
+          <button key={v} type="button" aria-pressed={view === v} onClick={() => setView(v)}>{l}</button>
+        ))}
+      </div>
+      {view === "all" && (
+        <div className={`seg ${s.viewSeg} ${s.traitSeg}`} role="group" aria-label="Which trait the piles show">
+          {SHOW.map((t, i) => <button key={t} type="button" aria-pressed={trait === i} onClick={() => setTrait(i)}>{WORD[t]}</button>)}
+        </div>
+      )}
+      {view === "one" && kid >= 0 && (
+        <div className={`seg ${s.viewSeg} ${s.traitSeg}`}>
+          <button type="button" onClick={() => setKid(-1)}>Back to the typical kid</button>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -53,6 +64,17 @@ export default function ChildConsole() {
   const setTrait = (i: number) => { setTraitState(i); setStageTrait(i); };
   const [sview, setSview] = useState<StageView>(stageView());
   const pickView = (v: StageView) => { setSview(v); setStageView(v); };
+  // The kid "Meet the child" shows is also the kid the stage shows in "One child"; tap a face in the crowd to pick one
+  useEffect(() => { setHeroKid(kid); }, [kid]);
+  const stageInput = useMemo<StageInteraction>(() => ({
+    down: (_e: SimEngine, x, y) => {
+      if (stageView() !== "all") return;
+      const j = tapAt(x, y);
+      if (j >= 0) { setKid(j); setSview("one"); setStageView("one"); }
+    },
+    move: (_e: SimEngine, x, y) => { if (stageView() === "all") pointAt(x, y); },
+    up: () => false,
+  }), []);
 
   const ask = <><WorldHeader engine={engine} /><FamilyPicker engine={engine} onChange={onChange} /><ParentCards engine={engine} onChange={onChange} /><HomeSettings engine={engine} onChange={onChange} /><ChangeList engine={engine} onChange={onChange} /></>;
   const story = <Story engine={engine} />;
@@ -91,7 +113,9 @@ export default function ChildConsole() {
     <main className={`console ${s.vars}`}>
       {full && <aside className="col ask scrolly">{ask}{story}{meet}{why}{science}</aside>}
       <section className="centre" ref={centre}>
-        <Stage engine={engine} onChange={onChange} interaction={STAGE_INPUT}><ViewSwitch view={sview} setView={pickView} /></Stage>
+        <Stage engine={engine} onChange={onChange} interaction={stageInput}>
+          <StageControls view={sview} setView={pickView} trait={trait} setTrait={setTrait} kid={kid} setKid={setKid} />
+        </Stage>
         <Transport engine={engine} onChange={onChange} fullscreen={fs} />
         {desk && !fs.on && <div className="results country-results">{chart}{log}</div>}
       </section>
