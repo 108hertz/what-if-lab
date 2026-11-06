@@ -12,7 +12,7 @@ Inspirations: scaleofuniverse.com (zoom), Universe Sandbox (gravity), Primer (bl
 Goal: maximum traffic; revenue from **side-rail ads** (≥1280 px, never near the stage) and **Premium at
 $15/year** (no ads + power tools). **No backend of our own**: static export; accounts and the Premium plan via
 Clerk + Clerk Billing, checked in the browser (`docs/decisions/0008-…`, change 0020). The simulation stays
-pure variable changes → rule-based outcomes. UI follows the **Darkroom** design system (`DESIGN.md`); working screens are
+pure variable changes → rule-based outcomes. UI follows the **Control Room** design system (`DESIGN.md`, change 0023); working screens are
 one-viewport consoles with no page scroll.
 
 ## Working agreement
@@ -22,7 +22,7 @@ one-viewport consoles with no page scroll.
   use the `plan-change` skill. Small fixes don't.
 - **Document features** in `docs/features/` (`document-feature` skill); update them when a change ships.
 - **Hard-to-reverse choices** (vendors, hosting, data formats) get an ADR in `docs/decisions/`.
-- **UI work** follows the `darkroom-ui` skill. **New worlds** follow the `add-sandbox` skill.
+- **UI work** follows the `control-room-ui` skill. **New worlds** follow the `add-sandbox` skill.
 - **Worlds are separate projects** (`worlds/<key>/`); improve them one at a time, each with its own change doc.
 - Never introduce a server, API route, server action, or secret in client code without a superseding ADR.
   Only the Clerk **publishable** key is read (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, see `.env.example`).
@@ -50,7 +50,7 @@ components/
                           lazy), AccountMenu, PremiumDialog. No key ⇒ everything free, as before
   console/                shared world-console blocks: StandardConsole, Stage (+ StageInteraction), Transport,
                           HistoryChart, Timeline, panels, ControlsForm, Dock, AdSlot (null for Premium), engines (singletons +
-                          useWorldEngine), export/ (Premium video + slides sheet, MediaRecorder, jsPDF)
+                          useWorldEngine), export/ (Premium export studio: preview, controls, fonts, MediaRecorder, fflate, jsPDF)
   scale/                  ScaleConsole (the / page), ScalePanel, ScaleTransport
   ui/                     primitives: Icon, useMedia, canvas (fitCanvas, useCanvasLoop)
 worlds/                   one folder per world = one project (change 0008)
@@ -67,12 +67,13 @@ lib/sim/                  framework-free engine shared by all worlds (no React)
   core.ts                 seeded RNG (rng/gauss), note(), mix(), defaultParams, formatters
   draw.ts                 blob() creature drawing, chip(), FONT
   engine.ts               SimEngine: base/alt worlds, fork, history, timeline merge, split-stage drawing, `origin` (replay recipe)
-lib/export/               deterministic replay of a fork + video frames and slides drawn with each sandbox's draw()
+lib/export/               deterministic replay of a fork (+ trim/length), scrubber, export style (JSON), video frames, stills,
+                          slides and text files drawn with each sandbox's draw(); styles never reach the sim (change 0022)
 lib/scale/                scale explorer objects + renderer
 tests/                    vitest: every world × every what-if, determinism, world boundaries, ad slots
-PRODUCT.md / DESIGN.md    product truth / canonical Darkroom design system (tokens mirror app/globals.css)
+PRODUCT.md / DESIGN.md    product truth / canonical Control Room design system (tokens mirror app/globals.css)
 docs/                     PLAN.md, features/, changes/, decisions/ (ADRs)
-.claude/skills/           plan-change, document-feature, darkroom-ui, add-sandbox
+.claude/skills/           plan-change, document-feature, control-room-ui, add-sandbox
 ```
 
 ### Worlds are separate projects (change 0008)
@@ -112,7 +113,7 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   years, animals days, child age in years, person years.
 - Keep sim code (`worlds/*/sim.ts`, `lib/sim`) pure TypeScript so it can move into a Web Worker later.
 - UI colours come from CSS tokens in `app/globals.css`; canvas code uses the same hex values
-  (`--base` #A9B1D6 = no-change world, `--alt` #FFC857 = what-if world).
+  (`--base` #7FB2FF = no-change world, `--alt` #FFB547 = what-if world, `--signal` #3BD4C7 = controls only).
 
 ## Adding a sandbox (checklist)
 

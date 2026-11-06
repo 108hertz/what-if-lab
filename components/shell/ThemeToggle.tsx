@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Icon } from "../ui/Icon";
 
-/** Darkroom (default) ↔ paper. Only the chrome changes; the stage stays dark. Saved per browser. */
+/** Graphite (default) ↔ day shift. Only the chrome changes; the stage stays dark. Saved per browser. */
 export default function ThemeToggle() {
   const [light, setLight] = useState(() => document.documentElement.dataset.theme === "light");
   const toggle = () => {

@@ -24,3 +24,6 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0018](./0018-child-growing-up.md) | Child world: kids growing up, plain words, stacking life events | 1 | shipped |
 | [0019](./0019-child-characters-second-pass.md) | Child world, second pass: one life told well, ripples and buffers, everyday results | 1 | shipped |
 | [0020](./0020-accounts-premium-exports.md) | Accounts (Clerk), Premium subscription, video and slide exports | 3 | shipped |
+| [0021](./0021-sentence-topbar.md) | The topbar reads as a sentence: "what if… [world]" | 1 | shipped |
+| [0022](./0022-export-studio.md) | Export studio: video, text and images with your own text, fonts, colours and length | 3 | shipped |
+| [0023](./0023-control-room-design-system.md) | "Control Room": a simulator look replaces Darkroom (palette, fonts, components) | 1 | shipped |

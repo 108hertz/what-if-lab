@@ -118,7 +118,7 @@ export const orion: Glyph = (g) => {
   disc(ctx, 0.34, -0.6, 0.14, rad(ctx, 0.34, -0.6, 0, 0.14, [[0, "rgba(240,130,170,.4)"], [1, "rgba(240,130,170,0)"]]));
   disc(ctx, 0.12, 0.05, 0.2, rad(ctx, 0.12, 0.05, 0, 0.2, [[0, "rgba(255,250,240,.6)"], [1, "rgba(255,250,240,0)"]]));
   ctx.globalCompositeOperation = "source-over";
-  for (const [x, y, s] of DUST) disc(ctx, x, y, s, rad(ctx, x, y, 0, s, [[0, "rgba(16,9,4,.55)"], [1, "rgba(16,9,4,0)"]]));
+  for (const [x, y, s] of DUST) disc(ctx, x, y, s, rad(ctx, x, y, 0, s, [[0, "rgba(5,8,12,.55)"], [1, "rgba(5,8,12,0)"]]));
   if (g.r > 30) {
     ctx.fillStyle = "#EDE6FF";
     for (const [x, y, b] of FIELD) { ctx.globalAlpha = g.a * (0.3 + 0.6 * b); const s = px * (0.8 + b); ctx.fillRect(x, y, s, s); }
@@ -161,7 +161,7 @@ function spiral(ctx: Ctx, g: G, rot: number): void {
     for (const base of [0, Math.PI]) {
       ctx.beginPath();
       for (let k = 0; k <= 40; k++) { const rr = 0.18 + (k / 40) * 0.6, th = base + Math.log(rr / 0.14) / pitch - 0.14; k ? ctx.lineTo(Math.cos(th) * rr, Math.sin(th) * rr) : ctx.moveTo(Math.cos(th) * rr, Math.sin(th) * rr); }
-      stroke(ctx, "rgba(16,9,4,.4)", 0.035);
+      stroke(ctx, "rgba(5,8,12,.4)", 0.035);
     }
   }
   disc(ctx, 0, 0, 0.09, rad(ctx, 0, 0, 0, 0.09, [[0, "rgba(255,248,230,.95)"], [1, "rgba(255,240,210,0)"]]));

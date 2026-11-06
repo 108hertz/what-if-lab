@@ -53,11 +53,11 @@ every surface should lead toward.
 
 ## Brand Commitments
 
-- Name and wordmark: **WHAT-IF LAB**. Credit line: "No AI · No live data · Same seed, same future".
+- Name and wordmark: **WHAT-IF LAB**.
 - Voice: short, curious, plain. What-ifs are phrased as questions ("What if the Moon disappeared?").
   Buttons are verbs. No exclamation marks in chrome.
-- Visual authority is the Darkroom design system in `DESIGN.md` (ADR
-  `docs/decisions/0006-darkroom-design-system.md`); this file does not restate it.
+- Visual authority is the Control Room design system in `DESIGN.md` (ADR
+  `docs/decisions/0009-control-room-design-system.md`); this file does not restate it.
 
 ## Evidence on Hand
 

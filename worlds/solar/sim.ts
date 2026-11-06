@@ -179,7 +179,7 @@ export const solar: Sandbox<W, P> = {
     ctx.lineWidth = 1;
     for (const o of w.b) {
       if (o.tr.length < 4) continue;
-      ctx.strokeStyle = o.bh ? "rgba(255,200,87,.35)" : o.c;
+      ctx.strokeStyle = o.bh ? "rgba(255,181,71,.35)" : o.c;
       ctx.globalAlpha = 0.35;
       ctx.beginPath();
       for (let i = 0; i < o.tr.length; i += 2) { const x = X(o.tr[i]), y = Y(o.tr[i + 1]); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }

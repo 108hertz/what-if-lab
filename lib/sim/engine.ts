@@ -1,5 +1,5 @@
 import type { AnySandbox, BaseWorld, InteractionState, Params, Readout } from "./types";
-import { chip, FONT, STAGE } from "./draw";
+import { chip, FONT, STAGE, channelTag } from "./draw";
 
 export const DEFAULT_SEED = 20261101;
 const MAX_HISTORY = 600;
@@ -207,11 +207,17 @@ export class SimEngine {
       const label = r.alt
         ? (this.sb.stack ? "Changed: " : "What if: ") + this.whatIfLabel()
         : this.alt ? "No change" : this.sb.stack ? "Now · pick changes to make" : "Now · pick a what-if to fork this world";
-      const lw = chip(ctx, label.toUpperCase(), 8, 8, r.alt ? STAGE.alt : STAGE.base, "500 12px " + FONT.body, r.w - 32);
+      // Channel tag (● no change / ◆ what-if) left, the world clock right; after a fork the what-if side says when it split.
+      const lw = channelTag(ctx, label.toUpperCase(), 8, 8, r.alt, r.w - 60);
       const time = this.sb.fmtT(r.world.t);
       ctx.font = "500 12px " + FONT.mono;
       const tw = ctx.measureText(time).width;
       if (r.w > lw + tw + 50) chip(ctx, time, r.w - tw - 24, 8, STAGE.ink, "500 12px " + FONT.mono);
+      if (r.alt && this.history.forkT != null && !this.sb.stack) {
+        const at = "FORKED AT " + this.sb.fmtT(this.history.forkT);
+        ctx.font = "500 11px " + FONT.mono;
+        if (r.h > 260 && r.w > ctx.measureText(at).width + 40) chip(ctx, at, 8, 34, STAGE.alt, "500 11px " + FONT.mono);
+      }
       ctx.restore();
     }
     if (this.alt && !this.sb.stack) {

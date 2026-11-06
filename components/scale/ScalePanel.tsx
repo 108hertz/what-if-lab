@@ -12,7 +12,7 @@ export default function ScalePanel({ scale, onOpen }: { scale: ScaleView; onOpen
     <>
       {o && (
         <div className="focus">
-          <span className="micro">In view</span>
+          <h3 className="headline">In view</h3>
           <p className="title">{o.name}</p>
           <span className="sz">{fmtLen(o.size)}</span>
           <p className="desc">{o.fact}</p>

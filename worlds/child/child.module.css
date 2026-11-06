@@ -17,7 +17,7 @@
 .chip { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
 .edit {
   display: inline-flex; align-items: center; gap: 2px; min-height: 44px; padding: 0 var(--s-2); border: 0; border-radius: var(--r-ghost);
-  background: transparent; color: var(--label); cursor: pointer; font-size: var(--t-label); font-weight: 500; text-transform: uppercase;
+  background: transparent; color: var(--label); cursor: pointer; font-size: var(--t-label); font-weight: 600; text-transform: uppercase; font-family: var(--font-cond); letter-spacing: var(--track-label);
   transition: background-color var(--d-fast) var(--ease-out);
 }
 .edit:hover { background: color-mix(in srgb, var(--label) 8%, transparent); }
@@ -39,7 +39,7 @@
 .settings { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--s-3); padding: var(--s-1) 0 var(--s-2); }
 .whenLine { grid-column: 1 / -1; margin: var(--s-1) 0 0; font-size: var(--t-label); }
 .q { display: flex; flex-direction: column; min-width: 0; }
-.age { font-size: var(--t-micro); font-weight: 500; text-transform: uppercase; color: var(--alt); margin-top: 1px; }
+.age { font-size: var(--t-micro); font-weight: 600; text-transform: uppercase; font-family: var(--font-cond); letter-spacing: var(--track-label); color: var(--alt); margin-top: 1px; }
 .changes :global(.fork) { transition: border-color var(--d-ctl) var(--ease-out), color var(--d-ctl) var(--ease-out), transform var(--d-fast) var(--ease-out), background-color var(--d-ctl) var(--ease-out); }
 .changes :global(.fork):active { transform: scale(0.98); }
 .changes :global(.fork).pressed { background: var(--alt-soft); }
@@ -62,7 +62,7 @@
 .meetCard { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: var(--s-3); align-items: center; animation: slideIn 220ms var(--ease-out); }
 @keyframes slideIn { from { opacity: 0; transform: translateX(12px); } }
 .meetText { display: flex; flex-direction: column; gap: var(--s-1); min-width: 0; }
-.meetWho { font-size: var(--t-micro); font-weight: 500; text-transform: uppercase; color: var(--label-2); }
+.meetWho { font-size: var(--t-micro); font-weight: 600; text-transform: uppercase; font-family: var(--font-cond); letter-spacing: var(--track-label); color: var(--label-2); }
 .meetLine { margin: 0; font-size: var(--t-small); line-height: 1.4; }
 .meetBtns { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); }
 .link {
@@ -82,7 +82,7 @@
 .bar { display: flex; height: 18px; border-radius: 4px; overflow: hidden; gap: 1px; }
 .bar span {
   display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden; font-size: var(--t-micro); font-weight: 500;
-  font-variant-numeric: tabular-nums; transition: width var(--d-ctl) var(--ease-out);
+  font-variant-numeric: tabular-nums; font-family: var(--font-mono); transition: width var(--d-ctl) var(--ease-out);
 }
 .p0 { background: color-mix(in srgb, var(--label) 82%, transparent); color: var(--bg); }
 .p1 { background: color-mix(in srgb, var(--label) 50%, transparent); color: var(--bg); }
@@ -121,11 +121,11 @@
 :global(.dock) .tl { overflow: visible; }
 :global(.log-box) .tl { flex: 1 1 auto; min-height: 0; }
 .tl li { display: grid; grid-template-columns: 56px 20px 1fr; gap: var(--s-2); padding: 5px 0; font-size: var(--t-small); line-height: 1.3; }
-.tl time { font-size: var(--t-label); font-weight: 500; color: var(--label-2); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.tl time { font-size: var(--t-label); font-weight: 500; color: var(--label-2); font-variant-numeric: tabular-nums; font-family: var(--font-mono); padding-top: 2px; }
 .tlGlyph { color: var(--label-2); display: inline-flex; }
 .tl .alt .tlGlyph { color: var(--alt); }
 .tl .base .tlGlyph { color: var(--base); }
-.whoLine { display: block; margin-top: 2px; font-size: var(--t-micro); font-weight: 500; text-transform: uppercase; color: var(--label-2); }
+.whoLine { display: block; margin-top: 2px; font-size: var(--t-micro); font-weight: 600; text-transform: uppercase; font-family: var(--font-cond); letter-spacing: var(--track-label); color: var(--label-2); }
 .tl :global(.empty) { grid-column: 1 / -1; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -143,19 +143,19 @@
 /* ── Things that can happen, grouped (change 0019) ── */
 .cIcon { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; color: var(--label-2); }
 .usually { display: block; margin-top: 2px; font-size: var(--t-label); color: var(--label-2); }
-.group { border-top: 1px dashed var(--separator); }
+.group { border-top: 1px solid var(--separator); }
 .group summary { list-style: none; display: flex; align-items: center; gap: var(--s-2); min-height: 44px; cursor: pointer; }
 .group summary::-webkit-details-marker { display: none; }
 .group summary :global(.ctl-head) { margin: 0; }
 .group summary svg { margin-left: auto; transition: transform var(--d-ctl) var(--ease-out); }
 .group[open] summary svg { transform: rotate(180deg); }
-.groupN { font-size: var(--t-label); color: var(--label-2); font-variant-numeric: tabular-nums; }
+.groupN { font-size: var(--t-label); color: var(--label-2); font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
 
 /* ── Life ruler ── */
 .ruler { padding: var(--s-2) 0 var(--s-3); }
 .rulerEmpty { margin: var(--s-1) 0 var(--s-3); color: var(--label-2); }
 .rulerTrack { position: relative; margin: var(--s-1) 11px 0; border-top: 1px solid var(--separator); }
-.rulerTick { position: absolute; top: 2px; transform: translateX(-50%); font-size: var(--t-micro); color: var(--label-2); font-variant-numeric: tabular-nums; }
+.rulerTick { position: absolute; top: 2px; transform: translateX(-50%); font-size: var(--t-micro); color: var(--label-2); font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
 .rulerNow { position: absolute; top: -4px; bottom: 0; width: 0; border-left: 1px dashed var(--alt); }
 .rulerBar { position: absolute; height: 4px; border-radius: 2px; background: var(--alt); opacity: .45; }
 .rulerBar.planned { background: transparent; border-top: 2px dashed var(--label-2); opacity: .7; height: 0; }
@@ -166,13 +166,13 @@
 .rulerIcon.planned { border-style: dashed; border-color: var(--label-2); cursor: grab; }
 .rulerIcon.selected { outline: 2px solid var(--label); outline-offset: 2px; }
 .rulerIcon:active { transform: translateX(-50%) scale(0.94); }
-.rulerPanel { margin-top: var(--s-2); padding-top: var(--s-2); border-top: 1px dashed var(--separator); }
+.rulerPanel { margin-top: var(--s-2); padding-top: var(--s-2); border-top: 1px solid var(--separator); }
 .rulerPanel p { margin: 0 0 var(--s-1); font-size: var(--t-small); }
 .rulerPanel b { font-weight: 500; }
 .rulerBtns { display: flex; flex-wrap: wrap; gap: var(--s-1); }
 
 /* ── Glossary ── */
-.glossary { border-top: 1px dashed var(--separator); padding-bottom: var(--s-2); }
+.glossary { border-top: 1px solid var(--separator); padding-bottom: var(--s-2); }
 .glossary summary { list-style: none; display: flex; align-items: center; min-height: 44px; cursor: pointer; }
 .glossary summary::-webkit-details-marker { display: none; }
 .glossary summary :global(.ctl-head) { margin: 0; }

@@ -29,7 +29,6 @@ export function WorldHeader({ engine }: { engine: SimEngine }) {
           <p className="small">
             Everything runs from built-in rules and simplified data, live in your browser. Results show plausible behaviour, not forecasts.
           </p>
-          <span className="micro credit">No AI · No live data · Same seed, same future</span>
         </div>
       )}
     </div>
@@ -41,7 +40,7 @@ export function WhatIfList({ engine, onChange }: P) {
   const count = (id: string) => engine.applied.filter((x) => x === id).length;
   return (
     <section>
-      <h3 className="headline">{stack ? "Make changes" : "What if"}</h3>
+      <h3 className="headline">{stack ? "Make changes" : "What if"}<span className="hcount">{engine.sb.whatifs.length}</span></h3>
       <div className="forks">
         {engine.sb.whatifs.map(([id, label]) => {
           const n = stack ? count(id) : engine.whatIf === id ? 1 : 0;
@@ -65,7 +64,7 @@ export function Readouts({ engine }: { engine: SimEngine }) {
     <section>
       <h3 className="headline">Right now</h3>
       <table>
-        <thead><tr><th /><th>No change</th>{alt && <th>{sb.stack ? "With changes" : "What if"}</th>}</tr></thead>
+        <thead><tr><th /><th><span className="ch">No change</span></th>{alt && <th><span className="ch a">{sb.stack ? "With changes" : "What if"}</span></th>}</tr></thead>
         <tbody>
           {sb.metrics.map((m) => (
             <tr key={m.k}>
@@ -105,7 +104,7 @@ export function InfoBlocks({ engine }: { engine: SimEngine }) {
 export function TunePanel({ engine, onChange }: P) {
   return (
     <section>
-      <h3 className="headline">Variables</h3>
+      <h3 className="headline">Variables<span className="hcount">{engine.sb.controls.length}</span></h3>
       <ControlsForm engine={engine} onChange={onChange} />
       <p className="small">
         {engine.sb.controls.some((c) => c.type === "range" && c.live)

@@ -1,202 +1,350 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-02T20:36:33.260Z",
+  "generatedAt": "2026-11-06T11:27:48.000Z",
   "title": "Design System: What-If Lab",
   "extensions": {
     "colorMeta": {
-      "walnut": {
+      "ground": {
         "role": "neutral",
-        "displayName": "Walnut",
+        "displayName": "Graphite Ground",
+        "canonical": "oklch(16.2% 0.012 254)",
         "tonalRamp": [
-          "#0a0502",
-          "#100904",
-          "#1a110a",
-          "#2a1c11",
-          "#382416",
-          "#5a4332",
-          "#8a7564",
-          "#c4b3a0"
+          "#080b10",
+          "#21252b",
+          "#3e4249",
+          "#5c6268",
+          "#7d838a",
+          "#a0a6ad",
+          "#c4cad1",
+          "#e9eff7"
         ]
       },
-      "walnut-raised": {
+      "panel": {
         "role": "neutral",
-        "displayName": "Walnut Raised"
+        "displayName": "Panel",
+        "canonical": "oklch(20.6% 0.021 255)",
+        "tonalRamp": [
+          "#060c13",
+          "#1f262e",
+          "#3c434b",
+          "#5c6269",
+          "#7e8389",
+          "#a2a5aa",
+          "#c7c9cc",
+          "#eceff2"
+        ]
       },
-      "bark": {
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised",
+        "canonical": "oklch(24.5% 0.026 256)",
+        "tonalRamp": [
+          "#050b15",
+          "#1d2632",
+          "#3a434e",
+          "#5b626b",
+          "#7d838b",
+          "#a1a5ab",
+          "#c6c9cd",
+          "#eceff3"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "oklch(29.4% 0.028 255)",
+        "tonalRamp": [
+          "#050c14",
+          "#1c2632",
+          "#39434f",
+          "#5a626d",
+          "#7c838c",
+          "#a1a5ac",
+          "#c6c9ce",
+          "#ebeff3"
+        ]
+      },
+      "track": {
+        "role": "neutral",
+        "displayName": "Track",
+        "canonical": "oklch(39.0% 0.031 256)",
+        "tonalRamp": [
+          "#060b13",
+          "#1d2631",
+          "#374352",
+          "#586270",
+          "#7b838f",
+          "#9fa6ae",
+          "#c6c9cf",
+          "#ebeff4"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(94.3% 0.013 252)",
+        "tonalRamp": [
+          "#070c11",
+          "#20262b",
+          "#3d4349",
+          "#5c6269",
+          "#7d838a",
+          "#9fa6ad",
+          "#c3cad2",
+          "#e8eff7"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "oklch(67.5% 0.029 255)",
+        "tonalRamp": [
+          "#090b0e",
+          "#222529",
+          "#3d424a",
+          "#5a626d",
+          "#788392",
+          "#9aa6b6",
+          "#c0cad7",
+          "#e8eff9"
+        ]
+      },
+      "signal": {
         "role": "primary",
-        "displayName": "Bark",
+        "displayName": "Signal Teal",
+        "canonical": "oklch(78.9% 0.125 186)",
         "tonalRamp": [
-          "#1c1209",
-          "#2a1b10",
-          "#382416",
-          "#4a3220",
-          "#5e432d",
-          "#7c5f47",
-          "#a68b72",
-          "#d4c0aa"
+          "#000f0d",
+          "#112a27",
+          "#1d4b46",
+          "#266e68",
+          "#2f948b",
+          "#37bcb0",
+          "#5ee2d5",
+          "#a5fff8"
         ]
       },
-      "cream": {
-        "role": "neutral",
-        "displayName": "Cream",
-        "tonalRamp": [
-          "#3a3229",
-          "#5c5144",
-          "#827462",
-          "#a89a8a",
-          "#cbbba6",
-          "#e6d4bd",
-          "#ffedd7",
-          "#fff7ec"
-        ]
+      "on-signal": {
+        "role": "primary",
+        "displayName": "On Signal",
+        "canonical": "oklch(22.1% 0.034 185)"
       },
-      "dust": {
-        "role": "neutral",
-        "displayName": "Dust"
-      },
-      "cork": {
-        "role": "neutral",
-        "displayName": "Cork"
-      },
-      "driftwood": {
-        "role": "neutral",
-        "displayName": "Driftwood"
-      },
-      "ember": {
-        "role": "tertiary",
-        "displayName": "Ember",
-        "tonalRamp": [
-          "#3d1600",
-          "#5e2200",
-          "#8a3200",
-          "#b64200",
-          "#dc5000",
-          "#f2763a",
-          "#f9a47a",
-          "#fdd3bd"
-        ]
-      },
-      "reality-blue": {
+      "no-change-blue": {
         "role": "secondary",
-        "displayName": "Reality Blue",
+        "displayName": "No-Change Blue",
+        "canonical": "oklch(75.9% 0.124 258)",
         "tonalRamp": [
-          "#22263a",
-          "#353b56",
-          "#4a516f",
-          "#5b6380",
-          "#7d86ab",
-          "#a9b1d6",
-          "#cbd0e8",
-          "#e8eaf5"
+          "#040b18",
+          "#1c2534",
+          "#31435e",
+          "#47628b",
+          "#5e83bb",
+          "#77a6ee",
+          "#a3cbff",
+          "#e1f0ff"
         ]
       },
       "what-if-amber": {
         "role": "secondary",
         "displayName": "What-If Amber",
+        "canonical": "oklch(82.4% 0.149 73)",
         "tonalRamp": [
-          "#3a2600",
-          "#5c3d00",
-          "#875a00",
-          "#b87400",
-          "#e09a1c",
-          "#ffc857",
-          "#ffdb94",
-          "#fff0d2"
+          "#140800",
+          "#30220f",
+          "#543d1d",
+          "#7d5a28",
+          "#a87833",
+          "#d5973d",
+          "#ffb94e",
+          "#ffe9c1"
         ]
       },
       "gain-green": {
         "role": "tertiary",
-        "displayName": "Gain Green"
+        "displayName": "Gain Green",
+        "canonical": "oklch(78.9% 0.153 153)",
+        "tonalRamp": [
+          "#001004",
+          "#162a1c",
+          "#264c32",
+          "#356f49",
+          "#459661",
+          "#55be7b",
+          "#78e49c",
+          "#b9ffce"
+        ]
       },
       "loss-coral": {
         "role": "tertiary",
-        "displayName": "Loss Coral"
+        "displayName": "Loss Coral",
+        "canonical": "oklch(70.9% 0.184 29)",
+        "tonalRamp": [
+          "#1b0302",
+          "#3a1b17",
+          "#682e27",
+          "#994238",
+          "#ce584a",
+          "#ff7160",
+          "#ffafa1",
+          "#ffe6e1"
+        ]
       },
-      "paper": {
+      "stage": {
         "role": "neutral",
-        "displayName": "Paper"
+        "displayName": "Stage",
+        "canonical": "oklch(13.2% 0.011 250)",
+        "tonalRamp": [
+          "#080c10",
+          "#21262a",
+          "#3e4348",
+          "#5d6268",
+          "#7d8389",
+          "#a0a6ac",
+          "#c4cad0",
+          "#e9eff6"
+        ]
       },
-      "paper-raised": {
+      "stage-panel": {
         "role": "neutral",
-        "displayName": "Paper Raised"
+        "displayName": "Stage Panel",
+        "canonical": "oklch(17.5% 0.017 253)"
       },
-      "paper-ink-2": {
+      "day-ground": {
         "role": "neutral",
-        "displayName": "Paper Dust"
+        "displayName": "Day Ground",
+        "canonical": "oklch(94.4% 0.008 254)"
       },
-      "paper-cork": {
+      "day-panel": {
         "role": "neutral",
-        "displayName": "Paper Cork"
+        "displayName": "Day Panel",
+        "canonical": "oklch(98.1% 0.003 248)"
       },
-      "paper-driftwood": {
+      "day-raised": {
         "role": "neutral",
-        "displayName": "Paper Driftwood"
+        "displayName": "Day Raised",
+        "canonical": "oklch(100.0% 0.000 90)"
       },
-      "paper-ember": {
-        "role": "tertiary",
-        "displayName": "Paper Ember"
+      "day-line": {
+        "role": "neutral",
+        "displayName": "Day Line",
+        "canonical": "oklch(86.4% 0.016 254)"
       },
-      "paper-reality-blue": {
+      "day-track": {
+        "role": "neutral",
+        "displayName": "Day Track",
+        "canonical": "oklch(76.6% 0.024 254)"
+      },
+      "day-ink": {
+        "role": "neutral",
+        "displayName": "Day Ink",
+        "canonical": "oklch(18.9% 0.017 253)"
+      },
+      "day-ink-2": {
+        "role": "neutral",
+        "displayName": "Day Ink 2",
+        "canonical": "oklch(45.3% 0.030 256)"
+      },
+      "day-signal": {
+        "role": "primary",
+        "displayName": "Day Signal",
+        "canonical": "oklch(53.8% 0.092 186)",
+        "tonalRamp": [
+          "#010e0d",
+          "#0b2b28",
+          "#0f4c47",
+          "#0e7068",
+          "#439289",
+          "#7db1aa",
+          "#b2d0cc",
+          "#def4f1"
+        ]
+      },
+      "day-on-signal": {
+        "role": "primary",
+        "displayName": "Day On Signal",
+        "canonical": "oklch(100.0% 0.000 90)"
+      },
+      "day-no-change-blue": {
         "role": "secondary",
-        "displayName": "Paper Reality Blue"
+        "displayName": "Day No-Change Blue",
+        "canonical": "oklch(49.8% 0.144 261)",
+        "tonalRamp": [
+          "#020a1d",
+          "#0d234a",
+          "#1d3f7b",
+          "#2e5eb0",
+          "#5b82c5",
+          "#89a6d8",
+          "#b8cae9",
+          "#e1efff"
+        ]
       },
-      "paper-what-if-amber": {
+      "day-what-if-amber": {
         "role": "secondary",
-        "displayName": "Paper What-If Amber"
+        "displayName": "Day What-If Amber",
+        "canonical": "oklch(50.3% 0.113 65)",
+        "tonalRamp": [
+          "#140800",
+          "#381e00",
+          "#603700",
+          "#8b5200",
+          "#a77746",
+          "#c19d7b",
+          "#dbc5b0",
+          "#fcebdb"
+        ]
       },
-      "paper-gain-green": {
+      "day-gain-green": {
         "role": "tertiary",
-        "displayName": "Paper Gain Green"
+        "displayName": "Day Gain Green",
+        "canonical": "oklch(51.4% 0.118 153)"
       },
-      "paper-loss-coral": {
+      "day-loss-coral": {
         "role": "tertiary",
-        "displayName": "Paper Loss Coral"
+        "displayName": "Day Loss Coral",
+        "canonical": "oklch(54.3% 0.174 30)"
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Scale hero question only."
-      },
-      "heading": {
-        "displayName": "Heading",
-        "purpose": "Phone hero; large uppercase names."
+        "purpose": "Scale hero question only; condensed uppercase, fades on first interaction."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Object titles in the scale panel."
+        "purpose": "Object titles in the scale panel and the world title."
       },
       "heading-sm": {
         "displayName": "Heading Small",
-        "purpose": "World title above the what-if list."
-      },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Section names."
-      },
-      "body-lg": {
-        "displayName": "Body Large",
-        "purpose": "Reading screens and the scale hero at ≥ 1440px. Never in a console column."
-      },
-      "body": {
-        "displayName": "Body",
-        "purpose": "Descriptions and intros."
-      },
-      "callout": {
-        "displayName": "Callout",
-        "purpose": "Page default, popovers, selects."
-      },
-      "small": {
-        "displayName": "Small",
-        "purpose": "Dense console text: what-ifs, variables, readouts, timeline."
+        "purpose": "The wordmark and world titles above the what-if list."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Buttons, tabs, segments, chips."
+        "purpose": "Naming voice: buttons, tabs, panel headlines, stage tags. Uppercase from CSS, +0.06em."
       },
       "micro": {
         "displayName": "Micro",
-        "purpose": "Table heads, variable groups, edge label."
+        "purpose": "Table heads, variable groups, edge label, ad label. Uppercase, +0.08em."
+      },
+      "body-lg": {
+        "displayName": "Body Large",
+        "purpose": "Reading screens and the scale hero at >= 1440px. Never in a console column."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Explaining voice: descriptions, intros, the world name in the bar."
+      },
+      "callout": {
+        "displayName": "Callout",
+        "purpose": "Page default, popovers."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Dense console text: what-if questions, variable labels, selects, timeline events."
+      },
+      "readout": {
+        "displayName": "Readout",
+        "purpose": "Counting voice: every number. JetBrains Mono 500, tabular, never tracked."
       }
     },
     "shadows": [],
@@ -214,17 +362,17 @@
       {
         "name": "d-ctl",
         "value": "250ms",
-        "purpose": "Controls, tabs, theme change."
+        "purpose": "Controls, segments, tabs, theme change, the armed what-if bar."
       },
       {
         "name": "press",
         "value": "transform: scale(0.97)",
-        "purpose": "Button press feedback; off under reduced motion."
+        "purpose": "Button press feedback over 150ms; off under reduced motion."
       },
       {
         "name": "hero-fade",
         "value": "opacity 400ms",
-        "purpose": "Scale hero fades on first interaction."
+        "purpose": "Scale hero fades out on first interaction."
       }
     ],
     "breakpoints": [
@@ -255,140 +403,144 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one filled control per view: Play/Pause.",
+      "description": "The one signal-filled control per view: Play/Pause, or a sheet's main action.",
       "html": "<button class=\"ds-btn-primary\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 5.5v13l10.5-6.5z\"/></svg>Play</button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 24px 0 16px;border:1px solid transparent;border-radius:36px;background:#382416;color:#ffedd7;font:500 12px/1.1 Inter,system-ui,sans-serif;text-transform:uppercase;cursor:pointer;transition:transform 150ms cubic-bezier(.22,1,.36,1),background-color 150ms cubic-bezier(.22,1,.36,1)}.ds-btn-primary:hover{background:color-mix(in srgb,#382416 85%,#ffedd7)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid #ffedd7;outline-offset:2px}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 24px 0 16px;border:1px solid transparent;border-radius:4px;background:#3bd4c7;color:#04201d;font-family:'Barlow Semi Condensed',Barlow,'Arial Narrow',system-ui,sans-serif;font-size:12px;font-weight:600;line-height:1.1;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:transform 150ms cubic-bezier(.22,1,.36,1),background-color 150ms cubic-bezier(.22,1,.36,1)}.ds-btn-primary:hover{background:color-mix(in srgb,#3bd4c7 85%,#e6edf5)}.ds-btn-primary:active{transform:scale(.97)}.ds-btn-primary:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}"
     },
     {
-      "name": "Ghost Button",
+      "name": "Secondary Button",
       "kind": "button",
-      "refersTo": "button-ghost",
-      "description": "Secondary actions such as Restart.",
-      "html": "<button class=\"ds-btn-ghost\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12a7 7 0 1 0 2.05-4.95\"/><path d=\"M5 4.5v3.5h3.5\"/></svg>Restart</button>",
-      "css": ".ds-btn-ghost{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid #ffedd7;border-radius:22.5px;background:transparent;color:#ffedd7;font:500 12px/1.1 Inter,system-ui,sans-serif;text-transform:uppercase;cursor:pointer;transition:transform 150ms cubic-bezier(.22,1,.36,1),background-color 150ms cubic-bezier(.22,1,.36,1)}.ds-btn-ghost:hover{background:rgba(255,237,215,.08)}.ds-btn-ghost:active{transform:scale(.97)}.ds-btn-ghost:focus-visible{outline:2px solid #ffedd7;outline-offset:2px}"
+      "refersTo": "button-secondary",
+      "description": "Raised fill, 1px line, ink label. Every button that is not the one primary.",
+      "html": "<button class=\"ds-btn\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12a7 7 0 1 0 2.05-4.95\"/><path d=\"M5 4.5v3.5h3.5\"/></svg>Restart</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid #232d3a;border-radius:4px;background:#18212d;color:#e6edf5;font-family:'Barlow Semi Condensed',Barlow,'Arial Narrow',system-ui,sans-serif;font-size:12px;font-weight:600;line-height:1.1;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:transform 150ms cubic-bezier(.22,1,.36,1),background-color 150ms cubic-bezier(.22,1,.36,1),border-color 150ms cubic-bezier(.22,1,.36,1)}.ds-btn:hover{border-color:#3a4656;background:color-mix(in srgb,#18212d 80%,#e6edf5)}.ds-btn:active{transform:scale(.97)}.ds-btn:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}"
+    },
+    {
+      "name": "Icon Button",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "44x44 transparent glyph button (theme, account); hover gains raised fill and a line. Always aria-labelled.",
+      "html": "<button class=\"ds-iconbtn\" aria-label=\"Day shift\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3.5\"/><path d=\"M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6L18 18M6 18l1.4-1.4M16.6 7.4L18 6\"/></svg></button>",
+      "css": ".ds-iconbtn{width:44px;height:44px;display:inline-grid;place-items:center;border:1px solid transparent;border-radius:4px;background:transparent;color:#e6edf5;cursor:pointer;transition:background-color 150ms cubic-bezier(.22,1,.36,1),border-color 150ms cubic-bezier(.22,1,.36,1)}.ds-iconbtn:hover{background:#18212d;border-color:#232d3a}.ds-iconbtn:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}"
     },
     {
       "name": "Segmented Control",
-      "kind": "nav",
-      "refersTo": "segment-active",
-      "description": "Speed, metric, world and dock tabs. Active = cream + dashed underline.",
-      "html": "<div class=\"ds-seg\" role=\"tablist\"><button aria-selected=\"false\">1×</button><button aria-selected=\"true\">4×</button><button aria-selected=\"false\">16×</button></div>",
-      "css": ".ds-seg{display:inline-flex;gap:2px}.ds-seg button{position:relative;min-height:44px;padding:0 12px;border:0;border-radius:22.5px;background:transparent;color:#a89a8a;font:500 12px/1.1 Inter,system-ui,sans-serif;text-transform:uppercase;font-variant-numeric:tabular-nums;cursor:pointer;transition:color 250ms cubic-bezier(.22,1,.36,1)}.ds-seg button:hover,.ds-seg button[aria-selected=true]{color:#ffedd7}.ds-seg button[aria-selected=true]::after{content:'';position:absolute;left:12px;right:12px;bottom:8px;border-bottom:1px dashed currentColor}.ds-seg button:focus-visible{outline:2px solid #ffedd7;outline-offset:2px}"
+      "kind": "custom",
+      "refersTo": "segment-track",
+      "description": "Recessed ground track; mono options in ink-2; the selected cell is raised with a 2px signal bar on its bottom edge. Speed, chart metrics, dock tabs.",
+      "html": "<div class=\"ds-seg\" role=\"group\" aria-label=\"Speed\"><button>0.5x</button><button aria-pressed=\"true\">1x</button><button>2x</button><button>4x</button></div>",
+      "css": ".ds-seg{display:inline-flex;gap:2px;padding:2px;background:#0a0e13;border:1px solid #232d3a;border-radius:4px}.ds-seg button{min-height:38px;padding:0 12px;border:0;border-radius:3px;background:transparent;color:#8b98a9;cursor:pointer;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12px;font-weight:500;text-transform:uppercase;font-variant-numeric:tabular-nums;transition:color 250ms cubic-bezier(.22,1,.36,1),background-color 250ms cubic-bezier(.22,1,.36,1)}.ds-seg button:hover{color:#e6edf5}.ds-seg button[aria-pressed=\"true\"]{color:#e6edf5;background:#18212d;box-shadow:inset 0 -2px 0 #3bd4c7}.ds-seg button:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}"
+    },
+    {
+      "name": "Panel with Headline",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "A column panel: one tone up from ground, 1px line, 6px radius. Its headline is a condensed label in ink-2, an optional mono count, then a rule to the panel edge.",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-headline\">What if <span class=\"ds-hcount\">13</span></h2><p class=\"ds-panel-body\">Pick a question to fork the running world.</p></section>",
+      "css": ".ds-panel{width:280px;padding:16px;background:#111821;border:1px solid #232d3a;border-radius:6px;color:#e6edf5}.ds-headline{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-family:'Barlow Semi Condensed',Barlow,'Arial Narrow',system-ui,sans-serif;font-size:12px;font-weight:600;line-height:1.1;letter-spacing:.06em;text-transform:uppercase;color:#8b98a9}.ds-headline::after{content:\"\";flex:1 1 auto;min-width:12px;border-top:1px solid #232d3a}.ds-hcount{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;font-weight:500;letter-spacing:0;color:#8b98a9}.ds-panel-body{margin:0;font-family:Barlow,system-ui,sans-serif;font-size:14px;line-height:1.3;color:#8b98a9}"
     },
     {
       "name": "What-If Row",
       "kind": "custom",
       "refersTo": "what-if-row",
-      "description": "The fork trigger. Selected wears amber glyph and left rule.",
-      "html": "<div class=\"ds-forks\"><button class=\"ds-fork\" aria-pressed=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"1.6\"/><path d=\"M7.6 12H11c2 0 2.6-5 5-5h2.5\"/><path d=\"M11 12c2 0 2.6 5 5 5h2.5\" stroke-dasharray=\"2 2.2\"/></svg>What if the Moon disappeared?</button><button class=\"ds-fork\" aria-pressed=\"false\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"1.6\"/><path d=\"M7.6 12H11c2 0 2.6-5 5-5h2.5\"/><path d=\"M11 12c2 0 2.6 5 5 5h2.5\" stroke-dasharray=\"2 2.2\"/></svg>What if the Sun were twice as massive?</button></div>",
-      "css": ".ds-forks{display:flex;flex-direction:column}.ds-fork{display:flex;align-items:center;gap:8px;min-height:40px;padding:4px 0 4px 8px;text-align:left;border:0;border-left:2px solid transparent;background:transparent;color:#ffedd7;font:400 14px/1.3 Inter,system-ui,sans-serif;cursor:pointer;transition:border-color 250ms cubic-bezier(.22,1,.36,1)}.ds-fork svg{color:#a89a8a;flex:none}.ds-fork:hover svg{color:#ffedd7}.ds-fork[aria-pressed=true]{border-left-color:#ffc857}.ds-fork[aria-pressed=true] svg{color:#ffc857}.ds-fork:focus-visible{outline:2px solid #ffedd7;outline-offset:2px}"
+      "description": "The signature control: fork glyph and the question. Rest is transparent, hover raised; armed wears amber-soft fill, a 2px amber inset bar, an amber glyph and a mono repeat count. The only control allowed amber.",
+      "html": "<div class=\"ds-forks\"><button class=\"ds-fork\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"1.6\"/><path d=\"M7.6 12H11c2 0 2.6-5 5-5h2.5\"/><path d=\"M11 12c2 0 2.6 5 5 5h2.5\" stroke-dasharray=\"2 2.2\"/></svg>What if the Sun vanished?</button><button class=\"ds-fork\" aria-pressed=\"true\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"1.6\"/><path d=\"M7.6 12H11c2 0 2.6-5 5-5h2.5\"/><path d=\"M11 12c2 0 2.6 5 5 5h2.5\" stroke-dasharray=\"2 2.2\"/></svg>What if Jupiter were 10x heavier?<span class=\"ds-fork-count\">x2</span></button></div>",
+      "css": ".ds-forks{display:flex;flex-direction:column;gap:2px;width:280px}.ds-fork{display:flex;align-items:center;gap:8px;min-height:40px;padding:4px 4px 4px 8px;text-align:left;border:0;border-radius:4px;background:transparent;color:#e6edf5;cursor:pointer;font-family:Barlow,system-ui,sans-serif;font-size:14px;line-height:1.3;box-shadow:inset 2px 0 0 transparent;transition:box-shadow 250ms cubic-bezier(.22,1,.36,1),background-color 150ms cubic-bezier(.22,1,.36,1),color 250ms cubic-bezier(.22,1,.36,1)}.ds-fork svg{flex:0 0 auto;color:#8b98a9}.ds-fork:hover{background:#18212d}.ds-fork:hover svg{color:#e6edf5}.ds-fork[aria-pressed=\"true\"]{background:rgba(255,181,71,.12);box-shadow:inset 2px 0 0 #ffb547}.ds-fork[aria-pressed=\"true\"] svg{color:#ffb547}.ds-fork-count{margin-left:auto;padding-right:8px;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;font-weight:500;color:#ffb547;font-variant-numeric:tabular-nums}.ds-fork:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}"
     },
     {
       "name": "Variable Row",
       "kind": "input",
+      "refersTo": "variable-row",
+      "description": "Micro group head; label in Small with the value in mono signal; a 2px slider filled in signal up to the value, a 14x18 ink thumb that turns signal on hover.",
+      "html": "<div class=\"ds-ctls\"><div class=\"ds-ctl-head\">Star</div><label class=\"ds-ctl\"><span class=\"ds-ctl-l\">Mass of the Sun<output>1.00 M☉</output></span><input type=\"range\" min=\"0\" max=\"100\" value=\"40\" style=\"--fill:40%\"></label></div>",
+      "css": ".ds-ctls{display:flex;flex-direction:column;width:280px;color:#e6edf5}.ds-ctl-head{font-family:'Barlow Semi Condensed',Barlow,'Arial Narrow',system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8b98a9}.ds-ctl{display:flex;flex-direction:column}.ds-ctl-l{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-top:4px;font-family:Barlow,system-ui,sans-serif;font-size:14px;line-height:1.3}.ds-ctl-l output{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12px;font-weight:500;color:#3bd4c7;font-variant-numeric:tabular-nums}.ds-ctl input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:24px;margin:0;background:transparent;cursor:pointer}.ds-ctl input[type=range]::-webkit-slider-runnable-track{height:2px;border-radius:1px;background:linear-gradient(to right,#3bd4c7 var(--fill),#3a4656 var(--fill))}.ds-ctl input[type=range]::-moz-range-track{height:2px;border-radius:1px;background:#3a4656}.ds-ctl input[type=range]::-moz-range-progress{height:2px;border-radius:1px;background:#3bd4c7}.ds-ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:18px;margin-top:-8px;border-radius:3px;background:#e6edf5;border:0}.ds-ctl input[type=range]::-moz-range-thumb{width:14px;height:18px;border-radius:3px;background:#e6edf5;border:0}.ds-ctl input[type=range]:hover::-webkit-slider-thumb{background:#3bd4c7}.ds-ctl input[type=range]:hover::-moz-range-thumb{background:#3bd4c7}.ds-ctl input:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}"
+    },
+    {
+      "name": "Select",
+      "kind": "input",
       "refersTo": "select",
-      "description": "Label + tabular value, hairline slider beneath.",
-      "html": "<label class=\"ds-ctl\"><span class=\"ds-ctl-l\">Sun mass<output>1.00 M☉</output></span><input type=\"range\" min=\"0\" max=\"100\" value=\"40\"></label>",
-      "css": ".ds-ctl{display:flex;flex-direction:column;color:#ffedd7;font:400 14px/1.3 Inter,system-ui,sans-serif}.ds-ctl-l{display:flex;justify-content:space-between;gap:8px;padding-top:4px}.ds-ctl output{font-weight:500;font-variant-numeric:tabular-nums}.ds-ctl input{-webkit-appearance:none;appearance:none;width:100%;height:24px;margin:0;background:transparent}.ds-ctl input::-webkit-slider-runnable-track{height:1px;background:#6c5f51}.ds-ctl input::-moz-range-track{height:1px;background:#6c5f51}.ds-ctl input::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;margin-top:-10px;border-radius:50%;background:#ffedd7}.ds-ctl input::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:#ffedd7}.ds-ctl input:focus-visible{outline:2px solid #ffedd7;outline-offset:2px}"
+      "description": "Raised fill, 1px line, 4px radius, Small text, ink-2 chevron; the edge brightens to track on hover.",
+      "html": "<span class=\"ds-select\"><select><option>Our solar system</option><option>A binary star</option></select><svg class=\"ds-select-chev\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 10l5 5 5-5\"/></svg></span>",
+      "css": ".ds-select{position:relative;display:flex;align-items:center;width:240px}.ds-select select{-webkit-appearance:none;appearance:none;width:100%;min-height:36px;padding:0 32px 0 12px;border:1px solid #232d3a;border-radius:4px;background:#18212d;color:#e6edf5;font-family:Barlow,system-ui,sans-serif;font-size:14px;cursor:pointer;transition:border-color 150ms cubic-bezier(.22,1,.36,1)}.ds-select select:hover{border-color:#3a4656}.ds-select select:focus-visible{outline:2px solid #3bd4c7;outline-offset:2px}.ds-select-chev{position:absolute;right:8px;pointer-events:none;color:#8b98a9}"
     },
     {
-      "name": "Jump Chip",
-      "kind": "chip",
-      "refersTo": "chip-jump",
-      "description": "Scale panel shortcuts to objects.",
-      "html": "<div class=\"ds-jump\"><button>Earth</button><button>Sun</button><button>Milky Way</button></div>",
-      "css": ".ds-jump{display:flex;flex-wrap:wrap;gap:6px}.ds-jump button{min-height:32px;padding:0 12px;border:1px solid #40372e;border-radius:999px;background:transparent;color:#ffedd7;font:500 12px/1.1 Inter,system-ui,sans-serif;text-transform:uppercase;cursor:pointer;transition:border-color 150ms cubic-bezier(.22,1,.36,1)}.ds-jump button:hover{border-color:#ffedd7}.ds-jump button:focus-visible{outline:2px solid #ffedd7;outline-offset:2px}"
-    },
-    {
-      "name": "Popover",
-      "kind": "card",
-      "refersTo": "popover",
-      "description": "About-this-world panel; tone and hairline, no shadow.",
-      "html": "<div class=\"ds-pop\"><p class=\"ds-pop-h\">About this world</p><p>Leapfrog N-body orbits. Same seed, same future.</p></div>",
-      "css": ".ds-pop{display:grid;gap:12px;max-width:320px;padding:24px;background:#1a110a;border:1px solid #40372e;border-radius:12px;color:#ffedd7;font:400 15px/1.45 Inter,system-ui,sans-serif}.ds-pop p{margin:0}.ds-pop-h{font:500 12px/1.1 Inter,system-ui,sans-serif;text-transform:uppercase;color:#a89a8a}"
+      "name": "Readout Table",
+      "kind": "custom",
+      "refersTo": "readout",
+      "description": "Two-channel readouts: Micro heads carrying channel tags (round blue = no change, amber diamond = what-if), mono numbers, row rules, the what-if column amber.",
+      "html": "<table class=\"ds-readout\"><thead><tr><th></th><th><span class=\"ds-ch\">No change</span></th><th><span class=\"ds-ch a\">What-if</span></th></tr></thead><tbody><tr><td>Planets left</td><td>8</td><td class=\"a\">5</td></tr><tr><td>Earth year</td><td>1.00 yr</td><td class=\"a\">1.42 yr</td></tr></tbody></table>",
+      "css": ".ds-readout{width:280px;border-collapse:collapse;color:#e6edf5}.ds-readout th{font-family:'Barlow Semi Condensed',Barlow,'Arial Narrow',system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8b98a9;text-align:right;padding:0 0 8px 8px;vertical-align:bottom}.ds-readout td{padding:5px 0;text-align:right;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:12px;font-weight:500;font-variant-numeric:tabular-nums;border-top:1px solid #232d3a}.ds-readout td:first-child{text-align:left;font-family:Barlow,system-ui,sans-serif;font-size:14px;font-weight:400;color:#8b98a9}.ds-readout td.a{color:#ffb547}.ds-ch{display:inline-flex;align-items:center;justify-content:flex-end;gap:6px}.ds-ch::before{content:\"\";width:7px;height:7px;flex:0 0 auto;border-radius:50%;background:#7fb2ff}.ds-ch.a::before{border-radius:1px;transform:rotate(45deg);background:#ffb547}"
     },
     {
       "name": "Timeline",
       "kind": "custom",
-      "refersTo": "stage",
-      "description": "Event log: hollow blue = no change only, amber = what-if only, half = both.",
-      "html": "<ul class=\"ds-tl\"><li class=\"b\"><time>12.0 yr</time><i></i><span>Jupiter passes perihelion</span></li><li class=\"a\"><time>12.4 yr</time><i></i><span>Earth leaves the habitable zone</span></li><li class=\"both\"><time>13.1 yr</time><i></i><span>Comet enters inner system</span></li></ul>",
-      "css": ".ds-tl{list-style:none;margin:0;padding:0;color:#ffedd7;font:400 14px/1.3 Inter,system-ui,sans-serif}.ds-tl li{display:grid;grid-template-columns:64px 12px 1fr;gap:8px;padding:6px 0}.ds-tl time{font:500 12px/1.1 Inter,system-ui,sans-serif;color:#a89a8a;font-variant-numeric:tabular-nums;padding-top:2px}.ds-tl i{width:8px;height:8px;border-radius:50%;margin-top:6px;border:1.5px solid #a9b1d6;box-sizing:border-box}.ds-tl .a i{background:#ffc857;border-color:#ffc857}.ds-tl .both i{background:linear-gradient(90deg,#ffedd7 50%,transparent 50%);border-color:#ffedd7}"
+      "refersTo": "timeline",
+      "description": "Mono time in ink-2, a mark per row (hollow blue round = no change only, amber diamond = what-if only, half-filled ink round = both), events in the explaining voice; the fork row is pinned with amber-soft fill and a 2px amber inset bar.",
+      "html": "<ol class=\"ds-tl\"><li class=\"both\"><time>0.0 yr</time><span class=\"ds-dot\"></span><span>Both worlds start the same.</span></li><li class=\"ds-fork-row\"><time>12.4 yr</time><span class=\"ds-dot\"></span><span>The worlds split here: the Sun vanished.</span></li><li><time>13.0 yr</time><span class=\"ds-dot\"></span><span>Earth completes its 13th orbit.</span></li><li class=\"alt\"><time>13.1 yr</time><span class=\"ds-dot\"></span><span>Earth drifts off in a straight line.</span></li></ol>",
+      "css": ".ds-tl{list-style:none;margin:0;padding:0;width:320px;color:#e6edf5}.ds-tl li{display:grid;grid-template-columns:64px 12px 1fr;gap:8px;padding:6px 0;font-family:Barlow,system-ui,sans-serif;font-size:14px;border-top:1px solid #232d3a}.ds-tl li:first-child{border-top:0}.ds-tl time{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;font-size:11px;font-weight:500;color:#8b98a9;padding-top:3px;font-variant-numeric:tabular-nums}.ds-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;border:1.5px solid #7fb2ff}.ds-tl .alt .ds-dot{border-radius:1px;transform:rotate(45deg);background:#ffb547;border-color:#ffb547}.ds-tl .both .ds-dot{background:linear-gradient(90deg,#e6edf5 50%,transparent 50%);border-color:#e6edf5}.ds-tl li.ds-fork-row{background:rgba(255,181,71,.12);box-shadow:inset 2px 0 0 #ffb547;padding-left:8px;color:#e6edf5}.ds-tl li.ds-fork-row time{color:#ffb547}.ds-tl li.ds-fork-row .ds-dot{border-radius:1px;transform:rotate(45deg);border-color:#ffb547;background:transparent}"
     }
   ],
   "narrative": {
-    "northStar": "The Lone Object",
-    "overview": "The simulation is a single object floating in warm darkness. It gets the most space, the only fill\nthat reads as a container, and the only motion on screen. Everything around it is a label: cream type\non walnut, hairlines, nothing decorative. The reader's eye should never have to find the experiment;\nthere is nothing else competing for it.\n\nWorking screens are consoles, not pages. Every tool, variable and result sits in one viewport at once,\nso the visitor never scrolls away from the thing they are changing. Density is high but quiet: two\ntype voices, two surfaces, one filled button, one rare accent. Restraint is what lets the fork, the\nmoment the stage splits into the world as it is and the world that might be, land as the memorable\nevent on each screen.\n\nReality and what-if are told apart by temperature: cool blue for the unchanged world, warm amber for\nthe fork. That pairing is always backed by a label or line style, never colour alone.",
+    "northStar": "The Control Room",
+    "overview": "What-If Lab is a lab console for running experiments. The stage is the experiment; around it sit instrument panels: what you can change, what you can measure, what happened. Graphite panels, condensed instrument labels and mono readouts make it feel like a simulator you operate, not a gallery you visit. It is a costume-free control room: no bezels, screws, scanlines, glow or terminal prompts. Every control is a standard web control.\n\nThe signature move is two channels. Every world runs on a channel. ● NO CHANGE (blue, round mark) is lit from the start. When a what-if forks the world, ◆ WHAT-IF (amber, diamond) lights up. The same mark appears on the stage tags, the chart legend, the readout column heads and the timeline. The fork moment shows in three places at once: the stage chip FORKED AT …, an amber marker on the chart with a diamond head, and an amber row pinned in the timeline.",
     "keyCharacteristics": [
-      "Warm near-black walnut canvas; cream type; no pure white, no pure black.",
-      "Chrome is type, not boxes. The stage is the only outlined container.",
-      "Two voices: UPPERCASE 500 labels name things; mixed-case 400 text explains them.",
-      "No shadows anywhere. Depth is a two-step tonal stack.",
-      "One filled button per view; ember is editorial only and never interactive.",
-      "One viewport, no page scroll, on every working screen."
+      "Cool graphite ground with panels one tone up; the stage is darker still (both themes).",
+      "Three voices: condensed uppercase names, Barlow explains, JetBrains Mono counts.",
+      "Signal teal is the only control colour; blue and amber are only ever the two worlds.",
+      "Depth is three tones (ground → panel → raised) and 1 px lines. No shadows.",
+      "One filled button per view. One viewport, no page scroll, on every working screen."
     ],
     "rules": [
       {
+        "name": "The Two-Channel Rule",
+        "body": "No change is blue with a round mark; what-if is amber with a diamond. The same mark is used on stage tags, the chart legend, readout heads and the timeline, and the fork moment appears on the stage, the chart and the timeline at once.",
+        "section": "colors"
+      },
+      {
         "name": "The Temperature Rule",
-        "body": "Cool is reality, warm is what might be. `reality-blue`, `what-if-amber`, `gain-green` and `loss-coral` appear only on the stage, chart, readouts and timeline, and are always paired with a label, dash pattern or glyph.",
+        "body": "Cool is reality, warm is what might be. Blue and amber only ever mean the two worlds, always backed by a mark shape (● vs ◆), a dash pattern or a label. Gain green and loss coral are for signed deltas only.",
         "section": "colors"
       },
       {
-        "name": "The One Fill Rule",
-        "body": "Bark fills exactly one control per view. Selection is shown with cream text and a dashed underline, never with a fill.",
+        "name": "The One Signal Rule",
+        "body": "Signal teal is the only control colour: the one filled button, the selected segment's bar, slider fill, variable values and the focus ring. Never data. The what-if row is the only control allowed to wear amber, because it is the control that splits the world.",
         "section": "colors"
       },
       {
-        "name": "The Ember Is Ink Rule",
-        "body": "Ember is a printed credit, not a signal. If it can be clicked, it is not ember. ",
-        "section": "colors"
-      },
-      {
-        "name": "The Two Voices Rule",
-        "body": "Naming is UPPERCASE 500; explaining is mixed-case 400. Uppercase comes from CSS `text-transform` so source strings and screen readers stay mixed case. What-if questions, intros, facts and timeline events always use the explaining voice.",
+        "name": "The Three Voices Rule",
+        "body": "Condensed uppercase (tracked) names things, Barlow mixed case explains, JetBrains Mono counts. Mixed case and mono are never tracked; mono is never used for words.",
         "section": "typography"
       },
       {
-        "name": "The Zero Tracking Rule",
-        "body": "Letter-spacing is normal at every size, including 10px uppercase.",
-        "section": "typography"
-      },
-      {
-        "name": "The Scale Is Closed Rule",
-        "body": "Sizes are 10 · 12 · 14 · 15 · 18 · 24 · 29 · 41 · 51 px, each a token. Nothing in between; weights 400 and 500 only. ",
-        "section": "typography"
-      },
-      {
-        "name": "The No Shadow Rule",
-        "body": "If something needs to look raised, it gets a tone step or a hairline, not a shadow.",
+        "name": "The Three Tones Rule",
+        "body": "Depth is ground → panel → raised, each separated by a 1 px line. No shadows. Inset 2 px bars are allowed only as the armed what-if mark, the pinned fork row and the selected segment's signal bar.",
         "section": "elevation"
       },
       {
-        "name": "The No Boxes Rule",
-        "body": "Columns, results and the dock sit directly on walnut. The stage is the only container; no boxed rows, no cards in cards. ",
-        "section": "elevation"
+        "name": "The One Viewport Rule",
+        "body": "Working screens fill exactly one viewport and never scroll the page; only named regions scroll internally with a 20 px fade.",
+        "section": "layout"
+      },
+      {
+        "name": "The Meaningful Dash Rule",
+        "body": "Lines are 1 px and solid; dashes are reserved for meaning: the what-if chart line, the split seam on the stage, an empty ad slot.",
+        "section": "shapes"
       }
     ],
     "dos": [
-      "Do keep every working screen to one viewport and let only the named regions scroll, with a fade mask.",
-      "Do take every colour, size, radius and duration from a token in `app/globals.css`; canvas code",
-      "Do keep the stage walnut in both themes and draw on-stage chrome with the `--stage-*` tokens.",
-      "Do mark selection with cream text and a 1px dashed underline.",
-      "Do pair reality/what-if colours with a dash pattern, glyph or label every time.",
-      "Do use `tabular-nums` at weight 500 for every number.",
-      "Do keep hit targets ≥ 44 × 44px and text contrast ≥ 4.5:1; respect `prefers-reduced-motion`",
-      "Do animate only `transform`, `opacity` and colour, with `cubic-bezier(.22,1,.36,1)` at 150ms"
+      "Do take every colour, size, radius and duration from a token; canvas code uses STAGE and FONT.",
+      "Do use condensed uppercase for names, Barlow for explanations, mono for numbers.",
+      "Do mark the two worlds with colour and shape (●/◆), dash or label every time.",
+      "Do keep hit targets ≥ 44 px, text ≥ 4.5:1, a full keyboard path with the signal focus ring, and respect prefers-reduced-motion.",
+      "Do animate only transform, opacity and colour with --ease-out at 150 / 250 ms."
     ],
     "donts": [
-      "Don't add shadows, gradients-as-depth, or a third surface colour behind columns or panels.",
-      "Don't use bark for anything but the one primary button, or ember for anything interactive.",
-      "Don't use amber for hover states or any control other than the what-if row.",
-      "Don't add letter-spacing, an off-scale font size, or a weight other than 400/500.",
-      "Don't put 29px body text inside a console column.",
-      "Don't use driftwood for text, or pure `#fff` / `#000` anywhere.",
-      "Don't box rows or nest cards; separate with space, then one dashed hairline.",
-      "Don't pull in an icon library; add new glyphs to `components/ui/Icon.tsx` on its 24px / 1.5px grid.",
-      "Don't centre body copy, or use exclamation marks in chrome."
+      "Don't add shadows, glows, gradients-as-depth, scanlines, bezels or other sci-fi costume.",
+      "Don't use signal for data, or blue/amber for controls (except the what-if row's amber).",
+      "Don't track mixed-case or mono text; don't use mono for words.",
+      "Don't nest boxes inside panels or put a kicker above a heading.",
+      "Don't use pure #fff on dark or #000 anywhere in chrome; don't use track colour for text.",
+      "Don't pull in an icon or UI library; don't use exclamation marks in chrome."
     ]
   }
 }

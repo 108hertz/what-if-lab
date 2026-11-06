@@ -3,10 +3,12 @@ import { SANDBOX_KEYS } from "@/worlds/registry";
 import { SANDBOXES } from "@/worlds/sims";
 import { defaultParams } from "@/lib/sim/core";
 import { SimEngine } from "@/lib/sim/engine";
-import { FPS, MAX_RUN_S, MIN_RUN_S, Replay, keyMoments, planReplay, runToEnd } from "@/lib/export/replay";
+import { FPS, MAX_RUN_S, MIN_RUN_S, SUB, Replay, clipFrames, keyMoments, planReplay, runToEnd } from "@/lib/export/replay";
 import {
-  VIDEO_SIZE, INTRO_FRAMES, clipFrames, drawVideoFrame, slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
+  drawChartStill, drawStageStill, drawVideoFrame, paint, slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
 } from "@/lib/export/frame";
+import { SIZES, SIZE_IDS, defaultStyle, withTheme } from "@/lib/export/style";
+import { Scrubber } from "@/lib/export/scrub";
 import { exportName } from "@/components/console/export/render";
 
 /** Change 0020: exports re-run the fork deterministically and never touch the live simulation. */
@@ -64,7 +66,8 @@ describe.each(SANDBOX_KEYS)("%s export", (key) => {
     expect(plan.fromFork).toBe(true);
     expect(plan.hasWhatIf).toBe(true);
     expect(plan.steps).toBeGreaterThanOrEqual(1);
-    expect(plan.steps).toBeLessThanOrEqual(MAX_RUN_S * FPS);
+    expect(plan.frames).toBeLessThanOrEqual(MAX_RUN_S * FPS);
+    expect(plan.steps).toBe(plan.frames * SUB);
     const a = runToEnd(plan), b = runToEnd(planReplay(forkedEngine(key)));
     expect(a.summary.end).toEqual(b.summary.end);
     expect(a.summary.events).toEqual(b.summary.events);
@@ -90,34 +93,41 @@ describe.each(SANDBOX_KEYS)("%s export", (key) => {
     expect(plan.label).toBe("");
     const { replay } = runToEnd(plan);
     expect(replay.alt).toBeNull();
-    expect(plan.steps).toBeGreaterThanOrEqual(Math.min(MIN_RUN_S * FPS, 1));
+    expect(plan.frames).toBeGreaterThanOrEqual(Math.min(MIN_RUN_S * FPS, 1));
   });
 
-  it("draws every video frame kind and every slide without throwing", () => {
+  it("draws every size, frame kind, still and slide without throwing, styled or not", () => {
     const plan = planReplay(forkedEngine(key));
-    const { summary, replay: full } = runToEnd(plan);
+    const scrub = new Scrubber(plan);
+    const a = scrub.finish();
+    const { summary } = a;
     const ctx = fakeCtx();
-    for (const fmt of ["vertical", "horizontal"] as const) {
-      const r = new Replay(plan);
-      for (const f of [0, INTRO_FRAMES + 1, clipFrames(plan) - 1]) {
-        if (f > INTRO_FRAMES) while (!r.done) r.next();
-        drawVideoFrame(ctx, fmt, r, { world: sb.name, summary }, f);
+    const styled = { ...withTheme(defaultStyle("phone"), "paper"), grade: { brightness: 0.2, contrast: 0.1, saturation: -0.3, warmth: 0.4, hue: 20, vignette: 0.5 } };
+    for (const size of SIZE_IDS) {
+      for (const style of [defaultStyle(size), { ...styled, size }, { ...defaultStyle(size), clean: true, layout: { split: "alt" as const, stage: "fill" as const, chart: true, hud: false, cards: false } }]) {
+        for (const f of [0, plan.intro + 1, plan.intro + Math.floor(plan.frames / 2), clipFrames(plan) - 1]) {
+          const r = scrub.at(f);
+          paint(style, () => drawVideoFrame(ctx, style, r, { world: sb.name, summary, samples: a.samples }, f));
+        }
+        paint(style, () => { drawStageStill(ctx, style, scrub.at(clipFrames(plan) - 1)); drawChartStill(ctx, style, plan, { world: sb.name, summary }, a.samples); });
       }
-      expect(VIDEO_SIZE[fmt].W * VIDEO_SIZE[fmt].H).toBe(1920 * 1080);
+      expect(SIZES[size].W / SIZES[size].w).toBe(2);
     }
     const moments = keyMoments(plan, summary.events, 4);
     expect(moments.length).toBeGreaterThanOrEqual(3);
     expect(moments.length).toBeLessThanOrEqual(5);
     expect(moments[moments.length - 1]).toBe(plan.steps);
     expect([...moments].sort((x, y) => x - y)).toEqual(moments);
-    const s = (i: number): SlideCtx => ({ world: sb.name, intro: sb.intro, plan, summary, samples: full.samples, index: i, total: 8 });
+    const s = (i: number): SlideCtx => ({ world: sb.name, intro: sb.intro, plan, summary, samples: a.samples, index: i, total: 8 });
     const r = new Replay(plan);
-    slideTitle(ctx, s(1), r);
-    slideSetup(ctx, s(2), r);
-    slideWhatIf(ctx, s(3), r);
-    while (r.frame < moments[0]) r.next();
-    slideMoment(ctx, s(4), r);
-    slideOutcome(ctx, s(8));
+    paint(styled, () => {
+      slideTitle(ctx, s(1), r);
+      slideSetup(ctx, s(2), r);
+      slideWhatIf(ctx, s(3), r);
+      r.seek(moments[0]);
+      slideMoment(ctx, s(4), r);
+      slideOutcome(ctx, s(8));
+    });
   });
 });
 

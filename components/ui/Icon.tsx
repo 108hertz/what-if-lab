@@ -24,6 +24,12 @@ const GLYPHS = {
   wide: <><rect x="3" y="7" width="18" height="10" rx="1.5" /><path d="M12 7v10" strokeDasharray="1.5 1.5" /></>,
   slides: <><rect x="3.5" y="5" width="17" height="11" rx="1.5" /><path d="M12 16v3.5M8.5 19.5h7M7 9h6M7 12h4" /></>,
   check: <path d="M5.5 12.5l4 4 9-9" />,
+  square: <><rect x="5" y="5" width="14" height="14" rx="1.5" /><path d="M12 5v14" strokeDasharray="1.5 1.5" /></>,
+  portrait: <><rect x="6" y="4" width="12" height="16" rx="1.5" /><path d="M6 12h12" strokeDasharray="1.5 1.5" /></>,
+  video: <><rect x="3.5" y="6" width="17" height="12" rx="1.5" /><path d="M10.5 9.5v5l4-2.5z" /></>,
+  image: <><rect x="3.5" y="5" width="17" height="14" rx="1.5" /><path d="M3.5 16l5-5 4 4 2.5-2.5 5.5 5.5" /><circle cx="15.5" cy="9" r="1.3" /></>,
+  text: <path d="M5 6.5h14M5 10.5h14M5 14.5h9M5 18.5h6" />,
+  copy: <><rect x="8.5" y="8.5" width="11" height="11" rx="1.5" /><path d="M15.5 8.5V5.5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3" /></>,
   noads: <><rect x="4" y="6" width="16" height="12" rx="1.5" strokeDasharray="2 2" /><path d="M5 19L19 5" /></>,
 
   // World glyphs

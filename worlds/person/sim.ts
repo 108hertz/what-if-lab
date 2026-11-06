@@ -110,7 +110,7 @@ export const person: Sandbox<W, P> = {
     const good = w.habit ? HABITS[w.habit][5] : 1;
     w.v.forEach((v, i) => {
       const x = ox + ((i % 10) + 0.5) * cell, y = oy + (((i / 10) | 0) + 0.5) * cell;
-      const col = !w.habit ? "#A9B1D6" : v.kept ? (good ? STAGE.alt : "#FF8A7A") : STAGE.muted;
+      const col = !w.habit ? STAGE.base : v.kept ? (good ? STAGE.alt : "#FF8A7A") : STAGE.muted;
       blob(ctx, x, y, cell * 0.36, mix("#2A3150", col, 0.35 + versionValue(w, v, 1, p) / 150), 0, 0, versionValue(w, v, 0, p));
     });
     ctx.font = "12.5px " + FONT.body; ctx.fillStyle = STAGE.ink2;

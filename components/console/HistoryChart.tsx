@@ -42,7 +42,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
     let lo = Math.min(...vals), hi = Math.max(...vals);
     if (hi - lo < 1e-9) { hi += 1; lo -= 1; }
     const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
-    c.font = "500 12px " + FONT.body;
+    c.font = "500 11px " + FONT.mono;
     const labels = [0, 1, 2, 3].map((k) => lo + ((hi - lo) * k) / 3);
     const L = Math.max(...labels.map((v) => c.measureText(m.fmt(v)).width)) + 10, R = 6, T = 6, B = 20, pw = W - L - R, ph = H - T - B;
     const t0 = h.t[0], t1 = h.t[n - 1];
@@ -53,8 +53,10 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
     c.textAlign = "right"; c.fillText(engine.sb.fmtT(t1), W - R, H - B + 5);
     if (h.forkT != null) {
       const x = X(h.forkT);
-      c.strokeStyle = COL.alt; c.globalAlpha = 0.5; c.setLineDash([3, 3]); c.beginPath(); c.moveTo(x, T); c.lineTo(x, T + ph); c.stroke(); c.setLineDash([]); c.globalAlpha = 1;
-      c.textAlign = "left"; c.fillStyle = COL.alt; c.fillText("FORK", x + 4, T);
+      // The fork marker: the same instant the stage's "forked at" chip and the timeline's pinned row point at
+      c.strokeStyle = COL.alt; c.lineWidth = 1; c.beginPath(); c.moveTo(x + 0.5, T); c.lineTo(x + 0.5, T + ph); c.stroke();
+      c.fillStyle = COL.alt; c.beginPath(); c.moveTo(x + 0.5, T); c.lineTo(x + 4.5, T + 4); c.lineTo(x + 0.5, T + 8); c.lineTo(x - 3.5, T + 4); c.closePath(); c.fill();
+      c.textAlign = "left"; c.fillText("FORK", x + 7, T);
     }
     const line = (arr: (number | null)[], col: string, w: number, dash: number[] = []) => {
       c.strokeStyle = col; c.lineWidth = w; c.setLineDash(dash); c.beginPath();
@@ -75,7 +77,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
             <button key={x.k} aria-pressed={x === m} onClick={() => setMetric(i)}>{x.label}</button>
           ))}
         </div>
-        <div className="legend micro"><span><i className="b" />No change</span><span><i />{engine.sb.stack ? "With changes" : "What if"}</span></div>
+        <div className="legend micro"><span className="ch"><i className="b" />No change</span><span className="ch a"><i />{engine.sb.stack ? "With changes" : "What if"}</span></div>
       </div>
       <canvas ref={ref} className="chart" aria-label={`${m.label} over time`} />
       {m.help && <ChartNote engine={engine} m={m} />}

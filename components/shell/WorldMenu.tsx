@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { MODES, modeHref, type Mode } from "@/worlds/registry";
-import { modeLabel } from "./Tabs";
+import { MODES, WORLDS, modeHref, type Mode } from "@/worlds/registry";
 import { Icon } from "../ui/Icon";
 
-/** Phone world switcher (< 768 px): the current world as a button; all worlds, named, in a popover. */
+export const modeLabel = (m: Mode): [string, string] => (m === "scale" ? ["Scale", "Proton → universe"] : [WORLDS[m].name, WORLDS[m].sub]);
+
+/** World switcher at every width: the current world finishes "what if…"; every world, named, in a popover (change 0021). */
 export default function WorldMenu({ mode }: { mode: Mode }) {
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
@@ -35,7 +36,7 @@ export default function WorldMenu({ mode }: { mode: Mode }) {
 
   return (
     <nav className="worldmenu" aria-label="Worlds" ref={wrap}>
-      <button ref={btn} className="worldmenu-btn" aria-expanded={open} aria-controls="world-list" onClick={() => setOpen(!open)}>
+      <button ref={btn} className="worldmenu-btn" aria-expanded={open} aria-controls="world-list" aria-label={`World: ${name}. Change world`} onClick={() => setOpen(!open)}>
         <Icon name={mode} />
         <span className="lbl">{name}</span>
         <Icon name="chevron" size={16} />

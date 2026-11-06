@@ -154,7 +154,7 @@ function drawMeters(c: CanvasRenderingContext2D, x: number, y: number, w: number
   SHOW.forEach((s, i) => {
     const ry = top + i * rh;
     const pq = (now - pulse[i]) / 0.9;
-    if (!reduced && pq >= 0 && pq < 1) { c.fillStyle = `rgba(255,200,87,${(0.1 * (1 - pq)).toFixed(3)})`; c.fillRect(x + 4, ry - 2, w - 8, rh - 4); }
+    if (!reduced && pq >= 0 && pq < 1) { c.fillStyle = `rgba(255,181,71,${(0.1 * (1 - pq)).toFixed(3)})`; c.fillRect(x + 4, ry - 2, w - 8, rh - 4); }
     drawGlyph(c, s, px + 8, ry + 10, 16, COLOR[s]);
     c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink; c.textAlign = "left"; c.fillText(WORD[s], px + 22, ry + 14);
     const now1 = md[i], d = hasBase ? md[i] - md[5 + i] : 0;

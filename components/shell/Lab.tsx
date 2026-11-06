@@ -12,7 +12,6 @@ import { AccountProvider, PREMIUM_ON_SALE, useAccount } from "../account/context
 import { adsAllowed } from "../account/state";
 import AccountMenu from "../account/AccountMenu";
 import PremiumDialog from "../account/PremiumDialog";
-import Tabs from "./Tabs";
 import WorldMenu from "./WorldMenu";
 import ThemeToggle from "./ThemeToggle";
 
@@ -21,8 +20,11 @@ import ThemeToggle from "./ThemeToggle";
  * Everything inside the console belongs to the scale explorer or to the world (worlds/<key>/Console.tsx).
  */
 export default function Lab({ mode }: { mode: Mode }) {
-  // Canvas text uses the page font (next/font gives it a generated family name).
-  useEffect(() => setCanvasFont(getComputedStyle(document.body).fontFamily), []);
+  // Canvas text uses the page fonts (next/font gives them generated family names).
+  useEffect(() => {
+    const css = getComputedStyle(document.documentElement), v = (k: string) => css.getPropertyValue(k).trim();
+    setCanvasFont(getComputedStyle(document.body).fontFamily, v("--font-mono"), v("--font-cond"));
+  }, []);
   return (
     <AccountProvider dialog={(reason, close) => <PremiumDialog reason={reason} onClose={close} />}>
       <Shell mode={mode} />
@@ -37,11 +39,10 @@ function Shell({ mode }: { mode: Mode }) {
   return (
     <div className={`app${World ? "" : " is-scale"}${rails ? " has-rails" : ""}`} data-world={mode}>
       <header className="nav">
-        <div className="brand">
-          <Link className="wordmark" href="/">What-If Lab</Link>
-          <span className="micro credit">No AI · No live data · Same seed, same future</span>
-        </div>
-        <Tabs mode={mode} />
+        {/* The bar reads as a sentence: "what if…" then the world you're in (change 0021). */}
+        <Link className="wordmark" href="/" aria-label="what if… home">
+          what if<span aria-hidden="true">…</span>
+        </Link>
         <WorldMenu mode={mode} />
         <div className="nav-end">
           {PREMIUM_ON_SALE && <AccountMenu />}

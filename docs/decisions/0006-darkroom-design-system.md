@@ -1,6 +1,6 @@
 # 0006 — Darkroom is the only design system
 
-- **Status:** accepted
+- **Status:** superseded by [ADR 0009](./0009-control-room-design-system.md)
 - **Date:** 2026-11-02
 - **Supersedes:** [ADR 0004](./0004-apple-design-language.md), [ADR 0005](./0005-darkroom-visual-language.md)
 

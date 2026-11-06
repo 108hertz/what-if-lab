@@ -17,7 +17,7 @@ A world is pure variable changes → deterministic outcomes. No AI, no network d
      (`lib/sim`, `components/console`, `components/ui`), never another world.
    - World is plain `structuredClone`-able data. RNG via `rng(w)` / `gauss(w)`. Events via `note()` with
      stable text. `read()` returns finite numbers or `null`. Sub-step in `step()` for stability.
-   - `draw()` uses `STAGE` colours and `FONT` from `lib/sim/draw.ts` and the `darkroom-ui` rules: calm,
+   - `draw()` uses `STAGE` colours and `FONT` from `lib/sim/draw.ts` and the `control-room-ui` rules: calm,
      legible, base vs what-if clearly distinguished. Add a world glyph to `components/ui/Icon.tsx`.
    - Controls must fit the console's Tune column (see `DESIGN.md` → Layout). A custom `Console.tsx`
      must keep its ad slots (ADR 0007); `tests/structure.test.ts` checks it.

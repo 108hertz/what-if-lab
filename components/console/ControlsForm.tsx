@@ -46,7 +46,7 @@ export default function ControlsForm({ engine, onChange }: { engine: SimEngine; 
         return (
           <label key={c.id} className="ctl" htmlFor={id}>
             <span className="ctl-l">{c.label}<output>{valueText(c, Number(v))}</output></span>
-            <input id={id} type="range" min={c.min} max={c.max} step={c.step} value={Number(v)} onChange={(e) => set(c.id, parseFloat(e.target.value))} />
+            <input id={id} type="range" min={c.min} max={c.max} step={c.step} value={Number(v)} style={{ "--fill": `${((Number(v) - c.min) / Math.max(1e-9, c.max - c.min)) * 100}%` } as React.CSSProperties} onChange={(e) => set(c.id, parseFloat(e.target.value))} />
           </label>
         );
       })}

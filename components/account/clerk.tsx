@@ -20,8 +20,8 @@ function appearance() {
   const v = (k: string) => css.getPropertyValue(k).trim();
   return {
     variables: {
-      colorPrimary: v("--bg-elevated"),
-      colorPrimaryForeground: v("--stage-ink"),
+      colorPrimary: v("--signal"),
+      colorPrimaryForeground: v("--on-signal"),
       colorBackground: v("--surface"),
       colorForeground: v("--label"),
       colorMutedForeground: v("--label-2"),
@@ -29,11 +29,11 @@ function appearance() {
       colorBorder: v("--separator"),
       colorInput: v("--bg"),
       colorInputForeground: v("--label"),
-      colorRing: v("--label"),
+      colorRing: v("--signal"),
       colorDanger: v("--bad"),
       colorShadow: "transparent",
       fontFamily: getComputedStyle(document.body).fontFamily,
-      borderRadius: "12px",
+      borderRadius: "6px",
     },
   };
 }
