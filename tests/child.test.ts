@@ -527,16 +527,18 @@ describe("child: the change moment (change 0019 step 6)", () => {
     expect(run(0.25)).toBeCloseTo(run(1) * 0.25, 6);
   });
 
-  it("stopping or undoing a change clears the export recipe (exports then start from now)", () => {
+  it("stopping or undoing a change keeps the export recipe, which now carries the stop (change 0024)", () => {
     const e = new SimEngine(child, params(), 42);
     for (let i = 0; i < 300; i++) e.tick(FRAME);
     e.change("sport");
     e.change("music");
     expect(e.origin).not.toBeNull();
     stopChange(e, 0);
-    expect(e.origin).toBeNull();
+    expect(e.origin!.changes.map((c) => c.id)).toEqual(["sport", "music"]);
+    expect(Number(e.origin!.changes[0].params.s_stop)).toBeCloseTo(e.alt!.t, 9);
+    expect((e.alt as W).mods[0].sn).toBe(1);
     e.change("pet");
     undoChange(e, 2);
-    expect(e.origin).toBeNull();
+    expect(e.origin!.changes.map((c) => c.id)).toEqual(["sport", "music"]);
   });
 });

@@ -38,7 +38,7 @@ natural selection, and Primer fans who like watching bodies evolve.
   +3 for hunters that also graze); ~30 % hunt success per lunge (a scorpion's sting cuts it); rare plant-eaters get more
   from each bite (niche sharing) so several coexist; plant-eaters share a cap of 450; recolonisation by a wandering pair,
   at most three times, never after "remove". Budget: ≤ 600 animals, ≤ 700 food bits.
-- **Changes stack** (`stack: true`, `w.mods`): remove, add (any species, a sixth kind is refused), disease (strength
+- **Changes stack** (`w.mods`; tick any change off and on in "Your changes", change 0024): remove, add (any species, a sixth kind is refused), disease (strength
   setting), fast-breeding newcomer, 3 °C warmer, ice age, a year without rain, years of good rain, wildfire (burnt strip
   regrows), half the land lost, reserve, people hunting one animal, opposite climate. The hidden no-change world feeds
   the chart's dashed lines, "no change" counts, sentences and the story.

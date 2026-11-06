@@ -11,6 +11,7 @@ import Dock from "./Dock";
 import AdSlot, { RAILS_QUERY } from "./AdSlot";
 import { useFullscreen } from "./fullscreen";
 import { InfoBlocks, Readouts, TunePanel, WhatIfList, WorldHeader } from "./panels";
+import ChangeToggles from "./Changes";
 
 /**
  * The default world console (DESIGN.md → Layout). A world starts from this and copies it into its own
@@ -25,7 +26,8 @@ export default function StandardConsole({ engine, onChange, interaction }: { eng
   const centre = useRef<HTMLElement>(null);
   const fs = useFullscreen(centre);
 
-  const ask = <><WorldHeader engine={engine} /><WhatIfList engine={engine} onChange={onChange} /></>;
+  // Your changes (each with a tick, change 0024) sit right under the world name, above the what-ifs to pick
+  const ask = <><WorldHeader engine={engine} /><ChangeToggles engine={engine} onChange={onChange} /><WhatIfList engine={engine} onChange={onChange} /></>;
   const now = <Readouts engine={engine} />;
   const info = <InfoBlocks engine={engine} />;
   const tune = <TunePanel engine={engine} onChange={onChange} />;

@@ -6,13 +6,10 @@ import { SimEngine } from "@/lib/sim/engine";
 
 const FRAME = 1 / 60;
 const run = (e: SimEngine, n: number) => { for (let i = 0; i < n; i++) e.tick(FRAME); };
-const STACKING = ["solar", "galaxy", "country", "animals", "child"] as const;
+/** Change 0024: every world stacks its changes into one changed world (change 0015 started it for five of them). */
+const STACKING = SANDBOX_KEYS;
 
-describe("stacked changes (change 0015)", () => {
-  it("only solar, galaxy, country, animals and child stack", () => {
-    for (const k of SANDBOX_KEYS) expect(!!SANDBOXES[k].stack, k).toBe((STACKING as readonly string[]).includes(k));
-  });
-
+describe("stacked changes (changes 0015 and 0024)", () => {
   it.each(STACKING)("%s: two changes equal applying both to one clone", (key) => {
     const sb = SANDBOXES[key];
     const [a, b] = sb.whatifs.map((w) => w[0]);
@@ -58,12 +55,16 @@ describe("stacked changes (change 0015)", () => {
     }
   }, 30_000); // the child world has 38 changes: 1,444 pairs
 
-  it("split worlds still re-fork on each pick", () => {
+  it("earth and person now stack too: a second pick adds to the first", () => {
     const sb = SANDBOXES.earth;
     const e = new SimEngine(sb, defaultParams(sb));
     e.change("zero");
     e.change("trees");
-    expect(e.applied).toEqual(["trees"]);
-    expect(e.rects(800, 500)).toHaveLength(2);
+    expect(e.applied).toEqual(["zero", "trees"]);
+    expect(e.rects(800, 500)).toHaveLength(1);
+    const p = SANDBOXES.person, q = new SimEngine(p, defaultParams(p));
+    q.change("exercise");
+    q.change("sleep");
+    expect(q.applied).toEqual(["exercise", "sleep"]);
   });
 });

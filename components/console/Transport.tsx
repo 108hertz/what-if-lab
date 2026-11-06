@@ -5,14 +5,12 @@ import { Icon } from "../ui/Icon";
 import { FullscreenButton } from "./fullscreen";
 import { ExportButton } from "./export/ExportDialog";
 
-export default function Transport({ engine, onChange, fullscreen }: { engine: SimEngine; onChange: () => void; fullscreen?: { on: boolean; toggle: () => void } }) {
+/** Play, speed, Reset everything, export and full screen. `onReset` lets a world clear its own view state too. */
+export default function Transport({ engine, onChange, fullscreen, onReset }: { engine: SimEngine; onChange: () => void; fullscreen?: { on: boolean; toggle: () => void }; onReset?: () => void }) {
   const act = (fn: () => void) => () => { fn(); onChange(); };
   const speeds = engine.sb.speeds;
-  const stack = !!engine.sb.stack;
-  const close = stack ? "Undo all changes" : "Close what-if";
   return (
-    // "tight": with a what-if open (Close + Export on the row), narrow screens take Play/Pause to icon-only to keep one row
-    <div className={engine.alt ? "transport tight" : "transport"}>
+    <div className="transport">
       <button className="btn primary" aria-label={engine.playing ? "Pause" : "Play"} onClick={act(() => (engine.playing = !engine.playing))}>
         <Icon name={engine.playing ? "pause" : "play"} />
         <span className="primary-text">{engine.playing ? "Pause" : "Play"}</span>
@@ -33,9 +31,9 @@ export default function Transport({ engine, onChange, fullscreen }: { engine: Si
           ))}
         </div>
       )}
-      <button className="btn" aria-label="Restart" title="Restart" onClick={act(() => engine.restart())}><Icon name="restart" size={18} /><span className="btn-text">Restart</span></button>
-      {engine.alt && <button className="btn" aria-label={close} title={close} onClick={act(() => engine.dropFork())}><Icon name="close" size={18} /><span className="btn-text">{close}</span></button>}
-      <span className="hint">{engine.sb.hint ?? (fullscreen?.on ? "Leave full screen to ask a what-if." : stack ? "Pick changes. They add up in this world." : "Pick a question. The world splits here.")}</span>
+      {/* Reset everything (change 0024): default settings, no changes, time 0 — a clean start to test a process */}
+      <button className="btn" aria-label="Reset everything" title="Reset everything: settings, changes and time" onClick={act(() => { engine.reset(); onReset?.(); })}><Icon name="reset" size={18} /><span className="btn-text">Reset</span></button>
+      <span className="hint">{engine.sb.hint ?? (fullscreen?.on ? "Leave full screen to make a change." : "Pick changes. They add up; tick them off to compare.")}</span>
       <ExportButton engine={engine} />
       {fullscreen && <FullscreenButton {...fullscreen} />}
     </div>

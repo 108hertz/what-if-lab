@@ -6,7 +6,7 @@
 import { FPS, Replay, clipFrames, clipPhase, keyMoments } from "@/lib/export/replay";
 import type { Analysis, Scrubber } from "@/lib/export/scrub";
 import {
-  EXPORT_SCALE, SLIDE_SIZE, drawChartStill, drawStageStill, drawVideoFrame, paint,
+  EXPORT_SCALE, SLIDE_SIZE, drawChartStill, drawStageStill, drawVideoFrame, paint, resolveSplit,
   slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
 } from "@/lib/export/frame";
 import { FONT_FAMILIES, SIZES, type ExportStyle } from "@/lib/export/style";
@@ -210,7 +210,8 @@ export async function renderSlides(scrub: Scrubber, style: ExportStyle, meta: Me
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d")!;
   const shots: string[] = [];
-  const base = (index: number): SlideCtx => ({ world: meta.world, intro: meta.intro, plan, summary, samples: a.samples, index, total });
+  const split = resolveSplit(style.layout.split, 480, 400);
+  const base = (index: number): SlideCtx => ({ world: meta.world, intro: meta.intro, plan, summary, samples: a.samples, index, total, split });
   const shoot = (draw: () => void) => {
     ctx.setTransform(EXPORT_SCALE, 0, 0, EXPORT_SCALE, 0, 0);
     paint(style, draw);

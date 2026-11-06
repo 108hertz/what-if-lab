@@ -7,7 +7,7 @@
   `components/console/export/` (studio, preview, controls, fonts, MediaRecorder, fflate, jsPDF, saved styles),
   `components/console/Transport.tsx`, `lib/sim/engine.ts` (`origin`)
 - **Changes:** [0020](../changes/0020-accounts-premium-exports.md) (first exports),
-  [0022](../changes/0022-export-studio.md) (the studio)
+  [0022](../changes/0022-export-studio.md) (the studio), [0024](../changes/0024-one-world-tick-changes-reset.md) (side by side only here)
 - **Decision:** [ADR 0008](../decisions/0008-accounts-and-billing-clerk.md)
 
 ## What it is
@@ -36,6 +36,11 @@ exist (revenue). Creators get raw pieces in their own style; teachers get pictur
 - **Output tab:** *Video* (MP4 where the browser offers it, else WebM; 30 fps; 10 Mbit/s), *Pictures* (PNG zip),
   *Text* (zip of three files) or *Slides* (PDF). Sizes for video and pictures: Phone 1080×1920, YouTube
   1920×1080, Square 1080×1080, Portrait 1080×1350. *Clean video* leaves out all text (stage only).
+  **Worlds** (video, pictures, slides; change 0024): *Changed only* (default) or *No change | with changes* —
+  the no-change world on one side and the changed world on the other (side by side in wide frames, one above the
+  other in tall ones; the Look tab picks it exactly). The live stage never splits, so this is the only place the
+  two worlds appear next to each other. Both are drawn with the world's own `draw()` from the same deterministic
+  replay, so the layout never changes the run. Slides follow the same choice.
   With *Text* chosen, the three files show here, each with *Copy* and *Download*.
 - **Text tab:** nine layers, each can be shown or hidden: Brand, World and seed, What-if line, Key numbers,
   Opening title, Result card and three of your own. Per layer: words (with insertable `{whatif}` `{world}`
@@ -49,13 +54,13 @@ exist (revenue). Creators get raw pieces in their own style; teachers get pictur
   chart lines, stage background, text on the stage, stage frame, stage labels). The world colours also reach
   inside the picture: worlds draw with the shared stage palette, which is swapped only while an export frame is
   drawn. Fonts for titles and body: Barlow, Barlow Condensed, JetBrains Mono (the site's own), Playfair
-  Display, Nunito, Roboto Slab, Caveat, Anton (self-hosted, loaded only when the studio opens). Worlds: auto,
-  side by side, stacked, what-if only, no change only. Stage: framed, full frame, small. Chart under the stage.
+  Display, Nunito, Roboto Slab, Caveat, Anton (self-hosted, loaded only when the studio opens). Worlds: changed only
+  (default), both · fit (side by side in wide frames, stacked in tall ones), side by side, stacked, no change only. Stage: framed, full frame, small. Chart under the stage.
   Picture: brightness, contrast, colour strength, shift colours (where the browser supports canvas filters),
   warm or cool and dark edges (everywhere).
 - **Timing tab:** which part of the fork (start and end on a bar from the fork to three times past now, with
   "now" and the moments only one world had marked), running time 3–60 s or *pick for me* (6–20 s, as before),
-  opening title 0–5 s, result 0–8 s, and *slow down where the worlds split* (those moments play at about half
+  opening title 0–5 s, result 0–8 s, and *slow down where the worlds differ* (those moments play at about half
   speed). The whole clip's length shows underneath.
 - **My styles:** save the current style under a name (kept in this browser), load or delete saved ones, copy a
   style as text and paste it on another device, or reset to the default. The last style used comes back next time.

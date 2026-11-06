@@ -185,7 +185,6 @@ let glowA: Surf | null = null, glowB: Surf | null = null;
 export const galaxy: Sandbox<W, P> = {
   ...meta,
   intro: "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
-  stack: true,
   controls: [
     { type: "heading", label: "Starting world" },
     { type: "range", id: "stars", label: "Stars per galaxy", min: 300, max: 1500, step: 100, val: 900 },

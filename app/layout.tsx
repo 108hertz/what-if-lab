@@ -10,7 +10,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["500"], display: "swa
 
 export const metadata: Metadata = {
   title: "What-If Lab",
-  description: "Zoom from a proton to the observable universe, open a world, fork it with a what-if and watch both futures run side by side.",
+  description: "Zoom from a proton to the observable universe, open a world, change it with what-ifs and compare its future with the world left as it was.",
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0a0e13" };

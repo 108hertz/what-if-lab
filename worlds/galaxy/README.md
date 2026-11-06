@@ -46,9 +46,9 @@ passage (`Core.pt`), and merged cores flare (`Core.mt`). Pausing freezes all of 
 - What if a giant black hole sat at our centre?
 - What happens when a whole group of galaxies falls together, or a small one hits us dead centre?
 
-**Changes add up** (`stack: true`, change 0015): one world on the stage; every what-if is applied to the
+**Changes add up** (change 0015; every change can be ticked off and on in "Your changes", change 0024): one world on the stage; every what-if is applied to the
 same changed world (a black hole *and* two more galaxies, say), with the what-if settings read at each
-pick. The no-change world runs hidden for the chart, readouts and timeline; "Undo all changes" returns
+pick. The no-change world runs hidden for the chart, readouts and timeline; "Clear the list" returns
 to it.
 
 ## What "excellent" means here

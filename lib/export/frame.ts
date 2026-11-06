@@ -211,7 +211,9 @@ export interface StageOpts {
 
 /**
  * The stage: each world drawn by its sandbox in its own clipped rect, graded, with the stage's HUD chips and the
- * dashed seam. `split` picks side by side ("row"), one above the other ("column") or a single world.
+ * dashed seam. `split` picks the changed world only ("alt", the default since change 0024), the no-change world only
+ * ("base"), or both: side by side ("row", no change left) or one above the other ("column", no change on top). The live
+ * stage is never split; this is the only place the two worlds are drawn next to each other.
  */
 export function drawStage(ctx: CanvasRenderingContext2D, r: Replay, x: number, y: number, w: number, h: number, split: Exclude<Split, "auto">, opts: StageOpts = {}) {
   const sb = r.plan.sb;
@@ -222,7 +224,7 @@ export function drawStage(ctx: CanvasRenderingContext2D, r: Replay, x: number, y
   type Pane = { x: number; y: number; w: number; h: number; world: Replay["base"]; alt: boolean };
   const g = 6;
   let panes: Pane[];
-  if (sb.stack || !r.alt || split === "alt") panes = [{ x, y, w, h, world: r.alt ?? r.base, alt: !!r.alt }];
+  if (!r.alt || split === "alt") panes = [{ x, y, w, h, world: r.alt ?? r.base, alt: !!r.alt }];
   else if (split === "base") panes = [{ x, y, w, h, world: r.base, alt: false }];
   else if (split === "row") panes = [{ x, y, w: (w - g) / 2, h, world: r.base, alt: false }, { x: x + (w + g) / 2, y, w: (w - g) / 2, h, world: r.alt, alt: true }];
   else panes = [{ x, y, w, h: (h - g) / 2, world: r.base, alt: false }, { x, y: y + (h + g) / 2, w, h: (h - g) / 2, world: r.alt, alt: true }];
@@ -232,7 +234,7 @@ export function drawStage(ctx: CanvasRenderingContext2D, r: Replay, x: number, y
     ctx.save();
     ctx.translate(p.x, p.y);
     ctx.beginPath(); ctx.rect(0, 0, p.w, p.h); ctx.clip();
-    const dc = { w: p.w, h: p.h, p: r.params, isAlt: p.alt, ui: r.ui, base: p.alt && sb.stack ? r.base : undefined };
+    const dc = { w: p.w, h: p.h, p: r.params, isAlt: p.alt, ui: r.ui, base: p.alt ? r.base : undefined };
     const scale = ctx.getTransform().a || 1;
     const off = filter && gradeSupported() ? offscreen(Math.max(1, Math.ceil(p.w * scale)), Math.max(1, Math.ceil(p.h * scale))) : null;
     if (off) {
@@ -285,7 +287,7 @@ export function drawChart(ctx: CanvasRenderingContext2D, samples: ReplaySample[]
     return right - tw - 40;
   };
   let right = lx;
-  if (plan.hasWhatIf) right = leg(plan.sb.stack ? "WITH CHANGES" : "WHAT IF", C.alt, [7, 4], right);
+  if (plan.hasWhatIf) right = leg("WITH CHANGES", C.alt, [7, 4], right);
   leg("NO CHANGE", C.base, [], right);
   const T = y + 22, B = y + h - 18;
   if (!all.length) { text(ctx, "No data for this metric yet", x, T + 20, 14, C.ink2); return; }
@@ -394,7 +396,7 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
   };
   const pair = (smp: ReplaySample): Row => ({
     k: "pair", px: l.size, base: fmtMetric(m, smp.base[m.k]), alt: smp.alt ? fmtMetric(m, smp.alt[m.k]) : null,
-    altLabel: plan.sb.stack ? "WITH CHANGES" : "WHAT IF", font: fontStr(l.size, weight === 400 ? 500 : weight, F.num),
+    altLabel: "WITH CHANGES", font: fontStr(l.size, weight === 400 ? 500 : weight, F.num),
   });
   const main = fontStr(l.size, weight, fam);
   if (id === "metric") {
@@ -466,8 +468,10 @@ export function layerAlpha(l: Layer, plan: ReplayPlan, frame: number): number {
   return 1;
 }
 
-const splitFor = (style: ExportStyle, w: number, h: number): Exclude<Split, "auto"> =>
-  style.layout.split === "auto" ? (w >= h * 1.2 ? "row" : "column") : style.layout.split;
+/** The worlds layout for a box: "auto" puts the two worlds side by side in wide boxes and one above the other in tall ones. */
+export const resolveSplit = (split: Split, w: number, h: number): Exclude<Split, "auto"> =>
+  split === "auto" ? (w >= h * 1.2 ? "row" : "column") : split;
+const splitFor = (style: ExportStyle, w: number, h: number) => resolveSplit(style.layout.split, w, h);
 
 /**
  * One video frame (call inside `paint`). `frame` counts from 0 over the title hold + run + result hold; the
@@ -545,6 +549,8 @@ export interface SlideCtx {
   samples: ReplaySample[];
   index: number;
   total: number;
+  /** Which worlds the slide stage shows (change 0024): the changed world only (default), or both. */
+  split?: Exclude<Split, "auto">;
 }
 
 function slideChrome(ctx: CanvasRenderingContext2D, s: SlideCtx) {
@@ -561,7 +567,7 @@ const STAGE_BOX: [number, number, number, number] = [440, 64, 480, 400];
 
 export function slideTitle(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay) {
   slideChrome(ctx, s);
-  drawStage(ctx, r, ...STAGE_BOX, "column");
+  drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
   ctx.font = fontStr(51, 600, F.title); ctx.fillStyle = C.ink;
   ctx.fillText(clip(ctx, s.world.toUpperCase(), 380), 40, 150);
   lines(ctx, headline(s.plan, s.world), 40, 210, 360, 29, 1.09, C.ink, 400, 5);
@@ -570,7 +576,7 @@ export function slideTitle(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay
 
 export function slideSetup(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay) {
   slideChrome(ctx, s);
-  drawStage(ctx, r, ...STAGE_BOX, "column");
+  drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
   text(ctx, "THE SETUP", 40, 96, 18, C.ink, 500);
   let y = 124 + lines(ctx, s.intro, 40, 124, 360, 15, 1.45, C.ink, 400, 6) + 12;
   const ctls = s.plan.sb.controls.filter((c): c is Exclude<Control, { type: "heading" }> => c.type !== "heading");
@@ -588,9 +594,9 @@ export function slideSetup(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay
 
 export function slideWhatIf(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay) {
   slideChrome(ctx, s);
-  drawStage(ctx, r, ...STAGE_BOX, "column");
+  drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
   const sb = s.plan.sb;
-  text(ctx, s.plan.hasWhatIf ? (sb.stack ? "THE CHANGES" : "THE WHAT-IF") : "NO WHAT-IF YET", 40, 96, 18, C.ink, 500);
+  text(ctx, s.plan.hasWhatIf ? "THE CHANGES" : "NO WHAT-IF YET", 40, 96, 18, C.ink, 500);
   let y = 140 + lines(ctx, headline(s.plan, s.world), 40, 140, 360, 29, 1.09, C.alt, 400, 5) + 16;
   if (s.plan.changes.length > 1) {
     for (const c of s.plan.changes.slice(0, 6)) {
@@ -608,7 +614,7 @@ export function slideWhatIf(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
 
 export function slideMoment(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay) {
   slideChrome(ctx, s);
-  drawStage(ctx, r, ...STAGE_BOX, "column");
+  drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
   const sb = s.plan.sb, t = r.base.t;
   text(ctx, `AT ${sb.fmtT(t).toUpperCase()}`, 40, 96, 18, C.ink, 500);
   const span = Math.max(1e-9, s.plan.t1 - s.plan.t0);
@@ -622,7 +628,7 @@ export function slideMoment(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
     if (e.who === "alt") { ctx.fillStyle = C.alt; ctx.fill(); }
     else if (e.who === "both") { ctx.strokeStyle = C.ink; ctx.stroke(); ctx.beginPath(); ctx.arc(46, y - 5, 4, Math.PI / 2, Math.PI * 1.5); ctx.fillStyle = C.ink; ctx.fill(); }
     else { ctx.strokeStyle = C.base; ctx.stroke(); }
-    const who = e.who === "alt" ? (sb.stack ? "With changes" : "What-if only") : e.who === "base" ? "No change only" : "Both worlds";
+    const who = e.who === "alt" ? "With changes only" : e.who === "base" ? "No change only" : "Both worlds";
     text(ctx, `${sb.fmtT(e.t)} · ${who}`.toUpperCase(), 60, y, 10, C.ink2, 500);
     y += 18 + lines(ctx, e.txt, 60, y + 18, 340, 14, 1.3, C.ink, 400, 2) + 6;
   }
@@ -639,7 +645,7 @@ export function slideOutcome(ctx: CanvasRenderingContext2D, s: SlideCtx) {
   let y = 160;
   text(ctx, "METRIC", Lx, y, 10, C.ink2, 500);
   text(ctx, "NO CHANGE", NC, y, 10, C.ink2, 500, "right");
-  if (end.alt) text(ctx, sb.stack ? "WITH CHANGES" : "WHAT IF", WI, y, 10, C.ink2, 500, "right");
+  if (end.alt) text(ctx, "WITH CHANGES", WI, y, 10, C.ink2, 500, "right");
   y += 10;
   for (const m of sb.metrics.slice(0, 10)) {
     dashed(ctx, Lx, y, WI, y);

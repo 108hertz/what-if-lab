@@ -50,7 +50,6 @@ export const solar: Sandbox<W, P> = {
   ...meta,
   intro: "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
   hint: "Drag to throw a planet. Changes add up.",
-  stack: true,
   controls: [
     { type: "range", id: "sunm", label: "Sun mass", min: 0.5, max: 2, step: 0.05, val: 1, unit: "× Sun" },
     { type: "select", id: "view", label: "View", live: true, options: [["inner", "Inner planets"], ["mid", "Out to Jupiter"], ["outer", "Whole system"]], val: "inner" },
@@ -163,7 +162,7 @@ export const solar: Sandbox<W, P> = {
       return "habitable";
     };
     const rows: InfoRow[] = [{ label: "Earth now", text: status(base) }];
-    if (alt) rows.push({ label: "In the what-if", text: status(alt), color: "var(--alt)" });
+    if (alt) rows.push({ label: "With changes", text: status(alt), color: "var(--alt)" });
     return [{ rows }];
   },
 

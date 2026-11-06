@@ -87,7 +87,7 @@ export function planReplay(engine: SimEngine, opts: PlanOpts = {}): ReplayPlan {
   let tMax = tFork + (tAuto - tFork) * AHEAD;
   if (sb.maxT != null) { tAuto = Math.min(tAuto, sb.maxT); tMax = Math.min(tMax, sb.maxT); }
   tAuto = Math.max(tAuto, tFork); tMax = Math.max(tMax, tAuto);
-  const prefix = sb.stack ? "Changed: " : "What if: ";
+  const prefix = "Changed: ";
   const base: ReplayPlan = {
     sb, seed: engine.seed, start, startAlt: !fromFork && engine.alt ? clone(engine.alt) : null,
     params: { ...engine.params }, ui: clone(engine.ui), changes: fromFork ? o!.changes.map(clone) : [], fromFork,

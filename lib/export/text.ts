@@ -25,7 +25,7 @@ export function videoTime(plan: ReplayPlan, map: Int32Array, t: number): number 
 }
 
 const who = (plan: ReplayPlan, e: TimelineItem) =>
-  e.who === "alt" ? (plan.sb.stack ? "With changes" : "What-if only") : e.who === "base" ? "No change only" : "Both worlds";
+  e.who === "alt" ? "With changes only" : e.who === "base" ? "No change only" : "Both worlds";
 
 /** Events inside the shown part, what-if-only and no-change-only first, at most `max`, in time order. */
 export function shownEvents(plan: ReplayPlan, events: TimelineItem[], max = 12): TimelineItem[] {
@@ -44,7 +44,7 @@ function srtTime(s: number): string {
 export function resultLine(plan: ReplayPlan, summary: ReplaySummary): string {
   const m = summary.metric, end = summary.end;
   const parts = [`${m.label} at ${plan.sb.fmtT(end.t)}: no change ${fmtMetric(m, end.base[m.k])}`];
-  if (end.alt) parts[0] += `, ${plan.sb.stack ? "with changes" : "what if"} ${fmtMetric(m, end.alt[m.k])}`;
+  if (end.alt) parts[0] += `, with changes ${fmtMetric(m, end.alt[m.k])}`;
   const d = describeDiff(m, end);
   return parts[0] + "." + (d ? ` ${d.txt}.` : "");
 }
@@ -71,7 +71,7 @@ export function toCaption(x: TextInput): string {
   const { plan, summary } = x;
   const q = plan.label ? plan.label.replace(/^(What if|Changed):\s*/i, "") : "";
   const first = plan.label
-    ? (plan.sb.stack ? `${x.world}, changed: ${q}.` : `What if ${q.replace(/^./, (c) => c.toLowerCase()).replace(/[?.]?$/, "?")}`)
+    ? `${x.world}, changed: ${q}.`
     : `${x.world}: what happens next?`;
   return [
     first,
@@ -97,7 +97,7 @@ export function toStory(x: TextInput): string {
     for (const c of ctls) out.push(`| ${cell(c.label)} | ${cell(controlValue(c, plan.params[c.id]))} |`);
     out.push("");
   }
-  out.push(sb.stack ? "## The changes" : "## The what-if", "");
+  out.push("## The changes", "");
   if (!plan.hasWhatIf) out.push("No what-if: this is the world as it is.");
   else if (plan.changes.length) for (const c of plan.changes) out.push(`- ${sb.fmtT(c.t)}: ${sb.whatifs.find((w) => w[0] === c.id)?.[1] ?? c.id}`);
   else out.push(`- ${plan.label}`);
@@ -107,7 +107,7 @@ export function toStory(x: TextInput): string {
   if (!evs.length) out.push("Nothing new happened in this stretch.");
   for (const e of evs) out.push(`- **${sb.fmtT(e.t)}** (${who(plan, e).toLowerCase()}): ${e.txt}`);
   out.push("", `## What changed by ${sb.fmtT(end.t)}`, "");
-  out.push(end.alt ? `| Number | No change | ${sb.stack ? "With changes" : "What if"} |` : "| Number | No change |", end.alt ? "| --- | --- | --- |" : "| --- | --- |");
+  out.push(end.alt ? `| Number | No change | With changes |` : "| Number | No change |", end.alt ? "| --- | --- | --- |" : "| --- | --- |");
   for (const m of sb.metrics) out.push(`| ${cell(m.label)} | ${cell(fmtMetric(m, end.base[m.k]))} |${end.alt ? ` ${cell(fmtMetric(m, end.alt[m.k]))} |` : ""}`);
   out.push("", resultLine(plan, summary), "");
   return out.join("\n");

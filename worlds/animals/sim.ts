@@ -13,7 +13,7 @@ import { drawAnimals, type View } from "./scene";
  *
  * Stabilisers keep long runs alive: cover patches where prey are safe, each hunter's numbers capped by the prey it can
  * eat, ~30 % hunt success per lunge, and recolonisation by a wandering pair when a species died out (unless a change
- * removed it). Changes stack (`stack: true`): every click adds to `w.mods`, and every rule reads them all.
+ * removed it). Changes stack: every click adds to `w.mods`, and every rule reads them all.
  */
 export type P = {
   world?: string; from?: string; cast?: string; species?: string;
@@ -387,7 +387,6 @@ const metricsFor = (k: string, label: string, unit: string, d: number) =>
 
 export const animals: Sandbox<W, P> = {
   ...meta,
-  stack: true,
   intro: "Up to five kinds of animal share one place. Each animal is a little different; the ones that fit best have more babies, so bodies change over time. Pick a world or build your own, then make changes: they add up.",
   hint: "Each animal is a little different. The ones that fit best have more babies. Press play and pick a change.",
   controls: [

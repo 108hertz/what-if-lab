@@ -9,7 +9,7 @@ import { drawCountry, type Figure, type Look, type Tally } from "./scene";
  * - Aggregate economy: income growth, population, jobs, lifespan and peace from simple rules.
  * - 260 household agents earn by skill (if they have a job), pay tax, lose income to corruption, get help
  *   from the shared pool, and trade. Poverty, the rich–poor gap and family income emerge from them.
- * - Policies stack (`stack: true`): every click adds a modifier to `w.mods`, and every rule reads them all.
+ * - Policies stack: every click adds a modifier to `w.mods`, and every rule reads them all.
  */
 type P = {
   preset: string; from?: string; gdp: number; pop: number; popg: number; edu: number; life: number; corr: number; res: number;
@@ -288,7 +288,6 @@ function people(w: W): { figs: Figure[]; tally: Tally } {
 
 export const country: Sandbox<W, P> = {
   ...meta,
-  stack: true,
   intro: "A street in the country, and the same country as 100 people from poorest to richest. Pick a country, then make changes: they add up.",
   controls: [
     { type: "select", id: "preset", label: "Country", options: COUNTRY_OPTIONS, groups: COUNTRY_GROUPS, val: "dk" },

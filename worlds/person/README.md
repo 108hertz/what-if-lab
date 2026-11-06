@@ -19,6 +19,10 @@ Self-improvement readers asking whether a habit would stick and what it would ch
 
 100 parallel versions of one person; daily quit hazard high early, falling after ~66 days for good habits. Habit effects in `data.ts`.
 
+Habits stack (change 0024): every pick adds a habit to `w.hs`; each version keeps or drops each one on its own and the
+effects add up ("Still doing it" is the average over the habits). Picking a habit that is already going starts it again
+for everyone. Any habit can be ticked off and on again in "Your changes".
+
 ## Questions it should answer best
 
 - What if I exercised 30 minutes a day?

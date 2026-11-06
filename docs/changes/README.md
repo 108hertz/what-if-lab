@@ -27,3 +27,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0021](./0021-sentence-topbar.md) | The topbar reads as a sentence: "what if… [world]" | 1 | shipped |
 | [0022](./0022-export-studio.md) | Export studio: video, text and images with your own text, fonts, colours and length | 3 | shipped |
 | [0023](./0023-control-room-design-system.md) | "Control Room": a simulator look replaces Darkroom (palette, fonts, components) | 1 | shipped |
+| [0024](./0024-one-world-tick-changes-reset.md) | One world on the stage, every change on a tick list, Reset everything; side by side only in exports | 1 · 3 | shipped |

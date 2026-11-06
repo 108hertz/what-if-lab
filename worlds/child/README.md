@@ -10,7 +10,7 @@ here; it may use the shared tokens (`app/globals.css`), primitives (`components/
 | `model.ts` | The maths shared by the rules, stage and chart: kid values, the four parts, ripples / buffers / combos (`refresh`, `rippleAt`), yearly snapshots and past values, contributions ("What mattered"), everyday counts, typical kid, "why they differ". |
 | `data.ts` | Plain-word traits and glossary, ready-made families, home and family options, the 38 changes (length, stop line, youngest age), ripples, buffers, sensitive ages, combos, everyday events and behaviours, milestones, names, settings. |
 | `scene/` | The stage (change 0019): `stage.ts` (one child: room, family, props, meters; or the crowd), `rooms.ts` (a room per part of life, cached), `people.ts` (characters, glyphs), `props.ts` (things from changes), `crowd.ts` (all 120 kids), `motion.ts` (draw-only clock, springs). |
-| `edit.ts` | Undo, stop or move one change on the engine, keeping history and the export recipe honest (change 0019). |
+| `edit.ts` | Undo, stop or move one change through the engine (`remove` / `edit`, change 0024): exact replays, history and export recipe kept (change 0019). |
 | `Chart.tsx` | Four views — Now, Growing up (small multiples), Every day (out of 100), What mattered (per change) — each with one sentence. |
 | `parts.tsx` | Family picker, parent cards, home, grouped changes, life ruler, story, meet the child, why they differ, glossary, science, Tune, filtered timeline. |
 | `Console.tsx` | This world's screen, copied from `StandardConsole`. Keeps its ad slots (ADR 0007). |

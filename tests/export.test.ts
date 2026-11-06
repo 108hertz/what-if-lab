@@ -5,9 +5,10 @@ import { defaultParams } from "@/lib/sim/core";
 import { SimEngine } from "@/lib/sim/engine";
 import { FPS, MAX_RUN_S, MIN_RUN_S, SUB, Replay, clipFrames, keyMoments, planReplay, runToEnd } from "@/lib/export/replay";
 import {
-  drawChartStill, drawStageStill, drawVideoFrame, paint, slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
+  drawChartStill, drawStage, drawStageStill, drawVideoFrame, paint, slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
 } from "@/lib/export/frame";
-import { SIZES, SIZE_IDS, defaultStyle, withTheme } from "@/lib/export/style";
+import { SIZES, SIZE_IDS, defaultStyle, parseStyle, withTheme } from "@/lib/export/style";
+import type { AnySandbox } from "@/lib/sim/types";
 import { Scrubber } from "@/lib/export/scrub";
 import { exportName } from "@/components/console/export/render";
 
@@ -46,7 +47,7 @@ function forkedEngine(key: (typeof SANDBOX_KEYS)[number]) {
   run(e, 90);
   e.change(sb.whatifs[0][0]);
   run(e, 60);
-  if (sb.stack && sb.whatifs[1]) { e.change(sb.whatifs[1][0]); run(e, 60); }
+  if (sb.whatifs[1]) { e.change(sb.whatifs[1][0]); run(e, 60); }
   return e;
 }
 
@@ -128,6 +129,62 @@ describe.each(SANDBOX_KEYS)("%s export", (key) => {
       slideMoment(ctx, s(4), r);
       slideOutcome(ctx, s(8));
     });
+  });
+});
+
+describe.each(SANDBOX_KEYS)("%s export: changed only or side by side (change 0024)", (key) => {
+  const sb = SANDBOXES[key];
+  /** The world with a draw() that records which world each pane gets. */
+  const spied = () => {
+    const calls: { alt: boolean; base: boolean; w: number }[] = [];
+    const spy: AnySandbox = { ...sb, draw: (c, w) => { calls.push({ alt: c.isAlt, base: !!c.base, w: c.w }); void w; } };
+    const e = new SimEngine(spy, defaultParams(sb));
+    run(e, 90);
+    e.change(sb.whatifs[0][0]);
+    run(e, 60);
+    return { e, calls };
+  };
+
+  it("draws the changed world only by default, and both worlds side by side when asked", () => {
+    const { e, calls } = spied();
+    expect(defaultStyle().layout.split).toBe("alt");
+    expect(parseStyle({ v: 1 })!.layout.split).toBe("alt");
+    const plan = planReplay(e);
+    const scrub = new Scrubber(plan);
+    const a = scrub.finish();
+    const ctx = fakeCtx();
+    const r = scrub.at(clipFrames(plan) - 1);
+    const at = (split: "alt" | "row" | "column" | "base") => { calls.length = 0; drawStage(ctx, r, 0, 0, 1200, 600, split); return calls.map((c) => [c.alt, c.base, c.w]); };
+    expect(at("alt")).toEqual([[true, true, 1200]]);
+    expect(at("row")).toEqual([[false, false, 597], [true, true, 597]]);
+    expect(at("column")).toEqual([[false, false, 1200], [true, true, 1200]]);
+    expect(at("base")).toEqual([[false, false, 1200]]);
+    // Through a whole video frame and a still: default = one pane, side by side = two
+    const info = { world: sb.name, summary: a.summary, samples: a.samples };
+    calls.length = 0;
+    paint(defaultStyle(), () => drawVideoFrame(ctx, defaultStyle(), r, info, plan.intro + 1));
+    expect(calls).toHaveLength(1);
+    const both = { ...defaultStyle(), layout: { ...defaultStyle().layout, split: "row" as const } };
+    calls.length = 0;
+    paint(both, () => { drawVideoFrame(ctx, both, r, info, plan.intro + 1); drawStageStill(ctx, both, r); });
+    expect(calls.map((c) => c.alt)).toEqual([false, true, false, true]);
+    // Slides follow the same choice
+    const s = (split?: "row"): SlideCtx => ({ world: sb.name, intro: sb.intro, plan, summary: a.summary, samples: a.samples, index: 1, total: 8, split });
+    calls.length = 0; slideTitle(ctx, s(), r); expect(calls).toHaveLength(1);
+    calls.length = 0; slideTitle(ctx, s("row"), r); expect(calls.map((c) => c.alt)).toEqual([false, true]);
+  });
+
+  it("the layout never changes the simulation", () => {
+    const { e } = spied();
+    const plan = planReplay(e);
+    const plain = runToEnd(plan).summary;
+    const scrub = new Scrubber(plan);
+    const ctx = fakeCtx();
+    const both = { ...defaultStyle(), layout: { ...defaultStyle().layout, split: "row" as const } };
+    for (let f = 0; f < clipFrames(plan); f += 7) paint(both, () => drawStageStill(ctx, both, scrub.at(f)));
+    const a = scrub.finish();
+    expect(a.summary.end).toEqual(plain.end);
+    expect(a.summary.events).toEqual(plain.events);
   });
 });
 

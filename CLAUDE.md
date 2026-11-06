@@ -2,8 +2,9 @@
 
 A semi-simulator for "what happens if…" experiments. Home screen is a Scale-of-the-Universe style zoom
 (proton → observable universe). Objects with a sandbox open a live world. A **what-if forks the running
-world at that moment**; the unchanged world and the what-if run side by side, with a chart and timeline
-showing where they diverge. No AI, no network data: everything is rule-based and deterministic.
+world at that moment**; the stage shows one world (the changed one) while the unchanged world runs hidden
+alongside, with a chart and timeline showing where they diverge. Every change can be ticked off/on; Reset
+starts clean; side by side exists only in exports (change 0024). No AI, no network data: everything is rule-based and deterministic.
 
 Inspirations: scaleofuniverse.com (zoom), Universe Sandbox (gravity), Primer (blob agent sims).
 
@@ -49,7 +50,7 @@ components/
   account/                useAccount() adapter: state.ts (pure rules), context.tsx (provider), clerk.tsx (the only Clerk import,
                           lazy), AccountMenu, PremiumDialog. No key ⇒ everything free, as before
   console/                shared world-console blocks: StandardConsole, Stage (+ StageInteraction), Transport,
-                          HistoryChart, Timeline, panels, ControlsForm, Dock, AdSlot (null for Premium), engines (singletons +
+                          HistoryChart, Timeline, panels, Changes (tick list), ControlsForm, Dock, AdSlot (null for Premium), engines (singletons +
                           useWorldEngine), export/ (Premium export studio: preview, controls, fonts, MediaRecorder, fflate, jsPDF)
   scale/                  ScaleConsole (the / page), ScalePanel, ScaleTransport
   ui/                     primitives: Icon, useMedia, canvas (fitCanvas, useCanvasLoop)
@@ -66,7 +67,8 @@ lib/sim/                  framework-free engine shared by all worlds (no React)
   types.ts                Sandbox interface, BaseWorld, WorldMeta, Control, Metric…
   core.ts                 seeded RNG (rng/gauss), note(), mix(), defaultParams, formatters
   draw.ts                 blob() creature drawing, chip(), FONT
-  engine.ts               SimEngine: base/alt worlds, fork, history, timeline merge, split-stage drawing, `origin` (replay recipe)
+  engine.ts               SimEngine: base/alt worlds, change entries (tick on/off, remove, edit = exact replay from a step
+                          log), reset, history, timeline merge, one-world stage drawing, `origin` (replay recipe)
 lib/export/               deterministic replay of a fork (+ trim/length), scrubber, export style (JSON), video frames, stills,
                           slides and text files drawn with each sandbox's draw(); styles never reach the sim (change 0022)
 lib/scale/                scale explorer objects + renderer
@@ -95,7 +97,7 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 - `init(p, seed)` → world. **World must be plain data** (`structuredClone`-able: numbers, arrays,
   typed arrays, plain objects; no functions, no class instances, no Maps).
 - `step(w, dt, p)` advances by `dt` sim units. Use internal sub-steps for stability.
-- `apply(w, id, p, ui)` applies a what-if to a freshly cloned world. Log it with `note()`.
+- `apply(w, id, p, ui)` applies a what-if to the changed world (which may already hold other changes). Log it with `note()`.
 - `read(w, p)` → `{metricKey: number | null}`; must be finite or `null`.
 - `draw({ctx, w, h, p, isAlt, ui}, world)` draws into a clipped rect at (0,0). No React, no DOM.
 - Optional: `info()` structured side-panel blocks, `onParamChange()` (e.g. presets), `maxT`, `hint`, `pace()` (a live-only
@@ -105,8 +107,13 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 - **Determinism**: never use `Math.random()` in `lib/sim` or `worlds/*/sim.ts`. Use `rng(w)` / `gauss(w)` (state in `w.rs`)
   so forks and tests are reproducible. Decorative-only randomness in `draw` must be derived from index/hash.
-- **Stacking** (`Sandbox.stack`, change 0015): solar, galaxy, country, animals and child show one world; what-ifs add up via
-  `engine.change()`, so their `apply()` must work on an already-changed world. Other worlds split and re-fork.
+- **One world, stacking** (changes 0015, 0024): every world shows one world on the live stage — never split; what-ifs add up
+  via `engine.change()`, so `apply()` must work on an already-changed world. Each change is a `SimEngine.entries` row that
+  can be ticked off/on (`setOn`, `toggle`, `setAll`), removed or edited (`edit`, child's stop/move); the engine logs every
+  live step (dt + params) and replays the changed world exactly, so `draw()` must never mutate the world and `step()` must
+  depend only on (world, dt, params). `reset()` = default params, no changes, t = 0. The shared list is
+  `components/console/Changes.tsx`; every console keeps it. Side by side (no change | with changes) exists only in exports
+  (`layout.split`, default "alt" = changed only).
 - Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
   matching text and time, so keep event text stable for the same event.
 - Time units are per sandbox (`fmtT` formats them): galaxy 100 Myr, solar years, earth years, country
@@ -158,7 +165,7 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   are kept separately (`model.ts`) so "Why are these kids different?" is computed from their variances. Changes stack via
   `w.mods` (soft cap ±14 per kid, style switches ±7) and can be scheduled for a later age (`s_age`). Everyday events use
   `rng(w)` per kid and are only summed up in the timeline ("By 10, 31 of 100 kids…"). Change 0019: each change has a
-  length (`end`), can be stopped / moved / undone on its own (`edit.ts`; exact because draws never depend on changes — keep
+  length (`end`), can be stopped / moved / undone on its own (`edit.ts`, through `engine.edit` / `engine.remove` since 0024; exact because draws never depend on changes — keep
   it so: anything change-dependent uses `hash01`, never `rng(w)`), sensitive-age weights, ~100 per-kid follow-on events
   (`RIPPLES`, hash-based), buffers (`BUFFERS`: a friend, calm home, big family… soften hard changes) and combos; options
   baby temperament, family shape, time together, sensitivity; 38 changes with youngest ages. `contributions()` shares the
@@ -166,7 +173,10 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   life, the typical or picked kid as hero, meters, props, the change moment via `pace()`; "All 120 kids" as piles). The
   world owns its chart (Now, Growing up, Every day, What mattered), story, timeline and life ruler (`Chart.tsx`,
   `parts.tsx`). Tests: `tests/child.test.ts`.
-- **person**: 100 versions; daily quit hazard high early, falling after ~66 days for good habits.
+- **earth** stacking (change 0024): `w.mods` = {id, year, mix}; emission multipliers multiply, sinks/sources/aerosols add,
+  methane cuts multiply what is left, walls keep the highest.
+- **person**: 100 versions; daily quit hazard high early, falling after ~66 days for good habits. Habits stack (change
+  0024): `w.hs`, per-version `kept[i]` / `e[i]`; picking a running habit starts it again.
 
 ## Roadmap
 

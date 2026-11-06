@@ -24,7 +24,9 @@ traffic (organic search and shares), funded by side-rail ads, with optional Prem
 ## Positioning
 
 **Fork and compare is the core promise.** A what-if forks the running world at that exact moment; the
-unchanged world and the what-if run side by side, with a chart and timeline showing where they diverge.
+stage shows the changed world while the unchanged one keeps running alongside, with a chart and timeline
+showing where they diverge. Every change can be ticked off and on again, and Reset starts clean. The two
+worlds go side by side only in an export (change 0024).
 Everything is rule-based and deterministic: same params + seed + what-if + fork time ⇒ the same future on
 every device. No AI, no live or scraped data. The scale explorer brings people in; the fork is the payoff
 every surface should lead toward.

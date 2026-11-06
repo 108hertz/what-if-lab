@@ -198,6 +198,10 @@ export const TOKENS: [string, string][] = [
 
 // ——— Layout and timing ———
 
+/**
+ * Which worlds an export shows (change 0024): "alt" = changed only (default), "row" = side by side (no change | with
+ * changes), "column" = one above the other, "base" = no change only, "auto" = both, side by side or stacked by shape.
+ */
 export type Split = "auto" | "row" | "column" | "alt" | "base";
 export type StageMode = "framed" | "fill" | "small";
 
@@ -304,7 +308,7 @@ export function defaultStyle(size: SizeId = "youtube"): ExportStyle {
     grade: { ...NO_GRADE },
     fonts: { title: "condensed", body: "site" },
     layers: defaultLayers(size),
-    layout: { split: "auto", stage: "framed", chart: false, hud: true, cards: true },
+    layout: { split: "alt", stage: "framed", chart: false, hud: true, cards: true },
     timing: { ...DEFAULT_TIMING },
     clean: false,
   };
@@ -377,7 +381,7 @@ export function parseStyle(input: unknown): ExportStyle | null {
     fonts: { title: pick(f.title, FONT_IDS, d.fonts.title), body: pick(f.body, FONT_IDS, d.fonts.body) },
     layers,
     layout: {
-      split: pick(lo.split, ["auto", "row", "column", "alt", "base"] as const, "auto"),
+      split: pick(lo.split, ["auto", "row", "column", "alt", "base"] as const, "alt"),
       stage: pick(lo.stage, ["framed", "fill", "small"] as const, "framed"),
       chart: bool(lo.chart, false), hud: bool(lo.hud, true), cards: bool(lo.cards, true),
     },

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import { fmtNum } from "@/lib/sim/core";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import ChangeToggles from "@/components/console/Changes";
 import { HAB_T, MAX_CAST, READY_GROUPS, SPECIES, SPECIES_GROUPS, castString, startMax, type Habitat } from "./data";
 import { castOf, caption, counts, newcomerOf, question, story, targetOf, traits, worldName, WHATIF_GROUPS, type P as Params, type W } from "./sim";
 import { drawAnimal, reducedMotion, type Traits } from "./scene";
@@ -146,6 +147,7 @@ export function ChangeList({ engine, onChange }: P) {
   const set = (k: string, v: string) => { engine.setParam(k, v); onChange(); };
   return (
     <section className={s.changes}>
+      <ChangeToggles engine={engine} onChange={onChange} label={(e) => question(e.rec.id, w, e.rec.params as Params)} />
       <h3 className="headline">Make changes</h3>
       <p className="small hint-line">They add up. Click one again to make it stronger.</p>
       <div className={s.target}>

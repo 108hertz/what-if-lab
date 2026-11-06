@@ -16,7 +16,7 @@ function ChartNote({ engine, m }: { engine: SimEngine; m: Metric }) {
   if (alt && b != null && a != null && m.diff) {
     const d = a - b, txt = m.diff(d);
     const good = m.better && txt ? (m.better === "up" ? d > 0 : d < 0) : null;
-    gap = <>{engine.sb.stack ? "With changes" : "In the what-if"}: <span className={good == null ? undefined : good ? "good" : "bad"}>{txt || "no real difference yet"}</span>. </>;
+    gap = <>With changes: <span className={good == null ? undefined : good ? "good" : "bad"}>{txt || "no real difference yet"}</span>. </>;
   }
   return <p className="chart-note" title={m.help}>{gap}{m.help}</p>;
 }
@@ -77,7 +77,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
             <button key={x.k} aria-pressed={x === m} onClick={() => setMetric(i)}>{x.label}</button>
           ))}
         </div>
-        <div className="legend micro"><span className="ch"><i className="b" />No change</span><span className="ch a"><i />{engine.sb.stack ? "With changes" : "What if"}</span></div>
+        <div className="legend micro"><span className="ch"><i className="b" />No change</span><span className="ch a"><i />With changes</span></div>
       </div>
       <canvas ref={ref} className="chart" aria-label={`${m.label} over time`} />
       {m.help && <ChartNote engine={engine} m={m} />}

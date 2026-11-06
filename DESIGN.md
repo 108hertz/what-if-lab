@@ -176,10 +176,12 @@ It is a costume-free control room: no bezels, screws, scanlines, glow or termina
 is a standard web control. The world shows only in type, palette, density and one signature move.
 
 **The signature move: two channels.** Every world runs on a channel. `● NO CHANGE` (blue, round mark) is
-lit from the start. When a what-if forks the world, `◆ WHAT-IF` (amber, diamond) lights up. The same
-mark appears on the stage tags, the chart legend, the readout column heads and the timeline. The fork
-moment shows up in three places at once: the stage chip `FORKED AT …`, an amber marker on the chart
-with a diamond head, and an amber row pinned in the timeline ("The worlds split here: …").
+lit from the start. When the first change is made, `◆ CHANGED` (amber, diamond) lights up. The same
+mark appears on the stage tag, the chart legend, the readout column heads, the timeline and the "Your
+changes" list. The stage always shows one world (change 0024): the changed one once there is a change,
+with the no-change world running hidden for the chart, readouts and timeline. The moment of the first
+change is the amber marker on the chart with a diamond head. The two worlds appear next to each other only
+in an export the visitor asks for ("No change | with changes").
 
 **Key characteristics:**
 - Cool graphite ground with panels one tone up; the stage is darker still (both themes).
@@ -202,8 +204,9 @@ colours that only appear where the simulation speaks.
 - **No-change blue** (`--base`): the unchanged world — stage tag, solid chart line, readout column,
   hollow round timeline dot.
 - **What-if amber** (`--alt`): the forked world — stage tag, dashed chart line, fork marker, readout
-  column, filled diamond timeline dot, the armed what-if row, the pinned fork row. The what-if row is the
-  only control allowed to wear amber, because it is the control that splits the world.
+  column, filled diamond timeline dot, the armed what-if row, a change that is on in "Your changes". The
+  what-if row (and a ticked change row) is the only control allowed to wear amber, because it is the control
+  that changes the world.
 - Cool is reality, warm is what might be, always backed by a mark shape (● vs ◆), a dash pattern or a label.
 - **Gain green / loss coral** (`--good`, `--bad`): signed deltas only.
 
@@ -291,7 +294,7 @@ the what-if row's armed mark, the fork row in the timeline, and the selected seg
 
 Three radii: panels, stage, popovers and sheets 6 px; controls (buttons, inputs, segments, chips, rows)
 4 px (3 px inside a segment track); status marks round. No pills. Lines are 1 px and solid; dashes are
-reserved for meaning: the what-if chart line, the split seam on the stage, an empty ad slot.
+reserved for meaning: the what-if chart line, the split seam in a side-by-side export, an empty ad slot.
 
 Icons: the in-house set (`components/ui/Icon.tsx`), 24 px grid, 1.5 px stroke, round caps, geometric; one
 glyph per world. Always with text or an `aria-label`.
@@ -338,9 +341,13 @@ signal (`--fill` set by `ControlsForm`), a 14 × 18 ink thumb (signal on hover).
 ### Stage chrome
 - **Tags:** `channelTag()` (`lib/sim/draw.ts`): dark plate, 1 px line, 3 px corners, ●/◆ mark and a
   condensed label in the channel colour. `chip()` for other readouts (the world clock in mono).
-  `FORKED AT …` appears under the what-if tag when the pane is tall enough.
-- **Transport:** a stage-panel strip under a 1 px line, in stage colours in both themes.
-- **Split seam:** dashed line in the gap between the two worlds.
+  The stage is one pane (change 0024), labelled `CHANGED: A + B` or `NOW · PICK CHANGES TO MAKE`.
+- **Transport:** a stage-panel strip under a 1 px line, in stage colours in both themes: Play/Pause, speed,
+  Reset (everything: settings, changes, time), the hint, Export, Full screen.
+- **Your changes:** every change as a 44 px row with a signal checkbox, its label and its time (mono); on =
+  the what-if row's amber bar and soft fill, off = secondary text struck through; a remove icon button; "Turn
+  all off / on" and "Clear the list" buttons under it (`components/console/Changes.tsx`).
+- **Split seam (exports only):** dashed line in the gap between the two worlds of a side-by-side export.
 - **Scale hero:** Display, fades out on first interaction. Scale labels: condensed names, mono sizes,
   amber "OPEN WORLD →" (the "gold labels" the hint refers to).
 - **Edge label:** `WHAT-IF LAB · SEED n` in Micro down the stage's right edge at ≥ 1280.

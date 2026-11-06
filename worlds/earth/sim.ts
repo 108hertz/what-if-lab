@@ -23,14 +23,15 @@ type P = {
 };
 /** The mix settings, copied into the world at the fork so later slider moves don't change a running what-if. */
 interface Mix { em: number; yrs: number; trees: number; meth: number; dac: number; dim: number }
+/** One change and the year it was made (change 0024: changes stack, every rule reads them all). */
+interface Mod { id: string; tf: number; mx: Mix | null }
 interface W extends BaseWorld {
   C: number; M: number; T: number; S: number; prev: number;
-  mod: string | null; tf: number; maxT: number; tmax: number;
+  mods: Mod[]; maxT: number; tmax: number;
   /** Share of forest lost (Amazon what-if), 0–1. */
   fl: number;
-  /** Sea wall height, m. */
+  /** Sea wall height, m (the highest wall built). */
   wall: number;
-  mx: Mix | null;
 }
 
 const PRE_CO2 = 280, PRE_CH4 = 722;
@@ -43,15 +44,17 @@ const ln = Math.log;
 const fCO2 = (C: number) => 5.35 * ln(C / PRE_CO2);
 const fCH4 = (M: number) => 0.036 * (Math.sqrt(Math.max(M, 0)) - Math.sqrt(PRE_CH4));
 
-/** Temporary temperature offset from aerosols (volcano, sun-dimming). */
+/** Temporary temperature offset from aerosols (volcanoes, sun-dimming), summed over every change. */
 function offset(w: W, t: number, p: P): number {
-  if (!w.mod) return 0;
-  const d = t - w.tf;
-  if (d < 0) return 0;
-  if (w.mod === "volcano") return -2.5 * Math.exp(-d / 2.5);
-  if (w.mod === "geo") return d < 30 ? -Math.min(1, d / 2) : -Math.exp(-(d - 30) / 2);
-  if (w.mod === "mix" && w.mx && w.mx.dim > 0) return -((w.mx.dim / 100) * 2 * p.sens / 3.71) * Math.min(1, d / 2);
-  return 0;
+  let off = 0;
+  for (const m of w.mods) {
+    const d = t - m.tf;
+    if (d < 0) continue;
+    if (m.id === "volcano") off += -2.5 * Math.exp(-d / 2.5);
+    else if (m.id === "geo") off += d < 30 ? -Math.min(1, d / 2) : -Math.exp(-(d - 30) / 2);
+    else if (m.id === "mix" && m.mx && m.mx.dim > 0) off += -((m.mx.dim / 100) * 2 * p.sens / 3.71) * Math.min(1, d / 2);
+  }
+  return off;
 }
 const crops = (To: number, off: number) => clamp(100 - 5 * Math.max(0, To - 1.25) ** 1.6 + 25 * Math.min(0, off), 0, 130);
 const snowLine = (To: number) => SNOW0 + SNOW_PER_C * (To - T_TODAY);
@@ -149,39 +152,42 @@ export const earth: Sandbox<W, P> = {
   init(p, seed) {
     const F = fCO2(p.co2) + fCH4(p.meth) - HAZE * baseEmissions(0, p);
     const T = 0.72 * p.sens * F / 3.71;
-    return { t: 0, rs: seed, log: [], f: {}, C: p.co2, M: p.meth, T, S: 0, prev: T, mod: null, tf: 0, maxT: 0, tmax: 0, fl: 0, wall: 0, mx: null };
+    return { t: 0, rs: seed, log: [], f: {}, C: p.co2, M: p.meth, T, S: 0, prev: T, mods: [], maxT: 0, tmax: 0, fl: 0, wall: 0 };
   },
 
   step(w, dt, p) {
     const n = Math.ceil(dt / 0.25), h = dt / n, tip = p.tip !== "off";
     for (let k = 0; k < n; k++) {
-      const t = w.t, d = t - w.tf, mod = w.mod;
-      // Emissions this year
+      const t = w.t;
+      // Emissions this year: every change multiplies them (stacking, change 0024)
       const E0 = baseEmissions(t, p);
       let E = E0;
-      if (mod === "zero") E = 0;
-      if (mod === "double") E *= 1 + Math.min(1, d / 30);
-      if (mod === "ev") E *= Math.exp(-0.07 * d);
-      if (mod === "mix" && w.mx) E *= Math.max(0, 1 + (w.mx.em / 100) * Math.min(1, d / Math.max(1, w.mx.yrs)));
       // Temperature now (with short-lived aerosols) drives feedbacks
       const To0 = w.T + offset(w, t, p);
       // Extra CO₂ sources and sinks (ppm a year; 7.8 Gt CO₂ ≈ 1 ppm)
-      let extra = 0, ch4Extra = 0;
+      let extra = 0, ch4Extra = 0, sink = 0, keep = 1;
       if (tip && To0 > 1.5) { extra += Math.min(4, 1.0 * (To0 - 1.5)) / 7.8; ch4Extra += Math.min(400, 120 * (To0 - 1.5)); }
-      if (mod === "permafrost" && d < 80) { extra += 5 / 7.8; ch4Extra += 600; }
-      if (mod === "amazon" && d < 20) { w.fl = Math.min(0.2, w.fl + 0.01 * h); extra += 12.5 / 7.8; }
-      let sink = 0;
-      if (mod === "trees" && d < 50) sink += 0.51;
-      if (mod === "mix" && w.mx && d < 50) sink += 0.51 * w.mx.trees;
-      if (mod === "dac") sink += (10 / 7.8) * Math.min(1, d / 10);
-      if (mod === "mix" && w.mx) sink += (w.mx.dac / 7.8) * Math.min(1, d / 10);
+      for (const m of w.mods) {
+        const d = t - m.tf, mod = m.id, mx = m.mx;
+        if (mod === "zero") E = 0;
+        if (mod === "double") E *= 1 + Math.min(1, d / 30);
+        if (mod === "ev") E *= Math.exp(-0.07 * d);
+        if (mod === "mix" && mx) E *= Math.max(0, 1 + (mx.em / 100) * Math.min(1, d / Math.max(1, mx.yrs)));
+        if (mod === "permafrost" && d < 80) { extra += 5 / 7.8; ch4Extra += 600; }
+        if (mod === "amazon" && d < 20) { w.fl = Math.min(0.2, w.fl + 0.01 * h); extra += 12.5 / 7.8; }
+        if (mod === "trees" && d < 50) sink += 0.51;
+        if (mod === "mix" && mx && d < 50) sink += 0.51 * mx.trees;
+        if (mod === "dac") sink += (10 / 7.8) * Math.min(1, d / 10);
+        if (mod === "mix" && mx) sink += (mx.dac / 7.8) * Math.min(1, d / 10);
+        // Methane cuts multiply what is left
+        if (mod === "methane") keep *= 1 - 0.5 * Math.min(1, d / 15);
+        if (mod === "mix" && mx) keep *= 1 - (mx.meth / 100) * Math.min(1, d / 15);
+      }
       if (w.C <= PRE_CO2) sink = Math.min(sink, 0.51); // machines stop at pre-industrial air
       const uptake = (w.C - PRE_CO2) * 0.004 * ((p.forest * (1 - w.fl)) / 31) * (p.uptake / 100);
       w.C = Math.max(270, w.C + ((E / 7.8) * 0.45 + extra - uptake - sink) * h);
       // Methane relaxes to its source level
-      let cut = 0;
-      if (mod === "methane") cut = 0.5 * Math.min(1, d / 15);
-      if (mod === "mix" && w.mx) cut = (w.mx.meth / 100) * Math.min(1, d / 15);
+      const cut = 1 - keep;
       const fossil = p.emis > 0 ? E / p.emis : 0;
       const Meq = PRE_CH4 + (p.meth - PRE_CH4) * (1 - CH4_FOSSIL + CH4_FOSSIL * fossil) * (1 - cut) + ch4Extra;
       w.M += ((Meq - w.M) / 12) * h;
@@ -196,13 +202,13 @@ export const earth: Sandbox<W, P> = {
       let dS = 0.0034 * To + (To > 2 ? 0.004 * (To - 2) : 0);
       if (tip && To > 2) dS += 0.002 * (To - 2);
       if (tip && To > 3) dS += Math.min(0.01, 0.005 * (To - 3));
-      if (mod === "melt" && w.t - w.tf < 100) dS += 0.03;
+      for (const m of w.mods) if (m.id === "melt" && w.t - m.tf < 100) dS += 0.03;
       w.S += dS * h;
       // Events (stable text so the timeline can match them across worlds)
       for (const [th, txt] of THRESH_T) if (w.prev < th && To >= th) note(w, `Passes ${th} °C: ${txt}`, "t" + th);
       if (w.f["t1.5"] && w.prev >= 1.5 && To < 1.5) note(w, "Warming falls back under 1.5 °C", "back");
       for (const [th, txt] of THRESH_S) if (w.S >= th) note(w, `Sea level +${th} m: ${txt}`, "s" + th);
-      if (mod === "geo" && d >= 30) note(w, "Aerosol spraying stops: termination shock, rapid warming", "geoend");
+      if (w.mods.some((m) => m.id === "geo" && w.t - m.tf >= 30)) note(w, "Aerosol spraying stops: termination shock, rapid warming", "geoend");
       if (tip && To > 1.5) note(w, "Permafrost starts to thaw, releasing CO₂ and methane", "pf");
       if (tip && To > 2) note(w, "Greenland’s ice starts melting faster", "gr");
       if (tip && To > 3) note(w, "West Antarctica’s ice starts sliding into the sea", "wa");
@@ -215,16 +221,17 @@ export const earth: Sandbox<W, P> = {
     }
   },
 
+  // Changes stack (change 0024): each one is added to `w.mods` and every rule reads them all; walls keep the highest
   apply(w, id, p) {
-    w.mod = id;
-    w.tf = w.t;
-    if (id === "seawall") w.wall = 3;
+    if (id === "seawall") w.wall = Math.max(w.wall, 3);
     if (id === "mix") {
-      w.mx = { em: p.mEm, yrs: p.mYrs, trees: p.mTrees, meth: p.mMeth, dac: p.mDac, dim: p.mDim };
-      w.wall = p.mWall;
-      note(w, mixText(w.mx, w.wall));
+      const mx = { em: p.mEm, yrs: p.mYrs, trees: p.mTrees, meth: p.mMeth, dac: p.mDac, dim: p.mDim };
+      w.mods.push({ id, tf: w.t, mx });
+      w.wall = Math.max(w.wall, p.mWall);
+      note(w, mixText(mx, p.mWall));
       return;
     }
+    w.mods.push({ id, tf: w.t, mx: null });
     note(w, APPLY_TEXT[id] ?? id);
   },
 
@@ -238,7 +245,7 @@ export const earth: Sandbox<W, P> = {
 
   draw({ ctx, w: Wd, h: Hd, p, isAlt }, w) {
     const off = offset(w, w.t, p), To = w.T + off;
-    const d = w.t - w.tf;
+    const volc = w.mods.filter((m) => m.id === "volcano").map((m) => w.t - m.tf).filter((d) => d >= 0);
     const look: Look = {
       temp: To,
       sea: w.S,
@@ -247,7 +254,7 @@ export const earth: Sandbox<W, P> = {
       forest: clamp((p.forest * (1 - w.fl)) / 45, 0, 1),
       crops: crops(To, off),
       dim: clamp(-off / 2.5, 0, 1),
-      ash: w.mod === "volcano" ? clamp(Math.exp(-d / 3), 0, 1) : 0,
+      ash: volc.length ? clamp(Math.exp(-Math.min(...volc) / 3), 0, 1) : 0,
       front: p.front,
       wall: w.wall,
       flood: floodPct(w.S, p.front, w.wall),

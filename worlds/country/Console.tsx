@@ -13,6 +13,7 @@ import Dock from "@/components/console/Dock";
 import AdSlot, { RAILS_QUERY } from "@/components/console/AdSlot";
 import { useFullscreen } from "@/components/console/fullscreen";
 import { InfoBlocks, Readouts, TunePanel, WorldHeader } from "@/components/console/panels";
+import ChangeToggles from "@/components/console/Changes";
 import { COUNTRY_GROUPS } from "./data";
 import { country, countryName, WHATIF_GROUPS } from "./sim";
 
@@ -46,7 +47,7 @@ function PolicyList({ engine, onChange }: P) {
   return (
     <section>
       <h3 className="headline">Make changes</h3>
-      <p className="small hint-line">They add up. Sizes are in Tune.</p>
+      <p className="small hint-line">They add up. Sizes are in Tune. Tick them off above to compare.</p>
       {WHATIF_GROUPS.map(([g, ids]) => (
         <div key={g} className="forks">
           <span className="ctl-head">{g}</span>
@@ -78,7 +79,7 @@ export default function CountryConsole() {
   const centre = useRef<HTMLElement>(null);
   const fs = useFullscreen(centre);
 
-  const ask = <><WorldHeader engine={engine} /><CountryPicker engine={engine} onChange={onChange} /><PolicyList engine={engine} onChange={onChange} /></>;
+  const ask = <><WorldHeader engine={engine} /><CountryPicker engine={engine} onChange={onChange} /><ChangeToggles engine={engine} onChange={onChange} /><PolicyList engine={engine} onChange={onChange} /></>;
   const now = <Readouts engine={engine} />;
   const info = <InfoBlocks engine={engine} />;
   const tune = <TunePanel engine={engine} onChange={onChange} />;

@@ -1,6 +1,6 @@
 import type { StageInteraction } from "@/components/console/Stage";
 
-/** Drag on the stage to throw in a planet: forks the world, or adds to an open what-if. */
+/** Drag on the stage to throw in a planet: one more change in the changed world (it goes on the changes list). */
 export const throwPlanet: StageInteraction = {
   down(engine, x, y, W, H) {
     const rc = engine.rects(W, H).find((q) => x >= q.x && x <= q.x + q.w && y >= q.y && y <= q.y + q.h);
@@ -18,8 +18,7 @@ export const throwPlanet: StageInteraction = {
     if (!cam || Math.hypot(d.x1 - d.x0, d.y1 - d.y0) <= 2) return false;
     const k = 4 / cam.sc;
     engine.ui.pending = { x: cam.cx + (d.x0 - cam.W / 2) / cam.sc, y: cam.cy + (d.y0 - cam.H / 2) / cam.sc, vx: (d.x1 - d.x0) * k, vy: (d.y1 - d.y0) * k };
-    if (engine.sb.stack || (d.alt && engine.alt)) engine.change("throw");
-    else engine.fork("throw");
+    engine.change("throw");
     return true;
   },
 };

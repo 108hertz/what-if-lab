@@ -89,7 +89,7 @@ export interface DrawContext<P> {
   p: P;
   isAlt: boolean;
   ui: InteractionState;
-  /** In stacking worlds, the hidden no-change world while the changed one is drawn (for comparisons). */
+  /** The hidden no-change world while the changed one is drawn (for comparisons). Undefined when drawing the no-change world. */
   base?: BaseWorld;
 }
 
@@ -127,8 +127,6 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   defaultSpeed: number;
   /** Stop advancing once world.t reaches this. */
   maxT?: number;
-  /** Changes add up in one world: no split stage, every what-if applies to the changed world (change 0015). */
-  stack?: boolean;
   /**
    * Live pacing hint, 0–1 (e.g. slow motion for a moment after a change, change 0019). Multiplies the live clock only;
    * exports and tests step the sandbox directly and never read it, so it cannot change results.
@@ -138,7 +136,10 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   fmtT(t: number): string;
   init(p: P, seed: number): W;
   step(w: W, dt: number, p: P): void;
-  /** Apply a what-if to a freshly cloned world. */
+  /**
+   * Apply a what-if to the changed world. Every world stacks (change 0015, all worlds since change 0024): this may be
+   * a world that already has other changes, so add to it rather than replace them.
+   */
   apply(w: W, id: string, p: P, ui: InteractionState): void;
   read(w: W, p: P): Readout;
   draw(c: DrawContext<P>, w: W): void;

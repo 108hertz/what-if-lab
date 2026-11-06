@@ -61,6 +61,7 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [ ] Per-world excellence pass, one world at a time (solar → earth → animals → country → galaxy → child → person); done: earth (0014), solar/galaxy stacking (0015), country (0016), animals ([0017](./changes/0017-animals-living-ecosystem.md)), child ([0018](./changes/0018-child-growing-up.md), second pass [0019](./changes/0019-child-characters-second-pass.md))
 - [x] Full-screen stage in every world (`F`) — [change 0013](./changes/0013-full-screen-stage.md)
 - [x] Control Room design system replaces Darkroom (simulator look: palette, fonts, components, two channels) — [change 0023](./changes/0023-control-room-design-system.md)
+- [x] One world on every stage, every change on a tick list, Reset everything; side by side only in exports — [change 0024](./changes/0024-one-world-tick-changes-reset.md)
 - [ ] Motion system, reduced-motion, keyboard shortcuts (Space play/pause; fork needs a key other than F, now full screen)
 
 ### Phase 2 — Traffic

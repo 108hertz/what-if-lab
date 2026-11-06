@@ -30,7 +30,7 @@ corruption, robots, war. Copy reads at age 10+.
   (hollow), retired (cane), child at school (cap) or not. A dashed coral line marks the poverty line; after
   changes a blue dotted line shows where it was with no change, and every number gets "(no change: n)".
 - **Make changes** (16 policies in Money · Services · Society · Shocks). They add up in one world
-  (`stack: true`); the no-change world keeps running hidden for the chart, readouts and Story.
+  (tick any of them off and on in "Your changes", change 0024); the no-change world keeps running hidden for the chart, readouts and Story.
 - **The chart** explains its metric in a sentence and says the difference in people or dollars.
 - **Story** (Read / Ask column): three to five plain sentences about the biggest differences.
 

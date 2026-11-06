@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import type { Control } from "@/lib/sim/types";
 import { Icon } from "@/components/ui/Icon";
+import ChangeToggles from "@/components/console/Changes";
 import {
   CHANGES, ENDS, FAMILIES, FOREVER, GLOSSARY, HOME_OPTIONS, LEN_WORD, lenWord, SCIENCE, SHORT, SHOW, STEPS, STEP_VALUES, TRAITS, WORD, bestAges, kidName, stepOf, stepWord,
   type Show,
@@ -251,6 +252,8 @@ export function ChangeList({ engine, onChange }: P) {
       <p className="small hint-line">They add up. Pick when, how big and how long, then click.</p>
       <ChangeSettings engine={engine} onChange={onChange} />
       <LifeRuler engine={engine} onChange={onChange} />
+      <ChangeToggles engine={engine} onChange={onChange} empty="Every change you make lands here with a tick, so you can take it out and put it back."
+        label={(e) => { const a = Number(e.rec.params.s_age); return SHORT[e.rec.id] + (Number.isFinite(a) && a > e.rec.t ? ` · planned for ${a}` : ""); }} />
       {WHATIF_GROUPS.map(([g, ids], gi) => {
         const n = ids.reduce((a, id) => a + count(id), 0);
         return (

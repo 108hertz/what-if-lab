@@ -109,7 +109,7 @@ export default function ScaleConsole() {
           <canvas ref={canvasRef} aria-label="Simulation stage" />
           <div className={heroOff ? "hero hide" : "hero"} aria-hidden={heroOff}>
             <h1 className="display">What happens if…</h1>
-            <p className="desc-lg">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, ask it a question, and watch both futures run side by side.</p>
+            <p className="desc-lg">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, change it, and compare its future with the world left as it was.</p>
           </div>
         </div>
         <ScaleTransport scale={scale} inputRef={zoomRef} outputRef={zoomOutRef} fullscreen={fs} />

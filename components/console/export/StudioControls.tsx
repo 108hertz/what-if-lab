@@ -99,6 +99,11 @@ export function OutputTab({ out, setOut, style, set, onSize }: { out: Out; setOu
   return (
     <>
       <Seg label="What to make" value={out} options={OUTS.map(([v, l, i]) => [v, l, i])} onChange={setOut} />
+      {out !== "text" && (
+        // Change 0024: the live stage shows one world; only an export can put both next to each other
+        <Seg label="Worlds" value={style.layout.split} options={[["alt", "Changed only"], ["auto", "No change | with changes"]]}
+          onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, split: v } }))} />
+      )}
       {(out === "video" || out === "images") && (
         <Seg label="Size" value={style.size} options={SIZE_IDS.map((s) => [s, SIZES[s].name, SIZE_ICON[s]])} onChange={onSize} />
       )}
@@ -141,7 +146,7 @@ export function TimingTab({ style, set, plan, range, setRange, events }: {
       {t.runS != null && <Range label="Running time" value={t.runS} min={RUN_RANGE[0]} max={RUN_RANGE[1]} step={1} out={secs(t.runS)} onChange={(v) => setT({ runS: v })} />}
       <Range label="Opening title" value={t.introS} min={INTRO_RANGE[0]} max={INTRO_RANGE[1]} step={0.1} out={secs(t.introS)} onChange={(v) => setT({ introS: v })} />
       <Range label="Result at the end" value={t.outroS} min={OUTRO_RANGE[0]} max={OUTRO_RANGE[1]} step={0.1} out={secs(t.outroS)} onChange={(v) => setT({ outroS: v })} />
-      <Check label="Slow down where the worlds split" note="Moments only one world had play at about half speed." checked={t.ease} onChange={(v) => setT({ ease: v })} />
+      <Check label="Slow down where the worlds differ" note="Moments only one world had play at about half speed." checked={t.ease} onChange={(v) => setT({ ease: v })} />
       <p className="small studio-total">Whole clip <span className="num">{secs(total)}</span></p>
     </>
   );
@@ -277,7 +282,7 @@ export function LookTab({ style, set }: { style: ExportStyle; set: Set }) {
       </details>
       <Select label="Title font" value={style.fonts.title} options={FONTS} onChange={(v) => set((s) => ({ ...s, fonts: { ...s.fonts, title: v } }))} />
       <Select label="Body font" value={style.fonts.body} options={FONTS} onChange={(v) => set((s) => ({ ...s, fonts: { ...s.fonts, body: v } }))} />
-      <Seg label="Worlds" value={lay.split} options={[["auto", "Auto"], ["row", "Side by side"], ["column", "Stacked"], ["alt", "What-if"], ["base", "No change"]]}
+      <Seg label="Worlds" value={lay.split} options={[["alt", "Changed only"], ["auto", "Both · fit"], ["row", "Side by side"], ["column", "Stacked"], ["base", "No change only"]]}
         onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, split: v } }))} />
       <Seg label="Stage" value={lay.stage} options={[["framed", "Framed"], ["fill", "Full frame"], ["small", "Small"]]} onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, stage: v } }))} />
       <Check label="Chart under the stage" checked={lay.chart} onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, chart: v } }))} />

@@ -22,11 +22,13 @@ import { drawChild, scenePace } from "./scene";
  *         + chance  (a lucky or unlucky start, and a slow random drift)
  *         + maturation (the average path with age, same for everyone)
  * The parts are kept separately so the "why are they different" bar is computed from the model itself.
- * Changes stack (`stack: true`): every click adds to `w.mods`, optionally at a later age.
+ * Changes stack: every click adds to `w.mods`, optionally at a later age.
  */
 export type P = Params & {
   family: string; from?: string; style: string; sib: string; home: string; money: string; place: string; school: string; screens: string;
   inherit: string; luck: string; fade: string; events: string; s_age: string; s_size: string; s_len?: string;
+  /** Set only on a recorded change (change 0024): the age it was stopped at ("Stop now" in the life ruler). */
+  s_stop?: string;
   baby?: string; shape?: string; time?: string; sens?: string;
 };
 
@@ -78,7 +80,6 @@ const metricFor = (s: Show) => [
 
 export const child: Sandbox<W, P> = {
   ...meta,
-  stack: true,
   pace: scenePace,
   intro: "The same two parents could have many different kids. Here are 120 of them, growing up from 1 to 60. Genes, home, the things that happen and plain luck all shape who they become. Press play, then try changes: they add up, and you choose when they happen and how long they last. Tap a face in \"All 120 kids\" to follow one kid.",
   hint: "Press play to watch them grow up, then try a change.",
@@ -198,9 +199,13 @@ export const child: Sandbox<W, P> = {
     } else for (const k of TRAITS) if (c.d[k]) d[k] = c.d[k]! * s;
     if (!Object.values(d).some((x) => x)) d = {};
     const on = age <= w.t ? 1 : 0;
-    w.mods.push({ id, age, s: size, d, pf, on, end: age + len, stop: FOREVER, sn: 0, h: 0, b: 1, bi: [], aw: 1 });
+    // A recorded change that was stopped (change 0024: a stop is an edit of the change, re-run by the engine)
+    const st = p.s_stop == null ? NaN : Number(p.s_stop), stop = Number.isFinite(st) && Math.max(st, age) < age + len ? Math.max(st, age) : FOREVER;
+    const m: Mod = { id, age, s: size, d, pf, on, end: age + len, stop, sn: 0, h: 0, b: 1, bi: [], aw: 1 };
+    w.mods.push(m);
     refresh(w);
     if (on) { note(w, c.style && !Object.keys(d).length ? ALREADY : c.txt); syncDerived(w); }
+    if (on && stop <= w.t) { m.sn = 1; note(w, c.stop); }
   },
 
   read(w) {

@@ -51,6 +51,10 @@ tipping points on/off · your town's seafront height.
 | `volcano` · `geo` | Supervolcano · sun-dimming aerosols for 30 years, then termination shock |
 | `permafrost` · `amazon` · `melt` | Fast permafrost thaw (80 years) · Amazon to grassland (−20 % forest, 250 Gt CO₂) · West Antarctic collapse |
 
+Changes stack (change 0024): each pick goes into `w.mods` with its year; emissions multipliers multiply, sinks,
+sources, aerosol offsets and melt add, methane cuts multiply what is left, and the highest sea wall counts. One change
+alone gives the same numbers as before. Any change can be ticked off and on again in "Your changes".
+
 **My future settings** (`live`, read only by `mix`, copied into the world at the fork): change emissions by
 −100…+100 % over 1–80 years, trees 0–1.5 trillion, methane cut 0–80 %, CO₂ removal 0–20 Gt/yr, sun-dimming
 0–100 % (0–2 W/m²), sea wall 0–5 m.
@@ -66,4 +70,4 @@ Warming (°C) · Sea level (m) · CO₂ (ppm) · Crops (index) · Snow (% of tod
 - Motion is calm at every speed: clouds, waves, boats, gulls and smoke run on a renderer clock; model
   values glide (250 ms) after a fork or restart; reduced motion holds still.
 - Combining levers is one click: "Build my own future" is first in Ask.
-- Split halves and phones keep the town in frame (the scene is painted wider and panned to the town).
+- Narrow stages (phones, export side-by-side halves) keep the town in frame (the scene is painted wider and panned to the town).

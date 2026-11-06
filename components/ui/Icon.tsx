@@ -6,6 +6,8 @@ const GLYPHS = {
   play: <path d="M8 5.5v13l10.5-6.5z" />,
   pause: <><path d="M9 6v12" /><path d="M15 6v12" /></>,
   restart: <><path d="M5 12a7 7 0 1 0 2.05-4.95" /><path d="M5 4.5v3.5h3.5" /></>,
+  /** Reset everything (change 0024): the restart arrow around clock hands back at zero. */
+  reset: <><path d="M5 12a7 7 0 1 0 2.05-4.95" /><path d="M5 4.5v3.5h3.5" /><path d="M12 8.5V12h3" /></>,
   fork: <><circle cx="6" cy="12" r="1.6" /><path d="M7.6 12H11c2 0 2.6-5 5-5h2.5" /><path d="M11 12c2 0 2.6 5 5 5h2.5" strokeDasharray="2 2.2" /></>,
   close: <><path d="M6.5 6.5l11 11" /><path d="M17.5 6.5l-11 11" /></>,
   chevron: <path d="M7 10l5 5 5-5" />,
