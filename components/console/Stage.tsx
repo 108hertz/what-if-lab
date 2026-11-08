@@ -3,6 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import { useCanvasLoop } from "../ui/canvas";
+import { useT } from "../i18n/I18nProvider";
 
 /** World-specific pointer handling on the stage (e.g. solar's drag-to-throw). Coordinates are stage-local CSS px. */
 export interface StageInteraction {
@@ -18,6 +19,7 @@ export interface StageInteraction {
  */
 export default function Stage({ engine, interaction, onChange, children }: { engine: SimEngine; interaction?: StageInteraction; onChange: () => void; children?: ReactNode }) {
   const ref = useRef<HTMLCanvasElement>(null);
+  const t = useT();
   useCanvasLoop(ref, (ctx, W, H, dt) => {
     engine.tick(dt);
     engine.draw(ctx, W, H);
@@ -44,8 +46,8 @@ export default function Stage({ engine, interaction, onChange, children }: { eng
 
   return (
     <div className="stage">
-      <canvas ref={ref} aria-label="Simulation stage" />
-      <span className="micro edge" aria-hidden="true">What-If Lab · Seed {engine.seed}</span>
+      <canvas ref={ref} aria-label={t("console.stage.label")} />
+      <span className="micro edge" aria-hidden="true">{t("console.stage.edge", { seed: engine.seed })}</span>
       {children}
     </div>
   );

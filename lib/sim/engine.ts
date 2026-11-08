@@ -1,6 +1,8 @@
-import type { AnySandbox, BaseWorld, InteractionState, Params, Readout } from "./types";
+import type { AnySandbox, BaseWorld, InteractionState, LogEntry, Params, Readout } from "./types";
 import { chip, FONT, STAGE, channelTag } from "./draw";
 import { defaultParams } from "./core";
+import { worldSay } from "./say";
+import { pageT } from "@/lib/i18n/page";
 
 export const DEFAULT_SEED = 20261101;
 const MAX_HISTORY = 600;
@@ -8,7 +10,7 @@ const SAMPLE_EVERY = 0.2; // real seconds
 
 export interface History {
   t: number[];
-  /** Per sample: live steps since the first change (-1 before it) and how many changes had been made, so a replay can rewrite it. */
+  /** Per sample: live steps since the start and how many changes had been made, so a replay can rewrite it. */
   n: number[];
   e: number[];
   base: Record<string, (number | null)[]>;
@@ -16,9 +18,7 @@ export interface History {
   forkT: number | null;
 }
 
-export interface TimelineItem {
-  t: number;
-  txt: string;
+export interface TimelineItem extends LogEntry {
   who: "both" | "base" | "alt";
 }
 
@@ -40,7 +40,9 @@ export interface ReplayOrigin {
 /** Merge two worlds' logs into one timeline: shared history, no-change-only and what-if-only events. */
 export function mergeTimeline(B: BaseWorld["log"], A: BaseWorld["log"] | null, now: number, limit = 40): TimelineItem[] {
   const tol = 1e-6 + Math.abs(now) * 0.03;
-  const same = (x: { t: number; txt: string }, y: { t: number; txt: string }) => x.txt === y.txt && Math.abs(x.t - y.t) < tol;
+  // The same event = same key, same values, about the same time (change 0025: keys replaced sentences, same meaning).
+  const id = (e: LogEntry) => (e.v ? e.k + JSON.stringify(e.v) : e.k);
+  const same = (x: LogEntry, y: LogEntry) => Math.abs(x.t - y.t) < tol && id(x) === id(y);
   const alt = A ?? [];
   const items: TimelineItem[] = [];
   for (const e of B) items.push({ ...e, who: !A || alt.some((a) => same(a, e)) ? "both" : "base" });
@@ -54,7 +56,7 @@ export interface ChangeEntry {
   key: number;
   rec: ChangeRecord;
   on: boolean;
-  /** Live sim steps taken since the first change when this one was made. */
+  /** Live sim steps taken since the start when this one was made. */
   at: number;
 }
 
@@ -89,7 +91,7 @@ export class SimEngine {
   /** Per entry: the changed world just before it (as it is with the changes before it that are on), and the no-change world then. */
   private snaps: BaseWorld[] = [];
   private bsnaps: BaseWorld[] = [];
-  /** Every live step since the first change: its dt, and the params in force from a step on. */
+  /** Every live step since the start: its dt, and the params in force from a step on. */
   private dts: number[] = [];
   private plog: { at: number; params: Params }[] = [];
   private nextKey = 1;
@@ -122,6 +124,8 @@ export class SimEngine {
   restart(): void {
     this.base = this.sb.init(this.params, this.seed);
     this.clearChanges();
+    this.dts = [];
+    this.plog = [{ at: 0, params: { ...this.params } }];
     this.history = { t: [], n: [], e: [], base: {}, alt: {}, forkT: null };
     for (const m of this.sb.metrics) { this.history.base[m.k] = []; this.history.alt[m.k] = []; }
     this.acc = 0;
@@ -141,15 +145,10 @@ export class SimEngine {
     this.alt = null;
     this.entries = [];
     this.snaps = []; this.bsnaps = [];
-    this.dts = []; this.plog = [];
   }
 
   /** Make a change: it adds to the changed world (or starts one from the no-change world) and goes on the list. */
   change(id: string): void {
-    if (!this.plog.length) {
-      this.dts = [];
-      this.plog = [{ at: 0, params: { ...this.params } }];
-    }
     const at = this.dts.length;
     this.snaps.push(clone(this.alt ?? this.base));
     this.bsnaps.push(clone(this.base));
@@ -224,18 +223,56 @@ export class SimEngine {
     for (const m of this.sb.metrics) h.alt[m.k] = h.t.map(() => null);
   }
 
-  setParam(id: string, value: number | string): { restarted: boolean } {
-    let p: Params = { ...this.params, [id]: value };
+  /**
+   * Set one param. `restarted` = it is a starting condition (not a live control), so the caller should `rebuild(keys)`;
+   * `keys` = every param that changed (presets via `onParamChange` can change several).
+   */
+  setParam(id: string, value: number | string): { restarted: boolean; keys: string[] } {
+    const old = this.params;
+    let p: Params = { ...old, [id]: value };
     if (this.sb.onParamChange) p = this.sb.onParamChange(p, id);
     this.params = p;
-    if (this.plog.length) {
-      const at = this.dts.length, last = this.plog[this.plog.length - 1];
-      if (last.at === at) last.params = { ...p };
-      else this.plog.push({ at, params: { ...p } });
-    }
+    const at = this.dts.length, last = this.plog[this.plog.length - 1];
+    if (last.at === at) last.params = { ...p };
+    else this.plog.push({ at, params: { ...p } });
+    const keys = Object.keys(p).filter((k) => p[k] !== old[k]);
+    return { restarted: !this.isLive(id), keys };
+  }
+
+  private isLive(id: string): boolean {
     const ctl = this.sb.controls.find((c) => c.type !== "heading" && c.id === id);
-    const live = ctl && ctl.type !== "heading" && ctl.live;
-    return { restarted: !live };
+    return !!(ctl && ctl.type !== "heading" && ctl.live);
+  }
+
+  /**
+   * New starting conditions, same story: re-run both worlds from time 0 with `keys` set to their current values, and
+   * make every change again (on or off as it is) at the moment it was made, with its own what-if settings. Time,
+   * history and the change list are kept; nothing is lost.
+   */
+  rebuild(keys: string[]): void {
+    const ks = keys.filter((k) => !this.isLive(k));
+    if (!ks.length) return;
+    const patch = (q: Params): Params => { const r = { ...q }; for (const k of ks) r[k] = this.params[k]; return r; };
+    for (const pl of this.plog) pl.params = patch(pl.params);
+    for (const e of this.entries) e.rec = { ...e.rec, params: patch(e.rec.params) };
+    const sb = this.sb, h = this.history, E = this.entries, N = this.dts.length;
+    const b = sb.init({ ...this.plog[0].params }, this.seed);
+    let si = 0, k = 0, pj = 0, p: Params;
+    for (let n = 0; ; n++) {
+      while (k < E.length && E[k].at === n) { this.bsnaps[k] = clone(b); k++; }
+      while (si < h.t.length && h.n[si] <= n) {
+        if (h.n[si] === n) {
+          const r = sb.read(b, this.paramsAt(n)[0]);
+          for (const m of sb.metrics) h.base[m.k][si] = r[m.k];
+        }
+        si++;
+      }
+      if (n >= N) break;
+      [p, pj] = this.paramsAt(n, pj);
+      sb.step(b, this.dts[n], p);
+    }
+    this.base = b;
+    if (E.length) this.replayFromState(0, this.bsnaps[0], E[0].at);
   }
 
   /** Advance by real seconds. */
@@ -245,7 +282,7 @@ export class SimEngine {
     const dt = dtReal * this.speed * (this.sb.pace?.() ?? 1);
     this.sb.step(this.base, dt, this.params);
     if (this.alt) this.sb.step(this.alt, dt, this.params);
-    if (this.plog.length) this.dts.push(dt);
+    this.dts.push(dt);
     this.acc += dtReal;
     if (this.acc >= SAMPLE_EVERY) { this.acc = 0; this.sample(); }
   }
@@ -255,7 +292,7 @@ export class SimEngine {
     const ra = this.alt ? this.sb.read(this.alt, this.params) : null;
     const h = this.history;
     h.t.push(this.base.t);
-    h.n.push(this.plog.length ? this.dts.length : -1);
+    h.n.push(this.dts.length);
     h.e.push(this.entries.length);
     for (const m of this.sb.metrics) { h.base[m.k].push(rb[m.k]); h.alt[m.k].push(ra ? ra[m.k] : null); }
     if (h.t.length > MAX_HISTORY) {
@@ -345,8 +382,9 @@ export class SimEngine {
   }
 
   labelOf(id: string): string {
-    if (id === "throw") return "Throw in a planet";
-    return this.sb.whatifs.find((x) => x[0] === id)?.[1] ?? "";
+    // In the page's language (change 0025)
+    if (id === "throw") return pageT()("console.changes.throw");
+    return this.sb.whatifs.some((x) => x[0] === id) ? worldSay(this.sb)(`whatif.${id}`) : "";
   }
 
   /** "A", or for several changes "A + B ×2 + C" in first-made order (changes that are on). */
@@ -373,7 +411,7 @@ export class SimEngine {
     ctx.save();
     ctx.beginPath(); ctx.rect(0, 0, W, H); ctx.clip();
     this.sb.draw({ ctx, w: W, h: H, p: this.params, isAlt: alt, ui: this.ui, base: alt ? this.base : undefined }, world);
-    const label = alt ? "Changed: " + this.whatIfLabel() : this.entries.length ? "No change · your changes are off" : "Now · pick changes to make";
+    const t = pageT(), label = alt ? t("export.changedPrefix", { what: this.whatIfLabel() }) : t(this.entries.length ? "export.changesOff" : "export.pickChanges");
     // Channel tag (● no change / ◆ with changes) left, the world clock right
     const lw = channelTag(ctx, label.toUpperCase(), 8, 8, alt, W - 60);
     const time = this.sb.fmtT(world.t);

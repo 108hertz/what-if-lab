@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Zoome vom Proton bis zum beobachtbaren Universum, öffne eine Welt, ändere sie mit Was-wäre-wenns und vergleiche ihre Zukunft mit der unveränderten Welt.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Maßstab",
+    "sub": "Proton → Universum"
+  },
+  "intro": {
+    "worlds": "Welten",
+    "whatifs": "Was wäre, wenn…"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Diese Seite gibt es im Lab nicht.",
+    "home": "Zurück zum Lab"
+  },
+  "unit": {
+    "gyr": "{n} Mrd. J.",
+    "myr": "{n} Mio. J.",
+    "kyr": "{n} Tsd. J.",
+    "yr": "{n} J."
+  },
+  "dur": {
+    "days": "{n} Tage",
+    "months": "{n} Mon.",
+    "years": "{n} J."
+  }
+}

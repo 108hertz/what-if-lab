@@ -1,4 +1,6 @@
 import type { ObjectId } from "./glyphs";
+import { scoped, type Say } from "../i18n/t";
+import { pageT } from "../i18n/page";
 
 export interface ScaleObject {
   name: string;
@@ -67,3 +69,13 @@ export const ZOOM_MAX = 27.3;
 export const JUMPS: [string, number][] = [
   ["Atom", -10], ["Cell", -5], ["You", 0.6], ["City", 4.5], ["Earth", 7.5], ["Solar system", 13.5], ["Galaxy", 21.5], ["Universe", 27],
 ];
+
+/**
+ * The objects' words (change 0025), English in code like a world's: <id>.name, <id>.fact, jump.<i>. Other languages
+ * translate them in lib/i18n/locales/<code>/objects.json.
+ */
+export const OBJECT_MESSAGES: Record<string, string> = {
+  ...Object.fromEntries(SCALE_OBJECTS.flatMap((o) => [[`${o.id}.name`, o.name], [`${o.id}.fact`, o.fact]])),
+  ...Object.fromEntries(JUMPS.map(([n], i) => [`jump.${i}`, n])),
+};
+export const objectSay = (): Say => scoped(pageT(), "objects", OBJECT_MESSAGES);

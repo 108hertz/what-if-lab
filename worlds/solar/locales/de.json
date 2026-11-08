@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "body": {
+    "blackhole": "das Schwarze Loch",
+    "earth": "die Erde",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Merkur",
+    "neptune": "Neptun",
+    "saturn": "Saturn",
+    "sun": "die Sonne",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "dein Planet"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Sonnenmasse",
+      "unit": "× Sonne"
+    },
+    "view": {
+      "label": "Ansicht",
+      "opt": {
+        "inner": "Innere Planeten",
+        "mid": "Bis Jupiter",
+        "outer": "Ganzes System"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Ein Schwarzes Loch mit 4 Sonnenmassen kommt vom Rand des Systems herein",
+    "escape": "{body} entkommt in den interstellaren Raum",
+    "giant": "Die Sonne bläht sich zu einem Roten Riesen von 0,85 AE auf und verliert ein Drittel ihrer Masse",
+    "intoBh": "{body} stürzt ins Schwarze Loch",
+    "intoSun": "{body} stürzt in die Sonne",
+    "jupstar": "Jupiter bekommt 80-mal so viel Masse und leuchtet als Roter Zwerg auf",
+    "mars": "Die Erde wird auf die Marsbahn verschoben",
+    "nosun": "Die Sonne verschwindet: Die Planeten fliegen geradeaus davon",
+    "smash": "{body} kracht in {other}",
+    "stop": "Die Erde bleibt auf ihrer Bahn stehen",
+    "sun2": "Die Sonne verdoppelt ihre Masse: stärkere Anziehung, 11-mal helleres Sonnenlicht",
+    "swallowed": "{body} wird vom Roten Riesen verschluckt",
+    "throw": "Du wirfst einen neuen Planeten hinein"
+  },
+  "info": {
+    "changed": "Mit Änderungen",
+    "now": "Erde jetzt"
+  },
+  "meta": {
+    "hint": "Ziehen, um einen Planeten zu werfen. Änderungen addieren sich.",
+    "intro": "Echte newtonsche Schwerkraft für die Sonne und acht Planeten. Zieh auf der Bühne, um deinen eigenen Planeten hineinzuwerfen.",
+    "name": "Sonnensystem",
+    "sub": "Schwerkraft"
+  },
+  "metric": {
+    "dist": {
+      "label": "Abstand Erde–Sonne",
+      "unit": "AE"
+    },
+    "temp": {
+      "label": "Temperatur der Erde",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Länge des Jahres",
+      "unit": "Tage"
+    }
+  },
+  "name": {
+    "blackhole": "Schwarzes Loch",
+    "earth": "Erde",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Merkur",
+    "neptune": "Neptun",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "Dein Planet"
+  },
+  "speed": {
+    "0": "1 Mon./s",
+    "1": "6 Mon./s",
+    "2": "2 J./s",
+    "3": "10 J./s"
+  },
+  "status": {
+    "boiling": "Ozeane kochen",
+    "destroyed": "zerstört",
+    "flying": "fliegt davon",
+    "frozen": "tiefgefroren",
+    "habitable": "bewohnbar"
+  },
+  "whatif": {
+    "bh": "Ein Schwarzes Loch fliegt hindurch",
+    "giant": "Die Sonne wird ein Roter Riese",
+    "jupstar": "Jupiter zündet zum Stern",
+    "mars": "Erde auf die Marsbahn setzen",
+    "nosun": "Die Sonne verschwindet",
+    "stop": "Die Erde bleibt auf ihrer Bahn stehen",
+    "sun2": "Die Sonne verdoppelt ihre Masse"
+  }
+}

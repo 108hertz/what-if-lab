@@ -170,7 +170,7 @@ describe("animals: the model", () => {
 describe("animals: words", () => {
   it("the story is 3–5 plain sentences, never a prediction", () => {
     const e = engine();
-    run(e, 60);
+    run(e, 120); // 6 days at the default 3 d/s
     const plain = story({ b: e.base as W, a: null, p: e.params as P });
     expect(plain.length).toBeGreaterThanOrEqual(3);
     expect(plain.length).toBeLessThanOrEqual(5);

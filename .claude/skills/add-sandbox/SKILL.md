@@ -15,8 +15,13 @@ A world is pure variable changes → deterministic outcomes. No AI, no network d
      (`Sandbox<W, P>`), optional `data.ts`, `Console.tsx` and a `README.md` brief; register in
      `worlds/registry.ts`, `worlds/views.tsx` and `worlds/sims.ts`. Import only shared layers
      (`lib/sim`, `components/console`, `components/ui`), never another world.
-   - World is plain `structuredClone`-able data. RNG via `rng(w)` / `gauss(w)`. Events via `note()` with
-     stable text. `read()` returns finite numbers or `null`. Sub-step in `step()` for stability.
+   - World is plain `structuredClone`-able data. RNG via `rng(w)` / `gauss(w)`. Events via `note(w, key, values)`:
+     a message key from the sandbox's `messages`, never a sentence.
+   - Every word goes through the catalogs (change 0025): labels in code, sentences as ICU `messages` (larger worlds keep
+     them in `messages.ts` built from `data.ts`, with helpers in `words.ts`); draw, info and React parts say them with
+     `worldSay(sb)`; bold sentences use `components/ui/Rich.tsx`. Add the key to `WORLDS_DONE` in
+     `tests/i18n-coverage.test.ts`, run `npm run i18n:extract`, check with `?pseudo`, and write the same keys in
+     `worlds/<key>/locales/<code>.json` for every ready language (`I18N_FULL=<code> npx vitest run tests/i18n-catalogs.test.ts`). `read()` returns finite numbers or `null`. Sub-step in `step()` for stability.
    - `draw()` uses `STAGE` colours and `FONT` from `lib/sim/draw.ts` and the `control-room-ui` rules: calm,
      legible, base vs what-if clearly distinguished. Add a world glyph to `components/ui/Icon.tsx`.
    - Controls must fit the console's Tune column (see `DESIGN.md` → Layout). A custom `Console.tsx`

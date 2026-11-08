@@ -10,6 +10,7 @@ import type { SimEngine, ChangeRecord, TimelineItem } from "../sim/engine";
 import { mergeTimeline } from "../sim/engine";
 import type { AnySandbox, BaseWorld, InteractionState, Metric, Params, Readout } from "../sim/types";
 import { DEFAULT_TIMING, INTRO_RANGE, OUTRO_RANGE, RUN_RANGE, type Timing } from "./style";
+import { pageT } from "../i18n/page";
 
 /** Frames per second of exported video. */
 export const FPS = 30;
@@ -55,8 +56,10 @@ export interface ReplayPlan {
   intro: number;
   outro: number;
   ease: boolean;
-  /** "What if: …" / "Changed: …" label as the stage shows it, or "" without a what-if. */
+  /** "Changed: …" label as the stage shows it, or "" without a what-if. */
   label: string;
+  /** The changes alone, without "Changed: " (for captions). */
+  what?: string;
 }
 
 export interface PlanOpts {
@@ -87,12 +90,12 @@ export function planReplay(engine: SimEngine, opts: PlanOpts = {}): ReplayPlan {
   let tMax = tFork + (tAuto - tFork) * AHEAD;
   if (sb.maxT != null) { tAuto = Math.min(tAuto, sb.maxT); tMax = Math.min(tMax, sb.maxT); }
   tAuto = Math.max(tAuto, tFork); tMax = Math.max(tMax, tAuto);
-  const prefix = "Changed: ";
+  const what = engine.alt ? engine.whatIfLabel() : "";
   const base: ReplayPlan = {
     sb, seed: engine.seed, start, startAlt: !fromFork && engine.alt ? clone(engine.alt) : null,
     params: { ...engine.params }, ui: clone(engine.ui), changes: fromFork ? o!.changes.map(clone) : [], fromFork,
     hasWhatIf: !!engine.alt, speed, tFork, t0: tFork, t1: tAuto, tMax, tAuto, dt: 0, pre: 0, steps: 1, frames: 1,
-    intro: 0, outro: 0, ease: false, label: engine.alt ? prefix + engine.whatIfLabel() : "",
+    intro: 0, outro: 0, ease: false, label: engine.alt ? pageT()("export.changedPrefix", { what }) : "", what,
   };
   return retime(base, opts);
 }

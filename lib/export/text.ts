@@ -4,6 +4,10 @@
  */
 import type { Control } from "../sim/types";
 import type { TimelineItem } from "../sim/engine";
+import { eventText, worldSay } from "../sim/say";
+import { pageT } from "../i18n/page";
+
+const X = (k: string, v?: Record<string, string | number>) => pageT()(`export.${k}`, v);
 import { FPS, type ReplayPlan, type ReplaySummary } from "./replay";
 import { controlValue, describeDiff, fmtMetric, headline } from "./frame";
 
@@ -24,8 +28,7 @@ export function videoTime(plan: ReplayPlan, map: Int32Array, t: number): number 
   return (plan.intro + lo) / FPS;
 }
 
-const who = (plan: ReplayPlan, e: TimelineItem) =>
-  e.who === "alt" ? "With changes only" : e.who === "base" ? "No change only" : "Both worlds";
+const who = (_plan: ReplayPlan, e: TimelineItem) => X(`who.${e.who}`);
 
 /** Events inside the shown part, what-if-only and no-change-only first, at most `max`, in time order. */
 export function shownEvents(plan: ReplayPlan, events: TimelineItem[], max = 12): TimelineItem[] {
@@ -43,10 +46,10 @@ function srtTime(s: number): string {
 /** The result in one line: "Temperature at 2100: no change 2.1 °C, what if 1.4 °C. 0.7 °C cooler." */
 export function resultLine(plan: ReplayPlan, summary: ReplaySummary): string {
   const m = summary.metric, end = summary.end;
-  const parts = [`${m.label} at ${plan.sb.fmtT(end.t)}: no change ${fmtMetric(m, end.base[m.k])}`];
-  if (end.alt) parts[0] += `, with changes ${fmtMetric(m, end.alt[m.k])}`;
+  const v = { metric: worldSay(plan.sb)(`metric.${m.k}.label`), t: plan.sb.fmtT(end.t), base: fmtMetric(m, end.base[m.k]) };
+  const first = end.alt ? X("resultAlt", { ...v, alt: fmtMetric(m, end.alt[m.k]) }) : X("result", v);
   const d = describeDiff(m, end);
-  return parts[0] + "." + (d ? ` ${d.txt}.` : "");
+  return first + "." + (d ? ` ${d.txt}.` : "");
 }
 
 /** Timed subtitles that match the video frame for frame. */
@@ -59,7 +62,7 @@ export function toSrt(x: TextInput): string {
   for (const e of shownEvents(plan, summary.events)) {
     const a = Math.max(videoTime(plan, map, e.t), cues[cues.length - 1].b);
     if (a >= runEnd) break;
-    cues.push({ a, b: Math.min(a + 3, runEnd), txt: `${plan.sb.fmtT(e.t)} · ${who(plan, e)}\n${e.txt}` });
+    cues.push({ a, b: Math.min(a + 3, runEnd), txt: `${plan.sb.fmtT(e.t)} · ${who(plan, e)}\n${eventText(plan.sb, e)}` });
   }
   for (let i = 0; i < cues.length - 1; i++) cues[i].b = Math.min(cues[i].b, cues[i + 1].a);
   cues.push({ a: Math.max(runEnd, cues[cues.length - 1].b), b: Math.max(total, runEnd + 2), txt: resultLine(plan, summary) });
@@ -69,14 +72,11 @@ export function toSrt(x: TextInput): string {
 /** A caption to paste under a post. */
 export function toCaption(x: TextInput): string {
   const { plan, summary } = x;
-  const q = plan.label ? plan.label.replace(/^(What if|Changed):\s*/i, "") : "";
-  const first = plan.label
-    ? `${x.world}, changed: ${q}.`
-    : `${x.world}: what happens next?`;
+  const first = plan.label ? X("captionChanged", { world: x.world, what: plan.what ?? plan.label }) : X("next", { world: x.world });
   return [
     first,
     resultLine(plan, summary),
-    `Same world, same seed (${plan.seed}), same rules: run it yourself in What-If Lab.`,
+    X("captionRun", { seed: plan.seed }),
     `#whatiflab #whatif #${x.world.toLowerCase().replace(/[^a-z0-9]+/g, "")}`,
   ].join("\n\n");
 }
@@ -89,26 +89,27 @@ export function toStory(x: TextInput): string {
   const sb = plan.sb, end = summary.end;
   const out: string[] = [];
   out.push(`# ${x.world}: ${headline(plan, x.world)}`, "");
-  out.push(`From ${sb.fmtT(plan.t0)} to ${sb.fmtT(plan.t1)} · seed ${plan.seed} · made with What-If Lab (rule-based, no AI, no live data).`, "");
-  out.push("## The setup", "", x.intro, "");
+  out.push(X("storyMeta", { from: sb.fmtT(plan.t0), to: sb.fmtT(plan.t1), seed: plan.seed }), "");
+  out.push(`## ${X("storySetup")}`, "", x.intro, "");
   const ctls = sb.controls.filter((c): c is Exclude<Control, { type: "heading" }> => c.type !== "heading");
   if (ctls.length) {
-    out.push("| Setting | Value |", "| --- | --- |");
-    for (const c of ctls) out.push(`| ${cell(c.label)} | ${cell(controlValue(c, plan.params[c.id]))} |`);
+    const say = worldSay(sb);
+    out.push(`| ${X("storySetting")} | ${X("storyValue")} |`, "| --- | --- |");
+    for (const c of ctls) out.push(`| ${cell(say(`ctl.${c.id}.label`))} | ${cell(controlValue(c, plan.params[c.id], say))} |`);
     out.push("");
   }
-  out.push("## The changes", "");
-  if (!plan.hasWhatIf) out.push("No what-if: this is the world as it is.");
-  else if (plan.changes.length) for (const c of plan.changes) out.push(`- ${sb.fmtT(c.t)}: ${sb.whatifs.find((w) => w[0] === c.id)?.[1] ?? c.id}`);
+  out.push(`## ${X("storyChanges")}`, "");
+  if (!plan.hasWhatIf) out.push(X("storyNoWhatIf"));
+  else if (plan.changes.length) for (const c of plan.changes) out.push(`- ${sb.fmtT(c.t)}: ${sb.whatifs.some((w) => w[0] === c.id) ? worldSay(sb)(`whatif.${c.id}`) : c.id}`);
   else out.push(`- ${plan.label}`);
   out.push("");
   const evs = shownEvents(plan, summary.events, 40);
-  out.push("## What happened", "");
-  if (!evs.length) out.push("Nothing new happened in this stretch.");
-  for (const e of evs) out.push(`- **${sb.fmtT(e.t)}** (${who(plan, e).toLowerCase()}): ${e.txt}`);
-  out.push("", `## What changed by ${sb.fmtT(end.t)}`, "");
-  out.push(end.alt ? `| Number | No change | With changes |` : "| Number | No change |", end.alt ? "| --- | --- | --- |" : "| --- | --- |");
-  for (const m of sb.metrics) out.push(`| ${cell(m.label)} | ${cell(fmtMetric(m, end.base[m.k]))} |${end.alt ? ` ${cell(fmtMetric(m, end.alt[m.k]))} |` : ""}`);
+  out.push(`## ${X("storyHappened")}`, "");
+  if (!evs.length) out.push(X("nothingNewShort"));
+  for (const e of evs) out.push(`- **${sb.fmtT(e.t)}** (${who(plan, e).toLowerCase()}): ${eventText(sb, e)}`);
+  out.push("", `## ${X("storyChangedBy", { t: sb.fmtT(end.t) })}`, "");
+  out.push(end.alt ? `| ${X("storyNumber")} | ${X("noChange")} | ${X("withChanges")} |` : `| ${X("storyNumber")} | ${X("noChange")} |`, end.alt ? "| --- | --- | --- |" : "| --- | --- |");
+  for (const m of sb.metrics) out.push(`| ${cell(worldSay(sb)(`metric.${m.k}.label`))} | ${cell(fmtMetric(m, end.base[m.k]))} |${end.alt ? ` ${cell(fmtMetric(m, end.alt[m.k]))} |` : ""}`);
   out.push("", resultLine(plan, summary), "");
   return out.join("\n");
 }

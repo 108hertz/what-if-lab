@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "zoomLevel": "Nivel de zoom",
+    "hint": "Desplaza, pellizca o arrastra. Toca una etiqueta dorada para abrir su mundo."
+  },
+  "panel": {
+    "inView": "A la vista",
+    "openThis": "Abrir este mundo",
+    "openWorld": "Abrir un mundo",
+    "jumpTo": "Saltar a"
+  },
+  "hero": {
+    "title": "¿Qué pasa si…?",
+    "body": "Haz zoom desde un protón hasta el universo observable, diez veces más en cada paso. Las etiquetas doradas son mundos vivos: abre uno, cámbialo y compara su futuro con el del mundo tal como estaba."
+  },
+  "stage": {
+    "open": "Abrir mundo →",
+    "screen": "Ancho de pantalla ≈ {len}"
+  }
+}

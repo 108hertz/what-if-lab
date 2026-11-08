@@ -79,7 +79,7 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 
 ### Phase 4 — Scale
 - [ ] Web Worker + OffscreenCanvas engine
-- [ ] Localisation (top 5 languages by traffic)
+- [x] Languages: 20, all text in the repo, first 5 (drafts, native review open) in [change 0025](./changes/0025-languages-base-and-seo.md) ([ADR 0010](./decisions/0010-languages-urls-and-messages.md))
 
 ## Open questions
 

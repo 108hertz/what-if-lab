@@ -1,0 +1,141 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "ctl": {
+    "aim": {
+      "label": "Aim off-centre",
+      "unit": "kly"
+    },
+    "bhm": {
+      "label": "Black hole mass",
+      "unit": "× Milky Way"
+    },
+    "count": {
+      "label": "Galaxies that fall in"
+    },
+    "dm": {
+      "label": "Dark matter",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Gravity left",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Fly-through speed",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Starting world",
+      "what-if-settings": "What-if settings"
+    },
+    "mass": {
+      "label": "Andromeda mass",
+      "unit": "× Milky Way"
+    },
+    "neigh": {
+      "label": "Neighbours at start",
+      "opt": {
+        "m33": "Triangulum",
+        "m33lmc": "Triangulum + LMC",
+        "none": "None"
+      }
+    },
+    "shape": {
+      "label": "Andromeda's shape",
+      "opt": {
+        "elliptical": "Elliptical",
+        "spiral": "Spiral"
+      }
+    },
+    "size": {
+      "label": "Their size",
+      "unit": "× Milky Way"
+    },
+    "speed": {
+      "label": "Approach speed",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Andromeda spins",
+      "opt": {
+        "against": "Against ours",
+        "same": "Same way as ours"
+      }
+    },
+    "stars": {
+      "label": "Stars per galaxy"
+    }
+  },
+  "ev": {
+    "bhBig": "A black hole {x}× as heavy as the Milky Way appears at its centre",
+    "bhSmall": "A black hole of {pct}% the Milky Way’s mass appears at its centre",
+    "bullet": "A galaxy shoots straight through at {speed} km/s",
+    "closing": "Andromeda is closing in at about {speed} km/s",
+    "flipmw": "Every Milky Way star reverses its orbit",
+    "freeze": "Every Milky Way star stops orbiting",
+    "headon": "Andromeda turns straight for our centre",
+    "lmc": "The Large Magellanic Cloud circles the Milky Way",
+    "merge": "The cores merge: one giant elliptical galaxy, “Milkomeda”",
+    "miss": "Andromeda is nudged onto a fly-by path",
+    "nodmAll": "Dark matter vanishes: gravity drops to {left}%, stars are suddenly too fast",
+    "nodmSome": "Some dark matter vanishes: gravity drops to {left}%, stars are suddenly too fast",
+    "pass1": "First pass: the galaxies plunge through each other",
+    "punch": "A dwarf galaxy punches through our centre",
+    "reverse": "Andromeda turns around and heads away",
+    "ring": "Our disc rebounds into an expanding ring of stars",
+    "stop": "Andromeda stops dead, then starts to fall",
+    "swallowed": "Another galaxy is swallowed",
+    "swarm": "{n, plural, one {Another galaxy falls in} other {# more galaxies fall in}}",
+    "tails": "They swing apart, trailing long tidal tails of stars",
+    "third": "A third galaxy (like Triangulum) falls in",
+    "triangulum": "Triangulum drifts in from the side"
+  },
+  "meta": {
+    "intro": "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
+    "name": "Galaxies",
+    "sub": "Collisions"
+  },
+  "metric": {
+    "disc": {
+      "label": "Stars in a disc",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Galaxies left"
+    },
+    "sep": {
+      "label": "Separation",
+      "unit": "kly"
+    },
+    "thrown": {
+      "label": "Stars thrown out",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 Myr/s",
+    "1": "10 Myr/s",
+    "2": "25 Myr/s",
+    "3": "50 Myr/s",
+    "4": "150 Myr/s",
+    "5": "400 Myr/s",
+    "6": "1 Gyr/s"
+  },
+  "stage": {
+    "scale": "{n} light-years"
+  },
+  "whatif": {
+    "bh": "A galaxy-heavy black hole appears at our centre",
+    "bullet": "A galaxy shoots straight through",
+    "flipmw": "The Milky Way spins the other way",
+    "freeze": "Milky Way stars stop orbiting",
+    "headon": "Aim Andromeda dead centre",
+    "miss": "Andromeda flies past",
+    "nodm": "Dark matter vanishes",
+    "reverse": "Andromeda turns around",
+    "ring": "A small galaxy punches through our centre",
+    "stop": "Andromeda stops dead",
+    "swarm": "More galaxies fall in",
+    "third": "A third galaxy joins"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_status": "source",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Zoom from a proton to the observable universe, open a world, change it with what-ifs and compare its future with the world left as it was.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Scale",
+    "sub": "Proton → universe"
+  },
+  "intro": {
+    "worlds": "Worlds",
+    "whatifs": "What if…"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page isn't in the lab.",
+    "home": "Back to the lab"
+  },
+  "unit": {
+    "gyr": "{n} Gyr",
+    "myr": "{n} Myr",
+    "kyr": "{n} kyr",
+    "yr": "{n} yr"
+  },
+  "dur": {
+    "days": "{n} days",
+    "months": "{n} mo",
+    "years": "{n} yr"
+  }
+}

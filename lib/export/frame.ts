@@ -8,6 +8,12 @@
  */
 import { channelTag, chip, FONT, STAGE } from "../sim/draw";
 import { fmtNum } from "../sim/core";
+import { eventText, worldSay } from "../sim/say";
+import { pageT } from "../i18n/page";
+
+/** Export words in the page's language (change 0025); exU() upper-cases for labels drawn in capitals. */
+const ex = (k: string, v?: Record<string, string | number>) => pageT()(`export.${k}`, v);
+const exU = (k: string, v?: Record<string, string | number>) => ex(k, v).toLocaleUpperCase(pageT().tag);
 import type { Control, Metric } from "../sim/types";
 import { type Replay, type ReplayPlan, type ReplaySample, type ReplaySummary } from "./replay";
 import {
@@ -129,16 +135,16 @@ export function describeDiff(m: Metric, end: ReplaySample): { txt: string; good:
   if (b == null || a == null || !isFinite(a) || !isFinite(b)) return null;
   const d = a - b;
   const sentence = m.diff?.(d);
-  const txt = sentence || (Math.abs(d) < 1e-9 ? "No real difference" : "Difference " + (d > 0 ? "+" : "−") + fmtMetric(m, Math.abs(d)).replace(/^-/, ""));
+  const txt = sentence || (Math.abs(d) < 1e-9 ? ex("noDiff") : ex("diff", { sign: d > 0 ? "+" : "−", value: fmtMetric(m, Math.abs(d)).replace(/^-/, "") }));
   const good = m.better && Math.abs(d) > 1e-9 ? (m.better === "up" ? d > 0 : d < 0) : null;
   return { txt, good };
 }
 
 /** Value of a world control as the Tune panel shows it. */
-export function controlValue(c: Exclude<Control, { type: "heading" }>, v: unknown): string {
-  if (c.type === "select") return c.options.find(([val]) => val === String(v))?.[1] ?? String(v);
+export function controlValue(c: Exclude<Control, { type: "heading" }>, v: unknown, say?: (k: string) => string): string {
+  if (c.type === "select") return c.options.some(([val]) => val === String(v)) ? (say ? say(`ctl.${c.id}.opt.${v}`) : c.options.find(([val]) => val === String(v))![1]) : String(v);
   const d = (String(c.step).split(".")[1] ?? "").length;
-  return fmtNum(Number(v), d) + (c.unit ? " " + c.unit : "");
+  return fmtNum(Number(v), d) + (c.unit ? " " + (say ? say(`ctl.${c.id}.unit`) : c.unit) : "");
 }
 
 // ——— Colour grade ———
@@ -251,8 +257,8 @@ export function drawStage(ctx: CanvasRenderingContext2D, r: Replay, x: number, y
     }
     if (graded) overlays(ctx, p.w, p.h, G);
     if (hud) {
-      const label = p.alt ? r.plan.label : r.alt ? "No change" : "No change · as it is";
-      const lw = channelTag(ctx, label.toUpperCase(), 8, 8, p.alt, p.w - 60);
+      const label = p.alt ? r.plan.label : r.alt ? ex("noChange") : ex("asItIs");
+      const lw = channelTag(ctx, label.toLocaleUpperCase(pageT().tag), 8, 8, p.alt, p.w - 60);
       const time = sb.fmtT(p.world.t);
       ctx.font = `500 12px ${FONT.mono}`;
       const tw = ctx.measureText(time).width;
@@ -287,10 +293,10 @@ export function drawChart(ctx: CanvasRenderingContext2D, samples: ReplaySample[]
     return right - tw - 40;
   };
   let right = lx;
-  if (plan.hasWhatIf) right = leg("WITH CHANGES", C.alt, [7, 4], right);
-  leg("NO CHANGE", C.base, [], right);
+  if (plan.hasWhatIf) right = leg(exU("withChanges"), C.alt, [7, 4], right);
+  leg(exU("noChange"), C.base, [], right);
   const T = y + 22, B = y + h - 18;
-  if (!all.length) { text(ctx, "No data for this metric yet", x, T + 20, 14, C.ink2); return; }
+  if (!all.length) { text(ctx, ex("noData"), x, T + 20, 14, C.ink2); return; }
   let lo = Math.min(...all), hi = Math.max(...all);
   if (hi - lo < 1e-9) { hi += 1; lo -= 1; }
   const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
@@ -343,7 +349,7 @@ export interface ClipInfo {
 
 /** Title shown before the run: the what-if as a question-sized line, or what happens next without one. */
 export function headline(plan: ReplayPlan, world: string): string {
-  return plan.label || `${world}: what happens next?`;
+  return plan.label || ex("next", { world });
 }
 
 /** Fill in {tokens} for a layer's wording. */
@@ -351,7 +357,7 @@ export function fillTokens(s: string, plan: ReplayPlan, info: ClipInfo): string 
   const m = info.summary.metric;
   const d = describeDiff(m, info.summary.end);
   const map: Record<string, string> = {
-    whatif: headline(plan, info.world), world: info.world, metric: m.label, result: d?.txt ?? "",
+    whatif: headline(plan, info.world), world: info.world, metric: worldSay(plan.sb)(`metric.${m.k}.label`), result: d?.txt ?? "",
     from: plan.sb.fmtT(plan.t0), to: plan.sb.fmtT(plan.t1), seed: String(plan.seed),
   };
   return s.replace(/\{(\w+)\}/g, (all, k: string) => (k in map ? map[k] : all));
@@ -396,17 +402,17 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
   };
   const pair = (smp: ReplaySample): Row => ({
     k: "pair", px: l.size, base: fmtMetric(m, smp.base[m.k]), alt: smp.alt ? fmtMetric(m, smp.alt[m.k]) : null,
-    altLabel: "WITH CHANGES", font: fontStr(l.size, weight === 400 ? 500 : weight, F.num),
+    altLabel: exU("withChanges"), font: fontStr(l.size, weight === 400 ? 500 : weight, F.num),
   });
   const main = fontStr(l.size, weight, fam);
   if (id === "metric") {
     rows.push(textRow(m.label.toUpperCase(), kick, color, kickFont, 1), { k: "gap", px: 8 }, pair(now));
   } else if (id === "intro") {
-    rows.push(textRow(plan.fromFork ? `FROM ${plan.sb.fmtT(plan.t0).toUpperCase()}` : "FROM NOW", kick, C.ink2, kickFont, 1), { k: "gap", px: kick * 0.9 });
+    rows.push(textRow(plan.fromFork ? exU("fromT", { t: plan.sb.fmtT(plan.t0) }) : exU("fromNow"), kick, C.ink2, kickFont, 1), { k: "gap", px: kick * 0.9 });
     rows.push(textRow(up(fillTokens(l.text, plan, info)), l.size, color, main, l.lines, 1.0));
   } else if (id === "outro") {
     const end = info.summary.end;
-    rows.push(textRow(`AT ${plan.sb.fmtT(end.t).toUpperCase()}`, kick, C.ink2, kickFont, 1), { k: "gap", px: kick * 0.9 });
+    rows.push(textRow(exU("atT", { t: plan.sb.fmtT(end.t) }), kick, C.ink2, kickFont, 1), { k: "gap", px: kick * 0.9 });
     rows.push(textRow(up(m.label), l.size, color, main, 2, 1.0), { k: "gap", px: 12 }, pair(end));
     const body = fillTokens(l.text, plan, info).trim();
     if (body) {
@@ -443,7 +449,7 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
       let x = xAt(rowWidth(ctx, r));
       const vy = y + 16 + r.px * 0.86;
       const lab = (s: string, xx: number) => { ctx.font = fontStr(10, 600, F.title); ctx.fillStyle = C.ink2; ctx.fillText(s, xx, y + 10); };
-      lab("NO CHANGE", x);
+      lab(exU("noChange"), x);
       ctx.font = r.font; ctx.fillStyle = C.base; ctx.fillText(r.base, x, vy);
       if (r.alt != null) {
         x += bwid + r.px;
@@ -556,11 +562,11 @@ export interface SlideCtx {
 function slideChrome(ctx: CanvasRenderingContext2D, s: SlideCtx) {
   const { w, h } = SLIDE_SIZE;
   ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h);
-  text(ctx, "WHAT-IF LAB", 40, 40, 12, C.ink, 500);
+  text(ctx, exU("brand"), 40, 40, 12, C.ink, 500);
   ctx.font = fontStr(12, 600, F.title);
-  text(ctx, s.world.toUpperCase(), 40 + ctx.measureText("WHAT-IF LAB").width + 16, 40, 12, C.ink2, 500);
+  text(ctx, s.world.toLocaleUpperCase(pageT().tag), 40 + ctx.measureText(exU("brand")).width + 16, 40, 12, C.ink2, 500);
   text(ctx, `${s.index} / ${s.total}`, w - 40, 40, 12, C.ink2, 500, "right");
-  text(ctx, `SEED ${s.plan.seed}`, w - 40, h - 28, 10, C.ink2, 500, "right");
+  text(ctx, exU("seed", { seed: s.plan.seed }), w - 40, h - 28, 10, C.ink2, 500, "right");
 }
 
 const STAGE_BOX: [number, number, number, number] = [440, 64, 480, 400];
@@ -571,23 +577,23 @@ export function slideTitle(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay
   ctx.font = fontStr(51, 600, F.title); ctx.fillStyle = C.ink;
   ctx.fillText(clip(ctx, s.world.toUpperCase(), 380), 40, 150);
   lines(ctx, headline(s.plan, s.world), 40, 210, 360, 29, 1.09, C.ink, 400, 5);
-  text(ctx, s.plan.fromFork ? `Forked at ${s.plan.sb.fmtT(s.plan.tFork)}` : `From ${s.plan.sb.fmtT(s.plan.t0)}`, 40, 440, 15, C.ink2);
+  text(ctx, s.plan.fromFork ? ex("forkedAt", { t: s.plan.sb.fmtT(s.plan.tFork) }) : ex("fromT", { t: s.plan.sb.fmtT(s.plan.t0) }), 40, 440, 15, C.ink2);
 }
 
 export function slideSetup(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Replay) {
   slideChrome(ctx, s);
   drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
-  text(ctx, "THE SETUP", 40, 96, 18, C.ink, 500);
+  text(ctx, exU("setup"), 40, 96, 18, C.ink, 500);
   let y = 124 + lines(ctx, s.intro, 40, 124, 360, 15, 1.45, C.ink, 400, 6) + 12;
   const ctls = s.plan.sb.controls.filter((c): c is Exclude<Control, { type: "heading" }> => c.type !== "heading");
   dashed(ctx, 40, y - 8, 400, y - 8);
   y += 12;
   for (const c of ctls) {
-    if (y > 456) { text(ctx, `+ ${ctls.length - ctls.indexOf(c)} more`, 40, y, 12, C.ink2, 500); break; }
+    if (y > 456) { text(ctx, ex("more", { n: ctls.length - ctls.indexOf(c) }), 40, y, 12, C.ink2, 500); break; }
     ctx.font = fontStr(14, 400, F.body);
-    text(ctx, clip(ctx, c.label, 220), 40, y, 14, C.ink2);
+    text(ctx, clip(ctx, worldSay(s.plan.sb)(`ctl.${c.id}.label`), 220), 40, y, 14, C.ink2);
     ctx.font = fontStr(14, 500, F.body);
-    text(ctx, clip(ctx, controlValue(c, s.plan.params[c.id]), 140), 400, y, 14, C.ink, 500, "right");
+    text(ctx, clip(ctx, controlValue(c, s.plan.params[c.id], worldSay(s.plan.sb)), 140), 400, y, 14, C.ink, 500, "right");
     y += 22;
   }
 }
@@ -596,19 +602,19 @@ export function slideWhatIf(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
   slideChrome(ctx, s);
   drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
   const sb = s.plan.sb;
-  text(ctx, s.plan.hasWhatIf ? "THE CHANGES" : "NO WHAT-IF YET", 40, 96, 18, C.ink, 500);
+  text(ctx, exU(s.plan.hasWhatIf ? "changes" : "noWhatIf"), 40, 96, 18, C.ink, 500);
   let y = 140 + lines(ctx, headline(s.plan, s.world), 40, 140, 360, 29, 1.09, C.alt, 400, 5) + 16;
   if (s.plan.changes.length > 1) {
     for (const c of s.plan.changes.slice(0, 6)) {
       text(ctx, sb.fmtT(c.t), 40, y, 12, C.ink2, 500);
       ctx.font = fontStr(14, 400, F.body);
-      text(ctx, clip(ctx, sb.whatifs.find((x) => x[0] === c.id)?.[1] ?? c.id, 280), 120, y, 14, C.ink);
+      text(ctx, clip(ctx, sb.whatifs.some((x) => x[0] === c.id) ? worldSay(sb)(`whatif.${c.id}`) : c.id, 280), 120, y, 14, C.ink);
       y += 22;
     }
   } else {
     lines(ctx, s.plan.hasWhatIf
-      ? "The world was copied at this moment. One copy runs on unchanged; the other gets the what-if. Same seed, so every difference comes from the change."
-      : "This run shows the world as it is, from the moment of export.", 40, y, 360, 15, 1.45, C.ink2, 400, 6);
+      ? ex("copied")
+      : ex("asIs"), 40, y, 360, 15, 1.45, C.ink2, 400, 6);
   }
 }
 
@@ -616,11 +622,11 @@ export function slideMoment(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
   slideChrome(ctx, s);
   drawStage(ctx, r, ...STAGE_BOX, s.split ?? "alt");
   const sb = s.plan.sb, t = r.base.t;
-  text(ctx, `AT ${sb.fmtT(t).toUpperCase()}`, 40, 96, 18, C.ink, 500);
+  text(ctx, exU("atT", { t: sb.fmtT(t) }), 40, 96, 18, C.ink, 500);
   const span = Math.max(1e-9, s.plan.t1 - s.plan.t0);
   const near = s.summary.events.filter((e) => e.t > s.plan.t0 - 1e-9 && e.t <= t + 1e-9 && e.t >= t - span * 0.3).sort((a, b) => b.t - a.t).slice(0, 3);
   let y = 132;
-  if (!near.length) { y += lines(ctx, "Nothing new happened in this stretch. Watch the numbers below.", 40, y, 360, 15, 1.45, C.ink2, 400, 3); }
+  if (!near.length) { y += lines(ctx, ex("nothingNew"), 40, y, 360, 15, 1.45, C.ink2, 400, 3); }
   for (const e of near) {
     // Timeline dots: hollow blue = no change only, filled amber = what-if only, half = both
     ctx.lineWidth = 1.5;
@@ -628,9 +634,9 @@ export function slideMoment(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
     if (e.who === "alt") { ctx.fillStyle = C.alt; ctx.fill(); }
     else if (e.who === "both") { ctx.strokeStyle = C.ink; ctx.stroke(); ctx.beginPath(); ctx.arc(46, y - 5, 4, Math.PI / 2, Math.PI * 1.5); ctx.fillStyle = C.ink; ctx.fill(); }
     else { ctx.strokeStyle = C.base; ctx.stroke(); }
-    const who = e.who === "alt" ? "With changes only" : e.who === "base" ? "No change only" : "Both worlds";
-    text(ctx, `${sb.fmtT(e.t)} · ${who}`.toUpperCase(), 60, y, 10, C.ink2, 500);
-    y += 18 + lines(ctx, e.txt, 60, y + 18, 340, 14, 1.3, C.ink, 400, 2) + 6;
+    const who = ex(`who.${e.who}`);
+    text(ctx, `${sb.fmtT(e.t)} · ${who}`.toLocaleUpperCase(pageT().tag), 60, y, 10, C.ink2, 500);
+    y += 18 + lines(ctx, eventText(sb, e), 60, y + 18, 340, 14, 1.3, C.ink, 400, 2) + 6;
   }
   drawChart(ctx, s.samples, s.summary.metric, s.plan, 40, 300, 360, 170, r.samples.length);
 }
@@ -638,20 +644,20 @@ export function slideMoment(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
 export function slideOutcome(ctx: CanvasRenderingContext2D, s: SlideCtx) {
   slideChrome(ctx, s);
   const sb = s.plan.sb, end = s.summary.end;
-  text(ctx, "WHAT CHANGED", 40, 96, 18, C.ink, 500);
-  text(ctx, `At ${sb.fmtT(end.t)}`, 40, 122, 15, C.ink2);
+  text(ctx, exU("whatChanged"), 40, 96, 18, C.ink, 500);
+  text(ctx, ex("atT", { t: sb.fmtT(end.t) }), 40, 122, 15, C.ink2);
   // Label column, then two right-aligned value columns 120 wide each
   const Lx = 40, NC = 310, WI = 440;
   let y = 160;
-  text(ctx, "METRIC", Lx, y, 10, C.ink2, 500);
-  text(ctx, "NO CHANGE", NC, y, 10, C.ink2, 500, "right");
-  if (end.alt) text(ctx, "WITH CHANGES", WI, y, 10, C.ink2, 500, "right");
+  text(ctx, exU("metric"), Lx, y, 10, C.ink2, 500);
+  text(ctx, exU("noChange"), NC, y, 10, C.ink2, 500, "right");
+  if (end.alt) text(ctx, exU("withChanges"), WI, y, 10, C.ink2, 500, "right");
   y += 10;
   for (const m of sb.metrics.slice(0, 10)) {
     dashed(ctx, Lx, y, WI, y);
     y += 22;
     ctx.font = fontStr(14, 400, F.body);
-    text(ctx, clip(ctx, m.label, 140), Lx, y, 14, C.ink2);
+    text(ctx, clip(ctx, worldSay(sb)(`metric.${m.k}.label`), 140), Lx, y, 14, C.ink2);
     ctx.font = fontStr(14, 500, F.num);
     const v = (s2: string, x: number, col: string) => { ctx.font = fontStr(14, 500, F.num); ctx.fillStyle = col; ctx.textAlign = "right"; ctx.fillText(clip(ctx, s2, 116), x, y); ctx.textAlign = "left"; };
     v(fmtMetric(m, end.base[m.k]), NC, C.ink);

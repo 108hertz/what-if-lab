@@ -1,0 +1,20 @@
+{
+  "_status": "source",
+  "nav": {
+    "home": "what if… home",
+    "worlds": "Worlds",
+    "worldButton": "World: {name}. Change world",
+    "wordmark": "what if"
+  },
+  "theme": {
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme"
+  },
+  "lang": {
+    "label": "Language",
+    "button": "Language: {name}. Change language",
+    "draft": "not ready yet",
+    "alsoIn": "Also in {language}",
+    "dismiss": "Don't suggest another language"
+  }
+}

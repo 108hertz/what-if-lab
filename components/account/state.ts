@@ -1,3 +1,5 @@
+import { pageT } from "@/lib/i18n/page";
+
 /**
  * Account and Premium state, provider-neutral (change 0020, ADR 0008). Pure functions only, so the rules are
  * unit-tested without a browser. The provider adapter (clerk.tsx) feeds raw facts in; the UI reads `Account`.
@@ -163,5 +165,5 @@ export function setPendingUpgrade(on: boolean, store: Store | null = session()):
 
 /** Display name: the person's name, else the part of the email before @, else "Your account". */
 export function displayName(first: string | null | undefined, full: string | null | undefined, email: string | null | undefined): string {
-  return (full || first || "").trim() || (email ? email.split("@")[0] : "") || "Your account";
+  return (full || first || "").trim() || (email ? email.split("@")[0] : "") || pageT()("account.yourAccount");
 }

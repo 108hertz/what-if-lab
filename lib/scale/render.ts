@@ -1,7 +1,8 @@
 import { clamp, fmtLen, lerp } from "../sim/core";
 import { FONT, STAGE } from "../sim/draw";
 import { GLYPHS } from "./glyphs";
-import { SCALE_OBJECTS, ZOOM_MAX, ZOOM_MIN, type ScaleObject } from "./objects";
+import { SCALE_OBJECTS, ZOOM_MAX, ZOOM_MIN, objectSay, type ScaleObject } from "./objects";
+import { pageT } from "../i18n/page";
 
 /**
  * Draws one object with its own renderer (change 0012). The canvas is set so the object's box is
@@ -73,15 +74,15 @@ export class ScaleView {
       ctx.globalAlpha = Math.min(1, a * 1.2) * clamp((d - 14) / 26, 0, 1);
       const ly = Math.min(H - 44, cy + Math.max((d / 2) * o.ext, 8) + 18);
       ctx.textAlign = "center";
-      ctx.fillStyle = STAGE.ink; ctx.font = "600 12px " + FONT.display; ctx.fillText(o.name.toUpperCase(), x, ly);
+      ctx.fillStyle = STAGE.ink; ctx.font = "600 12px " + FONT.display; ctx.fillText(objectSay()(`${o.id}.name`).toLocaleUpperCase(pageT().tag), x, ly);
       ctx.fillStyle = STAGE.ink2; ctx.font = "500 11px " + FONT.mono; ctx.fillText(fmtLen(o.size), x, ly + 16);
-      if (o.sandbox) { ctx.fillStyle = this.hover === o ? STAGE.alt : "rgba(255,181,71,.85)"; ctx.font = "600 12px " + FONT.display; ctx.fillText("OPEN WORLD →", x, ly + 32); }
+      if (o.sandbox) { ctx.fillStyle = this.hover === o ? STAGE.alt : "rgba(255,181,71,.85)"; ctx.font = "600 12px " + FONT.display; ctx.fillText(pageT()("scale.stage.open").toLocaleUpperCase(pageT().tag), x, ly + 32); }
       ctx.textAlign = "left";
       this.hits.push({ o, x, y: cy, r: Math.max(d / 2, 10), ly });
     });
     ctx.globalAlpha = 1;
     ctx.fillStyle = STAGE.ink2; ctx.font = "500 11px " + FONT.mono;
-    ctx.fillText("Screen width ≈ " + fmtLen(Math.pow(10, this.z) / 0.62), 14, H - 14);
+    ctx.fillText(pageT()("scale.stage.screen", { len: fmtLen(Math.pow(10, this.z) / 0.62) }), 14, H - 14);
     return prevFocus !== this.focus;
   }
 

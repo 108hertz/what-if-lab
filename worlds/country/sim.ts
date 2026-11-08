@@ -1,8 +1,9 @@
 import type { BaseWorld, InfoBlock, Sandbox } from "@/lib/sim/types";
-import { clamp, fmtCalendar, fmtNum, gauss, note, rng } from "@/lib/sim/core";
+import { clamp, fmtCalendar, fmtNum, gauss, note, ref, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
 import { COUNTRIES, COUNTRY_GROUPS, COUNTRY_OPTIONS, profileParams, type Gov } from "./data";
-import { drawCountry, type Figure, type Look, type Tally } from "./scene";
+import { STAGE_MESSAGES, drawCountry, usd, type Figure, type Look, type Tally } from "./scene";
+import { worldSay } from "@/lib/sim/say";
 
 /**
  * Hybrid model (change 0016):
@@ -38,6 +39,7 @@ const POOR_LINE = 250;
 /** Size settings each sized policy reads when it is clicked. */
 const SIZE: Record<string, keyof P> = { ubi: "s_ubi", minwage: "s_wage", taxrich: "s_rich", taxcut: "s_cut", open: "s_open", war: "s_war" };
 
+/** Policy groups; their names are `group.<i>` in MESSAGES. */
 export const WHATIF_GROUPS: [string, string[]][] = [
   ["Money", ["ubi", "minwage", "taxrich", "taxcut"]],
   ["Services", ["edu", "health", "build", "corr"]],
@@ -45,27 +47,95 @@ export const WHATIF_GROUPS: [string, string[]][] = [
   ["Shocks", ["oil", "war", "pandemic", "drought"]],
 ];
 
-function applyText(id: string, s: number): string {
-  switch (id) {
-    case "edu": return "Education budget doubles";
-    case "corr": return "Anti-corruption drive begins";
-    case "ubi": return "Basic income starts: poverty drops, taxes rise";
-    case "oil": return "Oil found: export boom";
-    case "war": return "War breaks out: the economy shrinks fast";
-    case "aging": return "Birth rate collapses";
-    case "open": return `Borders open: ${s} new households arrive`;
-    case "health": return "Healthcare becomes free for everyone";
-    case "minwage": return "The minimum wage goes up";
-    case "taxrich": return "The richest pay more tax";
-    case "taxcut": return "Taxes are cut for everyone";
-    case "build": return "Building starts on roads, rail and power lines";
-    case "robots": return "Robots arrive in the factories";
-    case "pandemic": return "A pandemic hits: schools and shops close";
-    case "trade": return "Borders close to trade: imports cost more";
-    case "drought": return "A long drought begins";
-    default: return id;
-  }
-}
+/** English words of this world (change 0025): event lines. */
+const MESSAGES: Record<string, string> = {
+  "ev.apply.edu": "Education budget doubles",
+  "ev.apply.corr": "Anti-corruption drive begins",
+  "ev.apply.ubi": "Basic income starts: poverty drops, taxes rise",
+  "ev.apply.oil": "Oil found: export boom",
+  "ev.apply.war": "War breaks out: the economy shrinks fast",
+  "ev.apply.aging": "Birth rate collapses",
+  "ev.apply.open": "Borders open: {n} new households arrive",
+  "ev.apply.health": "Healthcare becomes free for everyone",
+  "ev.apply.minwage": "The minimum wage goes up",
+  "ev.apply.taxrich": "The richest pay more tax",
+  "ev.apply.taxcut": "Taxes are cut for everyone",
+  "ev.apply.build": "Building starts on roads, rail and power lines",
+  "ev.apply.robots": "Robots arrive in the factories",
+  "ev.apply.pandemic": "A pandemic hits: schools and shops close",
+  "ev.apply.trade": "Borders close to trade: imports cost more",
+  "ev.apply.drought": "A long drought begins",
+  "ev.dbl": "Income per person doubles",
+  "ev.hi": "Becomes a high-income country",
+  "ev.u": "Unrest: mass protests fill the streets",
+  "ev.c": "High risk of coup or state collapse",
+  "ev.t10": "Richest 10% now own half of all wealth",
+  "ev.pk": "Population peaks at {n} m",
+  "ev.wend": "War ends; rebuilding boom begins",
+  "ev.curse": "Resource curse: oil money feeds corruption",
+  "ev.eduw": "First generation from the better schools starts work",
+  "ev.built": "New roads, rail and power lines open",
+  "ev.robo2": "New kinds of jobs appear around the robots",
+  "ev.pand": "The pandemic ends; shops and schools reopen",
+  "ev.rain": "The rains return",
+  "ev.povh": "Poverty has halved since 2026",
+  "ev.jl15": "1 in 7 adults is now out of work",
+  "ev.life5": "People now live 5 years longer than in 2026",
+  "ev.lifed": "Lifespans fall by 5 years",
+  // The console: policy groups and the picker
+  ...Object.fromEntries(WHATIF_GROUPS.map(([g], i) => [`group.${i}`, g])),
+  "ui.pick": "Pick a country",
+  "ui.changesHint": "They add up. Sizes are in Tune. Tick them off above to compare.",
+  "name.this": "This country",
+  "name.ownFrom": "Your own country (from {from})",
+  // The side panel
+  "info.changed": "What changed",
+  "info.noChange": "With no change, {year}",
+  "info.now": "{country}, {year}",
+  "info.people": "{pop} million people. A typical family lives on {usd} a month.",
+  "info.poor": "{pov} out of 100 people are poor; {jobless} out of 100 adults are out of work.",
+  "info.life": "People live about {n} years. {calm}",
+  "info.about": "About the numbers",
+  "info.aboutText": "Starting figures are rounded, approximate values from the mid-2020s. After that the country runs on simple rules: it shows how things push each other, not a forecast.",
+  "info.curious": "For the curious",
+  "info.gini": "Wealth Gini {gini} · richest 10% own {pct}% of wealth",
+  "calm.3": "Life is calm and people mostly trust each other.",
+  "calm.2": "Life is mostly calm, with some anger at the top.",
+  "calm.1": "Many people are angry; protests are close.",
+  "calm.0": "Protests fill the streets.",
+  // "What changed": the story
+  "story.head": "Compared with the same country with no change, in {year}:",
+  "story.famMore": "A typical family has {usd} more a month.",
+  "story.famLess": "A typical family has {usd} less a month.",
+  "story.povMore": "{n, plural, one {# more person out of 100 is poor.} other {# more people out of 100 are poor.}}",
+  "story.povFewer": "{n, plural, one {# fewer person out of 100 is poor.} other {# fewer people out of 100 are poor.}}",
+  "story.jobMore": "{n, plural, one {# more adult out of 100 is out of work.} other {# more adults out of 100 are out of work.}}",
+  "story.jobFewer": "{n, plural, one {# fewer adult out of 100 is out of work.} other {# fewer adults out of 100 are out of work.}}",
+  "story.longer": "People live {n} years longer.",
+  "story.shorter": "People live {n} years shorter.",
+  "story.stopped": "The protests have stopped.",
+  "story.calmer": "The country is calmer.",
+  "story.angrier": "People are angrier.",
+  "story.gapBigger": "The gap between rich and poor is bigger.",
+  "story.gapSmaller": "The gap between rich and poor is smaller.",
+  "story.popMore": "{n} million more people live here.",
+  "story.popFewer": "{n} million fewer people live here.",
+  "story.none": "Not much is different yet. Give it a few years.",
+  // The chart's sentence under a metric (what-if − no change)
+  "diff.famMore": "{usd} more a month", "diff.famLess": "{usd} less a month",
+  "diff.povMore": "{n, plural, one {# more person out of 100 is poor} other {# more people out of 100 are poor}}",
+  "diff.povFewer": "{n, plural, one {# fewer person out of 100 is poor} other {# fewer people out of 100 are poor}}",
+  "diff.gapBigger": "the gap is {n}× bigger", "diff.gapSmaller": "the gap is {n}× smaller",
+  "diff.jobMore": "{n, plural, one {# more adult out of 100 has no job} other {# more adults out of 100 have no job}}",
+  "diff.jobFewer": "{n, plural, one {# fewer adult out of 100 has no job} other {# fewer adults out of 100 have no job}}",
+  "diff.longer": "{n} years longer lives", "diff.shorter": "{n} years shorter lives",
+  "diff.calmer": "{n, plural, one {# point calmer} other {# points calmer}}",
+  "diff.lessCalm": "{n, plural, one {# point less calm} other {# points less calm}}",
+  "diff.popMore": "{n} million more people", "diff.popFewer": "{n} million fewer people",
+  ...STAGE_MESSAGES,
+};
+/** This world's words in the page's language (labels + MESSAGES). */
+const say = () => worldSay(country);
 
 /** Equilibrium chance of being out of work for a skill, given the job-market pressure q (low skill is hit first). */
 const jobless = (q: number, sk: number) => q / (q + (1 - q) * sk);
@@ -237,22 +307,22 @@ function sub(w: W, h: number, f: number, p: P) {
   w.stab += ((stabTarget(w, p, adj) - w.stab) / 4) * h;
   w.t += h;
 
-  if (w.g >= 2 * w.g0) note(w, "Income per person doubles", "dbl");
-  if (w.g0 < 14 && w.g >= 14) note(w, "Becomes a high-income country", "hi");
-  if (w.ps >= 30 && w.stab < 30) note(w, "Unrest: mass protests fill the streets", "u");
-  if (w.ps >= 15 && w.stab < 15) note(w, "High risk of coup or state collapse", "c");
-  if (w.top10 > 0.5) note(w, "Richest 10% now own half of all wealth", "t10");
+  if (w.g >= 2 * w.g0) note(w, "ev.dbl", undefined, "dbl");
+  if (w.g0 < 14 && w.g >= 14) note(w, "ev.hi", undefined, "hi");
+  if (w.ps >= 30 && w.stab < 30) note(w, "ev.u", undefined, "u");
+  if (w.ps >= 15 && w.stab < 15) note(w, "ev.c", undefined, "c");
+  if (w.top10 > 0.5) note(w, "ev.t10", undefined, "t10");
   if (w.pop > w.pk) { w.pk = w.pop; w.tpk = w.t; }
-  else if (w.tpk > 0 && w.pop < w.pk * 0.997) note(w, `Population peaks at ${fmtNum(w.pk, w.pk < 20 ? 1 : 0)} m`, "pk", w.tpk);
+  else if (w.tpk > 0 && w.pop < w.pk * 0.997) note(w, "ev.pk", { n: w.pk < 20 ? Math.round(w.pk * 10) / 10 : Math.round(w.pk) }, "pk", w.tpk);
   for (const m of w.mods) {
     const d = w.t - m.t0;
-    if (m.id === "war" && d >= m.s) note(w, "War ends; rebuilding boom begins", "wend");
-    if (m.id === "oil" && m.c0 > 40 && d >= 5) note(w, "Resource curse: oil money feeds corruption", "curse");
-    if (m.id === "edu" && d >= 15) note(w, "First generation from the better schools starts work", "eduw");
-    if (m.id === "build" && d >= 6) note(w, "New roads, rail and power lines open", "built");
-    if (m.id === "robots" && d >= 12) note(w, "New kinds of jobs appear around the robots", "robo2");
-    if (m.id === "pandemic" && d >= 2) note(w, "The pandemic ends; shops and schools reopen", "pand");
-    if (m.id === "drought" && d >= 6) note(w, "The rains return", "rain");
+    if (m.id === "war" && d >= m.s) note(w, "ev.wend", undefined, "wend");
+    if (m.id === "oil" && m.c0 > 40 && d >= 5) note(w, "ev.curse", undefined, "curse");
+    if (m.id === "edu" && d >= 15) note(w, "ev.eduw", undefined, "eduw");
+    if (m.id === "build" && d >= 6) note(w, "ev.built", undefined, "built");
+    if (m.id === "robots" && d >= 12) note(w, "ev.robo2", undefined, "robo2");
+    if (m.id === "pandemic" && d >= 2) note(w, "ev.pand", undefined, "pand");
+    if (m.id === "drought" && d >= 6) note(w, "ev.rain", undefined, "rain");
   }
   w.ps = w.stab;
 }
@@ -289,6 +359,7 @@ function people(w: W): { figs: Figure[]; tally: Tally } {
 export const country: Sandbox<W, P> = {
   ...meta,
   intro: "A street in the country, and the same country as 100 people from poorest to richest. Pick a country, then make changes: they add up.",
+  messages: MESSAGES,
   controls: [
     { type: "select", id: "preset", label: "Country", options: COUNTRY_OPTIONS, groups: COUNTRY_GROUPS, val: "dk" },
     { type: "heading", label: "People" },
@@ -323,39 +394,39 @@ export const country: Sandbox<W, P> = {
   fmtT: fmtCalendar,
   metrics: [
     {
-      k: "fam", label: "Family income", unit: "$ a month", fmt: (v) => (v == null ? "—" : "$" + fmtNum(v)), better: "up",
+      k: "fam", label: "Family income", unit: "$ a month", fmt: (v) => (v == null ? "—" : usd(v)), better: "up",
       help: "Money a typical family has each month, after tax and help.",
-      diff: (d) => (Math.abs(d) < 5 ? "" : `$${fmtNum(Math.abs(d))} ${d > 0 ? "more" : "less"} a month`),
+      diff: (d) => (Math.abs(d) < 5 ? "" : say()(d > 0 ? "diff.famMore" : "diff.famLess", { usd: usd(Math.abs(d)) })),
     },
     {
       k: "pov", label: "Poor", unit: "of 100", fmt: (v) => fmtNum(v), better: "down",
       help: "Out of 100 people, how many live on less than about $250 a family a month, or far less than most families around them.",
-      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? `${n} ${d < 0 ? "fewer" : "more"} ${n === 1 ? "person" : "people"} out of 100 ${n === 1 ? "is" : "are"} poor` : ""; },
+      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? say()(d < 0 ? "diff.povFewer" : "diff.povMore", { n }) : ""; },
     },
     {
       k: "gap", label: "Rich–poor gap", unit: "", fmt: (v) => (v == null ? "—" : fmtNum(v, 1) + "×"), better: "down",
       help: "How many times more the richest 10 people get than the poorest 10.",
-      diff: (d) => (Math.abs(d) < 0.1 ? "" : `the gap is ${fmtNum(Math.abs(d), 1)}× ${d < 0 ? "smaller" : "bigger"}`),
+      diff: (d) => (Math.abs(d) < 0.1 ? "" : say()(d < 0 ? "diff.gapSmaller" : "diff.gapBigger", { n: fmtNum(Math.abs(d), 1) })),
     },
     {
       k: "jobless", label: "Out of work", unit: "of 100", fmt: (v) => fmtNum(v), better: "down",
       help: "Out of 100 adults who want a job, how many cannot find one.",
-      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? `${n} ${d < 0 ? "fewer" : "more"} ${n === 1 ? "adult" : "adults"} out of 100 ${n === 1 ? "has" : "have"} no job` : ""; },
+      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? say()(d < 0 ? "diff.jobFewer" : "diff.jobMore", { n }) : ""; },
     },
     {
       k: "life", label: "Lifespan", unit: "years", fmt: (v) => fmtNum(v, 1), better: "up",
       help: "How many years a baby born now can expect to live.",
-      diff: (d) => (Math.abs(d) < 0.1 ? "" : `${fmtNum(Math.abs(d), 1)} years ${d > 0 ? "longer" : "shorter"} lives`),
+      diff: (d) => (Math.abs(d) < 0.1 ? "" : say()(d > 0 ? "diff.longer" : "diff.shorter", { n: fmtNum(Math.abs(d), 1) })),
     },
     {
       k: "calm", label: "Peace", unit: "/100", fmt: (v) => fmtNum(v), better: "up",
       help: "How calm and trusting the country is: 100 is peaceful, under 30 means protests in the streets.",
-      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? `${n} ${n === 1 ? "point" : "points"} ${d > 0 ? "calmer" : "less calm"}` : ""; },
+      diff: (d) => { const n = Math.round(Math.abs(d)); return n ? say()(d > 0 ? "diff.calmer" : "diff.lessCalm", { n }) : ""; },
     },
     {
       k: "pop", label: "People", unit: "million", fmt: (v) => fmtNum(v, v != null && v < 20 ? 1 : 0),
       help: "How many people live in the country, in millions.",
-      diff: (d) => (Math.abs(d) < 0.05 ? "" : `${fmtNum(Math.abs(d), Math.abs(d) < 20 ? 1 : 0)} million ${d > 0 ? "more" : "fewer"} people`),
+      diff: (d) => (Math.abs(d) < 0.05 ? "" : say()(d > 0 ? "diff.popMore" : "diff.popFewer", { n: fmtNum(Math.abs(d), Math.abs(d) < 20 ? 1 : 0) })),
     },
   ],
 
@@ -395,17 +466,17 @@ export const country: Sandbox<W, P> = {
     const n = Math.ceil(dt * 12), h = dt / n;
     for (let k = 0; k < n; k++) sub(w, h, h * 12, p);
     const s = stats(w);
-    if (w.pov0 >= 8 && s.pov <= w.pov0 / 2) note(w, `Poverty has halved since 2026`, "povh");
-    if (w.jlB < 0.14 && w.jl >= 0.15) note(w, "1 in 7 adults is now out of work", "jl15");
-    if (w.life >= w.lifeB + 5) note(w, "People now live 5 years longer than in 2026", "life5");
-    if (w.life <= w.lifeB - 5) note(w, "Lifespans fall by 5 years", "lifed");
+    if (w.pov0 >= 8 && s.pov <= w.pov0 / 2) note(w, "ev.povh", undefined, "povh");
+    if (w.jlB < 0.14 && w.jl >= 0.15) note(w, "ev.jl15", undefined, "jl15");
+    if (w.life >= w.lifeB + 5) note(w, "ev.life5", undefined, "life5");
+    if (w.life <= w.lifeB - 5) note(w, "ev.lifed", undefined, "lifed");
   },
 
   apply(w, id, p) {
     const key = SIZE[id], s = key ? Number(p[key]) : 1;
     w.mods.push({ id, t0: w.t, s, e0: w.edu, c0: w.corr, l0: w.life });
     if (id === "open") for (let i = 0; i < s; i++) w.a.push(agent(w, 0.15 * (w.a.reduce((q, a) => q + a.w, 0) / w.a.length), skill(w, w.spread * 1.1)));
-    note(w, applyText(id, s));
+    note(w, `ev.apply.${id}`, id === "open" ? { n: s } : undefined);
   },
 
   read(w) {
@@ -414,25 +485,25 @@ export const country: Sandbox<W, P> = {
   },
 
   info(base, alt, p) {
-    const name = countryName(p);
+    const S = say(), name = countryName(p);
     const b = country.read(base, p), y = fmtCalendar(base.t);
     const blocks: InfoBlock[] = [];
     if (alt) {
-      blocks.push({ heading: "What changed", accent: true, rows: story(b, country.read(alt, p), y).map((text) => ({ text })) });
+      blocks.push({ heading: S("info.changed"), accent: true, rows: story(b, country.read(alt, p), y).map((text) => ({ text })) });
     }
     blocks.push({
-      heading: alt ? `With no change, ${y}` : `${name}, ${y}`,
+      heading: alt ? S("info.noChange", { year: y }) : S("info.now", { country: name, year: y }),
       rows: [
-        { text: `${fmtNum(b.pop, b.pop! < 20 ? 1 : 0)} million people. A typical family lives on $${fmtNum(b.fam)} a month.` },
-        { text: `${fmtNum(b.pov)} out of 100 people are poor; ${fmtNum(b.jobless)} out of 100 adults are out of work.` },
-        { text: `People live about ${fmtNum(b.life)} years. ${calmWords(b.calm!)}` },
+        { text: S("info.people", { pop: fmtNum(b.pop, b.pop! < 20 ? 1 : 0), usd: usd(b.fam ?? 0) }) },
+        { text: S("info.poor", { pov: fmtNum(b.pov), jobless: fmtNum(b.jobless) }) },
+        { text: S("info.life", { n: fmtNum(b.life), calm: ref(calmKey(b.calm!)) }) },
       ],
     });
     blocks.push({
-      heading: "About the numbers",
+      heading: S("info.about"),
       rows: [
-        { text: "Starting figures are rounded, approximate values from the mid-2020s. After that the country runs on simple rules: it shows how things push each other, not a forecast." },
-        { label: "For the curious", text: `Wealth Gini ${fmtNum(base.gini, 2)} · richest 10% own ${fmtNum(base.top10 * 100)}% of wealth` },
+        { text: S("info.aboutText") },
+        { label: S("info.curious"), text: S("info.gini", { gini: fmtNum(base.gini, 2), pct: fmtNum(base.top10 * 100) }) },
       ],
     });
     return blocks;
@@ -464,38 +535,37 @@ export const country: Sandbox<W, P> = {
 
 /* ───────────── words ───────────── */
 
+/** The country's name in the page's language: its option in the Country select (`ctl.preset.opt.<id>`). */
 export function countryName(p: { preset: string; from?: string }): string {
-  if (p.preset !== "custom") return COUNTRIES[p.preset]?.name ?? "This country";
-  const from = p.from && COUNTRIES[p.from]?.name;
-  return from ? `Your own country (from ${from})` : "Your own country";
+  const S = say();
+  if (p.preset !== "custom") return COUNTRIES[p.preset] ? S(`ctl.preset.opt.${p.preset}`) : S("name.this");
+  return p.from && COUNTRIES[p.from] ? S("name.ownFrom", { from: ref(`ctl.preset.opt.${p.from}`) }) : S("ctl.preset.opt.custom");
 }
 
-function calmWords(c: number): string {
-  return c >= 70 ? "Life is calm and people mostly trust each other." : c >= 45 ? "Life is mostly calm, with some anger at the top." : c >= 30 ? "Many people are angry; protests are close." : "Protests fill the streets.";
-}
+const calmKey = (c: number) => `calm.${c >= 70 ? 3 : c >= 45 ? 2 : c >= 30 ? 1 : 0}`;
 
 type R = Record<string, number | null>;
 
 /** Plain sentences for the biggest differences between the changed world and the no-change world. */
 export function story(b: R, a: R, year: string): string[] {
-  const out: [number, string][] = [];
+  const S = say(), out: [number, string][] = [];
   const v = (r: R, k: string) => r[k] ?? 0;
   const dF = v(a, "fam") - v(b, "fam"), rel = dF / Math.max(1, v(b, "fam"));
-  if (Math.abs(rel) >= 0.02) out.push([Math.abs(rel) * 10, `A typical family has $${fmtNum(Math.abs(dF))} ${dF > 0 ? "more" : "less"} a month.`]);
+  if (Math.abs(rel) >= 0.02) out.push([Math.abs(rel) * 10, S(dF > 0 ? "story.famMore" : "story.famLess", { usd: usd(Math.abs(dF)) })]);
   const dP = Math.round(v(a, "pov") - v(b, "pov"));
-  if (dP) { const n = Math.abs(dP); out.push([n / 2, `${n} ${dP > 0 ? "more" : "fewer"} ${n === 1 ? "person" : "people"} out of 100 ${n === 1 ? "is" : "are"} poor.`]); }
+  if (dP) { const n = Math.abs(dP); out.push([n / 2, S(dP > 0 ? "story.povMore" : "story.povFewer", { n })]); }
   const dJ = Math.round(v(a, "jobless") - v(b, "jobless"));
-  if (dJ) { const n = Math.abs(dJ); out.push([n / 2, `${n} ${dJ > 0 ? "more" : "fewer"} ${n === 1 ? "adult" : "adults"} out of 100 ${n === 1 ? "is" : "are"} out of work.`]); }
+  if (dJ) { const n = Math.abs(dJ); out.push([n / 2, S(dJ > 0 ? "story.jobMore" : "story.jobFewer", { n })]); }
   const dL = v(a, "life") - v(b, "life");
-  if (Math.abs(dL) >= 0.3) out.push([Math.abs(dL), `People live ${fmtNum(Math.abs(dL), 1)} years ${dL > 0 ? "longer" : "shorter"}.`]);
+  if (Math.abs(dL) >= 0.3) out.push([Math.abs(dL), S(dL > 0 ? "story.longer" : "story.shorter", { n: fmtNum(Math.abs(dL), 1) })]);
   const ca = v(a, "calm"), cb = v(b, "calm");
-  if (ca < 30 && cb >= 30) out.push([8, "Protests fill the streets."]);
-  else if (cb < 30 && ca >= 30) out.push([8, "The protests have stopped."]);
-  else if (Math.abs(ca - cb) >= 5) out.push([Math.abs(ca - cb) / 5, ca > cb ? "The country is calmer." : "People are angrier."]);
+  if (ca < 30 && cb >= 30) out.push([8, S("calm.0")]);
+  else if (cb < 30 && ca >= 30) out.push([8, S("story.stopped")]);
+  else if (Math.abs(ca - cb) >= 5) out.push([Math.abs(ca - cb) / 5, S(ca > cb ? "story.calmer" : "story.angrier")]);
   const dG = v(a, "gap") - v(b, "gap");
-  if (Math.abs(dG) >= 0.3) out.push([Math.abs(dG), `The gap between rich and poor is ${dG > 0 ? "bigger" : "smaller"}.`]);
+  if (Math.abs(dG) >= 0.3) out.push([Math.abs(dG), S(dG > 0 ? "story.gapBigger" : "story.gapSmaller")]);
   const dPop = v(a, "pop") - v(b, "pop"), rp = dPop / Math.max(0.1, v(b, "pop"));
-  if (Math.abs(rp) >= 0.02) out.push([Math.abs(rp) * 20, `${fmtNum(Math.abs(dPop), Math.abs(dPop) < 20 ? 1 : 0)} million ${dPop > 0 ? "more" : "fewer"} people live here.`]);
+  if (Math.abs(rp) >= 0.02) out.push([Math.abs(rp) * 20, S(dPop > 0 ? "story.popMore" : "story.popFewer", { n: fmtNum(Math.abs(dPop), Math.abs(dPop) < 20 ? 1 : 0) })]);
   const lines = out.sort((x, y) => y[0] - x[0]).slice(0, 5).map((x) => x[1]);
-  return [`Compared with the same country with no change, in ${year}:`, ...(lines.length ? lines : ["Not much is different yet. Give it a few years."])];
+  return [S("story.head", { year }), ...(lines.length ? lines : [S("story.none")])];
 }

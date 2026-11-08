@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "play": "Start",
+    "pause": "Pause",
+    "speed": "Tempo",
+    "slower": "Langsamer",
+    "faster": "Schneller",
+    "reset": "Zurücksetzen",
+    "resetLabel": "Alles zurücksetzen",
+    "resetTitle": "Alles zurücksetzen: Einstellungen, Änderungen und Zeit",
+    "hintFull": "Verlasse den Vollbildmodus, um etwas zu ändern.",
+    "hint": "Wähle Änderungen. Sie addieren sich; hak sie ab zum Vergleichen."
+  },
+  "fullscreen": {
+    "enter": "Vollbild",
+    "leave": "Vollbild beenden",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Deine Änderungen",
+    "count": "{on} von {total} an",
+    "empty": "Noch nichts geändert. Jede Änderung landet hier mit einem Häkchen, damit du sie aus- und wieder einschalten kannst.",
+    "remove": "„{name}“ aus der Liste entfernen",
+    "removeTitle": "Aus der Liste entfernen",
+    "allOn": "Alle an",
+    "allOff": "Alle aus",
+    "clear": "Liste leeren",
+    "throw": "Planet hineinwerfen"
+  },
+  "about": {
+    "label": "Über dieses Modell",
+    "body": "Alles läuft mit eingebauten Regeln und vereinfachten Daten, live in deinem Browser. Die Ergebnisse zeigen plausibles Verhalten, keine Vorhersagen."
+  },
+  "whatifs": {
+    "title": "Ändern",
+    "applied": "{n}-mal angewendet"
+  },
+  "readouts": {
+    "title": "Gerade jetzt"
+  },
+  "world": {
+    "base": "Ohne Änderung",
+    "alt": "Mit Änderungen",
+    "both": "Beide Welten",
+    "onlyBase": "Nur ohne Änderung",
+    "onlyAlt": "Nur mit Änderungen"
+  },
+  "tune": {
+    "title": "Variablen",
+    "live": "Änderungen an der Startwelt starten sie neu. Was-wäre-wenn-Einstellungen gelten, wenn du das nächste Mal ein Was-wäre-wenn wählst.",
+    "restart": "Wenn du das änderst, startet die Welt neu."
+  },
+  "chart": {
+    "withChanges": "Mit Änderungen:",
+    "noDiff": "noch kein echter Unterschied",
+    "overTime": "{metric} im Zeitverlauf",
+    "collecting": "Sammle Daten…",
+    "fork": "GABELUNG"
+  },
+  "stage": {
+    "label": "Simulationsbühne",
+    "edge": "What-If Lab · Seed {seed}"
+  },
+  "timeline": {
+    "title": "Zeitleiste",
+    "empty": "Noch nichts Besonderes. Lass es laufen oder ändere etwas."
+  },
+  "dock": {
+    "tools": "Werkzeuge",
+    "ask": "Fragen",
+    "tune": "Regler",
+    "read": "Werte",
+    "log": "Log"
+  },
+  "ad": {
+    "label": "Anzeige",
+    "promo": "Werbefrei mit Premium · 15 $/Jahr",
+    "short": "Anzeige"
+  }
+}

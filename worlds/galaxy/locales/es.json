@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Desvío del centro",
+      "unit": "kal"
+    },
+    "bhm": {
+      "label": "Masa del agujero negro",
+      "unit": "× Vía Láctea"
+    },
+    "count": {
+      "label": "Galaxias que caen"
+    },
+    "dm": {
+      "label": "Materia oscura",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Gravedad restante",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Velocidad de paso",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Mundo inicial",
+      "what-if-settings": "Ajustes del «¿y si…?»"
+    },
+    "mass": {
+      "label": "Masa de Andrómeda",
+      "unit": "× Vía Láctea"
+    },
+    "neigh": {
+      "label": "Vecinas al inicio",
+      "opt": {
+        "m33": "Triángulo",
+        "m33lmc": "Triángulo + GNM",
+        "none": "Ninguna"
+      }
+    },
+    "shape": {
+      "label": "Forma de Andrómeda",
+      "opt": {
+        "elliptical": "Elíptica",
+        "spiral": "Espiral"
+      }
+    },
+    "size": {
+      "label": "Su tamaño",
+      "unit": "× Vía Láctea"
+    },
+    "speed": {
+      "label": "Velocidad de acercamiento",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Giro de Andrómeda",
+      "opt": {
+        "against": "Contrario al nuestro",
+        "same": "Igual que el nuestro"
+      }
+    },
+    "stars": {
+      "label": "Estrellas por galaxia"
+    }
+  },
+  "ev": {
+    "bhBig": "Aparece en su centro un agujero negro {x} veces más pesado que la Vía Láctea",
+    "bhSmall": "Aparece en su centro un agujero negro con el {pct} % de la masa de la Vía Láctea",
+    "bullet": "Una galaxia atraviesa de lado a lado a {speed} km/s",
+    "closing": "Andrómeda se acerca a unos {speed} km/s",
+    "flipmw": "Todas las estrellas de la Vía Láctea invierten su órbita",
+    "freeze": "Todas las estrellas de la Vía Láctea dejan de orbitar",
+    "headon": "Andrómeda gira directo hacia nuestro centro",
+    "lmc": "La Gran Nube de Magallanes gira alrededor de la Vía Láctea",
+    "merge": "Los núcleos se fusionan: una sola galaxia elíptica gigante, «Lactómeda»",
+    "miss": "Andrómeda se desvía hacia una trayectoria de paso",
+    "nodmAll": "La materia oscura desaparece: la gravedad baja al {left} % y las estrellas de pronto van demasiado rápido",
+    "nodmSome": "Parte de la materia oscura desaparece: la gravedad baja al {left} % y las estrellas de pronto van demasiado rápido",
+    "pass1": "Primer paso: las galaxias se atraviesan",
+    "punch": "Una galaxia enana atraviesa nuestro centro",
+    "reverse": "Andrómeda da la vuelta y se aleja",
+    "ring": "Nuestro disco rebota en un anillo de estrellas que se expande",
+    "stop": "Andrómeda se frena en seco y luego empieza a caer",
+    "swallowed": "Otra galaxia es engullida",
+    "swarm": "{n, plural, one {Cae otra galaxia} other {Caen # galaxias más}}",
+    "tails": "Se separan, arrastrando largas colas de marea hechas de estrellas",
+    "third": "Cae una tercera galaxia (como Triángulo)",
+    "triangulum": "Triángulo llega flotando por un lado"
+  },
+  "meta": {
+    "intro": "La Vía Láctea y Andrómeda, en su verdadero rumbo de choque, a cámara rápida. Cada punto es una estrella.",
+    "name": "Galaxias",
+    "sub": "Choques"
+  },
+  "metric": {
+    "disc": {
+      "label": "Estrellas en un disco",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Galaxias restantes"
+    },
+    "sep": {
+      "label": "Separación",
+      "unit": "kal"
+    },
+    "thrown": {
+      "label": "Estrellas expulsadas",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 Ma/s",
+    "1": "10 Ma/s",
+    "2": "25 Ma/s",
+    "3": "50 Ma/s",
+    "4": "150 Ma/s",
+    "5": "400 Ma/s",
+    "6": "1 Ga/s"
+  },
+  "stage": {
+    "scale": "{n} años luz"
+  },
+  "whatif": {
+    "bh": "Aparece en nuestro centro un agujero negro tan pesado como una galaxia",
+    "bullet": "Una galaxia atraviesa de lado a lado",
+    "flipmw": "La Vía Láctea gira al revés",
+    "freeze": "Las estrellas de la Vía Láctea dejan de orbitar",
+    "headon": "Apunta Andrómeda justo al centro",
+    "miss": "Andrómeda pasa de largo",
+    "nodm": "La materia oscura desaparece",
+    "reverse": "Andrómeda da la vuelta",
+    "ring": "Una galaxia pequeña atraviesa nuestro centro",
+    "stop": "Andrómeda se frena en seco",
+    "swarm": "Caen más galaxias",
+    "third": "Se une una tercera galaxia"
+  }
+}

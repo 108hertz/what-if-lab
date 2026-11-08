@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import type { ChangeEntry, SimEngine } from "@/lib/sim/engine";
 import { Icon } from "../ui/Icon";
+import { useT } from "../i18n/I18nProvider";
 
 /**
  * "Your changes" (change 0024): every change made in this world as a row with a tick. Untick one and the changed world
@@ -18,11 +19,12 @@ export default function ChangeToggles({ engine, onChange, label, empty }: {
   const list = engine.entries;
   const on = list.filter((e) => e.on).length;
   const act = (fn: () => void) => () => { fn(); onChange(); };
+  const t = useT();
   return (
     <section className="toggles-box">
-      <h3 className="headline">Your changes{list.length > 0 && <span className="hcount">{on} of {list.length} on</span>}</h3>
+      <h3 className="headline">{t("console.changes.title")}{list.length > 0 && <span className="hcount">{t("console.changes.count", { on, total: list.length })}</span>}</h3>
       {!list.length ? (
-        <p className="small">{empty ?? "Nothing changed yet. Every change you make lands here with a tick, so you can turn it off and on again."}</p>
+        <p className="small">{empty ?? t("console.changes.empty")}</p>
       ) : (
         <>
           <ul className="toggles">
@@ -36,7 +38,7 @@ export default function ChangeToggles({ engine, onChange, label, empty }: {
                     <span className="toggle-l">{name}</span>
                     <time>{engine.sb.fmtT(e.rec.t)}</time>
                   </label>
-                  <button type="button" className="iconbtn" aria-label={`Remove “${text}” from the list`} title="Remove from the list" onClick={act(() => engine.remove(e.key))}>
+                  <button type="button" className="iconbtn" aria-label={t("console.changes.remove", { name: text })} title={t("console.changes.removeTitle")} onClick={act(() => engine.remove(e.key))}>
                     <Icon name="close" size={16} />
                   </button>
                 </li>
@@ -44,8 +46,8 @@ export default function ChangeToggles({ engine, onChange, label, empty }: {
             })}
           </ul>
           <div className="toggles-all">
-            <button type="button" className="btn" onClick={act(() => engine.setAll(on < list.length))}>{on < list.length ? "Turn all on" : "Turn all off"}</button>
-            <button type="button" className="btn" onClick={act(() => engine.dropFork())}>Clear the list</button>
+            <button type="button" className="btn" onClick={act(() => engine.setAll(on < list.length))}>{t(on < list.length ? "console.changes.allOn" : "console.changes.allOff")}</button>
+            <button type="button" className="btn" onClick={act(() => engine.dropFork())}>{t("console.changes.clear")}</button>
           </div>
         </>
       )}

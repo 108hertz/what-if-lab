@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "play": "Rodar",
+    "pause": "Pausar",
+    "speed": "Velocidade",
+    "slower": "Mais devagar",
+    "faster": "Mais rápido",
+    "reset": "Reiniciar",
+    "resetLabel": "Reiniciar tudo",
+    "resetTitle": "Reiniciar tudo: ajustes, mudanças e tempo",
+    "hintFull": "Saia da tela cheia para fazer uma mudança.",
+    "hint": "Escolha mudanças. Elas se somam; desmarque para comparar."
+  },
+  "fullscreen": {
+    "enter": "Tela cheia",
+    "leave": "Sair da tela cheia",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Suas mudanças",
+    "count": "{on} de {total} ativas",
+    "empty": "Nada mudou ainda. Cada mudança que você fizer aparece aqui com uma marca, para você desligar e ligar de novo.",
+    "remove": "Tirar “{name}” da lista",
+    "removeTitle": "Tirar da lista",
+    "allOn": "Ligar todas",
+    "allOff": "Desligar todas",
+    "clear": "Limpar a lista",
+    "throw": "Jogue um planeta"
+  },
+  "about": {
+    "label": "Sobre este modelo",
+    "body": "Tudo funciona com regras embutidas e dados simplificados, ao vivo no seu navegador. Os resultados mostram comportamentos plausíveis, não previsões."
+  },
+  "whatifs": {
+    "title": "Fazer mudanças",
+    "applied": "{n, plural, one {aplicada # vez} other {aplicada # vezes}}"
+  },
+  "readouts": {
+    "title": "Agora"
+  },
+  "world": {
+    "base": "Sem mudança",
+    "alt": "Com mudanças",
+    "both": "Os dois mundos",
+    "onlyBase": "Só sem mudança",
+    "onlyAlt": "Só com mudanças"
+  },
+  "tune": {
+    "title": "Variáveis",
+    "live": "Mudar o mundo inicial o reinicia. Os ajustes das hipóteses valem na próxima vez que você escolher uma hipótese.",
+    "restart": "Mudar estes reinicia o mundo."
+  },
+  "chart": {
+    "withChanges": "Com mudanças:",
+    "noDiff": "ainda sem diferença real",
+    "overTime": "{metric} ao longo do tempo",
+    "collecting": "Coletando dados…",
+    "fork": "DESVIO"
+  },
+  "stage": {
+    "label": "Palco da simulação",
+    "edge": "What-If Lab · Semente {seed}"
+  },
+  "timeline": {
+    "title": "Linha do tempo",
+    "empty": "Nada notável ainda. Deixe rodar ou faça uma mudança."
+  },
+  "dock": {
+    "tools": "Ferramentas",
+    "ask": "Perguntar",
+    "tune": "Ajustar",
+    "read": "Ler",
+    "log": "Registro"
+  },
+  "ad": {
+    "label": "Publicidade",
+    "promo": "Sem anúncios com Premium · $15/ano",
+    "short": "Anúncio"
+  }
+}

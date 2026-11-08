@@ -3,9 +3,17 @@
  * except the CanvasRenderingContext2D handed to `draw`.
  */
 
+import type { Values } from "@/lib/i18n/message";
+
+/**
+ * A notable event: a message key in the world's own namespace plus its values (change 0025), never a sentence, so
+ * the sim's output is the same in every language. The words are in the sandbox's `messages` (English) and in
+ * worlds/<key>/locales/<code>.json; the timeline, the stage and exports translate them when shown.
+ */
 export interface LogEntry {
   t: number;
-  txt: string;
+  k: string;
+  v?: Values;
 }
 
 /** Every world must be plain data so `structuredClone` can fork it. */
@@ -16,7 +24,7 @@ export interface BaseWorld {
   rs: number;
   /** Notable events, shown in the timeline. */
   log: LogEntry[];
-  /** Once-only flags used by `note(w, txt, key)`. */
+  /** Once-only flags used by `note(w, k, v, once)`. */
   f: Record<string, 1>;
 }
 
@@ -121,6 +129,11 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   sub: string;
   intro: string;
   hint?: string;
+  /**
+   * The world's English words as ICU messages, keyed relative to the world (change 0025): event lines (`ev.*`) and the
+   * names they refer to. Other languages override them from worlds/<key>/locales/<code>.json.
+   */
+  messages: Record<string, string>;
   controls: Control[];
   whatifs: WhatIf[];
   speeds: Speed[];

@@ -3,10 +3,16 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import { fmtNum, mix } from "@/lib/sim/core";
+import { pageT } from "@/lib/i18n/page";
+import { listOf } from "@/lib/i18n/t";
 import { SPECIES } from "./data";
 import { counts, traits, type W } from "./sim";
 import { drawAnimal } from "./scene";
 import { Icon } from "@/components/ui/Icon";
+import { worldSay } from "@/lib/sim/say";
+import { ref as mref } from "@/lib/i18n/t";
+import { animalWords } from "./messages";
+import { Rich } from "@/components/ui/Rich";
 import s from "./animals.module.css";
 
 /**
@@ -14,7 +20,9 @@ import s from "./animals.module.css";
  * the line end, the no-change world as a faint dashed line of the same colour) and "How their bodies changed" (speed,
  * size, senses and coat of one animal as × day 0). A plain sentence under it says what differs right now.
  */
-const TRAITS = [["sp", "Speed", "#7FC8F8"], ["sz", "Size", "#E2B26B"], ["se", "Senses", "#C49BE8"], ["co", "Coat", "#E58FB0"]] as const;
+/** Trait lines; their names are `trait.<k>`. */
+const TRAITS = [["sp", "#7FC8F8"], ["sz", "#E2B26B"], ["se", "#C49BE8"], ["co", "#E58FB0"]] as const;
+const say = () => worldSay(animalWords);
 const token = (k: string) => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
 const isLight = () => document.documentElement.dataset.theme === "light";
 /** Data colours are drawn for the dark stage; on paper they are darkened so lines keep their contrast. */
@@ -29,12 +37,12 @@ function draw(cv: HTMLCanvasElement, engine: SimEngine, series: Series[], unit: 
   const c = cv.getContext("2d")!;
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   c.clearRect(0, 0, W, H);
-  const font = getComputedStyle(document.body).fontFamily;
+  const font = getComputedStyle(document.body).fontFamily, S = say();
   const COL = { grid: token("--separator"), text: token("--label-2"), label: token("--label") };
   const h = engine.history, n = h.t.length;
   const vals = series.flatMap((x) => [...x.solid, ...x.dash]).filter((v): v is number => v != null && isFinite(v));
   c.font = "500 12px " + font;
-  if (!vals.length || n < 2) { c.fillStyle = COL.text; c.fillText("Collecting data…", 4, 16); return; }
+  if (!vals.length || n < 2) { c.fillStyle = COL.text; c.fillText(pageT()("console.chart.collecting"), 4, 16); return; }
   let lo = ref1 ? Math.min(1, ...vals) : 0, hi = Math.max(...vals, ref1 ? 1 : 4);
   if (ref1) { const pad = Math.max(0.04, (hi - lo) * 0.12); lo -= pad; hi += pad; } else hi *= 1.08;
   const fmtY = (v: number) => (ref1 ? fmtNum(v, 2) + "×" : fmtNum(v));
@@ -58,7 +66,7 @@ function draw(cv: HTMLCanvasElement, engine: SimEngine, series: Series[], unit: 
   if (h.forkT != null && h.forkT >= t0) {
     const x = X(h.forkT);
     c.strokeStyle = COL.text; c.globalAlpha = 0.6; c.setLineDash([2, 3]); c.beginPath(); c.moveTo(x, T); c.lineTo(x, T + ph); c.stroke(); c.setLineDash([]); c.globalAlpha = 1;
-    c.textAlign = "left"; c.textBaseline = "alphabetic"; c.font = "500 10px " + font; c.fillStyle = COL.text; c.fillText("CHANGES", x + 4, 9); c.font = "500 12px " + font;
+    c.textAlign = "left"; c.textBaseline = "alphabetic"; c.font = "500 10px " + font; c.fillStyle = COL.text; c.fillText(S("chart.changes"), x + 4, 9); c.font = "500 12px " + font;
   }
   const line = (arr: (number | null)[], col: string, w: number, dash: number[], alpha: number) => {
     c.strokeStyle = col; c.lineWidth = w; c.setLineDash(dash); c.globalAlpha = alpha; c.beginPath();
@@ -70,7 +78,7 @@ function draw(cv: HTMLCanvasElement, engine: SimEngine, series: Series[], unit: 
     // Legend in words: solid = with your changes, dashed = no change
     // centred on the bottom axis row, between the first and last day
     c.font = "500 10px " + font; c.textAlign = "left"; c.textBaseline = "middle"; c.fillStyle = COL.text;
-    const a = "WITH CHANGES", b = "NO CHANGE", wa = c.measureText(a).width, wb = c.measureText(b).width, tot = 18 + wa + 14 + 18 + wb;
+    const a = S("chart.withChanges"), b = S("chart.noChange"), wa = c.measureText(a).width, wb = c.measureText(b).width, tot = 18 + wa + 14 + 18 + wb;
     const x0 = Lw + (pw - tot) / 2, yb = H - B + 11;
     if (pw > tot + 140) {
       c.strokeStyle = COL.text; c.lineWidth = 2; c.beginPath(); c.moveTo(x0, yb); c.lineTo(x0 + 14, yb); c.stroke();
@@ -113,15 +121,16 @@ export default function AnimalChart({ engine, view, setView, focus, setFocus }: 
     const dash = h.t.map((t, j) => (forked != null && t >= forked ? B[j] ?? null : null));
     return { solid, dash };
   };
-  const nNow = counts(w);
+  const nNow = counts(w), S = say();
+  const many = (id: string) => mref(`sp.${id}.many`), one = (id: string) => mref(`sp.${id}.one`);
   const series: Series[] = view === 0
-    ? w.cast.map((id, i) => ({ ...split(`n${i}`), col: ink(SPECIES[id].col), id, label: `${SPECIES[id].pl} ${fmtNum(nNow[i])}` }))
-    : TRAITS.map(([k, label, col]) => {
+    ? w.cast.map((id, i) => ({ ...split(`n${i}`), col: ink(SPECIES[id].col), id, label: S("chart.label", { name: S(`sp.${id}.pl`), n: fmtNum(nNow[i]) }) }))
+    : TRAITS.map(([k, col]) => {
       const x = split(`${k}${fi}`), last = [...x.solid].reverse().find((v) => v != null);
-      return { ...x, col: ink(col), label: `${label} ${last == null ? "—" : fmtNum(last, 2) + "×"}` };
+      return { ...x, col: ink(col), label: S("chart.label", { name: S(`trait.${k}`), n: last == null ? "—" : fmtNum(last, 2) + "×" }) };
     });
 
-  useEffect(() => { if (ref.current) draw(ref.current, engine, series, view === 0 ? "animals" : "× day 0", view === 1); });
+  useEffect(() => { if (ref.current) draw(ref.current, engine, series, S(view === 0 ? "chart.unitAnimals" : "chart.unitDay0"), view === 1); });
 
   // One sentence: what is different right now
   const day = Math.floor(w.t);
@@ -130,39 +139,42 @@ export default function AnimalChart({ engine, view, setView, focus, setFocus }: 
     if (engine.alt) {
       const nb = counts(b);
       const d = w.cast.map((id, i) => [id, nNow[i] - (i < nb.length ? nb[i] : 0)] as [string, number]).filter(([, x]) => x !== 0).sort((x, y) => Math.abs(y[1]) - Math.abs(x[1])).slice(0, 2);
+      const items = d.map(([id, x]) => S(x > 0 ? "story.more" : "story.fewer", { n: Math.abs(x), one: one(id), many: many(id) }));
       sentence = d.length
-        ? <>With your changes there {Math.abs(d[0][1]) === 1 && d[0][1] > 0 ? "is" : "are"} {d.map(([id, x], k) => <span key={id}>{k ? " and " : ""}<b>{fmtNum(Math.abs(x))} {x > 0 ? "more" : "fewer"} {Math.abs(x) === 1 ? SPECIES[id].one : SPECIES[id].many}</b></span>)} than without them (day {day}).</>
-        : <>With your changes the numbers are the same as without them so far (day {day}).</>;
-    } else sentence = <>How many of each animal live here, day by day. Make a change to compare with this world.</>;
+        ? <Rich say={S} k="chart.diff" v={{ be: Math.abs(d[0][1]) === 1 && d[0][1] > 0 ? "is" : "are", day }} bold={{ list: listOf(pageT(), items) }} />
+        : S("chart.same", { day });
+    } else sentence = S("chart.intro");
   } else {
     const id = w.cast[fi], t = traits(w, fi), tb = engine.alt && fi < b.cast.length ? traits(b, fi) : null;
     const pct = (v: number) => Math.round(Math.abs(v - 1) * 100);
-    if (!t) sentence = <>No {SPECIES[id].many} live here right now.</>;
+    if (!t) sentence = S("cap.none", { many: many(id) });
     else if (tb) {
-      const r = t.sp / tb.sp;
-      sentence = <>The typical {SPECIES[id].one} with your changes is <b>{pct(r) < 1 ? "as fast as" : `${pct(r)}% ${r > 1 ? "faster" : "slower"} than`}</b> without them, and <b>{pct(t.sz / tb.sz) < 1 ? "the same size" : `${pct(t.sz / tb.sz)}% ${t.sz > tb.sz ? "bigger" : "smaller"}`}</b>.</>;
-    } else sentence = <>The typical {SPECIES[id].one} compared with day 0: 1.00× means no change, above 1 means more (faster, bigger, sharper senses, thicker {SPECIES[id].coat}).</>;
+      const r = t.sp / tb.sp, z = t.sz / tb.sz;
+      const speed = pct(r) < 1 ? S("chart.asFast") : S(r > 1 ? "chart.fasterThan" : "chart.slowerThan", { n: pct(r) });
+      const size = pct(z) < 1 ? S("chart.sameSize") : S(z > 1 ? "chart.bigger" : "chart.smaller", { n: pct(z) });
+      sentence = <Rich say={S} k="chart.bodyVs" v={{ one: one(id) }} bold={{ speed, size }} />;
+    } else sentence = S("chart.bodyDay0", { one: one(id), coat: mref(`sp.${id}.coat`) });
   }
 
   return (
     <div className={s.chartBox}>
       <div className={s.chartTop}>
         <div className={s.chartSub}>
-          <div className="mtabs" role="group" aria-label="Chart view">
-            <button aria-pressed={view === 0} onClick={() => setView(0)}>How many of each</button>
-            <button aria-pressed={view === 1} onClick={() => setView(1)}>How their bodies changed</button>
+          <div className="mtabs" role="group" aria-label={S("chart.view")}>
+            <button aria-pressed={view === 0} onClick={() => setView(0)}>{S("chart.counts")}</button>
+            <button aria-pressed={view === 1} onClick={() => setView(1)}>{S("chart.bodies")}</button>
           </div>
           {view === 1 && w.cast.length > 1 && (
             <span className={`select ${s.mini}`}>
-              <select aria-label="Which animal" value={fi} onChange={(e) => setFocus(Number(e.target.value))}>
-                {w.cast.map((id, i) => <option key={id} value={i}>{SPECIES[id].pl}</option>)}
+              <select aria-label={S("chart.whichAnimal")} value={fi} onChange={(e) => setFocus(Number(e.target.value))}>
+                {w.cast.map((id, i) => <option key={id} value={i}>{S(`sp.${id}.pl`)}</option>)}
               </select>
               <Icon name="chevron" size={16} />
             </span>
           )}
         </div>
       </div>
-      <canvas ref={ref} className={s.canvas} role="img" aria-label={view === 0 ? "How many of each animal over time" : `Speed, size, senses and coat of the ${SPECIES[w.cast[fi]].many} over time`} />
+      <canvas ref={ref} className={s.canvas} role="img" aria-label={view === 0 ? S("chart.ariaCounts") : S("chart.ariaBodies", { many: many(w.cast[fi]) })} />
       <p className={s.sentence}>{sentence}</p>
     </div>
   );

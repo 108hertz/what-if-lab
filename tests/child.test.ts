@@ -5,6 +5,11 @@ import { averages, child, compare, kidLine, readAt, stopMod, story, values, why,
 import { stopChange, undoChange } from "@/worlds/child/edit";
 import { AGES, BEHAVIOURS, BUFFERS, behaviourWord, CHANGES, CHANGE_GROUPS, CHANGE_IDS, COMBOS, EVERYDAY, FAMILIES, FAMILY_IDS, RIPPLES, TRAITS } from "@/worlds/child/data";
 import { behaviourCounts, contributions, rippleCount } from "@/worlds/child/model";
+import { eventText } from "@/lib/sim/say";
+import type { LogEntry } from "@/lib/sim/types";
+
+/** A timeline line in English (change 0025: the log holds keys). */
+const say = (e: LogEntry) => eventText(child, e);
 
 const FRAME = 1 / 60;
 const params = (over: Partial<P> = {}) => {
@@ -88,7 +93,7 @@ describe("child: model", () => {
       e.change("sibling");
       e.speedIdx = 3;
       for (let i = 0; i < 400; i++) e.tick(FRAME);
-      return { r: e.readouts(), log: e.timeline().map((x) => x.txt) };
+      return { r: e.readouts(), log: e.timeline().map((x) => say(x)) };
     };
     expect(run()).toEqual(run());
   });
@@ -103,10 +108,10 @@ describe("child: model", () => {
     expect(a.mods[0].age).toBe(10);
     to(a, p, 9.5); to(b, p, 9.5);
     expect(child.read(a, p)).toEqual(child.read(b, p));
-    expect(a.log.some((e) => e.txt === CHANGES.bullied.txt)).toBe(false);
+    expect(a.log.some((e) => say(e) === CHANGES.bullied.txt)).toBe(false);
     to(a, p, 11.5); to(b, p, 11.5);
     expect(a.mods[0].on).toBe(1);
-    const e = a.log.find((x) => x.txt === CHANGES.bullied.txt);
+    const e = a.log.find((x) => say(x) === CHANGES.bullied.txt);
     expect(e && e.t).toBeGreaterThanOrEqual(10);
     expect((child.read(a, p).Calm ?? 0)).toBeLessThan(child.read(b, p).Calm ?? 0);
   });
@@ -154,18 +159,18 @@ describe("child: model", () => {
     const w = child.init(p, 2);
     to(w, p, 40);
     expect(w.k.every((k) => k.em === 0)).toBe(true);
-    expect(w.log.some((e) => e.txt.startsWith("By "))).toBe(false);
+    expect(w.log.some((e) => say(e).startsWith("By "))).toBe(false);
     const q = params();
     const v = child.init(q, 2);
     to(v, q, 40);
-    expect(v.log.filter((e) => e.txt.startsWith("By ")).length).toBeGreaterThan(0);
+    expect(v.log.filter((e) => say(e).startsWith("By ")).length).toBeGreaterThan(0);
   });
 
   it("milestones are noted once each", () => {
     const p = params();
     const w = child.init(p, 2);
     to(w, p, 60);
-    for (const txt of ["Starts school", "Finishes school"]) expect(w.log.filter((e) => e.txt === txt).length).toBe(1);
+    for (const txt of ["Starts school", "Finishes school"]) expect(w.log.filter((e) => say(e) === txt).length).toBe(1);
   });
 });
 
@@ -226,9 +231,9 @@ describe("child: how long, stop and undo (change 0019)", () => {
     const s = structuredClone(a);
     to(s, p, 10);
     stopMod(s, 0);
-    expect(s.log.filter((e) => e.txt === CHANGES.sport.stop)).toHaveLength(1);
+    expect(s.log.filter((e) => say(e) === CHANGES.sport.stop)).toHaveLength(1);
     stopMod(s, 0);
-    expect(s.log.filter((e) => e.txt === CHANGES.sport.stop)).toHaveLength(1);
+    expect(s.log.filter((e) => say(e) === CHANGES.sport.stop)).toHaveLength(1);
     for (const w of [a, b, s]) to(w, p, 35);
     const [kept, stopped, none] = [avg(a, "E"), avg(s, "E"), avg(b, "E")];
     expect(kept).toBeGreaterThan(stopped);
@@ -243,9 +248,9 @@ describe("child: how long, stop and undo (change 0019)", () => {
     stopMod(w, 0, 12);
     expect(w.mods[0].stop).toBe(12);
     to(w, p, 11.5);
-    expect(w.log.some((e) => e.txt === CHANGES.music.stop)).toBe(false);
+    expect(w.log.some((e) => say(e) === CHANGES.music.stop)).toBe(false);
     to(w, p, 12.5);
-    const e = w.log.find((x) => x.txt === CHANGES.music.stop);
+    const e = w.log.find((x) => say(x) === CHANGES.music.stop);
     expect(e && e.t).toBeGreaterThanOrEqual(12);
   });
 
@@ -281,7 +286,7 @@ describe("child: how long, stop and undo (change 0019)", () => {
       expect(a.readouts()).toEqual(b.readouts());
       expect(a.applied).toEqual(b.applied);
       expect((a.alt as W).mods).toEqual((b.alt as W).mods);
-      expect(a.timeline().map((x) => x.txt)).toEqual(b.timeline().map((x) => x.txt));
+      expect(a.timeline().map((x) => say(x))).toEqual(b.timeline().map((x) => say(x)));
       // The past is recomputed from yearly snapshots: close, not exact
       const ha = a.history.alt.Calm, hb = b.history.alt.Calm;
       const last = (h: (number | null)[]) => h.filter((v): v is number => v != null);
@@ -340,7 +345,7 @@ describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)",
     const n = rippleCount(w, w.mods[0], 0);
     expect(n).toBeGreaterThan(0.45 * 120);
     expect(n).toBeLessThan(0.75 * 120);
-    expect(w.log.some((e) => /^After they joined a team sport at 6, \d+ of 100 kids made friends on the team$/.test(e.txt))).toBe(true);
+    expect(w.log.some((e) => /^After they joined a team sport at 6, \d+ of 100 kids made friends on the team$/.test(say(e)))).toBe(true);
     expect(life([["sport", 6]], 9).w.log).toEqual(w.log);
   });
 
@@ -362,7 +367,7 @@ describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)",
     const late = life([["bullied", 10], ["bestfriend", 11]], 12).w;
     expect(friend.mods.find((m) => m.id === "bullied")!.bi).toContain(0);
     expect(late.mods.find((m) => m.id === "bullied")!.bi).not.toContain(0);
-    expect(friend.log.some((e) => e.txt === BUFFERS[0].why)).toBe(true);
+    expect(friend.log.some((e) => say(e) === BUFFERS[0].why)).toBe(true);
     // bullying's direct effect is smaller with the friend (compare the hurt, leaving out the friend's own good effect)
     const fOnly = life([["bestfriend", 8]], 12).w;
     expect(calm(fOnly) - calm(friend)).toBeLessThan(calm(none) - calm(alone));
@@ -371,7 +376,7 @@ describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)",
   it("buffers from home settings: great teachers soften being bullied", () => {
     const { w } = life([["bullied", 10]], 11, { school: "great" });
     expect(w.mods[0].b).toBeLessThan(1);
-    expect(w.log.some((e) => e.txt === BUFFERS[1].why)).toBe(true);
+    expect(w.log.some((e) => say(e) === BUFFERS[1].why)).toBe(true);
   });
 
   it("sensitive ages: the same change counts more in its window than far from it", () => {
@@ -392,10 +397,10 @@ describe("child: ripples, buffers, sensitive ages, combos (change 0019 step 2)",
     for (let i = 0; i < 40; i++) e.tick(FRAME);
     const a = e.alt as W;
     expect(a.cmb.length).toBe(1);
-    expect(a.log.some((x) => x.txt === COMBOS[0].txt)).toBe(true);
+    expect(a.log.some((x) => say(x) === COMBOS[0].txt)).toBe(true);
     undoChange(e, 1);
     expect((e.alt as W).cmb.length).toBe(0);
-    expect((e.alt as W).log.some((x) => x.txt === COMBOS[0].txt)).toBe(false);
+    expect((e.alt as W).log.some((x) => say(x) === COMBOS[0].txt)).toBe(false);
   });
 
   it("everything stacked, with ripples, buffers and combos, stays finite and in 1–99", () => {
@@ -529,7 +534,7 @@ describe("child: the change moment (change 0019 step 6)", () => {
 
   it("stopping or undoing a change keeps the export recipe, which now carries the stop (change 0024)", () => {
     const e = new SimEngine(child, params(), 42);
-    for (let i = 0; i < 300; i++) e.tick(FRAME);
+    for (let i = 0; i < 600; i++) e.tick(FRAME);
     e.change("sport");
     e.change("music");
     expect(e.origin).not.toBeNull();

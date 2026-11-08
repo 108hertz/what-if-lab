@@ -1,0 +1,81 @@
+{
+  "_status": "source",
+  "transport": {
+    "play": "Play",
+    "pause": "Pause",
+    "speed": "Speed",
+    "slower": "Slower",
+    "faster": "Faster",
+    "reset": "Reset",
+    "resetLabel": "Reset everything",
+    "resetTitle": "Reset everything: settings, changes and time",
+    "hintFull": "Leave full screen to make a change.",
+    "hint": "Pick changes. They add up; tick them off to compare."
+  },
+  "fullscreen": {
+    "enter": "Full screen",
+    "leave": "Leave full screen",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Your changes",
+    "count": "{on} of {total} on",
+    "empty": "Nothing changed yet. Every change you make lands here with a tick, so you can turn it off and on again.",
+    "remove": "Remove “{name}” from the list",
+    "removeTitle": "Remove from the list",
+    "allOn": "Turn all on",
+    "allOff": "Turn all off",
+    "clear": "Clear the list",
+    "throw": "Throw in a planet"
+  },
+  "about": {
+    "label": "About this model",
+    "body": "Everything runs from built-in rules and simplified data, live in your browser. Results show plausible behaviour, not forecasts."
+  },
+  "whatifs": {
+    "title": "Make changes",
+    "applied": "applied {n} times"
+  },
+  "readouts": {
+    "title": "Right now"
+  },
+  "world": {
+    "base": "No change",
+    "alt": "With changes",
+    "both": "Both worlds",
+    "onlyBase": "Only with no change",
+    "onlyAlt": "Only with changes"
+  },
+  "tune": {
+    "title": "Variables",
+    "live": "Starting-world changes restart it. What-if settings apply the next time you pick a what-if.",
+    "restart": "Changing these restarts the world."
+  },
+  "chart": {
+    "withChanges": "With changes:",
+    "noDiff": "no real difference yet",
+    "overTime": "{metric} over time",
+    "collecting": "Collecting data…",
+    "fork": "FORK"
+  },
+  "stage": {
+    "label": "Simulation stage",
+    "edge": "What-If Lab · Seed {seed}"
+  },
+  "timeline": {
+    "title": "Timeline",
+    "empty": "Nothing notable yet. Let it run, or make a change."
+  },
+  "dock": {
+    "tools": "Tools",
+    "ask": "Ask",
+    "tune": "Tune",
+    "read": "Read",
+    "log": "Log"
+  },
+  "ad": {
+    "label": "Advertisement",
+    "promo": "Ad-free with Premium · $15/yr",
+    "short": "Ad"
+  }
+}

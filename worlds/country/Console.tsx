@@ -16,21 +16,24 @@ import { InfoBlocks, Readouts, TunePanel, WorldHeader } from "@/components/conso
 import ChangeToggles from "@/components/console/Changes";
 import { COUNTRY_GROUPS } from "./data";
 import { country, countryName, WHATIF_GROUPS } from "./sim";
+import { useT } from "@/components/i18n/I18nProvider";
+import { worldSay } from "@/lib/sim/say";
 
 type P = { engine: SimEngine; onChange: () => void };
 
 /** "Pick a country": restarts the world from that profile (same param as the Tune select). */
 function CountryPicker({ engine, onChange }: P) {
   const p = engine.params as { preset: string; from?: string };
-  const pick = (v: string) => { engine.setParam("preset", v); engine.restart(); onChange(); };
+  const pick = (v: string) => { engine.rebuild(engine.setParam("preset", v).keys); onChange(); };
+  const say = worldSay(country);
   return (
     <label className="ctl country-pick" htmlFor="country-pick">
-      <span className="ctl-head">Pick a country</span>
+      <span className="ctl-head">{say("ui.pick")}</span>
       <span className="select">
         <select id="country-pick" value={p.preset} onChange={(e) => pick(e.target.value)}>
-          {COUNTRY_GROUPS.map(([g, opts]) => (
-            <optgroup key={g} label={g}>
-              {opts.map(([v, lab]) => <option key={v} value={v}>{v === "custom" ? countryName(p) : lab}</option>)}
+          {COUNTRY_GROUPS.map(([g, opts], i) => (
+            <optgroup key={g} label={say(`ctl.preset.group.${i}`)}>
+              {opts.map(([v]) => <option key={v} value={v}>{v === "custom" ? countryName(p) : say(`ctl.preset.opt.${v}`)}</option>)}
             </optgroup>
           ))}
         </select>
@@ -42,22 +45,22 @@ function CountryPicker({ engine, onChange }: P) {
 
 /** The 16 policies in four groups. They stack: every click adds to the changed world. */
 function PolicyList({ engine, onChange }: P) {
-  const label = new Map(engine.sb.whatifs);
+  const t = useT(), say = worldSay(country);
   const count = (id: string) => engine.applied.filter((x) => x === id).length;
   return (
     <section>
-      <h3 className="headline">Make changes</h3>
-      <p className="small hint-line">They add up. Sizes are in Tune. Tick them off above to compare.</p>
-      {WHATIF_GROUPS.map(([g, ids]) => (
+      <h3 className="headline">{t("console.whatifs.title")}</h3>
+      <p className="small hint-line">{say("ui.changesHint")}</p>
+      {WHATIF_GROUPS.map(([g, ids], i) => (
         <div key={g} className="forks">
-          <span className="ctl-head">{g}</span>
+          <span className="ctl-head">{say(`group.${i}`)}</span>
           {ids.map((id) => {
             const n = count(id);
             return (
               <button key={id} className="fork" aria-pressed={n > 0} onClick={() => { engine.change(id); onChange(); }}>
                 <Icon name="fork" />
-                {label.get(id)}
-                {n > 1 && <span className="count" aria-label={`applied ${n} times`}>×{n}</span>}
+                {say(`whatif.${id}`)}
+                {n > 1 && <span className="count" aria-label={t("console.whatifs.applied", { n })}>×{n}</span>}
               </button>
             );
           })}
@@ -78,13 +81,14 @@ export default function CountryConsole() {
   const rails = useMedia(RAILS_QUERY);
   const centre = useRef<HTMLElement>(null);
   const fs = useFullscreen(centre);
+  const t = useT();
 
   const ask = <><WorldHeader engine={engine} /><CountryPicker engine={engine} onChange={onChange} /><ChangeToggles engine={engine} onChange={onChange} /><PolicyList engine={engine} onChange={onChange} /></>;
   const now = <Readouts engine={engine} />;
   const info = <InfoBlocks engine={engine} />;
   const tune = <TunePanel engine={engine} onChange={onChange} />;
   const chart = <div className="chart-box"><HistoryChart engine={engine} /></div>;
-  const log = <div className="log-box"><h3 className="headline">Timeline</h3><Timeline engine={engine} /></div>;
+  const log = <div className="log-box"><h3 className="headline">{t("console.timeline.title")}</h3><Timeline engine={engine} /></div>;
 
   let side: ReactNode;
   if (full) {
@@ -97,14 +101,14 @@ export default function CountryConsole() {
   } else if (desk) {
     side = (
       <div className="dock-col">
-        <Dock key="desk" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{info}{now}</>]]} />
+        <Dock key="desk" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{info}{now}</>]]} />
         <AdSlot size="box" promo />
       </div>
     );
   } else {
     side = (
       <>
-        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{info}{chart}{now}</>], ["Log", log]]} />
+        <Dock key="phone" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{info}{chart}{now}</>], [t("console.dock.log"), log]]} />
         <AdSlot size="banner" />
       </>
     );

@@ -30,9 +30,6 @@ export const ENDS: Record<Show, [less: string, more: string]> = {
 export const TRACK: Record<Show, [less: string, more: string]> = {
   O: ["likes the usual", "curious"], C: ["messy", "organised"], E: ["shy", "outgoing"], A: ["own way", "kind"], Calm: ["worried", "calm"],
 };
-/** Short words for the "less" end, used for counts ("12 of 100 are quiet"). */
-export const LOW_WORD: Record<Show, string> = { O: "stick to what they know", C: "go with the flow", E: "are quiet", A: "say what they think", Calm: "worry a lot" };
-export const LOW_KEY: Record<Show, string> = { O: "sticks to what they know", C: "goes with the flow", E: "quiet", A: "says what they think", Calm: "worries a lot" };
 /** Five steps per trait, for parents (10 / 30 / 50 / 70 / 90 on the display scale). */
 export const STEPS: Record<Show, [string, string, string, string, string]> = {
   O: ["sticks to the familiar", "not very curious", "in between", "a bit curious", "very curious"],
@@ -193,8 +190,6 @@ export const FOREVER = 999;
 /** "How long" settings (used by your next click); "usual" takes each change's own length. */
 export const LEN: Record<string, number> = { moment: 0, year: 1, few: 3, good: FOREVER };
 export const LEN_WORD: Record<string, string> = { usual: "The usual", moment: "A moment", year: "About a year", few: "A few years", good: "For good" };
-/** "for about a year", "for good"… for a length in years. */
-export const lenWord = (len: number) => (len >= FOREVER ? "for good" : len <= 0 ? "just once" : len <= 1 ? "for about a year" : `for about ${Math.round(len)} years`);
 
 export const CHANGES: Record<string, Change> = {
   authoritative: { q: "What if the parents became warm and firm?", txt: "Parents become warm and firm: clear rules, lots of love", past: "the parents became warm and firm", cap: "parents become warm and firm", kind: "home", d: {}, pf: 0.5, style: "authoritative", len: FOREVER, stop: "The parents stop being so warm and firm" },
@@ -312,18 +307,10 @@ export const LUCK: Record<string, number> = { small: 0.6, normal: 1, big: 1.5 };
 /** How long effects last: [time scale of fading (years), how the lasting part changes]. */
 export const FADE: Record<string, [tau: number, k: number]> = { fast: [4, -0.5], normal: [8, 0], stick: [14, 0.5] };
 export const SIZE: Record<string, number> = { small: 0.6, medium: 1, big: 1.5 };
-export const SIZE_WORD: Record<string, string> = { small: "a small", medium: "a medium", big: "a big" };
 
-/* ───────────── words shared by the stage and the console ───────────── */
+/* ───────────── names ───────────── */
 
-/** Words for one display value: "a bit curious", "very shy"… */
-export const stepWord = (s: Show, v: number) => STEPS[s][stepOf(v)];
 export const kidName = (j: number) => NAMES[(j * 7) % NAMES.length];
-/** "very curious, a bit shy": the two strongest traits of a kid (for stage labels). */
-export function kidShort(vs: number[]): string {
-  const ext = SHOW.map((s, i) => [s, vs[i]] as [Show, number]).sort((x, y) => Math.abs(y[1] - 50) - Math.abs(x[1] - 50)).slice(0, 2);
-  return ext.map(([s, x]) => stepWord(s, x)).join(", ");
-}
 
 /* ───────────── ripples, buffers, sensitive ages, combos (change 0019) ───────────── */
 
@@ -420,8 +407,6 @@ export function ageWeight(id: string, age: number): number {
   const d = age < w[0] ? w[0] - age : age > w[1] ? age - w[1] : 0;
   return 0.7 + 0.5 * Math.exp(-((d / 4) ** 2));
 }
-/** "strongest around 11–15" for a change. */
-export const bestAges = (id: string) => (AGES[id] ? `strongest around ${AGES[id][0]}–${AGES[id][1]}` : "");
 
 /** Two changes that go on at the same time add a little extra together (from when both are there, while both go on). */
 export interface Combo { a: string; b: string; d: TraitDelta; pf: number; txt: string }

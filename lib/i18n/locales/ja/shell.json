@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "nav": {
+    "home": "もしも… ホーム",
+    "worlds": "世界",
+    "worldButton": "世界：{name}。世界を変える",
+    "wordmark": "もしも"
+  },
+  "theme": {
+    "toDark": "ダークテーマに切り替え",
+    "toLight": "ライトテーマに切り替え"
+  },
+  "lang": {
+    "label": "言語",
+    "button": "言語：{name}。言語を変える",
+    "draft": "準備中",
+    "alsoIn": "{language}でも読めます",
+    "dismiss": "ほかの言語を提案しない"
+  }
+}

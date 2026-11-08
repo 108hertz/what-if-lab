@@ -13,7 +13,10 @@ import { WorldHeader } from "@/components/console/panels";
 import { child } from "./sim";
 import ChildChart from "./Chart";
 import { AboutScience, ChangeList, ChildTimeline, ChildTune, FamilyPicker, Glossary, HomeSettings, MeetChild, NatureBar, ParentCards, Story } from "./parts";
-import { SHOW, WORD } from "./data";
+import { SHOW } from "./data";
+import { traitWord } from "./words";
+import { worldSay } from "@/lib/sim/say";
+import { useT } from "@/components/i18n/I18nProvider";
 import { pointAt, setHeroKid, setStageTrait, setStageView, stageView, tapAt, type StageView } from "./scene";
 import s from "./child.module.css";
 
@@ -24,21 +27,22 @@ import s from "./child.module.css";
 function StageControls({ view, setView, trait, setTrait, kid, setKid }: {
   view: StageView; setView: (v: StageView) => void; trait: number; setTrait: (i: number) => void; kid: number; setKid: (j: number) => void;
 }) {
+  const S = worldSay(child);
   return (
     <>
-      <div className={`seg ${s.viewSeg}`} role="group" aria-label="What the stage shows">
-        {([["one", "One child"], ["all", "All 120 kids"]] as [StageView, string][]).map(([v, l]) => (
-          <button key={v} type="button" aria-pressed={view === v} onClick={() => setView(v)}>{l}</button>
+      <div className={`seg ${s.viewSeg}`} role="group" aria-label={S("stage.view")}>
+        {(["one", "all"] as StageView[]).map((v) => (
+          <button key={v} type="button" aria-pressed={view === v} onClick={() => setView(v)}>{S(`stage.${v}`)}</button>
         ))}
       </div>
       {view === "all" && (
-        <div className={`seg ${s.viewSeg} ${s.traitSeg}`} role="group" aria-label="Which trait the piles show">
-          {SHOW.map((t, i) => <button key={t} type="button" aria-pressed={trait === i} onClick={() => setTrait(i)}>{WORD[t]}</button>)}
+        <div className={`seg ${s.viewSeg} ${s.traitSeg}`} role="group" aria-label={S("stage.pileTrait")}>
+          {SHOW.map((t, i) => <button key={t} type="button" aria-pressed={trait === i} onClick={() => setTrait(i)}>{traitWord(t)}</button>)}
         </div>
       )}
       {view === "one" && kid >= 0 && (
         <div className={`seg ${s.viewSeg} ${s.traitSeg}`}>
-          <button type="button" onClick={() => setKid(-1)}>Back to the typical kid</button>
+          <button type="button" onClick={() => setKid(-1)}>{S("stage.back")}</button>
         </div>
       )}
     </>
@@ -53,6 +57,7 @@ function StageControls({ view, setView, trait, setTrait, kid, setKid }: {
  */
 export default function ChildConsole() {
   const [engine, onChange] = useWorldEngine(child);
+  const t = useT(), S = worldSay(child);
   const desk = useMedia("(min-width: 1024px)");
   const full = useMedia("(min-width: 1280px)");
   const rails = useMedia(RAILS_QUERY);
@@ -82,8 +87,8 @@ export default function ChildConsole() {
   const ask = (
     <>
       <WorldHeader engine={engine} />
-      <div className={`mtabs ${s.askTabs}`} role="group" aria-label="Ask">
-        {["Changes", "Family"].map((l, i) => <button key={l} type="button" aria-pressed={askTab === i} onClick={() => setAskTab(i)}>{l}</button>)}
+      <div className={`mtabs ${s.askTabs}`} role="group" aria-label={S("ui.askTabs")}>
+        {["changes", "family"].map((l, i) => <button key={l} type="button" aria-pressed={askTab === i} onClick={() => setAskTab(i)}>{S(`ui.tab.${l}`)}</button>)}
       </div>
       {askTab === 0
         ? <><ChangeList engine={engine} onChange={onChange} />{story}</>
@@ -95,7 +100,7 @@ export default function ChildConsole() {
   const science = <><Glossary /><AboutScience /></>;
   const tune = <ChildTune engine={engine} onChange={onChange} />;
   const chart = <ChildChart engine={engine} view={view} setView={setView} trait={trait} setTrait={setTrait} />;
-  const log = <div className="log-box"><h3 className="headline">Timeline</h3><ChildTimeline engine={engine} /></div>;
+  const log = <div className="log-box"><h3 className="headline">{t("console.timeline.title")}</h3><ChildTimeline engine={engine} /></div>;
 
   let side: ReactNode;
   if (full) {
@@ -108,14 +113,14 @@ export default function ChildConsole() {
   } else if (desk) {
     side = (
       <div className="dock-col">
-        <Dock key="desk" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{meet}{why}{science}</>]]} />
+        <Dock key="desk" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{meet}{why}{science}</>]]} />
         <AdSlot size="box" promo />
       </div>
     );
   } else {
     side = (
       <>
-        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{meet}{chart}{why}{science}</>], ["Log", log]]} />
+        <Dock key="phone" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{meet}{chart}{why}{science}</>], [t("console.dock.log"), log]]} />
         <AdSlot size="banner" />
       </>
     );

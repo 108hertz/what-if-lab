@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "play": "Reproducir",
+    "pause": "Pausa",
+    "speed": "Velocidad",
+    "slower": "Más lento",
+    "faster": "Más rápido",
+    "reset": "Reiniciar",
+    "resetLabel": "Reiniciar todo",
+    "resetTitle": "Reiniciar todo: ajustes, cambios y tiempo",
+    "hintFull": "Sal de pantalla completa para hacer un cambio.",
+    "hint": "Elige cambios. Se suman; desmárcalos para comparar."
+  },
+  "fullscreen": {
+    "enter": "Pantalla completa",
+    "leave": "Salir de pantalla completa",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Tus cambios",
+    "count": "{on} de {total} activos",
+    "empty": "Aún no hay cambios. Cada cambio que hagas aparece aquí con una marca, para que puedas apagarlo y encenderlo.",
+    "remove": "Quitar «{name}» de la lista",
+    "removeTitle": "Quitar de la lista",
+    "allOn": "Activar todos",
+    "allOff": "Desactivar todos",
+    "clear": "Vaciar la lista",
+    "throw": "Lanza un planeta"
+  },
+  "about": {
+    "label": "Sobre este modelo",
+    "body": "Todo funciona con reglas integradas y datos simplificados, en directo en tu navegador. Los resultados muestran comportamientos plausibles, no predicciones."
+  },
+  "whatifs": {
+    "title": "Haz cambios",
+    "applied": "aplicado {n} veces"
+  },
+  "readouts": {
+    "title": "Ahora mismo"
+  },
+  "world": {
+    "base": "Sin cambios",
+    "alt": "Con cambios",
+    "both": "Ambos mundos",
+    "onlyBase": "Solo sin cambios",
+    "onlyAlt": "Solo con cambios"
+  },
+  "tune": {
+    "title": "Variables",
+    "live": "Los cambios del mundo inicial lo reinician. Los ajustes de «¿y si…?» se aplican la próxima vez que elijas uno.",
+    "restart": "Cambiar esto reinicia el mundo."
+  },
+  "chart": {
+    "withChanges": "Con cambios:",
+    "noDiff": "aún sin diferencia real",
+    "overTime": "{metric} con el tiempo",
+    "collecting": "Recogiendo datos…",
+    "fork": "BIFURCACIÓN"
+  },
+  "stage": {
+    "label": "Escenario de la simulación",
+    "edge": "What-If Lab · Semilla {seed}"
+  },
+  "timeline": {
+    "title": "Cronología",
+    "empty": "Nada destacable todavía. Déjalo correr o haz un cambio."
+  },
+  "dock": {
+    "tools": "Herramientas",
+    "ask": "Preguntar",
+    "tune": "Ajustar",
+    "read": "Leer",
+    "log": "Registro"
+  },
+  "ad": {
+    "label": "Publicidad",
+    "promo": "Sin anuncios con Premium · 15 $/año",
+    "short": "Anuncio"
+  }
+}

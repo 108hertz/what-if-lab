@@ -2,6 +2,7 @@ import type { BaseWorld, Sandbox } from "@/lib/sim/types";
 import { TAU, clamp, fmtNum, fmtYears, mix, note, rng } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import { meta } from "./meta";
+import { worldSay } from "@/lib/sim/say";
 
 /** Units: G = 1, Milky Way mass = 1, 1 length unit ≈ 40,000 ly, 1 time unit = 100 Myr. */
 type P = {
@@ -182,9 +183,39 @@ function drawBackdrop(ctx: CanvasRenderingContext2D, W: number, H: number) {
 
 let glowA: Surf | null = null, glowB: Surf | null = null;
 
+/** English words of this world (change 0025): event lines. */
+const MESSAGES: Record<string, string> = {
+  "ev.closing": "Andromeda is closing in at about {speed} km/s",
+  "ev.triangulum": "Triangulum drifts in from the side",
+  "ev.lmc": "The Large Magellanic Cloud circles the Milky Way",
+  "ev.merge": "The cores merge: one giant elliptical galaxy, “Milkomeda”",
+  "ev.swallowed": "Another galaxy is swallowed",
+  "ev.pass1": "First pass: the galaxies plunge through each other",
+  "ev.tails": "They swing apart, trailing long tidal tails of stars",
+  "ev.ring": "Our disc rebounds into an expanding ring of stars",
+  "ev.headon": "Andromeda turns straight for our centre",
+  "ev.miss": "Andromeda is nudged onto a fly-by path",
+  "ev.nodmAll": "Dark matter vanishes: gravity drops to {left}%, stars are suddenly too fast",
+  "ev.nodmSome": "Some dark matter vanishes: gravity drops to {left}%, stars are suddenly too fast",
+  "ev.bhBig": "A black hole {x}× as heavy as the Milky Way appears at its centre",
+  "ev.bhSmall": "A black hole of {pct}% the Milky Way’s mass appears at its centre",
+  "ev.third": "A third galaxy (like Triangulum) falls in",
+  "ev.freeze": "Every Milky Way star stops orbiting",
+  "ev.swarm": "{n, plural, one {Another galaxy falls in} other {# more galaxies fall in}}",
+  "ev.punch": "A dwarf galaxy punches through our centre",
+  "ev.bullet": "A galaxy shoots straight through at {speed} km/s",
+  "ev.stop": "Andromeda stops dead, then starts to fall",
+  "ev.reverse": "Andromeda turns around and heads away",
+  "ev.flipmw": "Every Milky Way star reverses its orbit",
+  "stage.scale": "{n} light-years",
+};
+
+const WORDS = { key: "galaxy", messages: MESSAGES };
+
 export const galaxy: Sandbox<W, P> = {
   ...meta,
   intro: "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
+  messages: MESSAGES,
   controls: [
     { type: "heading", label: "Starting world" },
     { type: "range", id: "stars", label: "Stars per galaxy", min: 300, max: 1500, step: 100, val: 900 },
@@ -217,7 +248,7 @@ export const galaxy: Sandbox<W, P> = {
     ["flipmw", "The Milky Way spins the other way"],
   ],
   speeds: [[0.05, "5 Myr/s"], [0.1, "10 Myr/s"], [0.25, "25 Myr/s"], [0.5, "50 Myr/s"], [1.5, "150 Myr/s"], [4, "400 Myr/s"], [10, "1 Gyr/s"]],
-  defaultSpeed: 3,
+  defaultSpeed: 2,
   fmtT: (t) => fmtYears(t * 1e8),
   metrics: [
     { k: "sep", label: "Separation", unit: "kly", fmt: (v) => fmtNum(v) },
@@ -237,17 +268,17 @@ export const galaxy: Sandbox<W, P> = {
     const rvx = v * (ux * ca - uy * sa), rvy = v * (uy * ca + ux * sa);
     addGalaxy(w, 0, 0, (-m1 / M) * rvx, (-m1 / M) * rvy, m0, 1, p.stars, 0);
     addGalaxy(w, -dx, -dy, (m0 / M) * rvx, (m0 / M) * rvy, m1, p.spin === "same" ? 1 : -1, p.stars, 1, { ell: p.shape === "elliptical" });
-    note(w, `Andromeda is closing in at about ${p.speed} km/s`);
+    note(w, "ev.closing", { speed: p.speed });
     if (p.neigh !== "none") {
       const g = view(w);
       addGalaxy(w, g.cx + 7, g.cy - 6, g.vx - 0.22, g.vy + 0.2, 0.45 * p.dm, 1, starsFor(w, p, 0.45), 2);
-      note(w, "Triangulum drifts in from the side");
+      note(w, "ev.triangulum");
     }
     if (p.neigh === "m33lmc") {
       // The Large Magellanic Cloud on a near-circular orbit around the Milky Way, about 160,000 ly out
       const mw = w.cores[0], r = 4, a = 2.2, vc = (r * Math.sqrt(mw.m)) / Math.pow(r * r + 0.09, 0.75);
       addGalaxy(w, mw.x + r * Math.cos(a), mw.y + r * Math.sin(a), mw.vx - vc * Math.sin(a), mw.vy + vc * Math.cos(a), 0.1 * p.dm, 1, starsFor(w, p, 0.1), 3, { rs: discFor(0.1) });
-      note(w, "The Large Magellanic Cloud circles the Milky Way");
+      note(w, "ev.lmc");
     }
     w.cam = camTarget(w);
     return w;
@@ -293,7 +324,7 @@ export const galaxy: Sandbox<W, P> = {
             a.mt = now;
             a.pt = Math.max(a.pt ?? now, b.pt ?? now);
             C.splice(j, 1);
-            note(w, both ? 'The cores merge: one giant elliptical galaxy, "Milkomeda"' : "Another galaxy is swallowed");
+            note(w, both ? "ev.merge" : "ev.swallowed");
             j--;
           }
         }
@@ -303,8 +334,8 @@ export const galaxy: Sandbox<W, P> = {
     const a = coreOf(w, 0), b = coreOf(w, 1);
     if (a && b && a !== b) {
       const d = Math.hypot(a.x - b.x, a.y - b.y);
-      if (d < 1.8) note(w, "First pass: the galaxies plunge through each other", "p1");
-      if (w.f.p1 && d > 3.5) note(w, "They swing apart, trailing long tidal tails of stars", "tails");
+      if (d < 1.8) note(w, "ev.pass1", undefined, "p1");
+      if (w.f.p1 && d > 3.5) note(w, "ev.tails", undefined, "tails");
     }
     // Ring what-if: once the dwarf has passed our centre, watch for the disc rebounding outward together
     const mw = coreOf(w, 0), dw = w.ro == null ? null : coreOf(w, w.ro);
@@ -320,7 +351,7 @@ export const galaxy: Sandbox<W, P> = {
           if ((dx * (s[j + 2] - mw.vx) + dy * (s[j + 3] - mw.vy)) / r > 0.05) outward++;
         }
         if (all > 20 && outward > 0.6 * all) {
-          note(w, "Our disc rebounds into an expanding ring of stars");
+          note(w, "ev.ring");
           delete w.ro;
         }
       }
@@ -339,26 +370,26 @@ export const galaxy: Sandbox<W, P> = {
       const dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy), rv = Math.max(Math.hypot(b.vx - a.vx, b.vy - a.vy), 0.3);
       const nv = id === "headon" ? [(dx / d) * rv, (dy / d) * rv] : [(-dy / d) * 0.95 + (dx / d) * 0.1, (dx / d) * 0.95 + (dy / d) * 0.1];
       kick(1, a.vx + nv[0] - b.vx, a.vy + nv[1] - b.vy);
-      note(w, id === "headon" ? "Andromeda turns straight for our centre" : "Andromeda is nudged onto a fly-by path");
+      note(w, id === "headon" ? "ev.headon" : "ev.miss");
     }
     if (id === "nodm") {
       const left = Math.max(5, p.dmleft);
       w.cores.forEach((c) => (c.m *= left / 100));
-      note(w, `${left < 50 ? "Dark matter vanishes" : "Some dark matter vanishes"}: gravity drops to ${left}%, stars are suddenly too fast`);
+      note(w, left < 50 ? "ev.nodmAll" : "ev.nodmSome", { left });
     }
     if (id === "bh" && a) {
       a.m += p.bhm * p.dm;
-      note(w, p.bhm >= 1 ? `A black hole ${fmtNum(p.bhm, 1)}× as heavy as the Milky Way appears at its centre` : `A black hole of ${Math.round(p.bhm * 100)}% the Milky Way’s mass appears at its centre`);
+      note(w, p.bhm >= 1 ? "ev.bhBig" : "ev.bhSmall", p.bhm >= 1 ? { x: Math.round(p.bhm * 10) / 10 } : { pct: Math.round(p.bhm * 100) });
     }
     const free = MAX_GALAXIES - nextOwner(w);
     if (id === "third" && free > 0) {
       const g = view(w);
       addGalaxy(w, g.cx + 7, g.cy - 6, -0.22, 0.2, p.size * p.dm, 1, starsFor(w, p, p.size), nextOwner(w), { rs: discFor(p.size) });
-      note(w, "A third galaxy (like Triangulum) falls in");
+      note(w, "ev.third");
     }
     if (id === "freeze" && a) {
       for (let i = 0; i < w.o.length; i++) if (w.o[i] === 0) { w.s[i * 4 + 2] = a.vx; w.s[i * 4 + 3] = a.vy; }
-      note(w, "Every Milky Way star stops orbiting");
+      note(w, "ev.freeze");
     }
     if (id === "swarm" && free > 0) {
       // Evenly spaced around the group, falling in on curving paths rather than straight at the centre
@@ -368,29 +399,29 @@ export const galaxy: Sandbox<W, P> = {
         const vx = g.vx + vc * (-0.6 * ux - 0.45 * uy), vy = g.vy + vc * (-0.6 * uy + 0.45 * ux);
         addGalaxy(w, g.cx + R * ux, g.cy + R * uy, vx, vy, p.size * p.dm, i % 2 ? -1 : 1, starsFor(w, p, p.size), nextOwner(w), { rs: discFor(p.size) });
       }
-      note(w, n === 1 ? "Another galaxy falls in" : `${n} more galaxies fall in`);
+      note(w, "ev.swarm", { n });
     }
     if (id === "ring" && a && free > 0) {
       const o = nextOwner(w);
       addGalaxy(w, a.x, a.y + 2.5, a.vx, a.vy - 0.9, 0.5 * p.dm, 1, 120, o, { rs: 0.3 });
       w.ro = o;
-      note(w, "A dwarf galaxy punches through our centre");
+      note(w, "ev.punch");
     }
     if (id === "bullet" && free > 0) {
       const g = view(w);
       addGalaxy(w, g.cx - 8, g.cy + 2, g.vx + KMS * p.fly, g.vy, p.size * p.dm, 1, starsFor(w, p, p.size), nextOwner(w), { rs: discFor(p.size) });
-      note(w, `A galaxy shoots straight through at ${p.fly} km/s`);
+      note(w, "ev.bullet", { speed: p.fly });
     }
     if ((id === "stop" || id === "reverse") && a && b && a !== b) {
       const k = id === "stop" ? 1 : 2;
       kick(1, k * (a.vx - b.vx), k * (a.vy - b.vy));
-      note(w, id === "stop" ? "Andromeda stops dead, then starts to fall" : "Andromeda turns around and heads away");
+      note(w, id === "stop" ? "ev.stop" : "ev.reverse");
     }
     if (id === "flipmw" && a) {
       for (let i = 0; i < w.o.length; i++)
         if (w.o[i] === 0) { const j = i * 4; w.s[j + 2] = 2 * a.vx - w.s[j + 2]; w.s[j + 3] = 2 * a.vy - w.s[j + 3]; }
       if (!a.os) a.dir = -a.dir;
-      note(w, "Every Milky Way star reverses its orbit");
+      note(w, "ev.flipmw");
     }
   },
 
@@ -529,7 +560,7 @@ export const galaxy: Sandbox<W, P> = {
 
     ctx.fillStyle = STAGE.ink2;
     ctx.font = "500 12px " + FONT.mono;
-    ctx.fillText("100,000 light-years", 14, H - 18);
+    ctx.fillText(worldSay(WORDS)("stage.scale", { n: 100000 }), 14, H - 18);
     ctx.fillRect(14, H - 12, 2.5 * sc, 2);
   },
 };

@@ -1,0 +1,103 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "body": {
+    "blackhole": "the black hole",
+    "earth": "Earth",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercury",
+    "neptune": "Neptune",
+    "saturn": "Saturn",
+    "sun": "the Sun",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "your planet"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Sun mass",
+      "unit": "× Sun"
+    },
+    "view": {
+      "label": "View",
+      "opt": {
+        "inner": "Inner planets",
+        "mid": "Out to Jupiter",
+        "outer": "Whole system"
+      }
+    }
+  },
+  "ev": {
+    "bh": "A black hole of 4 Suns enters from the edge of the system",
+    "escape": "{body} escapes into interstellar space",
+    "giant": "The Sun swells to a red giant 0.85 AU wide and loses a third of its mass",
+    "intoBh": "{body} falls into the black hole",
+    "intoSun": "{body} falls into the Sun",
+    "jupstar": "Jupiter gains 80× its mass and lights up as a red dwarf",
+    "mars": "Earth is moved out to Mars’s orbit",
+    "nosun": "The Sun vanishes: planets fly off in straight lines",
+    "smash": "{body} smashes into {other}",
+    "stop": "Earth stops dead in its orbit",
+    "sun2": "The Sun doubles in mass: stronger pull, sunlight 11× brighter",
+    "swallowed": "{body} is swallowed by the red giant",
+    "throw": "You throw in a new planet"
+  },
+  "info": {
+    "changed": "With changes",
+    "now": "Earth now"
+  },
+  "meta": {
+    "hint": "Drag to throw a planet. Changes add up.",
+    "intro": "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
+    "name": "Solar system",
+    "sub": "Gravity"
+  },
+  "metric": {
+    "dist": {
+      "label": "Earth–Sun distance",
+      "unit": "AU"
+    },
+    "temp": {
+      "label": "Earth temperature",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Length of year",
+      "unit": "days"
+    }
+  },
+  "name": {
+    "blackhole": "Black hole",
+    "earth": "Earth",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercury",
+    "neptune": "Neptune",
+    "saturn": "Saturn",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "Your planet"
+  },
+  "speed": {
+    "0": "1 mo/s",
+    "1": "6 mo/s",
+    "2": "2 yr/s",
+    "3": "10 yr/s"
+  },
+  "status": {
+    "boiling": "oceans boiling",
+    "destroyed": "destroyed",
+    "flying": "flying away",
+    "frozen": "frozen solid",
+    "habitable": "habitable"
+  },
+  "whatif": {
+    "bh": "A black hole flies through",
+    "giant": "The Sun becomes a red giant",
+    "jupstar": "Jupiter ignites into a star",
+    "mars": "Move Earth to Mars’s orbit",
+    "nosun": "The Sun disappears",
+    "stop": "Earth stops in its orbit",
+    "sun2": "The Sun doubles in mass"
+  }
+}

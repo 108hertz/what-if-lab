@@ -5,6 +5,7 @@ import {
   readConfig, resolveAccount, premiumHint, rememberPremium, readDevPremium, writeDevPremium, pendingUpgrade, setPendingUpgrade,
   REMOTE_LOADING, type Account, type AccountConfig, type RemoteState,
 } from "./state";
+import { pageT } from "@/lib/i18n/page";
 
 /**
  * The account adapter boundary (change 0020, ADR 0008). Components use `useAccount()` and `usePremium()` only;
@@ -112,7 +113,7 @@ export function AccountProvider({ children, dialog }: { children: ReactNode; dia
     if (!a) return;
     setError(null); setBusy(true);
     try { await a.checkout(); }
-    catch (e) { setError(e instanceof Error ? e.message : "Checkout could not open. Try again in a moment."); }
+    catch (e) { setError(e instanceof Error ? e.message : pageT()("account.errors.checkoutFailed")); }
     finally { setBusy(false); }
   }, []);
 
@@ -135,7 +136,7 @@ export function AccountProvider({ children, dialog }: { children: ReactNode; dia
     user: effective.user,
     isPremium,
     offline: !online,
-    error: error ?? (status === "error" ? (!online ? "You're offline. Accounts come back when you reconnect." : "The account service didn't answer. Check your connection and try again.") : null),
+    error: error ?? (status === "error" ? pageT()(!online ? "account.errors.offline" : "account.errors.noAnswer") : null),
     busy,
     devPremium: cfg.dev ? { on: dev, set: (on: boolean) => { writeDevPremium(on); setDev(on); } } : null,
     signIn: () => { leaveFullscreen(); actions.current?.signIn(); },

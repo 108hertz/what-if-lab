@@ -263,6 +263,18 @@ Three self-hosted families via `next/font` (no runtime request): **Barlow Semi C
 11 · 12 · 14 · 15 · 16 · 20 · 28 · 40 · 52 px, each a token: Micro 11, Label 12, Small 14, Callout 15
 (page default), Body/Headline 16, Heading-sm / Body-lg 20, Title 28–40, Heading 40, Display 40–52.
 
+### Other scripts (change 0025)
+Latin languages (incl. Polish, Turkish, Vietnamese) stay in the three families. Other scripts fall back per glyph inside
+the same tokens (`--font-script`): Noto Sans for Cyrillic, Noto Sans Arabic / Devanagari / Thai / Bengali (self-hosted,
+fetched only when a page has those letters), then the system's own CJK fonts, ordered per language (`--font-cjk`).
+In Arabic, Chinese, Japanese, Korean, Hindi, Thai and Bengali the naming voice drops its tracking (`--track-label: 0`):
+tracking breaks joined letters and crowds marks, and these scripts have no capitals.
+
+### Right to left (Arabic)
+The chrome mirrors through logical properties (`margin-inline-*`, `inset-inline-*`, `text-align: start`): columns, nav,
+transport and popovers swap sides. The stage, charts, range sliders and time tracks stay left to right (time always runs
+rightwards), and only arrows that mean "forward" flip.
+
 ### Section headers
 `.headline` inside panels is a condensed Label in ink-2, an optional mono count (`WHAT IF 13`,
 `VARIABLES 21`), then a 1 px rule running to the panel edge. No kickers above titles.

@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "zoomIn": "Aproximar",
+    "zoomOut": "Afastar",
+    "zoomLevel": "Nível de zoom",
+    "hint": "Role, pince ou arraste. Toque num rótulo dourado para abrir o mundo dele."
+  },
+  "panel": {
+    "inView": "Na tela",
+    "openThis": "Abrir este mundo",
+    "openWorld": "Abrir um mundo",
+    "jumpTo": "Ir para"
+  },
+  "hero": {
+    "title": "O que acontece se…",
+    "body": "Dê zoom de um próton até o universo observável, dez vezes a cada passo. Rótulos dourados são mundos vivos: abra um, mude-o e compare o futuro dele com o mundo deixado como estava."
+  },
+  "stage": {
+    "open": "Abrir mundo →",
+    "screen": "Largura da tela ≈ {len}"
+  }
+}

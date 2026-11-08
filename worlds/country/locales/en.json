@@ -1,0 +1,330 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "calm": {
+    "0": "Protests fill the streets.",
+    "1": "Many people are angry; protests are close.",
+    "2": "Life is mostly calm, with some anger at the top.",
+    "3": "Life is calm and people mostly trust each other."
+  },
+  "ctl": {
+    "corr": {
+      "label": "Corruption",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Schools",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Income per person",
+      "unit": "k$ a year"
+    },
+    "gov": {
+      "label": "Government",
+      "opt": {
+        "auto": "One ruler or party",
+        "dem": "Democracy",
+        "hybrid": "Mixed: elections, few freedoms"
+      }
+    },
+    "h": {
+      "money": "Money",
+      "people": "People",
+      "policy-sizes-used-by-your-next-click": "Policy sizes (used by your next click)",
+      "public-life": "Public life"
+    },
+    "jobless": {
+      "label": "Out of work",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Healthcare: lifespan",
+      "unit": "years"
+    },
+    "pop": {
+      "label": "Population",
+      "unit": "million"
+    },
+    "popg": {
+      "label": "Population growth",
+      "unit": "% a year"
+    },
+    "preset": {
+      "group": {
+        "0": "Europe",
+        "1": "Asia",
+        "2": "Middle East and Caucasus",
+        "3": "Africa",
+        "4": "Americas",
+        "5": "Oceania",
+        "6": "Your own"
+      },
+      "label": "Country",
+      "opt": {
+        "am": "Armenia",
+        "ar": "Argentina",
+        "au": "Australia",
+        "bd": "Bangladesh",
+        "br": "Brazil",
+        "ca": "Canada",
+        "ch": "Switzerland",
+        "cl": "Chile",
+        "cn": "China",
+        "co": "Colombia",
+        "custom": "Your own country",
+        "de": "Germany",
+        "dk": "Denmark",
+        "eg": "Egypt",
+        "es": "Spain",
+        "et": "Ethiopia",
+        "fr": "France",
+        "gb": "United Kingdom",
+        "gr": "Greece",
+        "id": "Indonesia",
+        "il": "Israel",
+        "in": "India",
+        "ir": "Iran",
+        "it": "Italy",
+        "jp": "Japan",
+        "ke": "Kenya",
+        "kr": "South Korea",
+        "mx": "Mexico",
+        "ng": "Nigeria",
+        "nl": "Netherlands",
+        "no": "Norway",
+        "ph": "Philippines",
+        "pk": "Pakistan",
+        "pl": "Poland",
+        "sa": "Saudi Arabia",
+        "se": "Sweden",
+        "th": "Thailand",
+        "tr": "Türkiye",
+        "ua": "Ukraine",
+        "us": "United States",
+        "vn": "Vietnam",
+        "za": "South Africa"
+      }
+    },
+    "res": {
+      "label": "Natural resources (oil, metals)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Tax cut",
+      "unit": "points"
+    },
+    "s_open": {
+      "label": "Newcomer households"
+    },
+    "s_rich": {
+      "label": "Extra tax on the richest",
+      "unit": "points"
+    },
+    "s_ubi": {
+      "label": "Basic income size",
+      "unit": "% of average income"
+    },
+    "s_wage": {
+      "label": "Minimum wage rise",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "War length",
+      "unit": "years"
+    },
+    "tax": {
+      "label": "Taxes",
+      "unit": "% of income"
+    }
+  },
+  "diff": {
+    "calmer": "{n, plural, one {# point calmer} other {# points calmer}}",
+    "famLess": "{usd} less a month",
+    "famMore": "{usd} more a month",
+    "gapBigger": "the gap is {n}× bigger",
+    "gapSmaller": "the gap is {n}× smaller",
+    "jobFewer": "{n, plural, one {# fewer adult out of 100 has no job} other {# fewer adults out of 100 have no job}}",
+    "jobMore": "{n, plural, one {# more adult out of 100 has no job} other {# more adults out of 100 have no job}}",
+    "lessCalm": "{n, plural, one {# point less calm} other {# points less calm}}",
+    "longer": "{n} years longer lives",
+    "popFewer": "{n} million fewer people",
+    "popMore": "{n} million more people",
+    "povFewer": "{n, plural, one {# fewer person out of 100 is poor} other {# fewer people out of 100 are poor}}",
+    "povMore": "{n, plural, one {# more person out of 100 is poor} other {# more people out of 100 are poor}}",
+    "shorter": "{n} years shorter lives"
+  },
+  "ev": {
+    "apply": {
+      "aging": "Birth rate collapses",
+      "build": "Building starts on roads, rail and power lines",
+      "corr": "Anti-corruption drive begins",
+      "drought": "A long drought begins",
+      "edu": "Education budget doubles",
+      "health": "Healthcare becomes free for everyone",
+      "minwage": "The minimum wage goes up",
+      "oil": "Oil found: export boom",
+      "open": "Borders open: {n} new households arrive",
+      "pandemic": "A pandemic hits: schools and shops close",
+      "robots": "Robots arrive in the factories",
+      "taxcut": "Taxes are cut for everyone",
+      "taxrich": "The richest pay more tax",
+      "trade": "Borders close to trade: imports cost more",
+      "ubi": "Basic income starts: poverty drops, taxes rise",
+      "war": "War breaks out: the economy shrinks fast"
+    },
+    "built": "New roads, rail and power lines open",
+    "c": "High risk of coup or state collapse",
+    "curse": "Resource curse: oil money feeds corruption",
+    "dbl": "Income per person doubles",
+    "eduw": "First generation from the better schools starts work",
+    "hi": "Becomes a high-income country",
+    "jl15": "1 in 7 adults is now out of work",
+    "life5": "People now live 5 years longer than in 2026",
+    "lifed": "Lifespans fall by 5 years",
+    "pand": "The pandemic ends; shops and schools reopen",
+    "pk": "Population peaks at {n} m",
+    "povh": "Poverty has halved since 2026",
+    "rain": "The rains return",
+    "robo2": "New kinds of jobs appear around the robots",
+    "t10": "Richest 10% now own half of all wealth",
+    "u": "Unrest: mass protests fill the streets",
+    "wend": "War ends; rebuilding boom begins"
+  },
+  "group": {
+    "0": "Money",
+    "1": "Services",
+    "2": "Society",
+    "3": "Shocks"
+  },
+  "info": {
+    "about": "About the numbers",
+    "aboutText": "Starting figures are rounded, approximate values from the mid-2020s. After that the country runs on simple rules: it shows how things push each other, not a forecast.",
+    "changed": "What changed",
+    "curious": "For the curious",
+    "gini": "Wealth Gini {gini} · richest 10% own {pct}% of wealth",
+    "life": "People live about {n} years. {calm}",
+    "noChange": "With no change, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} million people. A typical family lives on {usd} a month.",
+    "poor": "{pov} out of 100 people are poor; {jobless} out of 100 adults are out of work."
+  },
+  "meta": {
+    "intro": "A street in the country, and the same country as 100 people from poorest to richest. Pick a country, then make changes: they add up.",
+    "name": "Countries",
+    "sub": "Economy & society"
+  },
+  "metric": {
+    "calm": {
+      "help": "How calm and trusting the country is: 100 is peaceful, under 30 means protests in the streets.",
+      "label": "Peace",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "Money a typical family has each month, after tax and help.",
+      "label": "Family income",
+      "unit": "$ a month"
+    },
+    "gap": {
+      "help": "How many times more the richest 10 people get than the poorest 10.",
+      "label": "Rich–poor gap"
+    },
+    "jobless": {
+      "help": "Out of 100 adults who want a job, how many cannot find one.",
+      "label": "Out of work",
+      "unit": "of 100"
+    },
+    "life": {
+      "help": "How many years a baby born now can expect to live.",
+      "label": "Lifespan",
+      "unit": "years"
+    },
+    "pop": {
+      "help": "How many people live in the country, in millions.",
+      "label": "People",
+      "unit": "million"
+    },
+    "pov": {
+      "help": "Out of 100 people, how many live on less than about $250 a family a month, or far less than most families around them.",
+      "label": "Poor",
+      "unit": "of 100"
+    }
+  },
+  "name": {
+    "ownFrom": "Your own country (from {from})",
+    "this": "This country"
+  },
+  "speed": {
+    "0": "3 mo/s",
+    "1": "1 yr/s",
+    "2": "3 yr/s",
+    "3": "8 yr/s"
+  },
+  "stage": {
+    "band": {
+      "0": "POOR",
+      "1": "GETTING BY",
+      "2": "WELL OFF"
+    },
+    "clinic": "CLINIC +",
+    "fam": "a typical family has {usd} a month",
+    "jobless": "{n} of 100 adults out of work",
+    "kidsOut": "{n, plural, one {# child} other {# children}} not in school",
+    "legend": {
+      "jobless": "OUT OF WORK",
+      "kid": "CHILD AT SCHOOL",
+      "kidOut": "CHILD NOT AT SCHOOL",
+      "poverty": "POVERTY LINE",
+      "retired": "RETIRED",
+      "work": "WORKING"
+    },
+    "noChange": "(no change: {v})",
+    "poor": "{n, plural, one {# is poor} other {# are poor}}",
+    "poorer": "← POORER",
+    "richer": "RICHER →",
+    "school": "SCHOOL",
+    "title": "{year} · IF THIS COUNTRY WERE 100 PEOPLE",
+    "titleShort": "{year} · AS 100 PEOPLE",
+    "titleWide": "{year} · IF THIS COUNTRY WERE 100 PEOPLE · POOREST TO RICHEST"
+  },
+  "story": {
+    "angrier": "People are angrier.",
+    "calmer": "The country is calmer.",
+    "famLess": "A typical family has {usd} less a month.",
+    "famMore": "A typical family has {usd} more a month.",
+    "gapBigger": "The gap between rich and poor is bigger.",
+    "gapSmaller": "The gap between rich and poor is smaller.",
+    "head": "Compared with the same country with no change, in {year}:",
+    "jobFewer": "{n, plural, one {# fewer adult out of 100 is out of work.} other {# fewer adults out of 100 are out of work.}}",
+    "jobMore": "{n, plural, one {# more adult out of 100 is out of work.} other {# more adults out of 100 are out of work.}}",
+    "longer": "People live {n} years longer.",
+    "none": "Not much is different yet. Give it a few years.",
+    "popFewer": "{n} million fewer people live here.",
+    "popMore": "{n} million more people live here.",
+    "povFewer": "{n, plural, one {# fewer person out of 100 is poor.} other {# fewer people out of 100 are poor.}}",
+    "povMore": "{n, plural, one {# more person out of 100 is poor.} other {# more people out of 100 are poor.}}",
+    "shorter": "People live {n} years shorter.",
+    "stopped": "The protests have stopped."
+  },
+  "ui": {
+    "changesHint": "They add up. Sizes are in Tune. Tick them off above to compare.",
+    "pick": "Pick a country"
+  },
+  "whatif": {
+    "aging": "Birth rate collapses",
+    "build": "Build roads, rail and power",
+    "corr": "Cut corruption in half",
+    "drought": "Years of drought",
+    "edu": "Double education spending",
+    "health": "Free healthcare for everyone",
+    "minwage": "Raise the minimum wage",
+    "oil": "Discover huge oil reserves",
+    "open": "Open the borders to migrants",
+    "pandemic": "A pandemic hits",
+    "robots": "Robots do half the factory work",
+    "taxcut": "Cut taxes for everyone",
+    "taxrich": "Tax the richest more",
+    "trade": "Close the borders to trade",
+    "ubi": "Universal basic income",
+    "war": "Fight a war"
+  }
+}

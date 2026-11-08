@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "كبّر من البروتون إلى الكون المرئي، وافتح عالمًا، وغيّره بأسئلة «ماذا لو»، وقارن مستقبله بالعالم الذي بقي كما كان.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "المقياس",
+    "sub": "بروتون ← كون"
+  },
+  "intro": {
+    "worlds": "العوالم",
+    "whatifs": "ماذا لو…"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "body": "هذه الصفحة ليست في المختبر.",
+    "home": "العودة إلى المختبر"
+  },
+  "unit": {
+    "gyr": "{n} مليار سنة",
+    "myr": "{n} مليون سنة",
+    "kyr": "{n} ألف سنة",
+    "yr": "{n} سنة"
+  },
+  "dur": {
+    "days": "{n} يوم",
+    "months": "{n} شهر",
+    "years": "{n} سنة"
+  }
+}

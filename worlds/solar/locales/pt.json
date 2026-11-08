@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "body": {
+    "blackhole": "o buraco negro",
+    "earth": "a Terra",
+    "jupiter": "Júpiter",
+    "mars": "Marte",
+    "mercury": "Mercúrio",
+    "neptune": "Netuno",
+    "saturn": "Saturno",
+    "sun": "o Sol",
+    "uranus": "Urano",
+    "venus": "Vênus",
+    "yourplanet": "o seu planeta"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Massa do Sol",
+      "unit": "× Sol"
+    },
+    "view": {
+      "label": "Vista",
+      "opt": {
+        "inner": "Planetas internos",
+        "mid": "Até Júpiter",
+        "outer": "Sistema inteiro"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Um buraco negro de 4 Sóis entra pela borda do sistema",
+    "escape": "{body} escapa para o espaço interestelar",
+    "giant": "O Sol incha até virar uma gigante vermelha de 0,85 UA e perde um terço da massa",
+    "intoBh": "{body} cai no buraco negro",
+    "intoSun": "{body} cai no Sol",
+    "jupstar": "Júpiter ganha 80× sua massa e acende como uma anã vermelha",
+    "mars": "A Terra é levada para a órbita de Marte",
+    "nosun": "O Sol some: os planetas saem voando em linha reta",
+    "smash": "{body} se choca com {other}",
+    "stop": "A Terra para de vez na órbita",
+    "sun2": "O Sol dobra de massa: atração mais forte, luz 11× mais forte",
+    "swallowed": "A gigante vermelha engole {body}",
+    "throw": "Você joga um planeta novo"
+  },
+  "info": {
+    "changed": "Com mudanças",
+    "now": "Terra agora"
+  },
+  "meta": {
+    "hint": "Arraste para jogar um planeta. As mudanças se somam.",
+    "intro": "Gravidade newtoniana de verdade para o Sol e oito planetas. Arraste no palco para jogar seu próprio planeta.",
+    "name": "Sistema Solar",
+    "sub": "Gravidade"
+  },
+  "metric": {
+    "dist": {
+      "label": "Distância Terra–Sol",
+      "unit": "UA"
+    },
+    "temp": {
+      "label": "Temperatura da Terra",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Duração do ano",
+      "unit": "dias"
+    }
+  },
+  "name": {
+    "blackhole": "Buraco negro",
+    "earth": "Terra",
+    "jupiter": "Júpiter",
+    "mars": "Marte",
+    "mercury": "Mercúrio",
+    "neptune": "Netuno",
+    "saturn": "Saturno",
+    "uranus": "Urano",
+    "venus": "Vênus",
+    "yourplanet": "Seu planeta"
+  },
+  "speed": {
+    "0": "1 mês/s",
+    "1": "6 meses/s",
+    "2": "2 anos/s",
+    "3": "10 anos/s"
+  },
+  "status": {
+    "boiling": "oceanos fervendo",
+    "destroyed": "destruída",
+    "flying": "fugindo",
+    "frozen": "congelada",
+    "habitable": "habitável"
+  },
+  "whatif": {
+    "bh": "Um buraco negro passa por aqui",
+    "giant": "O Sol vira uma gigante vermelha",
+    "jupstar": "Júpiter acende como estrela",
+    "mars": "Levar a Terra para a órbita de Marte",
+    "nosun": "O Sol desaparece",
+    "stop": "A Terra para na órbita",
+    "sun2": "O Sol dobra de massa"
+  }
+}

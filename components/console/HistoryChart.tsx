@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import type { Metric } from "@/lib/sim/types";
 import { FONT } from "@/lib/sim/draw";
+import { worldSay } from "@/lib/sim/say";
+import { useT } from "../i18n/I18nProvider";
 
 /** Chart lives in the page chrome, so it follows the theme tokens rather than the stage palette. */
 const token = (k: string) => getComputedStyle(document.documentElement).getPropertyValue(k).trim();
@@ -13,18 +15,20 @@ function ChartNote({ engine, m }: { engine: SimEngine; m: Metric }) {
   const { base, alt } = engine.readouts();
   const b = base[m.k], a = alt?.[m.k];
   let gap: ReactNode = null;
+  const t = useT(), help = m.help ? worldSay(engine.sb)(`metric.${m.k}.help`) : undefined;
   if (alt && b != null && a != null && m.diff) {
     const d = a - b, txt = m.diff(d);
     const good = m.better && txt ? (m.better === "up" ? d > 0 : d < 0) : null;
-    gap = <>With changes: <span className={good == null ? undefined : good ? "good" : "bad"}>{txt || "no real difference yet"}</span>. </>;
+    gap = <>{t("console.chart.withChanges")} <span className={good == null ? undefined : good ? "good" : "bad"}>{txt || t("console.chart.noDiff")}</span>. </>;
   }
-  return <p className="chart-note" title={m.help}>{gap}{m.help}</p>;
+  return <p className="chart-note" title={help}>{gap}{help}</p>;
 }
 
 export default function HistoryChart({ engine }: { engine: SimEngine }) {
   const [metric, setMetric] = useState(0);
   const ref = useRef<HTMLCanvasElement>(null);
   const m = engine.sb.metrics[Math.min(metric, engine.sb.metrics.length - 1)];
+  const t = useT(), say = worldSay(engine.sb);
 
   // Redraws on every parent re-render (the Lab refreshes every 300 ms).
   useEffect(() => {
@@ -38,7 +42,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
     const COL = { base: token("--base"), alt: token("--alt"), grid: token("--separator"), text: token("--label-2") };
     const h = engine.history, b = h.base[m.k], a = h.alt[m.k], n = h.t.length;
     const vals = [...b, ...a].filter((v): v is number => v != null && isFinite(v));
-    if (!vals.length || n < 2) { c.fillStyle = COL.text; c.font = "14px " + FONT.body; c.fillText("Collecting data…", 10, 20); return; }
+    if (!vals.length || n < 2) { c.fillStyle = COL.text; c.font = "14px " + FONT.body; c.fillText(t("console.chart.collecting"), 10, 20); return; }
     let lo = Math.min(...vals), hi = Math.max(...vals);
     if (hi - lo < 1e-9) { hi += 1; lo -= 1; }
     const pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
@@ -56,7 +60,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
       // The fork marker: the same instant the stage's "forked at" chip and the timeline's pinned row point at
       c.strokeStyle = COL.alt; c.lineWidth = 1; c.beginPath(); c.moveTo(x + 0.5, T); c.lineTo(x + 0.5, T + ph); c.stroke();
       c.fillStyle = COL.alt; c.beginPath(); c.moveTo(x + 0.5, T); c.lineTo(x + 4.5, T + 4); c.lineTo(x + 0.5, T + 8); c.lineTo(x - 3.5, T + 4); c.closePath(); c.fill();
-      c.textAlign = "left"; c.fillText("FORK", x + 7, T);
+      c.textAlign = "left"; c.fillText(t("console.chart.fork"), x + 7, T);
     }
     const line = (arr: (number | null)[], col: string, w: number, dash: number[] = []) => {
       c.strokeStyle = col; c.lineWidth = w; c.setLineDash(dash); c.beginPath();
@@ -74,12 +78,12 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
       <div className="chart-top">
         <div className="mtabs">
           {engine.sb.metrics.map((x, i) => (
-            <button key={x.k} aria-pressed={x === m} onClick={() => setMetric(i)}>{x.label}</button>
+            <button key={x.k} aria-pressed={x === m} onClick={() => setMetric(i)}>{say(`metric.${x.k}.label`)}</button>
           ))}
         </div>
-        <div className="legend micro"><span className="ch"><i className="b" />No change</span><span className="ch a"><i />With changes</span></div>
+        <div className="legend micro"><span className="ch"><i className="b" />{t("console.world.base")}</span><span className="ch a"><i />{t("console.world.alt")}</span></div>
       </div>
-      <canvas ref={ref} className="chart" aria-label={`${m.label} over time`} />
+      <canvas ref={ref} className="chart" aria-label={t("console.chart.overTime", { metric: say(`metric.${m.k}.label`) })} />
       {m.help && <ChartNote engine={engine} m={m} />}
     </>
   );

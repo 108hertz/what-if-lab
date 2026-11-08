@@ -7,6 +7,9 @@ import type { Scrubber } from "@/lib/export/scrub";
 import { SLIDE_SIZE, drawVideoFrame, paint, slideTitle, type ClipInfo, type LayerBox } from "@/lib/export/frame";
 import { SIZES, type ExportStyle, type LayerId } from "@/lib/export/style";
 import { Icon } from "../../ui/Icon";
+import { pageT } from "@/lib/i18n/page";
+
+const S = (k: string) => pageT()(`export.studio.${k}`);
 
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 
@@ -155,7 +158,7 @@ export default function PreviewCanvas({ scrub, ready, style, slides, world, intr
           style={{ width: fit.w, height: fit.h }}
           tabIndex={slides ? -1 : 0}
           role="img"
-          aria-label={slides ? "Preview of the first slide" : "Preview of the video. Drag a text to move it; with a text picked, arrow keys nudge it."}
+          aria-label={S(slides ? "preview.slides" : "preview.video")}
           onPointerDown={down}
           onPointerMove={move}
           onPointerUp={up}
@@ -165,14 +168,14 @@ export default function PreviewCanvas({ scrub, ready, style, slides, world, intr
       </div>
       {!slides && (
         <div className="studio-scrub">
-          <button type="button" className="iconbtn" aria-label={playing ? "Pause preview" : "Play preview"} disabled={!scrub.result}
+          <button type="button" className="iconbtn" aria-label={S(playing ? "preview.pause" : "preview.play")} disabled={!scrub.result}
             onClick={() => { if (!playing && frame >= total - 1) setFrame(0); setPlaying(!playing); }}>
             <Icon name={playing ? "pause" : "play"} size={18} />
           </button>
-          <input type="range" min={0} max={total - 1} step={1} value={frame} aria-label="Preview frame" disabled={!scrub.result}
+          <input type="range" min={0} max={total - 1} step={1} value={frame} aria-label={S("preview.frame")} disabled={!scrub.result}
             style={{ "--fill": `${(frame / Math.max(1, total - 1)) * 100}%` } as React.CSSProperties}
             onChange={(e) => { setPlaying(false); setFrame(parseInt(e.target.value, 10)); }} />
-          <time className="studio-time">{scrub.result ? `${mmss(frame / FPS)} / ${mmss(total / FPS)}` : "Preparing"}</time>
+          <time className="studio-time">{scrub.result ? `${mmss(frame / FPS)} / ${mmss(total / FPS)}` : S("preview.preparing")}</time>
         </div>
       )}
     </div>

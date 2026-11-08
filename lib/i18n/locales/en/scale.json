@@ -1,0 +1,23 @@
+{
+  "_status": "source",
+  "transport": {
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "zoomLevel": "Zoom level",
+    "hint": "Scroll, pinch or drag. Tap a gold label to open its world."
+  },
+  "panel": {
+    "inView": "In view",
+    "openThis": "Open this world",
+    "openWorld": "Open a world",
+    "jumpTo": "Jump to"
+  },
+  "hero": {
+    "title": "What happens if…",
+    "body": "Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, change it, and compare its future with the world left as it was."
+  },
+  "stage": {
+    "open": "Open world →",
+    "screen": "Screen width ≈ {len}"
+  }
+}

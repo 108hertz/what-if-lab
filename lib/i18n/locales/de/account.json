@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "status": {
+    "off": "Konten sind in dieser Version nicht eingerichtet. Alles hier ist kostenlos.",
+    "loading": "Prüfe dein Konto…",
+    "signedOut": "Das Lab ist ohne Konto kostenlos. Melde dich an, um Premium auf jedem Gerät zu nutzen.",
+    "free": "Gratis-Plan. Jede Welt und jedes Was-wäre-wenn gehören dir.",
+    "premium": "Premium ist an: keine Werbung, dazu Video- und Folien-Exporte.",
+    "error": "Der Kontodienst hat nicht geantwortet.",
+    "keepPremium": "Premium bleibt vorerst an."
+  },
+  "menu": {
+    "account": "Konto",
+    "signIn": "Anmelden",
+    "createAccount": "Konto erstellen",
+    "goPremium": "Premium holen",
+    "price": "15 $ pro Jahr",
+    "manage": "Abo verwalten",
+    "settings": "Kontoeinstellungen",
+    "signOut": "Abmelden",
+    "retry": "Nochmal versuchen",
+    "yourAccount": "Dein Lab-Konto",
+    "premium": "Premium",
+    "free": "Gratis",
+    "plan": "Plan: {plan}",
+    "buttonLabel": "{label}, Plan: {plan}",
+    "devPremium": "Premium simulieren",
+    "devOnly": "nur Dev-Build"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Keine Werbung",
+        "text": "Jeder Werbeplatz verschwindet, in jeder Welt."
+      },
+      "phone": {
+        "name": "Handy-Videos",
+        "text": "Clips in 1080 × 1920 von deinem Was-wäre-wenn für Shorts, Reels und TikTok."
+      },
+      "wide": {
+        "name": "YouTube-Videos",
+        "text": "Clips in 1920 × 1080 mit beiden Welten nebeneinander."
+      },
+      "slides": {
+        "name": "Folien",
+        "text": "Ein PDF-Foliensatz: Ausgangslage, Was-wäre-wenn, Schlüsselmomente und Ergebnis."
+      }
+    },
+    "lead": {
+      "export": "Videos und Folien gehören zu Premium.",
+      "ads": "Premium nimmt die Werbung weg.",
+      "menu": "Unterstütze das Lab und hol dir die Werkzeuge, um deine Entdeckungen zu teilen."
+    },
+    "createContinue": "Konto erstellen und weiter",
+    "haveAccount": "Ich habe ein Konto",
+    "noteSignedOut": "Erst ein Konto, damit Premium auf jedem Gerät läuft. Dann öffnet sich die Kasse direkt hier.",
+    "openingCheckout": "Öffne die Kasse…",
+    "continueCheckout": "Weiter zur Kasse",
+    "noteFree": "Angemeldet als {who}. Die Zahlung läuft über {provider} und Stripe; das Lab sieht deine Karte nie.",
+    "you": "du",
+    "ourProvider": "unseren Anbieter",
+    "back": "Zurück zum Lab",
+    "manage": "Abo verwalten",
+    "checking": "Prüfe dein Konto…",
+    "retry": "Nochmal versuchen",
+    "noteDev": "Konten sind in dieser Version nicht eingerichtet. Um Premium auszuprobieren, schalte im Kontomenü „Premium simulieren“ ein.",
+    "noteOff": "Premium ist in dieser Version des Labs noch nicht erhältlich.",
+    "titleOn": "Premium ist an",
+    "title": "Premium",
+    "amount": "15 $",
+    "per": "pro Jahr · jederzeit kündbar",
+    "thanks": "Danke! Die Werbung ist weg und Exporte sind in jeder Welt freigeschaltet.",
+    "free": "Jede Welt und jedes Was-wäre-wenn bleiben kostenlos, mit oder ohne Premium."
+  },
+  "errors": {
+    "noCheckout": "Die Kasse ist in dieser Version nicht verfügbar. Versuch es später nochmal.",
+    "notOnSale": "Premium ist noch nicht erhältlich. Bitte versuch es später nochmal.",
+    "checkoutFailed": "Die Kasse ließ sich nicht öffnen. Versuch es gleich nochmal.",
+    "offline": "Du bist offline. Konten sind wieder da, sobald du verbunden bist.",
+    "noAnswer": "Der Kontodienst hat nicht geantwortet. Prüfe deine Verbindung und versuch es nochmal."
+  },
+  "yourAccount": "Dein Konto"
+}

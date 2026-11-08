@@ -1,0 +1,113 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "age": {
+      "label": "Alter",
+      "unit": "J."
+    },
+    "disc": {
+      "label": "Selbstdisziplin"
+    },
+    "health": {
+      "label": "Aktuelle Gesundheit"
+    },
+    "mood": {
+      "label": "Aktuelles Wohlbefinden"
+    },
+    "soc": {
+      "label": "Geselligkeit"
+    },
+    "stress": {
+      "label": "Stresslevel"
+    }
+  },
+  "dim": {
+    "career": "Beruf & Können",
+    "health": "Gesundheit",
+    "social": "Beziehungen",
+    "well": "Wohlbefinden"
+  },
+  "ev": {
+    "again": "Fängt wieder an: {habit}",
+    "b6": "Sechs Monate dabei: Verlangen und Gewöhnung machen das Aufhören schwer",
+    "d66": "Tag 66: Wer noch dabei ist, macht es jetzt automatisch",
+    "half": "Die Hälfte der Versionen hat aufgegeben",
+    "high": "{dim}: ein starkes Niveau erreicht",
+    "low": "{dim}: rutscht in die Gefahrenzone",
+    "start": "Fängt an: {habit}",
+    "w3": "Woche 3: das Motivationstief, jetzt hören die meisten auf",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "viel Alkohol trinken",
+    "exercise": "jeden Tag 30 Min. Sport",
+    "isolate": "sich von Freunden zurückziehen",
+    "learn": "täglich 1 Stunde etwas lernen",
+    "meditate": "täglich 10 Min. meditieren",
+    "read": "täglich 30 Min. lesen",
+    "sleep": "8 Stunden schlafen, feste Zeiten",
+    "smoke": "rauchen",
+    "social": "Social Media aufgeben"
+  },
+  "meta": {
+    "intro": "Ein Mensch, 100 parallele Versionen seines Lebens. Probier neue Gewohnheiten aus und sieh, wie viele dabeibleiben und was es ändert.",
+    "name": "Charakter",
+    "sub": "100 parallele Leben"
+  },
+  "metric": {
+    "career": {
+      "label": "Beruf & Können",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Gesundheit",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Noch dabei",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Beziehungen",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Wohlbefinden",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "Viel Alkohol",
+    "exercise": "Sport",
+    "isolate": "Rückzug von Freunden",
+    "learn": "Etwas lernen",
+    "meditate": "Meditieren",
+    "read": "Lesen",
+    "sleep": "Schlafen",
+    "smoke": "Rauchen",
+    "social": "Kein Social Media"
+  },
+  "speed": {
+    "0": "1 Wo./s",
+    "1": "1 Mon./s",
+    "2": "6 Mon./s",
+    "3": "2 J./s"
+  },
+  "stage": {
+    "caption": "{what} · Lächeln = Wohlbefinden · Helligkeit = Gesundheit",
+    "many": "{h, plural, one {# Gewohnheit} other {# Gewohnheiten}} · {n} von 100 noch bei mindestens einer dabei",
+    "none": "Noch keine neue Gewohnheit",
+    "one": "{n} von 100 noch dabei"
+  },
+  "whatif": {
+    "drink": "Anfangen, viel zu trinken",
+    "exercise": "Jeden Tag 30 Min. Sport",
+    "isolate": "Sich von Freunden zurückziehen",
+    "learn": "Täglich 1 Stunde etwas lernen",
+    "meditate": "Täglich 10 Min. meditieren",
+    "read": "Täglich 30 Min. lesen",
+    "sleep": "8 Stunden schlafen, feste Zeiten",
+    "smoke": "Anfangen zu rauchen",
+    "social": "Social Media aufgeben"
+  }
+}

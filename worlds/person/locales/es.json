@@ -1,0 +1,113 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "age": {
+      "label": "Edad",
+      "unit": "años"
+    },
+    "disc": {
+      "label": "Autodisciplina"
+    },
+    "health": {
+      "label": "Salud actual"
+    },
+    "mood": {
+      "label": "Bienestar actual"
+    },
+    "soc": {
+      "label": "Sociabilidad"
+    },
+    "stress": {
+      "label": "Nivel de estrés"
+    }
+  },
+  "dim": {
+    "career": "Carrera y habilidades",
+    "health": "Salud",
+    "social": "Relaciones",
+    "well": "Bienestar"
+  },
+  "ev": {
+    "again": "Vuelve a empezar: {habit}",
+    "b6": "Seis meses después: las ganas y la tolerancia hacen difícil dejarlo",
+    "d66": "Día 66: para quien sigue, el hábito ya es automático",
+    "half": "La mitad de las versiones se ha rendido",
+    "high": "{dim}: alcanza un nivel alto",
+    "low": "{dim}: cae a la zona de peligro",
+    "start": "Empieza: {habit}",
+    "w3": "Semana 3: el bajón de motivación; ahora es cuando más se abandona",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "empezar a beber mucho",
+    "exercise": "hacer ejercicio 30 min cada día",
+    "isolate": "alejarse de los amigos",
+    "learn": "aprender una habilidad 1 hora al día",
+    "meditate": "meditar 10 min al día",
+    "read": "leer 30 min al día",
+    "sleep": "dormir 8 horas, con horario fijo",
+    "smoke": "empezar a fumar",
+    "social": "dejar las redes sociales"
+  },
+  "meta": {
+    "intro": "Una persona, 100 versiones paralelas de su vida. Prueba hábitos nuevos y mira cuántas versiones los mantienen y qué cambia.",
+    "name": "Carácter",
+    "sub": "100 vidas paralelas"
+  },
+  "metric": {
+    "career": {
+      "label": "Carrera y habilidades",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Salud",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Aún lo hacen",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Relaciones",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Bienestar",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "Beber mucho",
+    "exercise": "Ejercicio",
+    "isolate": "Alejarse de los amigos",
+    "learn": "Aprender algo",
+    "meditate": "Meditar",
+    "read": "Leer",
+    "sleep": "Dormir",
+    "smoke": "Fumar",
+    "social": "Dejar las redes"
+  },
+  "speed": {
+    "0": "1 sem/s",
+    "1": "1 mes/s",
+    "2": "6 meses/s",
+    "3": "2 años/s"
+  },
+  "stage": {
+    "caption": "{what} · sonrisa = bienestar · brillo = salud",
+    "many": "{h, plural, one {# hábito} other {# hábitos}} · {n} de 100 mantienen al menos uno",
+    "none": "Aún no hay hábito nuevo",
+    "one": "{n} de 100 aún lo hacen"
+  },
+  "whatif": {
+    "drink": "Empezar a beber mucho",
+    "exercise": "Hacer ejercicio 30 min cada día",
+    "isolate": "Alejarse de los amigos",
+    "learn": "Aprender una habilidad 1 hora al día",
+    "meditate": "Meditar 10 min al día",
+    "read": "Leer 30 min al día",
+    "sleep": "Dormir 8 horas, con horario fijo",
+    "smoke": "Empezar a fumar",
+    "social": "Dejar las redes sociales"
+  }
+}

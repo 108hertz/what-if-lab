@@ -12,6 +12,7 @@ import AdSlot, { RAILS_QUERY } from "./AdSlot";
 import { useFullscreen } from "./fullscreen";
 import { InfoBlocks, Readouts, TunePanel, WhatIfList, WorldHeader } from "./panels";
 import ChangeToggles from "./Changes";
+import { useT } from "../i18n/I18nProvider";
 
 /**
  * The default world console (DESIGN.md → Layout). A world starts from this and copies it into its own
@@ -25,6 +26,7 @@ export default function StandardConsole({ engine, onChange, interaction }: { eng
   const rails = useMedia(RAILS_QUERY);
   const centre = useRef<HTMLElement>(null);
   const fs = useFullscreen(centre);
+  const t = useT();
 
   // Your changes (each with a tick, change 0024) sit right under the world name, above the what-ifs to pick
   const ask = <><WorldHeader engine={engine} /><ChangeToggles engine={engine} onChange={onChange} /><WhatIfList engine={engine} onChange={onChange} /></>;
@@ -32,7 +34,7 @@ export default function StandardConsole({ engine, onChange, interaction }: { eng
   const info = <InfoBlocks engine={engine} />;
   const tune = <TunePanel engine={engine} onChange={onChange} />;
   const chart = <div className="chart-box"><HistoryChart engine={engine} /></div>;
-  const log = <div className="log-box"><h3 className="headline">Timeline</h3><Timeline engine={engine} /></div>;
+  const log = <div className="log-box"><h3 className="headline">{t("console.timeline.title")}</h3><Timeline engine={engine} /></div>;
 
   let side: ReactNode;
   if (full) {
@@ -45,14 +47,14 @@ export default function StandardConsole({ engine, onChange, interaction }: { eng
   } else if (desk) {
     side = (
       <div className="dock-col">
-        <Dock key="desk" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}</>]]} />
+        <Dock key="desk" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{now}{info}</>]]} />
         <AdSlot size="box" promo />
       </div>
     );
   } else {
     side = (
       <>
-        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{now}{info}{chart}</>], ["Log", log]]} />
+        <Dock key="phone" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{now}{info}{chart}</>], [t("console.dock.log"), log]]} />
         <AdSlot size="banner" />
       </>
     );

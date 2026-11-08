@@ -1,8 +1,10 @@
 import { TAU, clamp } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
-import { HIGH, LOW, SHOW, TRACK, WORD, kidName, kidShort } from "../data";
+import { HIGH, LOW, SHOW, kidName } from "../data";
+import { kidShort, say, trackWord, traitWord } from "../words";
 import { of100, type W } from "../model";
 import { realNow } from "./motion";
+import { pageT } from "@/lib/i18n/page";
 
 /**
  * "All 120 kids" (change 0019): for the picked trait, the 120 possible kids as little faces in three piles — less, in
@@ -113,7 +115,7 @@ export function drawCrowd(c: CanvasRenderingContext2D, W: number, H: number, top
 
   // Labels: the word for each pile, the count of 100 (and what it was)
   const glow = (now - pulse[i]) / 0.9;
-  const words = [TRACK[s][0], "in between", TRACK[s][1]];
+  const S = say(), words = [trackWord(s, 0), S("stage.between"), trackWord(s, 1)];
   c.textAlign = "center"; c.textBaseline = "alphabetic";
   for (let b = 0; b < 3; b++) {
     const cx = L.x0(b) + L.pw / 2;
@@ -122,13 +124,16 @@ export function drawCrowd(c: CanvasRenderingContext2D, W: number, H: number, top
     c.font = `500 ${big}px ${FONT.body}`;
     c.fillStyle = !reduced && glow >= 0 && glow < 1 ? STAGE.alt : STAGE.ink;
     const ty0 = top + 14 + big + 6;
-    const numW = c.measureText(String(n100)).width;
-    c.font = "500 12px " + FONT.body; const restW = c.measureText(" of 100").width;
-    const x0 = cx - (numW + restW) / 2;
-    c.font = `500 ${big}px ${FONT.body}`; c.textAlign = "left"; c.fillText(String(n100), x0, ty0);
-    c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink2; c.fillText(" of 100", x0 + numW, ty0);
+    // "{n} of 100" with the number big: the words before and after it are said around a marker
+    const num = pageT().num(n100), [pre, post = ""] = S("stage.of100", { n: "\uE000" }).split("\uE000");
+    const numW = c.measureText(num).width;
+    c.font = "500 12px " + FONT.body; const preW = c.measureText(pre).width, postW = c.measureText(post).width;
+    const x0 = cx - (preW + numW + postW) / 2, numC = c.fillStyle;
+    c.textAlign = "left"; c.fillStyle = STAGE.ink2; c.fillText(pre, x0, ty0);
+    c.font = `500 ${big}px ${FONT.body}`; c.fillStyle = numC; c.fillText(num, x0 + preW, ty0);
+    c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink2; c.fillText(post, x0 + preW + numW, ty0);
     if (bv && Math.abs(of100(bcount[b]) - n100) >= 1) {
-      c.textAlign = "center"; c.fillStyle = STAGE.base; c.fillText(`was ${of100(bcount[b])}`, cx, ty0 + 16, L.pw);
+      c.textAlign = "center"; c.fillStyle = STAGE.base; c.fillText(S("stage.was", { n: of100(bcount[b]) }), cx, ty0 + 16, L.pw);
     }
     c.textAlign = "center";
   }
@@ -170,7 +175,7 @@ export function drawCrowd(c: CanvasRenderingContext2D, W: number, H: number, top
   // What a face is, once, small, between the stage chips and the pile words
   if (W >= 420) {
     c.textAlign = "center"; c.font = "500 10px " + FONT.body; c.fillStyle = STAGE.ink2;
-    c.fillText(`${WORD[s]} · each face is one possible kid · tap one to meet them`, W / 2, top - 4, W - 260);
+    c.fillText(say()("stage.crowdHint", { trait: traitWord(s) }), W / 2, top - 4, W - 260);
   }
 
   // Hover: name and a few words; tap to meet
@@ -179,7 +184,7 @@ export function drawCrowd(c: CanvasRenderingContext2D, W: number, H: number, top
     if (j >= 0) {
       const x = fx[j * 2], y = fx[j * 2 + 1];
       c.strokeStyle = STAGE.ink; c.lineWidth = 1.5; c.beginPath(); c.arc(x, y, faceR + 2.5, 0, TAU); c.stroke();
-      const txt = `${kidName(j)}: ${kidShort(v.map((xx) => xx[j]))} · tap to meet`;
+      const txt = say()("stage.hover", { name: kidName(j), short: kidShort(v.map((xx) => xx[j])) });
       c.font = "500 12px " + FONT.body;
       const tw = Math.min(c.measureText(txt).width, W - 32), bx = clamp(x - tw / 2 - 8, 8, W - tw - 24), by = Math.max(top, y - faceR - 32);
       c.fillStyle = STAGE.scrim; c.beginPath(); c.roundRect(bx, by, tw + 16, 24, 12); c.fill();

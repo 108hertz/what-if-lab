@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "nav": {
+    "home": "ماذا لو… الرئيسية",
+    "worlds": "العوالم",
+    "worldButton": "العالم: {name}. غيّر العالم",
+    "wordmark": "ماذا لو"
+  },
+  "theme": {
+    "toDark": "التبديل إلى السمة الداكنة",
+    "toLight": "التبديل إلى السمة الفاتحة"
+  },
+  "lang": {
+    "label": "اللغة",
+    "button": "اللغة: {name}. غيّر اللغة",
+    "draft": "ليست جاهزة بعد",
+    "alsoIn": "متاح أيضًا بـ{language}",
+    "dismiss": "لا تقترح لغة أخرى"
+  }
+}

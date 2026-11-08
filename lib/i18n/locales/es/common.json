@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Haz zoom desde un protón hasta el universo observable, abre un mundo, cámbialo con «¿y si…?» y compara su futuro con el del mundo tal como estaba.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Escala",
+    "sub": "Protón → universo"
+  },
+  "intro": {
+    "worlds": "Mundos",
+    "whatifs": "¿Y si…?"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "body": "Esta página no está en el laboratorio.",
+    "home": "Volver al laboratorio"
+  },
+  "unit": {
+    "gyr": "{n} Ga",
+    "myr": "{n} Ma",
+    "kyr": "{n} mil años",
+    "yr": "{n} años"
+  },
+  "dur": {
+    "days": "{n} días",
+    "months": "{n} meses",
+    "years": "{n} años"
+  }
+}

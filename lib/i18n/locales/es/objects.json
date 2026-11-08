@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ant": {
+    "fact": "Las hormigas pueden cargar de 10 a 50 veces su propio peso.",
+    "name": "Hormiga"
+  },
+  "bee": {
+    "fact": "Visita hasta 100 flores en un solo viaje.",
+    "name": "Abeja melífera"
+  },
+  "burj": {
+    "fact": "El edificio más alto de la Tierra.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "Excavado por el río Colorado durante unos 6 millones de años.",
+    "name": "Gran Cañón"
+  },
+  "child": {
+    "fact": "La personalidad se hereda en un 40 % aproximadamente; el resto viene de la experiencia y el azar.",
+    "name": "Niño de 5 años"
+  },
+  "country": {
+    "fact": "Las economías crecen, se estancan y se hunden según la política, los recursos y la suerte.",
+    "name": "Un país grande"
+  },
+  "dna": {
+    "fact": "Desenrollado, el ADN de una de tus células mediría unos 2 metros.",
+    "name": "Doble hélice de ADN"
+  },
+  "earth": {
+    "fact": "El único planeta conocido con vida, que se calienta unos 0,2 °C por década.",
+    "name": "Tierra"
+  },
+  "ecoli": {
+    "fact": "Tu intestino tiene más o menos tantas bacterias como células tiene tu cuerpo.",
+    "name": "Bacteria (E. coli)"
+  },
+  "egg": {
+    "fact": "La célula humana más grande, apenas visible a simple vista.",
+    "name": "Óvulo humano"
+  },
+  "eiffel": {
+    "fact": "Crece unos 15 cm con el calor del verano.",
+    "name": "Torre Eiffel"
+  },
+  "elephant": {
+    "fact": "El animal terrestre más grande, guiado por la hembra de más edad.",
+    "name": "Elefante africano"
+  },
+  "everest": {
+    "fact": "Sigue subiendo unos 4 mm al año.",
+    "name": "Monte Everest"
+  },
+  "flu": {
+    "fact": "No puede reproducirse solo: secuestra tus células para copiarse.",
+    "name": "Virus de la gripe"
+  },
+  "human": {
+    "fact": "Unos 37 billones de células, que se reemplazan y renuevan a lo largo de la vida.",
+    "name": "Humano adulto"
+  },
+  "hydrogen": {
+    "fact": "Es casi todo espacio vacío: el núcleo es 100.000 veces más pequeño que el átomo.",
+    "name": "Átomo de hidrógeno"
+  },
+  "jump": {
+    "0": "Átomo",
+    "1": "Célula",
+    "2": "Tú",
+    "3": "Ciudad",
+    "4": "Tierra",
+    "5": "Sistema solar",
+    "6": "Galaxia",
+    "7": "Universo"
+  },
+  "jupiter": {
+    "fact": "Dentro cabrían más de 1300 Tierras.",
+    "name": "Júpiter"
+  },
+  "liberty": {
+    "fact": "Su piel de cobre mide solo 2,4 mm de grosor.",
+    "name": "Estatua de la Libertad"
+  },
+  "lightyear": {
+    "fact": "La distancia que recorre la luz en un año: 9,46 billones de km.",
+    "name": "Un año luz"
+  },
+  "lion": {
+    "fact": "El único felino realmente social.",
+    "name": "León"
+  },
+  "localgroup": {
+    "fact": "Más de 80 galaxias unidas por la gravedad.",
+    "name": "Grupo Local"
+  },
+  "meerkat": {
+    "fact": "Los centinelas vigilan y dan la alarma mientras el grupo busca comida.",
+    "name": "Suricata"
+  },
+  "milkyway": {
+    "fact": "Entre 100 000 y 400 000 millones de estrellas, y en camino de fusionarse con Andrómeda.",
+    "name": "Vía Láctea"
+  },
+  "moon": {
+    "fact": "Se aleja lentamente de la Tierra, 3,8 cm al año.",
+    "name": "Luna"
+  },
+  "mouse": {
+    "fact": "Su corazón late unas 600 veces por minuto.",
+    "name": "Ratón"
+  },
+  "orbit": {
+    "fact": "La luz del Sol tarda 8 minutos en llegarnos.",
+    "name": "Órbita de la Tierra"
+  },
+  "orca": {
+    "fact": "Cada grupo habla su propio dialecto.",
+    "name": "Orca"
+  },
+  "orion": {
+    "fact": "Un vivero de estrellas a 1300 años luz.",
+    "name": "Nebulosa de Orión"
+  },
+  "proton": {
+    "fact": "Tres quarks unidos; el núcleo de todo átomo de hidrógeno.",
+    "name": "Protón"
+  },
+  "proxima": {
+    "fact": "Próxima Centauri, a 4,2 años luz.",
+    "name": "Hasta la estrella más cercana"
+  },
+  "rbc": {
+    "fact": "Fabricas unos 2 millones cada segundo.",
+    "name": "Glóbulo rojo"
+  },
+  "sand": {
+    "fact": "Hay más estrellas en el universo que granos de arena en todas las playas de la Tierra.",
+    "name": "Grano de arena"
+  },
+  "solar": {
+    "fact": "Neptuno tarda 165 años en dar una vuelta.",
+    "name": "Sistema solar (hasta Neptuno)"
+  },
+  "sun": {
+    "fact": "Contiene el 99,86 % de toda la masa del sistema solar.",
+    "name": "Sol"
+  },
+  "universe": {
+    "fact": "93 000 millones de años luz de diámetro: la luz más lejana que pudo llegarnos.",
+    "name": "Universo observable"
+  },
+  "whale": {
+    "fact": "El animal más grande que ha existido.",
+    "name": "Ballena azul"
+  },
+  "wolf": {
+    "fact": "El regreso de los lobos a Yellowstone cambió el curso de sus ríos.",
+    "name": "Lobo gris"
+  }
+}

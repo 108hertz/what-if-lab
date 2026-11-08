@@ -1,0 +1,1734 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "beh": {
+    "b_calm": {
+      "grown": "vor einem großen Tag ruhig bleiben",
+      "kid": "vor einem Test ruhig bleiben"
+    },
+    "b_food": {
+      "grown": "ein Essen probieren, das sie nie hatten",
+      "kid": "ein Essen probieren, das sie nie hatten"
+    },
+    "b_hand": {
+      "grown": "in einer Gruppe das Wort ergreifen",
+      "kid": "sich im Unterricht melden"
+    },
+    "b_help": {
+      "grown": "neuen Nachbarn helfen",
+      "kid": "einem neuen Kind in der Schule helfen"
+    },
+    "b_proj": {
+      "grown": "ein langes Projekt zu Ende bringen",
+      "kid": "ein langes Schulprojekt zu Ende bringen"
+    },
+    "b_tidy": {
+      "grown": "ihre Wohnung ordentlich halten",
+      "kid": "ihr Zimmer ordentlich halten"
+    }
+  },
+  "ch": {
+    "authoritative": {
+      "cap": "Eltern werden warm und konsequent",
+      "past": "die Eltern warm und konsequent wurden",
+      "q": "Was, wenn die Eltern warm und konsequent würden?"
+    },
+    "bestfriend": {
+      "cap": "findet einen besten Freund",
+      "past": "sie einen besten Freund fanden",
+      "q": "Was, wenn sie einen besten Freund fänden?"
+    },
+    "bullied": {
+      "cap": "ein Jahr lang in der Schule gemobbt",
+      "past": "sie ein Jahr lang gemobbt wurden",
+      "q": "Was, wenn sie ein Jahr lang gemobbt würden?"
+    },
+    "carer": {
+      "cap": "hilft bei einem kleinen Geschwister",
+      "past": "sie anfingen, bei einem jüngeren Geschwister zu helfen",
+      "q": "Was, wenn sie sich um einen kleinen Bruder oder eine kleine Schwester mitkümmerten?"
+    },
+    "chores": {
+      "cap": "bekommt echte Aufgaben zu Hause",
+      "past": "sie echte Aufgaben zu Hause bekamen",
+      "q": "Was, wenn sie zu Hause echte Aufgaben hätten?"
+    },
+    "coding": {
+      "cap": "geht in einen Coding-Club",
+      "past": "sie in einen Coding-Club gingen",
+      "q": "Was, wenn sie in einen Coding- oder Bastelclub gingen?"
+    },
+    "countryside": {
+      "cap": "die Familie zieht aufs Land",
+      "past": "die Familie aufs Land zog",
+      "q": "Was, wenn die Familie aufs Land zöge?"
+    },
+    "dinners": {
+      "cap": "jeden Abend Familienessen",
+      "past": "die Familie anfing, jeden Abend zusammen zu essen",
+      "q": "Was, wenn die Familie jeden Abend zusammen äße?"
+    },
+    "divorce": {
+      "cap": "die Eltern trennen sich",
+      "past": "die Eltern sich trennten",
+      "q": "Was, wenn die Eltern sich trennten?"
+    },
+    "drama": {
+      "cap": "geht in eine Theatergruppe",
+      "past": "sie in eine Theatergruppe gingen",
+      "q": "Was, wenn sie in eine Theatergruppe gingen?"
+    },
+    "exam": {
+      "cap": "fällt durch eine große Prüfung",
+      "past": "sie durch eine große Prüfung fielen",
+      "q": "Was, wenn sie durch eine große Prüfung fielen?"
+    },
+    "fallout": {
+      "cap": "Streit mit dem besten Freund",
+      "past": "sie sich mit dem besten Freund zerstritten",
+      "q": "Was, wenn sie sich mit dem besten Freund zerstritten?"
+    },
+    "firstlove": {
+      "cap": "ein erster Schwarm, aus dem nichts wird",
+      "past": "sie einen ersten Schwarm hatten, aus dem nichts wurde",
+      "q": "Was, wenn sie einen ersten Schwarm hätten, aus dem nichts wird?"
+    },
+    "grandparent": {
+      "cap": "Oma oder Opa zieht ein",
+      "past": "Oma oder Opa einzog",
+      "q": "Was, wenn Oma oder Opa einzöge?"
+    },
+    "illness": {
+      "cap": "ein Elternteil ist ein Jahr lang krank",
+      "past": "ein Elternteil ein Jahr lang krank war",
+      "q": "Was, wenn ein Elternteil ein Jahr lang schwer krank würde?"
+    },
+    "job": {
+      "cap": "bekommt einen Wochenendjob",
+      "past": "sie einen Wochenendjob bekamen",
+      "q": "Was, wenn sie einen Wochenendjob bekämen?"
+    },
+    "language": {
+      "cap": "lernt eine zweite Sprache",
+      "past": "sie anfingen, eine zweite Sprache zu lernen",
+      "q": "Was, wenn sie eine zweite Sprache lernten?"
+    },
+    "leader": {
+      "cap": "wird Klassensprecher",
+      "past": "sie Klassensprecher wurden",
+      "q": "Was, wenn sie Klassensprecher würden?"
+    },
+    "longhours": {
+      "cap": "ein Elternteil arbeitet sehr lange",
+      "past": "ein Elternteil anfing, sehr lange zu arbeiten",
+      "q": "Was, wenn ein Elternteil anfinge, sehr lange zu arbeiten?"
+    },
+    "mentor": {
+      "cap": "ein Mentor interessiert sich für sie",
+      "past": "ein Mentor sich für sie interessierte",
+      "q": "Was, wenn sich ein Mentor für sie interessierte?"
+    },
+    "money": {
+      "cap": "das Geld wird eine Weile knapp",
+      "past": "das Geld knapp wurde",
+      "q": "Was, wenn das Geld ein paar Jahre lang knapp würde?"
+    },
+    "move": {
+      "cap": "die Familie zieht ins Ausland",
+      "past": "die Familie in ein anderes Land zog",
+      "q": "Was, wenn die Familie in ein anderes Land zöge?"
+    },
+    "music": {
+      "cap": "lernt ein Instrument",
+      "past": "sie ein Instrument lernten",
+      "q": "Was, wenn sie ein Instrument lernten?"
+    },
+    "nature": {
+      "cap": "ist viel draußen",
+      "past": "sie anfingen, viel Zeit draußen zu verbringen",
+      "q": "Was, wenn sie viel Zeit draußen verbrächten?"
+    },
+    "newschool": {
+      "cap": "wechselt die Schule",
+      "past": "sie die Schule wechselten",
+      "q": "Was, wenn sie die Schule wechselten?"
+    },
+    "pet": {
+      "cap": "die Familie bekommt einen Hund",
+      "past": "die Familie einen Hund bekam",
+      "q": "Was, wenn die Familie einen Hund bekäme?"
+    },
+    "prize": {
+      "cap": "gewinnt einen großen Wettbewerb",
+      "past": "sie einen großen Wettbewerb gewannen",
+      "q": "Was, wenn sie einen großen Wettbewerb gewännen?"
+    },
+    "reading": {
+      "cap": "liest jeden Abend",
+      "past": "sie anfingen, jeden Abend zu lesen",
+      "q": "Was, wenn sie jeden Abend läsen?"
+    },
+    "scouts": {
+      "cap": "geht zu den Pfadfindern",
+      "past": "sie zu den Pfadfindern gingen",
+      "q": "Was, wenn sie zu den Pfadfindern oder in einen Naturclub gingen?"
+    },
+    "screen": {
+      "cap": "viel Bildschirmzeit beginnt",
+      "past": "viel Bildschirmzeit begann",
+      "q": "Was, wenn sie viel Bildschirmzeit hätten?"
+    },
+    "sibling": {
+      "cap": "ein kleiner Bruder oder eine kleine Schwester kommt",
+      "past": "ein kleiner Bruder oder eine kleine Schwester kam",
+      "q": "Was, wenn ein kleiner Bruder oder eine kleine Schwester käme?"
+    },
+    "sleep": {
+      "cap": "jede Nacht genug Schlaf",
+      "past": "sie anfingen, genug zu schlafen",
+      "q": "Was, wenn sie immer genug schliefen?"
+    },
+    "sport": {
+      "cap": "spielt in einem Team",
+      "past": "sie mit einem Mannschaftssport anfingen",
+      "q": "Was, wenn sie mit einem Mannschaftssport anfingen?"
+    },
+    "strict": {
+      "cap": "Eltern werden strenger",
+      "past": "die Eltern strenger wurden",
+      "q": "Was, wenn die Eltern viel strenger würden?"
+    },
+    "summer": {
+      "cap": "der beste Sommer aller Zeiten",
+      "past": "sie den besten Sommer aller Zeiten hatten",
+      "q": "Was, wenn sie den besten Sommer aller Zeiten hätten?"
+    },
+    "teacher": {
+      "cap": "hat eine tolle Lehrkraft",
+      "past": "sie eine tolle Lehrkraft hatten",
+      "q": "Was, wenn sie eine tolle Lehrkraft hätten?"
+    },
+    "travel": {
+      "cap": "die Familie reist ein Jahr lang",
+      "past": "die Familie ein Jahr lang reiste",
+      "q": "Was, wenn die Familie ein Jahr lang reiste?"
+    },
+    "volunteer": {
+      "cap": "fängt mit Ehrenamt an",
+      "past": "sie anfingen, ehrenamtlich zu helfen",
+      "q": "Was, wenn sie anfingen, anderen zu helfen (Ehrenamt)?"
+    }
+  },
+  "chart": {
+    "aria": {
+      "0": "Wo {who} bei jedem Merkmal unter allen 120 Kindern steht",
+      "1": "Neugierig, ordentlich, gesellig, freundlich und gelassen über die Jahre",
+      "2": "Von 100 Kindern: wie viele wahrscheinlich die einzelnen Alltagsdinge tun",
+      "3": "Wie sehr jede Änderung beeinflusst hat, wie {trait} die Kinder sind"
+    },
+    "atDiff": "Mit {age} ({life}): Mit deinen Änderungen sind die meisten Kinder {list}.",
+    "atSame": "Mit {age} ({life}): etwa gleich wie ohne deine Änderungen.",
+    "atTypical": "Mit {age} ({life}): Das typische Kind ist {step}.",
+    "axis": "← weniger {trait}  ·  wie sehr Kinder sich ohnehin unterscheiden  ·  mehr →",
+    "dayDiff": "Mit deinen Änderungen werden wahrscheinlich {count} Kinder {what} (vorher {was}).",
+    "dayIntro": "Von 100 Kindern wie diesen: wie viele wahrscheinlich die einzelnen Dinge tun. Wahrscheinlich, nicht sicher.",
+    "dayLittle": "Bisher machen deine Änderungen im Alltag kaum einen Unterschied.",
+    "faded": "meist verblasst",
+    "growIntro": "Jede Zeile ist ein Merkmal über die Jahre; das Band zeigt, wo die meisten Kinder liegen. Zeig auf ein Alter, um es abzulesen.",
+    "hardly": "kaum",
+    "life": {
+      "0": "klein",
+      "1": "Schule",
+      "2": "Teenager",
+      "3": "jung erwachsen",
+      "4": "erwachsen"
+    },
+    "nowDiff": "Mit deinen Änderungen sind mit {age} {who, select, most {die meisten Kinder} other {diese Kinder}} {list}.",
+    "nowIntro": "Jede blasse Markierung ist eines der 120 Kinder; der große Punkt ist {who}. Probier eine Änderung zum Vergleichen.",
+    "of100": "{n} von 100",
+    "ongoing": "läuft noch",
+    "planned": "Deine Änderung ist für später geplant.",
+    "pressPlay": "Drück auf Start und sieh ihnen beim Großwerden zu…",
+    "rowChange": "{name} · {age}",
+    "rowCombo": "{a} + {b}",
+    "rowWord": "{word} · {state}",
+    "sameSoFar": "Mit deinen Änderungen sind diese Kinder bisher etwa gleich (Alter {age}).",
+    "stayedSame": "Etwa gleich geblieben: {list}.",
+    "still": "noch da",
+    "typical": "das typische Kind",
+    "view": {
+      "0": "Jetzt",
+      "1": "Großwerden",
+      "2": "Alltag",
+      "3": "Was zählte"
+    },
+    "viewLabel": "Diagrammansicht",
+    "was": "vorher {n}",
+    "whichTrait": "Welches Merkmal",
+    "whyEmpty": "Ändere etwas, um zu sehen, wie viel es hier ausmacht.",
+    "whyFaded": "{change} hat am meisten beeinflusst, wie {trait} die Kinder sind, aber das meiste ist verblasst.",
+    "whyIntro": "Wie sehr jede Änderung beeinflusst hat, wie {trait} die Kinder sind, verglichen damit, wie sehr Kinder sich ohnehin unterscheiden.",
+    "whyLasted": "{change} hat am meisten beeinflusst, wie {trait} die Kinder sind, und es ist geblieben.",
+    "whyOngoing": "{change} hat am meisten beeinflusst, wie {trait} die Kinder sind, und es läuft noch."
+  },
+  "chip": {
+    "ripple": {
+      "authoritative": {
+        "0": "{n} von 100 Kindern wussten, was sie zu Hause erwartet"
+      },
+      "bestfriend": {
+        "0": "{n} von 100 Kindern fühlten sich in der Schule mutiger",
+        "1": "{n} von 100 Kindern erlebten zusammen Abenteuer"
+      },
+      "bullied": {
+        "0": "{n} von 100 Kindern erzählten es jemandem, und es wurde besser",
+        "1": "{n} von 100 Kindern meldeten sich eine Weile nicht mehr im Unterricht",
+        "2": "{n} von 100 Kindern wurden netter zu Kindern, die ausgeschlossen werden"
+      },
+      "carer": {
+        "0": "{n} von 100 Kindern wurden sehr geduldig",
+        "1": "{n} von 100 Kindern waren manchmal müde"
+      },
+      "chores": {
+        "0": "{n} von 100 Kindern waren stolz auf gut erledigte Arbeit",
+        "1": "{n} von 100 Kindern meckerten über Hausarbeit (und machten sie trotzdem)"
+      },
+      "coding": {
+        "0": "{n} von 100 Kindern bauten ihr eigenes kleines Spiel",
+        "1": "{n} von 100 Kindern fanden Freunde mit denselben Interessen"
+      },
+      "countryside": {
+        "0": "{n} von 100 Kindern kümmerten sich um Tiere",
+        "1": "{n} von 100 Kindern vermissten manchmal die Stadt",
+        "2": "{n} von 100 Kindern spielten jeden Tag draußen"
+      },
+      "dinners": {
+        "0": "{n} von 100 Kindern erzählten jeden Abend von ihrem Tag",
+        "1": "{n} von 100 Kindern probierten beim Essen Neues"
+      },
+      "divorce": {
+        "0": "{n} von 100 Kindern fragten sich eine Weile, ob es ihre Schuld war (ist es nie)",
+        "1": "{n} von 100 Kindern gewöhnten sich an zwei Zuhause und zwei Geburtstage",
+        "2": "{n} von 100 Kindern kamen einem Elternteil näher"
+      },
+      "drama": {
+        "0": "{n} von 100 Kindern standen auf einer echten Bühne",
+        "1": "{n} von 100 Kindern lernten, Gefühle gut zu verstehen"
+      },
+      "exam": {
+        "0": "{n} von 100 Kindern versuchten es nochmal und bestanden",
+        "1": "{n} von 100 Kindern hielten sich eine Weile für schlecht in dem Fach"
+      },
+      "fallout": {
+        "0": "{n} von 100 Kindern vertrugen sich wieder",
+        "1": "{n} von 100 Kindern fanden neue Freunde"
+      },
+      "firstlove": {
+        "0": "{n} von 100 Kindern hörten eine Weile traurige Lieder",
+        "1": "{n} von 100 Kindern merkten, dass sie schwere Gefühle durchstehen können",
+        "2": "{n} von 100 Kindern wurden von ihren Freunden aufgefangen"
+      },
+      "grandparent": {
+        "0": "{n} von 100 Kindern hörten viele Familiengeschichten",
+        "1": "{n} von 100 Kindern lernten mit Oma oder Opa kochen"
+      },
+      "illness": {
+        "0": "{n} von 100 Kindern halfen bei der Pflege des Elternteils",
+        "1": "{n} von 100 Kindern fühlten sich erwachsener"
+      },
+      "job": {
+        "0": "{n} von 100 Kindern sparten auf etwas Großes",
+        "1": "{n} von 100 Kindern gewöhnten sich daran, mit Fremden zu reden"
+      },
+      "language": {
+        "0": "{n} von 100 Kindern schauten Filme in der neuen Sprache",
+        "1": "{n} von 100 Kindern fanden einen Freund, der sie spricht"
+      },
+      "leader": {
+        "0": "{n} von 100 Kindern hielten eine Rede vor der Klasse",
+        "1": "{n} von 100 Kindern fühlten sich verantwortlicher"
+      },
+      "longhours": {
+        "0": "{n} von 100 Kindern verbrachten mehr Zeit allein",
+        "1": "{n} von 100 Kindern lernten, Dinge selbst zu regeln",
+        "2": "{n} von 100 Kindern vermissten das Elternteil beim Zubettgehen"
+      },
+      "mentor": {
+        "0": "{n} von 100 Kindern fanden ein Ziel, auf das sie hinarbeiten",
+        "1": "{n} von 100 Kindern probierten Dinge, die sie sonst nie gewagt hätten"
+      },
+      "money": {
+        "0": "{n} von 100 Kindern halfen zu Hause mehr mit",
+        "1": "{n} von 100 Kindern machten sich Sorgen ums Geld",
+        "2": "{n} von 100 Kindern hatten eine Weile weniger Kurse und Ausflüge"
+      },
+      "move": {
+        "0": "{n} von 100 Kindern lernten die neue Sprache",
+        "1": "{n} von 100 Kindern fühlten sich im ersten Jahr einsam",
+        "2": "{n} von 100 Kindern fanden dort einen neuen besten Freund"
+      },
+      "music": {
+        "0": "{n} von 100 Kindern spielten in einem Konzert",
+        "1": "{n} von 100 Kindern fanden Üben eine Weile langweilig"
+      },
+      "nature": {
+        "0": "{n} von 100 Kindern lernten die Namen von Vögeln und Bäumen",
+        "1": "{n} von 100 Kindern gingen zelten und liebten es"
+      },
+      "newschool": {
+        "0": "{n} von 100 Kindern fanden schnell neue Freunde",
+        "1": "{n} von 100 Kindern vermissten ihre alten Freunde"
+      },
+      "pet": {
+        "0": "{n} von 100 Kindern gingen jeden Tag mit dem Hund raus",
+        "1": "{n} von 100 Kindern sagen, der Hund ist ihr bester Freund"
+      },
+      "prize": {
+        "0": "{n} von 100 Kindern erzählten es allen",
+        "1": "{n} von 100 Kindern arbeiteten auf den nächsten Preis hin"
+      },
+      "reading": {
+        "0": "{n} von 100 Kindern nutzten ihren Bibliotheksausweis oft",
+        "1": "{n} von 100 Kindern fingen an, eigene Geschichten zu schreiben"
+      },
+      "scouts": {
+        "0": "{n} von 100 Kindern sammelten viele Abzeichen",
+        "1": "{n} von 100 Kindern schliefen zum ersten Mal im Zelt"
+      },
+      "screen": {
+        "0": "{n} von 100 Kindern schliefen weniger",
+        "1": "{n} von 100 Kindern fanden Freunde online",
+        "2": "{n} von 100 Kindern wurden richtig gut in einem Spiel"
+      },
+      "sibling": {
+        "0": "{n} von 100 Kindern waren anfangs eifersüchtig",
+        "1": "{n} von 100 Kindern standen dem kleinen Geschwister sehr nahe",
+        "2": "{n} von 100 Kindern halfen, das Baby zu versorgen"
+      },
+      "sleep": {
+        "0": "{n} von 100 Kindern hatten entspanntere Morgen",
+        "1": "{n} von 100 Kindern konnten sich in der Schule besser konzentrieren"
+      },
+      "sport": {
+        "0": "{n} von 100 Kindern fanden Freunde im Team",
+        "1": "{n} von 100 Kindern verletzten sich beim Sport und wurden wieder gesund",
+        "2": "{n} von 100 Kindern gewannen ein Spiel, von dem sie heute noch reden"
+      },
+      "strict": {
+        "0": "{n} von 100 Kindern behielten Dinge immer öfter für sich",
+        "1": "{n} von 100 Kindern wurden sehr gut darin, Regeln zu befolgen"
+      },
+      "summer": {
+        "0": "{n} von 100 Kindern erinnern sich noch heute an den besten Sommer",
+        "1": "{n} von 100 Kindern fanden in dem Sommer Freunde fürs Leben"
+      },
+      "teacher": {
+        "0": "{n} von 100 Kindern fanden ein Fach, das sie lieben",
+        "1": "{n} von 100 Kindern fingen an zu glauben, dass sie Schweres schaffen"
+      },
+      "travel": {
+        "0": "{n} von 100 Kindern schnappten Wörter in vielen Sprachen auf",
+        "1": "{n} von 100 Kindern hatten manchmal Heimweh",
+        "2": "{n} von 100 Kindern lernten, sich überall zu Hause zu fühlen"
+      },
+      "volunteer": {
+        "0": "{n} von 100 Kindern bekamen Dank von jemandem, dem sie halfen",
+        "1": "{n} von 100 Kindern fingen an, andere Freiwillige anzuleiten"
+      }
+    }
+  },
+  "cmp": {
+    "less": "{d, select, bit {etwas weniger} much {viel weniger} other {weniger}}",
+    "more": "{d, select, bit {etwas mehr} much {viel mehr} other {mehr}}"
+  },
+  "ctl": {
+    "aA": {
+      "label": "Freundlich"
+    },
+    "aC": {
+      "label": "Ordentlich"
+    },
+    "aE": {
+      "label": "Gesellig"
+    },
+    "aN": {
+      "label": "Sorgen (100 − gelassen)"
+    },
+    "aO": {
+      "label": "Neugierig"
+    },
+    "bA": {
+      "label": "Freundlich"
+    },
+    "bC": {
+      "label": "Ordentlich"
+    },
+    "bE": {
+      "label": "Gesellig"
+    },
+    "bN": {
+      "label": "Sorgen (100 − gelassen)"
+    },
+    "bO": {
+      "label": "Neugierig"
+    },
+    "baby": {
+      "label": "Wie waren sie als Baby?",
+      "opt": {
+        "easy": "Pflegeleicht",
+        "energy": "Voller Energie",
+        "mixed": "Jedes anders",
+        "slow": "Brauchen Zeit zum Auftauen"
+      }
+    },
+    "events": {
+      "label": "Alltägliches Auf und Ab",
+      "opt": {
+        "lots": "Viel",
+        "normal": "Normal",
+        "off": "Aus"
+      }
+    },
+    "fade": {
+      "label": "Wie lange Wirkungen halten",
+      "opt": {
+        "fast": "Verblassen schnell",
+        "normal": "Normal",
+        "stick": "Bleiben"
+      }
+    },
+    "family": {
+      "label": "Familie",
+      "opt": {
+        "artists": "Neugierige Künstler",
+        "average": "Durchschnittliche Eltern",
+        "calm": "Zwei ruhige, ordentliche Eltern",
+        "custom": "Selbst gestalten",
+        "everyday": "Ein neugieriges und ein ordentliches Elternteil",
+        "lively": "Zwei lebhafte, gesellige Eltern",
+        "worrier": "Eins macht sich Sorgen, eins ist locker"
+      }
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Einstellungen (gelten für deinen nächsten Klick)",
+      "home": "Zuhause",
+      "nature-and-chance": "Anlage und Zufall",
+      "parent-a": "Elternteil A",
+      "parent-b": "Elternteil B"
+    },
+    "home": {
+      "label": "Familienleben",
+      "opt": {
+        "busy": "Trubelig",
+        "stable": "Ruhig",
+        "unstable": "Viel Streit"
+      }
+    },
+    "inherit": {
+      "label": "Wie viel vererbt ist",
+      "opt": {
+        "25": "Wenig (25 %)",
+        "40": "Normal (40 %)",
+        "55": "Viel (55 %)"
+      }
+    },
+    "luck": {
+      "label": "Wie viel Zufall und Glück",
+      "opt": {
+        "big": "Viel",
+        "normal": "Normal",
+        "small": "Wenig"
+      }
+    },
+    "money": {
+      "label": "Geld zu Hause",
+      "opt": {
+        "comfy": "Reichlich",
+        "ok": "Okay",
+        "tight": "Knapp"
+      }
+    },
+    "place": {
+      "label": "Wo sie wohnen",
+      "opt": {
+        "city": "Großstadt",
+        "country": "Land",
+        "town": "Kleinstadt"
+      }
+    },
+    "s_age": {
+      "label": "Wann es passiert",
+      "opt": {
+        "1": "Mit 1",
+        "2": "Mit 2",
+        "3": "Mit 3",
+        "4": "Mit 4",
+        "5": "Mit 5",
+        "6": "Mit 6",
+        "7": "Mit 7",
+        "8": "Mit 8",
+        "9": "Mit 9",
+        "10": "Mit 10",
+        "11": "Mit 11",
+        "12": "Mit 12",
+        "13": "Mit 13",
+        "14": "Mit 14",
+        "15": "Mit 15",
+        "16": "Mit 16",
+        "17": "Mit 17",
+        "now": "Jetzt"
+      }
+    },
+    "s_len": {
+      "label": "Wie lange",
+      "opt": {
+        "few": "Ein paar Jahre",
+        "good": "Für immer",
+        "moment": "Ein Moment",
+        "usual": "Wie üblich",
+        "year": "Etwa ein Jahr"
+      }
+    },
+    "s_size": {
+      "label": "Wie stark",
+      "opt": {
+        "big": "Stark",
+        "medium": "Mittel",
+        "small": "Schwach"
+      }
+    },
+    "school": {
+      "label": "Schule",
+      "opt": {
+        "crowded": "Überfüllt",
+        "great": "Tolle Lehrkräfte",
+        "ordinary": "Normal"
+      }
+    },
+    "screens": {
+      "label": "Bildschirmregeln",
+      "opt": {
+        "none": "Keine Regeln",
+        "some": "Einige",
+        "strict": "Streng"
+      }
+    },
+    "sens": {
+      "label": "Wie stark das Leben sie prägt",
+      "opt": {
+        "all": "Alle Kinder sind sehr empfindsam",
+        "same": "Für jedes Kind gleich",
+        "some": "Manche Kinder fühlen viel stärker"
+      }
+    },
+    "shape": {
+      "label": "Mit wem sie leben",
+      "opt": {
+        "big": "Große Familie unter einem Dach",
+        "one": "Ein Elternteil",
+        "two": "Zwei Eltern",
+        "twohomes": "Zwei Zuhause"
+      }
+    },
+    "sib": {
+      "label": "Geschwister",
+      "opt": {
+        "0": "Keine",
+        "1": "Ein jüngeres",
+        "2": "Zwei oder mehr",
+        "older": "Ein älteres"
+      }
+    },
+    "style": {
+      "label": "Wie die Eltern erziehen",
+      "opt": {
+        "authoritarian": "Streng",
+        "authoritative": "Warm und konsequent",
+        "neglectful": "Distanziert",
+        "permissive": "Locker"
+      }
+    },
+    "time": {
+      "label": "Gemeinsame Zeit",
+      "opt": {
+        "long": "Eltern arbeiten lange",
+        "lots": "Viel Familienzeit",
+        "ordinary": "Normal"
+      }
+    }
+  },
+  "eff": {
+    "same": "etwa gleich"
+  },
+  "ends": {
+    "A": {
+      "0": "sagt, was es denkt, will gern gewinnen",
+      "1": "sehr freundlich"
+    },
+    "C": {
+      "0": "nimmt es locker, etwas chaotisch",
+      "1": "sehr ordentlich"
+    },
+    "Calm": {
+      "0": "macht sich viele Sorgen",
+      "1": "sehr gelassen"
+    },
+    "E": {
+      "0": "still, etwas schüchtern",
+      "1": "sehr gesellig"
+    },
+    "O": {
+      "0": "bleibt beim Bekannten",
+      "1": "sehr neugierig"
+    }
+  },
+  "ev": {
+    "already": "Die Eltern haben sie schon so erzogen",
+    "buffer": {
+      "0": "Ein bester Freund machte das Mobbing weniger schmerzhaft",
+      "1": "Tolle Lehrkräfte griffen ein, so tat das Mobbing weniger weh",
+      "2": "Ein ruhiges Zuhause half ihnen durch das Mobbing",
+      "3": "Warme, konsequente Eltern machten die Trennung leichter",
+      "4": "Warme, konsequente Eltern hielten die Geldsorgen in Grenzen",
+      "5": "Oma oder Opa zu Hause half, als das Geld knapp war",
+      "6": "Oma oder Opa zu Hause half, während das Elternteil krank war",
+      "7": "Mit Bruder oder Schwester war der Umzug leichter",
+      "8": "Ihr Team half ihnen, sich in der neuen Schule einzuleben",
+      "9": "Jeden Abend lesen glich die Bildschirmzeit aus",
+      "10": "Klare Bildschirmregeln hielten die Bildschirmzeit in Grenzen",
+      "11": "Genug Schlaf verhinderte, dass Bildschirme sie müde machten",
+      "12": "Eine tolle Lehrkraft half ihnen über die verhauene Prüfung hinweg",
+      "13": "Genug Schlaf half ihnen, sich von der verhauenen Prüfung zu erholen",
+      "14": "Mit dem Hund kuscheln half nach dem Streit mit dem Freund",
+      "15": "Ein bester Freund half ihnen durch den ersten Liebeskummer",
+      "16": "Familienessen gaben ihnen jemanden zum Reden",
+      "17": "Oma oder Opa zu Hause half, während ein Elternteil lange arbeitete",
+      "18": "Eine große Familie unter einem Dach half, während ein Elternteil lange arbeitete",
+      "19": "Die große Familie half, während das Elternteil krank war",
+      "20": "Die große Familie teilte, was sie hatte, als das Geld knapp war",
+      "21": "Viel Familienzeit hieß, dass sie über das Mobbing reden konnten"
+    },
+    "calm": "Nach der Teenagerzeit sind die meisten Kinder wieder ruhiger",
+    "change": {
+      "authoritative": "Eltern werden warm und konsequent: klare Regeln, viel Liebe",
+      "bestfriend": "Findet einen besten Freund",
+      "bullied": "Ein Jahr lang in der Schule gemobbt",
+      "carer": "Hilft jetzt, auf einen jüngeren Bruder oder eine jüngere Schwester aufzupassen",
+      "chores": "Bekommt echte Aufgaben zu Hause",
+      "coding": "Geht in einen Coding- und Bastelclub",
+      "countryside": "Die Familie zieht aufs Land",
+      "dinners": "Die Familie isst jetzt jeden Abend zusammen",
+      "divorce": "Die Eltern trennen sich und haben nun zwei Zuhause",
+      "drama": "Geht in eine Theatergruppe",
+      "exam": "Fällt durch eine große Prüfung",
+      "fallout": "Zerstreitet sich mit dem besten Freund",
+      "firstlove": "Hat einen ersten Schwarm, aus dem nichts wird",
+      "grandparent": "Oma oder Opa zieht ein",
+      "illness": "Ein Elternteil ist ein Jahr lang schwer krank und wird dann wieder gesund",
+      "job": "Bekommt einen Wochenendjob",
+      "language": "Fängt an, eine zweite Sprache zu lernen",
+      "leader": "Wird Klassensprecher",
+      "longhours": "Ein Elternteil arbeitet jetzt sehr lange",
+      "mentor": "Ein Mentor interessiert sich für sie",
+      "money": "Das Geld wird für ein paar Jahre knapp",
+      "move": "Die Familie zieht in ein anderes Land",
+      "music": "Lernt ein Instrument",
+      "nature": "Verbringt jetzt viel Zeit draußen",
+      "newschool": "Wechselt die Schule",
+      "pet": "Die Familie bekommt einen Hund",
+      "prize": "Gewinnt einen großen Wettbewerb",
+      "reading": "Liest jetzt jeden Abend",
+      "scouts": "Geht zu den Pfadfindern",
+      "screen": "Ab jetzt jeden Tag viel Bildschirmzeit",
+      "sibling": "Ein kleiner Bruder oder eine kleine Schwester kommt",
+      "sleep": "Schläft jetzt jede Nacht genug",
+      "sport": "Fängt mit einem Mannschaftssport an",
+      "strict": "Die Eltern werden viel strenger",
+      "summer": "Erlebt den besten Sommer aller Zeiten",
+      "teacher": "Hat eine tolle Lehrkraft",
+      "travel": "Die Familie geht ein Jahr lang auf Reisen",
+      "volunteer": "Hilft jetzt ehrenamtlich anderen"
+    },
+    "combo": {
+      "0": "Mannschaftssport und ein bester Freund: Sie spielten zusammen im Team",
+      "1": "Jeden Abend lesen und eine tolle Lehrkraft: Sie fingen an, gern zu lernen",
+      "2": "Ein Instrument und ein Mentor: Das Üben zahlte sich aus",
+      "3": "Ein neues Land und ein bester Freund: Das Einleben fiel leichter",
+      "4": "Ein Hund und Zeit draußen: lange Spaziergänge jeden Tag",
+      "5": "Ehrenamt und Oma oder Opa zu Hause: Helfen wurde zur Gewohnheit",
+      "6": "Bildschirme und Zeit draußen: Das Draußensein glich die Bildschirme aus",
+      "7": "Ein kleines Geschwister und warme, konsequente Eltern: Die Kinder verstanden sich gut",
+      "8": "Theatergruppe und Klassensprecher: Reden vor anderen wurde leicht",
+      "9": "Ein Coding-Club und ein Mentor: Sie bauten etwas Echtes"
+    },
+    "ms": {
+      "ms1": "Erste Wörter: Die meisten Kinder fangen an zu sprechen",
+      "ms13": "Die Teenagerjahre beginnen: Die Stimmung geht auf und ab",
+      "ms18": "Schulabschluss",
+      "ms20": "Viele fangen den ersten Job an",
+      "ms28": "Viele werden sesshaft",
+      "ms5": "Kommt in die Schule",
+      "ms7": "Die meisten Kinder haben einen ersten besten Freund"
+    },
+    "ripple": {
+      "authoritative": {
+        "0": "Nach „Warm und konsequent“ mit {age}: {n} von 100 Kindern wussten, was sie zu Hause erwartet"
+      },
+      "bestfriend": {
+        "0": "Nach „Bester Freund“ mit {age}: {n} von 100 Kindern fühlten sich in der Schule mutiger",
+        "1": "Nach „Bester Freund“ mit {age}: {n} von 100 Kindern erlebten zusammen Abenteuer"
+      },
+      "bullied": {
+        "0": "Nach „Gemobbt“ mit {age}: {n} von 100 Kindern erzählten es jemandem, und es wurde besser",
+        "1": "Nach „Gemobbt“ mit {age}: {n} von 100 Kindern meldeten sich eine Weile nicht mehr im Unterricht",
+        "2": "Nach „Gemobbt“ mit {age}: {n} von 100 Kindern wurden netter zu Kindern, die ausgeschlossen werden"
+      },
+      "carer": {
+        "0": "Nach „Hilft mit dem Kleinen“ mit {age}: {n} von 100 Kindern wurden sehr geduldig",
+        "1": "Nach „Hilft mit dem Kleinen“ mit {age}: {n} von 100 Kindern waren manchmal müde"
+      },
+      "chores": {
+        "0": "Nach „Aufgaben zu Hause“ mit {age}: {n} von 100 Kindern waren stolz auf gut erledigte Arbeit",
+        "1": "Nach „Aufgaben zu Hause“ mit {age}: {n} von 100 Kindern meckerten über Hausarbeit (und machten sie trotzdem)"
+      },
+      "coding": {
+        "0": "Nach „Coding-Club“ mit {age}: {n} von 100 Kindern bauten ihr eigenes kleines Spiel",
+        "1": "Nach „Coding-Club“ mit {age}: {n} von 100 Kindern fanden Freunde mit denselben Interessen"
+      },
+      "countryside": {
+        "0": "Nach „Umzug aufs Land“ mit {age}: {n} von 100 Kindern kümmerten sich um Tiere",
+        "1": "Nach „Umzug aufs Land“ mit {age}: {n} von 100 Kindern vermissten manchmal die Stadt",
+        "2": "Nach „Umzug aufs Land“ mit {age}: {n} von 100 Kindern spielten jeden Tag draußen"
+      },
+      "dinners": {
+        "0": "Nach „Familienessen“ mit {age}: {n} von 100 Kindern erzählten jeden Abend von ihrem Tag",
+        "1": "Nach „Familienessen“ mit {age}: {n} von 100 Kindern probierten beim Essen Neues"
+      },
+      "divorce": {
+        "0": "Nach „Eltern trennen sich“ mit {age}: {n} von 100 Kindern fragten sich eine Weile, ob es ihre Schuld war (ist es nie)",
+        "1": "Nach „Eltern trennen sich“ mit {age}: {n} von 100 Kindern gewöhnten sich an zwei Zuhause und zwei Geburtstage",
+        "2": "Nach „Eltern trennen sich“ mit {age}: {n} von 100 Kindern kamen einem Elternteil näher"
+      },
+      "drama": {
+        "0": "Nach „Theatergruppe“ mit {age}: {n} von 100 Kindern standen auf einer echten Bühne",
+        "1": "Nach „Theatergruppe“ mit {age}: {n} von 100 Kindern lernten, Gefühle gut zu verstehen"
+      },
+      "exam": {
+        "0": "Nach „Prüfung verhauen“ mit {age}: {n} von 100 Kindern versuchten es nochmal und bestanden",
+        "1": "Nach „Prüfung verhauen“ mit {age}: {n} von 100 Kindern hielten sich eine Weile für schlecht in dem Fach"
+      },
+      "fallout": {
+        "0": "Nach „Streit mit Freund“ mit {age}: {n} von 100 Kindern vertrugen sich wieder",
+        "1": "Nach „Streit mit Freund“ mit {age}: {n} von 100 Kindern fanden neue Freunde"
+      },
+      "firstlove": {
+        "0": "Nach „Erster Schwarm“ mit {age}: {n} von 100 Kindern hörten eine Weile traurige Lieder",
+        "1": "Nach „Erster Schwarm“ mit {age}: {n} von 100 Kindern merkten, dass sie schwere Gefühle durchstehen können",
+        "2": "Nach „Erster Schwarm“ mit {age}: {n} von 100 Kindern wurden von ihren Freunden aufgefangen"
+      },
+      "grandparent": {
+        "0": "Nach „Oma/Opa zieht ein“ mit {age}: {n} von 100 Kindern hörten viele Familiengeschichten",
+        "1": "Nach „Oma/Opa zieht ein“ mit {age}: {n} von 100 Kindern lernten mit Oma oder Opa kochen"
+      },
+      "illness": {
+        "0": "Nach „Elternteil krank“ mit {age}: {n} von 100 Kindern halfen bei der Pflege des Elternteils",
+        "1": "Nach „Elternteil krank“ mit {age}: {n} von 100 Kindern fühlten sich erwachsener"
+      },
+      "job": {
+        "0": "Nach „Wochenendjob“ mit {age}: {n} von 100 Kindern sparten auf etwas Großes",
+        "1": "Nach „Wochenendjob“ mit {age}: {n} von 100 Kindern gewöhnten sich daran, mit Fremden zu reden"
+      },
+      "language": {
+        "0": "Nach „Zweite Sprache“ mit {age}: {n} von 100 Kindern schauten Filme in der neuen Sprache",
+        "1": "Nach „Zweite Sprache“ mit {age}: {n} von 100 Kindern fanden einen Freund, der sie spricht"
+      },
+      "leader": {
+        "0": "Nach „Klassensprecher“ mit {age}: {n} von 100 Kindern hielten eine Rede vor der Klasse",
+        "1": "Nach „Klassensprecher“ mit {age}: {n} von 100 Kindern fühlten sich verantwortlicher"
+      },
+      "longhours": {
+        "0": "Nach „Lange Arbeitszeiten“ mit {age}: {n} von 100 Kindern verbrachten mehr Zeit allein",
+        "1": "Nach „Lange Arbeitszeiten“ mit {age}: {n} von 100 Kindern lernten, Dinge selbst zu regeln",
+        "2": "Nach „Lange Arbeitszeiten“ mit {age}: {n} von 100 Kindern vermissten das Elternteil beim Zubettgehen"
+      },
+      "mentor": {
+        "0": "Nach „Ein Mentor“ mit {age}: {n} von 100 Kindern fanden ein Ziel, auf das sie hinarbeiten",
+        "1": "Nach „Ein Mentor“ mit {age}: {n} von 100 Kindern probierten Dinge, die sie sonst nie gewagt hätten"
+      },
+      "money": {
+        "0": "Nach „Geld knapp“ mit {age}: {n} von 100 Kindern halfen zu Hause mehr mit",
+        "1": "Nach „Geld knapp“ mit {age}: {n} von 100 Kindern machten sich Sorgen ums Geld",
+        "2": "Nach „Geld knapp“ mit {age}: {n} von 100 Kindern hatten eine Weile weniger Kurse und Ausflüge"
+      },
+      "move": {
+        "0": "Nach „Umzug ins Ausland“ mit {age}: {n} von 100 Kindern lernten die neue Sprache",
+        "1": "Nach „Umzug ins Ausland“ mit {age}: {n} von 100 Kindern fühlten sich im ersten Jahr einsam",
+        "2": "Nach „Umzug ins Ausland“ mit {age}: {n} von 100 Kindern fanden dort einen neuen besten Freund"
+      },
+      "music": {
+        "0": "Nach „Ein Instrument“ mit {age}: {n} von 100 Kindern spielten in einem Konzert",
+        "1": "Nach „Ein Instrument“ mit {age}: {n} von 100 Kindern fanden Üben eine Weile langweilig"
+      },
+      "nature": {
+        "0": "Nach „Draußen“ mit {age}: {n} von 100 Kindern lernten die Namen von Vögeln und Bäumen",
+        "1": "Nach „Draußen“ mit {age}: {n} von 100 Kindern gingen zelten und liebten es"
+      },
+      "newschool": {
+        "0": "Nach „Neue Schule“ mit {age}: {n} von 100 Kindern fanden schnell neue Freunde",
+        "1": "Nach „Neue Schule“ mit {age}: {n} von 100 Kindern vermissten ihre alten Freunde"
+      },
+      "pet": {
+        "0": "Nach „Ein Hund“ mit {age}: {n} von 100 Kindern gingen jeden Tag mit dem Hund raus",
+        "1": "Nach „Ein Hund“ mit {age}: {n} von 100 Kindern sagen, der Hund ist ihr bester Freund"
+      },
+      "prize": {
+        "0": "Nach „Gewinnt Wettbewerb“ mit {age}: {n} von 100 Kindern erzählten es allen",
+        "1": "Nach „Gewinnt Wettbewerb“ mit {age}: {n} von 100 Kindern arbeiteten auf den nächsten Preis hin"
+      },
+      "reading": {
+        "0": "Nach „Lesen“ mit {age}: {n} von 100 Kindern nutzten ihren Bibliotheksausweis oft",
+        "1": "Nach „Lesen“ mit {age}: {n} von 100 Kindern fingen an, eigene Geschichten zu schreiben"
+      },
+      "scouts": {
+        "0": "Nach „Pfadfinder“ mit {age}: {n} von 100 Kindern sammelten viele Abzeichen",
+        "1": "Nach „Pfadfinder“ mit {age}: {n} von 100 Kindern schliefen zum ersten Mal im Zelt"
+      },
+      "screen": {
+        "0": "Nach „Viel Bildschirm“ mit {age}: {n} von 100 Kindern schliefen weniger",
+        "1": "Nach „Viel Bildschirm“ mit {age}: {n} von 100 Kindern fanden Freunde online",
+        "2": "Nach „Viel Bildschirm“ mit {age}: {n} von 100 Kindern wurden richtig gut in einem Spiel"
+      },
+      "sibling": {
+        "0": "Nach „Kleines Geschwister“ mit {age}: {n} von 100 Kindern waren anfangs eifersüchtig",
+        "1": "Nach „Kleines Geschwister“ mit {age}: {n} von 100 Kindern standen dem kleinen Geschwister sehr nahe",
+        "2": "Nach „Kleines Geschwister“ mit {age}: {n} von 100 Kindern halfen, das Baby zu versorgen"
+      },
+      "sleep": {
+        "0": "Nach „Genug Schlaf“ mit {age}: {n} von 100 Kindern hatten entspanntere Morgen",
+        "1": "Nach „Genug Schlaf“ mit {age}: {n} von 100 Kindern konnten sich in der Schule besser konzentrieren"
+      },
+      "sport": {
+        "0": "Nach „Mannschaftssport“ mit {age}: {n} von 100 Kindern fanden Freunde im Team",
+        "1": "Nach „Mannschaftssport“ mit {age}: {n} von 100 Kindern verletzten sich beim Sport und wurden wieder gesund",
+        "2": "Nach „Mannschaftssport“ mit {age}: {n} von 100 Kindern gewannen ein Spiel, von dem sie heute noch reden"
+      },
+      "strict": {
+        "0": "Nach „Strenger“ mit {age}: {n} von 100 Kindern behielten Dinge immer öfter für sich",
+        "1": "Nach „Strenger“ mit {age}: {n} von 100 Kindern wurden sehr gut darin, Regeln zu befolgen"
+      },
+      "summer": {
+        "0": "Nach „Bester Sommer“ mit {age}: {n} von 100 Kindern erinnern sich noch heute an den besten Sommer",
+        "1": "Nach „Bester Sommer“ mit {age}: {n} von 100 Kindern fanden in dem Sommer Freunde fürs Leben"
+      },
+      "teacher": {
+        "0": "Nach „Tolle Lehrkraft“ mit {age}: {n} von 100 Kindern fanden ein Fach, das sie lieben",
+        "1": "Nach „Tolle Lehrkraft“ mit {age}: {n} von 100 Kindern fingen an zu glauben, dass sie Schweres schaffen"
+      },
+      "travel": {
+        "0": "Nach „Ein Jahr Reisen“ mit {age}: {n} von 100 Kindern schnappten Wörter in vielen Sprachen auf",
+        "1": "Nach „Ein Jahr Reisen“ mit {age}: {n} von 100 Kindern hatten manchmal Heimweh",
+        "2": "Nach „Ein Jahr Reisen“ mit {age}: {n} von 100 Kindern lernten, sich überall zu Hause zu fühlen"
+      },
+      "volunteer": {
+        "0": "Nach „Ehrenamt“ mit {age}: {n} von 100 Kindern bekamen Dank von jemandem, dem sie halfen",
+        "1": "Nach „Ehrenamt“ mit {age}: {n} von 100 Kindern fingen an, andere Freiwillige anzuleiten"
+      }
+    },
+    "stop": {
+      "authoritative": "Die Eltern sind nicht mehr so warm und konsequent",
+      "bestfriend": "Der beste Freund zieht weg",
+      "bullied": "Das Mobbing hört auf",
+      "carer": "Passt nicht mehr auf das Kleine auf",
+      "chores": "Keine Aufgaben mehr zu Hause",
+      "coding": "Verlässt den Coding-Club",
+      "countryside": "Die Familie zieht zurück in die Stadt",
+      "dinners": "Die Familienessen hören auf",
+      "divorce": "Die Eltern kommen wieder zusammen",
+      "drama": "Verlässt die Theatergruppe",
+      "exam": "Ist über die verhauene Prüfung hinweg",
+      "fallout": "Ist über den Streit hinweg",
+      "firstlove": "Ist über den ersten Schwarm hinweg",
+      "grandparent": "Oma oder Opa zieht wieder aus",
+      "illness": "Das Elternteil ist wieder gesund",
+      "job": "Hört mit dem Wochenendjob auf",
+      "language": "Hört auf, die Sprache zu lernen",
+      "leader": "Ist nicht mehr Klassensprecher",
+      "longhours": "Das Elternteil arbeitet wieder normal",
+      "mentor": "Der Mentor zieht weiter",
+      "money": "Das Geld reicht wieder",
+      "move": "Die Familie zieht zurück nach Hause",
+      "music": "Spielt das Instrument nicht mehr",
+      "nature": "Ist nicht mehr so viel draußen",
+      "newschool": "Lebt sich in der neuen Schule ein",
+      "pet": "Der Hund zieht auf einen Bauernhof",
+      "prize": "Der Preis ist eine schöne Erinnerung",
+      "reading": "Liest nicht mehr jeden Abend",
+      "scouts": "Verlässt die Pfadfinder",
+      "screen": "Die Bildschirmzeit wird gekürzt",
+      "sibling": "Der kleine Bruder oder die kleine Schwester zieht aus",
+      "sleep": "Es wird wieder spät abends",
+      "sport": "Hört mit dem Mannschaftssport auf",
+      "strict": "Die Eltern sind nicht mehr so streng",
+      "summer": "Der Sommer ist vorbei",
+      "teacher": "Die tolle Lehrkraft geht",
+      "travel": "Die Familie kommt von der Reise zurück",
+      "volunteer": "Hört mit dem Ehrenamt auf"
+    },
+    "tally": {
+      "arm": "Mit {age} haben sich {n} von 100 Kindern schon einmal einen Arm oder ein Bein gebrochen",
+      "bike": "Mit {age} haben {n} von 100 Kindern Radfahren gelernt",
+      "camp": "Mit {age} waren {n} von 100 Kindern schon im Sommercamp",
+      "cousin": "Mit {age} hatten {n} von 100 Kindern schon einmal Cousin oder Cousine einen Sommer lang zu Besuch",
+      "friend": "Mit {age} haben {n} von 100 Kindern erlebt, dass ein enger Freund wegzieht",
+      "glasses": "Mit {age} haben {n} von 100 Kindern eine Brille bekommen",
+      "holiday": "Mit {age} waren {n} von 100 Kindern schon mit der Familie weit weg im Urlaub",
+      "house": "Mit {age} sind {n} von 100 Kindern mindestens einmal umgezogen",
+      "pet": "Mit {age} haben {n} von 100 Kindern ein Haustier bekommen",
+      "play": "Mit {age} hatten {n} von 100 Kindern eine Rolle in einem Schultheaterstück",
+      "sib": "Mit {age} haben {n} von 100 Kindern einen neuen kleinen Bruder oder eine neue kleine Schwester",
+      "team": "Mit {age} haben es {n} von 100 Kindern in eine Schulmannschaft geschafft",
+      "visits": "Mit {age} haben {n} von 100 Kindern Großeltern, die oft zu Besuch kommen",
+      "win": "Mit {age} haben {n} von 100 Kindern etwas Großes gewonnen, ein Rennen oder einen Preis"
+    }
+  },
+  "gloss": {
+    "A": "Achtet auf andere und kommt gern mit allen aus.",
+    "C": "Hält Ordnung und bringt zu Ende, was es anfängt.",
+    "Calm": "Bleibt ruhig, wenn etwas schiefgeht.",
+    "E": "Tankt Energie, wenn es unter Leuten ist.",
+    "O": "Liebt neue Ideen, Orte und Dinge zum Ausprobieren."
+  },
+  "glossEx": {
+    "A": {
+      "0": "den letzten Keks teilt",
+      "1": "einem hingefallenen Freund aufhilft"
+    },
+    "C": {
+      "0": "die Schultasche schon am Abend packt",
+      "1": "erst Hausaufgaben macht und dann spielt"
+    },
+    "Calm": {
+      "0": "vor einem Test gut schläft",
+      "1": "ein verlorenes Spiel einfach abhakt"
+    },
+    "E": {
+      "0": "als Erstes mit dem neuen Kind redet",
+      "1": "große Geburtstagsfeiern liebt"
+    },
+    "O": {
+      "0": "ständig „Warum?“ fragt",
+      "1": "die seltsame neue Frucht probieren will"
+    }
+  },
+  "group": {
+    "0": "Zuhause",
+    "1": "Schule und Freunde",
+    "2": "Aktivitäten",
+    "3": "Große Umbrüche",
+    "4": "Glück"
+  },
+  "have": {
+    "authoritative": {
+      "0": "wussten, was sie zu Hause erwartet"
+    },
+    "bestfriend": {
+      "0": "fühlten sich in der Schule mutiger",
+      "1": "erlebten zusammen Abenteuer"
+    },
+    "bullied": {
+      "0": "erzählten es jemandem, und es wurde besser",
+      "1": "meldeten sich eine Weile nicht mehr im Unterricht",
+      "2": "wurden netter zu Kindern, die ausgeschlossen werden"
+    },
+    "carer": {
+      "0": "wurden sehr geduldig",
+      "1": "waren manchmal müde"
+    },
+    "chores": {
+      "0": "waren stolz auf gut erledigte Arbeit",
+      "1": "meckerten über Hausarbeit (und machten sie trotzdem)"
+    },
+    "coding": {
+      "0": "bauten ihr eigenes kleines Spiel",
+      "1": "fanden Freunde mit denselben Interessen"
+    },
+    "countryside": {
+      "0": "kümmerten sich um Tiere",
+      "1": "vermissten manchmal die Stadt",
+      "2": "spielten jeden Tag draußen"
+    },
+    "dinners": {
+      "0": "erzählten jeden Abend von ihrem Tag",
+      "1": "probierten beim Essen Neues"
+    },
+    "divorce": {
+      "0": "fragten sich eine Weile, ob es ihre Schuld war (ist es nie)",
+      "1": "gewöhnten sich an zwei Zuhause und zwei Geburtstage",
+      "2": "kamen einem Elternteil näher"
+    },
+    "drama": {
+      "0": "standen auf einer echten Bühne",
+      "1": "lernten, Gefühle gut zu verstehen"
+    },
+    "exam": {
+      "0": "versuchten es nochmal und bestanden",
+      "1": "hielten sich eine Weile für schlecht in dem Fach"
+    },
+    "fallout": {
+      "0": "vertrugen sich wieder",
+      "1": "fanden neue Freunde"
+    },
+    "firstlove": {
+      "0": "hörten eine Weile traurige Lieder",
+      "1": "merkten, dass sie schwere Gefühle durchstehen können",
+      "2": "wurden von ihren Freunden aufgefangen"
+    },
+    "grandparent": {
+      "0": "hörten viele Familiengeschichten",
+      "1": "lernten mit Oma oder Opa kochen"
+    },
+    "illness": {
+      "0": "halfen bei der Pflege des Elternteils",
+      "1": "fühlten sich erwachsener"
+    },
+    "job": {
+      "0": "sparten auf etwas Großes",
+      "1": "gewöhnten sich daran, mit Fremden zu reden"
+    },
+    "language": {
+      "0": "schauten Filme in der neuen Sprache",
+      "1": "fanden einen Freund, der sie spricht"
+    },
+    "leader": {
+      "0": "hielten eine Rede vor der Klasse",
+      "1": "fühlten sich verantwortlicher"
+    },
+    "longhours": {
+      "0": "verbrachten mehr Zeit allein",
+      "1": "lernten, Dinge selbst zu regeln",
+      "2": "vermissten das Elternteil beim Zubettgehen"
+    },
+    "mentor": {
+      "0": "fanden ein Ziel, auf das sie hinarbeiten",
+      "1": "probierten Dinge, die sie sonst nie gewagt hätten"
+    },
+    "money": {
+      "0": "halfen zu Hause mehr mit",
+      "1": "machten sich Sorgen ums Geld",
+      "2": "hatten eine Weile weniger Kurse und Ausflüge"
+    },
+    "move": {
+      "0": "lernten die neue Sprache",
+      "1": "fühlten sich im ersten Jahr einsam",
+      "2": "fanden dort einen neuen besten Freund"
+    },
+    "music": {
+      "0": "spielten in einem Konzert",
+      "1": "fanden Üben eine Weile langweilig"
+    },
+    "nature": {
+      "0": "lernten die Namen von Vögeln und Bäumen",
+      "1": "gingen zelten und liebten es"
+    },
+    "newschool": {
+      "0": "fanden schnell neue Freunde",
+      "1": "vermissten ihre alten Freunde"
+    },
+    "pet": {
+      "0": "gingen jeden Tag mit dem Hund raus",
+      "1": "sagen, der Hund ist ihr bester Freund"
+    },
+    "prize": {
+      "0": "erzählten es allen",
+      "1": "arbeiteten auf den nächsten Preis hin"
+    },
+    "reading": {
+      "0": "nutzten ihren Bibliotheksausweis oft",
+      "1": "fingen an, eigene Geschichten zu schreiben"
+    },
+    "scouts": {
+      "0": "sammelten viele Abzeichen",
+      "1": "schliefen zum ersten Mal im Zelt"
+    },
+    "screen": {
+      "0": "schliefen weniger",
+      "1": "fanden Freunde online",
+      "2": "wurden richtig gut in einem Spiel"
+    },
+    "sibling": {
+      "0": "waren anfangs eifersüchtig",
+      "1": "standen dem kleinen Geschwister sehr nahe",
+      "2": "halfen, das Baby zu versorgen"
+    },
+    "sleep": {
+      "0": "hatten entspanntere Morgen",
+      "1": "konnten sich in der Schule besser konzentrieren"
+    },
+    "sport": {
+      "0": "fanden Freunde im Team",
+      "1": "verletzten sich beim Sport und wurden wieder gesund",
+      "2": "gewannen ein Spiel, von dem sie heute noch reden"
+    },
+    "strict": {
+      "0": "behielten Dinge immer öfter für sich",
+      "1": "wurden sehr gut darin, Regeln zu befolgen"
+    },
+    "summer": {
+      "0": "erinnern sich noch heute an den besten Sommer",
+      "1": "fanden in dem Sommer Freunde fürs Leben"
+    },
+    "teacher": {
+      "0": "fanden ein Fach, das sie lieben",
+      "1": "fingen an zu glauben, dass sie Schweres schaffen"
+    },
+    "travel": {
+      "0": "schnappten Wörter in vielen Sprachen auf",
+      "1": "hatten manchmal Heimweh",
+      "2": "lernten, sich überall zu Hause zu fühlen"
+    },
+    "volunteer": {
+      "0": "bekamen Dank von jemandem, dem sie halfen",
+      "1": "fingen an, andere Freiwillige anzuleiten"
+    }
+  },
+  "home": {
+    "baby": {
+      "help": {
+        "easy": "Ruhige, fröhliche Babys. Die meisten bleiben auch später etwas ruhiger.",
+        "energy": "Lebhaft, laut und immer in Bewegung. Viele bleiben gesellig.",
+        "mixed": "Manche locker, manche schüchtern, manche voller Energie.",
+        "slow": "Anfangs vorsichtig mit neuen Menschen und Orten. Viele bleiben etwas stiller."
+      }
+    },
+    "home": {
+      "help": {
+        "busy": "Immer ist etwas los: etwas geselliger, etwas weniger ordentlich.",
+        "stable": "Ein friedliches Zuhause.",
+        "unstable": "Die Erwachsenen streiten oft. Kinder machen sich dann eher mehr Sorgen."
+      }
+    },
+    "money": {
+      "help": {
+        "comfy": "Genug für Extras wie Ausflüge und Kurse.",
+        "ok": "Genug für das Nötige.",
+        "tight": "Das Geld ist oft knapp. Kinder machen sich etwas mehr Sorgen."
+      }
+    },
+    "place": {
+      "help": {
+        "city": "Viele Menschen und viel Neues ringsum.",
+        "country": "Ruhig, mit viel Natur.",
+        "town": "Ein bisschen von beidem."
+      }
+    },
+    "school": {
+      "help": {
+        "crowded": "Große Klassen; Lehrkräfte haben wenig Zeit für jedes Kind.",
+        "great": "Lehrkräfte, die Interesse wecken: etwas neugieriger und ordentlicher.",
+        "ordinary": "Eine normale Schule."
+      }
+    },
+    "screens": {
+      "help": {
+        "none": "Bildschirme, wann immer sie wollen: etwas weniger ordentlich, mehr Sorgen.",
+        "some": "Jeden Tag etwas Bildschirmzeit.",
+        "strict": "Bildschirme nur ab und zu."
+      }
+    },
+    "shape": {
+      "help": {
+        "big": "Großeltern, Tanten oder Onkel wohnen mit: viel Hilfe.",
+        "one": "Ein Elternteil macht alles: Kinder helfen oft etwas mehr mit.",
+        "two": "Mama und Papa, zwei Mamas oder zwei Papas, gemeinsam zu Hause.",
+        "twohomes": "Die Eltern wohnen getrennt; die Kinder pendeln hin und her."
+      }
+    },
+    "sib": {
+      "help": {
+        "0": "Ein Einzelkind: etwas weniger Übung im Teilen.",
+        "1": "Ein Kleines zum Aufpassen: etwas freundlicher, etwas ordentlicher.",
+        "2": "Ein volles Haus voller Kinder: mehr Teilen, mehr Quatschen.",
+        "older": "Ein großer Bruder oder eine große Schwester als Vorbild."
+      }
+    },
+    "style": {
+      "help": {
+        "authoritarian": "Viele Regeln, wenig Wärme. Kinder sind eher ordentlich, aber besorgter.",
+        "authoritative": "Viel Liebe und klare Regeln. Kinder sind eher etwas ordentlicher und gelassener.",
+        "neglectful": "Die Eltern sind beschäftigt und weit weg. Kinder machen sich eher mehr Sorgen und sind weniger ordentlich.",
+        "permissive": "Viel Liebe, wenig Regeln. Kinder sind eher gesellig, aber weniger ordentlich."
+      }
+    },
+    "time": {
+      "help": {
+        "long": "Weniger gemeinsame Zeit zu Hause.",
+        "lots": "Viel Zeit zum Spielen und Reden: etwas gelassener und freundlicher.",
+        "ordinary": "An den meisten Tagen etwas gemeinsame Zeit."
+      }
+    }
+  },
+  "kid": {
+    "between": "bei den meisten Dingen in der Mitte",
+    "betweenLess": "meist in der Mitte, etwas weniger {trait}",
+    "betweenMore": "meist in der Mitte, eher {trait}",
+    "line": "{name}, {age}: {body}.",
+    "short": "{a}, {b}",
+    "three": "{a} und {b}, {c}"
+  },
+  "kind": {
+    "activity": "Aktivität",
+    "change": "Änderung",
+    "everyday": "Alltag",
+    "home": "Zuhause",
+    "luck": "Glück",
+    "milestone": "Meilenstein",
+    "move": "großer Umbruch",
+    "ripple": "was folgte",
+    "school": "Schule",
+    "together": "zusammen"
+  },
+  "len": {
+    "good": "für immer",
+    "once": "nur einmal",
+    "year": "etwa ein Jahr lang",
+    "years": "etwa {n} Jahre lang"
+  },
+  "life": {
+    "0": "Kleinkindjahre",
+    "1": "Schuljahre",
+    "2": "Teenagerjahre",
+    "3": "Erste Wohnung",
+    "4": "Eigenes Zuhause"
+  },
+  "meta": {
+    "hint": "Drück auf Start und sieh ihnen beim Großwerden zu, dann probier eine Änderung.",
+    "intro": "Dieselben zwei Eltern könnten viele verschiedene Kinder haben. Hier sind 120 davon, die von 1 bis 60 aufwachsen. Gene, Zuhause, was passiert und schlichtes Glück prägen alle, wer sie werden. Drück auf Start, dann probier Änderungen: Sie addieren sich, und du wählst, wann sie passieren und wie lange sie dauern. Tippe in „Alle 120 Kinder“ auf ein Gesicht, um einem Kind zu folgen.",
+    "name": "Kind",
+    "sub": "Wer wird es mal?"
+  },
+  "metric": {
+    "A": {
+      "label": "Freundlich"
+    },
+    "A_hi": {
+      "label": "Freundlich: oberes Ende der meisten Kinder"
+    },
+    "A_lo": {
+      "label": "Freundlich: unteres Ende der meisten Kinder"
+    },
+    "C": {
+      "label": "Ordentlich"
+    },
+    "C_hi": {
+      "label": "Ordentlich: oberes Ende der meisten Kinder"
+    },
+    "C_lo": {
+      "label": "Ordentlich: unteres Ende der meisten Kinder"
+    },
+    "Calm": {
+      "label": "Gelassen"
+    },
+    "Calm_hi": {
+      "label": "Gelassen: oberes Ende der meisten Kinder"
+    },
+    "Calm_lo": {
+      "label": "Gelassen: unteres Ende der meisten Kinder"
+    },
+    "E": {
+      "label": "Gesellig"
+    },
+    "E_hi": {
+      "label": "Gesellig: oberes Ende der meisten Kinder"
+    },
+    "E_lo": {
+      "label": "Gesellig: unteres Ende der meisten Kinder"
+    },
+    "O": {
+      "label": "Neugierig"
+    },
+    "O_hi": {
+      "label": "Neugierig: oberes Ende der meisten Kinder"
+    },
+    "O_lo": {
+      "label": "Neugierig: unteres Ende der meisten Kinder"
+    },
+    "b_calm": {
+      "label": "Bleiben wohl vor einem Test ruhig (von 100)",
+      "unit": "Kinder"
+    },
+    "b_food": {
+      "label": "Probieren wohl ein neues Essen (von 100)",
+      "unit": "Kinder"
+    },
+    "b_hand": {
+      "label": "Melden sich wohl im Unterricht (von 100)",
+      "unit": "Kinder"
+    },
+    "b_help": {
+      "label": "Helfen wohl einem neuen Kind in der Schule (von 100)",
+      "unit": "Kinder"
+    },
+    "b_proj": {
+      "label": "Bringen wohl ein langes Schulprojekt zu Ende (von 100)",
+      "unit": "Kinder"
+    },
+    "b_tidy": {
+      "label": "Halten wohl ihr Zimmer ordentlich (von 100)",
+      "unit": "Kinder"
+    },
+    "hiA": {
+      "label": "sehr freundlich (von 120)",
+      "unit": "Kinder"
+    },
+    "hiC": {
+      "label": "sehr ordentlich (von 120)",
+      "unit": "Kinder"
+    },
+    "hiCalm": {
+      "label": "sehr gelassen (von 120)",
+      "unit": "Kinder"
+    },
+    "hiE": {
+      "label": "sehr gesellig (von 120)",
+      "unit": "Kinder"
+    },
+    "hiO": {
+      "label": "sehr neugierig (von 120)",
+      "unit": "Kinder"
+    },
+    "loA": {
+      "label": "sehr stur (von 120)",
+      "unit": "Kinder"
+    },
+    "loC": {
+      "label": "sehr chaotisch (von 120)",
+      "unit": "Kinder"
+    },
+    "loCalm": {
+      "label": "viele Sorgen (von 120)",
+      "unit": "Kinder"
+    },
+    "loE": {
+      "label": "sehr schüchtern (von 120)",
+      "unit": "Kinder"
+    },
+    "loO": {
+      "label": "bleibt beim Bekannten (von 120)",
+      "unit": "Kinder"
+    }
+  },
+  "more": {
+    "A": {
+      "0": "{d, select, bit {etwas weniger freundlich} much {viel weniger freundlich} other {weniger freundlich}}",
+      "1": "{d, select, bit {etwas freundlicher} much {viel freundlicher} other {freundlicher}}"
+    },
+    "C": {
+      "0": "{d, select, bit {etwas weniger ordentlich} much {viel weniger ordentlich} other {weniger ordentlich}}",
+      "1": "{d, select, bit {etwas ordentlicher} much {viel ordentlicher} other {ordentlicher}}"
+    },
+    "Calm": {
+      "0": "{d, select, bit {etwas besorgter} much {viel besorgter} other {besorgter}}",
+      "1": "{d, select, bit {etwas gelassener} much {viel gelassener} other {gelassener}}"
+    },
+    "E": {
+      "0": "{d, select, bit {etwas stiller} much {viel stiller} other {stiller}}",
+      "1": "{d, select, bit {etwas geselliger} much {viel geselliger} other {geselliger}}"
+    },
+    "O": {
+      "0": "{d, select, bit {etwas weniger neugierig} much {viel weniger neugierig} other {weniger neugierig}}",
+      "1": "{d, select, bit {etwas neugieriger} much {viel neugieriger} other {neugieriger}}"
+    }
+  },
+  "name": {
+    "own": "Deine eigene Familie",
+    "ownFrom": "Deine eigene Familie (aus {from})"
+  },
+  "part": {
+    "chance": "Zufall",
+    "genes": "Gene",
+    "home": "Zuhause",
+    "life": "Erlebnisse",
+    "pct": "{part} {n} %"
+  },
+  "partLc": {
+    "chance": "Zufall",
+    "genes": "Gene",
+    "home": "Zuhause",
+    "life": "Erlebnisse"
+  },
+  "phrase": {
+    "A": {
+      "0": "sagt offen die Meinung",
+      "1": "freundlich zu anderen"
+    },
+    "C": {
+      "0": "etwas chaotisch",
+      "1": "hält Ordnung"
+    },
+    "Calm": {
+      "0": "macht sich manchmal Sorgen",
+      "1": "bleibt gelassen"
+    },
+    "E": {
+      "0": "mag auch ruhige Zeit allein",
+      "1": "ist gern unter Leuten"
+    },
+    "O": {
+      "0": "mag Vertrautes",
+      "1": "neugierig auf alles"
+    }
+  },
+  "science": {
+    "A": "Verträglichkeit",
+    "C": "Gewissenhaftigkeit",
+    "Calm": "geringer Neurotizismus",
+    "E": "Extraversion",
+    "O": "Offenheit"
+  },
+  "speed": {
+    "0": "½ J./s",
+    "1": "1 J./s",
+    "2": "2 J./s",
+    "3": "5 J./s"
+  },
+  "stage": {
+    "age": "Mit {age} — {cap}",
+    "all": "Alle 120 Kinder",
+    "back": "Zurück zum typischen Kind",
+    "between": "in der Mitte",
+    "crowdHint": "{trait} · jedes Gesicht ist ein mögliches Kind · tippe eins an, um es kennenzulernen",
+    "hover": "{name}: {short} · antippen zum Kennenlernen",
+    "of100": "{n} von 100",
+    "one": "Ein Kind",
+    "oneOf": "{name}, eins von 120",
+    "pileTrait": "Welches Merkmal die Stapel zeigen",
+    "planned": "Geplant mit {age} — {cap}",
+    "typical": "Das typische Kind der 120",
+    "view": "Was die Bühne zeigt",
+    "was": "vorher {n}",
+    "with": "mit deinen Änderungen",
+    "without": "ohne"
+  },
+  "step": {
+    "A": {
+      "0": "sehr stur",
+      "1": "etwas stur",
+      "2": "in der Mitte",
+      "3": "ziemlich freundlich",
+      "4": "sehr freundlich"
+    },
+    "C": {
+      "0": "sehr chaotisch",
+      "1": "etwas chaotisch",
+      "2": "in der Mitte",
+      "3": "etwas ordentlich",
+      "4": "sehr ordentlich"
+    },
+    "Calm": {
+      "0": "sehr besorgt",
+      "1": "etwas besorgt",
+      "2": "in der Mitte",
+      "3": "ziemlich gelassen",
+      "4": "sehr gelassen"
+    },
+    "E": {
+      "0": "sehr schüchtern",
+      "1": "etwas schüchtern",
+      "2": "in der Mitte",
+      "3": "etwas gesellig",
+      "4": "sehr gesellig"
+    },
+    "O": {
+      "0": "sehr fürs Vertraute",
+      "1": "nicht sehr neugierig",
+      "2": "in der Mitte",
+      "3": "etwas neugierig",
+      "4": "sehr neugierig"
+    }
+  },
+  "story": {
+    "compared": "Verglichen mit denselben Kindern ohne Änderungen, mit {age}:",
+    "differ": "Sie unterscheiden sich noch stark: {hi} von 100 sind {high}, {lo} dagegen {low}.",
+    "differCalm": "Sie unterscheiden sich noch stark: {hi} von 100 sind {high}, während sich {lo} viele Sorgen machen.",
+    "fade": {
+      "bounced": ", dann erholten sich die meisten wieder",
+      "faded": ", und vieles davon verblasste später",
+      "stopped": ", bis es mit {n} aufhörte"
+    },
+    "little": "Kleine Kinder unterscheiden sich schon: Manche sind mutig, manche vorsichtig.",
+    "middle": "Mit {age}: Die meisten dieser 120 Kinder liegen bei jedem Merkmal irgendwo in der Mitte.",
+    "planned": "Geplant mit {age}: {cap}.",
+    "rip": ", und {n} von 100 {have}",
+    "sentence": "{s}.",
+    "settled": "Inzwischen hat sich die Persönlichkeit weitgehend gefestigt. Sie ändert sich das ganze Leben lang langsam weiter.",
+    "siblings": "Geschwister unterscheiden sich trotzdem: Jedes bekommt eine andere Mischung aus Genen und anderes Glück.",
+    "style": {
+      "authoritarian": "Strenge Eltern machen die meisten Kinder etwas ordentlicher, aber auch besorgter.",
+      "authoritative": "Warme, konsequente Eltern helfen den meisten Kindern, gelassener und ordentlicher zu werden.",
+      "neglectful": "Mit distanzierten Eltern machen sich viele Kinder mehr Sorgen und sind weniger ordentlich.",
+      "permissive": "Lockere Eltern: Die Kinder sind eher geselliger, aber weniger ordentlich."
+    },
+    "teen": "Die Teenagerjahre: Die Sorgen nehmen zu und die Ordnung lässt eine Weile nach. Das ist normal.",
+    "they": "sie sind {list}.",
+    "theySame": "sie sind bisher etwa gleich.",
+    "top": "Mit {age}: Die meisten dieser 120 Kinder sind {list}.",
+    "when": "Als {past} (mit {at}), wurden die meisten Kinder {effect}{fade}{rip}."
+  },
+  "time": {
+    "age": "Alter {n}"
+  },
+  "tl": {
+    "all": "Alle",
+    "alt": "Nur mit deinen Änderungen",
+    "base": "Nur ohne Änderungen",
+    "both": "Beide",
+    "changes": "Änderungen",
+    "effects": "Wirkungen",
+    "growing": "Großwerden",
+    "label": "In der Zeitleiste zeigen",
+    "none": "Noch nichts. Drück auf Start oder probier eine Änderung.",
+    "noneKind": "Noch nichts dieser Art."
+  },
+  "track": {
+    "A": {
+      "0": "eigenwillig",
+      "1": "freundlich"
+    },
+    "C": {
+      "0": "chaotisch",
+      "1": "ordentlich"
+    },
+    "Calm": {
+      "0": "besorgt",
+      "1": "gelassen"
+    },
+    "E": {
+      "0": "schüchtern",
+      "1": "gesellig"
+    },
+    "O": {
+      "0": "mag Gewohntes",
+      "1": "neugierig"
+    }
+  },
+  "trait": {
+    "A": "Freundlich",
+    "C": "Ordentlich",
+    "Calm": "Gelassen",
+    "E": "Gesellig",
+    "O": "Neugierig"
+  },
+  "traitLc": {
+    "A": "freundlich",
+    "C": "ordentlich",
+    "Calm": "gelassen",
+    "E": "gesellig",
+    "O": "neugierig"
+  },
+  "ui": {
+    "age": "Alter {n}",
+    "ages": "Alter {list}",
+    "another": "Ein anderes kennenlernen",
+    "askTabs": "Fragen",
+    "atAge": "Mit {n}",
+    "atAgePast": "Mit {n} (schon vorbei: jetzt)",
+    "bestAges": "am stärksten mit etwa {a}–{b}",
+    "changesEmpty": "Jede Änderung landet hier mit einem Häkchen, damit du sie herausnehmen und wieder einsetzen kannst.",
+    "done": "Fertig",
+    "earlier": "Früher",
+    "earlierAria": "Ein Jahr früher",
+    "edit": "Bearbeiten",
+    "fromAge": "ab {n}",
+    "glossLine": "{meaning} Zum Beispiel ein Kind, das {a}, oder eins, das {b}.",
+    "glossTitle": "Was bedeuten die fünf Wörter?",
+    "happening": "Was gerade passiert",
+    "kidAge": "{name}, {age} Jahre",
+    "kidN": "Kind Nr. {n} von 120",
+    "later": "Später",
+    "laterAria": "Ein Jahr später",
+    "made": "{n} gemacht",
+    "madeTimes": "{n}-mal gemacht",
+    "meet": "Lerne das Kind kennen",
+    "meetNote": "Gleiche Eltern, gleiches Zuhause, und trotzdem ist jedes Kind anders.",
+    "mostTypical": "Das typischste Kind",
+    "nextAt": "Dein nächster Klick passiert mit {n}.",
+    "nextNow": "Dein nächster Klick passiert jetzt.",
+    "nowAge": "Jetzt (Alter {n})",
+    "parents": "Die Eltern",
+    "parentsNote": "Jedes Kind bekommt eine andere Mischung der beiden Eltern. Wenn du die Familie änderst, geht es von vorn los.",
+    "pickFamily": "Wähle eine Familie",
+    "plannedFor": "{name} · geplant mit {n}",
+    "rulerEmpty": "Deine Änderungen erscheinen hier, auf einer Linie von der Geburt bis 18.",
+    "rulerLabel": "{cap}, mit {age}, {len}",
+    "rulerLabelPlanned": "{cap}, mit {age}, {len}, geplant: Pfeiltasten verschieben es",
+    "rulerPanel": "{name} · mit {age} · {len} · {state}",
+    "science": "Zur Wissenschaft",
+    "science1": "Forschende beschreiben Persönlichkeit oft mit fünf Merkmalen, den „Big Five“. Hier haben sie einfache Namen:",
+    "science2": "Die Zahlen sind grob und von der Forschung inspiriert, nicht exakt. Sie beschreiben Durchschnitte, kein Schicksal: Echte Kinder lassen sich nicht von einem Modell vorhersagen.",
+    "scienceItem": "{trait} steht für {science}: von „{a}“ bis „{b}“.",
+    "state": {
+      "going": "läuft",
+      "over": "vorbei",
+      "planned": "geplant",
+      "stopped": "beendet mit {n}"
+    },
+    "stopNow": "Jetzt beenden",
+    "tab": {
+      "changes": "Änderungen",
+      "family": "Familie"
+    },
+    "things": "Was passieren kann",
+    "thingsHint": "Sie addieren sich. Wähle wann, wie stark und wie lange, dann klick.",
+    "toTry": "{n} zum Ausprobieren",
+    "tuneNote": "Einstellungen zu Anlage und Zufall starten die Welt neu. Änderungs-Einstellungen gelten für deinen nächsten Klick.",
+    "undo": "Rückgängig",
+    "usualLen": "Jede Änderung dauert so lange wie üblich.",
+    "usually": "Meist: {what}",
+    "variables": "Variablen",
+    "whatChanged": "Was sich geändert hat",
+    "whyBar": "{trait}: {list}",
+    "whyIntro": "Von allen Unterschieden zwischen diesen 120 Geschwistern: wie viel von jedem Teil kommt:",
+    "whyNote": "Gene: Jedes Kind bekommt eine andere Mischung von den Eltern. Zuhause: Dasselbe Zuhause wirkt auf Kinder etwas unterschiedlich. Erlebnisse: deine Änderungen und das alltägliche Auf und Ab. Zufall: alles andere.",
+    "whyTitle": "Warum sind diese Kinder verschieden?",
+    "yourChanges": "Deine Änderungen"
+  },
+  "whatif": {
+    "authoritative": "Warm und konsequent",
+    "bestfriend": "Bester Freund",
+    "bullied": "Gemobbt",
+    "carer": "Hilft mit dem Kleinen",
+    "chores": "Aufgaben zu Hause",
+    "coding": "Coding-Club",
+    "countryside": "Umzug aufs Land",
+    "dinners": "Familienessen",
+    "divorce": "Eltern trennen sich",
+    "drama": "Theatergruppe",
+    "exam": "Prüfung verhauen",
+    "fallout": "Streit mit Freund",
+    "firstlove": "Erster Schwarm",
+    "grandparent": "Oma/Opa zieht ein",
+    "illness": "Elternteil krank",
+    "job": "Wochenendjob",
+    "language": "Zweite Sprache",
+    "leader": "Klassensprecher",
+    "longhours": "Lange Arbeitszeiten",
+    "mentor": "Ein Mentor",
+    "money": "Geld knapp",
+    "move": "Umzug ins Ausland",
+    "music": "Ein Instrument",
+    "nature": "Draußen",
+    "newschool": "Neue Schule",
+    "pet": "Ein Hund",
+    "prize": "Gewinnt Wettbewerb",
+    "reading": "Lesen",
+    "scouts": "Pfadfinder",
+    "screen": "Viel Bildschirm",
+    "sibling": "Kleines Geschwister",
+    "sleep": "Genug Schlaf",
+    "sport": "Mannschaftssport",
+    "strict": "Strenger",
+    "summer": "Bester Sommer",
+    "teacher": "Tolle Lehrkraft",
+    "travel": "Ein Jahr Reisen",
+    "volunteer": "Ehrenamt"
+  }
+}

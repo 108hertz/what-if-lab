@@ -1,4 +1,7 @@
 import type { AnySandbox, BaseWorld, Params } from "./types";
+import type { Ref, Values } from "@/lib/i18n/message";
+import { numberFormat } from "@/lib/i18n/message";
+import { pageT } from "@/lib/i18n/page";
 
 export const TAU = Math.PI * 2;
 export const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
@@ -21,14 +24,20 @@ export function gauss(w: { rs: number }): number {
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(TAU * v);
 }
 
-/** Log an event; with `key` it is logged at most once per world. */
-export function note(w: BaseWorld, txt: string, key?: string, t = w.t): void {
-  if (key) {
-    if (w.f[key]) return;
-    w.f[key] = 1;
+/**
+ * Log an event by message key (relative to the world, e.g. "ev.escape") and values (change 0025).
+ * With `once` it is logged at most once per world. Values must be plain data: numbers, strings, `ref()`s.
+ */
+export function note(w: BaseWorld, k: string, v?: Values, once?: string, t = w.t): void {
+  if (once) {
+    if (w.f[once]) return;
+    w.f[once] = 1;
   }
-  w.log.push({ t, txt });
+  w.log.push(v ? { t, k, v } : { t, k });
 }
+
+/** A value that is itself a message of the same world (a planet's or a species' name), translated when shown. */
+export const ref = (k: string, v?: Values): Ref => (v ? { k, v } : { k });
 
 function hex(c: string): number[] {
   const s = c.replace("#", "");
@@ -45,25 +54,28 @@ export function mix(a: string, b: string, t: number): string {
 
 /* ---------- formatting ---------- */
 
+// Display only (change 0025): numbers and units follow the page's language (lib/i18n/page.ts); English in tests.
 export const trim = (v: number) => String(Math.round(v * 10) / 10);
+const r1 = (v: number) => Math.round(v * 10) / 10;
 
 export function fmtNum(v: number | null | undefined, d = 0): string {
   if (v == null || !isFinite(v)) return "—";
-  return Number(v).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+  return numberFormat(pageT().tag, { minimumFractionDigits: d, maximumFractionDigits: d }).format(Number(v));
 }
 
 export function fmtYears(y: number): string {
-  const a = Math.abs(y);
-  if (a >= 1e9) return trim(y / 1e9) + " Gyr";
-  if (a >= 1e6) return Math.round(y / 1e6) + " Myr";
-  if (a >= 1e3) return trim(y / 1e3) + " kyr";
-  return trim(y) + " yr";
+  const a = Math.abs(y), t = pageT();
+  if (a >= 1e9) return t("common.unit.gyr", { n: r1(y / 1e9) });
+  if (a >= 1e6) return t("common.unit.myr", { n: Math.round(y / 1e6) });
+  if (a >= 1e3) return t("common.unit.kyr", { n: r1(y / 1e3) });
+  return t("common.unit.yr", { n: r1(y) });
 }
 
 export function fmtDur(t: number): string {
-  if (t < 1 / 12) return Math.round(t * 365) + " days";
-  if (t < 2) return Math.round(t * 12) + " mo";
-  return trim(t) + " yr";
+  const tr = pageT();
+  if (t < 1 / 12) return tr("common.dur.days", { n: Math.round(t * 365) });
+  if (t < 2) return tr("common.dur.months", { n: Math.round(t * 12) });
+  return tr("common.dur.years", { n: r1(t) });
 }
 
 export const fmtCalendar = (t: number) => String(Math.round(2026 + t));

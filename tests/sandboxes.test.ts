@@ -3,6 +3,7 @@ import { SANDBOX_KEYS } from "@/worlds/registry";
 import { SANDBOXES } from "@/worlds/sims";
 import { defaultParams } from "@/lib/sim/core";
 import { SimEngine } from "@/lib/sim/engine";
+import { eventText } from "@/lib/sim/say";
 
 const FRAME = 1 / 60;
 
@@ -50,7 +51,7 @@ describe("engine", () => {
     const e = new SimEngine(sb, defaultParams(sb));
     e.fork("volcano");
     const items = e.timeline();
-    expect(items.some((i) => i.who === "alt" && i.txt.includes("Supervolcano"))).toBe(true);
+    expect(items.some((i) => i.who === "alt" && eventText(sb, i).includes("Supervolcano"))).toBe(true);
   });
 
   it("country presets update params", () => {

@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ant": {
+    "fact": "Ameisen können das 10- bis 50-Fache ihres Körpergewichts tragen.",
+    "name": "Ameise"
+  },
+  "bee": {
+    "fact": "Besucht auf einem Flug bis zu 100 Blüten.",
+    "name": "Honigbiene"
+  },
+  "burj": {
+    "fact": "Das höchste Gebäude der Erde.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "Vom Colorado River in etwa 6 Millionen Jahren ausgegraben.",
+    "name": "Grand Canyon"
+  },
+  "child": {
+    "fact": "Persönlichkeit ist zu etwa 40 % vererbt; der Rest kommt aus Erfahrung und Zufall.",
+    "name": "Kind, 5 Jahre"
+  },
+  "country": {
+    "fact": "Wirtschaften wachsen, stocken und brechen ein, je nach Politik, Rohstoffen und Glück.",
+    "name": "Ein großes Land"
+  },
+  "dna": {
+    "fact": "Abgewickelt wäre die DNA in einer deiner Zellen etwa 2 Meter lang.",
+    "name": "DNA-Doppelhelix"
+  },
+  "earth": {
+    "fact": "Der einzige bekannte Planet mit Leben, er erwärmt sich um etwa 0,2 °C pro Jahrzehnt.",
+    "name": "Erde"
+  },
+  "ecoli": {
+    "fact": "In deinem Darm leben etwa so viele Bakterien, wie dein Körper Zellen hat.",
+    "name": "Bakterium (E. coli)"
+  },
+  "egg": {
+    "fact": "Die größte menschliche Zelle, mit bloßem Auge gerade sichtbar.",
+    "name": "Menschliche Eizelle"
+  },
+  "eiffel": {
+    "fact": "Wird in der Sommerhitze etwa 15 cm höher.",
+    "name": "Eiffelturm"
+  },
+  "elephant": {
+    "fact": "Das größte Landtier, angeführt vom ältesten Weibchen.",
+    "name": "Afrikanischer Elefant"
+  },
+  "everest": {
+    "fact": "Wächst immer noch um etwa 4 mm pro Jahr.",
+    "name": "Mount Everest"
+  },
+  "flu": {
+    "fact": "Kann sich nicht allein vermehren; es kapert deine Zellen, um sich zu kopieren.",
+    "name": "Grippevirus"
+  },
+  "human": {
+    "fact": "Etwa 37 Billionen Zellen, ein Leben lang ersetzt und erneuert.",
+    "name": "Erwachsener Mensch"
+  },
+  "hydrogen": {
+    "fact": "Fast nur leerer Raum: Der Kern ist 100.000-mal kleiner als das Atom.",
+    "name": "Wasserstoffatom"
+  },
+  "jump": {
+    "0": "Atom",
+    "1": "Zelle",
+    "2": "Du",
+    "3": "Stadt",
+    "4": "Erde",
+    "5": "Sonnensystem",
+    "6": "Galaxie",
+    "7": "Universum"
+  },
+  "jupiter": {
+    "fact": "Über 1.300 Erden würden hineinpassen.",
+    "name": "Jupiter"
+  },
+  "liberty": {
+    "fact": "Ihre Kupferhaut ist nur 2,4 mm dick.",
+    "name": "Freiheitsstatue"
+  },
+  "lightyear": {
+    "fact": "Die Strecke, die Licht in einem Jahr zurücklegt: 9,46 Billionen km.",
+    "name": "Ein Lichtjahr"
+  },
+  "lion": {
+    "fact": "Die einzige wirklich gesellige Katze.",
+    "name": "Löwe"
+  },
+  "localgroup": {
+    "fact": "Mehr als 80 Galaxien, durch die Schwerkraft verbunden.",
+    "name": "Lokale Gruppe"
+  },
+  "meerkat": {
+    "fact": "Wächter halten Ausschau und bellen Warnungen, während die Gruppe Futter sucht.",
+    "name": "Erdmännchen"
+  },
+  "milkyway": {
+    "fact": "100 bis 400 Milliarden Sterne, auf Kurs zur Verschmelzung mit Andromeda.",
+    "name": "Milchstraße"
+  },
+  "moon": {
+    "fact": "Entfernt sich langsam von der Erde, um 3,8 cm pro Jahr.",
+    "name": "Mond"
+  },
+  "mouse": {
+    "fact": "Ihr Herz schlägt etwa 600-mal pro Minute.",
+    "name": "Maus"
+  },
+  "orbit": {
+    "fact": "Licht von der Sonne braucht 8 Minuten bis zu uns.",
+    "name": "Erdumlaufbahn"
+  },
+  "orca": {
+    "fact": "Verschiedene Gruppen sprechen verschiedene Dialekte.",
+    "name": "Orca"
+  },
+  "orion": {
+    "fact": "Eine Sternenkinderstube, 1.300 Lichtjahre entfernt.",
+    "name": "Orionnebel"
+  },
+  "proton": {
+    "fact": "Drei aneinander gebundene Quarks; der Kern jedes Wasserstoffatoms.",
+    "name": "Proton"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, 4,2 Lichtjahre entfernt.",
+    "name": "Zum nächsten Stern"
+  },
+  "rbc": {
+    "fact": "Du bildest davon etwa 2 Millionen pro Sekunde.",
+    "name": "Rotes Blutkörperchen"
+  },
+  "sand": {
+    "fact": "Im Universum gibt es mehr Sterne als Sandkörner an allen Stränden der Erde.",
+    "name": "Sandkorn"
+  },
+  "solar": {
+    "fact": "Neptun braucht 165 Jahre für eine Runde.",
+    "name": "Sonnensystem (bis Neptun)"
+  },
+  "sun": {
+    "fact": "Enthält 99,86 % der gesamten Masse des Sonnensystems.",
+    "name": "Sonne"
+  },
+  "universe": {
+    "fact": "93 Milliarden Lichtjahre breit: so weit wie das fernste Licht, das uns erreicht haben könnte.",
+    "name": "Beobachtbares Universum"
+  },
+  "whale": {
+    "fact": "Das größte Tier, das je gelebt hat.",
+    "name": "Blauwal"
+  },
+  "wolf": {
+    "fact": "Die Rückkehr der Wölfe in den Yellowstone hat sogar den Lauf seiner Flüsse verändert.",
+    "name": "Grauwolf"
+  }
+}

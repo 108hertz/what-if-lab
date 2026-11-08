@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
+import { useT } from "../i18n/I18nProvider";
 import { Icon } from "../ui/Icon";
 import { isFullscreenKey } from "./fullscreenKey";
 
@@ -54,9 +55,10 @@ export function useFullscreen(ref: RefObject<HTMLElement | null>) {
 
 /** Transport button (right end). Must sit inside the element `useFullscreen` controls. */
 export function FullscreenButton({ on, toggle }: { on: boolean; toggle: () => void }) {
-  const label = on ? "Leave full screen" : "Full screen";
+  const t = useT();
+  const label = t(on ? "console.fullscreen.leave" : "console.fullscreen.enter");
   return (
-    <button type="button" className="btn fs-btn" aria-label={label} title={`${label} (F)`} aria-pressed={on} onClick={toggle}>
+    <button type="button" className="btn fs-btn" aria-label={label} title={t("console.fullscreen.title", { label })} aria-pressed={on} onClick={toggle}>
       <Icon name={on ? "shrink" : "expand"} size={18} />
     </button>
   );

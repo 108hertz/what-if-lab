@@ -1,0 +1,161 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "ant": {
+    "fact": "Ants can carry 10–50 times their own body weight.",
+    "name": "Ant"
+  },
+  "bee": {
+    "fact": "Visits up to 100 flowers on a single trip.",
+    "name": "Honeybee"
+  },
+  "burj": {
+    "fact": "The tallest building on Earth.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "Carved by the Colorado River over about 6 million years.",
+    "name": "Grand Canyon"
+  },
+  "child": {
+    "fact": "Personality is roughly 40% inherited; the rest comes from experience and chance.",
+    "name": "Child, age 5"
+  },
+  "country": {
+    "fact": "Economies grow, stall and collapse with policy, resources and luck.",
+    "name": "A large country"
+  },
+  "dna": {
+    "fact": "Unwound, the DNA in one of your cells would be about 2 metres long.",
+    "name": "DNA double helix"
+  },
+  "earth": {
+    "fact": "The only planet known to host life, warming about 0.2 °C per decade.",
+    "name": "Earth"
+  },
+  "ecoli": {
+    "fact": "Your gut holds roughly as many bacteria as your body has cells.",
+    "name": "Bacterium (E. coli)"
+  },
+  "egg": {
+    "fact": "The largest human cell, just visible to the naked eye.",
+    "name": "Human egg cell"
+  },
+  "eiffel": {
+    "fact": "Grows about 15 cm taller in summer heat.",
+    "name": "Eiffel Tower"
+  },
+  "elephant": {
+    "fact": "The largest land animal, led by the oldest female.",
+    "name": "African elephant"
+  },
+  "everest": {
+    "fact": "Still rising about 4 mm a year.",
+    "name": "Mount Everest"
+  },
+  "flu": {
+    "fact": "Can’t reproduce on its own; it hijacks your cells to copy itself.",
+    "name": "Flu virus"
+  },
+  "human": {
+    "fact": "About 37 trillion cells, replaced and renewed throughout life.",
+    "name": "Adult human"
+  },
+  "hydrogen": {
+    "fact": "Almost entirely empty space: the nucleus is 100,000× smaller than the atom.",
+    "name": "Hydrogen atom"
+  },
+  "jump": {
+    "0": "Atom",
+    "1": "Cell",
+    "2": "You",
+    "3": "City",
+    "4": "Earth",
+    "5": "Solar system",
+    "6": "Galaxy",
+    "7": "Universe"
+  },
+  "jupiter": {
+    "fact": "Over 1,300 Earths would fit inside it.",
+    "name": "Jupiter"
+  },
+  "liberty": {
+    "fact": "Her copper skin is only 2.4 mm thick.",
+    "name": "Statue of Liberty"
+  },
+  "lightyear": {
+    "fact": "The distance light travels in a year: 9.46 trillion km.",
+    "name": "One light-year"
+  },
+  "lion": {
+    "fact": "The only truly social cat.",
+    "name": "Lion"
+  },
+  "localgroup": {
+    "fact": "More than 80 galaxies bound together by gravity.",
+    "name": "Local Group"
+  },
+  "meerkat": {
+    "fact": "Sentinels stand guard and bark warnings while the mob forages.",
+    "name": "Meerkat"
+  },
+  "milkyway": {
+    "fact": "100–400 billion stars, and on course to merge with Andromeda.",
+    "name": "Milky Way"
+  },
+  "moon": {
+    "fact": "Slowly drifting away from Earth at 3.8 cm a year.",
+    "name": "Moon"
+  },
+  "mouse": {
+    "fact": "Its heart beats about 600 times a minute.",
+    "name": "Mouse"
+  },
+  "orbit": {
+    "fact": "Light from the Sun takes 8 minutes to reach us.",
+    "name": "Earth’s orbit"
+  },
+  "orca": {
+    "fact": "Different pods speak different dialects.",
+    "name": "Orca"
+  },
+  "orion": {
+    "fact": "A star nursery 1,300 light-years away.",
+    "name": "Orion Nebula"
+  },
+  "proton": {
+    "fact": "Three quarks bound together; the core of every hydrogen atom.",
+    "name": "Proton"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, 4.2 light-years away.",
+    "name": "To the nearest star"
+  },
+  "rbc": {
+    "fact": "You make about 2 million of these every second.",
+    "name": "Red blood cell"
+  },
+  "sand": {
+    "fact": "There are more stars in the universe than grains of sand on all Earth’s beaches.",
+    "name": "Grain of sand"
+  },
+  "solar": {
+    "fact": "Neptune takes 165 years to go round once.",
+    "name": "Solar system (to Neptune)"
+  },
+  "sun": {
+    "fact": "Holds 99.86% of all the mass in the Solar System.",
+    "name": "Sun"
+  },
+  "universe": {
+    "fact": "93 billion light-years across, the farthest light that could have reached us.",
+    "name": "Observable universe"
+  },
+  "whale": {
+    "fact": "The largest animal that has ever lived.",
+    "name": "Blue whale"
+  },
+  "wolf": {
+    "fact": "Wolves returning to Yellowstone changed the course of its rivers.",
+    "name": "Gray wolf"
+  }
+}

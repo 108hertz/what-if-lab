@@ -1,13 +1,16 @@
 import { TAU, clamp, lerp, mix } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import type { Params } from "@/lib/sim/types";
-import { BUFFERS, CHANGES, COLOR, COMBOS, SHOW, TRACK, TRAITS, WORD, kidName, stepWord, type TraitDelta } from "../data";
+import { COLOR, SHOW, TRAITS, kidName, type TraitDelta } from "../data";
+import { moreLess, say, stepWord, trackWord, traitWord } from "../words";
+import { cap1 } from "@/lib/i18n/t";
+import { pageT } from "@/lib/i18n/page";
 import { during, endOf, happened, mean, quant, values, type Mod, type W } from "../model";
 import { drawCrowd } from "./crowd";
 import { clock, easeOut, realNow, reducedMotion, spring } from "./motion";
 import { COOL, HAIR, SKIN, WARM, cloud, drawDog, drawGlyph, drawPerson, hash, heart, hexMix, parentLook, strHash, type Hold, type Look } from "./people";
 import { CHANGE_THING, drawThing, type Thing } from "./props";
-import { FLOOR_Y, LIFE_WORD, SPOT, STAND_Y, lifeOf, room, type Life } from "./rooms";
+import { FLOOR_Y, SPOT, STAND_Y, lifeOf, room, type Life } from "./rooms";
 
 /**
  * The child stage (change 0019). "One child" (default): the typical child of the 120 is the hero, big in the middle of a
@@ -41,7 +44,6 @@ let momentT0 = -10, react: React = null;
 interface Chip { txt: string; t0: number; warm: boolean }
 const chips: Chip[] = [];
 let lastLog = -1;
-const SOFT_TXT = new Set([...BUFFERS.map((b) => b.why), ...COMBOS.map((c) => c.txt)]);
 
 /** How the child reacts to a change: a jump when it helps, a slump when it is hard, a wave when it is about others. */
 function reactionOf(d: TraitDelta): React {
@@ -82,17 +84,19 @@ function updateCaptions(w: W) {
   const on = happened(w), all = w.mods.length;
   if (lastOn < 0 || w.t < lastT - 0.5 || on.length < lastOn || all < lastAll) { lastOn = on.length; lastAll = all; caps.length = 0; }
   else {
-    if (on.length > lastOn) for (const m of on.slice(lastOn)) caps.push({ txt: `Age ${Math.floor(m.age)} — ${CHANGES[m.id].cap}`, traits: TRAITS.map((k, i) => (m.d[k] ? i : -1)).filter((i) => i >= 0), t0: -1, soft: false, react: reactionOf(m.d) });
-    if (all - on.length > lastAll - lastOn) for (const m of w.mods.filter((m) => !m.on).slice(-(all - on.length - (lastAll - lastOn)))) caps.push({ txt: `Planned for age ${Math.floor(m.age)} — ${CHANGES[m.id].cap}`, traits: [], t0: -1, soft: true, react: null });
+    if (on.length > lastOn) for (const m of on.slice(lastOn)) caps.push({ txt: say()("stage.age", { age: Math.floor(m.age), cap: { k: `ch.${m.id}.cap` } }), traits: TRAITS.map((k, i) => (m.d[k] ? i : -1)).filter((i) => i >= 0), t0: -1, soft: false, react: reactionOf(m.d) });
+    if (all - on.length > lastAll - lastOn) for (const m of w.mods.filter((m) => !m.on).slice(-(all - on.length - (lastAll - lastOn)))) caps.push({ txt: say()("stage.planned", { age: Math.floor(m.age), cap: { k: `ch.${m.id}.cap` } }), traits: [], t0: -1, soft: true, react: null });
     lastOn = on.length; lastAll = all;
     if (caps.length > 3) caps.splice(1, caps.length - 3);
   }
   lastT = w.t;
   // New lines that followed from the changes become chips (not on the first frame, or after a restart or undo)
   if (lastLog < 0 || w.log.length < lastLog) lastLog = w.log.length;
+  const S = say();
   for (const e of w.log.slice(lastLog)) {
-    if (e.txt.startsWith("After ")) { const k = e.txt.indexOf(", "); chips.push({ txt: k > 0 ? e.txt.slice(k + 2) : e.txt, t0: -1, warm: false }); }
-    else if (SOFT_TXT.has(e.txt)) chips.push({ txt: e.txt, t0: -1, warm: true });
+    // Chips are said in the page's language (change 0025): a ripple without its "After …," part, buffers and combos as they are
+    if (e.k.startsWith("ev.ripple.")) chips.push({ txt: cap1(S("chip." + e.k.slice(3), e.v), pageT().tag), t0: -1, warm: false });
+    else if (e.k.startsWith("ev.buffer.") || e.k.startsWith("ev.combo.")) chips.push({ txt: S(e.k, e.v), t0: -1, warm: true });
   }
   lastLog = w.log.length;
   if (chips.length > 3) chips.splice(0, chips.length - 3);
@@ -141,24 +145,22 @@ function drawCaption(c: CanvasRenderingContext2D, cx: number, maxW: number, y0: 
 
 /* ───────────── meters ───────────── */
 
-const deg = (d: number) => (Math.abs(d) < 4 ? "a bit " : Math.abs(d) < 8 ? "" : "much ");
-
 /** Five meters in a column: glyph + word, a less ↔ more track, the typical kid's dot (and a hollow one without changes). */
 function drawMeters(c: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, v: number[][], hasBase: boolean, now: number, reduced: boolean) {
   c.fillStyle = STAGE.void; c.fillRect(x, 0, w + 999, y + h + 999);
   c.strokeStyle = STAGE.line; c.setLineDash([3, 3]); c.beginPath(); c.moveTo(x + 0.5, 0); c.lineTo(x + 0.5, y + h + 999); c.stroke(); c.setLineDash([]);
   const px = x + 16, pw = w - 30;
   c.font = "500 12px " + FONT.body; c.textBaseline = "alphabetic"; c.textAlign = "left";
-  c.fillStyle = STAGE.ink2; c.fillText(hero >= 0 ? `${kidName(hero)}, one of the 120` : "The typical kid of the 120", px, y + 14, pw - 70);
+  c.fillStyle = STAGE.ink2; c.fillText(hero >= 0 ? say()("stage.oneOf", { name: kidName(hero) }) : say()("stage.typical"), px, y + 14, pw - 70);
   const legendH = hasBase ? 22 : 0, top = y + 26, rh = Math.min(64, (h - 26 - legendH) / 5);
   SHOW.forEach((s, i) => {
     const ry = top + i * rh;
     const pq = (now - pulse[i]) / 0.9;
     if (!reduced && pq >= 0 && pq < 1) { c.fillStyle = `rgba(255,181,71,${(0.1 * (1 - pq)).toFixed(3)})`; c.fillRect(x + 4, ry - 2, w - 8, rh - 4); }
     drawGlyph(c, s, px + 8, ry + 10, 16, COLOR[s]);
-    c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink; c.textAlign = "left"; c.fillText(WORD[s], px + 22, ry + 14);
+    c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink; c.textAlign = "left"; c.fillText(traitWord(s), px + 22, ry + 14);
     const now1 = md[i], d = hasBase ? md[i] - md[5 + i] : 0;
-    const right = Math.abs(d) >= 1.5 ? `${deg(d)}${d > 0 ? "more" : "less"}` : stepWord(s, now1);
+    const right = Math.abs(d) >= 1.5 ? moreLess(d) : stepWord(s, now1);
     c.textAlign = "right"; c.fillStyle = Math.abs(d) >= 1.5 ? STAGE.alt : STAGE.ink2;
     c.fillText(right, px + pw, ry + 14, pw * 0.5);
     // Track: the middle half of the 120 kids as a soft band, the ends in words
@@ -168,8 +170,8 @@ function drawMeters(c: CanvasRenderingContext2D, x: number, y: number, w: number
     c.strokeStyle = STAGE.line; c.lineWidth = 2; c.beginPath(); c.moveTo(px, ty); c.lineTo(px + pw, ty); c.stroke(); c.lineWidth = 1;
     if (rh >= 48) {
       c.font = "500 10px " + FONT.body; c.fillStyle = STAGE.ink2;
-      c.textAlign = "left"; c.fillText(TRACK[s][0], px, ty + 16, pw / 2 - 4);
-      c.textAlign = "right"; c.fillText(TRACK[s][1], px + pw, ty + 16, pw / 2 - 4);
+      c.textAlign = "left"; c.fillText(trackWord(s, 0), px, ty + 16, pw / 2 - 4);
+      c.textAlign = "right"; c.fillText(trackWord(s, 1), px + pw, ty + 16, pw / 2 - 4);
     }
     if (hasBase) {
       const bx = X(md[5 + i]);
@@ -182,10 +184,11 @@ function drawMeters(c: CanvasRenderingContext2D, x: number, y: number, w: number
     const ly = top + 5 * rh + 6;
     c.font = "500 10px " + FONT.body; c.textAlign = "left";
     c.fillStyle = STAGE.alt; c.beginPath(); c.arc(px + 4, ly - 3, 4, 0, TAU); c.fill();
-    c.fillStyle = STAGE.ink2; c.fillText("with your changes", px + 12, ly);
-    const off = px + 12 + c.measureText("with your changes").width + 14;
+    const withW = say()("stage.with");
+    c.fillStyle = STAGE.ink2; c.fillText(withW, px + 12, ly);
+    const off = px + 12 + c.measureText(withW).width + 14;
     c.strokeStyle = STAGE.base; c.lineWidth = 1.5; c.beginPath(); c.arc(off + 4, ly - 3, 4, 0, TAU); c.stroke(); c.lineWidth = 1;
-    c.fillStyle = STAGE.ink2; c.fillText("without", off + 12, ly);
+    c.fillStyle = STAGE.ink2; c.fillText(say()("stage.without"), off + 12, ly);
   }
 }
 
@@ -368,7 +371,7 @@ export function drawChild(c: CanvasRenderingContext2D, W: number, H: number, w: 
 
   // ── Words on the stage: part of life, change cards, meters ──
   c.font = "500 12px " + FONT.body; c.fillStyle = STAGE.ink2; c.textAlign = "right"; c.textBaseline = "alphabetic";
-  if (SW > 300) c.fillText(LIFE_WORD[life], SW - 12, H - 10);
+  if (SW > 300) c.fillText(say()(`life.${life}`), SW - 12, H - 10);
   if (wide) drawMeters(c, SW, 8, panelW, H - 16, v, !!base, now, reduced);
   else drawMiniMeters(c, W, 38, !!base);
   drawCaption(c, SW / 2, SW, wide ? 40 : 76, now, reduced);

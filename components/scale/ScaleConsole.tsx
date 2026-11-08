@@ -12,6 +12,7 @@ import Dock from "../console/Dock";
 import { useFullscreen } from "../console/fullscreen";
 import ScalePanel from "./ScalePanel";
 import ScaleTransport from "./ScaleTransport";
+import { useLocale, useT } from "../i18n/I18nProvider";
 
 /** Module-level so the zoom position survives a trip into a world and back. */
 let view: ScaleView | null = null;
@@ -19,10 +20,12 @@ let view: ScaleView | null = null;
 /** The scale explorer ("/"): zoom from a proton to the observable universe; gold labels open worlds. */
 export default function ScaleConsole() {
   const router = useRouter();
+  const locale = useLocale();
   const scale = (view ??= new ScaleView());
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const centre = useRef<HTMLElement>(null);
   const fs = useFullscreen(centre);
+  const t = useT();
   const zoomRef = useRef<HTMLInputElement>(null);
   const zoomOutRef = useRef<HTMLOutputElement>(null);
   const [, rerender] = useReducer((x: number) => x + 1, 0);
@@ -35,8 +38,8 @@ export default function ScaleConsole() {
     const [key, preset] = ref.split(":") as [SandboxKey, string | undefined];
     const param = WORLDS[key].presetParam;
     if (preset && param) queuePreset(key, param, preset);
-    router.push(modeHref(key));
-  }, [router]);
+    router.push(modeHref(key, locale));
+  }, [router, locale]);
 
   useCanvasLoop(canvasRef, (ctx, W, H, dt) => {
     if (scale.draw(ctx, W, H, dt)) rerender();
@@ -106,15 +109,15 @@ export default function ScaleConsole() {
     <main className="console">
       <section className="centre" ref={centre}>
         <div className="stage">
-          <canvas ref={canvasRef} aria-label="Simulation stage" />
+          <canvas ref={canvasRef} aria-label={t("console.stage.label")} />
           <div className={heroOff ? "hero hide" : "hero"} aria-hidden={heroOff}>
-            <h1 className="display">What happens if…</h1>
-            <p className="desc-lg">Zoom from a proton to the observable universe, ten times per step. Gold labels are live worlds: open one, change it, and compare its future with the world left as it was.</p>
+            <h1 className="display">{t("scale.hero.title")}</h1>
+            <p className="desc-lg">{t("scale.hero.body")}</p>
           </div>
         </div>
         <ScaleTransport scale={scale} inputRef={zoomRef} outputRef={zoomOutRef} fullscreen={fs} />
       </section>
-      {desk ? <aside className="col tune scrolly">{panel}</aside> : <Dock tabs={[["In view", panel]]} />}
+      {desk ? <aside className="col tune scrolly">{panel}</aside> : <Dock tabs={[[t("scale.panel.inView"), panel]]} />}
     </main>
   );
 }

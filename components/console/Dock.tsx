@@ -1,10 +1,12 @@
 "use client";
 
 import { useRef, useState, type ReactNode } from "react";
+import { useT } from "../i18n/I18nProvider";
 
 /** Phone/tablet tool dock: a tablist under the stage. Its panel is the only scrolling region. */
 export default function Dock({ tabs }: { tabs: [label: string, content: ReactNode][] }) {
   const [sel, setSel] = useState(0);
+  const t = useT();
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const i = Math.min(sel, tabs.length - 1);
   const onKey = (e: React.KeyboardEvent) => {
@@ -17,7 +19,7 @@ export default function Dock({ tabs }: { tabs: [label: string, content: ReactNod
   return (
     <div className="dock">
       {tabs.length > 1 && (
-        <div className="seg dock-tabs" role="tablist" aria-label="Tools" onKeyDown={onKey}>
+        <div className="seg dock-tabs" role="tablist" aria-label={t("console.dock.tools")} onKeyDown={onKey}>
           {tabs.map(([label], k) => (
             <button
               key={label}

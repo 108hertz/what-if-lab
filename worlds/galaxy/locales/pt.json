@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Mira fora do centro",
+      "unit": "mil a.l."
+    },
+    "bhm": {
+      "label": "Massa do buraco negro",
+      "unit": "× Via Láctea"
+    },
+    "count": {
+      "label": "Galáxias que caem"
+    },
+    "dm": {
+      "label": "Matéria escura",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Gravidade restante",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Velocidade da passagem",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Mundo inicial",
+      "what-if-settings": "Ajustes das hipóteses"
+    },
+    "mass": {
+      "label": "Massa de Andrômeda",
+      "unit": "× Via Láctea"
+    },
+    "neigh": {
+      "label": "Vizinhas no início",
+      "opt": {
+        "m33": "Triângulo",
+        "m33lmc": "Triângulo + GNM",
+        "none": "Nenhuma"
+      }
+    },
+    "shape": {
+      "label": "Forma de Andrômeda",
+      "opt": {
+        "elliptical": "Elíptica",
+        "spiral": "Espiral"
+      }
+    },
+    "size": {
+      "label": "Tamanho delas",
+      "unit": "× Via Láctea"
+    },
+    "speed": {
+      "label": "Velocidade de aproximação",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Andrômeda gira",
+      "opt": {
+        "against": "Contra a nossa",
+        "same": "Como a nossa"
+      }
+    },
+    "stars": {
+      "label": "Estrelas por galáxia"
+    }
+  },
+  "ev": {
+    "bhBig": "Um buraco negro {x}× mais pesado que a Via Láctea surge no centro dela",
+    "bhSmall": "Um buraco negro com {pct}% da massa da Via Láctea surge no centro dela",
+    "bullet": "Uma galáxia atravessa tudo a {speed} km/s",
+    "closing": "Andrômeda se aproxima a cerca de {speed} km/s",
+    "flipmw": "Todas as estrelas da Via Láctea invertem a órbita",
+    "freeze": "Todas as estrelas da Via Láctea param de orbitar",
+    "headon": "Andrômeda vira direto para o nosso centro",
+    "lmc": "A Grande Nuvem de Magalhães gira em volta da Via Láctea",
+    "merge": "Os núcleos se fundem: uma elíptica gigante, “Lactômeda”",
+    "miss": "Andrômeda é desviada para passar de raspão",
+    "nodmAll": "A matéria escura some: a gravidade cai para {left}%, e as estrelas de repente estão rápidas demais",
+    "nodmSome": "Parte da matéria escura some: a gravidade cai para {left}%, e as estrelas de repente estão rápidas demais",
+    "pass1": "Primeira passagem: as galáxias mergulham uma através da outra",
+    "punch": "Uma galáxia anã atravessa o nosso centro",
+    "reverse": "Andrômeda dá meia-volta e se afasta",
+    "ring": "Nosso disco ricocheteia num anel de estrelas que se expande",
+    "stop": "Andrômeda para de vez e começa a cair",
+    "swallowed": "Outra galáxia é engolida",
+    "swarm": "{n, plural, one {Mais uma galáxia cai} other {Mais # galáxias caem}}",
+    "tails": "Elas se afastam, arrastando longas caudas de maré de estrelas",
+    "third": "Uma terceira galáxia (como a do Triângulo) cai",
+    "triangulum": "A galáxia do Triângulo chega pelo lado"
+  },
+  "meta": {
+    "intro": "A Via Láctea e Andrômeda, na rota real de colisão, aceleradas. Cada ponto é uma estrela.",
+    "name": "Galáxias",
+    "sub": "Colisões"
+  },
+  "metric": {
+    "disc": {
+      "label": "Estrelas num disco",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Galáxias restantes"
+    },
+    "sep": {
+      "label": "Distância",
+      "unit": "mil a.l."
+    },
+    "thrown": {
+      "label": "Estrelas arremessadas",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 mi anos/s",
+    "1": "10 mi anos/s",
+    "2": "25 mi anos/s",
+    "3": "50 mi anos/s",
+    "4": "150 mi anos/s",
+    "5": "400 mi anos/s",
+    "6": "1 bi anos/s"
+  },
+  "stage": {
+    "scale": "{n} anos-luz"
+  },
+  "whatif": {
+    "bh": "Um buraco negro do peso de uma galáxia surge no nosso centro",
+    "bullet": "Uma galáxia atravessa tudo",
+    "flipmw": "A Via Láctea gira ao contrário",
+    "freeze": "As estrelas da Via Láctea param de orbitar",
+    "headon": "Mirar Andrômeda bem no centro",
+    "miss": "Andrômeda passa de raspão",
+    "nodm": "A matéria escura some",
+    "reverse": "Andrômeda dá meia-volta",
+    "ring": "Uma galáxia pequena atravessa o nosso centro",
+    "stop": "Andrômeda para de vez",
+    "swarm": "Mais galáxias caem",
+    "third": "Chega uma terceira galáxia"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "zoomIn": "拡大",
+    "zoomOut": "縮小",
+    "zoomLevel": "ズーム倍率",
+    "hint": "スクロール、ピンチ、ドラッグで動かせます。金色のラベルをタップすると、その世界が開きます。"
+  },
+  "panel": {
+    "inView": "見えているもの",
+    "openThis": "この世界を開く",
+    "openWorld": "世界を開く",
+    "jumpTo": "移動"
+  },
+  "hero": {
+    "title": "もしも…だったら？",
+    "body": "陽子から観測可能な宇宙まで、1段階ごとに10倍ずつズームします。金色のラベルは動く世界です。開いて変えて、そのままの世界と未来を比べましょう。"
+  },
+  "stage": {
+    "open": "世界を開く →",
+    "screen": "画面の幅 ≈ {len}"
+  }
+}

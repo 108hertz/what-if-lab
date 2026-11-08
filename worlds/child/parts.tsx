@@ -3,12 +3,14 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import type { Control } from "@/lib/sim/types";
+import { eventText } from "@/lib/sim/say";
 import { Icon } from "@/components/ui/Icon";
 import ChangeToggles from "@/components/console/Changes";
-import {
-  CHANGES, ENDS, FAMILIES, FOREVER, GLOSSARY, HOME_OPTIONS, LEN_WORD, lenWord, SCIENCE, SHORT, SHOW, STEPS, STEP_VALUES, TRAITS, WORD, bestAges, kidName, stepOf, stepWord,
-  type Show,
-} from "./data";
+import { CHANGES, FAMILIES, FOREVER, HOME_OPTIONS, LEN_WORD, SHOW, STEPS, STEP_VALUES, TRAITS, kidName, stepOf, type Show } from "./data";
+import { bestAges, lenWord, list, stepWord, traitWord } from "./words";
+import { headingKey, worldSay } from "@/lib/sim/say";
+import { Rich } from "@/components/ui/Rich";
+import { pageT } from "@/lib/i18n/page";
 import { endOf, child, familyName, kidLine, story, typicalKid, usually, values, whenOf, why, kindOf, WHATIF_GROUPS, type P as Params, type W } from "./sim";
 import { drawPerson, drawThing, parentLook, reducedMotion, CHANGE_THING, type Look } from "./scene";
 import { moveChange, stopChange, undoChange } from "./edit";
@@ -17,6 +19,8 @@ import s from "./child.module.css";
 type P = { engine: SimEngine; onChange: () => void };
 const params = (e: SimEngine) => e.params as Params;
 const shown = (e: SimEngine) => (e.alt ?? e.base) as W;
+/** This world's words (labels + messages) in the page's language (change 0025). */
+const say = () => worldSay(child);
 
 /* ───────────── small drawn things ───────────── */
 
@@ -74,14 +78,15 @@ export function useTick(v: number): number {
 
 export function FamilyPicker({ engine, onChange }: P) {
   const p = params(engine);
-  const pick = (v: string) => { engine.setParam("family", v); engine.restart(); onChange(); };
+  const pick = (v: string) => { engine.rebuild(engine.setParam("family", v).keys); onChange(); };
+  const S = say();
   return (
     <label className="ctl" htmlFor="child-family">
-      <span className="ctl-head">Pick a family</span>
+      <span className="ctl-head">{S("ui.pickFamily")}</span>
       <span className="select">
         <select id="child-family" value={p.family} onChange={(e) => pick(e.target.value)}>
-          {Object.entries(FAMILIES).map(([id, f]) => <option key={id} value={id}>{f.name}</option>)}
-          <option value="custom">{p.family === "custom" ? familyName(p) : "Build your own"}</option>
+          {Object.keys(FAMILIES).map((id) => <option key={id} value={id}>{S(`ctl.family.opt.${id}`)}</option>)}
+          <option value="custom">{p.family === "custom" ? familyName(p) : S("ctl.family.opt.custom")}</option>
         </select>
         <Icon name="chevron" size={18} />
       </span>
@@ -95,12 +100,11 @@ export function FamilyPicker({ engine, onChange }: P) {
 const parentVal = (p: Params, who: "a" | "b", i: number) => (i === 4 ? 100 - Number(p[who + "N"]) : Number(p[who + TRAITS[i]]));
 
 function ParentCard({ engine, onChange, who }: P & { who: "a" | "b" }) {
-  const p = params(engine), [open, setOpen] = useState(false);
-  const name = who === "a" ? "Parent A" : "Parent B", id = `child-parent-${who}`;
+  const p = params(engine), [open, setOpen] = useState(false), S = say();
+  const name = S(headingKey(who === "a" ? "Parent A" : "Parent B")), id = `child-parent-${who}`;
   const set = (i: number, step: number) => {
     const v = STEP_VALUES[step];
-    engine.setParam(who + TRAITS[i], i === 4 ? 100 - v : v);
-    engine.restart(); onChange();
+    engine.rebuild(engine.setParam(who + TRAITS[i], i === 4 ? 100 - v : v).keys); onChange();
   };
   return (
     <div className={s.parent}>
@@ -111,17 +115,17 @@ function ParentCard({ engine, onChange, who }: P & { who: "a" | "b" }) {
           <span className={s.chips}>{SHOW.map((t, i) => <span key={t} className={s.chip}><TraitGlyph t={t} size={12} />{stepWord(t, parentVal(p, who, i))}</span>)}</span>
         </div>
         <button className={s.edit} aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
-          {open ? "Done" : "Edit"}<span className={s.chev}><Icon name="chevron" size={16} /></span>
+          {S(open ? "ui.done" : "ui.edit")}<span className={s.chev}><Icon name="chevron" size={16} /></span>
         </button>
       </div>
       <div className={`${s.drawer} ${open ? s.open : ""}`} id={id} inert={!open}>
         <div className={s.drawerIn}>
           {SHOW.map((t, i) => (
             <label key={t} className={s.stepRow} htmlFor={`${id}-${t}`}>
-              <span className={s.stepLabel}><TraitGlyph t={t} size={14} />{WORD[t]}</span>
+              <span className={s.stepLabel}><TraitGlyph t={t} size={14} />{traitWord(t)}</span>
               <span className="select">
                 <select id={`${id}-${t}`} value={stepOf(parentVal(p, who, i))} onChange={(e) => set(i, Number(e.target.value))}>
-                  {STEPS[t].map((w, k) => <option key={k} value={k}>{w}</option>)}
+                  {STEPS[t].map((_, k) => <option key={k} value={k}>{S(`step.${t}.${k}`)}</option>)}
                 </select>
                 <Icon name="chevron" size={16} />
               </span>
@@ -134,12 +138,13 @@ function ParentCard({ engine, onChange, who }: P & { who: "a" | "b" }) {
 }
 
 export function ParentCards({ engine, onChange }: P) {
+  const S = say();
   return (
     <section className={s.parents}>
-      <h3 className="headline">The parents</h3>
+      <h3 className="headline">{S("ui.parents")}</h3>
       <ParentCard engine={engine} onChange={onChange} who="a" />
       <ParentCard engine={engine} onChange={onChange} who="b" />
-      <p className="small">Each kid gets a different mix of the two parents. Changing the family starts again.</p>
+      <p className="small">{S("ui.parentsNote")}</p>
     </section>
   );
 }
@@ -148,23 +153,24 @@ export function ParentCards({ engine, onChange }: P) {
 
 export function HomeSettings({ engine, onChange }: P) {
   const p = params(engine);
-  const set = (id: string, v: string) => { engine.setParam(id, v); engine.restart(); onChange(); };
+  const set = (id: string, v: string) => { engine.rebuild(engine.setParam(id, v).keys); onChange(); };
+  const S = say();
   return (
     <section>
-      <h3 className="headline">Home</h3>
+      <h3 className="headline">{S(headingKey("Home"))}</h3>
       <div className={s.home}>
-        {HOME_OPTIONS.map(([id, label, opts]) => {
+        {HOME_OPTIONS.map(([id, , opts]) => {
           const v = String(p[id]), cur = opts.find((o) => o[0] === v) ?? opts[0];
           return (
             <label key={id} className="ctl" htmlFor={`child-${id}`}>
-              <span className="ctl-l">{label}</span>
+              <span className="ctl-l">{S(`ctl.${id}.label`)}</span>
               <span className="select">
                 <select id={`child-${id}`} value={cur[0]} onChange={(e) => set(id, e.target.value)} aria-describedby={`child-${id}-help`}>
-                  {opts.map(([o, lab]) => <option key={o} value={o}>{lab}</option>)}
+                  {opts.map(([o]) => <option key={o} value={o}>{S(`ctl.${id}.opt.${o}`)}</option>)}
                 </select>
                 <Icon name="chevron" size={18} />
               </span>
-              <span className={s.help} id={`child-${id}-help`}>{cur[2]}</span>
+              <span className={s.help} id={`child-${id}-help`}>{S(`home.${id}.help.${cur[0]}`)}</span>
             </label>
           );
         })}
@@ -178,38 +184,38 @@ export function HomeSettings({ engine, onChange }: P) {
 function ChangeSettings({ engine, onChange }: P) {
   const p = params(engine), w = shown(engine);
   const set = (k: string, v: string) => { engine.setParam(k, v); onChange(); };
-  const at = whenOf(w, p), later = at > w.t;
+  const at = whenOf(w, p), later = at > w.t, S = say();
   return (
     <div className={s.settings}>
       <label className="ctl" htmlFor="child-when">
-        <span className="ctl-l">When it happens</span>
+        <span className="ctl-l">{S("ctl.s_age.label")}</span>
         <span className="select">
           <select id="child-when" value={p.s_age} onChange={(e) => set("s_age", e.target.value)}>
-            <option value="now">Now (age {Math.floor(w.t)})</option>
-            {Array.from({ length: 17 }, (_, i) => <option key={i} value={String(i + 1)}>At age {i + 1}{i + 1 <= w.t ? " (already past: now)" : ""}</option>)}
+            <option value="now">{S("ui.nowAge", { n: Math.floor(w.t) })}</option>
+            {Array.from({ length: 17 }, (_, i) => <option key={i} value={String(i + 1)}>{S(i + 1 <= w.t ? "ui.atAgePast" : "ui.atAge", { n: i + 1 })}</option>)}
           </select>
           <Icon name="chevron" size={18} />
         </span>
       </label>
       <label className="ctl" htmlFor="child-size">
-        <span className="ctl-l">How big</span>
+        <span className="ctl-l">{S("ctl.s_size.label")}</span>
         <span className="select">
           <select id="child-size" value={p.s_size} onChange={(e) => set("s_size", e.target.value)}>
-            <option value="small">Small</option><option value="medium">Medium</option><option value="big">Big</option>
+            {["small", "medium", "big"].map((v) => <option key={v} value={v}>{S(`ctl.s_size.opt.${v}`)}</option>)}
           </select>
           <Icon name="chevron" size={18} />
         </span>
       </label>
       <label className="ctl" htmlFor="child-len">
-        <span className="ctl-l">How long</span>
+        <span className="ctl-l">{S("ctl.s_len.label")}</span>
         <span className="select">
           <select id="child-len" value={p.s_len ?? "usual"} onChange={(e) => set("s_len", e.target.value)}>
-            {Object.entries(LEN_WORD).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+            {Object.keys(LEN_WORD).map((v) => <option key={v} value={v}>{S(`ctl.s_len.opt.${v}`)}</option>)}
           </select>
           <Icon name="chevron" size={18} />
         </span>
       </label>
-      <p className={`small ${s.whenLine}`}>{later ? `Your next click happens at age ${Math.floor(at)}.` : "Your next click happens now."}{(p.s_len ?? "usual") === "usual" ? " Each change lasts as long as it usually does." : ""}</p>
+      <p className={`small ${s.whenLine}`}>{[later ? S("ui.nextAt", { n: Math.floor(at) }) : S("ui.nextNow"), (p.s_len ?? "usual") === "usual" ? S("ui.usualLen") : ""].filter(Boolean).join(" ")}</p>
     </div>
   );
 }
@@ -241,24 +247,24 @@ export function ChangeList({ engine, onChange }: P) {
   const mods = engine.alt ? (engine.alt as W).mods : [];
   const count = (id: string) => mods.filter((m) => m.id === id).length;
   const ages = (id: string) => mods.filter((m) => m.id === id).map((m) => Math.floor(m.age));
-  const [pressed, setPressed] = useState<string | null>(null);
+  const [pressed, setPressed] = useState<string | null>(null), S = say();
   const click = (id: string) => {
     engine.change(id); onChange();
     setPressed(id); setTimeout(() => setPressed((x) => (x === id ? null : x)), 600);
   };
   return (
     <section className={s.changes}>
-      <h3 className="headline">Things that can happen</h3>
-      <p className="small hint-line">They add up. Pick when, how big and how long, then click.</p>
+      <h3 className="headline">{S("ui.things")}</h3>
+      <p className="small hint-line">{S("ui.thingsHint")}</p>
       <ChangeSettings engine={engine} onChange={onChange} />
       <LifeRuler engine={engine} onChange={onChange} />
-      <ChangeToggles engine={engine} onChange={onChange} empty="Every change you make lands here with a tick, so you can take it out and put it back."
-        label={(e) => { const a = Number(e.rec.params.s_age); return SHORT[e.rec.id] + (Number.isFinite(a) && a > e.rec.t ? ` · planned for ${a}` : ""); }} />
+      <ChangeToggles engine={engine} onChange={onChange} empty={S("ui.changesEmpty")}
+        label={(e) => { const a = Number(e.rec.params.s_age), name = S(`whatif.${e.rec.id}`); return Number.isFinite(a) && a > e.rec.t ? S("ui.plannedFor", { name, n: a }) : name; }} />
       {WHATIF_GROUPS.map(([g, ids], gi) => {
         const n = ids.reduce((a, id) => a + count(id), 0);
         return (
           <details key={g} className={s.group} open={gi === 0}>
-            <summary><span className="ctl-head">{g}</span><span className={s.groupN}>{n ? `${n} made` : `${ids.length} to try`}</span><Icon name="chevron" size={16} /></summary>
+            <summary><span className="ctl-head">{S(`group.${gi}`)}</span><span className={s.groupN}>{n ? S("ui.made", { n }) : S("ui.toTry", { n: ids.length })}</span><Icon name="chevron" size={16} /></summary>
             <div className="forks">
               {ids.map((id) => {
                 const k = count(id), a = ages(id), best = bestAges(id), min = CHANGES[id].min;
@@ -266,11 +272,11 @@ export function ChangeList({ engine, onChange }: P) {
                   <button key={id} className={`fork ${pressed === id ? s.pressed : ""}`} aria-pressed={k > 0} onClick={() => click(id)}>
                     <ChangeIcon id={id} />
                     <span className={s.q}>
-                      {CHANGES[id].q}
-                      <span className={s.usually}>Usually: {usually(id, w)}{best ? ` · ${best}` : ""}{min && w.t < min ? ` · from ${min}` : ""}</span>
-                      {a.length > 0 && <span className={s.age}>{a.length > 1 ? `ages ${[...new Set(a)].join(", ")}` : `age ${a[0]}`}</span>}
+                      {S(`ch.${id}.q`)}
+                      <span className={s.usually}>{[S("ui.usually", { what: usually(id, w) }), best, min && w.t < min ? S("ui.fromAge", { n: min }) : ""].filter(Boolean).join(" · ")}</span>
+                      {a.length > 0 && <span className={s.age}>{a.length > 1 ? S("ui.ages", { list: list([...new Set(a)].map((x) => pageT().num(x))) }) : S("ui.age", { n: a[0] })}</span>}
                     </span>
-                    {k > 1 && <span key={k} className={`count ${s.pop}`} aria-label={`made ${k} times`}>×{k}</span>}
+                    {k > 1 && <span key={k} className={`count ${s.pop}`} aria-label={S("ui.madeTimes", { n: k })}>×{k}</span>}
                   </button>
                 );
               })}
@@ -292,7 +298,8 @@ function LifeRuler({ engine, onChange }: P) {
   const [sel, setSel] = useState(-1);
   const box = useRef<HTMLDivElement>(null);
   const drag = useRef<{ idx: number; moved: boolean } | null>(null);
-  if (!alt || !alt.mods.length) return <p className={`small ${s.rulerEmpty}`}>Your changes will appear here, on a line from birth to 18.</p>;
+  const S = say();
+  if (!alt || !alt.mods.length) return <p className={`small ${s.rulerEmpty}`}>{S("ui.rulerEmpty")}</p>;
   const t = alt.t, mods = alt.mods;
   const span = Math.min(60, Math.max(18, Math.ceil(Math.max(t, ...mods.map((m) => m.age)) + 1)));
   const P = (a: number) => `${(Math.max(0, Math.min(span, a)) / span) * 100}%`;
@@ -308,7 +315,7 @@ function LifeRuler({ engine, onChange }: P) {
   const endA = (x: typeof m) => Math.min(endOf(x) > x.age ? endOf(x) : x.age + 0.4, span);
   return (
     <div className={s.ruler}>
-      <span className="ctl-head">Your changes</span>
+      <span className="ctl-head">{S("ui.yourChanges")}</span>
       <div ref={box} className={s.rulerTrack} style={{ height: 22 + lanes * 30 }}>
         {ticks.map((a) => <span key={a} className={s.rulerTick} style={{ left: P(a) }}>{a}</span>)}
         <span className={s.rulerNow} style={{ left: P(t) }} aria-hidden="true" />
@@ -316,7 +323,7 @@ function LifeRuler({ engine, onChange }: P) {
           <span key={`b${i}`} className={`${s.rulerBar} ${x.on ? "" : s.planned}`} style={{ left: P(x.age), width: `calc(${P(endA(x))} - ${P(x.age)})`, top: 22 + lane[i] * 30 + 13 }} aria-hidden="true" />
         ))}
         {mods.map((x, i) => {
-          const label = `${CHANGES[x.id].cap}, age ${Math.floor(x.age)}, ${lenWord(x.end - x.age)}${x.on ? "" : ", planned: arrow keys move it"}`;
+          const label = S(x.on ? "ui.rulerLabel" : "ui.rulerLabelPlanned", { cap: { k: `ch.${x.id}.cap` }, age: Math.floor(x.age), len: lenWord(x.end - x.age) });
           return (
             <button key={`i${i}`} type="button" className={`${s.rulerIcon} ${x.on ? "" : s.planned} ${sel === i ? s.selected : ""}`}
               style={{ left: P(x.age), top: 22 + lane[i] * 30 }} aria-label={label} title={label}
@@ -334,12 +341,14 @@ function LifeRuler({ engine, onChange }: P) {
       </div>
       {m && (
         <div className={s.rulerPanel}>
-          <p><b>{SHORT[m.id]}</b> · age {Math.floor(m.age)} · {lenWord(m.end - m.age)} · {!m.on ? "planned" : m.stop <= t ? `stopped at ${Math.floor(m.stop)}` : endOf(m) > t && endOf(m) > m.age ? "going on" : "over"}</p>
+          <p><Rich say={S} k="ui.rulerPanel" v={{ age: Math.floor(m.age), len: lenWord(m.end - m.age),
+            state: !m.on ? S("ui.state.planned") : m.stop <= t ? S("ui.state.stopped", { n: Math.floor(m.stop) }) : endOf(m) > t && endOf(m) > m.age ? S("ui.state.going") : S("ui.state.over") }}
+            bold={{ name: S(`whatif.${m.id}`) }} /></p>
           <div className={s.rulerBtns}>
-            {!m.on && <button type="button" className="btn" onClick={() => move(sel, Math.floor(m.age) - 1)} aria-label="One year earlier"><Icon name="minus" size={16} />Earlier</button>}
-            {!m.on && <button type="button" className="btn" onClick={() => move(sel, Math.floor(m.age) + 1)} aria-label="One year later"><Icon name="plus" size={16} />Later</button>}
-            {m.on && !m.sn && m.stop >= FOREVER && endOf(m) > t && endOf(m) > m.age && <button type="button" className="btn" onClick={() => { stopChange(engine, sel); onChange(); }}>Stop now</button>}
-            <button type="button" className="btn" onClick={() => { undoChange(engine, sel); setSel(-1); onChange(); }}>Undo</button>
+            {!m.on && <button type="button" className="btn" onClick={() => move(sel, Math.floor(m.age) - 1)} aria-label={S("ui.earlierAria")}><Icon name="minus" size={16} />{S("ui.earlier")}</button>}
+            {!m.on && <button type="button" className="btn" onClick={() => move(sel, Math.floor(m.age) + 1)} aria-label={S("ui.laterAria")}><Icon name="plus" size={16} />{S("ui.later")}</button>}
+            {m.on && !m.sn && m.stop >= FOREVER && endOf(m) > t && endOf(m) > m.age && <button type="button" className="btn" onClick={() => { stopChange(engine, sel); onChange(); }}>{S("ui.stopNow")}</button>}
+            <button type="button" className="btn" onClick={() => { undoChange(engine, sel); setSel(-1); onChange(); }}>{S("ui.undo")}</button>
           </div>
         </div>
       )}
@@ -349,14 +358,15 @@ function LifeRuler({ engine, onChange }: P) {
 
 /** What the five words mean (change 0019): one line and two examples each. */
 export function Glossary() {
+  const S = say();
   return (
     <details className={s.glossary}>
-      <summary><span className="ctl-head">What do the five words mean?</span><Icon name="chevron" size={16} /></summary>
+      <summary><span className="ctl-head">{S("ui.glossTitle")}</span><Icon name="chevron" size={16} /></summary>
       <dl>
         {SHOW.map((t) => (
           <div key={t}>
-            <dt><TraitGlyph t={t} size={14} />{WORD[t]}</dt>
-            <dd>{GLOSSARY[t][0]} For example, a kid who {GLOSSARY[t][1][0]}, or {GLOSSARY[t][1][1]}.</dd>
+            <dt><TraitGlyph t={t} size={14} />{traitWord(t)}</dt>
+            <dd>{S("ui.glossLine", { meaning: { k: `gloss.${t}` }, a: { k: `glossEx.${t}.0` }, b: { k: `glossEx.${t}.1` } })}</dd>
           </div>
         ))}
       </dl>
@@ -370,7 +380,7 @@ export function Story({ engine }: { engine: SimEngine }) {
   const lines = story({ b: engine.base as W, a: engine.alt as W | null, p: params(engine) });
   return (
     <section className={s.story}>
-      <h3 className="headline">{engine.alt ? "What changed" : "What is happening"}</h3>
+      <h3 className="headline">{say()(engine.alt ? "ui.whatChanged" : "ui.happening")}</h3>
       {lines.map((l, i) => <p key={i}>{l}</p>)}
     </section>
   );
@@ -395,54 +405,54 @@ export function MeetChild({ engine, kid, setKid }: { engine: SimEngine; kid: num
   const mkey = `${Math.floor(w.t)}|${w.mods.length}|${engine.seed}|${JSON.stringify(engine.params)}`;
   if (memo.current.key !== mkey) memo.current = { key: mkey, j: typicalKid(w, v) };
   const typ = memo.current.j;
-  const j = kid < 0 ? typ : kid % w.k.length, vs = v.map((xs) => xs[j]), age = Math.floor(w.t);
+  const j = kid < 0 ? typ : kid % w.k.length, vs = v.map((xs) => xs[j]), age = Math.floor(w.t), S = say();
   return (
     <section className={s.meet}>
-      <h3 className="headline">Meet the child</h3>
+      <h3 className="headline">{S("ui.meet")}</h3>
       <div key={kid < 0 ? "typical" : j} className={s.meetCard}>
-        <PersonIcon look={kidLook(p, j, w.t, vs)} w={56} h={76} label={`${kidName(j)}, age ${age}`} />
+        <PersonIcon look={kidLook(p, j, w.t, vs)} w={56} h={76} label={S("ui.kidAge", { name: kidName(j), age })} />
         <div className={s.meetText}>
-          <span className={s.meetWho}>{kid < 0 ? "The most typical kid" : `Kid #${j + 1} of 120`}</span>
+          <span className={s.meetWho}>{kid < 0 ? S("ui.mostTypical") : S("ui.kidN", { n: j + 1 })}</span>
           <p className={s.meetLine}>{kidLine(j, age, vs)}</p>
           <span className={s.chips}>{SHOW.map((t, i) => <span key={t} className={s.chip}><TraitGlyph t={t} size={12} />{stepWord(t, vs[i])}</span>)}</span>
         </div>
       </div>
       <div className={s.meetBtns}>
-        <button className="btn" onClick={() => setKid(kid < 0 ? (typ + 1) % w.k.length : (j + 1) % w.k.length)}>Meet another one<Icon name="arrow" size={16} /></button>
-        {kid >= 0 && <button className={s.link} onClick={() => setKid(-1)}>Back to the typical kid</button>}
+        <button className="btn" onClick={() => setKid(kid < 0 ? (typ + 1) % w.k.length : (j + 1) % w.k.length)}>{S("ui.another")}<Icon name="arrow" size={16} /></button>
+        {kid >= 0 && <button className={s.link} onClick={() => setKid(-1)}>{S("stage.back")}</button>}
       </div>
-      <p className="small">Same parents, same home, and still each kid is different.</p>
+      <p className="small">{S("ui.meetNote")}</p>
     </section>
   );
 }
 
 /* ───────────── Why are they different? ───────────── */
 
-const PARTS = [["genes", "Genes"], ["home", "Home"], ["life", "Life events"], ["chance", "Chance"]] as const;
+const PARTS = ["genes", "home", "life", "chance"] as const;
 
 export function NatureBar({ engine }: { engine: SimEngine }) {
-  const rows = why(shown(engine));
+  const rows = why(shown(engine)), S = say();
   return (
     <section className={s.why}>
-      <h3 className="headline">Why are these kids different?</h3>
-      <p className={s.whyIntro}>Of all the differences between these 120 brothers and sisters, how much comes from each part:</p>
+      <h3 className="headline">{S("ui.whyTitle")}</h3>
+      <p className={s.whyIntro}>{S("ui.whyIntro")}</p>
       <div className={s.legend} aria-hidden="true">
-        {PARTS.map(([k, label], i) => <span key={k}><i className={s[`p${i}`]} />{label}</span>)}
+        {PARTS.map((k, i) => <span key={k}><i className={s[`p${i}`]} />{S(`part.${k}`)}</span>)}
       </div>
       {rows.map((r) => {
-        const txt = PARTS.map(([k, label]) => `${label.toLowerCase()} ${Math.round(r[k])} %`).join(", ");
+        const txt = list(PARTS.map((k) => S("part.pct", { part: { k: `partLc.${k}` }, n: Math.round(r[k]) })));
         return (
           <div key={r.show} className={s.whyRow}>
-            <span className={s.whyName}><TraitGlyph t={r.show} size={14} />{WORD[r.show]}</span>
-            <span className={s.bar} role="img" aria-label={`${WORD[r.show]}: ${txt}`} title={txt}>
-              {PARTS.map(([k], i) => (
+            <span className={s.whyName}><TraitGlyph t={r.show} size={14} />{traitWord(r.show)}</span>
+            <span className={s.bar} role="img" aria-label={S("ui.whyBar", { trait: traitWord(r.show), list: txt })} title={txt}>
+              {PARTS.map((k, i) => (
                 <span key={k} className={s[`p${i}`]} style={{ width: `${r[k]}%` }}>{r[k] >= 16 ? `${Math.round(r[k])}%` : ""}</span>
               ))}
             </span>
           </div>
         );
       })}
-      <p className="small">Genes: each kid gets a different mix from the parents. Home: the same home affects kids a bit differently. Life events: your changes and everyday ups and downs. Chance: everything else.</p>
+      <p className="small">{S("ui.whyNote")}</p>
     </section>
   );
 }
@@ -450,12 +460,13 @@ export function NatureBar({ engine }: { engine: SimEngine }) {
 /* ───────────── About the science ───────────── */
 
 export function AboutScience() {
+  const S = say();
   return (
     <section className={s.science}>
-      <h3 className="headline">About the science</h3>
-      <p>Scientists often describe personality with five traits, called the Big Five. Here they have plain names:</p>
-      <ul>{SHOW.map((t) => <li key={t}><b>{WORD[t]}</b> is {SCIENCE[t]}: from “{ENDS[t][0]}” to “{ENDS[t][1]}”.</li>)}</ul>
-      <p>The numbers are rough and research-inspired, not exact. They describe averages, not destiny: real kids are not predicted by a model.</p>
+      <h3 className="headline">{S("ui.science")}</h3>
+      <p>{S("ui.science1")}</p>
+      <ul>{SHOW.map((t) => <li key={t}><Rich say={S} k="ui.scienceItem" v={{ science: { k: `science.${t}` }, a: { k: `ends.${t}.0` }, b: { k: `ends.${t}.1` } }} bold={{ trait: traitWord(t) }} /></li>)}</ul>
+      <p>{S("ui.science2")}</p>
     </section>
   );
 }
@@ -466,13 +477,14 @@ const TUNE_IDS = ["inherit", "luck", "sens", "fade", "events", "s_age", "s_size"
 
 export function ChildTune({ engine, onChange }: P) {
   const ctls = child.controls.filter((c): c is Extract<Control, { type: "select" }> => c.type === "select" && TUNE_IDS.includes(c.id));
-  const set = (c: Extract<Control, { type: "select" }>, v: string) => { engine.setParam(c.id, v); if (!c.live) engine.restart(); onChange(); };
+  const set = (c: Extract<Control, { type: "select" }>, v: string) => { const { keys } = engine.setParam(c.id, v); if (!c.live) engine.rebuild(keys); onChange(); };
+  const S = say();
   const row = (c: Extract<Control, { type: "select" }>) => (
     <label key={c.id} className="ctl" htmlFor={`c-child-${c.id}`}>
-      <span className="ctl-l">{c.label}</span>
+      <span className="ctl-l">{S(`ctl.${c.id}.label`)}</span>
       <span className="select">
         <select id={`c-child-${c.id}`} value={String(engine.params[c.id])} onChange={(e) => set(c, e.target.value)}>
-          {c.options.map(([val, lab]) => <option key={val} value={val}>{lab}</option>)}
+          {c.options.map(([val]) => <option key={val} value={val}>{S(`ctl.${c.id}.opt.${val}`)}</option>)}
         </select>
         <Icon name="chevron" size={18} />
       </span>
@@ -480,14 +492,14 @@ export function ChildTune({ engine, onChange }: P) {
   );
   return (
     <section>
-      <h3 className="headline">Variables</h3>
+      <h3 className="headline">{S("ui.variables")}</h3>
       <div className="ctls">
-        <div className="ctl-head">Nature and chance</div>
+        <div className="ctl-head">{S(headingKey("Nature and chance"))}</div>
         {ctls.filter((c) => !c.live).map(row)}
-        <div className="ctl-head">Change settings (used by your next click)</div>
+        <div className="ctl-head">{S(headingKey("Change settings (used by your next click)"))}</div>
         {ctls.filter((c) => c.live).map(row)}
       </div>
-      <p className="small">Nature and chance settings start the world again. Change settings apply to your next click.</p>
+      <p className="small">{S("ui.tuneNote")}</p>
     </section>
   );
 }
@@ -512,33 +524,34 @@ function TlGlyph({ kind }: { kind: ReturnType<typeof kindOf> }) {
 
 /** Timeline filters (change 0019): which kinds of lines each one keeps. */
 const TL_FILTERS: [string, (k: ReturnType<typeof kindOf>) => boolean][] = [
-  ["All", () => true],
-  ["Changes", (k) => ["home", "school", "activity", "move", "luck", "change"].includes(k)],
-  ["Effects", (k) => k === "ripple" || k === "together"],
-  ["Growing up", (k) => k === "milestone" || k === "everyday"],
+  ["tl.all", () => true],
+  ["tl.changes", (k) => ["home", "school", "activity", "move", "luck", "change"].includes(k)],
+  ["tl.effects", (k) => k === "ripple" || k === "together"],
+  ["tl.growing", (k) => k === "milestone" || k === "everyday"],
 ];
 
 export function ChildTimeline({ engine }: { engine: SimEngine }) {
   const [f, setF] = useState(0);
-  const items = engine.timeline(80).filter((e) => TL_FILTERS[f][1](kindOf(e.txt))).slice(0, 40);
-  const who = { both: engine.alt ? "Both" : "", base: "Only with no changes", alt: "Only with your changes" };
+  const items = engine.timeline(80).filter((e) => TL_FILTERS[f][1](kindOf(e.k))).slice(0, 40);
+  const S = say();
+  const who = { both: engine.alt ? S("tl.both") : "", base: S("tl.base"), alt: S("tl.alt") };
   const bar = (
-    <div className={`seg ${s.tlFilter}`} role="group" aria-label="Show in the timeline">
-      {TL_FILTERS.map(([l], i) => <button key={l} type="button" aria-pressed={f === i} onClick={() => setF(i)}>{l}</button>)}
+    <div className={`seg ${s.tlFilter}`} role="group" aria-label={S("tl.label")}>
+      {TL_FILTERS.map(([l], i) => <button key={l} type="button" aria-pressed={f === i} onClick={() => setF(i)}>{S(l)}</button>)}
     </div>
   );
-  if (!items.length) return <>{bar}<ul className={s.tl}><li><p className="empty">{f ? "Nothing of this kind yet." : "Nothing yet. Press play, or try a change."}</p></li></ul></>;
+  if (!items.length) return <>{bar}<ul className={s.tl}><li><p className="empty">{S(f ? "tl.noneKind" : "tl.none")}</p></li></ul></>;
   return (
     <>
     {bar}
     <ul className={s.tl}>
       {items.map((e, i) => {
-        const k = kindOf(e.txt);
+        const k = kindOf(e.k);
         return (
           <li key={i} className={s[e.who]}>
             <time>{engine.sb.fmtT(e.t)}</time>
-            <span className={s.tlGlyph} title={k}><TlGlyph kind={k} /></span>
-            <span>{e.txt}{who[e.who] && <span className={s.whoLine}>{who[e.who]}</span>}</span>
+            <span className={s.tlGlyph} title={S(`kind.${k}`)}><TlGlyph kind={k} /></span>
+            <span>{eventText(engine.sb, e)}{who[e.who] && <span className={s.whoLine}>{who[e.who]}</span>}</span>
           </li>
         );
       })}

@@ -11,6 +11,9 @@ import {
 } from "@/lib/export/frame";
 import { FONT_FAMILIES, SIZES, type ExportStyle } from "@/lib/export/style";
 import { toCaption, toSrt, toStory } from "@/lib/export/text";
+import { pageT } from "@/lib/i18n/page";
+
+const S = (k: string, v?: Record<string, string | number>) => pageT()(`export.studio.${k}`, v);
 
 export interface Progress {
   /** 0–1. */
@@ -22,7 +25,7 @@ export interface Progress {
 export interface Meta { key: string; world: string; intro: string }
 
 export class Cancelled extends Error {
-  constructor() { super("Export cancelled"); this.name = "Cancelled"; }
+  constructor() { super(S("errors.cancelled")); this.name = "Cancelled"; }
 }
 
 const tick = () => new Promise<void>((r) => setTimeout(r, 0));
@@ -33,7 +36,7 @@ const check = (signal?: AbortSignal) => { if (signal?.aborted) throw new Cancell
 export async function analyse(scrub: Scrubber, onProgress?: (p: Progress) => void, signal?: AbortSignal): Promise<Analysis> {
   while (!scrub.work(20)) {
     check(signal);
-    onProgress?.({ done: scrub.progress, note: "Re-running the fork" });
+    onProgress?.({ done: scrub.progress, note: S("progress.rerun") });
     await tick();
   }
   return scrub.result!;
@@ -90,7 +93,7 @@ const stepAt = (a: Analysis, f: number) => {
 
 export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Meta, onProgress: (p: Progress) => void, signal: AbortSignal): Promise<{ blob: Blob; ext: string }> {
   const support = videoSupport();
-  if (!support) throw new Error("This browser can't record video. Try a recent Chrome, Edge, Firefox or Safari.");
+  if (!support) throw new Error(S("errors.noRecord"));
   const a = await analyse(scrub, (p) => onProgress({ done: p.done * 0.1, note: p.note }), signal);
   await loadFonts(style);
   const plan = a.plan;
@@ -118,13 +121,13 @@ export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Met
       r.seek(stepAt(a, f));
       draw(f);
       track.requestFrame?.();
-      if (f % 6 === 0) onProgress({ done: 0.1 + 0.9 * (f / total), note: `Recording · ${Math.floor(f / FPS)} s of ${Math.ceil(total / FPS)} s` });
+      if (f % 6 === 0) onProgress({ done: 0.1 + 0.9 * (f / total), note: S("progress.recording", { s: Math.floor(f / FPS), total: Math.ceil(total / FPS) }) });
       const wait = t0 + ((f + 1) * 1000) / FPS - performance.now();
       await sleep(Math.max(0, wait));
     }
     rec.stop();
     await stopped;
-    onProgress({ done: 1, note: "Saving" });
+    onProgress({ done: 1, note: S("progress.saving") });
     return { blob: new Blob(chunks, { type: support.mime.split(";")[0] }), ext: support.ext };
   } finally {
     if (rec.state !== "inactive") rec.stop();
@@ -136,7 +139,7 @@ export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Met
 // ——— Stills ———
 
 function toBlob(c: HTMLCanvasElement, type = "image/png", q?: number): Promise<Blob> {
-  return new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error("Couldn't draw the picture."))), type, q));
+  return new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error(S("errors.picture")))), type, q));
 }
 
 /** First run frame that shows at least `step` shown sim steps. */
@@ -173,7 +176,7 @@ export async function renderStills(scrub: Scrubber, style: ExportStyle, meta: Me
     ctx.setTransform(EXPORT_SCALE, 0, 0, EXPORT_SCALE, 0, 0);
     paint(style, draw);
     out.push({ name: `${String(i + 1).padStart(2, "0")}-${name}.png`, blob: await toBlob(canvas) });
-    onProgress({ done: 0.3 + 0.65 * ((i + 1) / shots.length), note: `Drawing picture ${i + 1} of ${shots.length}` });
+    onProgress({ done: 0.3 + 0.65 * ((i + 1) / shots.length), note: S("progress.picture", { i: i + 1, n: shots.length }) });
     await tick();
   }
   return out;
@@ -216,7 +219,7 @@ export async function renderSlides(scrub: Scrubber, style: ExportStyle, meta: Me
     ctx.setTransform(EXPORT_SCALE, 0, 0, EXPORT_SCALE, 0, 0);
     paint(style, draw);
     shots.push(canvas.toDataURL("image/jpeg", 0.9));
-    onProgress({ done: 0.4 + 0.5 * (shots.length / total), note: `Drawing slide ${shots.length} of ${total}` });
+    onProgress({ done: 0.4 + 0.5 * (shots.length / total), note: S("progress.slide", { i: shots.length, n: total }) });
   };
 
   const r0 = scrub.atStep(0);
@@ -234,10 +237,10 @@ export async function renderSlides(scrub: Scrubber, style: ExportStyle, meta: Me
   shoot(() => slideOutcome(ctx, base(total)));
   check(signal);
 
-  onProgress({ done: 0.95, note: "Making the PDF" });
+  onProgress({ done: 0.95, note: S("progress.pdf") });
   const { jsPDF } = await pdfLib;
   const pdf = new jsPDF({ orientation: "landscape", unit: "px", format: [W, H], hotfixes: ["px_scaling"], compress: true });
-  pdf.setProperties({ title: `${meta.world} · What-If Lab`, subject: plan.label || meta.world, creator: "What-If Lab" });
+  pdf.setProperties({ title: S("pdfTitle", { world: meta.world }), subject: plan.label || meta.world, creator: "What-If Lab" });
   shots.forEach((img, i) => {
     if (i > 0) pdf.addPage([W, H], "landscape");
     pdf.addImage(img, "JPEG", 0, 0, W, H);

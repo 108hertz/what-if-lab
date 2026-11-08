@@ -1,0 +1,113 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "ctl": {
+    "age": {
+      "label": "Age",
+      "unit": "yrs"
+    },
+    "disc": {
+      "label": "Self-discipline"
+    },
+    "health": {
+      "label": "Current health"
+    },
+    "mood": {
+      "label": "Current wellbeing"
+    },
+    "soc": {
+      "label": "Sociability"
+    },
+    "stress": {
+      "label": "Stress level"
+    }
+  },
+  "dim": {
+    "career": "Career & skills",
+    "health": "Health",
+    "social": "Relationships",
+    "well": "Wellbeing"
+  },
+  "ev": {
+    "again": "Starts again: {habit}",
+    "b6": "Six months in: craving and tolerance make stopping hard",
+    "d66": "Day 66: for those still going, the habit is now automatic",
+    "half": "Half the versions have given up",
+    "high": "{dim} reaches a strong level",
+    "low": "{dim} drops into the danger zone",
+    "start": "Starts: {habit}",
+    "w3": "Week 3: the motivation dip, most quitting happens now",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "start drinking heavily",
+    "exercise": "exercise 30 min every day",
+    "isolate": "pull away from friends",
+    "learn": "learn a skill 1 hour a day",
+    "meditate": "meditate 10 min a day",
+    "read": "read 30 min a day",
+    "sleep": "sleep 8 hours, fixed schedule",
+    "smoke": "start smoking",
+    "social": "quit social media"
+  },
+  "meta": {
+    "intro": "One person, 100 parallel versions of their life. Try new habits and see how many stick with it and what it changes.",
+    "name": "Character",
+    "sub": "100 parallel lives"
+  },
+  "metric": {
+    "career": {
+      "label": "Career & skills",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Health",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Still doing it",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Relationships",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Wellbeing",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "Start drinking heavily",
+    "exercise": "Exercise",
+    "isolate": "Pull away from friends",
+    "learn": "Learn a skill",
+    "meditate": "Meditate",
+    "read": "Read",
+    "sleep": "Sleep",
+    "smoke": "Start smoking",
+    "social": "Quit social media"
+  },
+  "speed": {
+    "0": "1 wk/s",
+    "1": "1 mo/s",
+    "2": "6 mo/s",
+    "3": "2 yr/s"
+  },
+  "stage": {
+    "caption": "{what} · smile = wellbeing · brightness = health",
+    "many": "{h, plural, one {# habit} other {# habits}} · {n} of 100 still doing at least one",
+    "none": "No new habit yet",
+    "one": "{n} of 100 still doing it"
+  },
+  "whatif": {
+    "drink": "Start drinking heavily",
+    "exercise": "Exercise 30 min every day",
+    "isolate": "Pull away from friends",
+    "learn": "Learn a skill 1 hour a day",
+    "meditate": "Meditate 10 min a day",
+    "read": "Read 30 min a day",
+    "sleep": "Sleep 8 hours, fixed schedule",
+    "smoke": "Start smoking",
+    "social": "Quit social media"
+  }
+}

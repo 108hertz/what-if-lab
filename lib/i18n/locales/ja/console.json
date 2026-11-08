@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "play": "再生",
+    "pause": "一時停止",
+    "speed": "速さ",
+    "slower": "遅く",
+    "faster": "速く",
+    "reset": "リセット",
+    "resetLabel": "すべてリセット",
+    "resetTitle": "すべてリセット：設定、変更、時間",
+    "hintFull": "変更するには全画面を終了してください。",
+    "hint": "変更を選びましょう。変更は積み重なります。チェックを外して比べられます。"
+  },
+  "fullscreen": {
+    "enter": "全画面",
+    "leave": "全画面を終了",
+    "title": "{label}（F）"
+  },
+  "changes": {
+    "title": "あなたの変更",
+    "count": "{total}件中{on}件オン",
+    "empty": "まだ何も変えていません。変更するたびにチェック付きでここに並び、オフにしたりオンに戻したりできます。",
+    "remove": "「{name}」をリストから外す",
+    "removeTitle": "リストから外す",
+    "allOn": "すべてオン",
+    "allOff": "すべてオフ",
+    "clear": "リストを空にする",
+    "throw": "惑星を投げ込む"
+  },
+  "about": {
+    "label": "このモデルについて",
+    "body": "すべては組み込みのルールと簡略化したデータで、ブラウザの中で動いています。結果は起こりうる動きを示すもので、予測ではありません。"
+  },
+  "whatifs": {
+    "title": "変更する",
+    "applied": "{n}回適用"
+  },
+  "readouts": {
+    "title": "いまの状態"
+  },
+  "world": {
+    "base": "変更なし",
+    "alt": "変更あり",
+    "both": "両方の世界",
+    "onlyBase": "変更なしのみ",
+    "onlyAlt": "変更ありのみ"
+  },
+  "tune": {
+    "title": "変数",
+    "live": "始まりの世界の設定を変えると最初からやり直します。もしもの設定は、次にもしもを選んだときに使われます。",
+    "restart": "ここを変えると世界が最初からやり直します。"
+  },
+  "chart": {
+    "withChanges": "変更あり：",
+    "noDiff": "まだ大きな違いはありません",
+    "overTime": "{metric}の推移",
+    "collecting": "データを集めています…",
+    "fork": "分岐"
+  },
+  "stage": {
+    "label": "シミュレーションのステージ",
+    "edge": "What-If Lab · シード {seed}"
+  },
+  "timeline": {
+    "title": "タイムライン",
+    "empty": "まだ目立った出来事はありません。しばらく動かすか、変更してみましょう。"
+  },
+  "dock": {
+    "tools": "ツール",
+    "ask": "もしも",
+    "tune": "調整",
+    "read": "数値",
+    "log": "記録"
+  },
+  "ad": {
+    "label": "広告",
+    "promo": "Premiumで広告なし · 年$15",
+    "short": "広告"
+  }
+}

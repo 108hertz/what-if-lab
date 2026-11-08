@@ -1,7 +1,8 @@
 import type { BaseWorld, InfoBlock, InfoRow, Sandbox } from "@/lib/sim/types";
-import { TAU, fmtDur, fmtNum, note, rng } from "@/lib/sim/core";
+import { TAU, fmtDur, fmtNum, note, ref, rng } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import { meta } from "./meta";
+import { worldSay } from "@/lib/sim/say";
 
 /** Units: AU, years, solar masses → G = 4π². Leapfrog (kick-drift-kick) integrator. */
 type P = { sunm: number; view: string };
@@ -41,6 +42,37 @@ function accel(w: W) {
     }
 }
 const find = (w: W, n: string) => w.b.find((o) => o.n === n);
+/** Body names stay English ids in the world; words use a key made from them: "Your planet" → yourplanet (change 0025). */
+const bodyId = (n: string) => n.replace(/\s+/g, "").toLowerCase();
+/** A body's name inside a sentence ("the Sun", "your planet"), as a message reference. */
+const named = (n: string) => ref("body." + bodyId(n));
+
+/** English words of this world (change 0025): event lines and the names they use. */
+const MESSAGES: Record<string, string> = {
+  "body.sun": "the Sun", "body.mercury": "Mercury", "body.venus": "Venus", "body.earth": "Earth", "body.mars": "Mars",
+  "body.jupiter": "Jupiter", "body.saturn": "Saturn", "body.uranus": "Uranus", "body.neptune": "Neptune",
+  "body.yourplanet": "your planet", "body.blackhole": "the black hole",
+  // Labels drawn next to the bodies on the stage.
+  "name.mercury": "Mercury", "name.venus": "Venus", "name.earth": "Earth", "name.mars": "Mars", "name.jupiter": "Jupiter",
+  "name.saturn": "Saturn", "name.uranus": "Uranus", "name.neptune": "Neptune", "name.yourplanet": "Your planet", "name.blackhole": "Black hole",
+  // The side panel: how Earth is doing.
+  "info.now": "Earth now", "info.changed": "With changes",
+  "status.destroyed": "destroyed", "status.flying": "flying away", "status.boiling": "oceans boiling", "status.frozen": "frozen solid",
+  "status.habitable": "habitable",
+  "ev.swallowed": "{body} is swallowed by the red giant",
+  "ev.intoSun": "{body} falls into the Sun",
+  "ev.intoBh": "{body} falls into the black hole",
+  "ev.smash": "{body} smashes into {other}",
+  "ev.escape": "{body} escapes into interstellar space",
+  "ev.sun2": "The Sun doubles in mass: stronger pull, sunlight 11× brighter",
+  "ev.nosun": "The Sun vanishes: planets fly off in straight lines",
+  "ev.giant": "The Sun swells to a red giant 0.85 AU wide and loses a third of its mass",
+  "ev.jupstar": "Jupiter gains 80× its mass and lights up as a red dwarf",
+  "ev.bh": "A black hole of 4 Suns enters from the edge of the system",
+  "ev.stop": "Earth stops dead in its orbit",
+  "ev.mars": "Earth is moved out to Mars’s orbit",
+  "ev.throw": "You throw in a new planet",
+};
 const body = (o: Omit<Body, "tr" | "ax" | "ay">): Body => ({ ...o, tr: [], ax: 0, ay: 0 });
 
 /** Deterministic background stars (positions in 0..1). */
@@ -49,6 +81,7 @@ const BG = Array.from({ length: 140 }, (_, i) => [((Math.sin(i * 12.9898) * 4375
 export const solar: Sandbox<W, P> = {
   ...meta,
   intro: "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
+  messages: MESSAGES,
   hint: "Drag to throw a planet. Changes add up.",
   controls: [
     { type: "range", id: "sunm", label: "Sun mass", min: 0.5, max: 2, step: 0.05, val: 1, unit: "× Sun" },
@@ -96,8 +129,8 @@ export const solar: Sandbox<W, P> = {
             const big = A.m >= B.m ? A : B, sm = big === A ? B : A, M = A.m + B.m;
             big.vx = (A.m * A.vx + B.m * B.vx) / M; big.vy = (A.m * A.vy + B.m * B.vy) / M; big.m = M;
             b.splice(b.indexOf(sm), 1);
-            const msg = big.n === "Sun" ? (big.giant ? `${sm.n} is swallowed by the red giant` : `${sm.n} falls into the Sun`) : big.bh ? `${sm.n} falls into the black hole` : `${sm.n} smashes into ${big.n}`;
-            note(w, msg, undefined, w.t + k * h);
+            const ev = big.n === "Sun" ? (big.giant ? "ev.swallowed" : "ev.intoSun") : big.bh ? "ev.intoBh" : "ev.smash";
+            note(w, ev, ev === "ev.smash" ? { body: named(sm.n), other: named(big.n) } : { body: named(sm.n) }, undefined, w.t + k * h);
             accel(w);
             break outer;
           }
@@ -111,31 +144,31 @@ export const solar: Sandbox<W, P> = {
       if (o.L || o.bh) continue;
       const ref = sun ?? { x: 0, y: 0, vx: 0, vy: 0, m: 0 };
       const r = Math.hypot(o.x - ref.x, o.y - ref.y), E = 0.5 * ((o.vx - ref.vx) ** 2 + (o.vy - ref.vy) ** 2) - (G4 * ref.m) / r;
-      if (r > 45 && E > 0) note(w, `${o.n} escapes into interstellar space`, "esc" + o.n);
+      if (r > 45 && E > 0) note(w, "ev.escape", { body: named(o.n) }, "esc" + o.n);
     }
   },
 
   apply(w, id, _p, ui) {
     const sun = find(w, "Sun"), e = find(w, "Earth"), j = find(w, "Jupiter");
-    if (id === "sun2" && sun) { sun.m *= 2; sun.L *= 11; note(w, "The Sun doubles in mass: stronger pull, sunlight 11× brighter"); }
-    if (id === "nosun" && sun) { w.b.splice(w.b.indexOf(sun), 1); note(w, "The Sun vanishes: planets fly off in straight lines"); }
-    if (id === "giant" && sun) { sun.cr = 0.85; sun.m *= 0.65; sun.L = 2500; sun.giant = true; sun.c = "#FF7A45"; note(w, "The Sun swells to a red giant 0.85 AU wide and loses a third of its mass"); }
-    if (id === "jupstar" && j) { j.m = 0.08; j.L = 0.0008; j.c = "#FF9A5C"; j.px = 5; j.cr = 0.0008; note(w, "Jupiter gains 80× its mass and lights up as a red dwarf"); }
+    if (id === "sun2" && sun) { sun.m *= 2; sun.L *= 11; note(w, "ev.sun2"); }
+    if (id === "nosun" && sun) { w.b.splice(w.b.indexOf(sun), 1); note(w, "ev.nosun"); }
+    if (id === "giant" && sun) { sun.cr = 0.85; sun.m *= 0.65; sun.L = 2500; sun.giant = true; sun.c = "#FF7A45"; note(w, "ev.giant"); }
+    if (id === "jupstar" && j) { j.m = 0.08; j.L = 0.0008; j.c = "#FF9A5C"; j.px = 5; j.cr = 0.0008; note(w, "ev.jupstar"); }
     if (id === "bh") {
       const r = sun ?? { x: 0, y: 0 };
       w.b.push(body({ n: "Black hole", x: r.x - 38, y: r.y + 5, vx: 8.5, vy: 0, m: 4, cr: 0.003, L: 0, c: "#000000", bh: true, px: 5 }));
-      note(w, "A black hole of 4 Suns enters from the edge of the system");
+      note(w, "ev.bh");
     }
-    if (id === "stop" && e) { e.vx = sun ? sun.vx : 0; e.vy = sun ? sun.vy : 0; note(w, "Earth stops dead in its orbit"); }
+    if (id === "stop" && e) { e.vx = sun ? sun.vx : 0; e.vy = sun ? sun.vy : 0; note(w, "ev.stop"); }
     if (id === "mars" && e && sun) {
       const g = Math.atan2(e.y - sun.y, e.x - sun.x), v = Math.sqrt((G4 * sun.m) / 1.524);
       e.x = sun.x + 1.524 * Math.cos(g); e.y = sun.y + 1.524 * Math.sin(g);
       e.vx = sun.vx - v * Math.sin(g); e.vy = sun.vy + v * Math.cos(g); e.tr = [];
-      note(w, "Earth is moved out to Mars’s orbit");
+      note(w, "ev.mars");
     }
     if (id === "throw" && ui.pending) {
       w.b.push(body({ n: "Your planet", ...ui.pending, m: 1.5e-5, cr: 0.0004, L: 0, c: "#FF8FD0", px: 4 }));
-      note(w, "You throw in a new planet");
+      note(w, "ev.throw");
     }
     accel(w);
   },
@@ -153,16 +186,17 @@ export const solar: Sandbox<W, P> = {
   },
 
   info(base, alt): InfoBlock[] {
+    const say = worldSay(solar);
     const status = (w: W) => {
       if (!find(w, "Earth")) return "destroyed";
       const r = solar.read(w, { sunm: 1, view: "inner" });
-      if (r.year == null) return "flying away";
-      if ((r.temp ?? 0) > 100) return "oceans boiling";
-      if ((r.temp ?? 0) < -30) return "frozen solid";
+      if (r.year == null) return "flying";
+      if ((r.temp ?? 0) > 100) return "boiling";
+      if ((r.temp ?? 0) < -30) return "frozen";
       return "habitable";
     };
-    const rows: InfoRow[] = [{ label: "Earth now", text: status(base) }];
-    if (alt) rows.push({ label: "With changes", text: status(alt), color: "var(--alt)" });
+    const rows: InfoRow[] = [{ label: say("info.now"), text: say("status." + status(base)) }];
+    if (alt) rows.push({ label: say("info.changed"), text: say("status." + status(alt)), color: "var(--alt)" });
     return [{ rows }];
   },
 
@@ -186,6 +220,7 @@ export const solar: Sandbox<W, P> = {
     }
     ctx.globalAlpha = 1;
     ctx.font = "11px " + FONT.body;
+    const say = worldSay(solar);
     for (const o of w.b) {
       const x = X(o.x), y = Y(o.y);
       if (x < -200 || x > W + 200 || y < -200 || y > H + 200) continue;
@@ -201,7 +236,7 @@ export const solar: Sandbox<W, P> = {
       }
       const dist = Math.hypot(o.x - cx, o.y - cy);
       const show = o.L || o.bh || (p.view === "inner" ? dist < 2.5 : p.view === "mid" ? dist < 7 && o.n !== "Mercury" : o.m > 1e-5 || o.n === "Earth");
-      if (show && o.n !== "Sun") { ctx.fillStyle = o.n === "Earth" ? "#CFE6FF" : "rgba(200,206,230,.8)"; ctx.fillText(o.n, x + o.px + 4, y - o.px - 2); }
+      if (show && o.n !== "Sun") { ctx.fillStyle = o.n === "Earth" ? "#CFE6FF" : "rgba(200,206,230,.8)"; ctx.fillText(say("name." + bodyId(o.n)), x + o.px + 4, y - o.px - 2); }
     }
     const d = ui.drag;
     if (d && d.alt === isAlt) {

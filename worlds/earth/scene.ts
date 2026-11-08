@@ -1,6 +1,16 @@
 import { TAU, clamp, lerp } from "@/lib/sim/core";
 import { FONT, STAGE, chip } from "@/lib/sim/draw";
 import { HOUSES, PEAK, TIDE, houseBase } from "./town";
+import { worldSay } from "@/lib/sim/say";
+import { pageT } from "@/lib/i18n/page";
+
+/** English words drawn on the stage (change 0025); part of the sandbox's `messages`. */
+export const STAGE_MESSAGES: Record<string, string> = {
+  "stage.gauge": "{n} m",
+  "stage.snow": "Snow line {m} m",
+  "stage.readout": "{temp} °C · sea +{sea} m · {co2} ppm",
+};
+const say = () => worldSay({ key: "earth", messages: STAGE_MESSAGES });
 
 /**
  * The earth stage: Fjordvik, a fictional fjord town under snowy peaks (change 0014).
@@ -399,7 +409,7 @@ function drawGauge(ctx: CanvasRenderingContext2D, g: Geo, gx: number, small: boo
   if (small) return;
   ctx.font = "500 10px " + FONT.body; ctx.fillStyle = STAGE.ink;
   ctx.textAlign = "right";
-  for (let m = 0; m <= 8; m += 2) ctx.fillText(m === 0 ? "0 m" : `+${m}`, gx - 6, yE(m) + 3);
+  for (let m = 0; m <= 8; m += 2) ctx.fillText(m === 0 ? say()("stage.gauge", { n: 0 }) : `+${pageT().num(m)}`, gx - 6, yE(m) + 3);
   ctx.textAlign = "left";
 }
 
@@ -520,9 +530,10 @@ export function drawScene(ctx: CanvasRenderingContext2D, W: number, H: number, t
     if (ys > g.topY + 30 && ys < g.baseY) {
       ctx.strokeStyle = "rgba(255,237,215,.7)"; ctx.setLineDash([3, 3]); ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(8, ys); ctx.lineTo(8 + W * 0.12, ys); ctx.stroke(); ctx.setLineDash([]);
-      chip(ctx, `Snow line ${(Math.round(L.snowLine / 10) * 10).toLocaleString("en-US")} m`, 8, ys - 26, STAGE.ink, "500 12px " + FONT.body);
+      chip(ctx, say()("stage.snow", { m: Math.round(L.snowLine / 10) * 10 }), 8, ys - 26, STAGE.ink, "500 12px " + FONT.body);
     }
   }
-  const sign = L.temp >= 0 ? "+" : "−";
-  chip(ctx, `${sign}${Math.abs(L.temp).toFixed(1)} °C · sea +${L.sea.toFixed(2)} m · ${Math.round(L.co2)} ppm`, 8, H - 30, STAGE.ink, "500 12px " + FONT.mono, W - 32);
+  const T = pageT(), fixed = (v: number, d: number) => T.num(v, { minimumFractionDigits: d, maximumFractionDigits: d });
+  const temp = (L.temp >= 0 ? "+" : "−") + fixed(Math.abs(L.temp), 1);
+  chip(ctx, say()("stage.readout", { temp, sea: fixed(L.sea, 2), co2: Math.round(L.co2) }), 8, H - 30, STAGE.ink, "500 12px " + FONT.mono, W - 32);
 }

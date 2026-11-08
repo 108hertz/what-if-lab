@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import type { SimEngine } from "@/lib/sim/engine";
 import ControlsForm from "./ControlsForm";
 import { Icon } from "../ui/Icon";
+import { useT } from "../i18n/I18nProvider";
+import { worldSay } from "@/lib/sim/say";
 
 type P = { engine: SimEngine; onChange: () => void };
 
@@ -11,6 +13,7 @@ type P = { engine: SimEngine; onChange: () => void };
 export function WorldHeader({ engine }: { engine: SimEngine }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const t = useT(), say = worldSay(engine.sb);
   useEffect(() => {
     if (!open) return;
     const key = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
@@ -21,14 +24,12 @@ export function WorldHeader({ engine }: { engine: SimEngine }) {
   }, [open]);
   return (
     <div className="world-head" ref={ref}>
-      <h2 className="title">{engine.sb.name}</h2>
-      <button className="iconbtn" aria-label="About this model" aria-expanded={open} onClick={() => setOpen(!open)}><Icon name="info" /></button>
+      <h2 className="title">{say("meta.name")}</h2>
+      <button className="iconbtn" aria-label={t("console.about.label")} aria-expanded={open} onClick={() => setOpen(!open)}><Icon name="info" /></button>
       {open && (
-        <div className="popover" role="dialog" aria-label="About this model">
-          <p className="desc">{engine.sb.intro}</p>
-          <p className="small">
-            Everything runs from built-in rules and simplified data, live in your browser. Results show plausible behaviour, not forecasts.
-          </p>
+        <div className="popover" role="dialog" aria-label={t("console.about.label")}>
+          <p className="desc">{say("meta.intro")}</p>
+          <p className="small">{t("console.about.body")}</p>
         </div>
       )}
     </div>
@@ -38,17 +39,18 @@ export function WorldHeader({ engine }: { engine: SimEngine }) {
 /** The what-ifs to pick (every world stacks them, change 0024). Each pick goes on the "Your changes" list. */
 export function WhatIfList({ engine, onChange }: P) {
   const count = (id: string) => engine.applied.filter((x) => x === id).length;
+  const t = useT(), say = worldSay(engine.sb);
   return (
     <section>
-      <h3 className="headline">Make changes<span className="hcount">{engine.sb.whatifs.length}</span></h3>
+      <h3 className="headline">{t("console.whatifs.title")}<span className="hcount">{engine.sb.whatifs.length}</span></h3>
       <div className="forks">
-        {engine.sb.whatifs.map(([id, label]) => {
+        {engine.sb.whatifs.map(([id]) => {
           const n = count(id);
           return (
             <button key={id} className="fork" aria-pressed={n > 0} onClick={() => { engine.change(id); onChange(); }}>
               <Icon name="fork" />
-              {label}
-              {n > 1 && <span className="count" aria-label={`applied ${n} times`}>×{n}</span>}
+              {say(`whatif.${id}`)}
+              {n > 1 && <span className="count" aria-label={t("console.whatifs.applied", { n })}>×{n}</span>}
             </button>
           );
         })}
@@ -60,15 +62,16 @@ export function WhatIfList({ engine, onChange }: P) {
 export function Readouts({ engine }: { engine: SimEngine }) {
   const { sb } = engine;
   const { base, alt } = engine.readouts();
+  const t = useT(), say = worldSay(sb);
   return (
     <section>
-      <h3 className="headline">Right now</h3>
+      <h3 className="headline">{t("console.readouts.title")}</h3>
       <table>
-        <thead><tr><th /><th><span className="ch">No change</span></th>{alt && <th><span className="ch a">With changes</span></th>}</tr></thead>
+        <thead><tr><th /><th><span className="ch">{t("console.world.base")}</span></th>{alt && <th><span className="ch a">{t("console.world.alt")}</span></th>}</tr></thead>
         <tbody>
           {sb.metrics.map((m) => (
             <tr key={m.k}>
-              <td>{m.label}{m.unit && m.unit !== "/100" && <span className="unit"> {m.unit}</span>}</td>
+              <td>{say(`metric.${m.k}.label`)}{m.unit && m.unit !== "/100" && <span className="unit"> {say(`metric.${m.k}.unit`)}</span>}</td>
               <td>{m.fmt(base[m.k])}</td>
               {alt && <td className="a">{m.fmt(alt[m.k])}</td>}
             </tr>
@@ -102,14 +105,15 @@ export function InfoBlocks({ engine }: { engine: SimEngine }) {
 }
 
 export function TunePanel({ engine, onChange }: P) {
+  const t = useT();
   return (
     <section>
-      <h3 className="headline">Variables<span className="hcount">{engine.sb.controls.length}</span></h3>
+      <h3 className="headline">{t("console.tune.title")}<span className="hcount">{engine.sb.controls.length}</span></h3>
       <ControlsForm engine={engine} onChange={onChange} />
       <p className="small">
         {engine.sb.controls.some((c) => c.type === "range" && c.live)
-          ? "Starting-world changes restart it. What-if settings apply the next time you pick a what-if."
-          : "Changing these restarts the world."}
+          ? t("console.tune.live")
+          : t("console.tune.restart")}
       </p>
     </section>
   );

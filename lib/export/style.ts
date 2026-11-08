@@ -7,6 +7,7 @@
  * Positions are fractions of the frame (0–1), so one style works at every size.
  */
 import { STAGE } from "../sim/draw";
+import { pageT } from "../i18n/page";
 
 // ——— Sizes ———
 
@@ -279,10 +280,11 @@ export function defaultLayers(size: SizeId): Record<LayerId, Layer> {
   const wide = isWide(size);
   const card = { x: fx(sx + 32), y: fy(sy + 36), w: (sw - 64) / w, ax: 0 as const, ay: 0 as const };
   const big = size === "youtube" ? 41 : size === "square" ? 29 : 41;
-  const free = (y: number): Layer => layer({ show: false, text: "Your text", x: 0.5, y, ax: 0.5, ay: 0.5, w: 0.8, size: 29, align: "center", font: "title", weight: 700, box: "scrim" });
+  const free = (y: number): Layer => layer({ show: false, text: pageT()("export.style.freeText"), x: 0.5, y, ax: 0.5, ay: 0.5, w: 0.8, size: 29, align: "center", font: "title", weight: 700, box: "scrim" });
   return {
     brand: layer({ text: "What-If Lab", x: fx(24), y: fy(wide ? 18 : 22), size: 14, upper: true, font: "title", lines: 1 }),
-    world: layer({ text: "{world} · seed {seed}", x: 1 - fx(24), y: fy(wide ? 19 : 24), ax: 1, size: 12, color: "ink2", align: "right", upper: true, font: "title", lines: 1, w: 0.5 }),
+    // Unfilled {tokens} stay as they are, so this is the template in the page's language
+    world: layer({ text: pageT()("export.style.worldText"), x: 1 - fx(24), y: fy(wide ? 19 : 24), ax: 1, size: 12, color: "ink2", align: "right", upper: true, font: "title", lines: 1, w: 0.5 }),
     title: wide
       ? layer({ text: "{whatif}", x: fx(24), y: fy(h - 112 + 26), w: 0.55, size: 24, lines: 2 })
       : layer({ text: "{whatif}", x: fx(24), y: fy(56), w: (w - 48) / w, size: size === "square" ? 18 : 29, lines: 2 }),

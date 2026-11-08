@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Zielversatz",
+      "unit": "Tsd. Lj."
+    },
+    "bhm": {
+      "label": "Masse des Schwarzen Lochs",
+      "unit": "× Milchstraße"
+    },
+    "count": {
+      "label": "Einfallende Galaxien"
+    },
+    "dm": {
+      "label": "Dunkle Materie",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Verbleibende Schwerkraft",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Tempo beim Durchflug",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Startwelt",
+      "what-if-settings": "Was-wäre-wenn-Einstellungen"
+    },
+    "mass": {
+      "label": "Masse von Andromeda",
+      "unit": "× Milchstraße"
+    },
+    "neigh": {
+      "label": "Nachbarn zu Beginn",
+      "opt": {
+        "m33": "Dreiecksgalaxie",
+        "m33lmc": "Dreiecksgalaxie + GMW",
+        "none": "Keine"
+      }
+    },
+    "shape": {
+      "label": "Form von Andromeda",
+      "opt": {
+        "elliptical": "Elliptisch",
+        "spiral": "Spirale"
+      }
+    },
+    "size": {
+      "label": "Ihre Größe",
+      "unit": "× Milchstraße"
+    },
+    "speed": {
+      "label": "Annäherungstempo",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Andromeda dreht sich",
+      "opt": {
+        "against": "Gegen unsere",
+        "same": "Wie unsere"
+      }
+    },
+    "stars": {
+      "label": "Sterne pro Galaxie"
+    }
+  },
+  "ev": {
+    "bhBig": "Ein Schwarzes Loch, {x}-mal so schwer wie die Milchstraße, erscheint in ihrem Zentrum",
+    "bhSmall": "Ein Schwarzes Loch mit {pct} % der Masse der Milchstraße erscheint in ihrem Zentrum",
+    "bullet": "Eine Galaxie schießt mit {speed} km/s mitten hindurch",
+    "closing": "Andromeda nähert sich mit etwa {speed} km/s",
+    "flipmw": "Jeder Stern der Milchstraße kehrt seine Bahn um",
+    "freeze": "Jeder Stern der Milchstraße hört auf zu kreisen",
+    "headon": "Andromeda hält direkt auf unser Zentrum zu",
+    "lmc": "Die Große Magellansche Wolke umkreist die Milchstraße",
+    "merge": "Die Kerne verschmelzen: eine riesige elliptische Galaxie, „Milkomeda“",
+    "miss": "Andromeda wird auf eine Vorbeiflugbahn geschubst",
+    "nodmAll": "Dunkle Materie verschwindet: Die Schwerkraft fällt auf {left} %, Sterne sind plötzlich zu schnell",
+    "nodmSome": "Ein Teil der Dunklen Materie verschwindet: Die Schwerkraft fällt auf {left} %, Sterne sind plötzlich zu schnell",
+    "pass1": "Erster Durchgang: Die Galaxien stürzen durcheinander hindurch",
+    "punch": "Eine Zwerggalaxie schlägt durch unser Zentrum",
+    "reverse": "Andromeda kehrt um und entfernt sich",
+    "ring": "Unsere Scheibe federt zu einem wachsenden Sternenring zurück",
+    "stop": "Andromeda bleibt stehen und beginnt dann zu fallen",
+    "swallowed": "Eine weitere Galaxie wird verschluckt",
+    "swarm": "{n, plural, one {Noch eine Galaxie fällt herein} other {# weitere Galaxien fallen herein}}",
+    "tails": "Sie schwingen auseinander und ziehen lange Gezeitenschweife aus Sternen hinter sich her",
+    "third": "Eine dritte Galaxie (wie die Dreiecksgalaxie) fällt herein",
+    "triangulum": "Die Dreiecksgalaxie treibt von der Seite heran"
+  },
+  "meta": {
+    "intro": "Milchstraße und Andromeda auf ihrem echten Kollisionskurs, im Zeitraffer. Jeder Punkt ist ein Stern.",
+    "name": "Galaxien",
+    "sub": "Kollisionen"
+  },
+  "metric": {
+    "disc": {
+      "label": "Sterne in einer Scheibe",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Übrige Galaxien"
+    },
+    "sep": {
+      "label": "Abstand",
+      "unit": "Tsd. Lj."
+    },
+    "thrown": {
+      "label": "Weggeschleuderte Sterne",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 Mio. J./s",
+    "1": "10 Mio. J./s",
+    "2": "25 Mio. J./s",
+    "3": "50 Mio. J./s",
+    "4": "150 Mio. J./s",
+    "5": "400 Mio. J./s",
+    "6": "1 Mrd. J./s"
+  },
+  "stage": {
+    "scale": "{n} Lichtjahre"
+  },
+  "whatif": {
+    "bh": "Ein galaxienschweres Schwarzes Loch erscheint in unserem Zentrum",
+    "bullet": "Eine Galaxie schießt mitten hindurch",
+    "flipmw": "Die Milchstraße dreht sich andersherum",
+    "freeze": "Die Sterne der Milchstraße hören auf zu kreisen",
+    "headon": "Andromeda genau aufs Zentrum zielen",
+    "miss": "Andromeda fliegt vorbei",
+    "nodm": "Dunkle Materie verschwindet",
+    "reverse": "Andromeda kehrt um",
+    "ring": "Eine kleine Galaxie schlägt durch unser Zentrum",
+    "stop": "Andromeda bleibt stehen",
+    "swarm": "Mehr Galaxien fallen herein",
+    "third": "Eine dritte Galaxie kommt dazu"
+  }
+}

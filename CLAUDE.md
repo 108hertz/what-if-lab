@@ -25,6 +25,12 @@ one-viewport consoles with no page scroll.
 - **Hard-to-reverse choices** (vendors, hosting, data formats) get an ADR in `docs/decisions/`.
 - **UI work** follows the `control-room-ui` skill. **New worlds** follow the `add-sandbox` skill.
 - **Worlds are separate projects** (`worlds/<key>/`); improve them one at a time, each with its own change doc.
+- **Every word goes through the catalogs** (change 0025, ADR 0010): shared UI uses `useT()` / `pageT()` with keys in
+  `lib/i18n/locales/en/*.json`; a world's words stay in its code (labels, `messages`) and are said with `worldSay(sb)`
+  (`ctl.<id>.label`, `whatif.<id>`, `metric.<k>.label`…). Run `npm run i18n:extract` after changing a world's English.
+  Ready languages (`lib/i18n/locales.ts`: en es pt de ja ar) need every key in `lib/i18n/locales/<code>/` and
+  `worlds/<key>/locales/<code>.json`; `tests/i18n-catalogs.test.ts` checks placeholders, plural categories and gaps.
+  Changing a world's English means updating those files too (or the language's test fails). `?pseudo` shows leftover English.
 - Never introduce a server, API route, server action, or secret in client code without a superseding ADR.
   Only the Clerk **publishable** key is read (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, see `.env.example`).
 - Premium gating goes through `useAccount()` / `adsAllowed` / `canExport`; never import `@clerk/*` outside
@@ -37,6 +43,7 @@ npm run dev        # http://localhost:5050
 npm run build      # production build (must pass before committing)
 npm run typecheck  # tsc --noEmit
 npm test           # vitest: every sandbox × every what-if, determinism, engine behaviour
+npm run i18n:extract  # write each world's English (labels + messages) to worlds/<key>/locales/en.json for translators
 ```
 
 Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.
@@ -98,6 +105,8 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   typed arrays, plain objects; no functions, no class instances, no Maps).
 - `step(w, dt, p)` advances by `dt` sim units. Use internal sub-steps for stability.
 - `apply(w, id, p, ui)` applies a what-if to the changed world (which may already hold other changes). Log it with `note()`.
+- `messages` — the world's English words as ICU messages, keyed relative to the world (`ev.*` event lines and the names they
+  use); other languages override them from `worlds/<key>/locales/<code>.json` (change 0025).
 - `read(w, p)` → `{metricKey: number | null}`; must be finite or `null`.
 - `draw({ctx, w, h, p, isAlt, ui}, world)` draws into a clipped rect at (0,0). No React, no DOM.
 - Optional: `info()` structured side-panel blocks, `onParamChange()` (e.g. presets), `maxT`, `hint`, `pace()` (a live-only
@@ -114,8 +123,10 @@ Each sandbox exports a `Sandbox<World, Params>` object:
   depend only on (world, dt, params). `reset()` = default params, no changes, t = 0. The shared list is
   `components/console/Changes.tsx`; every console keeps it. Side by side (no change | with changes) exists only in exports
   (`layout.split`, default "alt" = changed only).
-- Events: `note(w, text, onceKey?)`. The timeline marks events as both / no-change only / what-if only by
-  matching text and time, so keep event text stable for the same event.
+- Events: `note(w, key, values?, onceKey?)` — a message key from the sandbox's `messages` plus plain values (numbers,
+  strings, `ref()` to another key of the world), never a sentence (change 0025). The timeline marks events as both /
+  no-change only / what-if only by matching key + values and time. Show them with `eventText(sb, e)` (`lib/sim/say.ts`);
+  `draw()` and exports say words through `worldSay(sb)`, which reads the page's language from `lib/i18n/page.ts`.
 - Time units are per sandbox (`fmtT` formats them): galaxy 100 Myr, solar years, earth years, country
   years, animals days, child age in years, person years.
 - Keep sim code (`worlds/*/sim.ts`, `lib/sim`) pure TypeScript so it can move into a Web Worker later.

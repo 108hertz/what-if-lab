@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "status": {
+    "off": "このビルドではアカウントが設定されていません。ここではすべて無料です。",
+    "loading": "アカウントを確認しています…",
+    "signedOut": "ラボはアカウントなしで無料で使えます。サインインすると、どの端末でもPremiumを使えます。",
+    "free": "無料プランです。すべての世界とすべてのもしもが使えます。",
+    "premium": "Premiumがオンです：広告なし、動画とスライドの書き出しつき。",
+    "error": "アカウントサービスから応答がありません。",
+    "keepPremium": "いまはPremiumのままです。"
+  },
+  "menu": {
+    "account": "アカウント",
+    "signIn": "サインイン",
+    "createAccount": "アカウント作成",
+    "goPremium": "Premiumにする",
+    "price": "年$15",
+    "manage": "サブスクリプションの管理",
+    "settings": "アカウント設定",
+    "signOut": "サインアウト",
+    "retry": "もう一度",
+    "yourAccount": "あなたのラボアカウント",
+    "premium": "Premium",
+    "free": "無料",
+    "plan": "{plan}プラン",
+    "buttonLabel": "{label}、{plan}プラン",
+    "devPremium": "Premiumを試す（模擬）",
+    "devOnly": "開発ビルドのみ"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "広告なし",
+        "text": "すべての世界で、広告枠がすべて消えます。"
+      },
+      "phone": {
+        "name": "スマホ向け動画",
+        "text": "ショート、リール、TikTok向けの1080 × 1920のもしも動画。"
+      },
+      "wide": {
+        "name": "YouTube向け動画",
+        "text": "両方の世界を並べた1920 × 1080の動画。"
+      },
+      "slides": {
+        "name": "スライド",
+        "text": "PDFのスライド：始まりの状態、もしも、大事な瞬間、そして結果。"
+      }
+    },
+    "lead": {
+      "export": "動画とスライドはPremiumの機能です。",
+      "ads": "Premiumなら広告が消えます。",
+      "menu": "ラボを応援して、見つけたことを共有するツールを手に入れましょう。"
+    },
+    "createContinue": "アカウントを作成して続ける",
+    "haveAccount": "アカウントを持っています",
+    "noteSignedOut": "まずアカウントを作ると、Premiumがどの端末でも使えます。そのあと、ここで支払い画面が開きます。",
+    "openingCheckout": "支払い画面を開いています…",
+    "continueCheckout": "支払いに進む",
+    "noteFree": "{who}としてサインイン中。支払いは{provider}とStripeが扱い、ラボがカード情報を見ることはありません。",
+    "you": "あなた",
+    "ourProvider": "提携サービス",
+    "back": "ラボに戻る",
+    "manage": "サブスクリプションの管理",
+    "checking": "アカウントを確認しています…",
+    "retry": "もう一度",
+    "noteDev": "このビルドではアカウントが設定されていません。Premiumを試すには、アカウントメニューで「Premiumを試す（模擬）」をオンにしてください。",
+    "noteOff": "このバージョンのラボでは、まだPremiumを販売していません。",
+    "titleOn": "Premiumがオンです",
+    "title": "Premium",
+    "amount": "$15",
+    "per": "年額 · いつでも解約できます",
+    "thanks": "ありがとうございます。すべての世界で広告が消え、書き出しが使えるようになりました。",
+    "free": "Premiumがあってもなくても、すべての世界とすべてのもしもは無料のままです。"
+  },
+  "errors": {
+    "noCheckout": "このバージョンでは支払いができません。あとでもう一度お試しください。",
+    "notOnSale": "Premiumはまだ販売していません。あとでもう一度お試しください。",
+    "checkoutFailed": "支払い画面を開けませんでした。少したってからもう一度お試しください。",
+    "offline": "オフラインです。接続が戻ればアカウントも使えるようになります。",
+    "noAnswer": "アカウントサービスから応答がありません。接続を確認して、もう一度お試しください。"
+  },
+  "yourAccount": "あなたのアカウント"
+}

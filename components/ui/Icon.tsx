@@ -14,6 +14,8 @@ const GLYPHS = {
   plus: <><path d="M12 6v12" /><path d="M6 12h12" /></>,
   minus: <path d="M6 12h12" />,
   arrow: <><path d="M5 12h14" /><path d="M14 7l5 5-5 5" /></>,
+  /** Language menu (change 0025): a globe. */
+  globe: <><circle cx="12" cy="12" r="8" /><path d="M4 12h16" /><path d="M12 4c2.4 2.2 3.5 5 3.5 8s-1.1 5.8-3.5 8c-2.4-2.2-3.5-5-3.5-8s1.1-5.8 3.5-8z" /></>,
   info: <><circle cx="12" cy="12" r="8" /><path d="M12 11v5" /><circle cx="12" cy="8" r="0.6" fill="currentColor" /></>,
   sun:<><circle cx="12" cy="12" r="3.5" /><path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6L18 18M6 18l1.4-1.4M16.6 7.4L18 6" /></>,
   moon: <path d="M18.5 14.5A7 7 0 0 1 9.5 5.5a7 7 0 1 0 9 9z" />,
@@ -51,6 +53,7 @@ export function Icon({ name, size = 20, label }: { name: IconName; size?: number
   return (
     <svg
       className="icon"
+      data-icon={name}
       width={size}
       height={size}
       viewBox="0 0 24 24"

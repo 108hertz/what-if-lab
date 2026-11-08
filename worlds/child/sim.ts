@@ -1,10 +1,13 @@
 import type { Params, Sandbox } from "@/lib/sim/types";
-import { fmtNum, gauss, note, num, rng } from "@/lib/sim/core";
+import type { Values } from "@/lib/i18n/message";
+import { fmtNum, gauss, note, num, ref, rng } from "@/lib/sim/core";
 import { meta } from "./meta";
 import {
-  BABY, BEHAVIOURS, BUFFERS, CALMER_AGAIN, CHANGE_GROUPS, CHANGES, SENS, COMBOS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
-  MILESTONES, MORE, PHRASE, SHORT, SHOW, SIZE, STEPS, STYLE, TALLY_AGES, TRAITS, WORD, kidName, stepWord, type Show, type TraitDelta,
+  BABY, BEHAVIOURS, CHANGE_GROUPS, CHANGES, SENS, RIPPLES, CHANGE_IDS, EVERYDAY, EVERYDAY_MUL, FADE, FAMILIES, FOREVER, HIGH, HOME_DEFAULTS, HOME_OPTIONS, HOME_TABLES, INHERIT, LEN, LEN_WORD, LOW, LUCK,
+  MILESTONES, SHORT, SHOW, SIZE, STEPS, STYLE, TALLY_AGES, TRAITS, WORD, kidName, type Show, type TraitDelta,
 } from "./data";
+import { list, moreWord, say, stepWord, traitLc } from "./words";
+
 import {
   averages, behaviourCounts, counts, endOf, happened, kidValue, lasting, mean, N_KIDS, of100, planned, quant, refresh, rippleCount, snapshot, SNAP_AGES, values, valuesAt,
   type Kid, type Mod, type W,
@@ -12,6 +15,7 @@ import {
 
 export * from "./model";
 import { drawChild, scenePace } from "./scene";
+import { MESSAGES } from "./messages";
 
 /**
  * 120 possible children of the same two parents (change 0018). Each child, for each trait:
@@ -35,9 +39,9 @@ export type P = Params & {
 /* ───────────── params → world ───────────── */
 
 export function familyName(p: Pick<P, "family" | "from">): string {
-  if (p.family !== "custom") return FAMILIES[p.family]?.name ?? "Your own family";
-  const from = p.from && FAMILIES[p.from]?.name;
-  return from ? `Your own family (based on ${from})` : "Your own family";
+  const S = say();
+  if (p.family !== "custom") return FAMILIES[p.family] ? S(`ctl.family.opt.${p.family}`) : S("name.own");
+  return p.from && FAMILIES[p.from] ? S("name.ownFrom", { from: ref(`ctl.family.opt.${p.from}`) }) : S("name.own");
 }
 
 function envOf(p: P): number[] {
@@ -68,7 +72,8 @@ export function lenOf(id: string, p: Pick<P, "s_len">): number {
 const parentCtl = (pre: string, v: number[]) =>
   TRAITS.map((k, i) => ({ type: "range" as const, id: pre + k, label: i === 4 ? "Worry (100 − calm)" : WORD[SHOW[i]], min: 0, max: 100, step: 1, val: v[i] }));
 
-const homeCtl = (id: string, label: string, opts: [string, string][]) => ({ type: "select" as const, id, label, options: opts, val: HOME_DEFAULTS[id] });
+/** The home settings, from HOME_OPTIONS (their words are the controls' labels and options; the help lines are messages). */
+const homeCtls = HOME_OPTIONS.map(([id, label, opts]) => ({ type: "select" as const, id, label, options: opts.map(([v, l]) => [v, l] as [string, string]), val: HOME_DEFAULTS[id] }));
 
 const metricFor = (s: Show) => [
   { k: s, label: WORD[s], unit: "", fmt: (v: number | null) => fmtNum(v) },
@@ -82,22 +87,14 @@ export const child: Sandbox<W, P> = {
   ...meta,
   pace: scenePace,
   intro: "The same two parents could have many different kids. Here are 120 of them, growing up from 1 to 60. Genes, home, the things that happen and plain luck all shape who they become. Press play, then try changes: they add up, and you choose when they happen and how long they last. Tap a face in \"All 120 kids\" to follow one kid.",
+  messages: MESSAGES,
   hint: "Press play to watch them grow up, then try a change.",
   controls: [
     { type: "select", id: "family", label: "Family", options: [...Object.entries(FAMILIES).map(([id, f]) => [id, f.name] as [string, string]), ["custom", "Build your own"]], val: "everyday" },
     { type: "heading", label: "Parent A" }, ...parentCtl("a", FAMILIES.everyday.a),
     { type: "heading", label: "Parent B" }, ...parentCtl("b", FAMILIES.everyday.b),
     { type: "heading", label: "Home" },
-    homeCtl("baby", "What were they like as a baby?", [["mixed", "Each one different"], ["easy", "Easy-going"], ["slow", "Slow to warm up"], ["energy", "Full of energy"]]),
-    homeCtl("shape", "Who they live with", [["two", "Two parents"], ["one", "One parent"], ["twohomes", "Two homes"], ["big", "A big family under one roof"]]),
-    homeCtl("time", "Time together", [["long", "Parents work long hours"], ["ordinary", "Ordinary"], ["lots", "Lots of family time"]]),
-    homeCtl("style", "How the parents raise them", [["authoritative", "Warm and firm"], ["authoritarian", "Strict"], ["permissive", "Easy-going"], ["neglectful", "Distant"]]),
-    homeCtl("sib", "Brothers and sisters", [["0", "None"], ["older", "One older"], ["1", "One younger"], ["2", "Two or more"]]),
-    homeCtl("home", "Home life", [["stable", "Calm"], ["busy", "Busy"], ["unstable", "Lots of arguing"]]),
-    homeCtl("money", "Money at home", [["tight", "Tight"], ["ok", "OK"], ["comfy", "Comfortable"]]),
-    homeCtl("place", "Where they live", [["city", "City"], ["town", "Town"], ["country", "Countryside"]]),
-    homeCtl("school", "School", [["crowded", "Crowded"], ["ordinary", "Ordinary"], ["great", "Great teachers"]]),
-    homeCtl("screens", "Screen rules", [["strict", "Strict"], ["some", "Some"], ["none", "No rules"]]),
+    ...homeCtls,
     { type: "heading", label: "Nature and chance" },
     { type: "select", id: "inherit", label: "How much is inherited", options: [["25", "Low (25 %)"], ["40", "Normal (40 %)"], ["55", "High (55 %)"]], val: "40" },
     { type: "select", id: "luck", label: "How much chance and luck", options: [["small", "Small"], ["normal", "Normal"], ["big", "Big"]], val: "normal" },
@@ -111,9 +108,9 @@ export const child: Sandbox<W, P> = {
   ],
   whatifs: CHANGE_IDS.map((id) => [id, SHORT[id]]),
   speeds: [[0.5, "½ yr/s"], [1, "1 yr/s"], [2, "2 yr/s"], [5, "5 yr/s"]],
-  defaultSpeed: 1,
+  defaultSpeed: 0,
   maxT: 60,
-  fmtT: (t) => "Age " + Math.floor(t),
+  fmtT: (t) => say()("time.age", { n: Math.floor(t) }),
   metrics: [
     ...SHOW.flatMap(metricFor),
     ...BEHAVIOURS.map((b) => ({ k: b.key, label: `Likely to ${b.kid} (of 100)`, unit: "kids", fmt: (v: number | null) => fmtNum(v) })),
@@ -152,7 +149,7 @@ export const child: Sandbox<W, P> = {
       w.k.push(kid);
     }
     snapshot(w, 1);
-    note(w, MILESTONES[0][1], MILESTONES[0][2]);
+    note(w, `ev.ms.${MILESTONES[0][2]}`, undefined, MILESTONES[0][2]);
     return w;
   },
 
@@ -177,13 +174,13 @@ export const child: Sandbox<W, P> = {
       snapshot(w, Math.floor(w.t + 1e-9));
       // Scheduled changes happen when the clock reaches their age; changes you stopped for a later age stop then
       for (const m of w.mods) {
-        if (!m.on && w.t >= m.age) { m.on = 1; note(w, CHANGES[m.id].txt); }
-        if (m.on && !m.sn && m.stop < FOREVER && w.t >= m.stop) { m.sn = 1; note(w, CHANGES[m.id].stop); }
+        if (!m.on && w.t >= m.age) { m.on = 1; note(w, `ev.change.${m.id}`); }
+        if (m.on && !m.sn && m.stop < FOREVER && w.t >= m.stop) { m.sn = 1; note(w, `ev.stop.${m.id}`); }
       }
       if (w.mods.length) syncDerived(w);
-      for (const [age, txt, key] of MILESTONES) if (w.t >= age) note(w, txt, key);
+      for (const [age, , key] of MILESTONES) if (w.t >= age) note(w, `ev.ms.${key}`, undefined, key);
       if (w.t >= 15 && !Number.isFinite(w.c15)) w.c15 = calmAvg(w);
-      if (w.t >= 23 && !w.f.calm && Number.isFinite(w.c15) && calmAvg(w) > w.c15 + 1) note(w, CALMER_AGAIN, "calm");
+      if (w.t >= 23 && !w.f.calm && Number.isFinite(w.c15) && calmAvg(w) > w.c15 + 1) note(w, "ev.calm", undefined, "calm");
       if (w.evMul > 0) for (const age of TALLY_AGES) if (w.t >= age && !w.f["tally" + age]) tally(w, age);
     }
   },
@@ -204,8 +201,8 @@ export const child: Sandbox<W, P> = {
     const m: Mod = { id, age, s: size, d, pf, on, end: age + len, stop, sn: 0, h: 0, b: 1, bi: [], aw: 1 };
     w.mods.push(m);
     refresh(w);
-    if (on) { note(w, c.style && !Object.keys(d).length ? ALREADY : c.txt); syncDerived(w); }
-    if (on && stop <= w.t) { m.sn = 1; note(w, c.stop); }
+    if (on) { note(w, c.style && !Object.keys(d).length ? "ev.already" : `ev.change.${id}`); syncDerived(w); }
+    if (on && stop <= w.t) { m.sn = 1; note(w, `ev.stop.${id}`); }
   },
 
   read(w) {
@@ -235,7 +232,6 @@ export const readAt = (w: W, a: number) => metricsOf(valuesAt(w, a));
 /* ───────────── editing changes (change 0019) ───────────── */
 
 const near = (x: number, y: number) => Math.abs(x - y) < 0.25;
-const ALREADY = "The parents were already raising them this way";
 
 /** Move a planned change to another age (now or later, not before its youngest age); its length moves with it. */
 export function moveMod(w: W, idx: number, age: number) {
@@ -267,7 +263,7 @@ export function stopMod(w: W, idx: number, age = w.t) {
   if (at >= endOf(m)) return; // it ends by itself before then
   m.stop = at;
   refresh(w);
-  if (m.on && w.t >= at) { m.sn = 1; note(w, CHANGES[m.id].stop); }
+  if (m.on && w.t >= at) { m.sn = 1; note(w, `ev.stop.${m.id}`); }
 }
 
 /* ───────────── lines that follow from the changes: ripples, buffers, combos ───────────── */
@@ -275,7 +271,8 @@ export function stopMod(w: W, idx: number, age = w.t) {
 /** Ripples common enough to get a timeline line. */
 const TALLY_P = 0.4;
 /** "After they joined a team sport at 6, 61 of 100 kids made friends on the team." */
-export const rippleLine = (m: Mod, r: number, n: number) => `After ${CHANGES[m.id].past} at ${Math.floor(m.age)}, ${of100(n)} of 100 kids ${RIPPLES[m.id][r].have}`;
+/** A ripple's timeline line as key and values (words in messages.ts). */
+export const rippleLine = (m: Mod, r: number, n: number): [string, Values] => [`ev.ripple.${m.id}.${r}`, { age: Math.floor(m.age), n: of100(n) }];
 /** When a ripple's line is due: when every kid it can happen to has had it. */
 const rippleDue = (m: Mod, r: number) => { const R = RIPPLES[m.id][r]; const t = m.age + R.delay[1]; return endOf(m) > m.age ? Math.min(t, endOf(m)) : t; };
 
@@ -286,24 +283,24 @@ const rippleDue = (m: Mod, r: number) => { const R = RIPPLES[m.id][r]; const t =
 function syncDerived(w: W) {
   for (const m of w.mods) {
     if (!m.on || w.t < m.age) continue;
-    for (const bi of m.bi) note(w, BUFFERS[bi].why, `d|${BUFFERS[bi].why}|${m.h}`, m.age);
+    for (const bi of m.bi) note(w, `ev.buffer.${bi}`, undefined, `d|ev.buffer.${bi}|${m.h}`, m.age);
     (RIPPLES[m.id] ?? []).forEach((R, r) => {
       if (R.p < TALLY_P || w.f[`d|r|${m.h}|${r}`]) return;
       const due = rippleDue(m, r);
       if (w.t < due) return;
       w.f[`d|r|${m.h}|${r}`] = 1;
       const n = rippleCount(w, m, r, due);
-      if (n > 0) note(w, rippleLine(m, r, n), `d|${rippleLine(m, r, n)}|${m.h}`, due);
+      if (n > 0) { const [k, v] = rippleLine(m, r, n); note(w, k, v, `d|${k}|${m.h}|${v.age}`, due); }
     });
   }
-  for (const c of w.cmb) if (w.t >= c.start) note(w, COMBOS[c.c].txt, `d|${COMBOS[c.c].txt}|${c.start}`, c.start);
+  for (const c of w.cmb) if (w.t >= c.start) note(w, `ev.combo.${c.c}`, undefined, `d|ev.combo.${c.c}|${c.start}`, c.start);
 }
 
 /** Forget every line that follows from the changes (they are noted again from the changes as they are now). */
 function clearDerived(w: W) {
-  const txts = new Set<string>();
-  for (const key of Object.keys(w.f)) if (key.startsWith("d|")) { const t = key.split("|")[1]; if (t !== "r") txts.add(t); delete w.f[key]; }
-  w.log = w.log.filter((e) => !txts.has(e.txt));
+  const keys = new Set<string>();
+  for (const key of Object.keys(w.f)) if (key.startsWith("d|")) { const k = key.split("|")[1]; if (k !== "r") keys.add(k); delete w.f[key]; }
+  w.log = w.log.filter((e) => !keys.has(e.k));
 }
 
 /**
@@ -313,11 +310,11 @@ function clearDerived(w: W) {
 export function removeMod(w: W, start: Pick<W, "style">, idx: number) {
   const [m] = w.mods.splice(idx, 1);
   if (!m) return;
-  const c = CHANGES[m.id], drop = (txts: string[], t: number) => {
-    for (let i = w.log.length - 1; i >= 0; i--) if (txts.includes(w.log[i].txt) && near(w.log[i].t, t)) { w.log.splice(i, 1); return; }
+  const drop = (keys: string[], t: number) => {
+    for (let i = w.log.length - 1; i >= 0; i--) if (keys.includes(w.log[i].k) && near(w.log[i].t, t)) { w.log.splice(i, 1); return; }
   };
-  if (m.on) drop([c.txt, ALREADY], m.age);
-  if (m.sn) drop([c.stop], m.stop);
+  if (m.on) drop([`ev.change.${m.id}`, "ev.already"], m.age);
+  if (m.sn) drop([`ev.stop.${m.id}`], m.stop);
   let style = start.style;
   for (const x of w.mods) {
     const cx = CHANGES[x.id];
@@ -340,22 +337,19 @@ function tally(w: W, age: number) {
   w.f["tally" + age] = 1;
   let best = -1, bn = 0;
   EVERYDAY.forEach((_, ei) => { const n = w.k.filter((kid) => kid.em & (1 << ei)).length; if (n > bn) { bn = n; best = ei; } });
-  if (best >= 0 && bn > 0) note(w, `By ${age}, ${of100(bn)} of 100 kids ${EVERYDAY[best].have}`);
+  if (best >= 0 && bn > 0) note(w, `ev.tally.${EVERYDAY[best].id}`, { age, n: of100(bn) });
 }
 
 /* ───────────── words ───────────── */
 
-const list = (xs: string[]) => (xs.length < 2 ? xs.join("") : xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1]);
-const degree = (d: number) => (Math.abs(d) < 4 ? "a bit " : Math.abs(d) < 8 ? "" : "much ");
 export const SAME = 1.5;
-
 
 /** The comparison with the hidden no-change world, as [changed phrases, unchanged trait words]. */
 export function compare(a: W, b: W): { up: [Show, string][]; same: Show[] } {
   const A = averages(a), B = averages(b);
   const ch = SHOW.map((s, i) => [s, A[i] - B[i]] as [Show, number]);
   const up = ch.filter(([, d]) => Math.abs(d) >= SAME).sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]))
-    .map(([s, d]) => [s, degree(d) + MORE[s][d > 0 ? 1 : 0]] as [Show, string]);
+    .map(([s, d]) => [s, moreWord(s, d)] as [Show, string]);
   return { up, same: ch.filter(([, d]) => Math.abs(d) < SAME).map(([s]) => s) };
 }
 
@@ -363,71 +357,72 @@ export function compare(a: W, b: W): { up: [Show, string][]; same: Show[] } {
 function effectWords(d: TraitDelta): string {
   const ds = TRAITS.map((k, i) => [SHOW[i], i === 4 ? -(d[k] ?? 0) : d[k] ?? 0] as [Show, number]).filter(([, x]) => Math.abs(x) >= 1)
     .sort((x, y) => Math.abs(y[1]) - Math.abs(x[1])).slice(0, 2);
-  return ds.length ? list(ds.map(([s, x]) => degree(x / 1.6) + MORE[s][x > 0 ? 1 : 0])) : "about the same";
+  return ds.length ? list(ds.map(([s, x]) => moreWord(s, x / 1.6))) : say()("eff.same");
 }
 
 /** 3–5 plain sentences about what happened and why, in the model's own terms. Never predictions or advice. */
 export function story({ b, a, p }: { b: W; a: W | null; p: P }): string[] {
-  const w = a ?? b, age = Math.floor(w.t), v = values(w), avg = v.map(mean), cnt = counts(w, v), out: string[] = [];
+  const S = say(), w = a ?? b, age = Math.floor(w.t), v = values(w), avg = v.map(mean), cnt = counts(w, v), out: string[] = [];
   if (!a) {
     const top = SHOW.map((s, i) => [s, avg[i]] as [Show, number]).filter(([, x]) => Math.abs(x - 50) >= 6)
       .sort((x, y) => Math.abs(y[1] - 50) - Math.abs(x[1] - 50)).slice(0, 2);
-    out.push(`Age ${age}: ${top.length ? `most of these 120 kids are ${list(top.map(([s, x]) => stepWord(s, x)))}` : "most of these 120 kids are somewhere in the middle on every trait"}.`);
+    out.push(top.length ? S("story.top", { age, list: list(top.map(([s, x]) => stepWord(s, x))) }) : S("story.middle", { age }));
     const spread = SHOW.map((s, i) => [s, Math.min(cnt[i].hi, cnt[i].lo)] as [Show, number]).sort((x, y) => y[1] - x[1])[0];
     const si = SHOW.indexOf(spread[0]);
-    if (spread[1] > 0) out.push(`They still differ a lot: ${of100(cnt[si].hi)} of 100 are ${STEPS[spread[0]][4]}, while ${of100(cnt[si].lo)} ${spread[0] === "Calm" ? "worry a lot" : `are ${STEPS[spread[0]][0]}`}.`);
-    else out.push("Brothers and sisters still differ: each gets a different mix of genes and different luck.");
+    if (spread[1] > 0) {
+      out.push(S(spread[0] === "Calm" ? "story.differCalm" : "story.differ", {
+        hi: of100(cnt[si].hi), lo: of100(cnt[si].lo), high: ref(`step.${spread[0]}.4`), low: ref(`step.${spread[0]}.0`),
+      }));
+    } else out.push(S("story.siblings"));
     const st = String(p.style);
-    out.push(st === "authoritative" ? "Warm and firm parents help most kids feel calmer and get organised."
-      : st === "authoritarian" ? "Strict parents make most kids a bit more organised, but also more worried."
-      : st === "permissive" ? "Easy-going parents: kids tend to be more outgoing, but less organised."
-      : "With distant parents, many kids worry more and are less organised.");
+    out.push(S(`story.style.${["authoritative", "authoritarian", "permissive"].includes(st) ? st : "neglectful"}`));
   } else {
-    out.push(`Compared with the same kids with no changes, at ${age}:`);
+    out.push(S("story.compared", { age }));
     const c = compare(a, b);
-    out.push(c.up.length ? `they are ${list(c.up.slice(0, 3).map(([, x]) => x))}.` : "they are about the same so far.");
+    out.push(c.up.length ? S("story.they", { list: list(c.up.slice(0, 3).map(([, x]) => x)) }) : S("story.theySame"));
     const seen = new Set<string>();
     for (const m of happened(a)) {
       if (seen.has(m.id) || out.length >= 4) continue;
       seen.add(m.id);
-      const ch = CHANGES[m.id], end = endOf(m), worry = (m.d.N ?? 0) > 2;
+      const end = endOf(m), worry = (m.d.N ?? 0) > 2;
       if (!Object.keys(m.d).length) continue;
-      const fadeTxt = m.stop <= w.t ? `, until it stopped at ${Math.floor(m.stop)}` : m.pf < 0.5 && w.t - end > 6 ? (worry ? ", then most bounced back" : ", and much of it faded later") : "";
-      const at = Math.floor(m.age);
+      const fade = m.stop <= w.t ? S("story.fade.stopped", { n: Math.floor(m.stop) })
+        : m.pf < 0.5 && w.t - end > 6 ? S(worry ? "story.fade.bounced" : "story.fade.faded") : "";
       // The most common thing that followed, so far
       const rip = (RIPPLES[m.id] ?? []).map((R, r) => [r, rippleCount(w, m, r)] as [number, number]).filter(([, n]) => n > 0).sort((x, y) => y[1] - x[1])[0];
-      const ripTxt = rip ? `, and ${of100(rip[1])} of 100 ${RIPPLES[m.id][rip[0]].have}` : "";
-      out.push(`When ${ch.past} at ${at}, most kids became ${effectWords(m.d)}${fadeTxt}${ripTxt}.`);
-      if (m.bi.length && out.length < 4) out.push(`${BUFFERS[m.bi[0]].why}.`);
+      const ripTxt = rip ? S("story.rip", { n: of100(rip[1]), have: ref(`have.${m.id}.${rip[0]}`) }) : "";
+      out.push(S("story.when", { past: ref(`ch.${m.id}.past`), at: Math.floor(m.age), effect: effectWords(m.d), fade, rip: ripTxt }));
+      if (m.bi.length && out.length < 4) out.push(S("story.sentence", { s: ref(`ev.buffer.${m.bi[0]}`) }));
     }
-    for (const c of a.cmb) if (a.t >= c.start && out.length < 4) out.push(`${COMBOS[c.c].txt}.`);
+    for (const c of a.cmb) if (a.t >= c.start && out.length < 4) out.push(S("story.sentence", { s: ref(`ev.combo.${c.c}`) }));
     const next = planned(a)[0];
-    if (next && out.length < 5) out.push(`Planned for age ${Math.floor(next.age)}: ${CHANGES[next.id].cap}.`);
+    if (next && out.length < 5) out.push(S("story.planned", { age: Math.floor(next.age), cap: ref(`ch.${next.id}.cap`) }));
   }
   if (out.length < 5) {
-    if (age < 5) out.push("Little kids already differ: some are bold, some are careful.");
-    else if (age >= 13 && age < 20) out.push("The teenage years: worries go up and tidiness dips for a while. That is normal.");
-    else if (age >= 25) out.push("By now personality has mostly settled. It keeps changing slowly all through life.");
+    if (age < 5) out.push(S("story.little"));
+    else if (age >= 13 && age < 20) out.push(S("story.teen"));
+    else if (age >= 25) out.push(S("story.settled"));
   }
   return out.slice(0, 5);
 }
 
 /** "Sam, 12: curious about everything and loves being with people, sometimes worries." */
 export function kidLine(j: number, age: number, vs: number[]): string {
+  const S = say();
   const ext = SHOW.map((s, i) => [s, vs[i] - 50] as [Show, number]).filter(([, d]) => Math.abs(d) >= 10).sort((x, y) => Math.abs(y[1]) - Math.abs(x[1]));
-  const ph = ext.slice(0, 3).map(([s, d]) => PHRASE[s][d > 0 ? 1 : 0]);
+  const ph = ext.slice(0, 3).map(([s, d]) => S(`phrase.${s}.${d > 0 ? 1 : 0}`));
   const top = SHOW.map((s, i) => [s, vs[i]] as [Show, number]).sort((x, y) => Math.abs(y[1] - 50) - Math.abs(x[1] - 50))[0];
-  const body = ph.length ? (ph.length < 3 ? list(ph) : `${ph[0]} and ${ph[1]}, ${ph[2]}`)
-    : Math.abs(top[1] - 50) >= 5 ? `in between on most things, ${top[1] > 50 ? "a little more" : "a little less"} ${WORD[top[0]].toLowerCase()}` : "in between on most things";
-  return `${kidName(j)}, ${age}: ${body}.`;
+  const body = ph.length ? (ph.length < 3 ? list(ph) : S("kid.three", { a: ph[0], b: ph[1], c: ph[2] }))
+    : Math.abs(top[1] - 50) >= 5 ? S(top[1] > 50 ? "kid.betweenMore" : "kid.betweenLess", { trait: traitLc(top[0]) }) : S("kid.between");
+  return S("kid.line", { name: kidName(j), age, body });
 }
 
 /** The kind of a timeline line, for its glyph. */
-export function kindOf(txt: string): "milestone" | "home" | "school" | "activity" | "move" | "everyday" | "change" | "ripple" | "together" | "luck" {
-  if (MILESTONES.some(([, t]) => t === txt) || txt === CALMER_AGAIN) return "milestone";
-  if (txt.startsWith("By ")) return "everyday";
-  if (txt.startsWith("After ")) return "ripple";
-  if (BUFFERS.some((b) => b.why === txt) || COMBOS.some((c) => c.txt === txt)) return "together";
-  for (const c of Object.values(CHANGES)) if (c.txt === txt) return c.kind;
+export function kindOf(k: string): "milestone" | "home" | "school" | "activity" | "move" | "everyday" | "change" | "ripple" | "together" | "luck" {
+  if (k.startsWith("ev.ms.") || k === "ev.calm") return "milestone";
+  if (k.startsWith("ev.tally.")) return "everyday";
+  if (k.startsWith("ev.ripple.")) return "ripple";
+  if (k.startsWith("ev.buffer.") || k.startsWith("ev.combo.")) return "together";
+  if (k.startsWith("ev.change.")) return CHANGES[k.slice(10)]?.kind ?? "change";
   return "change";
 }

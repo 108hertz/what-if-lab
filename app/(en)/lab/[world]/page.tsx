@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Lab from "@/components/shell/LabClient";
-import { WORLDS, SANDBOX_KEYS, isSandboxKey } from "@/worlds/registry";
+import LabPage from "@/components/shell/LabPage";
+import { SANDBOX_KEYS, isSandboxKey } from "@/worlds/registry";
+import { pageMeta } from "@/components/shell/pageCopy";
 
 export function generateStaticParams() {
   return SANDBOX_KEYS.map((world) => ({ world }));
@@ -9,11 +10,11 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ world: string }> }): Promise<Metadata> {
   const { world } = await params;
-  return { title: isSandboxKey(world) ? `${WORLDS[world].name} · What-If Lab` : "What-If Lab" };
+  return isSandboxKey(world) ? pageMeta("en", world) : {};
 }
 
 export default async function WorldPage({ params }: { params: Promise<{ world: string }> }) {
   const { world } = await params;
   if (!isSandboxKey(world)) notFound();
-  return <Lab mode={world} />;
+  return <LabPage locale="en" mode={world} />;
 }

@@ -1,0 +1,189 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ no ar",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Emissões anuais de CO₂",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Cobertura florestal",
+      "unit": "% da terra"
+    },
+    "front": {
+      "label": "Altura da orla",
+      "unit": "m acima do mar"
+    },
+    "h": {
+      "air-today": "O ar hoje",
+      "emissions": "Emissões",
+      "my-future-used-by-build-my-own-future": "Meu futuro (usado por “Montar meu próprio futuro”)",
+      "planet": "Planeta",
+      "your-town": "Sua cidade"
+    },
+    "mDac": {
+      "label": "Remoção de CO₂",
+      "unit": "Gt por ano"
+    },
+    "mDim": {
+      "label": "Aerossóis que escurecem o Sol",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Mudar emissões em",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Corte de metano",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Árvores plantadas",
+      "unit": "tri"
+    },
+    "mWall": {
+      "label": "Muro contra o mar",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "Ao longo de",
+      "unit": "anos"
+    },
+    "meth": {
+      "label": "Metano no ar",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Para onde vão as emissões",
+      "opt": {
+        "fall": "Caem devagar (promessas de hoje)",
+        "flat": "Se estabilizam",
+        "grow": "Continuam subindo"
+      }
+    },
+    "sens": {
+      "label": "Sensibilidade climática",
+      "unit": "°C por 2× CO₂"
+    },
+    "tip": {
+      "label": "Pontos de virada",
+      "opt": {
+        "off": "Desligados",
+        "on": "Ligados: permafrost e mantos de gelo podem virar"
+      }
+    },
+    "uptake": {
+      "label": "Absorção por oceanos e solo",
+      "unit": "% de hoje"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "A Amazônia começa a virar savana",
+      "dac": "Máquinas começam a tirar CO₂ do ar",
+      "double": "As emissões começam a subir rumo ao dobro",
+      "ev": "Troca por energia limpa: emissões caem 7% ao ano",
+      "geo": "Aerossóis borrifados na estratosfera",
+      "melt": "O manto de gelo da Antártida Ocidental começa a desabar",
+      "methane": "Vazamentos e fontes de metano começam a ser consertados",
+      "permafrost": "O permafrost começa a derreter rápido",
+      "seawall": "Um muro de 3 m contra o mar é erguido em volta do porto",
+      "trees": "Um trilhão de árvores vão para o chão",
+      "volcano": "Um supervulcão entra em erupção: um véu de cinzas bloqueia o Sol",
+      "zero": "Todas as emissões param"
+    },
+    "back": "O aquecimento volta para menos de 1,5 °C",
+    "fl1": "As marés de tempestade chegam às primeiras casas da cidade",
+    "fl50": "Metade da cidade alaga na maré alta",
+    "geoend": "Os aerossóis param: choque de interrupção, aquecimento rápido",
+    "gr": "O gelo da Groenlândia começa a derreter mais rápido",
+    "mix0": "Meu futuro: sem mudanças",
+    "mix1": "Meu futuro: {p0}",
+    "mix2": "Meu futuro: {p0}, {p1}",
+    "mix3": "Meu futuro: {p0}, {p1}, {p2}",
+    "mix4": "Meu futuro: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Meu futuro: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Meu futuro: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "O aquecimento chega ao pico de {t} °C",
+    "pf": "O permafrost começa a derreter, soltando CO₂ e metano",
+    "s0_5": "Mar +0,5 m: alagamentos frequentes em deltas baixos",
+    "s1": "Mar +1 m: casas de ~200 milhões de pessoas em risco",
+    "s2": "Mar +2 m: muitas cidades costeiras precisam de muros ou de mudar de lugar",
+    "snow": "A linha de neve passa dos 2.000 m: a geleira quase acabou",
+    "t1_5": "Passa de 1,5 °C: os recifes de coral se perdem em grande parte",
+    "t2": "Passa de 2 °C: ondas de calor mortais viram rotina, verões sem gelo no Ártico",
+    "t3": "Passa de 3 °C: as zonas de plantio mudam, risco de morte da Amazônia",
+    "t4": "Passa de 4 °C: algumas regiões perto do limite de calor que humanos aguentam",
+    "wa": "O gelo da Antártida Ocidental começa a deslizar para o mar",
+    "wallover": "O mar passa por cima do muro"
+  },
+  "meta": {
+    "intro": "Uma cidade num fiorde, hoje. Veja a neve, a floresta, os campos e o porto com o passar das décadas.",
+    "name": "Terra",
+    "sub": "Clima"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Colheitas",
+      "unit": "índice"
+    },
+    "flood": {
+      "label": "Alagamento",
+      "unit": "% das casas"
+    },
+    "sea": {
+      "label": "Nível do mar",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Neve",
+      "unit": "% de hoje"
+    },
+    "temp": {
+      "label": "Aquecimento",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt de CO₂ removidas por ano",
+    "dim": "luz do Sol {n}% mais fraca",
+    "emDown": "emissões −{n}% em {yrs} anos",
+    "emUp": "emissões +{n}% em {yrs} anos",
+    "meth": "metano −{n}%",
+    "trees": "{n, plural, one {# trilhão de árvores} other {# trilhões de árvores}}",
+    "wall": "muro de {n} m contra o mar"
+  },
+  "speed": {
+    "0": "1 ano/s",
+    "1": "5 anos/s",
+    "2": "20 anos/s",
+    "3": "60 anos/s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · mar +{sea} m · {co2} ppm",
+    "snow": "Linha de neve {m} m"
+  },
+  "whatif": {
+    "amazon": "A Amazônia vira savana",
+    "dac": "Tirar CO₂ do ar",
+    "double": "As emissões dobram",
+    "ev": "Trocar rápido para energia limpa",
+    "geo": "Escurecer o Sol com aerossóis por 30 anos",
+    "melt": "O manto de gelo da Antártida Ocidental desaba",
+    "methane": "Cortar o metano pela metade",
+    "mix": "Montar meu próprio futuro",
+    "permafrost": "O permafrost derrete rápido",
+    "seawall": "Erguer um muro de 3 m contra o mar",
+    "trees": "Plantar um trilhão de árvores",
+    "volcano": "Um supervulcão entra em erupção",
+    "zero": "Parar todas as emissões agora"
+  }
+}

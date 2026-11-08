@@ -3,7 +3,7 @@
 - **Status:** planned (Phase 2)
 - **Tier:** free
 - **Owner area:** `app/` (routes, metadata, sitemap), `lib/share/` (new), `public/`
-- **Changes:** —
+- **Changes:** [0025](../changes/0025-languages-base-and-seo.md) (sitemap, robots, canonical, hreflang, static page words)
 
 ## What it is
 
@@ -29,6 +29,9 @@ Traffic is the primary goal; it drives both ad revenue and Premium conversions.
 - `FAQPage`/`Article` JSON-LD, canonical URL, OG image (pre-rendered at build).
 
 **Technical SEO**
+- Built (change 0025): `app/sitemap.ts` + `app/robots.ts` (origin from `NEXT_PUBLIC_SITE_URL`), canonical and
+  hreflang per language (`lib/i18n/seo.ts`), a static `<h1>`, intro, what-if list and links on every page
+  (`PageIntro`) while the client-only lab loads, a shared 404.
 - Static export, `sitemap.xml` + `robots.txt` generated at build, descriptive `<title>`/`description`
   per route, real `<h1>`, semantic HTML around the canvas (fallback text for crawlers).
 - Core Web Vitals targets: LCP < 2.0 s, CLS 0, INP < 200 ms on mid-range mobile.

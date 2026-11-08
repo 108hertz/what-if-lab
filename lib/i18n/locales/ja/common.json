@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "陽子から観測可能な宇宙までズームして世界を開き、「もしも」で変えて、そのままの世界と未来を比べましょう。",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "スケール",
+    "sub": "陽子 → 宇宙"
+  },
+  "intro": {
+    "worlds": "世界",
+    "whatifs": "もしも…"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "body": "このページはラボにありません。",
+    "home": "ラボに戻る"
+  },
+  "unit": {
+    "gyr": "{n}十億年",
+    "myr": "{n}百万年",
+    "kyr": "{n}千年",
+    "yr": "{n}年"
+  },
+  "dur": {
+    "days": "{n}日",
+    "months": "{n}か月",
+    "years": "{n}年"
+  }
+}

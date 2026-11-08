@@ -1,7 +1,8 @@
 import type { BaseWorld, Sandbox } from "@/lib/sim/types";
-import { clamp, fmtCalendar, fmtNum, note } from "@/lib/sim/core";
+import type { Ref, Values } from "@/lib/i18n/message";
+import { clamp, fmtCalendar, fmtNum, note, ref } from "@/lib/sim/core";
 import { meta } from "./meta";
-import { drawScene, type Look } from "./scene";
+import { STAGE_MESSAGES, drawScene, type Look } from "./scene";
 import { HOUSES, PEAK, SNOW0, SNOW_PER_C, TIDE, T_TODAY, houseBase } from "./town";
 
 /**
@@ -91,20 +92,56 @@ const APPLY_TEXT: Record<string, string> = {
   seawall: "A 3 m sea wall is built around the harbour",
 };
 
-function mixText(m: Mix, wall: number): string {
-  const parts: string[] = [];
-  if (m.em !== 0) parts.push(`emissions ${m.em > 0 ? "+" : "−"}${Math.abs(m.em)}% over ${m.yrs} yr`);
-  if (m.trees > 0) parts.push(`${fmtNum(m.trees, 1)} trillion trees`);
-  if (m.meth > 0) parts.push(`methane −${m.meth}%`);
-  if (m.dac > 0) parts.push(`${fmtNum(m.dac, 0)} Gt CO₂ removed a year`);
-  if (m.dim > 0) parts.push(`sunlight dimmed ${m.dim}%`);
-  if (wall > 0) parts.push(`${fmtNum(wall, 1)} m sea wall`);
-  return "My future: " + (parts.length ? parts.join(", ") : "no changes");
+/** "My future: …" as a key and values: one part per setting that is not zero (change 0025). */
+function mixEvent(m: Mix, wall: number): [string, Values] {
+  const r1 = (x: number) => Math.round(x * 10) / 10;
+  const parts: Ref[] = [];
+  if (m.em !== 0) parts.push(ref(m.em > 0 ? "mix.emUp" : "mix.emDown", { n: Math.abs(m.em), yrs: m.yrs }));
+  if (m.trees > 0) parts.push(ref("mix.trees", { n: r1(m.trees) }));
+  if (m.meth > 0) parts.push(ref("mix.meth", { n: m.meth }));
+  if (m.dac > 0) parts.push(ref("mix.dac", { n: Math.round(m.dac) }));
+  if (m.dim > 0) parts.push(ref("mix.dim", { n: m.dim }));
+  if (wall > 0) parts.push(ref("mix.wall", { n: r1(wall) }));
+  return [`ev.mix${parts.length}`, Object.fromEntries(parts.map((x, i) => [`p${i}`, x]))];
 }
+
+/** English words of this world (change 0025): event lines and their parts. */
+const MESSAGES: Record<string, string> = {
+  "ev.peak": "Warming peaks at {t} °C",
+  ...Object.fromEntries(THRESH_T.map(([th, txt]) => [`ev.t${String(th).replace(".", "_")}`, `Passes ${th} °C: ${txt}`])),
+  "ev.back": "Warming falls back under 1.5 °C",
+  ...Object.fromEntries(THRESH_S.map(([th, txt]) => [`ev.s${String(th).replace(".", "_")}`, `Sea level +${th} m: ${txt}`])),
+  "ev.geoend": "Aerosol spraying stops: termination shock, rapid warming",
+  "ev.pf": "Permafrost starts to thaw, releasing CO₂ and methane",
+  "ev.gr": "Greenland’s ice starts melting faster",
+  "ev.wa": "West Antarctica’s ice starts sliding into the sea",
+  "ev.snow": "Snow line passes 2,000 m: the glacier is nearly gone",
+  "ev.fl1": "Storm tides reach the first houses in town",
+  "ev.fl50": "Half the town floods at high tide",
+  "ev.wallover": "The sea wall is overtopped",
+  ...Object.fromEntries(Object.entries(APPLY_TEXT).map(([id, txt]) => [`ev.apply.${id}`, txt])),
+  "ev.mix0": "My future: no changes",
+  "ev.mix1": "My future: {p0}",
+  "ev.mix2": "My future: {p0}, {p1}",
+  "ev.mix3": "My future: {p0}, {p1}, {p2}",
+  "ev.mix4": "My future: {p0}, {p1}, {p2}, {p3}",
+  "ev.mix5": "My future: {p0}, {p1}, {p2}, {p3}, {p4}",
+  "ev.mix6": "My future: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+  "mix.emUp": "emissions +{n}% over {yrs} yr",
+  "mix.emDown": "emissions −{n}% over {yrs} yr",
+  "mix.trees": "{n} trillion trees",
+  "mix.meth": "methane −{n}%",
+  "mix.dac": "{n} Gt CO₂ removed a year",
+  "mix.dim": "sunlight dimmed {n}%",
+  "mix.wall": "{n} m sea wall",
+  ...STAGE_MESSAGES,
+};
+const thKey = (th: number) => String(th).replace(".", "_");
 
 export const earth: Sandbox<W, P> = {
   ...meta,
   intro: "A fjord town today. Watch the snow, the forest, the fields and the harbour as decades pass.",
+  messages: MESSAGES,
   controls: [
     { type: "heading", label: "Air today" },
     { type: "range", id: "co2", label: "CO₂ in the air", min: 280, max: 1000, step: 5, val: 420, unit: "ppm" },
@@ -196,7 +233,7 @@ export const earth: Sandbox<W, P> = {
       w.T += ((p.sens * F / 3.71 - w.T) / 35) * h;
       w.t += h;
       if (w.T > w.maxT) { w.maxT = w.T; w.tmax = w.t; }
-      else if (w.T < w.maxT - 0.03) note(w, `Warming peaks at ${fmtNum(w.maxT, 1)} °C`, "peak", w.tmax);
+      else if (w.T < w.maxT - 0.03) note(w, "ev.peak", { t: Math.round(w.maxT * 10) / 10 }, "peak", w.tmax);
       const To = w.T + offset(w, w.t, p);
       // Sea level
       let dS = 0.0034 * To + (To > 2 ? 0.004 * (To - 2) : 0);
@@ -205,18 +242,18 @@ export const earth: Sandbox<W, P> = {
       for (const m of w.mods) if (m.id === "melt" && w.t - m.tf < 100) dS += 0.03;
       w.S += dS * h;
       // Events (stable text so the timeline can match them across worlds)
-      for (const [th, txt] of THRESH_T) if (w.prev < th && To >= th) note(w, `Passes ${th} °C: ${txt}`, "t" + th);
-      if (w.f["t1.5"] && w.prev >= 1.5 && To < 1.5) note(w, "Warming falls back under 1.5 °C", "back");
-      for (const [th, txt] of THRESH_S) if (w.S >= th) note(w, `Sea level +${th} m: ${txt}`, "s" + th);
-      if (w.mods.some((m) => m.id === "geo" && w.t - m.tf >= 30)) note(w, "Aerosol spraying stops: termination shock, rapid warming", "geoend");
-      if (tip && To > 1.5) note(w, "Permafrost starts to thaw, releasing CO₂ and methane", "pf");
-      if (tip && To > 2) note(w, "Greenland’s ice starts melting faster", "gr");
-      if (tip && To > 3) note(w, "West Antarctica’s ice starts sliding into the sea", "wa");
-      if (snowLine(To) > 2000) note(w, "Snow line passes 2,000 m: the glacier is nearly gone", "snow");
+      for (const [th] of THRESH_T) if (w.prev < th && To >= th) note(w, `ev.t${thKey(th)}`, undefined, "t" + th);
+      if (w.f["t1.5"] && w.prev >= 1.5 && To < 1.5) note(w, "ev.back", undefined, "back");
+      for (const [th] of THRESH_S) if (w.S >= th) note(w, `ev.s${thKey(th)}`, undefined, "s" + th);
+      if (w.mods.some((m) => m.id === "geo" && w.t - m.tf >= 30)) note(w, "ev.geoend", undefined, "geoend");
+      if (tip && To > 1.5) note(w, "ev.pf", undefined, "pf");
+      if (tip && To > 2) note(w, "ev.gr", undefined, "gr");
+      if (tip && To > 3) note(w, "ev.wa", undefined, "wa");
+      if (snowLine(To) > 2000) note(w, "ev.snow", undefined, "snow");
       const fl = floodPct(w.S, p.front, w.wall);
-      if (fl > 0) note(w, "Storm tides reach the first houses in town", "fl1");
-      if (fl >= 50) note(w, "Half the town floods at high tide", "fl50");
-      if (w.wall > 0 && w.S + TIDE >= p.front + w.wall) note(w, "The sea wall is overtopped", "wallover");
+      if (fl > 0) note(w, "ev.fl1", undefined, "fl1");
+      if (fl >= 50) note(w, "ev.fl50", undefined, "fl50");
+      if (w.wall > 0 && w.S + TIDE >= p.front + w.wall) note(w, "ev.wallover", undefined, "wallover");
       w.prev = To;
     }
   },
@@ -228,11 +265,11 @@ export const earth: Sandbox<W, P> = {
       const mx = { em: p.mEm, yrs: p.mYrs, trees: p.mTrees, meth: p.mMeth, dac: p.mDac, dim: p.mDim };
       w.mods.push({ id, tf: w.t, mx });
       w.wall = Math.max(w.wall, p.mWall);
-      note(w, mixText(mx, p.mWall));
+      note(w, ...mixEvent(mx, p.mWall));
       return;
     }
     w.mods.push({ id, tf: w.t, mx: null });
-    note(w, APPLY_TEXT[id] ?? id);
+    note(w, APPLY_TEXT[id] ? `ev.apply.${id}` : id);
   },
 
   read(w, p) {

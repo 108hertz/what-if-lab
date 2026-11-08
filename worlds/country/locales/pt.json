@@ -1,0 +1,330 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "calm": {
+    "0": "Os protestos tomam as ruas.",
+    "1": "Muita gente está com raiva; os protestos estão perto.",
+    "2": "A vida é quase toda calma, com alguma raiva contra quem manda.",
+    "3": "A vida é calma e as pessoas em geral confiam umas nas outras."
+  },
+  "ctl": {
+    "corr": {
+      "label": "Corrupção",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Escolas",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Renda por pessoa",
+      "unit": "mil $ por ano"
+    },
+    "gov": {
+      "label": "Governo",
+      "opt": {
+        "auto": "Um governante ou partido",
+        "dem": "Democracia",
+        "hybrid": "Misto: eleições, poucas liberdades"
+      }
+    },
+    "h": {
+      "money": "Dinheiro",
+      "people": "Pessoas",
+      "policy-sizes-used-by-your-next-click": "Tamanho das políticas (vale no próximo clique)",
+      "public-life": "Vida pública"
+    },
+    "jobless": {
+      "label": "Sem trabalho",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Saúde: expectativa de vida",
+      "unit": "anos"
+    },
+    "pop": {
+      "label": "População",
+      "unit": "milhões"
+    },
+    "popg": {
+      "label": "Crescimento da população",
+      "unit": "% por ano"
+    },
+    "preset": {
+      "group": {
+        "0": "Europa",
+        "1": "Ásia",
+        "2": "Oriente Médio e Cáucaso",
+        "3": "África",
+        "4": "Américas",
+        "5": "Oceania",
+        "6": "O seu"
+      },
+      "label": "País",
+      "opt": {
+        "am": "Armênia",
+        "ar": "Argentina",
+        "au": "Austrália",
+        "bd": "Bangladesh",
+        "br": "Brasil",
+        "ca": "Canadá",
+        "ch": "Suíça",
+        "cl": "Chile",
+        "cn": "China",
+        "co": "Colômbia",
+        "custom": "Seu próprio país",
+        "de": "Alemanha",
+        "dk": "Dinamarca",
+        "eg": "Egito",
+        "es": "Espanha",
+        "et": "Etiópia",
+        "fr": "França",
+        "gb": "Reino Unido",
+        "gr": "Grécia",
+        "id": "Indonésia",
+        "il": "Israel",
+        "in": "Índia",
+        "ir": "Irã",
+        "it": "Itália",
+        "jp": "Japão",
+        "ke": "Quênia",
+        "kr": "Coreia do Sul",
+        "mx": "México",
+        "ng": "Nigéria",
+        "nl": "Países Baixos",
+        "no": "Noruega",
+        "ph": "Filipinas",
+        "pk": "Paquistão",
+        "pl": "Polônia",
+        "sa": "Arábia Saudita",
+        "se": "Suécia",
+        "th": "Tailândia",
+        "tr": "Turquia",
+        "ua": "Ucrânia",
+        "us": "Estados Unidos",
+        "vn": "Vietnã",
+        "za": "África do Sul"
+      }
+    },
+    "res": {
+      "label": "Recursos naturais (petróleo, metais)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Corte de impostos",
+      "unit": "pontos"
+    },
+    "s_open": {
+      "label": "Famílias que chegam"
+    },
+    "s_rich": {
+      "label": "Imposto extra para os mais ricos",
+      "unit": "pontos"
+    },
+    "s_ubi": {
+      "label": "Valor da renda básica",
+      "unit": "% da renda média"
+    },
+    "s_wage": {
+      "label": "Aumento do salário mínimo",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Duração da guerra",
+      "unit": "anos"
+    },
+    "tax": {
+      "label": "Impostos",
+      "unit": "% da renda"
+    }
+  },
+  "diff": {
+    "calmer": "{n, plural, one {# ponto mais calmo} other {# pontos mais calmo}}",
+    "famLess": "{usd} a menos por mês",
+    "famMore": "{usd} a mais por mês",
+    "gapBigger": "a diferença é {n}× maior",
+    "gapSmaller": "a diferença é {n}× menor",
+    "jobFewer": "{n, plural, one {# adulto a menos em 100 sem trabalho} other {# adultos a menos em 100 sem trabalho}}",
+    "jobMore": "{n, plural, one {# adulto a mais em 100 sem trabalho} other {# adultos a mais em 100 sem trabalho}}",
+    "lessCalm": "{n, plural, one {# ponto menos calmo} other {# pontos menos calmo}}",
+    "longer": "vidas {n} anos mais longas",
+    "popFewer": "{n} milhões de pessoas a menos",
+    "popMore": "{n} milhões de pessoas a mais",
+    "povFewer": "{n, plural, one {# pessoa a menos em 100 é pobre} other {# pessoas a menos em 100 são pobres}}",
+    "povMore": "{n, plural, one {# pessoa a mais em 100 é pobre} other {# pessoas a mais em 100 são pobres}}",
+    "shorter": "vidas {n} anos mais curtas"
+  },
+  "ev": {
+    "apply": {
+      "aging": "A taxa de natalidade despenca",
+      "build": "Começam as obras de estradas, trilhos e linhas de energia",
+      "corr": "Começa uma campanha contra a corrupção",
+      "drought": "Começa uma longa seca",
+      "edu": "O orçamento da educação dobra",
+      "health": "A saúde fica gratuita para todos",
+      "minwage": "O salário mínimo sobe",
+      "oil": "Achado petróleo: boom de exportação",
+      "open": "Fronteiras abertas: chegam {n} famílias novas",
+      "pandemic": "Chega uma pandemia: escolas e lojas fecham",
+      "robots": "Os robôs chegam às fábricas",
+      "taxcut": "Os impostos caem para todos",
+      "taxrich": "Os mais ricos pagam mais imposto",
+      "trade": "Fronteiras fechadas ao comércio: importar fica mais caro",
+      "ubi": "Começa a renda básica: a pobreza cai, os impostos sobem",
+      "war": "Estoura uma guerra: a economia encolhe rápido"
+    },
+    "built": "Abrem as novas estradas, trilhos e linhas de energia",
+    "c": "Alto risco de golpe ou colapso do Estado",
+    "curse": "Maldição dos recursos: o dinheiro do petróleo alimenta a corrupção",
+    "dbl": "A renda por pessoa dobra",
+    "eduw": "A primeira geração das escolas melhores começa a trabalhar",
+    "hi": "Vira um país de renda alta",
+    "jl15": "1 em cada 7 adultos está sem trabalho",
+    "life5": "As pessoas agora vivem 5 anos a mais que em 2026",
+    "lifed": "A expectativa de vida cai 5 anos",
+    "pand": "A pandemia acaba; lojas e escolas reabrem",
+    "pk": "A população chega ao pico de {n} mi",
+    "povh": "A pobreza caiu pela metade desde 2026",
+    "rain": "As chuvas voltam",
+    "robo2": "Surgem novos tipos de emprego em volta dos robôs",
+    "t10": "Os 10% mais ricos agora têm metade de toda a riqueza",
+    "u": "Agitação: protestos em massa tomam as ruas",
+    "wend": "A guerra acaba; começa um boom de reconstrução"
+  },
+  "group": {
+    "0": "Dinheiro",
+    "1": "Serviços",
+    "2": "Sociedade",
+    "3": "Choques"
+  },
+  "info": {
+    "about": "Sobre os números",
+    "aboutText": "Os números iniciais são valores arredondados e aproximados de meados dos anos 2020. Depois disso o país segue regras simples: mostra como as coisas se empurram, não uma previsão.",
+    "changed": "O que mudou",
+    "curious": "Para os curiosos",
+    "gini": "Gini da riqueza {gini} · os 10% mais ricos têm {pct}% da riqueza",
+    "life": "As pessoas vivem cerca de {n} anos. {calm}",
+    "noChange": "Sem mudança, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} milhões de pessoas. Uma família típica vive com {usd} por mês.",
+    "poor": "{pov} de cada 100 pessoas são pobres; {jobless} de cada 100 adultos estão sem trabalho."
+  },
+  "meta": {
+    "intro": "Uma rua do país e o mesmo país como 100 pessoas, da mais pobre à mais rica. Escolha um país e faça mudanças: elas se somam.",
+    "name": "Países",
+    "sub": "Economia e sociedade"
+  },
+  "metric": {
+    "calm": {
+      "help": "Quão calmo e confiante o país está: 100 é paz, abaixo de 30 significa protestos nas ruas.",
+      "label": "Paz",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "O dinheiro que uma família típica tem por mês, depois de impostos e ajudas.",
+      "label": "Renda da família",
+      "unit": "$ por mês"
+    },
+    "gap": {
+      "help": "Quantas vezes mais as 10 pessoas mais ricas recebem do que as 10 mais pobres.",
+      "label": "Diferença ricos–pobres"
+    },
+    "jobless": {
+      "help": "De 100 adultos que querem trabalhar, quantos não acham emprego.",
+      "label": "Sem trabalho",
+      "unit": "de 100"
+    },
+    "life": {
+      "help": "Quantos anos um bebê que nasce agora pode esperar viver.",
+      "label": "Expectativa de vida",
+      "unit": "anos"
+    },
+    "pop": {
+      "help": "Quantas pessoas vivem no país, em milhões.",
+      "label": "Pessoas",
+      "unit": "milhões"
+    },
+    "pov": {
+      "help": "De 100 pessoas, quantas vivem com menos de uns $250 por família por mês, ou com muito menos que a maioria das famílias ao redor.",
+      "label": "Pobres",
+      "unit": "de 100"
+    }
+  },
+  "name": {
+    "ownFrom": "Seu próprio país (a partir de {from})",
+    "this": "Este país"
+  },
+  "speed": {
+    "0": "3 meses/s",
+    "1": "1 ano/s",
+    "2": "3 anos/s",
+    "3": "8 anos/s"
+  },
+  "stage": {
+    "band": {
+      "0": "POBRES",
+      "1": "SE VIRANDO",
+      "2": "BEM DE VIDA"
+    },
+    "clinic": "POSTO DE SAÚDE +",
+    "fam": "uma família típica tem {usd} por mês",
+    "jobless": "{n} de 100 adultos sem trabalho",
+    "kidsOut": "{n, plural, one {# criança} other {# crianças}} fora da escola",
+    "legend": {
+      "jobless": "SEM TRABALHO",
+      "kid": "CRIANÇA NA ESCOLA",
+      "kidOut": "CRIANÇA FORA DA ESCOLA",
+      "poverty": "LINHA DA POBREZA",
+      "retired": "APOSENTADO",
+      "work": "TRABALHANDO"
+    },
+    "noChange": "(sem mudança: {v})",
+    "poor": "{n, plural, one {# é pobre} other {# são pobres}}",
+    "poorer": "← MAIS POBRE",
+    "richer": "MAIS RICO →",
+    "school": "ESCOLA",
+    "title": "{year} · SE ESTE PAÍS FOSSE 100 PESSOAS",
+    "titleShort": "{year} · COMO 100 PESSOAS",
+    "titleWide": "{year} · SE ESTE PAÍS FOSSE 100 PESSOAS · DO MAIS POBRE AO MAIS RICO"
+  },
+  "story": {
+    "angrier": "As pessoas estão com mais raiva.",
+    "calmer": "O país está mais calmo.",
+    "famLess": "Uma família típica tem {usd} a menos por mês.",
+    "famMore": "Uma família típica tem {usd} a mais por mês.",
+    "gapBigger": "A diferença entre ricos e pobres é maior.",
+    "gapSmaller": "A diferença entre ricos e pobres é menor.",
+    "head": "Comparado com o mesmo país sem mudança, em {year}:",
+    "jobFewer": "{n, plural, one {# adulto a menos em cada 100 está sem trabalho.} other {# adultos a menos em cada 100 estão sem trabalho.}}",
+    "jobMore": "{n, plural, one {# adulto a mais em cada 100 está sem trabalho.} other {# adultos a mais em cada 100 estão sem trabalho.}}",
+    "longer": "As pessoas vivem {n} anos a mais.",
+    "none": "Ainda não mudou muita coisa. Dê alguns anos.",
+    "popFewer": "{n} milhões de pessoas a menos vivem aqui.",
+    "popMore": "{n} milhões de pessoas a mais vivem aqui.",
+    "povFewer": "{n, plural, one {# pessoa a menos em cada 100 é pobre.} other {# pessoas a menos em cada 100 são pobres.}}",
+    "povMore": "{n, plural, one {# pessoa a mais em cada 100 é pobre.} other {# pessoas a mais em cada 100 são pobres.}}",
+    "shorter": "As pessoas vivem {n} anos a menos.",
+    "stopped": "Os protestos pararam."
+  },
+  "ui": {
+    "changesHint": "Elas se somam. Os tamanhos ficam em Ajustar. Desmarque acima para comparar.",
+    "pick": "Escolha um país"
+  },
+  "whatif": {
+    "aging": "A taxa de natalidade despenca",
+    "build": "Construir estradas, trilhos e energia",
+    "corr": "Cortar a corrupção pela metade",
+    "drought": "Anos de seca",
+    "edu": "Dobrar o gasto com educação",
+    "health": "Saúde gratuita para todos",
+    "minwage": "Aumentar o salário mínimo",
+    "oil": "Descobrir enormes reservas de petróleo",
+    "open": "Abrir as fronteiras para migrantes",
+    "pandemic": "Chega uma pandemia",
+    "robots": "Robôs fazem metade do trabalho nas fábricas",
+    "taxcut": "Cortar impostos para todos",
+    "taxrich": "Cobrar mais imposto dos mais ricos",
+    "trade": "Fechar as fronteiras ao comércio",
+    "ubi": "Renda básica universal",
+    "war": "Entrar numa guerra"
+  }
+}

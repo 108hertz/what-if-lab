@@ -1,6 +1,27 @@
-import { clamp, fmtNum, mix } from "@/lib/sim/core";
+import { clamp, mix } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import type { Climate } from "./data";
+import { worldSay } from "@/lib/sim/say";
+import { pageT } from "@/lib/i18n/page";
+
+/** English words drawn on the stage (change 0025); part of the sandbox's `messages`. */
+export const STAGE_MESSAGES: Record<string, string> = {
+  "stage.school": "SCHOOL", "stage.clinic": "CLINIC +",
+  "stage.poorer": "← POORER", "stage.richer": "RICHER →",
+  "stage.title": "{year} · IF THIS COUNTRY WERE 100 PEOPLE", "stage.titleWide": "{year} · IF THIS COUNTRY WERE 100 PEOPLE · POOREST TO RICHEST",
+  "stage.titleShort": "{year} · AS 100 PEOPLE",
+  "stage.band.0": "POOR", "stage.band.1": "GETTING BY", "stage.band.2": "WELL OFF",
+  "stage.poor": "{n, plural, one {# is poor} other {# are poor}}",
+  "stage.fam": "a typical family has {usd} a month",
+  "stage.jobless": "{n} of 100 adults out of work",
+  "stage.kidsOut": "{n, plural, one {# child} other {# children}} not in school",
+  "stage.noChange": "(no change: {v})",
+  "stage.legend.work": "WORKING", "stage.legend.jobless": "OUT OF WORK", "stage.legend.retired": "RETIRED",
+  "stage.legend.kid": "CHILD AT SCHOOL", "stage.legend.kidOut": "CHILD NOT AT SCHOOL", "stage.legend.poverty": "POVERTY LINE",
+};
+const say = () => worldSay({ key: "country", messages: STAGE_MESSAGES });
+/** Dollars in the page's number style. */
+export const usd = (v: number) => pageT().num(v, { style: "currency", currency: "USD", minimumFractionDigits: 0, maximumFractionDigits: 0 });
 
 /**
  * The country stage (change 0016), framework-free.
@@ -60,7 +81,6 @@ const LEAF: Record<Climate, string> = { cold: "#33503f", mild: "#43603a", warm: 
 const WALLS = ["#7d6656", "#8d7b66", "#66717a", "#93775b", "#717f69", "#a08b74", "#7a6a78", "#86705c"];
 const LIT = "#f2c983", DARK = "#2a2420";
 export const BAND = ["#E8836F", "#8F8273", STAGE.ink] as const;
-const BAND_NAME = ["Poor", "Getting by", "Well off"];
 
 /* ───────────── small drawing helpers ───────────── */
 
@@ -171,7 +191,7 @@ function street(c: Ctx, W: number, H: number, L: Look, climate: Climate, t: numb
       windows(c, bx + 4, sy - bh + 6, bw - 8, bh * 0.62, 4, 2, j, clamp(L.edu / 100, 0.1, 1) * (1 - L.sick * 0.8), board);
       if (poor) { c.strokeStyle = "#3a2c22"; c.lineWidth = 1; c.beginPath(); c.moveTo(bx + bw * 0.2, sy - bh); c.lineTo(bx + bw * 0.3, sy - bh * 0.6); c.lineTo(bx + bw * 0.24, sy - bh * 0.4); c.stroke(); }
       rect(c, bx + bw * 0.42, sy - u * 0.7, bw * 0.16, u * 0.7, DARK);
-      sign(c, "SCHOOL", bx + bw / 2, sy - bh - u * 0.55, Math.max(10, Math.min(12, u * 0.36)));
+      sign(c, say()("stage.school"), bx + bw / 2, sy - bh - u * 0.55, Math.max(10, Math.min(12, u * 0.36)));
       const kids = Math.round(5 * (L.edu / 100) * (1 - L.sick) * (1 - L.war));
       for (let k = 0; k < kids; k++) walker(c, bx + bw * (0.1 + 0.18 * k), sy + (ry - sy) * 0.5, u * 0.5, ["#c47a5a", "#6f8fb0", "#c9a35c", "#7fa070", "#a07ab0"][k], t * 6 + k, false);
       continue;
@@ -182,7 +202,7 @@ function street(c: Ctx, W: number, H: number, L: Look, climate: Climate, t: numb
       rect(c, bx - 2, sy - bh - 4, bw + 4, 5, "#6c5f51");
       windows(c, bx + 4, sy - bh + 8, bw - 8, bh * 0.5, 3, 1, j, q * (1 - L.war * 0.6), board);
       rect(c, bx + bw * 0.38, sy - u * 0.75, bw * 0.24, u * 0.75, "#3d4a48");
-      sign(c, "CLINIC +", bx + bw / 2, sy - bh - u * 0.4, Math.max(10, Math.min(12, u * 0.36)));
+      sign(c, say()("stage.clinic"), bx + bw / 2, sy - bh - u * 0.4, Math.max(10, Math.min(12, u * 0.36)));
       continue;
     }
     if (shops.has(j)) {
@@ -244,8 +264,8 @@ function street(c: Ctx, W: number, H: number, L: Look, climate: Climate, t: numb
   if (L.war > 0.02) { c.fillStyle = `rgba(40,36,32,${0.35 * L.war})`; c.fillRect(0, 0, W, H); }
 
   c.font = `500 10px ${FONT.body}`; c.fillStyle = STAGE.ink2;
-  c.fillText("← POORER", 10, H - 6);
-  c.textAlign = "right"; c.fillText("RICHER →", W - (W >= 900 ? 34 : 10), H - 6); c.textAlign = "left";
+  c.fillText(say()("stage.poorer"), 10, H - 6);
+  c.textAlign = "right"; c.fillText(say()("stage.richer"), W - (W >= 900 ? 34 : 10), H - 6); c.textAlign = "left";
 }
 
 function home(c: Ctx, x0: number, sy: number, lw: number, u: number, inc: number, wall: string, j: number, lit: number, board: number, leaf: string, dry: number) {
@@ -366,11 +386,12 @@ function hundred(c: Ctx, W: number, top: number, H: number, figs: Figure[], tall
   rect(c, 0, top + 1, W, ph, STAGE.void);
 
   c.font = `500 10px ${FONT.body}`; c.fillStyle = STAGE.ink2; c.textBaseline = "alphabetic";
-  c.fillText(W >= 560 ? `${year} · IF THIS COUNTRY WERE 100 PEOPLE${W >= 720 ? " · POOREST TO RICHEST" : ""}` : `${year} · AS 100 PEOPLE`, pad, top + 20);
+  const S = say();
+  c.fillText(S(W >= 720 ? "stage.titleWide" : W >= 560 ? "stage.title" : "stage.titleShort", { year }), pad, top + 20);
   // Colour key on the title row
   let kx = W - padR;
   for (let b = 2; b >= 0; b--) {
-    const label = BAND_NAME[b].toUpperCase(), lw = c.measureText(label).width;
+    const label = S(`stage.band.${b}`), lw = c.measureText(label).width;
     kx -= lw; c.fillStyle = STAGE.ink2; c.fillText(label, kx, top + 20);
     kx -= 14; c.fillStyle = BAND[b]; c.beginPath(); c.arc(kx + 5, top + 16.5, 4, 0, 7); c.fill(); kx -= 12;
   }
@@ -388,26 +409,26 @@ function hundred(c: Ctx, W: number, top: number, H: number, figs: Figure[], tall
   if (base && base.poor !== tally.poor) cut(c, base.poor, R, pad, gy0, cw, ch, STAGE.base, [2, 3]);
 
   // Plain sentences; with changes, the no-change numbers follow in blue
-  const nc = (v: number | string): Seg[] => (base ? [{ t: ` (no change: ${v})`, c: STAGE.base }] : []);
+  const nc = (v: number | string): Seg[] => (base ? [{ t: " " + S("stage.noChange", { v }), c: STAGE.base }] : []);
   let y = gy0 + gh + 24;
   flow(c, [
-    [{ t: `${tally.poor} ${tally.poor === 1 ? "is" : "are"} poor`, c: STAGE.ink }, ...nc(base?.poor ?? "")],
-    [{ t: `a typical family has $${fmtNum(tally.fam)} a month`, c: STAGE.ink }, ...nc(base ? "$" + fmtNum(base.fam) : "")],
-    [{ t: `${tally.jobless} of 100 adults out of work`, c: STAGE.ink }, ...nc(base?.jobless ?? "")],
-    [{ t: `${tally.kidsOut} ${tally.kidsOut === 1 ? "child" : "children"} not in school`, c: STAGE.ink }, ...nc(base?.kidsOut ?? "")],
+    [{ t: S("stage.poor", { n: tally.poor }), c: STAGE.ink }, ...nc(base?.poor ?? "")],
+    [{ t: S("stage.fam", { usd: usd(tally.fam) }), c: STAGE.ink }, ...nc(base ? usd(base.fam) : "")],
+    [{ t: S("stage.jobless", { n: tally.jobless }), c: STAGE.ink }, ...nc(base?.jobless ?? "")],
+    [{ t: S("stage.kidsOut", { n: tally.kidsOut }), c: STAGE.ink }, ...nc(base?.kidsOut ?? "")],
   ], pad, y, gw, lines, 22);
   if (legend) {
     y += lines * 22;
     c.font = `500 10px ${FONT.body}`;
     const items: [Figure, string][] = [
-      [{ band: 1, kind: "work", protest: false }, "WORKING"], [{ band: 1, kind: "jobless", protest: false }, "OUT OF WORK"],
-      [{ band: 1, kind: "retired", protest: false }, "RETIRED"], [{ band: 1, kind: "kid", protest: false }, "CHILD AT SCHOOL"],
-      [{ band: 1, kind: "kidOut", protest: false }, "CHILD NOT AT SCHOOL"],
+      [{ band: 1, kind: "work", protest: false }, S("stage.legend.work")], [{ band: 1, kind: "jobless", protest: false }, S("stage.legend.jobless")],
+      [{ band: 1, kind: "retired", protest: false }, S("stage.legend.retired")], [{ band: 1, kind: "kid", protest: false }, S("stage.legend.kid")],
+      [{ band: 1, kind: "kidOut", protest: false }, S("stage.legend.kidOut")],
     ];
     let lx = pad;
     for (const [f, label] of items) { person(c, lx + 5, y + 2, 16, f); c.fillStyle = STAGE.ink2; c.fillText(label, lx + 14, y); lx += 22 + c.measureText(label).width; }
     c.strokeStyle = BAND[0]; c.setLineDash([4, 3]); c.lineWidth = 1.5; c.beginPath(); c.moveTo(lx, y - 10); c.lineTo(lx, y + 2); c.stroke(); c.setLineDash([]);
-    c.fillStyle = STAGE.ink2; c.fillText("POVERTY LINE", lx + 6, y);
+    c.fillStyle = STAGE.ink2; c.fillText(S("stage.legend.poverty"), lx + 6, y);
   }
 }
 

@@ -10,6 +10,7 @@ import AdSlot, { RAILS_QUERY } from "@/components/console/AdSlot";
 import { useFullscreen } from "@/components/console/fullscreen";
 import { TunePanel, WorldHeader } from "@/components/console/panels";
 import { animals } from "./sim";
+import { useT } from "@/components/i18n/I18nProvider";
 import AnimalChart from "./Chart";
 import { AnimalTimeline, CastEditor, ChangeList, Facts, Portrait, RightNow, Story, WorldPicker } from "./parts";
 
@@ -27,6 +28,7 @@ export default function AnimalsConsole() {
   const fs = useFullscreen(centre);
   const [view, setView] = useState(0);
   const [focus, setFocus] = useState(0);
+  const t = useT();
 
   const ask = <><WorldHeader engine={engine} /><WorldPicker engine={engine} onChange={onChange} /><CastEditor engine={engine} onChange={onChange} /><ChangeList engine={engine} onChange={onChange} /></>;
   const story = <Story engine={engine} />;
@@ -35,7 +37,7 @@ export default function AnimalsConsole() {
   const facts = <Facts engine={engine} />;
   const tune = <TunePanel engine={engine} onChange={onChange} />;
   const chart = <AnimalChart engine={engine} view={view} setView={setView} focus={focus} setFocus={setFocus} />;
-  const log = <div className="log-box"><h3 className="headline">Timeline</h3><AnimalTimeline engine={engine} /></div>;
+  const log = <div className="log-box"><h3 className="headline">{t("console.timeline.title")}</h3><AnimalTimeline engine={engine} /></div>;
 
   let side: ReactNode;
   if (full) {
@@ -48,14 +50,14 @@ export default function AnimalsConsole() {
   } else if (desk) {
     side = (
       <div className="dock-col">
-        <Dock key="desk" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{story}{now}{portrait}{facts}</>]]} />
+        <Dock key="desk" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{story}{now}{portrait}{facts}</>]]} />
         <AdSlot size="box" promo />
       </div>
     );
   } else {
     side = (
       <>
-        <Dock key="phone" tabs={[["Ask", ask], ["Tune", tune], ["Read", <>{story}{now}{portrait}{chart}{facts}</>], ["Log", log]]} />
+        <Dock key="phone" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{story}{now}{portrait}{chart}{facts}</>], [t("console.dock.log"), log]]} />
         <AdSlot size="banner" />
       </>
     );

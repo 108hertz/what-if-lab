@@ -10,7 +10,6 @@ import { hash, type Ctx } from "./people";
 
 export type Life = 0 | 1 | 2 | 3 | 4;
 export const lifeOf = (age: number): Life => (age < 5 ? 0 : age < 13 ? 1 : age < 18 ? 2 : age < 30 ? 3 : 4);
-export const LIFE_WORD = ["Little years", "School years", "Teen years", "First home", "Own home"];
 /** Where the floor starts and where people stand, as a share of the room's height. */
 export const FLOOR_Y = 0.84, STAND_Y = 0.9;
 /** The fixed places in every room, as shares of the room's width/height. */

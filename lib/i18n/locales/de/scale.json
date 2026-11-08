@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "transport": {
+    "zoomIn": "Hineinzoomen",
+    "zoomOut": "Herauszoomen",
+    "zoomLevel": "Zoomstufe",
+    "hint": "Scrollen, kneifen oder ziehen. Tippe auf ein goldenes Label, um seine Welt zu öffnen."
+  },
+  "panel": {
+    "inView": "Im Bild",
+    "openThis": "Diese Welt öffnen",
+    "openWorld": "Eine Welt öffnen",
+    "jumpTo": "Springe zu"
+  },
+  "hero": {
+    "title": "Was passiert, wenn…",
+    "body": "Zoome vom Proton bis zum beobachtbaren Universum, pro Schritt zehnmal größer. Goldene Labels sind lebendige Welten: Öffne eine, ändere sie und vergleiche ihre Zukunft mit der unveränderten Welt."
+  },
+  "stage": {
+    "open": "Welt öffnen →",
+    "screen": "Bildschirmbreite ≈ {len}"
+  }
+}

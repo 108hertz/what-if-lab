@@ -1,0 +1,690 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "cap": {
+    "bigger": "{n}% bigger",
+    "coatThicker": "{coat} thicker",
+    "coatThinner": "{coat} thinner",
+    "earsLess": "ears smaller (notices less)",
+    "earsMore": "ears bigger (notices more)",
+    "eyesLess": "eyes smaller (notices less)",
+    "eyesMore": "eyes bigger (notices more)",
+    "faster": "{n}% faster",
+    "none": "No {many} live here right now.",
+    "now": "Now {list}.",
+    "same": "About the same as on day 0. Bodies change over many generations.",
+    "slower": "{n}% slower",
+    "smaller": "{n}% smaller"
+  },
+  "chart": {
+    "ariaBodies": "Speed, size, senses and coat of the {many} over time",
+    "ariaCounts": "How many of each animal over time",
+    "asFast": "as fast as",
+    "bigger": "{n}% bigger",
+    "bodies": "How their bodies changed",
+    "bodyDay0": "The typical {one} compared with day 0: 1.00× means no change, above 1 means more (faster, bigger, sharper senses, thicker {coat}).",
+    "bodyVs": "The typical {one} with your changes is {speed} without them, and {size}.",
+    "changes": "CHANGES",
+    "counts": "How many of each",
+    "diff": "With your changes there {be, select, is {is} other {are}} {list} than without them (day {day}).",
+    "fasterThan": "{n}% faster than",
+    "intro": "How many of each animal live here, day by day. Make a change to compare with this world.",
+    "label": "{name} {n}",
+    "noChange": "NO CHANGE",
+    "same": "With your changes the numbers are the same as without them so far (day {day}).",
+    "sameSize": "the same size",
+    "slowerThan": "{n}% slower than",
+    "smaller": "{n}% smaller",
+    "unitAnimals": "animals",
+    "unitDay0": "× day 0",
+    "view": "Chart view",
+    "whichAnimal": "Which animal",
+    "withChanges": "WITH CHANGES"
+  },
+  "cmp": {
+    "change": "than without your changes",
+    "day0": "than on day 0"
+  },
+  "cover": {
+    "land": "bushes",
+    "water": "kelp and rocks"
+  },
+  "ctl": {
+    "dT": {
+      "label": "Temperature change",
+      "unit": "°C"
+    },
+    "food": {
+      "label": "Food growth",
+      "unit": "% of normal"
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Change settings (used by your next click)",
+      "people-and-babies": "People and babies",
+      "the-place": "The place"
+    },
+    "hab": {
+      "label": "Room to roam",
+      "unit": "% of the land"
+    },
+    "habitat": {
+      "label": "Habitat",
+      "opt": {
+        "desert": "Desert",
+        "forest": "Forest and tundra",
+        "ice": "Sea ice",
+        "meadow": "Meadow",
+        "ocean": "Ocean",
+        "savanna": "Savanna"
+      }
+    },
+    "human": {
+      "label": "People hunting",
+      "opt": {
+        "0": "None",
+        "10": "A little",
+        "30": "Some",
+        "60": "A lot"
+      }
+    },
+    "mut": {
+      "label": "How different babies are",
+      "opt": {
+        "big": "Very (fast change)",
+        "normal": "Normal",
+        "small": "A little (slow change)"
+      }
+    },
+    "s_new": {
+      "label": "Newcomers",
+      "unit": "animals"
+    },
+    "s_sick": {
+      "label": "Sickness strength",
+      "unit": "% fall ill and die"
+    },
+    "seasons": {
+      "label": "Seasons",
+      "opt": {
+        "gentle": "Gentle",
+        "off": "Off: food grows evenly",
+        "strong": "Strong: lean winters"
+      }
+    }
+  },
+  "ev": {
+    "add": "{n} {many} move in",
+    "bigger": "{many} grow 20% bigger on average",
+    "boom": "{one} numbers have doubled",
+    "cool": "An ice age begins: 4 °C colder, less food",
+    "disease": "Disease outbreak kills {n} {many}",
+    "drought": "The rain stops for a year: food halves",
+    "faster": "Natural selection: the average {one} is now 20% faster",
+    "fire": "A wildfire burns a third of the land",
+    "habitat": "Half the habitat is lost to farms and roads",
+    "hunt": "People start hunting the {many}",
+    "invasive": "{n} fast-breeding {many} arrive",
+    "move": "Moved to the opposite climate: everything costs far more energy",
+    "noRoom": "There is no room for a sixth kind of animal",
+    "noneToRemove": "There are no {many} here to take away",
+    "out": "The {many} have died out here: most {why}",
+    "rain": "Years of good rain begin: food grows faster",
+    "removed": "All {many} removed",
+    "reserve": "Protected reserve: hunting stops, vegetation recovers",
+    "senses": "{many} now notice food and danger 20% farther away",
+    "slower": "Natural selection: {many} get slower to save energy",
+    "smaller": "{many} shrink on average",
+    "thicker": "Coats get thicker: {many} now have 20% more {coat}",
+    "thinner": "Coats get thinner: {many} now have 20% less {coat}",
+    "wanders": "A pair of {many} wanders in from outside",
+    "warm": "Climate warms 3 °C: more energy needed, less food"
+  },
+  "facts": {
+    "eats": "Eats",
+    "family": "Family life",
+    "lifespan": "Lifespan",
+    "lives": "Lives",
+    "note": "In this model a day is short: animals live weeks, not years, so you can watch many generations.",
+    "role": "Role in nature",
+    "title": "Meet the animals"
+  },
+  "food": {
+    "desert": "bugs and seeds",
+    "forest": "grass and leaves",
+    "ice": "krill",
+    "meadow": "flowers",
+    "ocean": "krill and small fish",
+    "savanna": "grass"
+  },
+  "group": {
+    "0": "Animals",
+    "1": "Climate",
+    "2": "People"
+  },
+  "meta": {
+    "hint": "Each animal is a little different. The ones that fit best have more babies. Press play and pick a change.",
+    "intro": "Up to five kinds of animal share one place. Each animal is a little different; the ones that fit best have more babies, so bodies change over time. Pick a world or build your own, then make changes: they add up.",
+    "name": "Animals",
+    "sub": "Evolution"
+  },
+  "metric": {
+    "co0": {
+      "label": "Coat (animal 1)",
+      "unit": "× day 0"
+    },
+    "co1": {
+      "label": "Coat (animal 2)",
+      "unit": "× day 0"
+    },
+    "co2": {
+      "label": "Coat (animal 3)",
+      "unit": "× day 0"
+    },
+    "co3": {
+      "label": "Coat (animal 4)",
+      "unit": "× day 0"
+    },
+    "co4": {
+      "label": "Coat (animal 5)",
+      "unit": "× day 0"
+    },
+    "food": {
+      "label": "Food",
+      "unit": "bits"
+    },
+    "n0": {
+      "label": "Animal 1",
+      "unit": "animals"
+    },
+    "n1": {
+      "label": "Animal 2",
+      "unit": "animals"
+    },
+    "n2": {
+      "label": "Animal 3",
+      "unit": "animals"
+    },
+    "n3": {
+      "label": "Animal 4",
+      "unit": "animals"
+    },
+    "n4": {
+      "label": "Animal 5",
+      "unit": "animals"
+    },
+    "se0": {
+      "label": "Senses (animal 1)",
+      "unit": "× day 0"
+    },
+    "se1": {
+      "label": "Senses (animal 2)",
+      "unit": "× day 0"
+    },
+    "se2": {
+      "label": "Senses (animal 3)",
+      "unit": "× day 0"
+    },
+    "se3": {
+      "label": "Senses (animal 4)",
+      "unit": "× day 0"
+    },
+    "se4": {
+      "label": "Senses (animal 5)",
+      "unit": "× day 0"
+    },
+    "sp0": {
+      "label": "Speed (animal 1)",
+      "unit": "× day 0"
+    },
+    "sp1": {
+      "label": "Speed (animal 2)",
+      "unit": "× day 0"
+    },
+    "sp2": {
+      "label": "Speed (animal 3)",
+      "unit": "× day 0"
+    },
+    "sp3": {
+      "label": "Speed (animal 4)",
+      "unit": "× day 0"
+    },
+    "sp4": {
+      "label": "Speed (animal 5)",
+      "unit": "× day 0"
+    },
+    "sz0": {
+      "label": "Size (animal 1)",
+      "unit": "× day 0"
+    },
+    "sz1": {
+      "label": "Size (animal 2)",
+      "unit": "× day 0"
+    },
+    "sz2": {
+      "label": "Size (animal 3)",
+      "unit": "× day 0"
+    },
+    "sz3": {
+      "label": "Size (animal 4)",
+      "unit": "× day 0"
+    },
+    "sz4": {
+      "label": "Size (animal 5)",
+      "unit": "× day 0"
+    }
+  },
+  "name": {
+    "own": "Your own world",
+    "ownFrom": "Your own world (based on {from})"
+  },
+  "q": {
+    "add": "What if {many} moved in?",
+    "addMore": "What if more {many} moved in?",
+    "cool": "What if an ice age began?",
+    "disease": "What if a sickness spread among the {many}?",
+    "drought": "What if it stopped raining for a year?",
+    "fire": "What if a wildfire burned a third of the land?",
+    "habitat": "What if half the land became farms and roads?",
+    "hunt": "What if people hunted the {many}?",
+    "invasive": "What if a fast-breeding newcomer arrived?",
+    "move": "What if they were moved to the opposite climate?",
+    "rain": "What if there were years of good rain?",
+    "remove": "What if the {many} disappeared?",
+    "reserve": "What if it became a protected reserve?",
+    "warm": "What if it got 3 °C warmer?"
+  },
+  "sp": {
+    "bear": {
+      "coat": "fur",
+      "food": "Berries, roots, salmon, sometimes elk calves",
+      "life": "20–25 years",
+      "many": "bears",
+      "name": "Brown bear",
+      "one": "bear",
+      "pl": "Brown bears",
+      "role": "Carries salmon from rivers into the forest, feeding the trees.",
+      "social": "Mostly alone. Mothers keep their cubs for two to three years.",
+      "where": "Forests and mountains of North America, Europe and Asia"
+    },
+    "beaver": {
+      "coat": "fur",
+      "food": "Bark, twigs and water plants",
+      "life": "10–12 years",
+      "many": "beavers",
+      "name": "Beaver",
+      "one": "beaver",
+      "pl": "Beavers",
+      "role": "Builds dams that make ponds, a home for fish, frogs and birds.",
+      "social": "Families of a mother, a father and their young share one lodge.",
+      "where": "Rivers and lakes of North America and Europe"
+    },
+    "bee": {
+      "coat": "fuzz",
+      "food": "Nectar and pollen from flowers",
+      "life": "Workers about 6 weeks, the queen 2–5 years",
+      "many": "bees",
+      "name": "Honeybee",
+      "one": "bee",
+      "pl": "Honeybees",
+      "role": "Pollinates about a third of the food people eat.",
+      "social": "Colonies of 20,000–60,000: one queen and many workers whose job changes with age.",
+      "where": "Worldwide, wild and kept by beekeepers"
+    },
+    "cheetah": {
+      "coat": "fur",
+      "food": "Gazelles and hares",
+      "life": "10–12 years",
+      "many": "cheetahs",
+      "name": "Cheetah",
+      "one": "cheetah",
+      "pl": "Cheetahs",
+      "role": "The fastest runner on land: up to 110 km/h, but only for a short sprint.",
+      "social": "Mothers raise cubs alone; brothers often stay together for life.",
+      "where": "Open grasslands of Africa, a few in Iran"
+    },
+    "elephant": {
+      "coat": "body fat",
+      "food": "Grass, bark and fruit: about 150 kg a day",
+      "life": "60–70 years",
+      "many": "elephants",
+      "name": "African elephant",
+      "one": "elephant",
+      "pl": "Elephants",
+      "role": "Opens up woodland, digs water holes and spreads seeds.",
+      "social": "Herds of related females led by the oldest, the matriarch. Males leave at about 13.",
+      "where": "Savannas and forests of Africa"
+    },
+    "elk": {
+      "coat": "fur",
+      "food": "Grass, leaves and bark",
+      "life": "10–13 years",
+      "many": "elk",
+      "name": "Elk",
+      "one": "elk",
+      "pl": "Elk",
+      "role": "The main meal of wolves; their grazing shapes the forest edge.",
+      "social": "Mothers and young live in big herds; males live alone and roar (bugle) in autumn.",
+      "where": "Mountain forests and meadows of North America and Asia"
+    },
+    "fox": {
+      "coat": "fur",
+      "food": "Rabbits, mice, birds, berries",
+      "life": "3–4 years in the wild",
+      "many": "foxes",
+      "name": "Red fox",
+      "one": "fox",
+      "pl": "Red foxes",
+      "role": "Keeps rabbit and mouse numbers in check.",
+      "social": "Pairs raise their cubs together; older daughters sometimes help.",
+      "where": "Almost everywhere in the northern half of the world, even in cities"
+    },
+    "gazelle": {
+      "coat": "fur",
+      "food": "Short, fresh grass",
+      "life": "10–15 years",
+      "many": "gazelles",
+      "name": "Gazelle",
+      "one": "gazelle",
+      "pl": "Gazelles",
+      "role": "Food for cheetahs, lions and hyenas; can run a zig-zag at 80 km/h.",
+      "social": "Herds of females and young; males guard small patches of land.",
+      "where": "Grasslands of Kenya and Tanzania"
+    },
+    "hornet": {
+      "coat": "fuzz",
+      "food": "Bees and other insects (for its young), fruit and nectar",
+      "life": "Workers a few weeks, queens about a year",
+      "many": "hornets",
+      "name": "Hornet",
+      "one": "hornet",
+      "pl": "Hornets",
+      "role": "Hovers outside beehives and catches bees as they fly home.",
+      "social": "Paper nests of a few thousand, started each spring by one queen.",
+      "where": "Asia; spread to Europe since 2004"
+    },
+    "jackal": {
+      "coat": "fur",
+      "food": "Small mammals, birds, insects",
+      "life": "8–9 years",
+      "many": "jackals",
+      "name": "Black-backed jackal",
+      "one": "jackal",
+      "pl": "Jackals",
+      "role": "Hunts small animals and cleans up what others leave.",
+      "social": "Pairs for life; last year's pups help raise the new litter.",
+      "where": "Dry grassland and desert edges of southern and eastern Africa"
+    },
+    "lion": {
+      "coat": "fur",
+      "food": "Zebras, wildebeest, buffalo, gazelles",
+      "life": "10–14 years",
+      "many": "lions",
+      "name": "Lion",
+      "one": "lion",
+      "pl": "Lions",
+      "role": "Keeps grazing herds healthy and on the move.",
+      "social": "Prides of related females with 1–3 males. The females hunt together.",
+      "where": "Savannas of Africa, and one forest in India"
+    },
+    "lseal": {
+      "coat": "blubber",
+      "food": "Krill, penguins, fish, other seals",
+      "life": "12–26 years",
+      "many": "leopard seals",
+      "name": "Leopard seal",
+      "one": "leopard seal",
+      "pl": "Leopard seals",
+      "role": "Top hunter on the sea ice, after the orca.",
+      "social": "Alone, except mothers with pups.",
+      "where": "Pack ice around Antarctica"
+    },
+    "meerkat": {
+      "coat": "fur",
+      "food": "Beetles, scorpions, small lizards",
+      "life": "6–10 years",
+      "many": "meerkats",
+      "name": "Meerkat",
+      "one": "meerkat",
+      "pl": "Meerkats",
+      "role": "Eats huge numbers of insects; food for jackals and eagles.",
+      "social": "Mobs of 20–50 led by one breeding pair; others babysit and take turns as lookouts.",
+      "where": "Kalahari and Namib deserts, southern Africa"
+    },
+    "orca": {
+      "coat": "blubber",
+      "food": "Fish or seals, depending on the pod",
+      "life": "50–90 years",
+      "many": "orcas",
+      "name": "Orca",
+      "one": "orca",
+      "pl": "Orcas",
+      "role": "Top hunter of the sea, shaping seal and fish numbers.",
+      "social": "Pods led by grandmothers. Each pod has its own calls and hunting tricks.",
+      "where": "Every ocean, most common in cold water"
+    },
+    "penguin": {
+      "coat": "feathers",
+      "food": "Fish, krill and squid",
+      "life": "15–20 years",
+      "many": "penguins",
+      "name": "Emperor penguin",
+      "one": "penguin",
+      "pl": "Emperor penguins",
+      "role": "Tells scientists how healthy the sea ice is.",
+      "social": "Colonies of thousands. Fathers huddle together and keep the egg warm all winter.",
+      "where": "Sea ice around Antarctica"
+    },
+    "rabbit": {
+      "coat": "fur",
+      "food": "Grass and leafy plants",
+      "life": "1–2 years in the wild",
+      "many": "rabbits",
+      "name": "Rabbit",
+      "one": "rabbit",
+      "pl": "Rabbits",
+      "role": "Food for foxes, hawks and many others; can strip land bare when there are too many.",
+      "social": "Live in groups in underground tunnels called warrens.",
+      "where": "Grassland and woodland edges; spread by people to many countries"
+    },
+    "salmon": {
+      "coat": "body fat",
+      "food": "Krill, shrimp and small fish",
+      "life": "4–6 years",
+      "many": "salmon",
+      "name": "Atlantic salmon",
+      "one": "salmon",
+      "pl": "Salmon",
+      "role": "Carries ocean food far inland; food for bears, seals and birds.",
+      "social": "Alone at sea; adults swim back to the river they hatched in to lay eggs.",
+      "where": "The North Atlantic and the rivers that flow into it"
+    },
+    "scorpion": {
+      "coat": "body fat",
+      "food": "Beetles, crickets and spiders",
+      "life": "3–8 years",
+      "many": "scorpions",
+      "name": "Scorpion",
+      "one": "scorpion",
+      "pl": "Scorpions",
+      "role": "Hunts insects at night; meerkats are immune to many of their stings.",
+      "social": "Alone. Mothers carry their babies on their back.",
+      "where": "Deserts and dry lands on every continent except Antarctica"
+    },
+    "seal": {
+      "coat": "blubber",
+      "food": "Fish, squid, shrimp",
+      "life": "25–30 years",
+      "many": "seals",
+      "name": "Harbour seal",
+      "one": "seal",
+      "pl": "Seals",
+      "role": "Eats fish; food for orcas and sharks.",
+      "social": "Rest together on beaches and rocks, but hunt alone.",
+      "where": "Cold coasts of the North Atlantic and North Pacific"
+    },
+    "wolf": {
+      "coat": "fur",
+      "food": "Elk, deer, beavers and rabbits",
+      "life": "6–8 years in the wild",
+      "many": "wolves",
+      "name": "Gray wolf",
+      "one": "wolf",
+      "pl": "Gray wolves",
+      "role": "Keeps elk on the move, which lets riverside trees grow back.",
+      "social": "Packs of 4–9: a mother, a father and their young. The \"alpha\" pair are simply the parents.",
+      "where": "Forests, tundra and mountains across North America, Europe and Asia"
+    },
+    "zebra": {
+      "coat": "fur",
+      "food": "Tough, tall grass",
+      "life": "20–25 years",
+      "many": "zebras",
+      "name": "Zebra",
+      "one": "zebra",
+      "pl": "Zebras",
+      "role": "Eats the tall grass first, opening the way for gazelles.",
+      "social": "Families of one stallion, several mares and foals; families join into big herds.",
+      "where": "Grasslands of eastern and southern Africa"
+    }
+  },
+  "spGroup": {
+    "0": "Forest and tundra",
+    "1": "Savanna",
+    "2": "Desert",
+    "3": "Ocean and ice",
+    "4": "Meadow"
+  },
+  "speed": {
+    "0": "1 d/s",
+    "1": "3 d/s",
+    "2": "10 d/s",
+    "3": "30 d/s"
+  },
+  "stage": {
+    "count": "{name} {n}",
+    "gone": "gone",
+    "goneNamed": "{name}: gone",
+    "new": "(new)"
+  },
+  "story": {
+    "bigger": "{many} are {n}% bigger {cmp}.",
+    "biggerSafe": "{many} are {n}% bigger {cmp}: big ones are harder to catch.",
+    "catch": "The {hunter} mostly catch {prey}; the {prey} hide in the {cover} to stay safe.",
+    "coatLess": "{many} have {n}% less {coat} {cmp}: it keeps them cool.",
+    "coatMore": "{many} have {n}% more {coat} {cmp}: it keeps them warm.",
+    "compared": "Compared with the same place with no change, on day {day}:",
+    "count": "{n, plural, one {# {one}} other {# {many}}}",
+    "diedOut": "The {many} died out: most {why}.",
+    "diedOutChanged": "The {many} died out: most {why}, which did not happen without your changes.",
+    "diff": "There {be, select, is {is} other {are}} {list}.",
+    "faster": "{many} are {n}% faster {cmp}: the quick ones get away more often and have more babies.",
+    "fasterFood": "{many} are {n}% faster {cmp}: the quick ones reach food first.",
+    "fewer": "{n, plural, one {# fewer {one}} other {# fewer {many}}}",
+    "giveTime": "Give it time: many changes show up only after a few generations.",
+    "hungry": "Then they ate the {food} faster than it grew, and many went hungry.",
+    "hunting": "People hunting take many {many}.",
+    "lessFood": "With less {food} to go round, there is room for fewer animals.",
+    "lessToEat": "With no {prey} left to catch, the {hunter} have less to eat.",
+    "live": "Day {day}: {list} live here.",
+    "more": "{n, plural, one {# more {one}} other {# more {many}}}",
+    "moreFood": "More {food} means more babies survive.",
+    "multiplied": "With no {hunter} to chase them, the {prey} multiplied.",
+    "newcomersFailed": "The {many} that moved in could not survive here: most {why}.",
+    "noneLeft": "Day {day}: no animals are left here.",
+    "pick": "Pick a change to see what would be different.",
+    "runsShort": "There are so many plant-eaters that the {food} runs short.",
+    "same": "The numbers of animals are the same so far.",
+    "sensesLess": "{many} notice {n}% less {cmp}: big eyes and ears cost energy.",
+    "sensesMore": "{many} notice food and danger {n}% farther away {cmp}.",
+    "slower": "{many} are {n}% slower {cmp}: moving slowly saves energy.",
+    "smaller": "{many} are {n}% smaller {cmp}: small bodies need less food.",
+    "weather": "The {heat, select, hot {hotter} other {colder}} weather is hard on the {many}: they burn more food just to keep going."
+  },
+  "time": {
+    "day": "Day {n}"
+  },
+  "trait": {
+    "co": "Coat",
+    "se": "Senses",
+    "sp": "Speed",
+    "sz": "Size"
+  },
+  "trend": {
+    "falling": "falling",
+    "gone": "gone",
+    "rising": "rising",
+    "steady": "steady"
+  },
+  "ui": {
+    "addAnimal": "Add an animal",
+    "atStart": "{many} at the start",
+    "changesHint": "They add up. Click one again to make it stronger.",
+    "far": "Far from home",
+    "farHere": "Far from home here",
+    "fewer": "Fewer {many} at the start",
+    "fiveMost": "Five is the most",
+    "happening": "What is happening",
+    "livesHere": "{name} (lives here)",
+    "more": "More {many} at the start",
+    "needOne": "A world needs at least one animal",
+    "newcomer": "Who could move in",
+    "noChange": "(no change: {v})",
+    "none": "none",
+    "noneLeft": "None left",
+    "pickWorld": "Pick a world",
+    "portrait": "The typical {one} on day 0 and today, drawn at the same scale. {caption}",
+    "restart": "Changing who lives here starts the world again.",
+    "rightNow": "Right now",
+    "takeOut": "Take {many} out of this world",
+    "takeOutShort": "Take {many} out",
+    "target": "Changes to one animal use",
+    "thenNow": "Then and now",
+    "whatChanged": "What changed",
+    "who": "Who lives here"
+  },
+  "whatif": {
+    "add": "An animal moves in",
+    "cool": "An ice age",
+    "disease": "A sickness spreads",
+    "drought": "A year without rain",
+    "fire": "A wildfire",
+    "habitat": "Half the land lost",
+    "hunt": "People hunt an animal",
+    "invasive": "A fast-breeding newcomer",
+    "move": "The opposite climate",
+    "rain": "Years of good rain",
+    "remove": "An animal disappears",
+    "reserve": "A protected reserve",
+    "warm": "3 °C warmer"
+  },
+  "why": {
+    "0": "were caught",
+    "1": "went hungry",
+    "2": "found the weather too hard",
+    "3": "grew old",
+    "4": "were hunted by people"
+  },
+  "world": {
+    "antarctica": "Antarctica",
+    "atlantic": "North Atlantic",
+    "foxes": "Fox and rabbits",
+    "kalahari": "Kalahari",
+    "meadow": "Meadow",
+    "savanna": "Savanna",
+    "yellowstone": "Yellowstone"
+  },
+  "worldGroup": {
+    "0": "Forest and tundra",
+    "1": "Savanna and desert",
+    "2": "Ocean and ice",
+    "3": "Meadow"
+  },
+  "worldOpt": {
+    "antarctica": "Antarctica: penguins, leopard seals, orcas",
+    "atlantic": "North Atlantic: salmon, seals, orcas, bears",
+    "foxes": "Fox and rabbits",
+    "kalahari": "Kalahari: meerkats, jackals, scorpions",
+    "meadow": "Meadow: honeybees and hornets",
+    "savanna": "Savanna: lions, zebras, elephants, gazelles",
+    "yellowstone": "Yellowstone: wolves, elk, beavers, bears"
+  }
+}

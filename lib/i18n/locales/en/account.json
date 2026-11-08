@@ -1,0 +1,83 @@
+{
+  "_status": "source",
+  "status": {
+    "off": "Accounts aren't set up in this build. Everything here is free.",
+    "loading": "Checking your account…",
+    "signedOut": "The lab is free without an account. Sign in to use Premium on any device.",
+    "free": "Free plan. Every world and every what-if is yours.",
+    "premium": "Premium is on: no ads, and video and slide exports.",
+    "error": "The account service didn't answer.",
+    "keepPremium": "Premium stays on for now."
+  },
+  "menu": {
+    "account": "Account",
+    "signIn": "Sign in",
+    "createAccount": "Create account",
+    "goPremium": "Go Premium",
+    "price": "$15 a year",
+    "manage": "Manage subscription",
+    "settings": "Account settings",
+    "signOut": "Sign out",
+    "retry": "Try again",
+    "yourAccount": "Your lab account",
+    "premium": "Premium",
+    "free": "Free",
+    "plan": "{plan} plan",
+    "buttonLabel": "{label}, {plan} plan",
+    "devPremium": "Simulate Premium",
+    "devOnly": "dev build only"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "No ads",
+        "text": "Every ad slot disappears, in every world."
+      },
+      "phone": {
+        "name": "Phone videos",
+        "text": "1080 × 1920 clips of your what-if for Shorts, Reels and TikTok."
+      },
+      "wide": {
+        "name": "YouTube videos",
+        "text": "1920 × 1080 clips with both worlds side by side."
+      },
+      "slides": {
+        "name": "Slides",
+        "text": "A PDF deck: the setup, the what-if, key moments and the outcome."
+      }
+    },
+    "lead": {
+      "export": "Videos and slides are part of Premium.",
+      "ads": "Premium takes the ads away.",
+      "menu": "Support the lab and get the tools for sharing what you find."
+    },
+    "createContinue": "Create account and continue",
+    "haveAccount": "I have an account",
+    "noteSignedOut": "First an account, so Premium works on every device. Then checkout opens right here.",
+    "openingCheckout": "Opening checkout…",
+    "continueCheckout": "Continue to checkout",
+    "noteFree": "Signed in as {who}. Payment is handled by {provider} and Stripe; the lab never sees your card.",
+    "you": "you",
+    "ourProvider": "our provider",
+    "back": "Back to the lab",
+    "manage": "Manage subscription",
+    "checking": "Checking your account…",
+    "retry": "Try again",
+    "noteDev": "Accounts aren't set up in this build. To try Premium, turn on Simulate Premium in the account menu.",
+    "noteOff": "Premium isn't on sale in this version of the lab yet.",
+    "titleOn": "Premium is on",
+    "title": "Premium",
+    "amount": "$15",
+    "per": "a year · cancel any time",
+    "thanks": "Thank you. Ads are gone and exports are unlocked in every world.",
+    "free": "Every world and every what-if stays free, with or without Premium."
+  },
+  "errors": {
+    "noCheckout": "Checkout isn't available in this version. Try again later.",
+    "notOnSale": "Premium isn't on sale yet. Please try again later.",
+    "checkoutFailed": "Checkout could not open. Try again in a moment.",
+    "offline": "You're offline. Accounts come back when you reconnect.",
+    "noAnswer": "The account service didn't answer. Check your connection and try again."
+  },
+  "yourAccount": "Your account"
+}

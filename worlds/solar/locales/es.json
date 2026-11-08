@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "body": {
+    "blackhole": "el agujero negro",
+    "earth": "la Tierra",
+    "jupiter": "Júpiter",
+    "mars": "Marte",
+    "mercury": "Mercurio",
+    "neptune": "Neptuno",
+    "saturn": "Saturno",
+    "sun": "el Sol",
+    "uranus": "Urano",
+    "venus": "Venus",
+    "yourplanet": "tu planeta"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Masa del Sol",
+      "unit": "× Sol"
+    },
+    "view": {
+      "label": "Vista",
+      "opt": {
+        "inner": "Planetas interiores",
+        "mid": "Hasta Júpiter",
+        "outer": "Todo el sistema"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Un agujero negro de 4 soles entra por el borde del sistema",
+    "escape": "{body} escapa al espacio interestelar",
+    "giant": "El Sol se hincha hasta ser una gigante roja de 0,85 UA de ancho y pierde un tercio de su masa",
+    "intoBh": "{body} cae en el agujero negro",
+    "intoSun": "{body} cae en el Sol",
+    "jupstar": "Júpiter gana 80 veces su masa y se enciende como enana roja",
+    "mars": "La Tierra se traslada a la órbita de Marte",
+    "nosun": "El Sol desaparece: los planetas salen disparados en línea recta",
+    "smash": "{body} choca contra {other}",
+    "stop": "La Tierra se detiene en seco en su órbita",
+    "sun2": "El Sol duplica su masa: atrae más fuerte y brilla 11 veces más",
+    "swallowed": "La gigante roja engulle {body}",
+    "throw": "Lanzas un planeta nuevo"
+  },
+  "info": {
+    "changed": "Con cambios",
+    "now": "La Tierra ahora"
+  },
+  "meta": {
+    "hint": "Arrastra para lanzar un planeta. Los cambios se suman.",
+    "intro": "Gravedad newtoniana real para el Sol y los ocho planetas. Arrastra sobre el escenario para lanzar tu propio planeta.",
+    "name": "Sistema solar",
+    "sub": "Gravedad"
+  },
+  "metric": {
+    "dist": {
+      "label": "Distancia Tierra–Sol",
+      "unit": "UA"
+    },
+    "temp": {
+      "label": "Temperatura de la Tierra",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Duración del año",
+      "unit": "días"
+    }
+  },
+  "name": {
+    "blackhole": "Agujero negro",
+    "earth": "Tierra",
+    "jupiter": "Júpiter",
+    "mars": "Marte",
+    "mercury": "Mercurio",
+    "neptune": "Neptuno",
+    "saturn": "Saturno",
+    "uranus": "Urano",
+    "venus": "Venus",
+    "yourplanet": "Tu planeta"
+  },
+  "speed": {
+    "0": "1 mes/s",
+    "1": "6 meses/s",
+    "2": "2 años/s",
+    "3": "10 años/s"
+  },
+  "status": {
+    "boiling": "océanos hirviendo",
+    "destroyed": "destruida",
+    "flying": "alejándose",
+    "frozen": "congelada",
+    "habitable": "habitable"
+  },
+  "whatif": {
+    "bh": "Pasa un agujero negro",
+    "giant": "El Sol se vuelve gigante roja",
+    "jupstar": "Júpiter se enciende como estrella",
+    "mars": "Lleva la Tierra a la órbita de Marte",
+    "nosun": "El Sol desaparece",
+    "stop": "La Tierra se detiene en su órbita",
+    "sun2": "El Sol duplica su masa"
+  }
+}

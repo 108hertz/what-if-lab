@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState, type ComponentProps } from "react";
 import { ClerkProvider, ClerkFailed, useAuth, useClerk, useUser } from "@clerk/react";
 import type { BridgeProps, ProviderActions } from "./context";
 import { displayName, type RemoteState } from "./state";
+import { pageT } from "@/lib/i18n/page";
 
 /**
  * Clerk adapter (ADR 0008). The only file that imports the provider SDK; loaded lazily and only when a
@@ -38,10 +39,41 @@ function appearance() {
   };
 }
 
+/**
+ * Clerk's own words (sign-in, sign-up, checkout, profile) in the page's language (change 0025). Each language is its
+ * own chunk, loaded only on that language's pages; English needs none.
+ */
+type LocalizationResource = NonNullable<ComponentProps<typeof ClerkProvider>["localization"]>;
+const CLERK_WORDS: Record<string, () => Promise<{ [k: string]: LocalizationResource }>> = {
+  es: () => import("@clerk/localizations/es-ES"), pt: () => import("@clerk/localizations/pt-BR"), fr: () => import("@clerk/localizations/fr-FR"),
+  de: () => import("@clerk/localizations/de-DE"), it: () => import("@clerk/localizations/it-IT"), nl: () => import("@clerk/localizations/nl-NL"),
+  pl: () => import("@clerk/localizations/pl-PL"), tr: () => import("@clerk/localizations/tr-TR"), id: () => import("@clerk/localizations/id-ID"),
+  vi: () => import("@clerk/localizations/vi-VN"), ru: () => import("@clerk/localizations/ru-RU"), uk: () => import("@clerk/localizations/uk-UA"),
+  zh: () => import("@clerk/localizations/zh-CN"), ja: () => import("@clerk/localizations/ja-JP"), ko: () => import("@clerk/localizations/ko-KR"),
+  ar: () => import("@clerk/localizations/ar-SA"), hi: () => import("@clerk/localizations/hi-IN"), th: () => import("@clerk/localizations/th-TH"),
+  bn: () => import("@clerk/localizations/bn-IN"),
+};
+
+function useClerkWords(locale: string): LocalizationResource | undefined | null {
+  // undefined = English (none needed), null = still loading
+  const [words, setWords] = useState<LocalizationResource | undefined | null>(CLERK_WORDS[locale] ? null : undefined);
+  useEffect(() => {
+    const load = CLERK_WORDS[locale];
+    if (!load) return;
+    let live = true;
+    load().then((m) => live && setWords(Object.values(m).find((x) => x && typeof x === "object") as LocalizationResource))
+      .catch(() => live && setWords(undefined));
+    return () => { live = false; };
+  }, [locale]);
+  return words;
+}
+
 export default function ClerkBridge({ config, report }: BridgeProps) {
   const look = useMemo(appearance, []);
+  const words = useClerkWords(pageT().locale);
+  if (words === null) return null;
   return (
-    <ClerkProvider publishableKey={config.publishableKey!} appearance={look} afterSignOutUrl={typeof window === "undefined" ? "/" : window.location.pathname}>
+    <ClerkProvider publishableKey={config.publishableKey!} appearance={look} localization={words} afterSignOutUrl={typeof window === "undefined" ? "/" : window.location.pathname}>
       <Inner config={config} report={report} />
       <ClerkFailed><Failed report={report} /></ClerkFailed>
     </ClerkProvider>
@@ -78,11 +110,11 @@ function Inner({ config, report }: BridgeProps) {
       signIn: () => clerk.openSignIn({}),
       signUp: () => clerk.openSignUp({}),
       async checkout() {
-        if (!b.__internal_openCheckout) throw new Error("Checkout isn't available in this version. Try again later.");
+        if (!b.__internal_openCheckout) throw new Error(pageT()("account.errors.noCheckout"));
         if (!planId) {
           const plans = await b.billing?.getPlans({ for: "user" });
           planId = plans?.data.find((p) => p.slug === config.plan)?.id ?? null;
-          if (!planId) throw new Error("Premium isn't on sale yet. Please try again later.");
+          if (!planId) throw new Error(pageT()("account.errors.notOnSale"));
         }
         b.__internal_openCheckout({ planId, planPeriod: "annual", for: "user", onSubscriptionComplete: refresh });
       },

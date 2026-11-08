@@ -2,6 +2,8 @@ import { TAU, clamp, fmtNum, mix } from "@/lib/sim/core";
 import { FONT, STAGE } from "@/lib/sim/draw";
 import { ARENA_RATIO, COVER, HAB_T, SPECIES, type Habitat, type Species } from "./data";
 import type { Cr, W } from "./sim";
+import { worldSay } from "@/lib/sim/say";
+import { animalWords } from "./messages";
 
 /**
  * The animals stage (change 0017), framework-free. A habitat backdrop painted in layers (cached per stage size), food
@@ -10,7 +12,7 @@ import type { Cr, W } from "./sim";
  * clock and never touches the world; reduced motion freezes it.
  */
 
-export interface View { season: number; T: number; fires: [x0: number, x1: number, grow: number][]; food: string }
+export interface View { season: number; T: number; fires: [x0: number, x1: number, grow: number][] }
 export interface Traits { sp: number; sz: number; se: number; co: number }
 type Ctx = CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
 
@@ -493,14 +495,15 @@ function chips(c: CanvasRenderingContext2D, W: number, w: W, base: W | null, now
   const n = w.cast.map(() => 0), nb = base ? base.cast.map(() => 0) : null;
   for (const a of w.c) n[a.s]++;
   if (base && nb) for (const a of base.c) nb[a.s]++;
-  const compact = W < 560;
+  const compact = W < 560, S = worldSay(animalWords);
   c.font = "500 12px " + FONT.body;
   let x = 8, y = 36;
   w.cast.forEach((id, i) => {
     const sp = SPECIES[id], k = n[i];
     const gone = k === 0;
-    const main = gone ? (compact ? "gone" : `${sp.name}: gone`) : compact ? fmtNum(k) : `${sp.name} ${fmtNum(k)}`;
-    const extra = nb && i < nb.length && nb[i] !== k ? ` (${fmtNum(nb[i])})` : nb && i >= nb.length ? " (new)" : "";
+    const name = S(`sp.${id}.name`);
+    const main = gone ? (compact ? S("stage.gone") : S("stage.goneNamed", { name })) : compact ? fmtNum(k) : S("stage.count", { name, n: k });
+    const extra = nb && i < nb.length && nb[i] !== k ? ` (${fmtNum(nb[i])})` : nb && i >= nb.length ? " " + S("stage.new") : "";
     const tw = c.measureText(main).width, ew = extra ? c.measureText(extra).width : 0, cw = 8 + 18 + tw + ew + 10;
     if (x + cw > W - 8 && x > 8) { x = 8; y += 26; }
     // Ripple when the count jumps (compared every half second)

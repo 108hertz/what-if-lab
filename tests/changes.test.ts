@@ -47,7 +47,7 @@ function fakeCtx(): CanvasRenderingContext2D {
   getContext() { return fakeCtx(); }
 };
 
-const state = (e: SimEngine) => ({ r: e.readouts(), tl: e.timeline(200).map((x) => [x.t, x.txt, x.who]), applied: e.applied });
+const state = (e: SimEngine) => ({ r: e.readouts(), tl: e.timeline(200).map((x) => [x.t, x.k, x.v, x.who]), applied: e.applied });
 
 describe.each(SANDBOX_KEYS)("%s: ticking changes off and on", (key) => {
   const sb = SANDBOXES[key];
@@ -115,6 +115,25 @@ describe.each(SANDBOX_KEYS)("%s: ticking changes off and on", (key) => {
     expect(e.origin!.changes.map((c) => c.id)).toEqual(e.applied);
     expect(e.origin!.world.t).toBe(e.entries[1].rec.t);
   });
+
+  it("a new starting condition keeps every change and re-runs as if it had been set from the start", () => {
+    const ctl = sb.controls.find((c) => c.type !== "heading" && !c.live);
+    if (!ctl || ctl.type === "heading") return;
+    const v = ctl.type === "range" ? (ctl.val === ctl.max ? ctl.min : ctl.max) : ctl.options.find(([o]) => o !== ctl.val)![0];
+    const id = sb.whatifs[0][0];
+    const e = session(key, id, true);
+    e.setOn(e.entries[1].key, false);
+    e.rebuild(e.setParam(ctl.id, v).keys);
+    expect(e.entries.map((x) => [x.rec.id, x.on])).toEqual([[id, true], [other(sb, id), false]]);
+    // The same session with the condition set before anything ran
+    const f = new SimEngine(sb, defaultParams(sb));
+    f.setParam(ctl.id, v); f.restart();
+    run(f, 30); f.change(id); run(f, 40); f.change(other(sb, id)); run(f, 40);
+    f.setOn(f.entries[1].key, false);
+    expect(e.base).toEqual(f.base);
+    expect(e.alt).toEqual(f.alt);
+    expect(e.history).toEqual(f.history);
+  }, 60_000);
 
   it("reset puts everything back: settings, changes, time, history and timeline", () => {
     const e = new SimEngine(sb, defaultParams(sb));

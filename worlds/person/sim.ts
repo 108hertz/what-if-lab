@@ -1,6 +1,7 @@
-import type { BaseWorld, Sandbox } from "@/lib/sim/types";
-import { clamp, fmtDur, fmtNum, gauss, mix, note, rng } from "@/lib/sim/core";
+import type { BaseWorld, Sandbox, WhatIf } from "@/lib/sim/types";
+import { clamp, fmtDur, fmtNum, gauss, mix, note, ref, rng } from "@/lib/sim/core";
 import { FONT, blob, STAGE } from "@/lib/sim/draw";
+import { worldSay } from "@/lib/sim/say";
 import { meta } from "./meta";
 import { HABITS } from "./data";
 
@@ -29,13 +30,39 @@ function drift(p: P, j: number, t: number): number {
 }
 const effect = (v: Version, j: number) => v.e.reduce((s, e) => s + e[j], 0);
 export const versionValue = (w: W, v: Version, j: number, p: P) => clamp(v.b0[j] + drift(p, j, w.t) + v.o[j] + effect(v, j), 0, 100);
-const labelOf = (id: string) => person.whatifs.find((x) => x[0] === id)?.[1] ?? id;
+const WHATIFS: WhatIf[] = [
+  ["exercise", "Exercise 30 min every day"], ["social", "Quit social media"], ["sleep", "Sleep 8 hours, fixed schedule"],
+  ["read", "Read 30 min a day"], ["meditate", "Meditate 10 min a day"], ["learn", "Learn a skill 1 hour a day"],
+  ["drink", "Start drinking heavily"], ["isolate", "Pull away from friends"], ["smoke", "Start smoking"],
+];
+const labelOf = (id: string) => WHATIFS.find((x) => x[0] === id)?.[1] ?? id;
 /** "Exercise" from "Exercise 30 min every day": the short name used in timeline lines when several habits run. */
 const shortOf = (id: string) => labelOf(id).split(/ \d| every| a day|,/)[0];
+
+/** English words of this world (change 0025): event lines and the names they use. */
+const MESSAGES: Record<string, string> = {
+  ...Object.fromEntries(WHATIFS.flatMap(([id]) => [[`habit.${id}`, labelOf(id).toLowerCase()], [`short.${id}`, shortOf(id)]])),
+  ...Object.fromEntries(KEYS.map((k, j) => [`dim.${k}`, NAMES[j]])),
+  "ev.withHabit": "{habit}: {line}",
+  "ev.w3": "Week 3: the motivation dip, most quitting happens now",
+  "ev.d66": "Day 66: for those still going, the habit is now automatic",
+  "ev.half": "Half the versions have given up",
+  "ev.b6": "Six months in: craving and tolerance make stopping hard",
+  "ev.low": "{dim} drops into the danger zone",
+  "ev.high": "{dim} reaches a strong level",
+  "ev.again": "Starts again: {habit}",
+  "ev.start": "Starts: {habit}",
+  // The stage caption under the 100 faces
+  "stage.one": "{n} of 100 still doing it",
+  "stage.many": "{h, plural, one {# habit} other {# habits}} · {n} of 100 still doing at least one",
+  "stage.none": "No new habit yet",
+  "stage.caption": "{what} · smile = wellbeing · brightness = health",
+};
 
 export const person: Sandbox<W, P> = {
   ...meta,
   intro: "One person, 100 parallel versions of their life. Try new habits and see how many stick with it and what it changes.",
+  messages: MESSAGES,
   controls: [
     { type: "range", id: "age", label: "Age", min: 16, max: 75, step: 1, val: 30, unit: "yrs" },
     { type: "range", id: "disc", label: "Self-discipline", min: 0, max: 100, step: 1, val: 50 },
@@ -44,11 +71,7 @@ export const person: Sandbox<W, P> = {
     { type: "range", id: "health", label: "Current health", min: 0, max: 100, step: 1, val: 65 },
     { type: "range", id: "mood", label: "Current wellbeing", min: 0, max: 100, step: 1, val: 60 },
   ],
-  whatifs: [
-    ["exercise", "Exercise 30 min every day"], ["social", "Quit social media"], ["sleep", "Sleep 8 hours, fixed schedule"],
-    ["read", "Read 30 min a day"], ["meditate", "Meditate 10 min a day"], ["learn", "Learn a skill 1 hour a day"],
-    ["drink", "Start drinking heavily"], ["isolate", "Pull away from friends"], ["smoke", "Start smoking"],
-  ],
+  whatifs: WHATIFS,
   speeds: [[1 / 52, "1 wk/s"], [1 / 12, "1 mo/s"], [0.5, "6 mo/s"], [2, "2 yr/s"]],
   defaultSpeed: 1,
   fmtT: fmtDur,
@@ -84,18 +107,20 @@ export const person: Sandbox<W, P> = {
       }
       w.t += h;
       w.hs.forEach((hb, i) => {
-        const E = HABITS[hb.id], days = (w.t - hb.tf) * 365, pre = many ? `${shortOf(hb.id)}: ` : "", k = hb.id;
+        const E = HABITS[hb.id], days = (w.t - hb.tf) * 365, k = hb.id;
+        // With several habits running, each line says which one it is about
+        const line = (ev: string, once: string) => note(w, many ? "ev.withHabit" : ev, many ? { habit: ref(`short.${k}`), line: ref(ev) } : undefined, once);
         if (E[5]) {
-          if (days >= 21) note(w, pre + "Week 3: the motivation dip, most quitting happens now", "w3" + k);
-          if (days >= 66) note(w, pre + "Day 66: for those still going, the habit is now automatic", "d66" + k);
-          if (w.v.filter((v) => v.kept[i]).length < 50) note(w, pre + "Half the versions have given up", "half" + k);
-        } else if (days >= 180) note(w, pre + "Six months in: craving and tolerance make stopping hard", "b6" + k);
+          if (days >= 21) line("ev.w3", "w3" + k);
+          if (days >= 66) line("ev.d66", "d66" + k);
+          if (w.v.filter((v) => v.kept[i]).length < 50) line("ev.half", "half" + k);
+        } else if (days >= 180) line("ev.b6", "b6" + k);
       });
     }
     const r = person.read(w, p);
     KEYS.forEach((k, j) => {
-      if ((r[k] ?? 50) < 35) note(w, `${NAMES[j]} drops into the danger zone`, "lo" + k);
-      if ((r[k] ?? 50) >= 75) note(w, `${NAMES[j]} reaches a strong level`, "hi" + k);
+      if ((r[k] ?? 50) < 35) note(w, "ev.low", { dim: ref(`dim.${KEYS[j]}`) }, "lo" + k);
+      if ((r[k] ?? 50) >= 75) note(w, "ev.high", { dim: ref(`dim.${KEYS[j]}`) }, "hi" + k);
     });
   },
 
@@ -106,12 +131,12 @@ export const person: Sandbox<W, P> = {
       // Already going: everyone starts it again today
       w.hs[i].tf = w.t;
       w.v.forEach((v) => (v.kept[i] = 1));
-      note(w, "Starts again: " + labelOf(id).toLowerCase());
+      note(w, "ev.again", { habit: ref(`habit.${id}`) });
       return;
     }
     w.hs.push({ id, tf: w.t });
     w.v.forEach((v) => { v.kept.push(1); v.e.push([0, 0, 0, 0]); });
-    note(w, "Starts: " + labelOf(id).toLowerCase());
+    note(w, "ev.start", { habit: ref(`habit.${id}`) });
   },
 
   read(w, p) {
@@ -133,8 +158,8 @@ export const person: Sandbox<W, P> = {
       blob(ctx, x, y, cell * 0.36, mix("#2A3150", col, 0.35 + versionValue(w, v, 1, p) / 150), 0, 0, versionValue(w, v, 0, p));
     });
     ctx.font = "12.5px " + FONT.body; ctx.fillStyle = STAGE.ink2;
-    const kept = w.v.filter((v) => v.kept.some((k) => k)).length;
-    const what = w.hs.length === 1 ? `${kept} of 100 still doing it` : `${w.hs.length} habits · ${kept} of 100 still doing at least one`;
-    ctx.fillText(w.hs.length ? `${what} · smile = wellbeing · brightness = health` : "No new habit yet · smile = wellbeing · brightness = health", ox, H - 14);
+    const say = worldSay(person), kept = w.v.filter((v) => v.kept.some((k) => k)).length;
+    const what = !w.hs.length ? say("stage.none") : w.hs.length === 1 ? say("stage.one", { n: kept }) : say("stage.many", { h: w.hs.length, n: kept });
+    ctx.fillText(say("stage.caption", { what }), ox, H - 14, W - ox - 8);
   },
 };

@@ -1,0 +1,189 @@
+{
+  "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ in the air",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Yearly CO₂ emissions",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Forest cover",
+      "unit": "% of land"
+    },
+    "front": {
+      "label": "Seafront height",
+      "unit": "m above sea"
+    },
+    "h": {
+      "air-today": "Air today",
+      "emissions": "Emissions",
+      "my-future-used-by-build-my-own-future": "My future (used by “Build my own future”)",
+      "planet": "Planet",
+      "your-town": "Your town"
+    },
+    "mDac": {
+      "label": "CO₂ removal",
+      "unit": "Gt a year"
+    },
+    "mDim": {
+      "label": "Sun-dimming aerosols",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Change emissions by",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Methane cut",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Trees planted",
+      "unit": "trillion"
+    },
+    "mWall": {
+      "label": "Sea wall",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "Over",
+      "unit": "years"
+    },
+    "meth": {
+      "label": "Methane in the air",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Where emissions are heading",
+      "opt": {
+        "fall": "Slowly fall (today’s pledges)",
+        "flat": "Level off",
+        "grow": "Keep growing"
+      }
+    },
+    "sens": {
+      "label": "Climate sensitivity",
+      "unit": "°C per 2× CO₂"
+    },
+    "tip": {
+      "label": "Tipping points",
+      "opt": {
+        "off": "Off",
+        "on": "On: permafrost and ice sheets can tip"
+      }
+    },
+    "uptake": {
+      "label": "Ocean and soil uptake",
+      "unit": "% of today"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "The Amazon starts turning to grassland",
+      "dac": "Machines start pulling CO₂ out of the air",
+      "double": "Emissions start climbing towards double",
+      "ev": "Clean-energy switch: emissions fall 7% a year",
+      "geo": "Aerosols sprayed into the stratosphere",
+      "melt": "West Antarctic ice sheet starts to collapse",
+      "methane": "Methane leaks and sources start being fixed",
+      "permafrost": "Permafrost starts thawing fast",
+      "seawall": "A 3 m sea wall is built around the harbour",
+      "trees": "A trillion trees go into the ground",
+      "volcano": "Supervolcano erupts: an ash veil blocks the sun",
+      "zero": "All emissions stop"
+    },
+    "back": "Warming falls back under 1.5 °C",
+    "fl1": "Storm tides reach the first houses in town",
+    "fl50": "Half the town floods at high tide",
+    "geoend": "Aerosol spraying stops: termination shock, rapid warming",
+    "gr": "Greenland’s ice starts melting faster",
+    "mix0": "My future: no changes",
+    "mix1": "My future: {p0}",
+    "mix2": "My future: {p0}, {p1}",
+    "mix3": "My future: {p0}, {p1}, {p2}",
+    "mix4": "My future: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "My future: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "My future: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Warming peaks at {t} °C",
+    "pf": "Permafrost starts to thaw, releasing CO₂ and methane",
+    "s0_5": "Sea level +0.5 m: regular flooding in low river deltas",
+    "s1": "Sea level +1 m: homes of ~200 million people at risk",
+    "s2": "Sea level +2 m: many coastal cities need walls or relocation",
+    "snow": "Snow line passes 2,000 m: the glacier is nearly gone",
+    "t1_5": "Passes 1.5 °C: coral reefs largely lost",
+    "t2": "Passes 2 °C: deadly heatwaves routine, ice-free Arctic summers",
+    "t3": "Passes 3 °C: crop belts shift, Amazon dieback risk",
+    "t4": "Passes 4 °C: some regions near the limit of human heat tolerance",
+    "wa": "West Antarctica’s ice starts sliding into the sea",
+    "wallover": "The sea wall is overtopped"
+  },
+  "meta": {
+    "intro": "A fjord town today. Watch the snow, the forest, the fields and the harbour as decades pass.",
+    "name": "Earth",
+    "sub": "Climate"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Crops",
+      "unit": "index"
+    },
+    "flood": {
+      "label": "Flooding",
+      "unit": "% of houses"
+    },
+    "sea": {
+      "label": "Sea level",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Snow",
+      "unit": "% of today"
+    },
+    "temp": {
+      "label": "Warming",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt CO₂ removed a year",
+    "dim": "sunlight dimmed {n}%",
+    "emDown": "emissions −{n}% over {yrs} yr",
+    "emUp": "emissions +{n}% over {yrs} yr",
+    "meth": "methane −{n}%",
+    "trees": "{n} trillion trees",
+    "wall": "{n} m sea wall"
+  },
+  "speed": {
+    "0": "1 yr/s",
+    "1": "5 yr/s",
+    "2": "20 yr/s",
+    "3": "60 yr/s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · sea +{sea} m · {co2} ppm",
+    "snow": "Snow line {m} m"
+  },
+  "whatif": {
+    "amazon": "The Amazon turns to grassland",
+    "dac": "Pull CO₂ out of the air",
+    "double": "Emissions double",
+    "ev": "Switch fast to clean energy",
+    "geo": "Dim sunlight with aerosols for 30 years",
+    "melt": "West Antarctic ice sheet collapses",
+    "methane": "Cut methane in half",
+    "mix": "Build my own future",
+    "permafrost": "Permafrost thaws fast",
+    "seawall": "Build a 3 m sea wall",
+    "trees": "Plant a trillion trees",
+    "volcano": "A supervolcano erupts",
+    "zero": "Stop all emissions now"
+  }
+}

@@ -1,4 +1,5 @@
 import type { SandboxKey, WorldMeta } from "@/lib/sim/types";
+import { localePath } from "@/lib/i18n/routes";
 import { meta as galaxy } from "./galaxy/meta";
 import { meta as solar } from "./solar/meta";
 import { meta as earth } from "./earth/meta";
@@ -19,4 +20,5 @@ export const MODES: Mode[] = ["scale", ...SANDBOX_KEYS];
 
 export const isSandboxKey = (k: string): k is SandboxKey => k in WORLDS;
 
-export const modeHref = (m: Mode) => (m === "scale" ? "/" : `/lab/${m}`);
+/** The page of a mode in a language (English keeps unprefixed paths, ADR 0010). */
+export const modeHref = (m: Mode, locale = "en") => localePath(locale, m === "scale" ? "/" : `/lab/${m}`);

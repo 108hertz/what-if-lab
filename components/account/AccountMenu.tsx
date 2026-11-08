@@ -4,16 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import { Icon } from "../ui/Icon";
 import { useAccount, usePremium } from "./context";
 import type { Account } from "./state";
+import type { T } from "@/lib/i18n/t";
+import { useT } from "../i18n/I18nProvider";
 
 /** Short line under the name in the menu for each state. */
-function statusLine(a: Account): string {
+function statusLine(a: Account, t: T): string {
   switch (a.status) {
-    case "off": return "Accounts aren't set up in this build. Everything here is free.";
-    case "loading": return "Checking your account…";
-    case "signed-out": return "The lab is free without an account. Sign in to use Premium on any device.";
-    case "free": return "Free plan. Every world and every what-if is yours.";
-    case "premium": return "Premium is on: no ads, and video and slide exports.";
-    case "error": return a.error ?? "The account service didn't answer.";
+    case "off": return t("account.status.off");
+    case "loading": return t("account.status.loading");
+    case "signed-out": return t("account.status.signedOut");
+    case "free": return t("account.status.free");
+    case "premium": return t("account.status.premium");
+    case "error": return a.error ?? t("account.status.error");
   }
 }
 
@@ -24,6 +26,7 @@ function statusLine(a: Account): string {
 export default function AccountMenu() {
   const a = useAccount();
   const premium = usePremium();
+  const t = useT();
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
   const btn = useRef<HTMLButtonElement>(null);
@@ -50,8 +53,8 @@ export default function AccountMenu() {
 
   const run = (fn: () => void) => () => { setOpen(false); fn(); };
   const signedIn = a.status === "free" || a.status === "premium";
-  const label = signedIn ? a.user?.name ?? "Account" : a.status === "signed-out" ? "Sign in" : "Account";
-  const plan = a.isPremium ? "Premium" : signedIn ? "Free" : null;
+  const label = signedIn ? a.user?.name ?? t("account.menu.account") : a.status === "signed-out" ? t("account.menu.signIn") : t("account.menu.account");
+  const plan = a.isPremium ? t("account.menu.premium") : signedIn ? t("account.menu.free") : null;
 
   return (
     <div className="account" ref={wrap}>
@@ -60,12 +63,12 @@ export default function AccountMenu() {
         className="account-btn"
         aria-expanded={open}
         aria-controls="account-menu"
-        aria-label={`${label}${plan ? `, ${plan} plan` : ""}`}
+        aria-label={plan ? t("account.menu.buttonLabel", { label, plan }) : label}
         onClick={() => setOpen(!open)}
       >
         <Icon name="user" />
         <span className="lbl account-name">{label}</span>
-        {a.isPremium && <span className="micro account-plan">Premium</span>}
+        {a.isPremium && <span className="micro account-plan">{t("account.menu.premium")}</span>}
       </button>
       {open && (
         <div className="popover account-menu" id="account-menu" ref={panel} onKeyDown={onKey}>
@@ -76,35 +79,35 @@ export default function AccountMenu() {
                 {a.user.email && <span className="small account-who-mail">{a.user.email}</span>}
               </>
             ) : (
-              <span className="account-who-name">Your lab account</span>
+              <span className="account-who-name">{t("account.menu.yourAccount")}</span>
             )}
-            {plan && <span className="micro">{plan} plan</span>}
+            {plan && <span className="micro">{t("account.menu.plan", { plan })}</span>}
           </div>
           <p className={`small account-note${a.status === "error" ? " is-error" : ""}`} role={a.status === "error" ? "alert" : undefined}>
-            {statusLine(a)}
-            {a.status === "error" && a.isPremium && " Premium stays on for now."}
+            {statusLine(a, t)}
+            {a.status === "error" && a.isPremium && " " + t("account.status.keepPremium")}
           </p>
           <div className="account-actions">
             {a.status === "signed-out" && (
               <>
-                <button className="menu-row" onClick={run(a.signIn)}>Sign in</button>
-                <button className="menu-row" onClick={run(a.signUp)}>Create account</button>
+                <button className="menu-row" onClick={run(a.signIn)}>{t("account.menu.signIn")}</button>
+                <button className="menu-row" onClick={run(a.signUp)}>{t("account.menu.createAccount")}</button>
               </>
             )}
             {(a.status === "signed-out" || a.status === "free") && (
               <button className="menu-row" onClick={run(() => premium.open("menu"))}>
-                Go Premium <span className="menu-aside">$15 a year</span>
+                {t("account.menu.goPremium")} <span className="menu-aside">{t("account.menu.price")}</span>
               </button>
             )}
-            {a.status === "premium" && <button className="menu-row" onClick={run(a.manage)}>Manage subscription</button>}
-            {signedIn && <button className="menu-row" onClick={run(a.profile)}>Account settings</button>}
-            {signedIn && <button className="menu-row" onClick={run(a.signOut)}>Sign out</button>}
-            {a.status === "error" && <button className="menu-row" onClick={run(a.retry)}>Try again</button>}
+            {a.status === "premium" && <button className="menu-row" onClick={run(a.manage)}>{t("account.menu.manage")}</button>}
+            {signedIn && <button className="menu-row" onClick={run(a.profile)}>{t("account.menu.settings")}</button>}
+            {signedIn && <button className="menu-row" onClick={run(a.signOut)}>{t("account.menu.signOut")}</button>}
+            {a.status === "error" && <button className="menu-row" onClick={run(a.retry)}>{t("account.menu.retry")}</button>}
           </div>
           {a.devPremium && (
             <label className="menu-row dev-toggle">
               <input type="checkbox" checked={a.devPremium.on} onChange={(e) => a.devPremium?.set(e.target.checked)} />
-              <span>Simulate Premium <span className="menu-aside">dev build only</span></span>
+              <span>{t("account.menu.devPremium")} <span className="menu-aside">{t("account.menu.devOnly")}</span></span>
             </label>
           )}
         </div>

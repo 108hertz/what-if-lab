@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ant": {
+    "fact": "Formigas carregam de 10 a 50 vezes o próprio peso.",
+    "name": "Formiga"
+  },
+  "bee": {
+    "fact": "Visita até 100 flores numa só viagem.",
+    "name": "Abelha"
+  },
+  "burj": {
+    "fact": "O prédio mais alto da Terra.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "Escavado pelo rio Colorado ao longo de uns 6 milhões de anos.",
+    "name": "Grand Canyon"
+  },
+  "child": {
+    "fact": "A personalidade é uns 40% herdada; o resto vem da experiência e do acaso.",
+    "name": "Criança de 5 anos"
+  },
+  "country": {
+    "fact": "Economias crescem, travam e desabam com políticas, recursos e sorte.",
+    "name": "Um país grande"
+  },
+  "dna": {
+    "fact": "Desenrolado, o DNA de uma das suas células teria uns 2 metros.",
+    "name": "Dupla hélice de DNA"
+  },
+  "earth": {
+    "fact": "O único planeta conhecido com vida, aquecendo uns 0,2 °C por década.",
+    "name": "Terra"
+  },
+  "ecoli": {
+    "fact": "Seu intestino tem mais ou menos tantas bactérias quanto seu corpo tem células.",
+    "name": "Bactéria (E. coli)"
+  },
+  "egg": {
+    "fact": "A maior célula humana, quase visível a olho nu.",
+    "name": "Óvulo humano"
+  },
+  "eiffel": {
+    "fact": "Fica uns 15 cm mais alta no calor do verão.",
+    "name": "Torre Eiffel"
+  },
+  "elephant": {
+    "fact": "O maior animal terrestre, guiado pela fêmea mais velha.",
+    "name": "Elefante-africano"
+  },
+  "everest": {
+    "fact": "Ainda sobe uns 4 mm por ano.",
+    "name": "Monte Everest"
+  },
+  "flu": {
+    "fact": "Não se reproduz sozinho; sequestra suas células para se copiar.",
+    "name": "Vírus da gripe"
+  },
+  "human": {
+    "fact": "Uns 37 trilhões de células, trocadas e renovadas a vida toda.",
+    "name": "Ser humano adulto"
+  },
+  "hydrogen": {
+    "fact": "Quase todo espaço vazio: o núcleo é 100.000× menor que o átomo.",
+    "name": "Átomo de hidrogênio"
+  },
+  "jump": {
+    "0": "Átomo",
+    "1": "Célula",
+    "2": "Você",
+    "3": "Cidade",
+    "4": "Terra",
+    "5": "Sistema Solar",
+    "6": "Galáxia",
+    "7": "Universo"
+  },
+  "jupiter": {
+    "fact": "Mais de 1.300 Terras caberiam dentro dele.",
+    "name": "Júpiter"
+  },
+  "liberty": {
+    "fact": "A pele de cobre dela tem só 2,4 mm de espessura.",
+    "name": "Estátua da Liberdade"
+  },
+  "lightyear": {
+    "fact": "A distância que a luz percorre em um ano: 9,46 trilhões de km.",
+    "name": "Um ano-luz"
+  },
+  "lion": {
+    "fact": "O único felino realmente social.",
+    "name": "Leão"
+  },
+  "localgroup": {
+    "fact": "Mais de 80 galáxias unidas pela gravidade.",
+    "name": "Grupo Local"
+  },
+  "meerkat": {
+    "fact": "Sentinelas montam guarda e dão alertas enquanto o bando procura comida.",
+    "name": "Suricato"
+  },
+  "milkyway": {
+    "fact": "De 100 a 400 bilhões de estrelas, a caminho de se fundir com Andrômeda.",
+    "name": "Via Láctea"
+  },
+  "moon": {
+    "fact": "Afasta-se devagar da Terra, 3,8 cm por ano.",
+    "name": "Lua"
+  },
+  "mouse": {
+    "fact": "O coração dele bate umas 600 vezes por minuto.",
+    "name": "Camundongo"
+  },
+  "orbit": {
+    "fact": "A luz do Sol leva 8 minutos para chegar até nós.",
+    "name": "Órbita da Terra"
+  },
+  "orca": {
+    "fact": "Grupos diferentes falam dialetos diferentes.",
+    "name": "Orca"
+  },
+  "orion": {
+    "fact": "Um berçário de estrelas a 1.300 anos-luz.",
+    "name": "Nebulosa de Órion"
+  },
+  "proton": {
+    "fact": "Três quarks unidos; o núcleo de todo átomo de hidrogênio.",
+    "name": "Próton"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, a 4,2 anos-luz.",
+    "name": "Até a estrela mais próxima"
+  },
+  "rbc": {
+    "fact": "Você produz uns 2 milhões delas a cada segundo.",
+    "name": "Glóbulo vermelho"
+  },
+  "sand": {
+    "fact": "Há mais estrelas no universo do que grãos de areia em todas as praias da Terra.",
+    "name": "Grão de areia"
+  },
+  "solar": {
+    "fact": "Netuno leva 165 anos para dar uma volta.",
+    "name": "Sistema Solar (até Netuno)"
+  },
+  "sun": {
+    "fact": "Concentra 99,86% de toda a massa do Sistema Solar.",
+    "name": "Sol"
+  },
+  "universe": {
+    "fact": "93 bilhões de anos-luz de diâmetro, a luz mais distante que poderia ter chegado até nós.",
+    "name": "Universo observável"
+  },
+  "whale": {
+    "fact": "O maior animal que já existiu.",
+    "name": "Baleia-azul"
+  },
+  "wolf": {
+    "fact": "A volta dos lobos a Yellowstone mudou o curso dos rios.",
+    "name": "Lobo-cinzento"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "status": {
+    "off": "Las cuentas no están activadas en esta versión. Aquí todo es gratis.",
+    "loading": "Comprobando tu cuenta…",
+    "signedOut": "El laboratorio es gratis sin cuenta. Inicia sesión para usar Premium en cualquier dispositivo.",
+    "free": "Plan gratuito. Todos los mundos y todos los «¿y si…?» son tuyos.",
+    "premium": "Premium activo: sin anuncios, y con exportación de vídeos y diapositivas.",
+    "error": "El servicio de cuentas no respondió.",
+    "keepPremium": "Premium sigue activo por ahora."
+  },
+  "menu": {
+    "account": "Cuenta",
+    "signIn": "Iniciar sesión",
+    "createAccount": "Crear cuenta",
+    "goPremium": "Hazte Premium",
+    "price": "15 $ al año",
+    "manage": "Gestionar suscripción",
+    "settings": "Ajustes de la cuenta",
+    "signOut": "Cerrar sesión",
+    "retry": "Reintentar",
+    "yourAccount": "Tu cuenta del laboratorio",
+    "premium": "Premium",
+    "free": "Gratis",
+    "plan": "Plan {plan}",
+    "buttonLabel": "{label}, plan {plan}",
+    "devPremium": "Simular Premium",
+    "devOnly": "solo en desarrollo"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Sin anuncios",
+        "text": "Desaparecen todos los anuncios, en todos los mundos."
+      },
+      "phone": {
+        "name": "Vídeos para móvil",
+        "text": "Clips de 1080 × 1920 de tu «¿y si…?» para Shorts, Reels y TikTok."
+      },
+      "wide": {
+        "name": "Vídeos para YouTube",
+        "text": "Clips de 1920 × 1080 con los dos mundos lado a lado."
+      },
+      "slides": {
+        "name": "Diapositivas",
+        "text": "Una presentación en PDF: el punto de partida, el «¿y si…?», los momentos clave y el resultado."
+      }
+    },
+    "lead": {
+      "export": "Los vídeos y las diapositivas son parte de Premium.",
+      "ads": "Premium quita los anuncios.",
+      "menu": "Apoya el laboratorio y consigue herramientas para compartir lo que descubras."
+    },
+    "createContinue": "Crear cuenta y continuar",
+    "haveAccount": "Ya tengo cuenta",
+    "noteSignedOut": "Primero una cuenta, para que Premium funcione en todos tus dispositivos. Luego el pago se abre aquí mismo.",
+    "openingCheckout": "Abriendo el pago…",
+    "continueCheckout": "Continuar al pago",
+    "noteFree": "Sesión iniciada como {who}. El pago lo gestionan {provider} y Stripe; el laboratorio nunca ve tu tarjeta.",
+    "you": "tú",
+    "ourProvider": "nuestro proveedor",
+    "back": "Volver al laboratorio",
+    "manage": "Gestionar suscripción",
+    "checking": "Comprobando tu cuenta…",
+    "retry": "Reintentar",
+    "noteDev": "Las cuentas no están activadas en esta versión. Para probar Premium, activa Simular Premium en el menú de la cuenta.",
+    "noteOff": "Premium aún no está a la venta en esta versión del laboratorio.",
+    "titleOn": "Premium está activo",
+    "title": "Premium",
+    "amount": "15 $",
+    "per": "al año · cancela cuando quieras",
+    "thanks": "Gracias. Los anuncios desaparecieron y las exportaciones están desbloqueadas en todos los mundos.",
+    "free": "Todos los mundos y todos los «¿y si…?» siguen siendo gratis, con o sin Premium."
+  },
+  "errors": {
+    "noCheckout": "El pago no está disponible en esta versión. Inténtalo más tarde.",
+    "notOnSale": "Premium aún no está a la venta. Inténtalo más tarde.",
+    "checkoutFailed": "No se pudo abrir el pago. Inténtalo de nuevo en un momento.",
+    "offline": "No tienes conexión. Las cuentas vuelven cuando te reconectes.",
+    "noAnswer": "El servicio de cuentas no respondió. Revisa tu conexión e inténtalo de nuevo."
+  },
+  "yourAccount": "Tu cuenta"
+}

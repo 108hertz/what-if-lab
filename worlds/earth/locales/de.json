@@ -1,0 +1,189 @@
+{
+  "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ in der Luft",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "CO₂-Ausstoß pro Jahr",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Waldfläche",
+      "unit": "% des Landes"
+    },
+    "front": {
+      "label": "Höhe der Uferfront",
+      "unit": "m über dem Meer"
+    },
+    "h": {
+      "air-today": "Luft heute",
+      "emissions": "Emissionen",
+      "my-future-used-by-build-my-own-future": "Meine Zukunft (für „Meine eigene Zukunft bauen“)",
+      "planet": "Planet",
+      "your-town": "Deine Stadt"
+    },
+    "mDac": {
+      "label": "CO₂-Entnahme",
+      "unit": "Gt pro Jahr"
+    },
+    "mDim": {
+      "label": "Sonnendimmende Aerosole",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Emissionen ändern um",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Methan-Senkung",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Gepflanzte Bäume",
+      "unit": "Billionen"
+    },
+    "mWall": {
+      "label": "Deich",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "Über",
+      "unit": "Jahre"
+    },
+    "meth": {
+      "label": "Methan in der Luft",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Wohin die Emissionen gehen",
+      "opt": {
+        "fall": "Langsam sinken (heutige Zusagen)",
+        "flat": "Gleich bleiben",
+        "grow": "Weiter steigen"
+      }
+    },
+    "sens": {
+      "label": "Klimasensitivität",
+      "unit": "°C pro 2× CO₂"
+    },
+    "tip": {
+      "label": "Kipppunkte",
+      "opt": {
+        "off": "Aus",
+        "on": "An: Permafrost und Eisschilde können kippen"
+      }
+    },
+    "uptake": {
+      "label": "Aufnahme durch Meer und Boden",
+      "unit": "% von heute"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "Der Amazonas beginnt, zur Graslandschaft zu werden",
+      "dac": "Maschinen beginnen, CO₂ aus der Luft zu ziehen",
+      "double": "Die Emissionen steigen Richtung doppelt so viel",
+      "ev": "Umstieg auf saubere Energie: Emissionen sinken um 7 % pro Jahr",
+      "geo": "Aerosole werden in die Stratosphäre gesprüht",
+      "melt": "Der westantarktische Eisschild beginnt zu kollabieren",
+      "methane": "Methanlecks und -quellen werden nach und nach behoben",
+      "permafrost": "Der Permafrost beginnt schnell zu tauen",
+      "seawall": "Ein 3 m hoher Deich wird um den Hafen gebaut",
+      "trees": "Eine Billion Bäume kommen in die Erde",
+      "volcano": "Ein Supervulkan bricht aus: Ein Ascheschleier verdeckt die Sonne",
+      "zero": "Alle Emissionen hören auf"
+    },
+    "back": "Die Erwärmung fällt wieder unter 1,5 °C",
+    "fl1": "Sturmfluten erreichen die ersten Häuser der Stadt",
+    "fl50": "Bei Flut steht die halbe Stadt unter Wasser",
+    "geoend": "Das Aerosol-Sprühen endet: Abbruchschock, rasche Erwärmung",
+    "gr": "Grönlands Eis beginnt schneller zu schmelzen",
+    "mix0": "Meine Zukunft: keine Änderungen",
+    "mix1": "Meine Zukunft: {p0}",
+    "mix2": "Meine Zukunft: {p0}, {p1}",
+    "mix3": "Meine Zukunft: {p0}, {p1}, {p2}",
+    "mix4": "Meine Zukunft: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Meine Zukunft: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Meine Zukunft: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Die Erwärmung erreicht ihren Höchststand bei {t} °C",
+    "pf": "Der Permafrost beginnt zu tauen und setzt CO₂ und Methan frei",
+    "s0_5": "Meeresspiegel +0,5 m: regelmäßige Überschwemmungen in tiefen Flussdeltas",
+    "s1": "Meeresspiegel +1 m: Wohnorte von ~200 Millionen Menschen in Gefahr",
+    "s2": "Meeresspiegel +2 m: Viele Küstenstädte brauchen Deiche oder müssen umziehen",
+    "snow": "Die Schneegrenze steigt über 2.000 m: Der Gletscher ist fast weg",
+    "t1_5": "Über 1,5 °C: Korallenriffe größtenteils verloren",
+    "t2": "Über 2 °C: tödliche Hitzewellen sind Alltag, Arktis im Sommer eisfrei",
+    "t3": "Über 3 °C: Anbaugürtel verschieben sich, der Amazonas droht abzusterben",
+    "t4": "Über 4 °C: Manche Regionen nahe an der Hitzegrenze des Menschen",
+    "wa": "Das Eis der Westantarktis beginnt ins Meer zu rutschen",
+    "wallover": "Das Meer schwappt über den Deich"
+  },
+  "meta": {
+    "intro": "Eine Fjordstadt heute. Beobachte Schnee, Wald, Felder und Hafen, während die Jahrzehnte vergehen.",
+    "name": "Erde",
+    "sub": "Klima"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Ernte",
+      "unit": "Index"
+    },
+    "flood": {
+      "label": "Überflutung",
+      "unit": "% der Häuser"
+    },
+    "sea": {
+      "label": "Meeresspiegel",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Schnee",
+      "unit": "% von heute"
+    },
+    "temp": {
+      "label": "Erwärmung",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt CO₂ pro Jahr entnommen",
+    "dim": "Sonnenlicht um {n} % gedimmt",
+    "emDown": "Emissionen −{n} % über {yrs} J.",
+    "emUp": "Emissionen +{n} % über {yrs} J.",
+    "meth": "Methan −{n} %",
+    "trees": "{n} Billionen Bäume",
+    "wall": "{n} m hoher Deich"
+  },
+  "speed": {
+    "0": "1 J./s",
+    "1": "5 J./s",
+    "2": "20 J./s",
+    "3": "60 J./s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · Meer +{sea} m · {co2} ppm",
+    "snow": "Schneegrenze {m} m"
+  },
+  "whatif": {
+    "amazon": "Der Amazonas wird zur Graslandschaft",
+    "dac": "CO₂ aus der Luft ziehen",
+    "double": "Emissionen verdoppeln sich",
+    "ev": "Schnell auf saubere Energie umsteigen",
+    "geo": "Sonnenlicht 30 Jahre lang mit Aerosolen dimmen",
+    "melt": "Der westantarktische Eisschild kollabiert",
+    "methane": "Methan halbieren",
+    "mix": "Meine eigene Zukunft bauen",
+    "permafrost": "Der Permafrost taut schnell",
+    "seawall": "Einen 3 m hohen Deich bauen",
+    "trees": "Eine Billion Bäume pflanzen",
+    "volcano": "Ein Supervulkan bricht aus",
+    "zero": "Alle Emissionen sofort stoppen"
+  }
+}
