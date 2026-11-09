@@ -1,3 +1,4 @@
+import type { BootShape } from "../boot/shapes";
 /**
  * Shared types for every sandbox. Sandboxes are framework-free: no React, no DOM
  * except the CanvasRenderingContext2D handed to `draw`.
@@ -121,6 +122,8 @@ export interface WorldMeta {
   sub: string;
   /** Param set by scale-explorer links like "animals:wolf". */
   presetParam?: string;
+  /** The silhouette the boot scene's sparks gather into (change 0026, lib/boot/shapes.ts). */
+  boot: BootShape;
 }
 
 export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Params> {

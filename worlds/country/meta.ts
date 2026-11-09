@@ -5,4 +5,5 @@ export const meta: WorldMeta = {
   key: "country",
   name: "Countries",
   sub: "Economy & society",
+  boot: "street",
 };

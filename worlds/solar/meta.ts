@@ -5,4 +5,5 @@ export const meta: WorldMeta = {
   key: "solar",
   name: "Solar system",
   sub: "Gravity",
+  boot: "orbits",
 };

@@ -220,7 +220,7 @@ colours that only appear where the simulation speaks.
 - **Stage** (`--stage`, `--stage-panel` …): fixed dark values in both themes for the stage and the chrome
   drawn on it (transport strip, hero, edge label).
 - **Day shift** (`[data-theme="light"]`): the same roles on a cool light grey, for projectors and bright
-  rooms. The stage stays dark.
+  rooms. The stage stays dark. Graphite is the default whatever the OS prefers; day shift is a saved choice.
 
 ### CSS token map
 
@@ -364,6 +364,15 @@ signal (`--fill` set by `ControlsForm`), a 14 × 18 ink thumb (signal on hover).
   amber "OPEN WORLD →" (the "gold labels" the hint refers to).
 - **Edge label:** `WHAT-IF LAB · SEED n` in Micro down the stage's right edge at ≥ 1280.
 
+### Boot scene (change 0026, the one exception)
+While a lab page loads, a full-screen overlay plays the boot scene in the visitor's theme (graphite: `--stage` with additive
+glow; day shift: `--bg`, the light tokens' teal, blue and amber painted plainly): signal-teal sparks with glow and light streaks fly into the world's silhouette (`WorldMeta.boot`, `lib/boot/shapes.ts`), hold and
+breathe until the console is ready, then a soft shimmer sweeps across and forks the shape into the two channels (blue
+left, amber right) as the overlay fades out over 250 ms. This is the **only** surface allowed glow, streaks and shimmer.
+The console never borrows them. Words: the world name as a Label and "Starting the world" in ink-2, bottom centre.
+Rules: never a progress number, no flashes above 3 a second, light peaks well below white, any tap or key skips it, and
+reduced motion shows the forked shape still and fades it in 150 ms.
+
 ### Navigation
 - The bar reads as a sentence ([change 0021](docs/changes/0021-sentence-topbar.md)): the wordmark
   `what if…` (condensed 600 at 20 px, lowercase identity, the ellipsis in signal) links home, then the
@@ -371,6 +380,9 @@ signal (`--fill` set by `ControlsForm`), a 14 × 18 ink thumb (signal on hover).
 - World list popover: raised, 48 px rows (glyph, Label name, Small subtitle); the current world on a
   panel-tone row with its glyph in signal.
 - Account and theme icon buttons at the far right; account popover rows 44 px.
+- **Theme tip:** on a first visit (no saved theme), once the boot scene is gone, a raised note with a 1 px signal edge and
+  a caret hangs under the theme button: "Dark by default. Prefer light? Switch here any time." Once per browser; it
+  goes on ×, Escape, a click elsewhere or switching.
 - **Sheets** (Premium, exports): raised, 6 px, max 480 px, bottom-docked below 768 px; inside, the one
   signal button is the main action, the rest are secondary.
 
@@ -385,7 +397,7 @@ signal (`--fill` set by `ControlsForm`), a 14 × 18 ink thumb (signal on hover).
 - Animate only transform, opacity and colour with `--ease-out` at 150 / 250 ms.
 
 ### Don't
-- Don't add shadows, glows, gradients-as-depth, scanlines, bezels or other sci-fi costume.
+- Don't add shadows, glows, gradients-as-depth, scanlines, bezels or other sci-fi costume (the boot scene is the one exception).
 - Don't use signal for data, or blue/amber for controls (except the what-if row's amber).
 - Don't track mixed-case or mono text; don't use mono for words.
 - Don't nest boxes inside panels or put a kicker above a heading.

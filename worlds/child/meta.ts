@@ -5,4 +5,5 @@ export const meta: WorldMeta = {
   key: "child",
   name: "Child",
   sub: "Who will they become?",
+  boot: "fan",
 };

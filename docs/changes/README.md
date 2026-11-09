@@ -29,3 +29,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0023](./0023-control-room-design-system.md) | "Control Room": a simulator look replaces Darkroom (palette, fonts, components) | 1 | shipped |
 | [0024](./0024-one-world-tick-changes-reset.md) | One world on the stage, every change on a tick list, Reset everything; side by side only in exports | 1 · 3 | shipped |
 | [0025](./0025-languages-base-and-seo.md) | Languages: translation base, language URLs and SEO, first 5 of 20 languages | 4 | shipped |
+| [0026](./0026-boot-scene.md) | Boot scene: the world assembles from light before the console opens | 1 | shipped |

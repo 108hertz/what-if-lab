@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "Chuyển sang giao diện tối",
-    "toLight": "Chuyển sang giao diện sáng"
+    "toLight": "Chuyển sang giao diện sáng",
+    "tip": "Mặc định là nền tối. Thích nền sáng? Đổi tại đây bất cứ lúc nào.",
+    "tipClose": "Đóng gợi ý"
   },
   "lang": {
     "label": "Ngôn ngữ",
@@ -16,5 +18,9 @@
     "draft": "chưa hoàn thiện",
     "alsoIn": "Cũng có bằng {language}",
     "dismiss": "Đừng gợi ý ngôn ngữ khác"
+  },
+  "boot": {
+    "starting": "Đang khởi động thế giới",
+    "slow": "Vẫn đang khởi động…"
   }
 }

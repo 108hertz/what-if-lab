@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "Passer au thème sombre",
-    "toLight": "Passer au thème clair"
+    "toLight": "Passer au thème clair",
+    "tip": "Sombre par défaut. Vous préférez clair ? Changez ici à tout moment.",
+    "tipClose": "Fermer l’astuce"
   },
   "lang": {
     "label": "Langue",
@@ -16,5 +18,9 @@
     "draft": "pas encore prêt",
     "alsoIn": "Aussi en {language}",
     "dismiss": "Ne pas proposer d’autre langue"
+  },
+  "boot": {
+    "starting": "Démarrage du monde",
+    "slow": "Démarrage en cours…"
   }
 }

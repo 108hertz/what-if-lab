@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "Włącz ciemny motyw",
-    "toLight": "Włącz jasny motyw"
+    "toLight": "Włącz jasny motyw",
+    "tip": "Domyślnie ciemny. Wolisz jasny? Przełącz tutaj w każdej chwili.",
+    "tipClose": "Zamknij wskazówkę"
   },
   "lang": {
     "label": "Język",
@@ -16,5 +18,9 @@
     "draft": "jeszcze niegotowy",
     "alsoIn": "Dostępne też w języku: {language}",
     "dismiss": "Nie proponuj innego języka"
+  },
+  "boot": {
+    "starting": "Uruchamianie świata",
+    "slow": "Wciąż się uruchamia…"
   }
 }

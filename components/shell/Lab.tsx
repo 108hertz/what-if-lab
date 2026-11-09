@@ -26,6 +26,14 @@ export default function Lab({ mode }: { mode: Mode }) {
   useEffect(() => {
     const css = getComputedStyle(document.documentElement), v = (k: string) => css.getPropertyValue(k).trim();
     setCanvasFont(getComputedStyle(document.body).fontFamily, v("--font-mono"), v("--font-cond"));
+    // Tell the boot scene (change 0026) the console is on screen: after its first frames have been drawn.
+    let id = requestAnimationFrame(() => {
+      id = requestAnimationFrame(() => {
+        (window as { __labReady?: number }).__labReady = 1;
+        window.dispatchEvent(new Event("lab:ready"));
+      });
+    });
+    return () => cancelAnimationFrame(id);
   }, []);
   return (
     <AccountProvider dialog={(reason, close) => <PremiumDialog reason={reason} onClose={close} />}>

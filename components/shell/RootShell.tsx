@@ -33,7 +33,8 @@ export const ROOT_METADATA: Metadata = {
 export const ROOT_VIEWPORT: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0a0e13" };
 
 // Applies the saved theme before first paint so there is no flash. Dark ("graphite") is the default.
-const THEME_INIT = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
+// Also marks the page as running scripts (data-js), so the static PageIntro stays off screen while the lab loads.
+const THEME_INIT = `document.documentElement.dataset.js="1";try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
 
 export default function RootShell({ locale, children }: { locale: string; children: React.ReactNode }) {
   const info = localeInfo(locale);

@@ -5,4 +5,5 @@ export const meta: WorldMeta = {
   key: "galaxy",
   name: "Galaxies",
   sub: "Collisions",
+  boot: "spiral",
 };

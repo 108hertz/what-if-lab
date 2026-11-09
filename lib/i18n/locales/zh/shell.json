@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "切换到深色主题",
-    "toLight": "切换到浅色主题"
+    "toLight": "切换到浅色主题",
+    "tip": "默认为深色。喜欢浅色？随时在这里切换。",
+    "tipClose": "关闭提示"
   },
   "lang": {
     "label": "语言",
@@ -16,5 +18,9 @@
     "draft": "尚未完成",
     "alsoIn": "也有{language}版",
     "dismiss": "不再推荐其他语言"
+  },
+  "boot": {
+    "starting": "正在启动世界",
+    "slow": "仍在启动…"
   }
 }

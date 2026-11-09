@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "Ganti ke tema gelap",
-    "toLight": "Ganti ke tema terang"
+    "toLight": "Ganti ke tema terang",
+    "tip": "Gelap secara bawaan. Lebih suka terang? Ganti di sini kapan saja.",
+    "tipClose": "Tutup tips"
   },
   "lang": {
     "label": "Bahasa",
@@ -16,5 +18,9 @@
     "draft": "belum siap",
     "alsoIn": "Tersedia juga dalam {language}",
     "dismiss": "Jangan sarankan bahasa lain"
+  },
+  "boot": {
+    "starting": "Memulai dunia",
+    "slow": "Masih memulai…"
   }
 }

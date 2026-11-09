@@ -9,6 +9,7 @@
 | [Premium ($15/yr) and accounts](./premium.md) | live in code; on once a Clerk key is set | premium |
 | [Exports: phone video, YouTube video, slides](./exports.md) | live | premium |
 | [Full-screen stage](./full-screen.md) | live | free |
+| [Boot scene](./boot-scene.md) | live | free |
 | [Languages](./languages.md) | planned | free |
 
 New feature? Copy [`_TEMPLATE.md`](./_TEMPLATE.md) and add a row here.

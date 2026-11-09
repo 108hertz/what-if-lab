@@ -700,7 +700,31 @@ td.a { color: var(--alt); }
 .page-intro a { color: var(--label); text-decoration: underline; text-decoration-color: var(--separator); text-underline-offset: 3px; }
 .page-intro a:hover { text-decoration-color: var(--signal); }
 .page-intro a:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; border-radius: var(--r-ctl); }
+/* With scripts on, the intro never shows (no flash of text while the lab loads); crawlers and screen readers still read it. */
+:root[data-js] .page-intro { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 body:has(.app) .page-intro { display: none; }
+
+/* Boot scene (change 0026): the one surface allowed glow, streaks and shimmer (DESIGN.md "Boot scene"). Stage colours in
+   both themes. Only with scripts on, until the lab is ready; it sits over the console, which lays out underneath it. */
+.boot { display: none; }
+:root[data-js]:not([data-booted]) .boot {
+  display: block; position: fixed; inset: 0; z-index: 100; background: var(--stage); color: var(--stage-ink);
+  transition: opacity 250ms var(--ease-out); cursor: progress; touch-action: none;
+}
+.boot canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.boot-text {
+  position: absolute; inset-inline: var(--s-4); bottom: max(var(--s-7), calc(env(safe-area-inset-bottom) + var(--s-5)));
+  margin: 0; display: grid; gap: var(--s-2); justify-items: center; text-align: center; pointer-events: none;
+  transition: opacity 150ms var(--ease-out);
+}
+.boot-name { font-family: var(--font-cond); font-weight: 600; font-size: var(--t-heading-sm); letter-spacing: var(--track-label); text-transform: uppercase; }
+.boot-line { font-size: var(--t-small); color: var(--stage-ink-2); }
+/* The boot scene follows the visitor's theme (the console's stage stays dark either way) */
+:root[data-js][data-theme="light"]:not([data-booted]) .boot { background: var(--bg); color: var(--label); }
+:root[data-theme="light"] .boot-line { color: var(--label-2); }
+.boot.is-forking .boot-text { opacity: 0; }
+.boot.is-out { opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .boot { transition-duration: 150ms; } }
 
 /* Languages (change 0025) ------------------------------------------------------------------------------------------ */
 /* Han characters look different per language: each language puts its own system fonts first */
@@ -715,6 +739,22 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 [dir="rtl"] .icon[data-icon="arrow"] { transform: scaleX(-1); }
 
 /* Language menu (change 0025): in the nav next to the theme toggle */
+/* First-visit theme tip: a raised note under the theme button, its caret pointing at it. Shown once per browser. */
+.themetoggle { position: relative; }
+.theme-tip {
+  position: absolute; z-index: 6; top: calc(100% + var(--s-2)); inset-inline-end: 0; width: max-content; max-width: min(260px, calc(100vw - 24px));
+  display: flex; align-items: center; gap: var(--s-1); padding: var(--s-1) var(--s-1) var(--s-1) var(--s-3);
+  background: var(--surface); border: 1px solid var(--signal); border-radius: var(--r-card); color: var(--label);
+  animation: tip-in var(--d-ctl) var(--ease-out);
+}
+.theme-tip::before {
+  content: ""; position: absolute; top: -6px; inset-inline-end: 16px; width: 10px; height: 10px; background: var(--surface);
+  border-top: 1px solid var(--signal); border-left: 1px solid var(--signal); transform: rotate(45deg);
+}
+.theme-tip p { margin: 0; font-size: var(--t-small); line-height: 1.35; }
+.theme-tip .iconbtn { width: 36px; height: 36px; color: var(--label-2); }
+@keyframes tip-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .theme-tip { animation: none; } }
 .langmenu { position: relative; }
 .langmenu-list { inset-inline-start: auto; inset-inline-end: 0; width: min(240px, calc(100vw - 24px)); gap: 0; padding: var(--s-1); max-height: min(70dvh, 520px); overflow-y: auto; }
 .langmenu-list a { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); min-height: 40px; padding: 0 var(--s-2); border-radius: var(--r-ctl); color: var(--label); text-decoration: none; font-size: var(--t-small); }

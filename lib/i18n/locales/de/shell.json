@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "Zum dunklen Design wechseln",
-    "toLight": "Zum hellen Design wechseln"
+    "toLight": "Zum hellen Design wechseln",
+    "tip": "Standardmäßig dunkel. Lieber hell? Hier jederzeit umschalten.",
+    "tipClose": "Hinweis schließen"
   },
   "lang": {
     "label": "Sprache",
@@ -16,5 +18,9 @@
     "draft": "noch nicht fertig",
     "alsoIn": "Auch auf {language}",
     "dismiss": "Keine andere Sprache vorschlagen"
+  },
+  "boot": {
+    "starting": "Die Welt startet",
+    "slow": "Startet noch…"
   }
 }

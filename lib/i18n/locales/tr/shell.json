@@ -8,7 +8,9 @@
   },
   "theme": {
     "toDark": "Koyu temaya geç",
-    "toLight": "Açık temaya geç"
+    "toLight": "Açık temaya geç",
+    "tip": "Varsayılan koyu. Açık mı tercih edersiniz? İstediğiniz zaman buradan değiştirin.",
+    "tipClose": "İpucunu kapat"
   },
   "lang": {
     "label": "Dil",
@@ -16,5 +18,9 @@
     "draft": "henüz hazır değil",
     "alsoIn": "Ayrıca şu dilde: {language}",
     "dismiss": "Başka dil önerme"
+  },
+  "boot": {
+    "starting": "Dünya başlatılıyor",
+    "slow": "Hâlâ başlatılıyor…"
   }
 }

@@ -5,4 +5,5 @@ export const meta: WorldMeta = {
   key: "earth",
   name: "Earth",
   sub: "Climate",
+  boot: "horizon",
 };

@@ -7,4 +7,5 @@ export const meta: WorldMeta = {
   sub: "Evolution",
   /** Scale-explorer links like "animals:wolf" set this param. */
   presetParam: "species",
+  boot: "blobs",
 };

@@ -5,4 +5,5 @@ export const meta: WorldMeta = {
   key: "person",
   name: "Character",
   sub: "100 parallel lives",
+  boot: "grid",
 };

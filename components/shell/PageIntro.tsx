@@ -3,8 +3,8 @@ import { pageCopy } from "./pageCopy";
 
 /**
  * The page in plain HTML (change 0025): a heading, what the page is, its what-ifs and links to every other page,
- * in the page's language. Crawlers and slow phones read it while the lab loads; CSS hides it once the lab is
- * on screen (`body:has(.app)`), so the console still fills one viewport.
+ * in the page's language. Crawlers and screen readers read it; it is visible only without scripts (`:root[data-js]` keeps it
+ * off screen while the lab loads) and removed once the lab is on screen (`body:has(.app)`).
  */
 export default function PageIntro({ locale, mode }: { locale: string; mode: Mode }) {
   const c = pageCopy(locale, mode);
