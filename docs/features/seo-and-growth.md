@@ -29,7 +29,7 @@ Traffic is the primary goal; it drives both ad revenue and Premium conversions.
 - `FAQPage`/`Article` JSON-LD, canonical URL, OG image (pre-rendered at build).
 
 **Technical SEO**
-- Built (change 0025): `app/sitemap.ts` + `app/robots.ts` (origin from `NEXT_PUBLIC_SITE_URL`), canonical and
+- Built (change 0025): `app/sitemap.ts` + `app/robots.ts` (origin from `NEXT_PUBLIC_SITE_URL`, else on Vercel the project's production domain `VERCEL_PROJECT_PRODUCTION_URL` via `next.config.ts`), canonical and
   hreflang per language (`lib/i18n/seo.ts`), a static `<h1>`, intro, what-if list and links on every page
   (`PageIntro`) while the client-only lab loads, a shared 404.
 - Static export, `sitemap.xml` + `robots.txt` generated at build, descriptive `<title>`/`description`

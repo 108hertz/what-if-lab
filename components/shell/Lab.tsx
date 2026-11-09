@@ -6,7 +6,7 @@ import type { Mode } from "@/worlds/registry";
 import { WORLD_VIEWS } from "@/worlds/views";
 import { setCanvasFont } from "@/lib/sim/draw";
 import ScaleConsole from "../scale/ScaleConsole";
-import AdSlot, { RAILS_QUERY } from "../console/AdSlot";
+import AdSlot, { ADS_ON, RAILS_QUERY } from "../console/AdSlot";
 import { useMedia } from "../ui/useMedia";
 import { AccountProvider, PREMIUM_ON_SALE, useAccount } from "../account/context";
 import { adsAllowed } from "../account/state";
@@ -43,7 +43,7 @@ export default function Lab({ mode }: { mode: Mode }) {
 }
 
 function Shell({ mode }: { mode: Mode }) {
-  const rails = useMedia(RAILS_QUERY) && adsAllowed(useAccount());
+  const rails = useMedia(RAILS_QUERY) && ADS_ON && adsAllowed(useAccount());
   const World = mode === "scale" ? null : WORLD_VIEWS[mode];
   const href = useHref();
   const t = useT();

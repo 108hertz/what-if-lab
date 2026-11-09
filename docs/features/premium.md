@@ -1,6 +1,6 @@
 # Premium ($15 / year) and accounts
 
-- **Status:** live in code (accounts on once a Clerk publishable key is configured; off otherwise)
+- **Status:** live in code but **switched off for launch** (`ACCOUNTS_ON = false` in `components/account/context.tsx`: Clerk never loads, no account menu, export button or upsell, even with a key or in dev). When on: accounts on once a Clerk publishable key is configured; off otherwise
 - **Tier:** premium
 - **Owner area:** `components/account/` (state, context, Clerk adapter, menu, Premium sheet), `components/ui/Dialog.tsx`,
   `components/console/AdSlot.tsx`, `components/shell/Lab.tsx`, third-party (Clerk + Clerk Billing, Stripe)

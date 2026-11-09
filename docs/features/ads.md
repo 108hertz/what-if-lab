@@ -1,6 +1,6 @@
 # Ads in reserved slots
 
-- **Status:** slots reserved (change 0008); ad loading planned (Phase 3)
+- **Status:** slots reserved (change 0008); **switched off for launch** (`ADS_ON = false` in `AdSlot.tsx`: no slot, rail or upsell renders; placements stay in code); ad loading planned (Phase 3)
 - **Tier:** free only
 - **Owner area:** `components/console/AdSlot.tsx`, `components/console/StandardConsole.tsx`, `components/shell/Lab.tsx`, `public/ads.txt` (todo), third-party (AdSense + CMP)
 - **Changes:** [0008](../changes/0008-worlds-as-projects.md), [0020](../changes/0020-accounts-premium-exports.md) (hidden for Premium)

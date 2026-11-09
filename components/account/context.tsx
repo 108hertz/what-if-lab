@@ -26,7 +26,11 @@ export const CONFIG: AccountConfig = readConfig({
  * build without a key shows none of them, so the lab looks exactly as it did before accounts; dev builds show
  * them so the Premium simulation can be used.
  */
-export const PREMIUM_ON_SALE = !!CONFIG.publishableKey || CONFIG.dev;
+/** Launch switch: the site goes live without accounts or Premium. While false, Clerk never loads and no Premium entry
+ * point (account menu, export button, upsell) is shown, even with a key set or in dev. Flip to true to bring them back. */
+export const ACCOUNTS_ON = false;
+
+export const PREMIUM_ON_SALE = ACCOUNTS_ON && (!!CONFIG.publishableKey || CONFIG.dev);
 
 /** What a provider adapter can do. Every call opens the provider's own hosted window (modal or drawer). */
 export interface ProviderActions {
@@ -71,9 +75,9 @@ function useOnline() {
 
 export function AccountProvider({ children, dialog }: { children: ReactNode; dialog?: (reason: PremiumReason | null, close: () => void) => ReactNode }) {
   const cfg = CONFIG;
-  const configured = !!cfg.publishableKey;
+  const configured = ACCOUNTS_ON && !!cfg.publishableKey;
   const online = useOnline();
-  const [dev, setDev] = useState(() => cfg.dev && readDevPremium());
+  const [dev, setDev] = useState(() => ACCOUNTS_ON && cfg.dev && readDevPremium());
   const [remote, setRemote] = useState<RemoteState>(REMOTE_LOADING);
   const [timedOut, setTimedOut] = useState(false);
   const [error, setError] = useState<string | null>(null);

@@ -11,6 +11,12 @@ import { useT } from "../i18n/I18nProvider";
  */
 export type AdSize = "rail" | "box" | "banner";
 
+/**
+ * Launch switch: no ad network yet, so no slots are shown anywhere (rails, box, banner). Flip to true when ads go live;
+ * the consoles keep their AdSlot placements (ADR 0007), so nothing else needs to change.
+ */
+export const ADS_ON = false;
+
 /** Side rails appear only where the console keeps its width and the 600 px rail fits. */
 export const RAILS_QUERY = "(min-width: 1600px) and (min-height: 700px)";
 
@@ -18,7 +24,7 @@ export default function AdSlot({ size, promo }: { size: AdSize; promo?: boolean 
   const account = useAccount();
   const premium = usePremium();
   const t = useT();
-  if (!adsAllowed(account)) return null;
+  if (!ADS_ON || !adsAllowed(account)) return null;
   return (
     <aside className={`ad ad-${size}`} aria-label={t("console.ad.label")} data-ad-size={size}>
       <span className="micro">{t("console.ad.short")}</span>

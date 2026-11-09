@@ -5,7 +5,7 @@ import {
   HINT_GRACE_MS, REMOTE_LOADING, adsAllowed, canExport, displayName, premiumHint, readConfig, rememberPremium, resolveAccount, type RemoteState,
 } from "@/components/account/state";
 import { AccountContext, CONFIG, FREE_ACCOUNT } from "@/components/account/context";
-import AdSlot from "@/components/console/AdSlot";
+import AdSlot, { ADS_ON } from "@/components/console/AdSlot";
 
 /** Change 0020 / ADR 0008: the entitlement adapter and what Premium changes. */
 
@@ -84,7 +84,13 @@ describe("offline grace hint", () => {
   });
 });
 
-describe("ad slots and Premium", () => {
+describe("ad slots while ads are off", () => {
+  it.runIf(!ADS_ON).each(["rail", "box", "banner"] as const)("renders no %s slot", (size) => {
+    expect(renderToStaticMarkup(createElement(AccountContext.Provider, { value: FREE_ACCOUNT }, createElement(AdSlot, { size, promo: true })))).toBe("");
+  });
+});
+
+describe.runIf(ADS_ON)("ad slots and Premium", () => {
   const render = (isPremium: boolean, size: "rail" | "box" | "banner", promo?: boolean) =>
     renderToStaticMarkup(createElement(AccountContext.Provider, { value: { ...FREE_ACCOUNT, isPremium } }, createElement(AdSlot, { size, promo })));
 
