@@ -28,6 +28,8 @@ export const ROOT_METADATA: Metadata = {
   title: "What-If Lab",
   icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "32x32" }] },
   description: "Zoom from a proton to the observable universe, open a world, change it with what-ifs and compare its future with the world left as it was.",
+  // Google Search Console site ownership (public token, safe in client HTML).
+  verification: { google: "qrzsr2sQD5udAQpfwpPwx7v-w92VwKSAw013kypq-as" },
 };
 
 export const ROOT_VIEWPORT: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#0a0e13" };
