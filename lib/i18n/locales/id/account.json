@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "Akun belum disiapkan di build ini. Semua di sini gratis.",
+    "loading": "Memeriksa akunmu…",
+    "signedOut": "Lab ini gratis tanpa akun. Masuk untuk memakai Premium di perangkat mana pun.",
+    "free": "Paket gratis. Semua dunia dan semua what-if milikmu.",
+    "premium": "Premium aktif: tanpa iklan, plus ekspor video dan slide.",
+    "error": "Layanan akun tidak menjawab.",
+    "keepPremium": "Premium tetap aktif untuk sementara."
+  },
+  "menu": {
+    "account": "Akun",
+    "signIn": "Masuk",
+    "createAccount": "Buat akun",
+    "goPremium": "Ambil Premium",
+    "price": "$15 per tahun",
+    "manage": "Kelola langganan",
+    "settings": "Pengaturan akun",
+    "signOut": "Keluar",
+    "retry": "Coba lagi",
+    "yourAccount": "Akun lab-mu",
+    "premium": "Premium",
+    "free": "Gratis",
+    "plan": "Paket {plan}",
+    "buttonLabel": "{label}, paket {plan}",
+    "devPremium": "Simulasikan Premium",
+    "devOnly": "hanya build dev"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Tanpa iklan",
+        "text": "Semua slot iklan hilang, di setiap dunia."
+      },
+      "phone": {
+        "name": "Video ponsel",
+        "text": "Klip 1080 × 1920 dari what-if-mu untuk Shorts, Reels, dan TikTok."
+      },
+      "wide": {
+        "name": "Video YouTube",
+        "text": "Klip 1920 × 1080 dengan kedua dunia berdampingan."
+      },
+      "slides": {
+        "name": "Slide",
+        "text": "Dek PDF: kondisi awal, what-if, momen penting, dan hasilnya."
+      }
+    },
+    "lead": {
+      "export": "Video dan slide adalah bagian dari Premium.",
+      "ads": "Premium menghilangkan iklan.",
+      "menu": "Dukung lab ini dan dapatkan alat untuk membagikan temuanmu."
+    },
+    "createContinue": "Buat akun dan lanjutkan",
+    "haveAccount": "Saya sudah punya akun",
+    "noteSignedOut": "Pertama buat akun, supaya Premium jalan di semua perangkat. Lalu pembayaran terbuka di sini.",
+    "openingCheckout": "Membuka pembayaran…",
+    "continueCheckout": "Lanjut ke pembayaran",
+    "noteFree": "Masuk sebagai {who}. Pembayaran ditangani oleh {provider} dan Stripe; lab tidak pernah melihat kartumu.",
+    "you": "kamu",
+    "ourProvider": "penyedia kami",
+    "back": "Kembali ke lab",
+    "manage": "Kelola langganan",
+    "checking": "Memeriksa akunmu…",
+    "retry": "Coba lagi",
+    "noteDev": "Akun belum disiapkan di build ini. Untuk mencoba Premium, nyalakan Simulasikan Premium di menu akun.",
+    "noteOff": "Premium belum dijual di versi lab ini.",
+    "titleOn": "Premium aktif",
+    "title": "Premium",
+    "amount": "$15",
+    "per": "per tahun · batalkan kapan saja",
+    "thanks": "Terima kasih. Iklan sudah hilang dan ekspor terbuka di setiap dunia.",
+    "free": "Semua dunia dan semua what-if tetap gratis, dengan atau tanpa Premium."
+  },
+  "errors": {
+    "noCheckout": "Pembayaran tidak tersedia di versi ini. Coba lagi nanti.",
+    "notOnSale": "Premium belum dijual. Silakan coba lagi nanti.",
+    "checkoutFailed": "Pembayaran tidak bisa dibuka. Coba lagi sebentar lagi.",
+    "offline": "Kamu sedang offline. Akun kembali saat kamu tersambung lagi.",
+    "noAnswer": "Layanan akun tidak menjawab. Periksa koneksimu dan coba lagi."
+  },
+  "yourAccount": "Akunmu"
+}

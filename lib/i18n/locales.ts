@@ -23,8 +23,12 @@ export interface LocaleInfo {
 const L = (code: string, tag: string, name: string, english: string, script: Script, dir: "ltr" | "rtl" = "ltr"): LocaleInfo =>
   ({ code, tag, name, english, dir, script, ready: READY.has(code), og: OG[code] });
 
-/** Languages with every key translated (change 0025 step 14: es pt de ja ar are machine drafts awaiting native review). */
-const READY = new Set(["en", "es", "pt", "de", "ja", "ar"]);
+/**
+ * Languages with every key translated. All 19 non-English languages are machine drafts awaiting native review
+ * (change 0025: es pt de ja ar in step 14, the other 14 after). Take a language out of this set to hide it again
+ * (picker, sitemap, hreflang) and make its pages noindex.
+ */
+const READY = new Set(["en", "es", "pt", "fr", "de", "it", "nl", "pl", "tr", "id", "vi", "ru", "uk", "zh", "ja", "ko", "ar", "hi", "th", "bn"]);
 
 const OG: Record<string, string> = {
   en: "en_US", es: "es_ES", pt: "pt_BR", fr: "fr_FR", de: "de_DE", it: "it_IT", nl: "nl_NL", pl: "pl_PL", tr: "tr_TR", id: "id_ID",

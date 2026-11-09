@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır",
+    "zoomLevel": "Yakınlık düzeyi",
+    "hint": "Kaydır, iki parmakla sıkıştır ya da sürükle. Bir dünyayı açmak için altın renkli etikete dokun."
+  },
+  "panel": {
+    "inView": "Görünenler",
+    "openThis": "Bu dünyayı aç",
+    "openWorld": "Bir dünya aç",
+    "jumpTo": "Şuraya git"
+  },
+  "hero": {
+    "title": "Ya … olursa?",
+    "body": "Bir protondan gözlemlenebilir evrene yakınlaş; her adım on kat. Altın renkli etiketler canlı dünyalardır: birini aç, değiştir ve geleceğini hiç değişmeyen dünyayla karşılaştır."
+  },
+  "stage": {
+    "open": "Dünyayı aç →",
+    "screen": "Ekran genişliği ≈ {len}"
+  }
+}

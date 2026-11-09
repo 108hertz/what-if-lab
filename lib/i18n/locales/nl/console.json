@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Afspelen",
+    "pause": "Pauze",
+    "speed": "Snelheid",
+    "slower": "Langzamer",
+    "faster": "Sneller",
+    "reset": "Reset",
+    "resetLabel": "Alles resetten",
+    "resetTitle": "Alles resetten: instellingen, wijzigingen en tijd",
+    "hintFull": "Verlaat volledig scherm om iets te veranderen.",
+    "hint": "Kies wijzigingen. Ze tellen op; vink ze uit om te vergelijken."
+  },
+  "fullscreen": {
+    "enter": "Volledig scherm",
+    "leave": "Volledig scherm verlaten",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Jouw wijzigingen",
+    "count": "{on} van {total} aan",
+    "empty": "Nog niets veranderd. Elke wijziging komt hier met een vinkje, zodat je haar uit en weer aan kunt zetten.",
+    "remove": "“{name}” uit de lijst halen",
+    "removeTitle": "Uit de lijst halen",
+    "allOn": "Alles aan",
+    "allOff": "Alles uit",
+    "clear": "Lijst wissen",
+    "throw": "Gooi er een planeet in"
+  },
+  "about": {
+    "label": "Over dit model",
+    "body": "Alles draait op ingebouwde regels en vereenvoudigde gegevens, live in je browser. De uitkomsten tonen aannemelijk gedrag, geen voorspellingen."
+  },
+  "whatifs": {
+    "title": "Verander iets",
+    "applied": "{n} keer toegepast"
+  },
+  "readouts": {
+    "title": "Nu"
+  },
+  "world": {
+    "base": "Geen wijziging",
+    "alt": "Met wijzigingen",
+    "both": "Beide werelden",
+    "onlyBase": "Alleen zonder wijziging",
+    "onlyAlt": "Alleen met wijzigingen"
+  },
+  "tune": {
+    "title": "Variabelen",
+    "live": "Wijzigingen aan de startwereld starten haar opnieuw. Wat-als-instellingen gelden de volgende keer dat je een wat-als kiest.",
+    "restart": "Als je deze verandert, begint de wereld opnieuw."
+  },
+  "chart": {
+    "withChanges": "Met wijzigingen:",
+    "noDiff": "nog geen echt verschil",
+    "overTime": "{metric} door de tijd",
+    "collecting": "Gegevens verzamelen…",
+    "fork": "SPLITSING"
+  },
+  "stage": {
+    "label": "Simulatiepodium",
+    "edge": "What-If Lab · Seed {seed}"
+  },
+  "timeline": {
+    "title": "Tijdlijn",
+    "empty": "Nog niets bijzonders. Laat het lopen of verander iets."
+  },
+  "dock": {
+    "tools": "Tools",
+    "ask": "Vragen",
+    "tune": "Instellen",
+    "read": "Lezen",
+    "log": "Logboek"
+  },
+  "ad": {
+    "label": "Advertentie",
+    "promo": "Zonder advertenties met Premium · $15/jr",
+    "short": "Adv."
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Mira fuori centro",
+      "unit": "kal"
+    },
+    "bhm": {
+      "label": "Massa del buco nero",
+      "unit": "× Via Lattea"
+    },
+    "count": {
+      "label": "Galassie che cadono dentro"
+    },
+    "dm": {
+      "label": "Materia oscura",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Gravità rimasta",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Velocità di attraversamento",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Mondo iniziale",
+      "what-if-settings": "Impostazioni dei \"e se\""
+    },
+    "mass": {
+      "label": "Massa di Andromeda",
+      "unit": "× Via Lattea"
+    },
+    "neigh": {
+      "label": "Vicine all'inizio",
+      "opt": {
+        "m33": "Triangolo",
+        "m33lmc": "Triangolo + Grande Nube",
+        "none": "Nessuna"
+      }
+    },
+    "shape": {
+      "label": "Forma di Andromeda",
+      "opt": {
+        "elliptical": "Ellittica",
+        "spiral": "A spirale"
+      }
+    },
+    "size": {
+      "label": "Loro dimensione",
+      "unit": "× Via Lattea"
+    },
+    "speed": {
+      "label": "Velocità di avvicinamento",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Rotazione di Andromeda",
+      "opt": {
+        "against": "Contraria alla nostra",
+        "same": "Come la nostra"
+      }
+    },
+    "stars": {
+      "label": "Stelle per galassia"
+    }
+  },
+  "ev": {
+    "bhBig": "Al centro compare un buco nero {x} volte più pesante della Via Lattea",
+    "bhSmall": "Al centro compare un buco nero con il {pct}% della massa della Via Lattea",
+    "bullet": "Una galassia attraversa tutto in linea retta a {speed} km/s",
+    "closing": "Andromeda si avvicina a circa {speed} km/s",
+    "flipmw": "Ogni stella della Via Lattea inverte la sua orbita",
+    "freeze": "Ogni stella della Via Lattea smette di orbitare",
+    "headon": "Andromeda punta dritta al nostro centro",
+    "lmc": "La Grande Nube di Magellano gira intorno alla Via Lattea",
+    "merge": "I nuclei si fondono: una sola gigantesca galassia ellittica, “Lattomeda”",
+    "miss": "Andromeda viene spinta su una traiettoria di passaggio",
+    "nodmAll": "La materia oscura sparisce: la gravità scende al {left}%, le stelle sono di colpo troppo veloci",
+    "nodmSome": "Parte della materia oscura sparisce: la gravità scende al {left}%, le stelle sono di colpo troppo veloci",
+    "pass1": "Primo passaggio: le galassie si tuffano l'una nell'altra",
+    "punch": "Una galassia nana sfonda il nostro centro",
+    "reverse": "Andromeda fa inversione e si allontana",
+    "ring": "Il nostro disco rimbalza in un anello di stelle che si allarga",
+    "stop": "Andromeda si ferma di colpo, poi comincia a cadere",
+    "swallowed": "Un'altra galassia viene inghiottita",
+    "swarm": "{n, plural, one {Cade dentro un'altra galassia} other {Cadono dentro altre # galassie}}",
+    "tails": "Si allontanano oscillando, con lunghe code mareali di stelle",
+    "third": "Cade dentro una terza galassia (come quella del Triangolo)",
+    "triangulum": "La galassia del Triangolo arriva di lato"
+  },
+  "meta": {
+    "intro": "La Via Lattea e Andromeda, sulla loro vera rotta di collisione, accelerata. Ogni punto è una stella.",
+    "name": "Galassie",
+    "sub": "Collisioni"
+  },
+  "metric": {
+    "disc": {
+      "label": "Stelle in un disco",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Galassie rimaste"
+    },
+    "sep": {
+      "label": "Distanza",
+      "unit": "kal"
+    },
+    "thrown": {
+      "label": "Stelle espulse",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 mln anni/s",
+    "1": "10 mln anni/s",
+    "2": "25 mln anni/s",
+    "3": "50 mln anni/s",
+    "4": "150 mln anni/s",
+    "5": "400 mln anni/s",
+    "6": "1 mld anni/s"
+  },
+  "stage": {
+    "scale": "{n} anni luce"
+  },
+  "whatif": {
+    "bh": "Al nostro centro compare un buco nero pesante come una galassia",
+    "bullet": "Una galassia passa dritta in mezzo",
+    "flipmw": "La Via Lattea gira al contrario",
+    "freeze": "Le stelle della Via Lattea smettono di orbitare",
+    "headon": "Punta Andromeda dritta al centro",
+    "miss": "Andromeda passa oltre",
+    "nodm": "La materia oscura sparisce",
+    "reverse": "Andromeda fa inversione",
+    "ring": "Una piccola galassia sfonda il nostro centro",
+    "stop": "Andromeda si ferma di colpo",
+    "swarm": "Cadono dentro altre galassie",
+    "third": "Arriva una terza galassia"
+  }
+}

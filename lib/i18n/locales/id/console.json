@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Putar",
+    "pause": "Jeda",
+    "speed": "Kecepatan",
+    "slower": "Lebih lambat",
+    "faster": "Lebih cepat",
+    "reset": "Reset",
+    "resetLabel": "Reset semuanya",
+    "resetTitle": "Reset semuanya: pengaturan, perubahan, dan waktu",
+    "hintFull": "Keluar dari layar penuh untuk membuat perubahan.",
+    "hint": "Pilih perubahan. Semuanya bertambah; matikan centangnya untuk membandingkan."
+  },
+  "fullscreen": {
+    "enter": "Layar penuh",
+    "leave": "Keluar layar penuh",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Perubahanmu",
+    "count": "{on} dari {total} aktif",
+    "empty": "Belum ada yang diubah. Setiap perubahan yang kamu buat muncul di sini dengan centang, jadi bisa kamu matikan dan nyalakan lagi.",
+    "remove": "Hapus “{name}” dari daftar",
+    "removeTitle": "Hapus dari daftar",
+    "allOn": "Nyalakan semua",
+    "allOff": "Matikan semua",
+    "clear": "Kosongkan daftar",
+    "throw": "Lempar sebuah planet"
+  },
+  "about": {
+    "label": "Tentang model ini",
+    "body": "Semuanya berjalan dari aturan bawaan dan data yang disederhanakan, langsung di browsermu. Hasilnya menunjukkan perilaku yang masuk akal, bukan ramalan."
+  },
+  "whatifs": {
+    "title": "Buat perubahan",
+    "applied": "diterapkan {n} kali"
+  },
+  "readouts": {
+    "title": "Saat ini"
+  },
+  "world": {
+    "base": "Tanpa perubahan",
+    "alt": "Dengan perubahan",
+    "both": "Kedua dunia",
+    "onlyBase": "Hanya tanpa perubahan",
+    "onlyAlt": "Hanya dengan perubahan"
+  },
+  "tune": {
+    "title": "Variabel",
+    "live": "Mengubah dunia awal akan memulainya ulang. Pengaturan what-if berlaku saat kamu memilih what-if berikutnya.",
+    "restart": "Mengubah ini akan memulai ulang dunia."
+  },
+  "chart": {
+    "withChanges": "Dengan perubahan:",
+    "noDiff": "belum ada beda yang nyata",
+    "overTime": "{metric} dari waktu ke waktu",
+    "collecting": "Mengumpulkan data…",
+    "fork": "CABANG"
+  },
+  "stage": {
+    "label": "Panggung simulasi",
+    "edge": "What-If Lab · Seed {seed}"
+  },
+  "timeline": {
+    "title": "Linimasa",
+    "empty": "Belum ada yang menonjol. Biarkan berjalan, atau buat perubahan."
+  },
+  "dock": {
+    "tools": "Alat",
+    "ask": "Tanya",
+    "tune": "Atur",
+    "read": "Baca",
+    "log": "Log"
+  },
+  "ad": {
+    "label": "Iklan",
+    "promo": "Bebas iklan dengan Premium · $15/thn",
+    "short": "Iklan"
+  }
+}

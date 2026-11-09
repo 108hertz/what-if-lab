@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Zoom van een proton naar het waarneembare heelal, open een wereld, verander die met wat-als-vragen en vergelijk haar toekomst met de wereld zoals ze was.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Schaal",
+    "sub": "Proton → heelal"
+  },
+  "intro": {
+    "worlds": "Werelden",
+    "whatifs": "Wat als…"
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "body": "Deze pagina staat niet in het lab.",
+    "home": "Terug naar het lab"
+  },
+  "unit": {
+    "gyr": "{n} mld. jaar",
+    "myr": "{n} mln. jaar",
+    "kyr": "{n} dzd. jaar",
+    "yr": "{n} jr"
+  },
+  "dur": {
+    "days": "{n} dagen",
+    "months": "{n} mnd",
+    "years": "{n} jr"
+  }
+}

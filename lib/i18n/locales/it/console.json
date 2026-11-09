@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Avvia",
+    "pause": "Pausa",
+    "speed": "Velocità",
+    "slower": "Più lento",
+    "faster": "Più veloce",
+    "reset": "Reset",
+    "resetLabel": "Azzera tutto",
+    "resetTitle": "Azzera tutto: impostazioni, cambiamenti e tempo",
+    "hintFull": "Esci dallo schermo intero per fare un cambiamento.",
+    "hint": "Scegli dei cambiamenti. Si sommano; togli la spunta per confrontare."
+  },
+  "fullscreen": {
+    "enter": "Schermo intero",
+    "leave": "Esci dallo schermo intero",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "I tuoi cambiamenti",
+    "count": "{on} di {total} attivi",
+    "empty": "Ancora nessun cambiamento. Ogni cambiamento che fai arriva qui con una spunta, così puoi disattivarlo e riattivarlo.",
+    "remove": "Togli “{name}” dall'elenco",
+    "removeTitle": "Togli dall'elenco",
+    "allOn": "Attiva tutti",
+    "allOff": "Disattiva tutti",
+    "clear": "Svuota l'elenco",
+    "throw": "Lancia un pianeta"
+  },
+  "about": {
+    "label": "Su questo modello",
+    "body": "Tutto funziona con regole integrate e dati semplificati, dal vivo nel tuo browser. I risultati mostrano comportamenti plausibili, non previsioni."
+  },
+  "whatifs": {
+    "title": "Fai dei cambiamenti",
+    "applied": "applicato {n, plural, one {# volta} other {# volte}}"
+  },
+  "readouts": {
+    "title": "Adesso"
+  },
+  "world": {
+    "base": "Senza cambiamenti",
+    "alt": "Con cambiamenti",
+    "both": "Entrambi i mondi",
+    "onlyBase": "Solo senza cambiamenti",
+    "onlyAlt": "Solo con cambiamenti"
+  },
+  "tune": {
+    "title": "Variabili",
+    "live": "Cambiare il mondo iniziale lo fa ripartire. Le impostazioni dei \"e se\" valgono dalla prossima volta che ne scegli uno.",
+    "restart": "Cambiarle fa ripartire il mondo."
+  },
+  "chart": {
+    "withChanges": "Con cambiamenti:",
+    "noDiff": "ancora nessuna vera differenza",
+    "overTime": "{metric} nel tempo",
+    "collecting": "Raccolta dati…",
+    "fork": "BIVIO"
+  },
+  "stage": {
+    "label": "Scena della simulazione",
+    "edge": "What-If Lab · Seme {seed}"
+  },
+  "timeline": {
+    "title": "Cronologia",
+    "empty": "Ancora niente di notevole. Lascialo andare, o fai un cambiamento."
+  },
+  "dock": {
+    "tools": "Strumenti",
+    "ask": "Chiedi",
+    "tune": "Regola",
+    "read": "Dati",
+    "log": "Diario"
+  },
+  "ad": {
+    "label": "Pubblicità",
+    "promo": "Senza pubblicità con Premium · 15 $/anno",
+    "short": "Pubbl."
+  }
+}

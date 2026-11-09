@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "lubang hitam",
+    "earth": "Bumi",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Merkurius",
+    "neptune": "Neptunus",
+    "saturn": "Saturnus",
+    "sun": "Matahari",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "planetmu"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Massa Matahari",
+      "unit": "× Matahari"
+    },
+    "view": {
+      "label": "Tampilan",
+      "opt": {
+        "inner": "Planet dalam",
+        "mid": "Sampai Jupiter",
+        "outer": "Seluruh sistem"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Lubang hitam seberat 4 Matahari masuk dari tepi tata surya",
+    "escape": "{body} lepas ke ruang antarbintang",
+    "giant": "Matahari membengkak jadi raksasa merah selebar 0,85 SA dan kehilangan sepertiga massanya",
+    "intoBh": "{body} jatuh ke dalam lubang hitam",
+    "intoSun": "{body} jatuh ke Matahari",
+    "jupstar": "Massa Jupiter bertambah 80× dan menyala sebagai katai merah",
+    "mars": "Bumi dipindah ke orbit Mars",
+    "nosun": "Matahari lenyap: planet-planet melesat lurus",
+    "smash": "{body} menabrak {other}",
+    "stop": "Bumi berhenti total di orbitnya",
+    "sun2": "Massa Matahari jadi dua kali: tarikan lebih kuat, sinar 11× lebih terang",
+    "swallowed": "{body} ditelan raksasa merah",
+    "throw": "Kamu melempar planet baru"
+  },
+  "info": {
+    "changed": "Dengan perubahan",
+    "now": "Bumi sekarang"
+  },
+  "meta": {
+    "hint": "Seret untuk melempar planet. Perubahan bertambah.",
+    "intro": "Gravitasi Newton sungguhan untuk Matahari dan delapan planet. Seret di panggung untuk melempar planetmu sendiri.",
+    "name": "Tata surya",
+    "sub": "Gravitasi"
+  },
+  "metric": {
+    "dist": {
+      "label": "Jarak Bumi–Matahari",
+      "unit": "SA"
+    },
+    "temp": {
+      "label": "Suhu Bumi",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Panjang tahun",
+      "unit": "hari"
+    }
+  },
+  "name": {
+    "blackhole": "Lubang hitam",
+    "earth": "Bumi",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Merkurius",
+    "neptune": "Neptunus",
+    "saturn": "Saturnus",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "Planetmu"
+  },
+  "speed": {
+    "0": "1 bln/dtk",
+    "1": "6 bln/dtk",
+    "2": "2 thn/dtk",
+    "3": "10 thn/dtk"
+  },
+  "status": {
+    "boiling": "lautan mendidih",
+    "destroyed": "hancur",
+    "flying": "melayang pergi",
+    "frozen": "membeku",
+    "habitable": "layak huni"
+  },
+  "whatif": {
+    "bh": "Lubang hitam melintas",
+    "giant": "Matahari jadi raksasa merah",
+    "jupstar": "Jupiter menyala jadi bintang",
+    "mars": "Pindahkan Bumi ke orbit Mars",
+    "nosun": "Matahari menghilang",
+    "stop": "Bumi berhenti di orbitnya",
+    "sun2": "Massa Matahari jadi dua kali"
+  }
+}

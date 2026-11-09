@@ -1,0 +1,1734 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "beh": {
+    "b_calm": {
+      "grown": "bình tĩnh trước một ngày quan trọng",
+      "kid": "bình tĩnh trước bài kiểm tra"
+    },
+    "b_food": {
+      "grown": "thử một món chưa từng ăn",
+      "kid": "thử một món chưa từng ăn"
+    },
+    "b_hand": {
+      "grown": "lên tiếng trong nhóm",
+      "kid": "giơ tay phát biểu trong lớp"
+    },
+    "b_help": {
+      "grown": "giúp một người hàng xóm mới",
+      "kid": "giúp một bạn mới ở trường"
+    },
+    "b_proj": {
+      "grown": "hoàn thành một dự án dài",
+      "kid": "hoàn thành một bài tập lớn ở trường"
+    },
+    "b_tidy": {
+      "grown": "giữ nhà cửa gọn gàng",
+      "kid": "giữ phòng gọn gàng"
+    }
+  },
+  "ch": {
+    "authoritative": {
+      "cap": "bố mẹ trở nên ấm áp và nghiêm túc",
+      "past": "bố mẹ trở nên ấm áp và nghiêm túc",
+      "q": "Nếu bố mẹ trở nên ấm áp và nghiêm túc thì sao?"
+    },
+    "bestfriend": {
+      "cap": "có một người bạn thân",
+      "past": "các con có một người bạn thân",
+      "q": "Nếu các con có một người bạn thân thì sao?"
+    },
+    "bullied": {
+      "cap": "bị bắt nạt ở trường suốt một năm",
+      "past": "các con bị bắt nạt suốt một năm",
+      "q": "Nếu các con bị bắt nạt suốt một năm thì sao?"
+    },
+    "carer": {
+      "cap": "giúp trông em nhỏ",
+      "past": "các con bắt đầu giúp trông em",
+      "q": "Nếu các con giúp trông em trai hoặc em gái thì sao?"
+    },
+    "chores": {
+      "cap": "được giao việc nhà thật sự",
+      "past": "các con được giao việc nhà thật sự",
+      "q": "Nếu các con có việc nhà thật sự phải làm thì sao?"
+    },
+    "coding": {
+      "cap": "tham gia câu lạc bộ lập trình",
+      "past": "các con tham gia câu lạc bộ lập trình",
+      "q": "Nếu các con tham gia câu lạc bộ lập trình hoặc lắp ráp thì sao?"
+    },
+    "countryside": {
+      "cap": "cả nhà chuyển về nông thôn",
+      "past": "cả nhà chuyển về nông thôn",
+      "q": "Nếu cả nhà chuyển về nông thôn thì sao?"
+    },
+    "dinners": {
+      "cap": "bữa tối gia đình mỗi tối",
+      "past": "cả nhà bắt đầu ăn tối cùng nhau mỗi tối",
+      "q": "Nếu cả nhà ăn tối cùng nhau mỗi tối thì sao?"
+    },
+    "divorce": {
+      "cap": "bố mẹ chia tay",
+      "past": "bố mẹ chia tay",
+      "q": "Nếu bố mẹ chia tay thì sao?"
+    },
+    "drama": {
+      "cap": "tham gia câu lạc bộ kịch",
+      "past": "các con tham gia câu lạc bộ kịch",
+      "q": "Nếu các con tham gia câu lạc bộ kịch thì sao?"
+    },
+    "exam": {
+      "cap": "trượt một kỳ thi lớn",
+      "past": "các con trượt một kỳ thi lớn",
+      "q": "Nếu các con trượt một kỳ thi lớn thì sao?"
+    },
+    "fallout": {
+      "cap": "giận nhau với bạn thân",
+      "past": "các con giận nhau với bạn thân",
+      "q": "Nếu các con giận nhau với bạn thân thì sao?"
+    },
+    "firstlove": {
+      "cap": "mối cảm nắng đầu tiên không thành",
+      "past": "các con có mối cảm nắng đầu tiên không thành",
+      "q": "Nếu các con có mối cảm nắng đầu tiên không thành thì sao?"
+    },
+    "grandparent": {
+      "cap": "ông hoặc bà dọn đến ở cùng",
+      "past": "ông hoặc bà dọn đến ở cùng",
+      "q": "Nếu ông hoặc bà dọn đến ở cùng thì sao?"
+    },
+    "illness": {
+      "cap": "bố hoặc mẹ ốm suốt một năm",
+      "past": "bố hoặc mẹ ốm suốt một năm",
+      "q": "Nếu bố hoặc mẹ ốm nặng suốt một năm thì sao?"
+    },
+    "job": {
+      "cap": "đi làm thêm cuối tuần",
+      "past": "các con đi làm thêm cuối tuần",
+      "q": "Nếu các con đi làm thêm cuối tuần thì sao?"
+    },
+    "language": {
+      "cap": "học ngôn ngữ thứ hai",
+      "past": "các con bắt đầu học ngôn ngữ thứ hai",
+      "q": "Nếu các con học ngôn ngữ thứ hai thì sao?"
+    },
+    "leader": {
+      "cap": "làm lớp trưởng",
+      "past": "các con được làm lớp trưởng",
+      "q": "Nếu các con được làm lớp trưởng thì sao?"
+    },
+    "longhours": {
+      "cap": "bố hoặc mẹ làm việc nhiều giờ",
+      "past": "bố hoặc mẹ bắt đầu làm việc nhiều giờ",
+      "q": "Nếu bố hoặc mẹ bắt đầu làm việc rất nhiều giờ thì sao?"
+    },
+    "mentor": {
+      "cap": "một người thầy để ý đến các con",
+      "past": "một người thầy để ý đến các con",
+      "q": "Nếu một người thầy để ý và dìu dắt các con thì sao?"
+    },
+    "money": {
+      "cap": "tiền bạc eo hẹp một thời gian",
+      "past": "tiền bạc trở nên eo hẹp",
+      "q": "Nếu tiền bạc eo hẹp vài năm thì sao?"
+    },
+    "move": {
+      "cap": "cả nhà chuyển ra nước ngoài",
+      "past": "cả nhà chuyển sang nước khác",
+      "q": "Nếu cả nhà chuyển sang nước khác thì sao?"
+    },
+    "music": {
+      "cap": "học chơi một nhạc cụ",
+      "past": "các con học chơi một nhạc cụ",
+      "q": "Nếu các con học chơi một nhạc cụ thì sao?"
+    },
+    "nature": {
+      "cap": "dành nhiều thời gian ngoài trời",
+      "past": "các con bắt đầu dành thời gian ngoài trời",
+      "q": "Nếu các con dành nhiều thời gian ngoài trời thì sao?"
+    },
+    "newschool": {
+      "cap": "chuyển trường",
+      "past": "các con chuyển trường",
+      "q": "Nếu các con chuyển trường thì sao?"
+    },
+    "pet": {
+      "cap": "cả nhà nuôi một chú chó",
+      "past": "cả nhà nuôi một chú chó",
+      "q": "Nếu cả nhà nuôi một chú chó thì sao?"
+    },
+    "prize": {
+      "cap": "thắng một cuộc thi lớn",
+      "past": "các con thắng một cuộc thi lớn",
+      "q": "Nếu các con thắng một cuộc thi lớn thì sao?"
+    },
+    "reading": {
+      "cap": "đọc sách mỗi tối",
+      "past": "các con bắt đầu đọc sách mỗi tối",
+      "q": "Nếu các con đọc sách mỗi tối thì sao?"
+    },
+    "scouts": {
+      "cap": "tham gia hướng đạo",
+      "past": "các con tham gia hướng đạo",
+      "q": "Nếu các con tham gia hướng đạo hoặc câu lạc bộ thiên nhiên thì sao?"
+    },
+    "screen": {
+      "cap": "bắt đầu dùng màn hình nhiều",
+      "past": "các con bắt đầu dùng màn hình nhiều",
+      "q": "Nếu các con được dùng màn hình nhiều thì sao?"
+    },
+    "sibling": {
+      "cap": "có thêm em trai hoặc em gái",
+      "past": "có thêm em trai hoặc em gái",
+      "q": "Nếu có thêm em trai hoặc em gái thì sao?"
+    },
+    "sleep": {
+      "cap": "ngủ đủ giấc mỗi đêm",
+      "past": "các con bắt đầu ngủ đủ giấc",
+      "q": "Nếu các con luôn ngủ đủ giấc thì sao?"
+    },
+    "sport": {
+      "cap": "chơi một môn thể thao đồng đội",
+      "past": "các con tham gia một môn thể thao đồng đội",
+      "q": "Nếu các con chơi một môn thể thao đồng đội thì sao?"
+    },
+    "strict": {
+      "cap": "bố mẹ nghiêm khắc hơn",
+      "past": "bố mẹ trở nên nghiêm khắc hơn",
+      "q": "Nếu bố mẹ nghiêm khắc hơn nhiều thì sao?"
+    },
+    "summer": {
+      "cap": "mùa hè tuyệt nhất từ trước đến nay",
+      "past": "các con có mùa hè tuyệt nhất từ trước đến nay",
+      "q": "Nếu các con có mùa hè tuyệt nhất từ trước đến nay thì sao?"
+    },
+    "teacher": {
+      "cap": "có một thầy cô tuyệt vời",
+      "past": "các con có một thầy cô tuyệt vời",
+      "q": "Nếu các con có một thầy cô tuyệt vời thì sao?"
+    },
+    "travel": {
+      "cap": "cả nhà đi du lịch suốt một năm",
+      "past": "cả nhà đi du lịch suốt một năm",
+      "q": "Nếu cả nhà đi du lịch suốt một năm thì sao?"
+    },
+    "volunteer": {
+      "cap": "bắt đầu làm tình nguyện",
+      "past": "các con bắt đầu làm tình nguyện",
+      "q": "Nếu các con bắt đầu giúp đỡ người khác (làm tình nguyện) thì sao?"
+    }
+  },
+  "chart": {
+    "aria": {
+      "0": "Vị trí của {who} ở từng nét tính cách giữa cả 120 bé",
+      "1": "Tò mò, ngăn nắp, hướng ngoại, tốt bụng và điềm tĩnh qua các năm",
+      "2": "Trong 100 bé, bao nhiêu bé có khả năng làm từng việc hằng ngày",
+      "3": "Mỗi thay đổi đã dịch chuyển {trait} bao nhiêu"
+    },
+    "atDiff": "Lúc {age} ({life} năm): khi có thay đổi, phần lớn các bé {list}.",
+    "atSame": "Lúc {age} ({life} năm): gần như giống khi không có thay đổi.",
+    "atTypical": "Lúc {age} ({life} năm): bé điển hình {step}.",
+    "axis": "← ít {trait} hơn  ·  các bé vốn khác nhau bao nhiêu  ·  nhiều hơn →",
+    "dayDiff": "Khi có thay đổi, {count} bé có khả năng {what} (trước là {was}).",
+    "dayIntro": "Trong 100 bé như thế này, bao nhiêu bé có khả năng làm từng việc. Là có khả năng, không phải chắc chắn.",
+    "dayLittle": "Đến giờ thay đổi của bạn chưa tạo khác biệt nhiều cho đời sống hằng ngày.",
+    "faded": "phần lớn đã phai",
+    "growIntro": "Mỗi hàng là một nét tính cách qua các năm; dải màu là nơi phần lớn các bé nằm. Trỏ vào một độ tuổi để đọc.",
+    "hardly": "hầu như không bé nào",
+    "life": {
+      "0": "bé",
+      "1": "đi học",
+      "2": "tuổi teen",
+      "3": "thanh niên",
+      "4": "người lớn"
+    },
+    "nowDiff": "Khi có thay đổi, lúc {age} {who, select, most {phần lớn các bé} other {các bé này}} {list}.",
+    "nowIntro": "Mỗi vạch mờ là một trong 120 bé; chấm lớn là {who}. Thử một thay đổi để so sánh.",
+    "of100": "{n}/100",
+    "ongoing": "vẫn đang diễn ra",
+    "planned": "Thay đổi của bạn được hẹn cho sau này.",
+    "pressPlay": "Bấm chạy để xem các bé lớn lên…",
+    "rowChange": "{name} · {age}",
+    "rowCombo": "{a} + {b}",
+    "rowWord": "{word} · {state}",
+    "sameSoFar": "Khi có thay đổi, đến giờ các bé này gần như không khác (tuổi {age}).",
+    "stayedSame": "{list} gần như không đổi.",
+    "still": "vẫn còn",
+    "typical": "bé điển hình",
+    "view": {
+      "0": "Hiện tại",
+      "1": "Lớn lên",
+      "2": "Hằng ngày",
+      "3": "Điều gì quan trọng"
+    },
+    "viewLabel": "Kiểu biểu đồ",
+    "was": "trước là {n}",
+    "whichTrait": "Nét tính cách nào",
+    "whyEmpty": "Tạo một thay đổi để xem nó quan trọng thế nào ở đây.",
+    "whyFaded": "{change} tạo khác biệt lớn nhất cho {trait}, nhưng phần lớn đã phai.",
+    "whyIntro": "Mỗi thay đổi đã dịch chuyển {trait} bao nhiêu, đặt cạnh mức các bé vốn khác nhau.",
+    "whyLasted": "{change} tạo khác biệt lớn nhất cho {trait}, và nó kéo dài.",
+    "whyOngoing": "{change} tạo khác biệt lớn nhất cho {trait}, và vẫn đang diễn ra."
+  },
+  "chip": {
+    "ripple": {
+      "authoritative": {
+        "0": "{n}/100 bé biết ở nhà sẽ có gì"
+      },
+      "bestfriend": {
+        "0": "{n}/100 bé thấy can đảm hơn ở trường",
+        "1": "{n}/100 bé cùng nhau đi phiêu lưu"
+      },
+      "bullied": {
+        "0": "{n}/100 bé kể với ai đó, và mọi chuyện khá hơn",
+        "1": "{n}/100 bé ngừng giơ tay trong lớp một thời gian",
+        "2": "{n}/100 bé trở nên tử tế hơn với những bạn bị cô lập"
+      },
+      "carer": {
+        "0": "{n}/100 bé trở nên rất kiên nhẫn",
+        "1": "{n}/100 bé đôi khi thấy mệt"
+      },
+      "chores": {
+        "0": "{n}/100 bé tự hào vì làm tốt việc",
+        "1": "{n}/100 bé than phiền về việc nhà (mà vẫn làm)"
+      },
+      "coding": {
+        "0": "{n}/100 bé tự làm một trò chơi nhỏ",
+        "1": "{n}/100 bé kết bạn với người cùng sở thích"
+      },
+      "countryside": {
+        "0": "{n}/100 bé chăm sóc vật nuôi",
+        "1": "{n}/100 bé đôi khi nhớ thành phố",
+        "2": "{n}/100 bé chơi ngoài trời mỗi ngày"
+      },
+      "dinners": {
+        "0": "{n}/100 bé kể về ngày của mình mỗi tối",
+        "1": "{n}/100 bé thử món mới trong bữa tối"
+      },
+      "divorce": {
+        "0": "{n}/100 bé có lúc tự hỏi có phải lỗi tại mình (không bao giờ là vậy)",
+        "1": "{n}/100 bé quen với hai mái nhà và hai lần sinh nhật",
+        "2": "{n}/100 bé gần gũi hơn với bố hoặc mẹ"
+      },
+      "drama": {
+        "0": "{n}/100 bé biểu diễn trên sân khấu thật",
+        "1": "{n}/100 bé giỏi thấu hiểu cảm xúc"
+      },
+      "exam": {
+        "0": "{n}/100 bé thử lại và đỗ",
+        "1": "{n}/100 bé có lúc nghĩ mình dốt môn đó"
+      },
+      "fallout": {
+        "0": "{n}/100 bé làm lành lại",
+        "1": "{n}/100 bé tìm được bạn mới"
+      },
+      "firstlove": {
+        "0": "{n}/100 bé nghe nhạc buồn một thời gian",
+        "1": "{n}/100 bé nhận ra mình vượt qua được cảm xúc khó khăn",
+        "2": "{n}/100 bé được bạn bè chăm sóc"
+      },
+      "grandparent": {
+        "0": "{n}/100 bé được nghe nhiều chuyện gia đình",
+        "1": "{n}/100 bé học nấu ăn cùng ông bà"
+      },
+      "illness": {
+        "0": "{n}/100 bé giúp chăm sóc bố hoặc mẹ",
+        "1": "{n}/100 bé thấy mình người lớn hơn"
+      },
+      "job": {
+        "0": "{n}/100 bé để dành tiền mua thứ gì đó lớn",
+        "1": "{n}/100 bé quen nói chuyện với người lạ"
+      },
+      "language": {
+        "0": "{n}/100 bé xem phim bằng ngôn ngữ mới",
+        "1": "{n}/100 bé kết bạn với người nói ngôn ngữ đó"
+      },
+      "leader": {
+        "0": "{n}/100 bé phát biểu trước lớp",
+        "1": "{n}/100 bé thấy có trách nhiệm hơn"
+      },
+      "longhours": {
+        "0": "{n}/100 bé ở một mình nhiều hơn",
+        "1": "{n}/100 bé học cách tự xoay xở",
+        "2": "{n}/100 bé nhớ bố mẹ lúc đi ngủ"
+      },
+      "mentor": {
+        "0": "{n}/100 bé tìm được mục tiêu để phấn đấu",
+        "1": "{n}/100 bé thử những điều chưa bao giờ nghĩ tới"
+      },
+      "money": {
+        "0": "{n}/100 bé phụ giúp việc nhà nhiều hơn",
+        "1": "{n}/100 bé lo lắng về tiền bạc",
+        "2": "{n}/100 bé ít câu lạc bộ và chuyến đi hơn một thời gian"
+      },
+      "move": {
+        "0": "{n}/100 bé học được ngôn ngữ mới",
+        "1": "{n}/100 bé thấy cô đơn năm đầu",
+        "2": "{n}/100 bé có bạn thân mới ở đó"
+      },
+      "music": {
+        "0": "{n}/100 bé chơi trong một buổi hoà nhạc",
+        "1": "{n}/100 bé có lúc thấy tập luyện chán"
+      },
+      "nature": {
+        "0": "{n}/100 bé học tên các loài chim và cây",
+        "1": "{n}/100 bé đi cắm trại và rất thích"
+      },
+      "newschool": {
+        "0": "{n}/100 bé nhanh chóng có bạn mới",
+        "1": "{n}/100 bé nhớ bạn cũ"
+      },
+      "pet": {
+        "0": "{n}/100 bé dắt chó đi dạo mỗi ngày",
+        "1": "{n}/100 bé nói chú chó là bạn thân nhất"
+      },
+      "prize": {
+        "0": "{n}/100 bé kể cho mọi người nghe",
+        "1": "{n}/100 bé bắt đầu phấn đấu cho giải tiếp theo"
+      },
+      "reading": {
+        "0": "{n}/100 bé dùng thẻ thư viện rất nhiều",
+        "1": "{n}/100 bé bắt đầu tự viết truyện"
+      },
+      "scouts": {
+        "0": "{n}/100 bé nhận được nhiều huy hiệu",
+        "1": "{n}/100 bé lần đầu ngủ trong lều"
+      },
+      "screen": {
+        "0": "{n}/100 bé ngủ ít hơn",
+        "1": "{n}/100 bé kết bạn trên mạng",
+        "2": "{n}/100 bé chơi một trò rất giỏi"
+      },
+      "sibling": {
+        "0": "{n}/100 bé lúc đầu thấy ghen tị",
+        "1": "{n}/100 bé trở nên thân với em",
+        "2": "{n}/100 bé giúp chăm em bé"
+      },
+      "sleep": {
+        "0": "{n}/100 bé có buổi sáng dễ chịu hơn",
+        "1": "{n}/100 bé dễ tập trung ở trường hơn"
+      },
+      "sport": {
+        "0": "{n}/100 bé kết bạn trong đội",
+        "1": "{n}/100 bé bị chấn thương thể thao rồi khỏi",
+        "2": "{n}/100 bé thắng một trận đến giờ vẫn còn kể"
+      },
+      "strict": {
+        "0": "{n}/100 bé bắt đầu giữ mọi chuyện cho riêng mình",
+        "1": "{n}/100 bé rất giỏi tuân thủ quy tắc"
+      },
+      "summer": {
+        "0": "{n}/100 bé vẫn nhớ đó là mùa hè tuyệt nhất",
+        "1": "{n}/100 bé có những người bạn cả đời từ mùa hè ấy"
+      },
+      "teacher": {
+        "0": "{n}/100 bé tìm được môn học mình yêu thích",
+        "1": "{n}/100 bé bắt đầu tin mình làm được việc khó"
+      },
+      "travel": {
+        "0": "{n}/100 bé học được từ ngữ của nhiều ngôn ngữ",
+        "1": "{n}/100 bé đôi khi nhớ nhà",
+        "2": "{n}/100 bé học được cách thấy như ở nhà ở bất cứ đâu"
+      },
+      "volunteer": {
+        "0": "{n}/100 bé được người mình giúp cảm ơn",
+        "1": "{n}/100 bé bắt đầu dẫn dắt các tình nguyện viên khác"
+      }
+    }
+  },
+  "cmp": {
+    "less": "{d, select, bit {kém hơn một chút} much {kém hơn nhiều} other {kém hơn}}",
+    "more": "{d, select, bit {hơn một chút} much {hơn nhiều} other {hơn}}"
+  },
+  "ctl": {
+    "aA": {
+      "label": "Tốt bụng"
+    },
+    "aC": {
+      "label": "Ngăn nắp"
+    },
+    "aE": {
+      "label": "Hướng ngoại"
+    },
+    "aN": {
+      "label": "Lo âu (100 − điềm tĩnh)"
+    },
+    "aO": {
+      "label": "Tò mò"
+    },
+    "bA": {
+      "label": "Tốt bụng"
+    },
+    "bC": {
+      "label": "Ngăn nắp"
+    },
+    "bE": {
+      "label": "Hướng ngoại"
+    },
+    "bN": {
+      "label": "Lo âu (100 − điềm tĩnh)"
+    },
+    "bO": {
+      "label": "Tò mò"
+    },
+    "baby": {
+      "label": "Lúc còn bé các con thế nào?",
+      "opt": {
+        "easy": "Dễ tính",
+        "energy": "Đầy năng lượng",
+        "mixed": "Mỗi bé một kiểu",
+        "slow": "Chậm làm quen"
+      }
+    },
+    "events": {
+      "label": "Thăng trầm hằng ngày",
+      "opt": {
+        "lots": "Nhiều",
+        "normal": "Bình thường",
+        "off": "Tắt"
+      }
+    },
+    "fade": {
+      "label": "Tác động kéo dài bao lâu",
+      "opt": {
+        "fast": "Phai nhanh",
+        "normal": "Bình thường",
+        "stick": "Bám lâu"
+      }
+    },
+    "family": {
+      "label": "Gia đình",
+      "opt": {
+        "artists": "Nghệ sĩ tò mò",
+        "average": "Bố mẹ bình thường",
+        "calm": "Bố mẹ đều điềm tĩnh, ngăn nắp",
+        "custom": "Tự tạo",
+        "everyday": "Một người tò mò, một người ngăn nắp",
+        "lively": "Bố mẹ đều sôi nổi, hướng ngoại",
+        "worrier": "Một người hay lo, một người dễ tính"
+      }
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Cài đặt thay đổi (dùng cho lần bấm tiếp theo)",
+      "home": "Gia đình",
+      "nature-and-chance": "Bẩm sinh và may rủi",
+      "parent-a": "Phụ huynh A",
+      "parent-b": "Phụ huynh B"
+    },
+    "home": {
+      "label": "Không khí gia đình",
+      "opt": {
+        "busy": "Bận rộn",
+        "stable": "Êm ấm",
+        "unstable": "Hay cãi vã"
+      }
+    },
+    "inherit": {
+      "label": "Mức độ di truyền",
+      "opt": {
+        "25": "Thấp (25 %)",
+        "40": "Bình thường (40 %)",
+        "55": "Cao (55 %)"
+      }
+    },
+    "luck": {
+      "label": "Mức may rủi",
+      "opt": {
+        "big": "Lớn",
+        "normal": "Bình thường",
+        "small": "Nhỏ"
+      }
+    },
+    "money": {
+      "label": "Kinh tế gia đình",
+      "opt": {
+        "comfy": "Dư dả",
+        "ok": "Tạm ổn",
+        "tight": "Eo hẹp"
+      }
+    },
+    "place": {
+      "label": "Nơi sống",
+      "opt": {
+        "city": "Thành phố",
+        "country": "Nông thôn",
+        "town": "Thị trấn"
+      }
+    },
+    "s_age": {
+      "label": "Khi nào xảy ra",
+      "opt": {
+        "1": "Lúc 1 tuổi",
+        "2": "Lúc 2 tuổi",
+        "3": "Lúc 3 tuổi",
+        "4": "Lúc 4 tuổi",
+        "5": "Lúc 5 tuổi",
+        "6": "Lúc 6 tuổi",
+        "7": "Lúc 7 tuổi",
+        "8": "Lúc 8 tuổi",
+        "9": "Lúc 9 tuổi",
+        "10": "Lúc 10 tuổi",
+        "11": "Lúc 11 tuổi",
+        "12": "Lúc 12 tuổi",
+        "13": "Lúc 13 tuổi",
+        "14": "Lúc 14 tuổi",
+        "15": "Lúc 15 tuổi",
+        "16": "Lúc 16 tuổi",
+        "17": "Lúc 17 tuổi",
+        "now": "Bây giờ"
+      }
+    },
+    "s_len": {
+      "label": "Bao lâu",
+      "opt": {
+        "few": "Vài năm",
+        "good": "Mãi mãi",
+        "moment": "Chốc lát",
+        "usual": "Như thường lệ",
+        "year": "Khoảng một năm"
+      }
+    },
+    "s_size": {
+      "label": "Mức độ",
+      "opt": {
+        "big": "Lớn",
+        "medium": "Vừa",
+        "small": "Nhỏ"
+      }
+    },
+    "school": {
+      "label": "Trường học",
+      "opt": {
+        "crowded": "Đông học sinh",
+        "great": "Thầy cô giỏi",
+        "ordinary": "Bình thường"
+      }
+    },
+    "screens": {
+      "label": "Quy định màn hình",
+      "opt": {
+        "none": "Không quy định",
+        "some": "Một ít",
+        "strict": "Nghiêm ngặt"
+      }
+    },
+    "sens": {
+      "label": "Cuộc sống tác động bao nhiêu",
+      "opt": {
+        "all": "Mọi bé đều rất nhạy cảm",
+        "same": "Như nhau với mọi bé",
+        "some": "Có bé cảm nhận mạnh hơn nhiều"
+      }
+    },
+    "shape": {
+      "label": "Sống cùng ai",
+      "opt": {
+        "big": "Đại gia đình chung một nhà",
+        "one": "Bố hoặc mẹ đơn thân",
+        "two": "Cả bố lẫn mẹ",
+        "twohomes": "Hai mái nhà"
+      }
+    },
+    "sib": {
+      "label": "Anh chị em",
+      "opt": {
+        "0": "Không có",
+        "1": "Một em",
+        "2": "Hai người trở lên",
+        "older": "Một anh hoặc chị"
+      }
+    },
+    "style": {
+      "label": "Cách bố mẹ nuôi dạy",
+      "opt": {
+        "authoritarian": "Nghiêm khắc",
+        "authoritative": "Ấm áp và nghiêm túc",
+        "neglectful": "Xa cách",
+        "permissive": "Dễ dãi"
+      }
+    },
+    "time": {
+      "label": "Thời gian bên nhau",
+      "opt": {
+        "long": "Bố mẹ làm việc nhiều giờ",
+        "lots": "Nhiều thời gian gia đình",
+        "ordinary": "Bình thường"
+      }
+    }
+  },
+  "eff": {
+    "same": "gần như không đổi"
+  },
+  "ends": {
+    "A": {
+      "0": "nói thẳng điều mình nghĩ, thích thắng",
+      "1": "rất tốt bụng"
+    },
+    "C": {
+      "0": "tuỳ hứng, hơi bừa bộn",
+      "1": "rất ngăn nắp"
+    },
+    "Calm": {
+      "0": "hay lo lắng",
+      "1": "rất điềm tĩnh"
+    },
+    "E": {
+      "0": "trầm lặng, hơi nhút nhát",
+      "1": "rất hướng ngoại"
+    },
+    "O": {
+      "0": "thích những gì quen thuộc",
+      "1": "rất tò mò"
+    }
+  },
+  "ev": {
+    "already": "Bố mẹ vốn đã nuôi dạy các con theo cách này",
+    "buffer": {
+      "0": "Có bạn thân giúp việc bị bắt nạt bớt đau",
+      "1": "Thầy cô giỏi đã can thiệp, nên việc bị bắt nạt bớt đau",
+      "2": "Gia đình êm ấm giúp các con vượt qua việc bị bắt nạt",
+      "3": "Bố mẹ ấm áp, nghiêm túc giúp cuộc chia tay dễ chịu hơn",
+      "4": "Bố mẹ ấm áp, nghiêm túc giúp nỗi lo tiền bạc không quá nặng nề",
+      "5": "Có ông bà ở nhà giúp đỡ khi tiền bạc eo hẹp",
+      "6": "Có ông bà ở nhà giúp đỡ khi bố hoặc mẹ ốm",
+      "7": "Chuyển nhà cùng anh chị em thì dễ hơn",
+      "8": "Đội thể thao giúp các con hoà nhập ở trường mới",
+      "9": "Đọc sách mỗi tối cân bằng thời gian dùng màn hình",
+      "10": "Quy định màn hình rõ ràng giúp màn hình không chiếm hết thời gian",
+      "11": "Ngủ đủ giấc giúp màn hình không làm các con mệt",
+      "12": "Một thầy cô giỏi giúp các con vượt qua kỳ thi trượt",
+      "13": "Ngủ đủ giấc giúp các con lấy lại tinh thần sau kỳ thi trượt",
+      "14": "Ôm chú chó giúp các con khuây khoả sau khi giận bạn",
+      "15": "Một người bạn thân giúp các con vượt qua lần thất tình đầu",
+      "16": "Bữa tối gia đình cho các con người để tâm sự",
+      "17": "Có ông bà ở nhà giúp đỡ khi bố hoặc mẹ làm việc nhiều giờ",
+      "18": "Đại gia đình chung một nhà giúp đỡ khi bố hoặc mẹ làm việc nhiều giờ",
+      "19": "Đại gia đình giúp đỡ khi bố hoặc mẹ ốm",
+      "20": "Đại gia đình san sẻ những gì có khi tiền bạc eo hẹp",
+      "21": "Nhiều thời gian bên gia đình nên các con có thể kể về chuyện bị bắt nạt"
+    },
+    "calm": "Phần lớn các bé điềm tĩnh trở lại sau tuổi teen",
+    "change": {
+      "authoritative": "Bố mẹ trở nên ấm áp và nghiêm túc: quy tắc rõ ràng, nhiều yêu thương",
+      "bestfriend": "Có một người bạn thân",
+      "bullied": "Bị bắt nạt ở trường suốt một năm",
+      "carer": "Bắt đầu giúp trông em trai hoặc em gái",
+      "chores": "Bắt đầu làm việc nhà thật sự",
+      "coding": "Tham gia câu lạc bộ lập trình và lắp ráp",
+      "countryside": "Cả nhà chuyển về nông thôn",
+      "dinners": "Cả nhà bắt đầu ăn tối cùng nhau mỗi tối",
+      "divorce": "Bố mẹ chia tay và sống ở hai nhà",
+      "drama": "Tham gia câu lạc bộ kịch",
+      "exam": "Trượt một kỳ thi lớn",
+      "fallout": "Giận nhau với bạn thân",
+      "firstlove": "Có mối cảm nắng đầu tiên không thành",
+      "grandparent": "Ông hoặc bà dọn đến ở cùng",
+      "illness": "Bố hoặc mẹ ốm nặng suốt một năm, rồi khỏi",
+      "job": "Đi làm thêm cuối tuần",
+      "language": "Bắt đầu học ngôn ngữ thứ hai",
+      "leader": "Được làm lớp trưởng",
+      "longhours": "Bố hoặc mẹ bắt đầu làm việc rất nhiều giờ",
+      "mentor": "Một người thầy để ý và dìu dắt",
+      "money": "Tiền bạc eo hẹp vài năm",
+      "move": "Cả nhà chuyển sang nước khác",
+      "music": "Học chơi một nhạc cụ",
+      "nature": "Bắt đầu dành nhiều thời gian ngoài trời",
+      "newschool": "Chuyển trường",
+      "pet": "Cả nhà nuôi một chú chó",
+      "prize": "Thắng một cuộc thi lớn",
+      "reading": "Bắt đầu đọc sách mỗi tối",
+      "scouts": "Tham gia hướng đạo",
+      "screen": "Bắt đầu dùng màn hình nhiều mỗi ngày",
+      "sibling": "Có thêm em trai hoặc em gái",
+      "sleep": "Bắt đầu ngủ đủ giấc mỗi đêm",
+      "sport": "Tham gia một môn thể thao đồng đội",
+      "strict": "Bố mẹ nghiêm khắc hơn nhiều",
+      "summer": "Có mùa hè tuyệt nhất từ trước đến nay",
+      "teacher": "Có một thầy cô tuyệt vời",
+      "travel": "Cả nhà lên đường du lịch suốt một năm",
+      "volunteer": "Bắt đầu giúp đỡ người khác làm tình nguyện viên"
+    },
+    "combo": {
+      "0": "Thể thao đồng đội và bạn thân: hai đứa chơi cùng một đội",
+      "1": "Đọc sách mỗi tối và thầy cô giỏi: các con bắt đầu yêu việc học",
+      "2": "Nhạc cụ và người dìu dắt: luyện tập bắt đầu có kết quả",
+      "3": "Nước mới và bạn thân: hoà nhập dễ hơn",
+      "4": "Chú chó và thời gian ngoài trời: đi dạo dài mỗi ngày",
+      "5": "Tình nguyện và ông bà ở nhà: giúp người thành thói quen",
+      "6": "Màn hình và thời gian ngoài trời: ngoài trời cân bằng màn hình",
+      "7": "Em nhỏ và bố mẹ ấm áp, nghiêm túc: các con hoà thuận",
+      "8": "Câu lạc bộ kịch và làm lớp trưởng: lên tiếng trở nên dễ dàng",
+      "9": "Câu lạc bộ lập trình và người dìu dắt: các con làm ra thứ thật sự"
+    },
+    "ms": {
+      "ms1": "Những từ đầu tiên: phần lớn các bé bắt đầu biết nói",
+      "ms13": "Tuổi teen bắt đầu: tâm trạng lên xuống thất thường",
+      "ms18": "Học xong phổ thông",
+      "ms20": "Nhiều người bắt đầu công việc đầu tiên",
+      "ms28": "Nhiều người ổn định cuộc sống",
+      "ms5": "Bắt đầu đi học",
+      "ms7": "Phần lớn các bé có người bạn thân đầu tiên"
+    },
+    "ripple": {
+      "authoritative": {
+        "0": "Sau khi bố mẹ trở nên ấm áp và nghiêm túc lúc {age} tuổi, {n}/100 bé biết ở nhà sẽ có gì"
+      },
+      "bestfriend": {
+        "0": "Sau khi các con có một người bạn thân lúc {age} tuổi, {n}/100 bé thấy can đảm hơn ở trường",
+        "1": "Sau khi các con có một người bạn thân lúc {age} tuổi, {n}/100 bé cùng nhau đi phiêu lưu"
+      },
+      "bullied": {
+        "0": "Sau khi các con bị bắt nạt suốt một năm lúc {age} tuổi, {n}/100 bé kể với ai đó, và mọi chuyện khá hơn",
+        "1": "Sau khi các con bị bắt nạt suốt một năm lúc {age} tuổi, {n}/100 bé ngừng giơ tay trong lớp một thời gian",
+        "2": "Sau khi các con bị bắt nạt suốt một năm lúc {age} tuổi, {n}/100 bé trở nên tử tế hơn với những bạn bị cô lập"
+      },
+      "carer": {
+        "0": "Sau khi các con bắt đầu giúp trông em lúc {age} tuổi, {n}/100 bé trở nên rất kiên nhẫn",
+        "1": "Sau khi các con bắt đầu giúp trông em lúc {age} tuổi, {n}/100 bé đôi khi thấy mệt"
+      },
+      "chores": {
+        "0": "Sau khi các con được giao việc nhà thật sự lúc {age} tuổi, {n}/100 bé tự hào vì làm tốt việc",
+        "1": "Sau khi các con được giao việc nhà thật sự lúc {age} tuổi, {n}/100 bé than phiền về việc nhà (mà vẫn làm)"
+      },
+      "coding": {
+        "0": "Sau khi các con tham gia câu lạc bộ lập trình lúc {age} tuổi, {n}/100 bé tự làm một trò chơi nhỏ",
+        "1": "Sau khi các con tham gia câu lạc bộ lập trình lúc {age} tuổi, {n}/100 bé kết bạn với người cùng sở thích"
+      },
+      "countryside": {
+        "0": "Sau khi cả nhà chuyển về nông thôn lúc {age} tuổi, {n}/100 bé chăm sóc vật nuôi",
+        "1": "Sau khi cả nhà chuyển về nông thôn lúc {age} tuổi, {n}/100 bé đôi khi nhớ thành phố",
+        "2": "Sau khi cả nhà chuyển về nông thôn lúc {age} tuổi, {n}/100 bé chơi ngoài trời mỗi ngày"
+      },
+      "dinners": {
+        "0": "Sau khi cả nhà bắt đầu ăn tối cùng nhau mỗi tối lúc {age} tuổi, {n}/100 bé kể về ngày của mình mỗi tối",
+        "1": "Sau khi cả nhà bắt đầu ăn tối cùng nhau mỗi tối lúc {age} tuổi, {n}/100 bé thử món mới trong bữa tối"
+      },
+      "divorce": {
+        "0": "Sau khi bố mẹ chia tay lúc {age} tuổi, {n}/100 bé có lúc tự hỏi có phải lỗi tại mình (không bao giờ là vậy)",
+        "1": "Sau khi bố mẹ chia tay lúc {age} tuổi, {n}/100 bé quen với hai mái nhà và hai lần sinh nhật",
+        "2": "Sau khi bố mẹ chia tay lúc {age} tuổi, {n}/100 bé gần gũi hơn với bố hoặc mẹ"
+      },
+      "drama": {
+        "0": "Sau khi các con tham gia câu lạc bộ kịch lúc {age} tuổi, {n}/100 bé biểu diễn trên sân khấu thật",
+        "1": "Sau khi các con tham gia câu lạc bộ kịch lúc {age} tuổi, {n}/100 bé giỏi thấu hiểu cảm xúc"
+      },
+      "exam": {
+        "0": "Sau khi các con trượt một kỳ thi lớn lúc {age} tuổi, {n}/100 bé thử lại và đỗ",
+        "1": "Sau khi các con trượt một kỳ thi lớn lúc {age} tuổi, {n}/100 bé có lúc nghĩ mình dốt môn đó"
+      },
+      "fallout": {
+        "0": "Sau khi các con giận nhau với bạn thân lúc {age} tuổi, {n}/100 bé làm lành lại",
+        "1": "Sau khi các con giận nhau với bạn thân lúc {age} tuổi, {n}/100 bé tìm được bạn mới"
+      },
+      "firstlove": {
+        "0": "Sau khi các con có mối cảm nắng đầu tiên không thành lúc {age} tuổi, {n}/100 bé nghe nhạc buồn một thời gian",
+        "1": "Sau khi các con có mối cảm nắng đầu tiên không thành lúc {age} tuổi, {n}/100 bé nhận ra mình vượt qua được cảm xúc khó khăn",
+        "2": "Sau khi các con có mối cảm nắng đầu tiên không thành lúc {age} tuổi, {n}/100 bé được bạn bè chăm sóc"
+      },
+      "grandparent": {
+        "0": "Sau khi ông hoặc bà dọn đến ở cùng lúc {age} tuổi, {n}/100 bé được nghe nhiều chuyện gia đình",
+        "1": "Sau khi ông hoặc bà dọn đến ở cùng lúc {age} tuổi, {n}/100 bé học nấu ăn cùng ông bà"
+      },
+      "illness": {
+        "0": "Sau khi bố hoặc mẹ ốm suốt một năm lúc {age} tuổi, {n}/100 bé giúp chăm sóc bố hoặc mẹ",
+        "1": "Sau khi bố hoặc mẹ ốm suốt một năm lúc {age} tuổi, {n}/100 bé thấy mình người lớn hơn"
+      },
+      "job": {
+        "0": "Sau khi các con đi làm thêm cuối tuần lúc {age} tuổi, {n}/100 bé để dành tiền mua thứ gì đó lớn",
+        "1": "Sau khi các con đi làm thêm cuối tuần lúc {age} tuổi, {n}/100 bé quen nói chuyện với người lạ"
+      },
+      "language": {
+        "0": "Sau khi các con bắt đầu học ngôn ngữ thứ hai lúc {age} tuổi, {n}/100 bé xem phim bằng ngôn ngữ mới",
+        "1": "Sau khi các con bắt đầu học ngôn ngữ thứ hai lúc {age} tuổi, {n}/100 bé kết bạn với người nói ngôn ngữ đó"
+      },
+      "leader": {
+        "0": "Sau khi các con được làm lớp trưởng lúc {age} tuổi, {n}/100 bé phát biểu trước lớp",
+        "1": "Sau khi các con được làm lớp trưởng lúc {age} tuổi, {n}/100 bé thấy có trách nhiệm hơn"
+      },
+      "longhours": {
+        "0": "Sau khi bố hoặc mẹ bắt đầu làm việc nhiều giờ lúc {age} tuổi, {n}/100 bé ở một mình nhiều hơn",
+        "1": "Sau khi bố hoặc mẹ bắt đầu làm việc nhiều giờ lúc {age} tuổi, {n}/100 bé học cách tự xoay xở",
+        "2": "Sau khi bố hoặc mẹ bắt đầu làm việc nhiều giờ lúc {age} tuổi, {n}/100 bé nhớ bố mẹ lúc đi ngủ"
+      },
+      "mentor": {
+        "0": "Sau khi một người thầy để ý đến các con lúc {age} tuổi, {n}/100 bé tìm được mục tiêu để phấn đấu",
+        "1": "Sau khi một người thầy để ý đến các con lúc {age} tuổi, {n}/100 bé thử những điều chưa bao giờ nghĩ tới"
+      },
+      "money": {
+        "0": "Sau khi tiền bạc trở nên eo hẹp lúc {age} tuổi, {n}/100 bé phụ giúp việc nhà nhiều hơn",
+        "1": "Sau khi tiền bạc trở nên eo hẹp lúc {age} tuổi, {n}/100 bé lo lắng về tiền bạc",
+        "2": "Sau khi tiền bạc trở nên eo hẹp lúc {age} tuổi, {n}/100 bé ít câu lạc bộ và chuyến đi hơn một thời gian"
+      },
+      "move": {
+        "0": "Sau khi cả nhà chuyển sang nước khác lúc {age} tuổi, {n}/100 bé học được ngôn ngữ mới",
+        "1": "Sau khi cả nhà chuyển sang nước khác lúc {age} tuổi, {n}/100 bé thấy cô đơn năm đầu",
+        "2": "Sau khi cả nhà chuyển sang nước khác lúc {age} tuổi, {n}/100 bé có bạn thân mới ở đó"
+      },
+      "music": {
+        "0": "Sau khi các con học chơi một nhạc cụ lúc {age} tuổi, {n}/100 bé chơi trong một buổi hoà nhạc",
+        "1": "Sau khi các con học chơi một nhạc cụ lúc {age} tuổi, {n}/100 bé có lúc thấy tập luyện chán"
+      },
+      "nature": {
+        "0": "Sau khi các con bắt đầu dành thời gian ngoài trời lúc {age} tuổi, {n}/100 bé học tên các loài chim và cây",
+        "1": "Sau khi các con bắt đầu dành thời gian ngoài trời lúc {age} tuổi, {n}/100 bé đi cắm trại và rất thích"
+      },
+      "newschool": {
+        "0": "Sau khi các con chuyển trường lúc {age} tuổi, {n}/100 bé nhanh chóng có bạn mới",
+        "1": "Sau khi các con chuyển trường lúc {age} tuổi, {n}/100 bé nhớ bạn cũ"
+      },
+      "pet": {
+        "0": "Sau khi cả nhà nuôi một chú chó lúc {age} tuổi, {n}/100 bé dắt chó đi dạo mỗi ngày",
+        "1": "Sau khi cả nhà nuôi một chú chó lúc {age} tuổi, {n}/100 bé nói chú chó là bạn thân nhất"
+      },
+      "prize": {
+        "0": "Sau khi các con thắng một cuộc thi lớn lúc {age} tuổi, {n}/100 bé kể cho mọi người nghe",
+        "1": "Sau khi các con thắng một cuộc thi lớn lúc {age} tuổi, {n}/100 bé bắt đầu phấn đấu cho giải tiếp theo"
+      },
+      "reading": {
+        "0": "Sau khi các con bắt đầu đọc sách mỗi tối lúc {age} tuổi, {n}/100 bé dùng thẻ thư viện rất nhiều",
+        "1": "Sau khi các con bắt đầu đọc sách mỗi tối lúc {age} tuổi, {n}/100 bé bắt đầu tự viết truyện"
+      },
+      "scouts": {
+        "0": "Sau khi các con tham gia hướng đạo lúc {age} tuổi, {n}/100 bé nhận được nhiều huy hiệu",
+        "1": "Sau khi các con tham gia hướng đạo lúc {age} tuổi, {n}/100 bé lần đầu ngủ trong lều"
+      },
+      "screen": {
+        "0": "Sau khi các con bắt đầu dùng màn hình nhiều lúc {age} tuổi, {n}/100 bé ngủ ít hơn",
+        "1": "Sau khi các con bắt đầu dùng màn hình nhiều lúc {age} tuổi, {n}/100 bé kết bạn trên mạng",
+        "2": "Sau khi các con bắt đầu dùng màn hình nhiều lúc {age} tuổi, {n}/100 bé chơi một trò rất giỏi"
+      },
+      "sibling": {
+        "0": "Sau khi có thêm em trai hoặc em gái lúc {age} tuổi, {n}/100 bé lúc đầu thấy ghen tị",
+        "1": "Sau khi có thêm em trai hoặc em gái lúc {age} tuổi, {n}/100 bé trở nên thân với em",
+        "2": "Sau khi có thêm em trai hoặc em gái lúc {age} tuổi, {n}/100 bé giúp chăm em bé"
+      },
+      "sleep": {
+        "0": "Sau khi các con bắt đầu ngủ đủ giấc lúc {age} tuổi, {n}/100 bé có buổi sáng dễ chịu hơn",
+        "1": "Sau khi các con bắt đầu ngủ đủ giấc lúc {age} tuổi, {n}/100 bé dễ tập trung ở trường hơn"
+      },
+      "sport": {
+        "0": "Sau khi các con tham gia một môn thể thao đồng đội lúc {age} tuổi, {n}/100 bé kết bạn trong đội",
+        "1": "Sau khi các con tham gia một môn thể thao đồng đội lúc {age} tuổi, {n}/100 bé bị chấn thương thể thao rồi khỏi",
+        "2": "Sau khi các con tham gia một môn thể thao đồng đội lúc {age} tuổi, {n}/100 bé thắng một trận đến giờ vẫn còn kể"
+      },
+      "strict": {
+        "0": "Sau khi bố mẹ trở nên nghiêm khắc hơn lúc {age} tuổi, {n}/100 bé bắt đầu giữ mọi chuyện cho riêng mình",
+        "1": "Sau khi bố mẹ trở nên nghiêm khắc hơn lúc {age} tuổi, {n}/100 bé rất giỏi tuân thủ quy tắc"
+      },
+      "summer": {
+        "0": "Sau khi các con có mùa hè tuyệt nhất từ trước đến nay lúc {age} tuổi, {n}/100 bé vẫn nhớ đó là mùa hè tuyệt nhất",
+        "1": "Sau khi các con có mùa hè tuyệt nhất từ trước đến nay lúc {age} tuổi, {n}/100 bé có những người bạn cả đời từ mùa hè ấy"
+      },
+      "teacher": {
+        "0": "Sau khi các con có một thầy cô tuyệt vời lúc {age} tuổi, {n}/100 bé tìm được môn học mình yêu thích",
+        "1": "Sau khi các con có một thầy cô tuyệt vời lúc {age} tuổi, {n}/100 bé bắt đầu tin mình làm được việc khó"
+      },
+      "travel": {
+        "0": "Sau khi cả nhà đi du lịch suốt một năm lúc {age} tuổi, {n}/100 bé học được từ ngữ của nhiều ngôn ngữ",
+        "1": "Sau khi cả nhà đi du lịch suốt một năm lúc {age} tuổi, {n}/100 bé đôi khi nhớ nhà",
+        "2": "Sau khi cả nhà đi du lịch suốt một năm lúc {age} tuổi, {n}/100 bé học được cách thấy như ở nhà ở bất cứ đâu"
+      },
+      "volunteer": {
+        "0": "Sau khi các con bắt đầu làm tình nguyện lúc {age} tuổi, {n}/100 bé được người mình giúp cảm ơn",
+        "1": "Sau khi các con bắt đầu làm tình nguyện lúc {age} tuổi, {n}/100 bé bắt đầu dẫn dắt các tình nguyện viên khác"
+      }
+    },
+    "stop": {
+      "authoritative": "Bố mẹ không còn ấm áp và nghiêm túc như trước",
+      "bestfriend": "Bạn thân chuyển đi nơi khác",
+      "bullied": "Việc bắt nạt chấm dứt",
+      "carer": "Thôi trông em nhỏ",
+      "chores": "Không còn việc nhà nữa",
+      "coding": "Rời câu lạc bộ lập trình",
+      "countryside": "Cả nhà chuyển về lại thị trấn",
+      "dinners": "Bữa tối gia đình dừng lại",
+      "divorce": "Bố mẹ quay lại với nhau",
+      "drama": "Rời câu lạc bộ kịch",
+      "exam": "Vượt qua kỳ thi trượt",
+      "fallout": "Vượt qua chuyện giận bạn",
+      "firstlove": "Vượt qua mối cảm nắng đầu",
+      "grandparent": "Ông hoặc bà dọn đi",
+      "illness": "Bố hoặc mẹ đã khoẻ lại",
+      "job": "Thôi việc làm thêm cuối tuần",
+      "language": "Thôi học ngôn ngữ đó",
+      "leader": "Thôi làm lớp trưởng",
+      "longhours": "Bố hoặc mẹ làm việc giờ bình thường trở lại",
+      "mentor": "Người dìu dắt đi nơi khác",
+      "money": "Tiền bạc ổn định trở lại",
+      "move": "Cả nhà chuyển về quê hương",
+      "music": "Thôi chơi nhạc cụ",
+      "nature": "Thôi dành nhiều thời gian ngoài trời",
+      "newschool": "Đã quen với trường mới",
+      "pet": "Chú chó về sống ở trang trại",
+      "prize": "Giải thưởng thành kỷ niệm vui",
+      "reading": "Thôi đọc sách mỗi tối",
+      "scouts": "Rời hướng đạo",
+      "screen": "Giảm thời gian dùng màn hình",
+      "sibling": "Em trai hoặc em gái dọn ra ở riêng",
+      "sleep": "Lại đi ngủ muộn",
+      "sport": "Thôi chơi thể thao đồng đội",
+      "strict": "Bố mẹ không còn nghiêm khắc như trước",
+      "summer": "Mùa hè kết thúc",
+      "teacher": "Thầy cô giỏi chuyển đi",
+      "travel": "Cả nhà đi du lịch về",
+      "volunteer": "Thôi làm tình nguyện"
+    },
+    "tally": {
+      "arm": "Đến {age} tuổi, {n}/100 bé từng gãy tay hoặc chân",
+      "bike": "Đến {age} tuổi, {n}/100 bé đã biết đi xe đạp",
+      "camp": "Đến {age} tuổi, {n}/100 bé từng đi trại hè",
+      "cousin": "Đến {age} tuổi, {n}/100 bé từng có anh chị em họ đến ở cả mùa hè",
+      "friend": "Đến {age} tuổi, {n}/100 bé từng có bạn thân chuyển đi xa",
+      "glasses": "Đến {age} tuổi, {n}/100 bé đã phải đeo kính",
+      "holiday": "Đến {age} tuổi, {n}/100 bé từng đi nghỉ xa cùng gia đình",
+      "house": "Đến {age} tuổi, {n}/100 bé đã chuyển nhà ít nhất một lần",
+      "pet": "Đến {age} tuổi, {n}/100 bé đã có thú cưng",
+      "play": "Đến {age} tuổi, {n}/100 bé từng đóng vai trong vở kịch ở trường",
+      "sib": "Đến {age} tuổi, {n}/100 bé có thêm em trai hoặc em gái",
+      "team": "Đến {age} tuổi, {n}/100 bé đã vào đội của trường",
+      "visits": "Đến {age} tuổi, {n}/100 bé có ông bà hay đến thăm",
+      "win": "Đến {age} tuổi, {n}/100 bé từng thắng điều gì đó lớn, như một cuộc đua hay giải thưởng"
+    }
+  },
+  "gloss": {
+    "A": "Quan tâm đến người khác và thích hoà thuận.",
+    "C": "Giữ mọi thứ ngăn nắp và làm xong việc đã bắt đầu.",
+    "Calm": "Vững vàng khi mọi chuyện không suôn sẻ.",
+    "E": "Có thêm năng lượng khi ở bên mọi người.",
+    "O": "Mê ý tưởng mới, nơi chốn mới và những thứ mới để thử."
+  },
+  "glossEx": {
+    "A": {
+      "0": "nhường chiếc bánh cuối cùng",
+      "1": "giúp một bạn bị ngã"
+    },
+    "C": {
+      "0": "soạn cặp sách từ tối hôm trước",
+      "1": "làm bài tập trước khi chơi"
+    },
+    "Calm": {
+      "0": "ngủ ngon đêm trước bài kiểm tra",
+      "1": "không bận tâm khi thua một trận"
+    },
+    "E": {
+      "0": "là người đầu tiên bắt chuyện với bạn mới",
+      "1": "thích tiệc sinh nhật thật to"
+    },
+    "O": {
+      "0": "hỏi rất nhiều câu \"tại sao?\"",
+      "1": "muốn nếm thử loại quả lạ"
+    }
+  },
+  "group": {
+    "0": "Gia đình",
+    "1": "Trường và bạn bè",
+    "2": "Hoạt động",
+    "3": "Biến động lớn",
+    "4": "May mắn"
+  },
+  "have": {
+    "authoritative": {
+      "0": "biết ở nhà sẽ có gì"
+    },
+    "bestfriend": {
+      "0": "thấy can đảm hơn ở trường",
+      "1": "cùng nhau đi phiêu lưu"
+    },
+    "bullied": {
+      "0": "kể với ai đó, và mọi chuyện khá hơn",
+      "1": "ngừng giơ tay trong lớp một thời gian",
+      "2": "trở nên tử tế hơn với những bạn bị cô lập"
+    },
+    "carer": {
+      "0": "trở nên rất kiên nhẫn",
+      "1": "đôi khi thấy mệt"
+    },
+    "chores": {
+      "0": "tự hào vì làm tốt việc",
+      "1": "than phiền về việc nhà (mà vẫn làm)"
+    },
+    "coding": {
+      "0": "tự làm một trò chơi nhỏ",
+      "1": "kết bạn với người cùng sở thích"
+    },
+    "countryside": {
+      "0": "chăm sóc vật nuôi",
+      "1": "đôi khi nhớ thành phố",
+      "2": "chơi ngoài trời mỗi ngày"
+    },
+    "dinners": {
+      "0": "kể về ngày của mình mỗi tối",
+      "1": "thử món mới trong bữa tối"
+    },
+    "divorce": {
+      "0": "có lúc tự hỏi có phải lỗi tại mình (không bao giờ là vậy)",
+      "1": "quen với hai mái nhà và hai lần sinh nhật",
+      "2": "gần gũi hơn với bố hoặc mẹ"
+    },
+    "drama": {
+      "0": "biểu diễn trên sân khấu thật",
+      "1": "giỏi thấu hiểu cảm xúc"
+    },
+    "exam": {
+      "0": "thử lại và đỗ",
+      "1": "có lúc nghĩ mình dốt môn đó"
+    },
+    "fallout": {
+      "0": "làm lành lại",
+      "1": "tìm được bạn mới"
+    },
+    "firstlove": {
+      "0": "nghe nhạc buồn một thời gian",
+      "1": "nhận ra mình vượt qua được cảm xúc khó khăn",
+      "2": "được bạn bè chăm sóc"
+    },
+    "grandparent": {
+      "0": "được nghe nhiều chuyện gia đình",
+      "1": "học nấu ăn cùng ông bà"
+    },
+    "illness": {
+      "0": "giúp chăm sóc bố hoặc mẹ",
+      "1": "thấy mình người lớn hơn"
+    },
+    "job": {
+      "0": "để dành tiền mua thứ gì đó lớn",
+      "1": "quen nói chuyện với người lạ"
+    },
+    "language": {
+      "0": "xem phim bằng ngôn ngữ mới",
+      "1": "kết bạn với người nói ngôn ngữ đó"
+    },
+    "leader": {
+      "0": "phát biểu trước lớp",
+      "1": "thấy có trách nhiệm hơn"
+    },
+    "longhours": {
+      "0": "ở một mình nhiều hơn",
+      "1": "học cách tự xoay xở",
+      "2": "nhớ bố mẹ lúc đi ngủ"
+    },
+    "mentor": {
+      "0": "tìm được mục tiêu để phấn đấu",
+      "1": "thử những điều chưa bao giờ nghĩ tới"
+    },
+    "money": {
+      "0": "phụ giúp việc nhà nhiều hơn",
+      "1": "lo lắng về tiền bạc",
+      "2": "ít câu lạc bộ và chuyến đi hơn một thời gian"
+    },
+    "move": {
+      "0": "học được ngôn ngữ mới",
+      "1": "thấy cô đơn năm đầu",
+      "2": "có bạn thân mới ở đó"
+    },
+    "music": {
+      "0": "chơi trong một buổi hoà nhạc",
+      "1": "có lúc thấy tập luyện chán"
+    },
+    "nature": {
+      "0": "học tên các loài chim và cây",
+      "1": "đi cắm trại và rất thích"
+    },
+    "newschool": {
+      "0": "nhanh chóng có bạn mới",
+      "1": "nhớ bạn cũ"
+    },
+    "pet": {
+      "0": "dắt chó đi dạo mỗi ngày",
+      "1": "nói chú chó là bạn thân nhất"
+    },
+    "prize": {
+      "0": "kể cho mọi người nghe",
+      "1": "bắt đầu phấn đấu cho giải tiếp theo"
+    },
+    "reading": {
+      "0": "dùng thẻ thư viện rất nhiều",
+      "1": "bắt đầu tự viết truyện"
+    },
+    "scouts": {
+      "0": "nhận được nhiều huy hiệu",
+      "1": "lần đầu ngủ trong lều"
+    },
+    "screen": {
+      "0": "ngủ ít hơn",
+      "1": "kết bạn trên mạng",
+      "2": "chơi một trò rất giỏi"
+    },
+    "sibling": {
+      "0": "lúc đầu thấy ghen tị",
+      "1": "trở nên thân với em",
+      "2": "giúp chăm em bé"
+    },
+    "sleep": {
+      "0": "có buổi sáng dễ chịu hơn",
+      "1": "dễ tập trung ở trường hơn"
+    },
+    "sport": {
+      "0": "kết bạn trong đội",
+      "1": "bị chấn thương thể thao rồi khỏi",
+      "2": "thắng một trận đến giờ vẫn còn kể"
+    },
+    "strict": {
+      "0": "bắt đầu giữ mọi chuyện cho riêng mình",
+      "1": "rất giỏi tuân thủ quy tắc"
+    },
+    "summer": {
+      "0": "vẫn nhớ đó là mùa hè tuyệt nhất",
+      "1": "có những người bạn cả đời từ mùa hè ấy"
+    },
+    "teacher": {
+      "0": "tìm được môn học mình yêu thích",
+      "1": "bắt đầu tin mình làm được việc khó"
+    },
+    "travel": {
+      "0": "học được từ ngữ của nhiều ngôn ngữ",
+      "1": "đôi khi nhớ nhà",
+      "2": "học được cách thấy như ở nhà ở bất cứ đâu"
+    },
+    "volunteer": {
+      "0": "được người mình giúp cảm ơn",
+      "1": "bắt đầu dẫn dắt các tình nguyện viên khác"
+    }
+  },
+  "home": {
+    "baby": {
+      "help": {
+        "easy": "Em bé điềm tĩnh, vui vẻ. Phần lớn vẫn điềm tĩnh hơn một chút khi lớn lên.",
+        "energy": "Hiếu động, ồn ào và luôn chạy nhảy. Nhiều bé vẫn hướng ngoại.",
+        "mixed": "Có bé dễ tính, có bé nhút nhát, có bé đầy năng lượng.",
+        "slow": "Lúc đầu dè dặt với người lạ và nơi lạ. Nhiều bé vẫn trầm hơn một chút."
+      }
+    },
+    "home": {
+      "help": {
+        "busy": "Lúc nào cũng có chuyện: hướng ngoại hơn một chút, kém gọn gàng hơn một chút.",
+        "stable": "Một mái nhà êm ấm.",
+        "unstable": "Người lớn hay cãi nhau. Các bé thường lo lắng hơn."
+      }
+    },
+    "money": {
+      "help": {
+        "comfy": "Đủ cho những thứ thêm như du lịch và học thêm.",
+        "ok": "Đủ cho những gì cần thiết.",
+        "tight": "Thường thiếu tiền. Các bé lo lắng hơn một chút."
+      }
+    },
+    "place": {
+      "help": {
+        "city": "Nhiều người và nhiều điều mới xung quanh.",
+        "country": "Yên tĩnh, nhiều thiên nhiên.",
+        "town": "Một chút của cả hai."
+      }
+    },
+    "school": {
+      "help": {
+        "crowded": "Lớp đông; thầy cô ít thời gian cho từng bé.",
+        "great": "Thầy cô khơi gợi hứng thú: tò mò và ngăn nắp hơn một chút.",
+        "ordinary": "Một ngôi trường bình thường."
+      }
+    },
+    "screens": {
+      "help": {
+        "none": "Dùng màn hình bất cứ lúc nào: kém ngăn nắp hơn một chút, lo âu hơn.",
+        "some": "Mỗi ngày dùng màn hình một ít.",
+        "strict": "Chỉ thỉnh thoảng mới dùng màn hình."
+      }
+    },
+    "shape": {
+      "help": {
+        "big": "Ông bà, cô dì chú bác cũng sống cùng: rất nhiều người giúp.",
+        "one": "Một người lo hết mọi việc: các bé thường phụ giúp nhiều hơn.",
+        "two": "Bố và mẹ, hai mẹ hoặc hai bố, cùng sống ở nhà.",
+        "twohomes": "Bố mẹ sống riêng; các bé đi đi về về."
+      }
+    },
+    "sib": {
+      "help": {
+        "0": "Con một: ít dịp tập chia sẻ hơn một chút.",
+        "1": "Có em nhỏ để chăm: tốt bụng hơn một chút, ngăn nắp hơn một chút.",
+        "2": "Nhà đông trẻ con: chia sẻ nhiều hơn, trò chuyện nhiều hơn.",
+        "older": "Có anh hoặc chị để noi theo."
+      }
+    },
+    "style": {
+      "help": {
+        "authoritarian": "Nhiều quy tắc, ít ấm áp. Các bé thường ngăn nắp nhưng lo âu hơn.",
+        "authoritative": "Nhiều yêu thương và quy tắc rõ ràng. Các bé thường ngăn nắp và điềm tĩnh hơn một chút.",
+        "neglectful": "Bố mẹ bận rộn và xa cách. Các bé thường lo âu hơn và kém ngăn nắp hơn.",
+        "permissive": "Nhiều yêu thương, ít quy tắc. Các bé thường hướng ngoại nhưng kém ngăn nắp hơn."
+      }
+    },
+    "time": {
+      "help": {
+        "long": "Ít thời gian bên nhau ở nhà hơn.",
+        "lots": "Nhiều thời gian chơi và trò chuyện cùng nhau: điềm tĩnh và tốt bụng hơn một chút.",
+        "ordinary": "Hầu hết các ngày đều có chút thời gian bên nhau."
+      }
+    }
+  },
+  "kid": {
+    "between": "ở mức giữa ở hầu hết mọi mặt",
+    "betweenLess": "ở mức giữa ở hầu hết mọi mặt, ít {trait} hơn một chút",
+    "betweenMore": "ở mức giữa ở hầu hết mọi mặt, {trait} hơn một chút",
+    "line": "{name}, {age}: {body}.",
+    "short": "{a}, {b}",
+    "three": "{a} và {b}, {c}"
+  },
+  "kind": {
+    "activity": "hoạt động",
+    "change": "thay đổi",
+    "everyday": "hằng ngày",
+    "home": "gia đình",
+    "luck": "may mắn",
+    "milestone": "cột mốc",
+    "move": "biến động lớn",
+    "ripple": "điều tiếp theo",
+    "school": "trường học",
+    "together": "kết hợp"
+  },
+  "len": {
+    "good": "mãi mãi",
+    "once": "chỉ một lần",
+    "year": "khoảng một năm",
+    "years": "khoảng {n} năm"
+  },
+  "life": {
+    "0": "Những năm bé thơ",
+    "1": "Những năm đi học",
+    "2": "Tuổi teen",
+    "3": "Tổ ấm đầu tiên",
+    "4": "Nhà riêng"
+  },
+  "meta": {
+    "hint": "Bấm chạy để xem các bé lớn lên, rồi thử một thay đổi.",
+    "intro": "Cùng một cặp bố mẹ có thể có rất nhiều đứa con khác nhau. Đây là 120 bé như thế, lớn lên từ 1 đến 60 tuổi. Gen, gia đình, những chuyện xảy ra và cả may rủi đều định hình con người các bé. Bấm chạy, rồi thử thay đổi: chúng cộng dồn, và bạn chọn khi nào chúng xảy ra và kéo dài bao lâu. Chạm vào một khuôn mặt trong \"Cả 120 bé\" để theo dõi một bé.",
+    "name": "Trẻ em",
+    "sub": "Các con sẽ trở thành ai?"
+  },
+  "metric": {
+    "A": {
+      "label": "Tốt bụng"
+    },
+    "A_hi": {
+      "label": "Tốt bụng: mức trên của phần lớn các bé"
+    },
+    "A_lo": {
+      "label": "Tốt bụng: mức dưới của phần lớn các bé"
+    },
+    "C": {
+      "label": "Ngăn nắp"
+    },
+    "C_hi": {
+      "label": "Ngăn nắp: mức trên của phần lớn các bé"
+    },
+    "C_lo": {
+      "label": "Ngăn nắp: mức dưới của phần lớn các bé"
+    },
+    "Calm": {
+      "label": "Điềm tĩnh"
+    },
+    "Calm_hi": {
+      "label": "Điềm tĩnh: mức trên của phần lớn các bé"
+    },
+    "Calm_lo": {
+      "label": "Điềm tĩnh: mức dưới của phần lớn các bé"
+    },
+    "E": {
+      "label": "Hướng ngoại"
+    },
+    "E_hi": {
+      "label": "Hướng ngoại: mức trên của phần lớn các bé"
+    },
+    "E_lo": {
+      "label": "Hướng ngoại: mức dưới của phần lớn các bé"
+    },
+    "O": {
+      "label": "Tò mò"
+    },
+    "O_hi": {
+      "label": "Tò mò: mức trên của phần lớn các bé"
+    },
+    "O_lo": {
+      "label": "Tò mò: mức dưới của phần lớn các bé"
+    },
+    "b_calm": {
+      "label": "Có khả năng bình tĩnh trước bài kiểm tra (trên 100)",
+      "unit": "bé"
+    },
+    "b_food": {
+      "label": "Có khả năng thử món chưa từng ăn (trên 100)",
+      "unit": "bé"
+    },
+    "b_hand": {
+      "label": "Có khả năng giơ tay phát biểu (trên 100)",
+      "unit": "bé"
+    },
+    "b_help": {
+      "label": "Có khả năng giúp bạn mới ở trường (trên 100)",
+      "unit": "bé"
+    },
+    "b_proj": {
+      "label": "Có khả năng hoàn thành bài tập lớn (trên 100)",
+      "unit": "bé"
+    },
+    "b_tidy": {
+      "label": "Có khả năng giữ phòng gọn gàng (trên 100)",
+      "unit": "bé"
+    },
+    "hiA": {
+      "label": "rất tốt bụng (trên 120)",
+      "unit": "bé"
+    },
+    "hiC": {
+      "label": "rất ngăn nắp (trên 120)",
+      "unit": "bé"
+    },
+    "hiCalm": {
+      "label": "rất điềm tĩnh (trên 120)",
+      "unit": "bé"
+    },
+    "hiE": {
+      "label": "rất hướng ngoại (trên 120)",
+      "unit": "bé"
+    },
+    "hiO": {
+      "label": "rất tò mò (trên 120)",
+      "unit": "bé"
+    },
+    "loA": {
+      "label": "rất bướng bỉnh (trên 120)",
+      "unit": "bé"
+    },
+    "loC": {
+      "label": "rất bừa bộn (trên 120)",
+      "unit": "bé"
+    },
+    "loCalm": {
+      "label": "hay lo lắng (trên 120)",
+      "unit": "bé"
+    },
+    "loE": {
+      "label": "rất nhút nhát (trên 120)",
+      "unit": "bé"
+    },
+    "loO": {
+      "label": "thích điều quen thuộc (trên 120)",
+      "unit": "bé"
+    }
+  },
+  "more": {
+    "A": {
+      "0": "{d, select, bit {kém tốt bụng hơn một chút} much {kém tốt bụng hơn nhiều} other {kém tốt bụng hơn}}",
+      "1": "{d, select, bit {tốt bụng hơn một chút} much {tốt bụng hơn nhiều} other {tốt bụng hơn}}"
+    },
+    "C": {
+      "0": "{d, select, bit {kém ngăn nắp hơn một chút} much {kém ngăn nắp hơn nhiều} other {kém ngăn nắp hơn}}",
+      "1": "{d, select, bit {ngăn nắp hơn một chút} much {ngăn nắp hơn nhiều} other {ngăn nắp hơn}}"
+    },
+    "Calm": {
+      "0": "{d, select, bit {lo âu hơn một chút} much {lo âu hơn nhiều} other {lo âu hơn}}",
+      "1": "{d, select, bit {điềm tĩnh hơn một chút} much {điềm tĩnh hơn nhiều} other {điềm tĩnh hơn}}"
+    },
+    "E": {
+      "0": "{d, select, bit {trầm hơn một chút} much {trầm hơn nhiều} other {trầm hơn}}",
+      "1": "{d, select, bit {hướng ngoại hơn một chút} much {hướng ngoại hơn nhiều} other {hướng ngoại hơn}}"
+    },
+    "O": {
+      "0": "{d, select, bit {kém tò mò hơn một chút} much {kém tò mò hơn nhiều} other {kém tò mò hơn}}",
+      "1": "{d, select, bit {tò mò hơn một chút} much {tò mò hơn nhiều} other {tò mò hơn}}"
+    }
+  },
+  "name": {
+    "own": "Gia đình của riêng bạn",
+    "ownFrom": "Gia đình của riêng bạn (dựa trên {from})"
+  },
+  "part": {
+    "chance": "May rủi",
+    "genes": "Gen",
+    "home": "Gia đình",
+    "life": "Biến cố cuộc đời",
+    "pct": "{part} {n} %"
+  },
+  "partLc": {
+    "chance": "may rủi",
+    "genes": "gen",
+    "home": "gia đình",
+    "life": "biến cố cuộc đời"
+  },
+  "phrase": {
+    "A": {
+      "0": "nói thẳng điều mình nghĩ",
+      "1": "tốt bụng với mọi người"
+    },
+    "C": {
+      "0": "hơi bừa bộn",
+      "1": "giữ mọi thứ gọn gàng"
+    },
+    "Calm": {
+      "0": "đôi khi lo lắng",
+      "1": "luôn điềm tĩnh"
+    },
+    "E": {
+      "0": "thích những lúc yên tĩnh",
+      "1": "thích ở bên mọi người"
+    },
+    "O": {
+      "0": "thích những gì quen thuộc",
+      "1": "tò mò về mọi thứ"
+    }
+  },
+  "science": {
+    "A": "tính dễ chịu",
+    "C": "tính tận tâm",
+    "Calm": "mức bất ổn cảm xúc thấp",
+    "E": "tính hướng ngoại",
+    "O": "tính cởi mở"
+  },
+  "speed": {
+    "0": "½ năm/s",
+    "1": "1 năm/s",
+    "2": "2 năm/s",
+    "3": "5 năm/s"
+  },
+  "stage": {
+    "age": "{age} tuổi — {cap}",
+    "all": "Cả 120 bé",
+    "back": "Quay lại bé điển hình",
+    "between": "ở mức giữa",
+    "crowdHint": "{trait} · mỗi khuôn mặt là một bé có thể có · chạm để làm quen",
+    "hover": "{name}: {short} · chạm để làm quen",
+    "of100": "{n}/100",
+    "one": "Một bé",
+    "oneOf": "{name}, một trong 120 bé",
+    "pileTrait": "Các cột thể hiện nét tính cách nào",
+    "planned": "Hẹn lúc {age} tuổi — {cap}",
+    "typical": "Bé điển hình trong 120 bé",
+    "view": "Sân khấu hiển thị gì",
+    "was": "trước là {n}",
+    "with": "có thay đổi",
+    "without": "không có"
+  },
+  "step": {
+    "A": {
+      "0": "rất bướng bỉnh",
+      "1": "hơi bướng bỉnh",
+      "2": "ở mức giữa",
+      "3": "khá tốt bụng",
+      "4": "rất tốt bụng"
+    },
+    "C": {
+      "0": "rất bừa bộn",
+      "1": "hơi bừa bộn",
+      "2": "ở mức giữa",
+      "3": "khá ngăn nắp",
+      "4": "rất ngăn nắp"
+    },
+    "Calm": {
+      "0": "hay lo lắng",
+      "1": "hơi lo lắng",
+      "2": "ở mức giữa",
+      "3": "khá điềm tĩnh",
+      "4": "rất điềm tĩnh"
+    },
+    "E": {
+      "0": "rất nhút nhát",
+      "1": "hơi nhút nhát",
+      "2": "ở mức giữa",
+      "3": "khá hướng ngoại",
+      "4": "rất hướng ngoại"
+    },
+    "O": {
+      "0": "thích điều quen thuộc",
+      "1": "không tò mò lắm",
+      "2": "ở mức giữa",
+      "3": "khá tò mò",
+      "4": "rất tò mò"
+    }
+  },
+  "story": {
+    "compared": "So với cùng các bé khi không có thay đổi, lúc {age}:",
+    "differ": "Các bé vẫn rất khác nhau: {hi}/100 bé {high}, trong khi {lo} bé {low}.",
+    "differCalm": "Các bé vẫn rất khác nhau: {hi}/100 bé {high}, trong khi {lo} bé hay lo lắng.",
+    "fade": {
+      "bounced": ", rồi phần lớn trở lại như cũ",
+      "faded": ", và phần lớn phai dần sau đó",
+      "stopped": ", cho đến khi dừng lại lúc {n}"
+    },
+    "little": "Các bé nhỏ đã khác nhau rồi: có bé bạo dạn, có bé thận trọng.",
+    "middle": "{age} tuổi: phần lớn trong 120 bé này ở mức giữa ở mọi nét tính cách.",
+    "planned": "Hẹn lúc {age} tuổi: {cap}.",
+    "rip": ", và {n}/100 bé {have}",
+    "sentence": "{s}.",
+    "settled": "Đến giờ tính cách phần lớn đã định hình. Nó vẫn tiếp tục thay đổi chậm suốt cuộc đời.",
+    "siblings": "Anh chị em vẫn khác nhau: mỗi bé nhận một tổ hợp gen khác và vận may khác.",
+    "style": {
+      "authoritarian": "Bố mẹ nghiêm khắc khiến phần lớn các bé ngăn nắp hơn một chút, nhưng cũng lo âu hơn.",
+      "authoritative": "Bố mẹ ấm áp và nghiêm túc giúp phần lớn các bé điềm tĩnh và ngăn nắp hơn.",
+      "neglectful": "Với bố mẹ xa cách, nhiều bé lo âu hơn và kém ngăn nắp hơn.",
+      "permissive": "Bố mẹ dễ dãi: các bé thường hướng ngoại hơn, nhưng kém ngăn nắp hơn."
+    },
+    "teen": "Tuổi teen: lo âu tăng và sự gọn gàng giảm một thời gian. Điều đó là bình thường.",
+    "they": "các bé {list}.",
+    "theySame": "các bé đến giờ gần như không khác.",
+    "top": "{age} tuổi: phần lớn trong 120 bé này {list}.",
+    "when": "Khi {past} lúc {at} tuổi, phần lớn các bé trở nên {effect}{fade}{rip}."
+  },
+  "time": {
+    "age": "{n} tuổi"
+  },
+  "tl": {
+    "all": "Tất cả",
+    "alt": "Chỉ khi có thay đổi",
+    "base": "Chỉ khi không đổi",
+    "both": "Cả hai",
+    "changes": "Thay đổi",
+    "effects": "Tác động",
+    "growing": "Lớn lên",
+    "label": "Hiện trên dòng thời gian",
+    "none": "Chưa có gì. Bấm chạy, hoặc thử một thay đổi.",
+    "noneKind": "Chưa có gì thuộc loại này."
+  },
+  "track": {
+    "A": {
+      "0": "theo ý mình",
+      "1": "tốt bụng"
+    },
+    "C": {
+      "0": "bừa bộn",
+      "1": "ngăn nắp"
+    },
+    "Calm": {
+      "0": "lo âu",
+      "1": "điềm tĩnh"
+    },
+    "E": {
+      "0": "nhút nhát",
+      "1": "hướng ngoại"
+    },
+    "O": {
+      "0": "thích quen thuộc",
+      "1": "tò mò"
+    }
+  },
+  "trait": {
+    "A": "Tốt bụng",
+    "C": "Ngăn nắp",
+    "Calm": "Điềm tĩnh",
+    "E": "Hướng ngoại",
+    "O": "Tò mò"
+  },
+  "traitLc": {
+    "A": "tốt bụng",
+    "C": "ngăn nắp",
+    "Calm": "điềm tĩnh",
+    "E": "hướng ngoại",
+    "O": "tò mò"
+  },
+  "ui": {
+    "age": "{n} tuổi",
+    "ages": "tuổi {list}",
+    "another": "Làm quen bé khác",
+    "askTabs": "Hỏi",
+    "atAge": "Lúc {n} tuổi",
+    "atAgePast": "Lúc {n} tuổi (đã qua: bây giờ)",
+    "bestAges": "mạnh nhất khoảng {a}–{b} tuổi",
+    "changesEmpty": "Mỗi thay đổi bạn tạo sẽ xuất hiện ở đây kèm dấu tích, để bạn bỏ ra rồi đặt lại.",
+    "done": "Xong",
+    "earlier": "Sớm hơn",
+    "earlierAria": "Sớm hơn một năm",
+    "edit": "Sửa",
+    "fromAge": "từ {n} tuổi",
+    "glossLine": "{meaning} Ví dụ, một bé {a}, hoặc {b}.",
+    "glossTitle": "Năm từ này nghĩa là gì?",
+    "happening": "Chuyện gì đang xảy ra",
+    "kidAge": "{name}, {age} tuổi",
+    "kidN": "Bé số {n}/120",
+    "later": "Muộn hơn",
+    "laterAria": "Muộn hơn một năm",
+    "made": "đã tạo {n}",
+    "madeTimes": "đã tạo {n} lần",
+    "meet": "Làm quen với bé",
+    "meetNote": "Cùng bố mẹ, cùng mái nhà, vậy mà mỗi bé vẫn khác nhau.",
+    "mostTypical": "Bé điển hình nhất",
+    "nextAt": "Lần bấm tiếp theo xảy ra lúc {n} tuổi.",
+    "nextNow": "Lần bấm tiếp theo xảy ra ngay bây giờ.",
+    "nowAge": "Bây giờ ({n} tuổi)",
+    "parents": "Bố mẹ",
+    "parentsNote": "Mỗi bé nhận một tổ hợp khác nhau từ bố và mẹ. Đổi gia đình sẽ bắt đầu lại.",
+    "pickFamily": "Chọn một gia đình",
+    "plannedFor": "{name} · hẹn lúc {n}",
+    "rulerEmpty": "Thay đổi của bạn sẽ hiện ở đây, trên một đường từ lúc sinh đến 18 tuổi.",
+    "rulerLabel": "{cap}, {age} tuổi, {len}",
+    "rulerLabelPlanned": "{cap}, {age} tuổi, {len}, đã hẹn: dùng phím mũi tên để dời",
+    "rulerPanel": "{name} · {age} tuổi · {len} · {state}",
+    "science": "Về khoa học",
+    "science1": "Các nhà khoa học thường mô tả tính cách bằng năm nét, gọi là Big Five. Ở đây chúng có tên dễ hiểu:",
+    "science2": "Các con số chỉ là ước lượng dựa trên nghiên cứu, không chính xác tuyệt đối. Chúng mô tả mức trung bình, không phải số phận: mô hình không thể đoán trước được trẻ thật.",
+    "scienceItem": "{trait} là {science}: từ “{a}” đến “{b}”.",
+    "state": {
+      "going": "đang diễn ra",
+      "over": "đã xong",
+      "planned": "đã hẹn",
+      "stopped": "dừng lúc {n}"
+    },
+    "stopNow": "Dừng ngay",
+    "tab": {
+      "changes": "Thay đổi",
+      "family": "Gia đình"
+    },
+    "things": "Những điều có thể xảy ra",
+    "thingsHint": "Chúng cộng dồn. Chọn khi nào, mức độ và bao lâu, rồi bấm.",
+    "toTry": "{n} điều để thử",
+    "tuneNote": "Cài đặt bẩm sinh và may rủi sẽ khởi động lại thế giới. Cài đặt thay đổi áp dụng cho lần bấm tiếp theo.",
+    "undo": "Hoàn tác",
+    "usualLen": "Mỗi thay đổi kéo dài như thường lệ.",
+    "usually": "Thường là: {what}",
+    "variables": "Biến số",
+    "whatChanged": "Điều gì đã thay đổi",
+    "whyBar": "{trait}: {list}",
+    "whyIntro": "Trong mọi khác biệt giữa 120 anh chị em này, bao nhiêu đến từ mỗi phần:",
+    "whyNote": "Gen: mỗi bé nhận tổ hợp khác nhau từ bố mẹ. Gia đình: cùng một mái nhà tác động lên mỗi bé hơi khác. Biến cố cuộc đời: thay đổi của bạn và thăng trầm hằng ngày. May rủi: mọi thứ còn lại.",
+    "whyTitle": "Vì sao các bé này khác nhau?",
+    "yourChanges": "Thay đổi của bạn"
+  },
+  "whatif": {
+    "authoritative": "Ấm áp và nghiêm túc",
+    "bestfriend": "Bạn thân",
+    "bullied": "Bị bắt nạt",
+    "carer": "Giúp trông em",
+    "chores": "Việc nhà",
+    "coding": "CLB lập trình",
+    "countryside": "Về nông thôn",
+    "dinners": "Bữa tối gia đình",
+    "divorce": "Bố mẹ chia tay",
+    "drama": "CLB kịch",
+    "exam": "Trượt kỳ thi",
+    "fallout": "Giận bạn",
+    "firstlove": "Cảm nắng đầu",
+    "grandparent": "Ông bà đến ở",
+    "illness": "Bố/mẹ ốm",
+    "job": "Làm thêm cuối tuần",
+    "language": "Ngôn ngữ thứ hai",
+    "leader": "Lớp trưởng",
+    "longhours": "Làm việc nhiều giờ",
+    "mentor": "Người dìu dắt",
+    "money": "Eo hẹp tiền bạc",
+    "move": "Ra nước ngoài",
+    "music": "Nhạc cụ",
+    "nature": "Ngoài trời",
+    "newschool": "Trường mới",
+    "pet": "Một chú chó",
+    "prize": "Thắng cuộc thi",
+    "reading": "Đọc sách",
+    "scouts": "Hướng đạo",
+    "screen": "Nhiều màn hình",
+    "sibling": "Có em nhỏ",
+    "sleep": "Ngủ đủ giấc",
+    "sport": "Thể thao đồng đội",
+    "strict": "Nghiêm khắc hơn",
+    "summer": "Mùa hè tuyệt nhất",
+    "teacher": "Thầy cô giỏi",
+    "travel": "Một năm du lịch",
+    "volunteer": "Tình nguyện"
+  }
+}

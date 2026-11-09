@@ -1,0 +1,189 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ w powietrzu",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Roczna emisja CO₂",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Zalesienie",
+      "unit": "% lądów"
+    },
+    "front": {
+      "label": "Wysokość nabrzeża",
+      "unit": "m n.p.m."
+    },
+    "h": {
+      "air-today": "Powietrze dziś",
+      "emissions": "Emisje",
+      "my-future-used-by-build-my-own-future": "Moja przyszłość (dla „Zbuduj własną przyszłość”)",
+      "planet": "Planeta",
+      "your-town": "Twoje miasteczko"
+    },
+    "mDac": {
+      "label": "Usuwanie CO₂",
+      "unit": "Gt rocznie"
+    },
+    "mDim": {
+      "label": "Aerozole przyciemniające Słońce",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Zmień emisje o",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Redukcja metanu",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Posadzone drzewa",
+      "unit": "bln"
+    },
+    "mWall": {
+      "label": "Wał przeciwpowodziowy",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "W ciągu",
+      "unit": "lat"
+    },
+    "meth": {
+      "label": "Metan w powietrzu",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Dokąd zmierzają emisje",
+      "opt": {
+        "fall": "Powoli spadają (dzisiejsze obietnice)",
+        "flat": "Stabilizują się",
+        "grow": "Dalej rosną"
+      }
+    },
+    "sens": {
+      "label": "Czułość klimatu",
+      "unit": "°C na 2× CO₂"
+    },
+    "tip": {
+      "label": "Punkty krytyczne",
+      "opt": {
+        "off": "Wył.",
+        "on": "Wł.: wieczna zmarzlina i lądolody mogą się przełamać"
+      }
+    },
+    "uptake": {
+      "label": "Pochłanianie przez oceany i glebę",
+      "unit": "% dzisiejszego"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "Amazonia zaczyna zamieniać się w step",
+      "dac": "Maszyny zaczynają wyciągać CO₂ z powietrza",
+      "double": "Emisje zaczynają rosnąć w stronę podwojenia",
+      "ev": "Przejście na czystą energię: emisje spadają o 7% rocznie",
+      "geo": "Aerozole rozpylone w stratosferze",
+      "melt": "Lądolód Antarktydy Zachodniej zaczyna się rozpadać",
+      "methane": "Wycieki i źródła metanu są naprawiane",
+      "permafrost": "Wieczna zmarzlina zaczyna szybko tajać",
+      "seawall": "Wokół portu powstaje wał o wysokości 3 m",
+      "trees": "Bilion drzew trafia do ziemi",
+      "volcano": "Wybucha superwulkan: zasłona popiołu przesłania Słońce",
+      "zero": "Wszystkie emisje ustają"
+    },
+    "back": "Ocieplenie spada poniżej 1,5 °C",
+    "fl1": "Fale sztormowe docierają do pierwszych domów",
+    "fl50": "Przy przypływie zalewa pół miasteczka",
+    "geoend": "Koniec rozpylania aerozoli: szok zakończenia, gwałtowne ocieplenie",
+    "gr": "Lód Grenlandii zaczyna topnieć szybciej",
+    "mix0": "Moja przyszłość: bez zmian",
+    "mix1": "Moja przyszłość: {p0}",
+    "mix2": "Moja przyszłość: {p0}, {p1}",
+    "mix3": "Moja przyszłość: {p0}, {p1}, {p2}",
+    "mix4": "Moja przyszłość: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Moja przyszłość: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Moja przyszłość: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Ocieplenie osiąga szczyt: {t} °C",
+    "pf": "Wieczna zmarzlina zaczyna tajać, uwalniając CO₂ i metan",
+    "s0_5": "Poziom morza +0,5 m: regularne powodzie w nisko położonych deltach",
+    "s1": "Poziom morza +1 m: zagrożone domy ok. 200 milionów ludzi",
+    "s2": "Poziom morza +2 m: wiele nadmorskich miast potrzebuje wałów lub przeprowadzki",
+    "snow": "Granica śniegu powyżej 2000 m: lodowca prawie już nie ma",
+    "t1_5": "Przekroczone 1,5 °C: rafy koralowe w dużej mierze stracone",
+    "t2": "Przekroczone 2 °C: zabójcze upały to norma, lato w Arktyce bez lodu",
+    "t3": "Przekroczone 3 °C: pasy upraw się przesuwają, ryzyko zamierania Amazonii",
+    "t4": "Przekroczone 4 °C: niektóre regiony blisko granicy ludzkiej tolerancji na upał",
+    "wa": "Lód Antarktydy Zachodniej zaczyna zsuwać się do morza",
+    "wallover": "Morze przelewa się przez wał"
+  },
+  "meta": {
+    "intro": "Miasteczko nad fiordem, dziś. Patrz na śnieg, las, pola i port, gdy mijają dekady.",
+    "name": "Ziemia",
+    "sub": "Klimat"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Plony",
+      "unit": "indeks"
+    },
+    "flood": {
+      "label": "Zalania",
+      "unit": "% domów"
+    },
+    "sea": {
+      "label": "Poziom morza",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Śnieg",
+      "unit": "% dzisiejszego"
+    },
+    "temp": {
+      "label": "Ocieplenie",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt CO₂ usuwane rocznie",
+    "dim": "światło słoneczne −{n}%",
+    "emDown": "emisje −{n}% w {yrs} lat",
+    "emUp": "emisje +{n}% w {yrs} lat",
+    "meth": "metan −{n}%",
+    "trees": "{n} bln drzew",
+    "wall": "wał {n} m"
+  },
+  "speed": {
+    "0": "1 rok/s",
+    "1": "5 lat/s",
+    "2": "20 lat/s",
+    "3": "60 lat/s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · morze +{sea} m · {co2} ppm",
+    "snow": "Granica śniegu {m} m"
+  },
+  "whatif": {
+    "amazon": "Amazonia zamienia się w step",
+    "dac": "Wyciągaj CO₂ z powietrza",
+    "double": "Emisje się podwajają",
+    "ev": "Szybko przejdź na czystą energię",
+    "geo": "Przyciemnij Słońce aerozolami na 30 lat",
+    "melt": "Lądolód Antarktydy Zachodniej się rozpada",
+    "methane": "Zmniejsz emisję metanu o połowę",
+    "mix": "Zbuduj własną przyszłość",
+    "permafrost": "Wieczna zmarzlina szybko taje",
+    "seawall": "Zbuduj wał o wysokości 3 m",
+    "trees": "Posadź bilion drzew",
+    "volcano": "Wybucha superwulkan",
+    "zero": "Zatrzymaj wszystkie emisje teraz"
+  }
+}

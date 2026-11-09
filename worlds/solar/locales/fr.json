@@ -1,0 +1,91 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "le trou noir",
+    "earth": "la Terre",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercure",
+    "neptune": "Neptune",
+    "saturn": "Saturne",
+    "sun": "le Soleil",
+    "uranus": "Uranus",
+    "venus": "Vénus",
+    "yourplanet": "votre planète"
+  },
+  "ctl": {
+    "sunm": { "label": "Masse du Soleil", "unit": "× Soleil" },
+    "view": {
+      "label": "Vue",
+      "opt": {
+        "inner": "Planètes intérieures",
+        "mid": "Jusqu’à Jupiter",
+        "outer": "Tout le système"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Un trou noir de 4 soleils entre par le bord du système",
+    "escape": "{body} s’échappe dans l’espace interstellaire",
+    "giant": "Le Soleil enfle en géante rouge de 0,85 UA de large et perd un tiers de sa masse",
+    "intoBh": "{body} tombe dans le trou noir",
+    "intoSun": "{body} tombe dans le Soleil",
+    "jupstar": "Jupiter gagne 80 fois sa masse et s’allume en naine rouge",
+    "mars": "La Terre est déplacée sur l’orbite de Mars",
+    "nosun": "Le Soleil disparaît : les planètes filent en ligne droite",
+    "smash": "{body} percute {other}",
+    "stop": "La Terre s’arrête net sur son orbite",
+    "sun2": "Le Soleil double de masse : attraction plus forte, lumière 11 fois plus vive",
+    "swallowed": "La géante rouge engloutit {body}",
+    "throw": "Vous lancez une nouvelle planète"
+  },
+  "info": {
+    "changed": "Avec changements",
+    "now": "La Terre maintenant"
+  },
+  "meta": {
+    "hint": "Glissez pour lancer une planète. Les changements s’additionnent.",
+    "intro": "La vraie gravité de Newton pour le Soleil et les huit planètes. Glissez sur la scène pour lancer votre propre planète.",
+    "name": "Système solaire",
+    "sub": "Gravité"
+  },
+  "metric": {
+    "dist": { "label": "Distance Terre–Soleil", "unit": "UA" },
+    "temp": { "label": "Température de la Terre", "unit": "°C" },
+    "year": { "label": "Durée de l’année", "unit": "jours" }
+  },
+  "name": {
+    "blackhole": "Trou noir",
+    "earth": "Terre",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercure",
+    "neptune": "Neptune",
+    "saturn": "Saturne",
+    "uranus": "Uranus",
+    "venus": "Vénus",
+    "yourplanet": "Votre planète"
+  },
+  "speed": {
+    "0": "1 mois/s",
+    "1": "6 mois/s",
+    "2": "2 ans/s",
+    "3": "10 ans/s"
+  },
+  "status": {
+    "boiling": "océans en ébullition",
+    "destroyed": "détruite",
+    "flying": "s’éloigne",
+    "frozen": "gelée",
+    "habitable": "habitable"
+  },
+  "whatif": {
+    "bh": "Un trou noir traverse le système",
+    "giant": "Le Soleil devient une géante rouge",
+    "jupstar": "Jupiter s’allume en étoile",
+    "mars": "Déplacer la Terre sur l’orbite de Mars",
+    "nosun": "Le Soleil disparaît",
+    "stop": "La Terre s’arrête sur son orbite",
+    "sun2": "Le Soleil double de masse"
+  }
+}

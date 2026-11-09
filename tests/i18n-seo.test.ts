@@ -29,7 +29,7 @@ describe("hreflang and canonical", () => {
     expect(a["x-default"]).toBe("https://lab.test/lab/earth");
   });
 
-  it("ready pages are indexable with alternates; others are noindex and left out", () => {
+  it("ready pages are indexable with alternates", () => {
     const en = pageMetadata({ locale: "en", path: "/lab/earth", title: "T", description: "D" }, O);
     expect(en.alternates?.canonical).toBe("https://lab.test/lab/earth");
     expect(en.alternates?.languages).toBeDefined();
@@ -42,11 +42,11 @@ describe("hreflang and canonical", () => {
     expect(de.robots).toBeUndefined();
     expect((de.openGraph as { locale?: string }).locale).toBe("de_DE");
 
-    const fr = pageMetadata({ locale: "fr", path: "/lab/earth", title: "T", description: "D" }, O);
-    expect(fr.alternates?.canonical).toBe("https://lab.test/fr/lab/earth");
-    expect(fr.alternates?.languages).toBeUndefined();
-    expect(fr.robots).toEqual({ index: false, follow: true });
-    expect((fr.openGraph as { locale?: string }).locale).toBe("fr_FR");
+    for (const l of LOCALES.filter((x) => x.ready)) {
+      const m = pageMetadata({ locale: l.code, path: "/", title: "T", description: "D" }, O);
+      expect(m.robots, l.code).toBeUndefined();
+      expect(m.alternates?.languages, l.code).toBeDefined();
+    }
   });
 
   it("every language has an Open Graph locale", () => {

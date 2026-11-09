@@ -1,0 +1,80 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": { "label": "Tuổi", "unit": "tuổi" },
+    "disc": { "label": "Kỷ luật bản thân" },
+    "health": { "label": "Sức khoẻ hiện tại" },
+    "mood": { "label": "Tinh thần hiện tại" },
+    "soc": { "label": "Độ hoà đồng" },
+    "stress": { "label": "Mức căng thẳng" }
+  },
+  "dim": {
+    "career": "Sự nghiệp & kỹ năng",
+    "health": "Sức khoẻ",
+    "social": "Các mối quan hệ",
+    "well": "Tinh thần"
+  },
+  "ev": {
+    "again": "Bắt đầu lại: {habit}",
+    "b6": "Sau sáu tháng: cơn thèm và sự quen thuốc khiến khó dừng lại",
+    "d66": "Ngày 66: với những ai vẫn kiên trì, thói quen giờ đã thành tự động",
+    "half": "Một nửa số phiên bản đã bỏ cuộc",
+    "high": "{dim} đạt mức tốt",
+    "low": "{dim} rơi vào vùng nguy hiểm",
+    "start": "Bắt đầu: {habit}",
+    "w3": "Tuần 3: động lực sụt giảm, phần lớn người bỏ cuộc lúc này",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "bắt đầu uống rượu nhiều",
+    "exercise": "tập thể dục 30 phút mỗi ngày",
+    "isolate": "xa lánh bạn bè",
+    "learn": "học một kỹ năng 1 giờ mỗi ngày",
+    "meditate": "thiền 10 phút mỗi ngày",
+    "read": "đọc sách 30 phút mỗi ngày",
+    "sleep": "ngủ 8 tiếng, giờ giấc cố định",
+    "smoke": "bắt đầu hút thuốc",
+    "social": "bỏ mạng xã hội"
+  },
+  "meta": {
+    "intro": "Một người, 100 phiên bản song song của cuộc đời họ. Thử thói quen mới và xem bao nhiêu người giữ được và nó thay đổi điều gì.",
+    "name": "Tính cách",
+    "sub": "100 cuộc đời song song"
+  },
+  "metric": {
+    "career": { "label": "Sự nghiệp & kỹ năng", "unit": "/100" },
+    "health": { "label": "Sức khoẻ", "unit": "/100" },
+    "kept": { "label": "Vẫn đang làm", "unit": "%" },
+    "social": { "label": "Các mối quan hệ", "unit": "/100" },
+    "well": { "label": "Tinh thần", "unit": "/100" }
+  },
+  "short": {
+    "drink": "Uống rượu nhiều",
+    "exercise": "Tập thể dục",
+    "isolate": "Xa lánh bạn bè",
+    "learn": "Học kỹ năng",
+    "meditate": "Thiền",
+    "read": "Đọc sách",
+    "sleep": "Ngủ",
+    "smoke": "Hút thuốc",
+    "social": "Bỏ mạng xã hội"
+  },
+  "speed": { "0": "1 tuần/s", "1": "1 tháng/s", "2": "6 tháng/s", "3": "2 năm/s" },
+  "stage": {
+    "caption": "{what} · nụ cười = tinh thần · độ sáng = sức khoẻ",
+    "many": "{h, plural, other {# thói quen}} · {n}/100 vẫn giữ ít nhất một",
+    "none": "Chưa có thói quen mới",
+    "one": "{n}/100 vẫn đang làm"
+  },
+  "whatif": {
+    "drink": "Bắt đầu uống rượu nhiều",
+    "exercise": "Tập thể dục 30 phút mỗi ngày",
+    "isolate": "Xa lánh bạn bè",
+    "learn": "Học một kỹ năng 1 giờ mỗi ngày",
+    "meditate": "Thiền 10 phút mỗi ngày",
+    "read": "Đọc sách 30 phút mỗi ngày",
+    "sleep": "Ngủ 8 tiếng, giờ giấc cố định",
+    "smoke": "Bắt đầu hút thuốc",
+    "social": "Bỏ mạng xã hội"
+  }
+}

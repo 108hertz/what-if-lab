@@ -1,0 +1,87 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "kara delik",
+    "earth": "Dünya",
+    "jupiter": "Jüpiter",
+    "mars": "Mars",
+    "mercury": "Merkür",
+    "neptune": "Neptün",
+    "saturn": "Satürn",
+    "sun": "Güneş",
+    "uranus": "Uranüs",
+    "venus": "Venüs",
+    "yourplanet": "senin gezegenin"
+  },
+  "ctl": {
+    "sunm": { "label": "Güneş kütlesi", "unit": "× Güneş" },
+    "view": {
+      "label": "Görünüm",
+      "opt": { "inner": "İç gezegenler", "mid": "Jüpiter'e kadar", "outer": "Tüm sistem" }
+    }
+  },
+  "ev": {
+    "bh": "4 Güneş kütlesinde bir kara delik sistemin kenarından girer",
+    "escape": "Yıldızlararası uzaya kaçtı: {body}",
+    "giant": "Güneş 0,85 AB genişliğinde bir kızıl deve dönüşür ve kütlesinin üçte birini kaybeder",
+    "intoBh": "Kara deliğe düştü: {body}",
+    "intoSun": "Güneş'e düştü: {body}",
+    "jupstar": "Jüpiter'in kütlesi 80 katına çıkar ve kızıl cüce olarak parlar",
+    "mars": "Dünya, Mars'ın yörüngesine taşınır",
+    "nosun": "Güneş yok olur: gezegenler düz çizgiler hâlinde uçup gider",
+    "smash": "Çarpışma: {body} ve {other}",
+    "stop": "Dünya yörüngesinde olduğu yerde durur",
+    "sun2": "Güneş'in kütlesi iki katına çıkar: daha güçlü çekim, 11 kat parlak güneş ışığı",
+    "swallowed": "Kızıl dev yuttu: {body}",
+    "throw": "Yeni bir gezegen fırlatıyorsun"
+  },
+  "info": {
+    "changed": "Değişikliklerle",
+    "now": "Şu an Dünya"
+  },
+  "meta": {
+    "hint": "Gezegen fırlatmak için sürükle. Değişiklikler birbirine eklenir.",
+    "intro": "Güneş ve sekiz gezegen için gerçek Newton kütleçekimi. Kendi gezegenini fırlatmak için sahnede sürükle.",
+    "name": "Güneş Sistemi",
+    "sub": "Kütleçekim"
+  },
+  "metric": {
+    "dist": { "label": "Dünya–Güneş uzaklığı", "unit": "AB" },
+    "temp": { "label": "Dünya sıcaklığı", "unit": "°C" },
+    "year": { "label": "Yılın uzunluğu", "unit": "gün" }
+  },
+  "name": {
+    "blackhole": "Kara delik",
+    "earth": "Dünya",
+    "jupiter": "Jüpiter",
+    "mars": "Mars",
+    "mercury": "Merkür",
+    "neptune": "Neptün",
+    "saturn": "Satürn",
+    "uranus": "Uranüs",
+    "venus": "Venüs",
+    "yourplanet": "Senin gezegenin"
+  },
+  "speed": {
+    "0": "1 ay/sn",
+    "1": "6 ay/sn",
+    "2": "2 yıl/sn",
+    "3": "10 yıl/sn"
+  },
+  "status": {
+    "boiling": "okyanuslar kaynıyor",
+    "destroyed": "yok oldu",
+    "flying": "uzaklaşıyor",
+    "frozen": "buz tuttu",
+    "habitable": "yaşanabilir"
+  },
+  "whatif": {
+    "bh": "Bir kara delik içinden geçer",
+    "giant": "Güneş kızıl deve dönüşür",
+    "jupstar": "Jüpiter tutuşup yıldız olur",
+    "mars": "Dünya'yı Mars'ın yörüngesine taşı",
+    "nosun": "Güneş yok olur",
+    "stop": "Dünya yörüngesinde durur",
+    "sun2": "Güneş'in kütlesi iki katına çıkar"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "블랙홀",
+    "earth": "지구",
+    "jupiter": "목성",
+    "mars": "화성",
+    "mercury": "수성",
+    "neptune": "해왕성",
+    "saturn": "토성",
+    "sun": "태양",
+    "uranus": "천왕성",
+    "venus": "금성",
+    "yourplanet": "내 행성"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "태양 질량",
+      "unit": "× 태양"
+    },
+    "view": {
+      "label": "보기",
+      "opt": {
+        "inner": "안쪽 행성",
+        "mid": "목성까지",
+        "outer": "태양계 전체"
+      }
+    }
+  },
+  "ev": {
+    "bh": "태양 4개 질량의 블랙홀이 태양계 가장자리에서 들어와요",
+    "escape": "{body}: 성간 우주로 탈출",
+    "giant": "태양이 폭 0.85 AU의 적색 거성으로 부풀고 질량의 3분의 1을 잃어요",
+    "intoBh": "{body}: 블랙홀 속으로 떨어짐",
+    "intoSun": "{body}: 태양 속으로 떨어짐",
+    "jupstar": "목성의 질량이 80배가 되어 적색 왜성으로 빛나기 시작해요",
+    "mars": "지구를 화성 궤도로 옮겨요",
+    "nosun": "태양이 사라져요: 행성들이 직선으로 날아가요",
+    "smash": "{body}, {other}에 충돌",
+    "stop": "지구가 궤도에서 딱 멈춰요",
+    "sun2": "태양의 질량이 두 배가 돼요: 끌어당김이 세지고 햇빛이 11배 밝아져요",
+    "swallowed": "{body}: 적색 거성에 삼켜짐",
+    "throw": "새 행성을 던져 넣어요"
+  },
+  "info": {
+    "changed": "변화 있음",
+    "now": "지금의 지구"
+  },
+  "meta": {
+    "hint": "끌어서 행성을 던져 보세요. 변화는 더해져요.",
+    "intro": "태양과 행성 여덟 개에 진짜 뉴턴 중력을 적용했어요. 무대를 끌어서 나만의 행성을 던져 넣어 보세요.",
+    "name": "태양계",
+    "sub": "중력"
+  },
+  "metric": {
+    "dist": {
+      "label": "지구–태양 거리",
+      "unit": "AU"
+    },
+    "temp": {
+      "label": "지구 온도",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "1년의 길이",
+      "unit": "일"
+    }
+  },
+  "name": {
+    "blackhole": "블랙홀",
+    "earth": "지구",
+    "jupiter": "목성",
+    "mars": "화성",
+    "mercury": "수성",
+    "neptune": "해왕성",
+    "saturn": "토성",
+    "uranus": "천왕성",
+    "venus": "금성",
+    "yourplanet": "내 행성"
+  },
+  "speed": {
+    "0": "초당 1개월",
+    "1": "초당 6개월",
+    "2": "초당 2년",
+    "3": "초당 10년"
+  },
+  "status": {
+    "boiling": "바다가 끓음",
+    "destroyed": "파괴됨",
+    "flying": "날아가는 중",
+    "frozen": "꽁꽁 얼어붙음",
+    "habitable": "살 수 있음"
+  },
+  "whatif": {
+    "bh": "블랙홀이 지나간다면",
+    "giant": "태양이 적색 거성이 된다면",
+    "jupstar": "목성이 별로 타오른다면",
+    "mars": "지구를 화성 궤도로 옮기기",
+    "nosun": "태양이 사라진다면",
+    "stop": "지구가 궤도에서 멈춘다면",
+    "sun2": "태양 질량이 두 배가 된다면"
+  }
+}

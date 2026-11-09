@@ -1,0 +1,1734 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "beh": {
+    "b_calm": {
+      "grown": "tetap tenang sebelum hari penting",
+      "kid": "tetap tenang sebelum ujian"
+    },
+    "b_food": {
+      "grown": "mencoba makanan yang belum pernah dimakan",
+      "kid": "mencoba makanan yang belum pernah dimakan"
+    },
+    "b_hand": {
+      "grown": "angkat bicara dalam kelompok",
+      "kid": "mengacungkan tangan di kelas"
+    },
+    "b_help": {
+      "grown": "membantu tetangga baru",
+      "kid": "membantu murid baru di sekolah"
+    },
+    "b_proj": {
+      "grown": "menyelesaikan proyek panjang",
+      "kid": "menyelesaikan tugas sekolah yang panjang"
+    },
+    "b_tidy": {
+      "grown": "menjaga rumahnya rapi",
+      "kid": "menjaga kamarnya rapi"
+    }
+  },
+  "ch": {
+    "authoritative": {
+      "cap": "orang tua jadi hangat dan tegas",
+      "past": "orang tua menjadi hangat dan tegas",
+      "q": "Bagaimana jika orang tua menjadi hangat dan tegas?"
+    },
+    "bestfriend": {
+      "cap": "menemukan sahabat",
+      "past": "mereka menemukan sahabat",
+      "q": "Bagaimana jika mereka menemukan sahabat?"
+    },
+    "bullied": {
+      "cap": "dirundung di sekolah selama setahun",
+      "past": "mereka dirundung selama setahun",
+      "q": "Bagaimana jika mereka dirundung selama setahun?"
+    },
+    "carer": {
+      "cap": "ikut mengasuh adik kecil",
+      "past": "mereka mulai ikut mengasuh adik",
+      "q": "Bagaimana jika mereka ikut mengasuh adik?"
+    },
+    "chores": {
+      "cap": "dapat tugas sungguhan di rumah",
+      "past": "mereka mendapat tugas sungguhan di rumah",
+      "q": "Bagaimana jika mereka punya tugas sungguhan di rumah?"
+    },
+    "coding": {
+      "cap": "ikut klub coding",
+      "past": "mereka ikut klub coding",
+      "q": "Bagaimana jika mereka ikut klub coding atau merakit?"
+    },
+    "countryside": {
+      "cap": "keluarga pindah ke desa",
+      "past": "keluarga pindah ke desa",
+      "q": "Bagaimana jika keluarga pindah ke desa?"
+    },
+    "dinners": {
+      "cap": "makan malam keluarga tiap malam",
+      "past": "keluarga mulai makan bersama tiap malam",
+      "q": "Bagaimana jika keluarga makan malam bersama tiap malam?"
+    },
+    "divorce": {
+      "cap": "orang tua berpisah",
+      "past": "orang tua berpisah",
+      "q": "Bagaimana jika orang tua berpisah?"
+    },
+    "drama": {
+      "cap": "ikut klub teater",
+      "past": "mereka ikut klub teater",
+      "q": "Bagaimana jika mereka ikut klub teater?"
+    },
+    "exam": {
+      "cap": "gagal ujian besar",
+      "past": "mereka gagal ujian besar",
+      "q": "Bagaimana jika mereka gagal ujian besar?"
+    },
+    "fallout": {
+      "cap": "bertengkar dengan sahabat",
+      "past": "mereka bertengkar dengan sahabatnya",
+      "q": "Bagaimana jika mereka bertengkar dengan sahabatnya?"
+    },
+    "firstlove": {
+      "cap": "cinta pertama yang tak berhasil",
+      "past": "mereka mengalami cinta pertama yang tak berhasil",
+      "q": "Bagaimana jika cinta pertama mereka tak berhasil?"
+    },
+    "grandparent": {
+      "cap": "kakek atau nenek ikut tinggal",
+      "past": "kakek atau nenek ikut tinggal",
+      "q": "Bagaimana jika kakek atau nenek ikut tinggal?"
+    },
+    "illness": {
+      "cap": "orang tua sakit selama setahun",
+      "past": "salah satu orang tua sakit selama setahun",
+      "q": "Bagaimana jika salah satu orang tua sakit parah selama setahun?"
+    },
+    "job": {
+      "cap": "kerja paruh waktu akhir pekan",
+      "past": "mereka dapat kerja akhir pekan",
+      "q": "Bagaimana jika mereka dapat kerja akhir pekan?"
+    },
+    "language": {
+      "cap": "belajar bahasa kedua",
+      "past": "mereka mulai belajar bahasa kedua",
+      "q": "Bagaimana jika mereka belajar bahasa kedua?"
+    },
+    "leader": {
+      "cap": "jadi ketua kelas",
+      "past": "mereka dijadikan ketua kelas",
+      "q": "Bagaimana jika mereka dijadikan ketua kelas?"
+    },
+    "longhours": {
+      "cap": "orang tua kerja lembur terus",
+      "past": "salah satu orang tua mulai kerja lembur",
+      "q": "Bagaimana jika salah satu orang tua mulai kerja sangat lama?"
+    },
+    "mentor": {
+      "cap": "seorang mentor menaruh perhatian",
+      "past": "seorang mentor menaruh perhatian",
+      "q": "Bagaimana jika seorang mentor menaruh perhatian pada mereka?"
+    },
+    "money": {
+      "cap": "uang seret untuk sementara",
+      "past": "keuangan jadi seret",
+      "q": "Bagaimana jika keuangan seret selama beberapa tahun?"
+    },
+    "move": {
+      "cap": "keluarga pindah ke luar negeri",
+      "past": "keluarga pindah ke negara lain",
+      "q": "Bagaimana jika keluarga pindah ke negara lain?"
+    },
+    "music": {
+      "cap": "belajar alat musik",
+      "past": "mereka belajar alat musik",
+      "q": "Bagaimana jika mereka belajar alat musik?"
+    },
+    "nature": {
+      "cap": "banyak waktu di alam terbuka",
+      "past": "mereka mulai banyak di alam terbuka",
+      "q": "Bagaimana jika mereka banyak menghabiskan waktu di alam terbuka?"
+    },
+    "newschool": {
+      "cap": "pindah sekolah",
+      "past": "mereka pindah sekolah",
+      "q": "Bagaimana jika mereka pindah sekolah?"
+    },
+    "pet": {
+      "cap": "keluarga memelihara anjing",
+      "past": "keluarga memelihara anjing",
+      "q": "Bagaimana jika keluarga memelihara anjing?"
+    },
+    "prize": {
+      "cap": "menang lomba besar",
+      "past": "mereka menang lomba besar",
+      "q": "Bagaimana jika mereka menang lomba besar?"
+    },
+    "reading": {
+      "cap": "membaca tiap malam",
+      "past": "mereka mulai membaca tiap malam",
+      "q": "Bagaimana jika mereka membaca tiap malam?"
+    },
+    "scouts": {
+      "cap": "ikut pramuka",
+      "past": "mereka ikut pramuka",
+      "q": "Bagaimana jika mereka ikut pramuka atau klub alam?"
+    },
+    "screen": {
+      "cap": "mulai banyak main layar",
+      "past": "waktu layar yang banyak dimulai",
+      "q": "Bagaimana jika mereka banyak main layar?"
+    },
+    "sibling": {
+      "cap": "adik kecil lahir",
+      "past": "adik kecil lahir",
+      "q": "Bagaimana jika adik kecil lahir?"
+    },
+    "sleep": {
+      "cap": "cukup tidur tiap malam",
+      "past": "mereka mulai cukup tidur",
+      "q": "Bagaimana jika mereka selalu cukup tidur?"
+    },
+    "sport": {
+      "cap": "ikut olahraga tim",
+      "past": "mereka ikut olahraga tim",
+      "q": "Bagaimana jika mereka ikut olahraga tim?"
+    },
+    "strict": {
+      "cap": "orang tua makin ketat",
+      "past": "orang tua makin ketat",
+      "q": "Bagaimana jika orang tua jadi jauh lebih ketat?"
+    },
+    "summer": {
+      "cap": "liburan terbaik sepanjang masa",
+      "past": "mereka mengalami liburan terbaik",
+      "q": "Bagaimana jika mereka mengalami liburan terbaik sepanjang masa?"
+    },
+    "teacher": {
+      "cap": "punya guru hebat",
+      "past": "mereka punya guru hebat",
+      "q": "Bagaimana jika mereka punya guru hebat?"
+    },
+    "travel": {
+      "cap": "keluarga berkelana setahun",
+      "past": "keluarga berkelana selama setahun",
+      "q": "Bagaimana jika keluarga berkelana selama setahun?"
+    },
+    "volunteer": {
+      "cap": "mulai jadi relawan",
+      "past": "mereka mulai jadi relawan",
+      "q": "Bagaimana jika mereka mulai membantu orang lain (jadi relawan)?"
+    }
+  },
+  "chart": {
+    "aria": {
+      "0": "Posisi {who} di tiap sifat di antara 120 anak",
+      "1": "Ingin tahu, teratur, supel, baik hati, dan tenang dari tahun ke tahun",
+      "2": "Dari 100 anak, berapa yang mungkin melakukan tiap hal sehari-hari",
+      "3": "Seberapa besar tiap perubahan menggeser {trait}"
+    },
+    "atDiff": "Di usia {age} ({life}): dengan perubahanmu kebanyakan anak {list}.",
+    "atSame": "Di usia {age} ({life}): kurang lebih sama dengan tanpa perubahanmu.",
+    "atTypical": "Di usia {age} ({life}): anak yang biasa itu {step}.",
+    "axis": "← kurang {trait}  ·  seberapa beda anak-anak memang  ·  lebih →",
+    "dayDiff": "Dengan perubahanmu, {count} anak mungkin akan {what} (tadinya {was}).",
+    "dayIntro": "Dari 100 anak seperti ini, berapa yang mungkin melakukan tiap hal. Mungkin, bukan pasti.",
+    "dayLittle": "Sejauh ini perubahanmu hanya sedikit mengubah kehidupan sehari-hari.",
+    "faded": "sebagian besar memudar",
+    "growIntro": "Tiap baris adalah satu sifat dari tahun ke tahun; pitanya adalah tempat kebanyakan anak berada. Tunjuk sebuah usia untuk membacanya.",
+    "hardly": "hampir tidak ada",
+    "life": {
+      "0": "balita",
+      "1": "masa sekolah",
+      "2": "remaja",
+      "3": "dewasa muda",
+      "4": "dewasa"
+    },
+    "nowDiff": "Dengan perubahanmu, di usia {age} {who, select, most {kebanyakan anak} other {anak-anak ini}} {list}.",
+    "nowIntro": "Tiap tanda samar adalah satu dari 120 anak; titik besar adalah {who}. Coba sebuah perubahan untuk membandingkan.",
+    "of100": "{n} dari 100",
+    "ongoing": "masih berjalan",
+    "planned": "Perubahanmu dijadwalkan untuk nanti.",
+    "pressPlay": "Tekan putar untuk melihat mereka tumbuh…",
+    "rowChange": "{name} · {age}",
+    "rowCombo": "{a} + {b}",
+    "rowWord": "{word} · {state}",
+    "sameSoFar": "Dengan perubahanmu anak-anak ini sejauh ini kurang lebih sama (usia {age}).",
+    "stayedSame": "{list} kurang lebih tetap.",
+    "still": "masih ada",
+    "typical": "anak yang biasa",
+    "view": {
+      "0": "Sekarang",
+      "1": "Tumbuh besar",
+      "2": "Sehari-hari",
+      "3": "Yang berpengaruh"
+    },
+    "viewLabel": "Tampilan grafik",
+    "was": "tadinya {n}",
+    "whichTrait": "Sifat yang mana",
+    "whyEmpty": "Buat perubahan untuk melihat seberapa berpengaruh di sini.",
+    "whyFaded": "{change} paling banyak mengubah {trait}, tapi sebagian besar sudah memudar.",
+    "whyIntro": "Seberapa besar tiap perubahan menggeser {trait}, dibanding seberapa beda anak-anak memang.",
+    "whyLasted": "{change} paling banyak mengubah {trait}, dan pengaruhnya bertahan.",
+    "whyOngoing": "{change} paling banyak mengubah {trait}, dan masih berlangsung."
+  },
+  "chip": {
+    "ripple": {
+      "authoritative": {
+        "0": "{n} dari 100 anak tahu apa yang diharapkan di rumah"
+      },
+      "bestfriend": {
+        "0": "{n} dari 100 anak merasa lebih berani di sekolah",
+        "1": "{n} dari 100 anak berpetualang bersama"
+      },
+      "bullied": {
+        "0": "{n} dari 100 anak bercerita ke seseorang, dan keadaan membaik",
+        "1": "{n} dari 100 anak berhenti mengacungkan tangan di kelas untuk sementara",
+        "2": "{n} dari 100 anak jadi lebih baik pada anak yang dikucilkan"
+      },
+      "carer": {
+        "0": "{n} dari 100 anak jadi sangat sabar",
+        "1": "{n} dari 100 anak kadang merasa lelah"
+      },
+      "chores": {
+        "0": "{n} dari 100 anak bangga atas pekerjaan yang beres",
+        "1": "{n} dari 100 anak mengeluh soal tugas rumah (tapi tetap mengerjakannya)"
+      },
+      "coding": {
+        "0": "{n} dari 100 anak membuat game kecil sendiri",
+        "1": "{n} dari 100 anak berteman dengan anak yang punya hobi sama"
+      },
+      "countryside": {
+        "0": "{n} dari 100 anak merawat hewan",
+        "1": "{n} dari 100 anak kadang rindu kota",
+        "2": "{n} dari 100 anak bermain di luar setiap hari"
+      },
+      "dinners": {
+        "0": "{n} dari 100 anak bercerita tentang harinya setiap malam",
+        "1": "{n} dari 100 anak mencoba makanan baru saat makan malam"
+      },
+      "divorce": {
+        "0": "{n} dari 100 anak sempat bertanya-tanya apakah itu salah mereka (tidak pernah)",
+        "1": "{n} dari 100 anak terbiasa dengan dua rumah dan dua ulang tahun",
+        "2": "{n} dari 100 anak jadi lebih dekat dengan salah satu orang tua"
+      },
+      "drama": {
+        "0": "{n} dari 100 anak tampil di panggung sungguhan",
+        "1": "{n} dari 100 anak jadi pandai memahami perasaan"
+      },
+      "exam": {
+        "0": "{n} dari 100 anak mencoba lagi dan lulus",
+        "1": "{n} dari 100 anak sempat merasa tidak bisa pelajaran itu"
+      },
+      "fallout": {
+        "0": "{n} dari 100 anak berbaikan lagi",
+        "1": "{n} dari 100 anak menemukan teman baru"
+      },
+      "firstlove": {
+        "0": "{n} dari 100 anak mendengarkan lagu sedih untuk sementara",
+        "1": "{n} dari 100 anak sadar mereka bisa melewati perasaan berat",
+        "2": "{n} dari 100 anak dihibur teman-temannya"
+      },
+      "grandparent": {
+        "0": "{n} dari 100 anak mendengar banyak cerita keluarga",
+        "1": "{n} dari 100 anak belajar memasak bersama kakek atau nenek"
+      },
+      "illness": {
+        "0": "{n} dari 100 anak ikut merawat orang tuanya",
+        "1": "{n} dari 100 anak merasa lebih dewasa"
+      },
+      "job": {
+        "0": "{n} dari 100 anak menabung untuk sesuatu yang besar",
+        "1": "{n} dari 100 anak terbiasa bicara dengan orang asing"
+      },
+      "language": {
+        "0": "{n} dari 100 anak menonton film dalam bahasa baru itu",
+        "1": "{n} dari 100 anak berteman dengan penutur bahasa itu"
+      },
+      "leader": {
+        "0": "{n} dari 100 anak berpidato di depan kelas",
+        "1": "{n} dari 100 anak merasa lebih bertanggung jawab"
+      },
+      "longhours": {
+        "0": "{n} dari 100 anak lebih banyak waktu sendirian",
+        "1": "{n} dari 100 anak belajar menyelesaikan masalah sendiri",
+        "2": "{n} dari 100 anak rindu orang tuanya saat waktu tidur"
+      },
+      "mentor": {
+        "0": "{n} dari 100 anak menemukan tujuan untuk diperjuangkan",
+        "1": "{n} dari 100 anak mencoba hal yang tak pernah terbayang"
+      },
+      "money": {
+        "0": "{n} dari 100 anak lebih banyak membantu di rumah",
+        "1": "{n} dari 100 anak khawatir soal uang",
+        "2": "{n} dari 100 anak jarang ikut klub dan jalan-jalan untuk sementara"
+      },
+      "move": {
+        "0": "{n} dari 100 anak belajar bahasa baru",
+        "1": "{n} dari 100 anak merasa kesepian di tahun pertama",
+        "2": "{n} dari 100 anak menemukan sahabat baru di sana"
+      },
+      "music": {
+        "0": "{n} dari 100 anak tampil di konser",
+        "1": "{n} dari 100 anak sempat merasa latihan itu membosankan"
+      },
+      "nature": {
+        "0": "{n} dari 100 anak hafal nama burung dan pohon",
+        "1": "{n} dari 100 anak berkemah dan menyukainya"
+      },
+      "newschool": {
+        "0": "{n} dari 100 anak cepat dapat teman baru",
+        "1": "{n} dari 100 anak rindu teman lamanya"
+      },
+      "pet": {
+        "0": "{n} dari 100 anak mengajak anjing jalan setiap hari",
+        "1": "{n} dari 100 anak bilang anjing itu sahabat terbaiknya"
+      },
+      "prize": {
+        "0": "{n} dari 100 anak menceritakannya ke semua orang",
+        "1": "{n} dari 100 anak mulai berusaha meraih hadiah berikutnya"
+      },
+      "reading": {
+        "0": "{n} dari 100 anak sering memakai kartu perpustakaan",
+        "1": "{n} dari 100 anak mulai menulis cerita sendiri"
+      },
+      "scouts": {
+        "0": "{n} dari 100 anak mengumpulkan banyak lencana",
+        "1": "{n} dari 100 anak tidur di tenda untuk pertama kali"
+      },
+      "screen": {
+        "0": "{n} dari 100 anak tidur lebih sedikit",
+        "1": "{n} dari 100 anak berteman secara online",
+        "2": "{n} dari 100 anak jadi jago sebuah game"
+      },
+      "sibling": {
+        "0": "{n} dari 100 anak awalnya merasa cemburu",
+        "1": "{n} dari 100 anak jadi dekat dengan adiknya",
+        "2": "{n} dari 100 anak ikut mengasuh bayinya"
+      },
+      "sleep": {
+        "0": "{n} dari 100 anak paginya lebih mudah",
+        "1": "{n} dari 100 anak lebih mudah fokus di sekolah"
+      },
+      "sport": {
+        "0": "{n} dari 100 anak berteman di tim",
+        "1": "{n} dari 100 anak cedera olahraga lalu pulih",
+        "2": "{n} dari 100 anak menang pertandingan yang masih diceritakan"
+      },
+      "strict": {
+        "0": "{n} dari 100 anak mulai memendam hal sendiri",
+        "1": "{n} dari 100 anak jadi sangat pandai mengikuti aturan"
+      },
+      "summer": {
+        "0": "{n} dari 100 anak masih mengenangnya sebagai liburan terbaik",
+        "1": "{n} dari 100 anak mendapat teman seumur hidup musim itu"
+      },
+      "teacher": {
+        "0": "{n} dari 100 anak menemukan pelajaran yang mereka sukai",
+        "1": "{n} dari 100 anak mulai percaya bisa melakukan hal sulit"
+      },
+      "travel": {
+        "0": "{n} dari 100 anak mengenal kata-kata dari banyak bahasa",
+        "1": "{n} dari 100 anak kadang rindu rumah",
+        "2": "{n} dari 100 anak belajar merasa betah di mana saja"
+      },
+      "volunteer": {
+        "0": "{n} dari 100 anak mendapat ucapan terima kasih dari orang yang dibantu",
+        "1": "{n} dari 100 anak mulai memimpin relawan lain"
+      }
+    }
+  },
+  "cmp": {
+    "less": "{d, select, bit {sedikit kurang} much {jauh kurang} other {kurang}}",
+    "more": "{d, select, bit {sedikit lebih} much {jauh lebih} other {lebih}}"
+  },
+  "ctl": {
+    "aA": {
+      "label": "Baik hati"
+    },
+    "aC": {
+      "label": "Teratur"
+    },
+    "aE": {
+      "label": "Supel"
+    },
+    "aN": {
+      "label": "Cemas (100 − tenang)"
+    },
+    "aO": {
+      "label": "Ingin tahu"
+    },
+    "bA": {
+      "label": "Baik hati"
+    },
+    "bC": {
+      "label": "Teratur"
+    },
+    "bE": {
+      "label": "Supel"
+    },
+    "bN": {
+      "label": "Cemas (100 − tenang)"
+    },
+    "bO": {
+      "label": "Ingin tahu"
+    },
+    "baby": {
+      "label": "Seperti apa mereka waktu bayi?",
+      "opt": {
+        "easy": "Tenang dan santai",
+        "energy": "Penuh energi",
+        "mixed": "Tiap anak berbeda",
+        "slow": "Butuh waktu untuk akrab"
+      }
+    },
+    "events": {
+      "label": "Suka duka sehari-hari",
+      "opt": {
+        "lots": "Banyak",
+        "normal": "Normal",
+        "off": "Mati"
+      }
+    },
+    "fade": {
+      "label": "Berapa lama pengaruhnya",
+      "opt": {
+        "fast": "Cepat memudar",
+        "normal": "Normal",
+        "stick": "Melekat"
+      }
+    },
+    "family": {
+      "label": "Keluarga",
+      "opt": {
+        "artists": "Seniman yang ingin tahu",
+        "average": "Orang tua rata-rata",
+        "calm": "Dua orang tua yang tenang dan teratur",
+        "custom": "Buat sendiri",
+        "everyday": "Satu orang tua ingin tahu, satu teratur",
+        "lively": "Dua orang tua yang ceria dan supel",
+        "worrier": "Satu pencemas, satu santai"
+      }
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Pengaturan perubahan (dipakai saat klik berikutnya)",
+      "home": "Rumah",
+      "nature-and-chance": "Bawaan dan kebetulan",
+      "parent-a": "Orang tua A",
+      "parent-b": "Orang tua B"
+    },
+    "home": {
+      "label": "Suasana rumah",
+      "opt": {
+        "busy": "Sibuk",
+        "stable": "Tenang",
+        "unstable": "Sering bertengkar"
+      }
+    },
+    "inherit": {
+      "label": "Seberapa banyak yang diwariskan",
+      "opt": {
+        "25": "Rendah (25 %)",
+        "40": "Normal (40 %)",
+        "55": "Tinggi (55 %)"
+      }
+    },
+    "luck": {
+      "label": "Seberapa besar kebetulan dan untung",
+      "opt": {
+        "big": "Besar",
+        "normal": "Normal",
+        "small": "Kecil"
+      }
+    },
+    "money": {
+      "label": "Keuangan di rumah",
+      "opt": {
+        "comfy": "Berkecukupan",
+        "ok": "Cukup",
+        "tight": "Pas-pasan"
+      }
+    },
+    "place": {
+      "label": "Tempat tinggal",
+      "opt": {
+        "city": "Kota besar",
+        "country": "Desa",
+        "town": "Kota kecil"
+      }
+    },
+    "s_age": {
+      "label": "Kapan terjadinya",
+      "opt": {
+        "1": "Di usia 1",
+        "2": "Di usia 2",
+        "3": "Di usia 3",
+        "4": "Di usia 4",
+        "5": "Di usia 5",
+        "6": "Di usia 6",
+        "7": "Di usia 7",
+        "8": "Di usia 8",
+        "9": "Di usia 9",
+        "10": "Di usia 10",
+        "11": "Di usia 11",
+        "12": "Di usia 12",
+        "13": "Di usia 13",
+        "14": "Di usia 14",
+        "15": "Di usia 15",
+        "16": "Di usia 16",
+        "17": "Di usia 17",
+        "now": "Sekarang"
+      }
+    },
+    "s_len": {
+      "label": "Berapa lama",
+      "opt": {
+        "few": "Beberapa tahun",
+        "good": "Selamanya",
+        "moment": "Sesaat",
+        "usual": "Seperti biasanya",
+        "year": "Sekitar setahun"
+      }
+    },
+    "s_size": {
+      "label": "Seberapa besar",
+      "opt": {
+        "big": "Besar",
+        "medium": "Sedang",
+        "small": "Kecil"
+      }
+    },
+    "school": {
+      "label": "Sekolah",
+      "opt": {
+        "crowded": "Penuh sesak",
+        "great": "Guru-guru hebat",
+        "ordinary": "Biasa"
+      }
+    },
+    "screens": {
+      "label": "Aturan layar",
+      "opt": {
+        "none": "Tanpa aturan",
+        "some": "Sebagian",
+        "strict": "Ketat"
+      }
+    },
+    "sens": {
+      "label": "Seberapa besar hidup memengaruhi mereka",
+      "opt": {
+        "all": "Semua anak sangat peka",
+        "same": "Sama untuk tiap anak",
+        "some": "Sebagian anak jauh lebih peka"
+      }
+    },
+    "shape": {
+      "label": "Tinggal dengan siapa",
+      "opt": {
+        "big": "Keluarga besar satu atap",
+        "one": "Satu orang tua",
+        "two": "Dua orang tua",
+        "twohomes": "Dua rumah"
+      }
+    },
+    "sib": {
+      "label": "Saudara kandung",
+      "opt": {
+        "0": "Tidak ada",
+        "1": "Satu adik",
+        "2": "Dua atau lebih",
+        "older": "Satu kakak"
+      }
+    },
+    "style": {
+      "label": "Cara orang tua mendidik",
+      "opt": {
+        "authoritarian": "Ketat",
+        "authoritative": "Hangat dan tegas",
+        "neglectful": "Berjarak",
+        "permissive": "Serba boleh"
+      }
+    },
+    "time": {
+      "label": "Waktu bersama",
+      "opt": {
+        "long": "Orang tua kerja lembur",
+        "lots": "Banyak waktu keluarga",
+        "ordinary": "Biasa"
+      }
+    }
+  },
+  "eff": {
+    "same": "kurang lebih sama"
+  },
+  "ends": {
+    "A": {
+      "0": "blak-blakan, suka menang",
+      "1": "sangat baik hati"
+    },
+    "C": {
+      "0": "santai, agak berantakan",
+      "1": "sangat teratur"
+    },
+    "Calm": {
+      "0": "sangat pencemas",
+      "1": "sangat tenang"
+    },
+    "E": {
+      "0": "pendiam, agak pemalu",
+      "1": "sangat supel"
+    },
+    "O": {
+      "0": "bertahan pada yang dikenal",
+      "1": "sangat ingin tahu"
+    }
+  },
+  "ev": {
+    "already": "Orang tua memang sudah mendidik dengan cara ini",
+    "buffer": {
+      "0": "Punya sahabat membuat dirundung tidak terlalu menyakitkan",
+      "1": "Guru-guru hebat turun tangan, jadi perundungan tidak terlalu menyakitkan",
+      "2": "Rumah yang tenang membantu mereka melewati perundungan",
+      "3": "Orang tua yang hangat dan tegas membuat perpisahan lebih mudah",
+      "4": "Orang tua yang hangat dan tegas menjaga agar soal uang tidak terlalu menyakitkan",
+      "5": "Kakek atau nenek di rumah membantu saat uang seret",
+      "6": "Kakek atau nenek di rumah membantu saat orang tua sakit",
+      "7": "Pindah bersama saudara jadi lebih mudah",
+      "8": "Timnya membantu mereka betah di sekolah baru",
+      "9": "Membaca tiap malam mengimbangi waktu layar",
+      "10": "Aturan layar yang jelas mencegah layar menguasai hari",
+      "11": "Cukup tidur mencegah layar membuat mereka lelah",
+      "12": "Guru hebat membantu mereka bangkit dari ujian yang gagal",
+      "13": "Cukup tidur membantu mereka bangkit dari ujian yang gagal",
+      "14": "Memeluk anjing membantu setelah bertengkar dengan teman",
+      "15": "Sahabat membantu mereka melewati patah hati pertama",
+      "16": "Makan malam keluarga memberi mereka tempat bercerita",
+      "17": "Kakek atau nenek di rumah membantu saat orang tua kerja lembur",
+      "18": "Keluarga besar satu atap membantu saat orang tua kerja lembur",
+      "19": "Keluarga besar membantu saat orang tua sakit",
+      "20": "Keluarga besar berbagi apa yang ada saat uang seret",
+      "21": "Banyak waktu keluarga membuat mereka bisa bercerita soal perundungan"
+    },
+    "calm": "Kebanyakan anak kembali lebih tenang setelah masa remaja",
+    "change": {
+      "authoritative": "Orang tua jadi hangat dan tegas: aturan jelas, penuh kasih",
+      "bestfriend": "Menemukan sahabat",
+      "bullied": "Dirundung di sekolah selama setahun",
+      "carer": "Mulai ikut mengasuh adik",
+      "chores": "Mulai mengerjakan tugas sungguhan di rumah",
+      "coding": "Ikut klub coding dan merakit",
+      "countryside": "Keluarga pindah ke desa",
+      "dinners": "Keluarga mulai makan malam bersama tiap malam",
+      "divorce": "Orang tua berpisah dan punya dua rumah",
+      "drama": "Ikut klub teater",
+      "exam": "Gagal ujian besar",
+      "fallout": "Bertengkar dengan sahabatnya",
+      "firstlove": "Cinta pertama yang tak berhasil",
+      "grandparent": "Kakek atau nenek ikut tinggal",
+      "illness": "Salah satu orang tua sakit parah selama setahun, lalu sembuh",
+      "job": "Dapat kerja akhir pekan",
+      "language": "Mulai belajar bahasa kedua",
+      "leader": "Dijadikan ketua kelas",
+      "longhours": "Salah satu orang tua mulai kerja sangat lama",
+      "mentor": "Seorang mentor menaruh perhatian pada mereka",
+      "money": "Keuangan seret selama beberapa tahun",
+      "move": "Keluarga pindah ke negara lain",
+      "music": "Belajar alat musik",
+      "nature": "Mulai banyak menghabiskan waktu di alam terbuka",
+      "newschool": "Pindah sekolah",
+      "pet": "Keluarga memelihara anjing",
+      "prize": "Menang lomba besar",
+      "reading": "Mulai membaca tiap malam",
+      "scouts": "Ikut pramuka",
+      "screen": "Mulai banyak main layar setiap hari",
+      "sibling": "Adik kecil lahir",
+      "sleep": "Mulai cukup tidur tiap malam",
+      "sport": "Ikut olahraga tim",
+      "strict": "Orang tua jadi jauh lebih ketat",
+      "summer": "Mengalami liburan terbaik sepanjang masa",
+      "teacher": "Punya guru hebat",
+      "travel": "Keluarga berangkat berkelana selama setahun",
+      "volunteer": "Mulai membantu orang lain sebagai relawan"
+    },
+    "combo": {
+      "0": "Olahraga tim dan sahabat: mereka main di tim yang sama",
+      "1": "Membaca tiap malam dan guru hebat: mereka mulai suka belajar",
+      "2": "Alat musik dan mentor: latihan mulai membuahkan hasil",
+      "3": "Negara baru dan sahabat: menyesuaikan diri jadi lebih mudah",
+      "4": "Anjing dan alam terbuka: jalan-jalan panjang setiap hari",
+      "5": "Relawan dan kakek atau nenek di rumah: menolong jadi kebiasaan",
+      "6": "Layar dan alam terbuka: waktu di luar mengimbangi layar",
+      "7": "Adik kecil dan orang tua yang hangat dan tegas: anak-anak akur",
+      "8": "Klub teater dan ketua kelas: bicara di depan jadi mudah",
+      "9": "Klub coding dan mentor: mereka membuat sesuatu yang nyata"
+    },
+    "ms": {
+      "ms1": "Kata pertama: kebanyakan anak mulai bicara",
+      "ms13": "Masa remaja dimulai: suasana hati naik turun",
+      "ms18": "Lulus sekolah",
+      "ms20": "Banyak yang mulai kerja pertama",
+      "ms28": "Banyak yang mulai menetap",
+      "ms5": "Mulai sekolah",
+      "ms7": "Kebanyakan anak punya sahabat pertama"
+    },
+    "ripple": {
+      "authoritative": {
+        "0": "Setelah orang tua menjadi hangat dan tegas di usia {age}, {n} dari 100 anak tahu apa yang diharapkan di rumah"
+      },
+      "bestfriend": {
+        "0": "Setelah mereka menemukan sahabat di usia {age}, {n} dari 100 anak merasa lebih berani di sekolah",
+        "1": "Setelah mereka menemukan sahabat di usia {age}, {n} dari 100 anak berpetualang bersama"
+      },
+      "bullied": {
+        "0": "Setelah mereka dirundung selama setahun di usia {age}, {n} dari 100 anak bercerita ke seseorang, dan keadaan membaik",
+        "1": "Setelah mereka dirundung selama setahun di usia {age}, {n} dari 100 anak berhenti mengacungkan tangan di kelas untuk sementara",
+        "2": "Setelah mereka dirundung selama setahun di usia {age}, {n} dari 100 anak jadi lebih baik pada anak yang dikucilkan"
+      },
+      "carer": {
+        "0": "Setelah mereka mulai ikut mengasuh adik di usia {age}, {n} dari 100 anak jadi sangat sabar",
+        "1": "Setelah mereka mulai ikut mengasuh adik di usia {age}, {n} dari 100 anak kadang merasa lelah"
+      },
+      "chores": {
+        "0": "Setelah mereka mendapat tugas sungguhan di rumah di usia {age}, {n} dari 100 anak bangga atas pekerjaan yang beres",
+        "1": "Setelah mereka mendapat tugas sungguhan di rumah di usia {age}, {n} dari 100 anak mengeluh soal tugas rumah (tapi tetap mengerjakannya)"
+      },
+      "coding": {
+        "0": "Setelah mereka ikut klub coding di usia {age}, {n} dari 100 anak membuat game kecil sendiri",
+        "1": "Setelah mereka ikut klub coding di usia {age}, {n} dari 100 anak berteman dengan anak yang punya hobi sama"
+      },
+      "countryside": {
+        "0": "Setelah keluarga pindah ke desa di usia {age}, {n} dari 100 anak merawat hewan",
+        "1": "Setelah keluarga pindah ke desa di usia {age}, {n} dari 100 anak kadang rindu kota",
+        "2": "Setelah keluarga pindah ke desa di usia {age}, {n} dari 100 anak bermain di luar setiap hari"
+      },
+      "dinners": {
+        "0": "Setelah keluarga mulai makan bersama tiap malam di usia {age}, {n} dari 100 anak bercerita tentang harinya setiap malam",
+        "1": "Setelah keluarga mulai makan bersama tiap malam di usia {age}, {n} dari 100 anak mencoba makanan baru saat makan malam"
+      },
+      "divorce": {
+        "0": "Setelah orang tua berpisah di usia {age}, {n} dari 100 anak sempat bertanya-tanya apakah itu salah mereka (tidak pernah)",
+        "1": "Setelah orang tua berpisah di usia {age}, {n} dari 100 anak terbiasa dengan dua rumah dan dua ulang tahun",
+        "2": "Setelah orang tua berpisah di usia {age}, {n} dari 100 anak jadi lebih dekat dengan salah satu orang tua"
+      },
+      "drama": {
+        "0": "Setelah mereka ikut klub teater di usia {age}, {n} dari 100 anak tampil di panggung sungguhan",
+        "1": "Setelah mereka ikut klub teater di usia {age}, {n} dari 100 anak jadi pandai memahami perasaan"
+      },
+      "exam": {
+        "0": "Setelah mereka gagal ujian besar di usia {age}, {n} dari 100 anak mencoba lagi dan lulus",
+        "1": "Setelah mereka gagal ujian besar di usia {age}, {n} dari 100 anak sempat merasa tidak bisa pelajaran itu"
+      },
+      "fallout": {
+        "0": "Setelah mereka bertengkar dengan sahabatnya di usia {age}, {n} dari 100 anak berbaikan lagi",
+        "1": "Setelah mereka bertengkar dengan sahabatnya di usia {age}, {n} dari 100 anak menemukan teman baru"
+      },
+      "firstlove": {
+        "0": "Setelah mereka mengalami cinta pertama yang tak berhasil di usia {age}, {n} dari 100 anak mendengarkan lagu sedih untuk sementara",
+        "1": "Setelah mereka mengalami cinta pertama yang tak berhasil di usia {age}, {n} dari 100 anak sadar mereka bisa melewati perasaan berat",
+        "2": "Setelah mereka mengalami cinta pertama yang tak berhasil di usia {age}, {n} dari 100 anak dihibur teman-temannya"
+      },
+      "grandparent": {
+        "0": "Setelah kakek atau nenek ikut tinggal di usia {age}, {n} dari 100 anak mendengar banyak cerita keluarga",
+        "1": "Setelah kakek atau nenek ikut tinggal di usia {age}, {n} dari 100 anak belajar memasak bersama kakek atau nenek"
+      },
+      "illness": {
+        "0": "Setelah salah satu orang tua sakit selama setahun di usia {age}, {n} dari 100 anak ikut merawat orang tuanya",
+        "1": "Setelah salah satu orang tua sakit selama setahun di usia {age}, {n} dari 100 anak merasa lebih dewasa"
+      },
+      "job": {
+        "0": "Setelah mereka dapat kerja akhir pekan di usia {age}, {n} dari 100 anak menabung untuk sesuatu yang besar",
+        "1": "Setelah mereka dapat kerja akhir pekan di usia {age}, {n} dari 100 anak terbiasa bicara dengan orang asing"
+      },
+      "language": {
+        "0": "Setelah mereka mulai belajar bahasa kedua di usia {age}, {n} dari 100 anak menonton film dalam bahasa baru itu",
+        "1": "Setelah mereka mulai belajar bahasa kedua di usia {age}, {n} dari 100 anak berteman dengan penutur bahasa itu"
+      },
+      "leader": {
+        "0": "Setelah mereka dijadikan ketua kelas di usia {age}, {n} dari 100 anak berpidato di depan kelas",
+        "1": "Setelah mereka dijadikan ketua kelas di usia {age}, {n} dari 100 anak merasa lebih bertanggung jawab"
+      },
+      "longhours": {
+        "0": "Setelah salah satu orang tua mulai kerja lembur di usia {age}, {n} dari 100 anak lebih banyak waktu sendirian",
+        "1": "Setelah salah satu orang tua mulai kerja lembur di usia {age}, {n} dari 100 anak belajar menyelesaikan masalah sendiri",
+        "2": "Setelah salah satu orang tua mulai kerja lembur di usia {age}, {n} dari 100 anak rindu orang tuanya saat waktu tidur"
+      },
+      "mentor": {
+        "0": "Setelah seorang mentor menaruh perhatian di usia {age}, {n} dari 100 anak menemukan tujuan untuk diperjuangkan",
+        "1": "Setelah seorang mentor menaruh perhatian di usia {age}, {n} dari 100 anak mencoba hal yang tak pernah terbayang"
+      },
+      "money": {
+        "0": "Setelah keuangan jadi seret di usia {age}, {n} dari 100 anak lebih banyak membantu di rumah",
+        "1": "Setelah keuangan jadi seret di usia {age}, {n} dari 100 anak khawatir soal uang",
+        "2": "Setelah keuangan jadi seret di usia {age}, {n} dari 100 anak jarang ikut klub dan jalan-jalan untuk sementara"
+      },
+      "move": {
+        "0": "Setelah keluarga pindah ke negara lain di usia {age}, {n} dari 100 anak belajar bahasa baru",
+        "1": "Setelah keluarga pindah ke negara lain di usia {age}, {n} dari 100 anak merasa kesepian di tahun pertama",
+        "2": "Setelah keluarga pindah ke negara lain di usia {age}, {n} dari 100 anak menemukan sahabat baru di sana"
+      },
+      "music": {
+        "0": "Setelah mereka belajar alat musik di usia {age}, {n} dari 100 anak tampil di konser",
+        "1": "Setelah mereka belajar alat musik di usia {age}, {n} dari 100 anak sempat merasa latihan itu membosankan"
+      },
+      "nature": {
+        "0": "Setelah mereka mulai banyak di alam terbuka di usia {age}, {n} dari 100 anak hafal nama burung dan pohon",
+        "1": "Setelah mereka mulai banyak di alam terbuka di usia {age}, {n} dari 100 anak berkemah dan menyukainya"
+      },
+      "newschool": {
+        "0": "Setelah mereka pindah sekolah di usia {age}, {n} dari 100 anak cepat dapat teman baru",
+        "1": "Setelah mereka pindah sekolah di usia {age}, {n} dari 100 anak rindu teman lamanya"
+      },
+      "pet": {
+        "0": "Setelah keluarga memelihara anjing di usia {age}, {n} dari 100 anak mengajak anjing jalan setiap hari",
+        "1": "Setelah keluarga memelihara anjing di usia {age}, {n} dari 100 anak bilang anjing itu sahabat terbaiknya"
+      },
+      "prize": {
+        "0": "Setelah mereka menang lomba besar di usia {age}, {n} dari 100 anak menceritakannya ke semua orang",
+        "1": "Setelah mereka menang lomba besar di usia {age}, {n} dari 100 anak mulai berusaha meraih hadiah berikutnya"
+      },
+      "reading": {
+        "0": "Setelah mereka mulai membaca tiap malam di usia {age}, {n} dari 100 anak sering memakai kartu perpustakaan",
+        "1": "Setelah mereka mulai membaca tiap malam di usia {age}, {n} dari 100 anak mulai menulis cerita sendiri"
+      },
+      "scouts": {
+        "0": "Setelah mereka ikut pramuka di usia {age}, {n} dari 100 anak mengumpulkan banyak lencana",
+        "1": "Setelah mereka ikut pramuka di usia {age}, {n} dari 100 anak tidur di tenda untuk pertama kali"
+      },
+      "screen": {
+        "0": "Setelah waktu layar yang banyak dimulai di usia {age}, {n} dari 100 anak tidur lebih sedikit",
+        "1": "Setelah waktu layar yang banyak dimulai di usia {age}, {n} dari 100 anak berteman secara online",
+        "2": "Setelah waktu layar yang banyak dimulai di usia {age}, {n} dari 100 anak jadi jago sebuah game"
+      },
+      "sibling": {
+        "0": "Setelah adik kecil lahir di usia {age}, {n} dari 100 anak awalnya merasa cemburu",
+        "1": "Setelah adik kecil lahir di usia {age}, {n} dari 100 anak jadi dekat dengan adiknya",
+        "2": "Setelah adik kecil lahir di usia {age}, {n} dari 100 anak ikut mengasuh bayinya"
+      },
+      "sleep": {
+        "0": "Setelah mereka mulai cukup tidur di usia {age}, {n} dari 100 anak paginya lebih mudah",
+        "1": "Setelah mereka mulai cukup tidur di usia {age}, {n} dari 100 anak lebih mudah fokus di sekolah"
+      },
+      "sport": {
+        "0": "Setelah mereka ikut olahraga tim di usia {age}, {n} dari 100 anak berteman di tim",
+        "1": "Setelah mereka ikut olahraga tim di usia {age}, {n} dari 100 anak cedera olahraga lalu pulih",
+        "2": "Setelah mereka ikut olahraga tim di usia {age}, {n} dari 100 anak menang pertandingan yang masih diceritakan"
+      },
+      "strict": {
+        "0": "Setelah orang tua makin ketat di usia {age}, {n} dari 100 anak mulai memendam hal sendiri",
+        "1": "Setelah orang tua makin ketat di usia {age}, {n} dari 100 anak jadi sangat pandai mengikuti aturan"
+      },
+      "summer": {
+        "0": "Setelah mereka mengalami liburan terbaik di usia {age}, {n} dari 100 anak masih mengenangnya sebagai liburan terbaik",
+        "1": "Setelah mereka mengalami liburan terbaik di usia {age}, {n} dari 100 anak mendapat teman seumur hidup musim itu"
+      },
+      "teacher": {
+        "0": "Setelah mereka punya guru hebat di usia {age}, {n} dari 100 anak menemukan pelajaran yang mereka sukai",
+        "1": "Setelah mereka punya guru hebat di usia {age}, {n} dari 100 anak mulai percaya bisa melakukan hal sulit"
+      },
+      "travel": {
+        "0": "Setelah keluarga berkelana selama setahun di usia {age}, {n} dari 100 anak mengenal kata-kata dari banyak bahasa",
+        "1": "Setelah keluarga berkelana selama setahun di usia {age}, {n} dari 100 anak kadang rindu rumah",
+        "2": "Setelah keluarga berkelana selama setahun di usia {age}, {n} dari 100 anak belajar merasa betah di mana saja"
+      },
+      "volunteer": {
+        "0": "Setelah mereka mulai jadi relawan di usia {age}, {n} dari 100 anak mendapat ucapan terima kasih dari orang yang dibantu",
+        "1": "Setelah mereka mulai jadi relawan di usia {age}, {n} dari 100 anak mulai memimpin relawan lain"
+      }
+    },
+    "stop": {
+      "authoritative": "Orang tua tak lagi begitu hangat dan tegas",
+      "bestfriend": "Sahabatnya pindah jauh",
+      "bullied": "Perundungan berhenti",
+      "carer": "Berhenti mengasuh adik",
+      "chores": "Tak ada lagi tugas di rumah",
+      "coding": "Keluar dari klub coding",
+      "countryside": "Keluarga pindah kembali ke kota",
+      "dinners": "Makan malam keluarga berhenti",
+      "divorce": "Orang tua rujuk kembali",
+      "drama": "Keluar dari klub teater",
+      "exam": "Bangkit dari ujian yang gagal",
+      "fallout": "Pulih dari pertengkaran",
+      "firstlove": "Melupakan cinta pertama",
+      "grandparent": "Kakek atau nenek pindah keluar",
+      "illness": "Orang tua sudah sehat lagi",
+      "job": "Berhenti kerja akhir pekan",
+      "language": "Berhenti belajar bahasa itu",
+      "leader": "Tak lagi jadi ketua kelas",
+      "longhours": "Orang tua kembali kerja normal",
+      "mentor": "Mentornya pergi",
+      "money": "Keuangan kembali cukup",
+      "move": "Keluarga pulang ke negara asal",
+      "music": "Berhenti main alat musik",
+      "nature": "Tak lagi banyak di alam terbuka",
+      "newschool": "Sudah betah di sekolah baru",
+      "pet": "Anjingnya pindah tinggal di peternakan",
+      "prize": "Hadiahnya jadi kenangan indah",
+      "reading": "Berhenti membaca tiap malam",
+      "scouts": "Keluar dari pramuka",
+      "screen": "Waktu layar dikurangi",
+      "sibling": "Adiknya pindah keluar",
+      "sleep": "Jam tidur jadi larut lagi",
+      "sport": "Berhenti olahraga tim",
+      "strict": "Orang tua tak lagi begitu ketat",
+      "summer": "Liburan berakhir",
+      "teacher": "Guru hebatnya pergi",
+      "travel": "Keluarga pulang dari berkelana",
+      "volunteer": "Berhenti jadi relawan"
+    },
+    "tally": {
+      "arm": "Hingga usia {age}, {n} dari 100 anak pernah patah tangan atau kaki",
+      "bike": "Hingga usia {age}, {n} dari 100 anak sudah bisa naik sepeda",
+      "camp": "Hingga usia {age}, {n} dari 100 anak pernah ikut perkemahan liburan",
+      "cousin": "Hingga usia {age}, {n} dari 100 anak pernah ditemani sepupu menginap selama liburan",
+      "friend": "Hingga usia {age}, {n} dari 100 anak pernah ditinggal pindah teman dekat",
+      "glasses": "Hingga usia {age}, {n} dari 100 anak sudah pakai kacamata",
+      "holiday": "Hingga usia {age}, {n} dari 100 anak pernah liburan keluarga ke tempat jauh",
+      "house": "Hingga usia {age}, {n} dari 100 anak pernah pindah rumah setidaknya sekali",
+      "pet": "Hingga usia {age}, {n} dari 100 anak sudah punya hewan peliharaan",
+      "play": "Hingga usia {age}, {n} dari 100 anak pernah dapat peran di drama sekolah",
+      "sib": "Hingga usia {age}, {n} dari 100 anak punya adik baru",
+      "team": "Hingga usia {age}, {n} dari 100 anak pernah masuk tim sekolah",
+      "visits": "Hingga usia {age}, {n} dari 100 anak punya kakek atau nenek yang sering berkunjung",
+      "win": "Hingga usia {age}, {n} dari 100 anak pernah memenangkan sesuatu yang besar, seperti lomba atau hadiah"
+    }
+  },
+  "gloss": {
+    "A": "Peduli pada orang lain dan suka rukun.",
+    "C": "Menjaga semuanya teratur dan menyelesaikan yang dimulai.",
+    "Calm": "Tetap tenang saat ada yang tidak beres.",
+    "E": "Dapat energi dari bersama orang lain.",
+    "O": "Suka ide, tempat, dan hal baru untuk dicoba."
+  },
+  "glossEx": {
+    "A": {
+      "0": "berbagi biskuit terakhir",
+      "1": "menolong teman yang jatuh"
+    },
+    "C": {
+      "0": "menyiapkan tas sekolah malam sebelumnya",
+      "1": "mengerjakan PR sebelum bermain"
+    },
+    "Calm": {
+      "0": "tidur nyenyak malam sebelum ujian",
+      "1": "santai saja saat kalah main"
+    },
+    "E": {
+      "0": "lebih dulu mengajak bicara murid baru",
+      "1": "suka pesta ulang tahun yang ramai"
+    },
+    "O": {
+      "0": "banyak bertanya \"kenapa?\"",
+      "1": "ingin mencicipi buah aneh yang baru"
+    }
+  },
+  "group": {
+    "0": "Rumah",
+    "1": "Sekolah dan teman",
+    "2": "Kegiatan",
+    "3": "Perubahan besar",
+    "4": "Keberuntungan"
+  },
+  "have": {
+    "authoritative": {
+      "0": "tahu apa yang diharapkan di rumah"
+    },
+    "bestfriend": {
+      "0": "merasa lebih berani di sekolah",
+      "1": "berpetualang bersama"
+    },
+    "bullied": {
+      "0": "bercerita ke seseorang, dan keadaan membaik",
+      "1": "berhenti mengacungkan tangan di kelas untuk sementara",
+      "2": "jadi lebih baik pada anak yang dikucilkan"
+    },
+    "carer": {
+      "0": "jadi sangat sabar",
+      "1": "kadang merasa lelah"
+    },
+    "chores": {
+      "0": "bangga atas pekerjaan yang beres",
+      "1": "mengeluh soal tugas rumah (tapi tetap mengerjakannya)"
+    },
+    "coding": {
+      "0": "membuat game kecil sendiri",
+      "1": "berteman dengan anak yang punya hobi sama"
+    },
+    "countryside": {
+      "0": "merawat hewan",
+      "1": "kadang rindu kota",
+      "2": "bermain di luar setiap hari"
+    },
+    "dinners": {
+      "0": "bercerita tentang harinya setiap malam",
+      "1": "mencoba makanan baru saat makan malam"
+    },
+    "divorce": {
+      "0": "sempat bertanya-tanya apakah itu salah mereka (tidak pernah)",
+      "1": "terbiasa dengan dua rumah dan dua ulang tahun",
+      "2": "jadi lebih dekat dengan salah satu orang tua"
+    },
+    "drama": {
+      "0": "tampil di panggung sungguhan",
+      "1": "jadi pandai memahami perasaan"
+    },
+    "exam": {
+      "0": "mencoba lagi dan lulus",
+      "1": "sempat merasa tidak bisa pelajaran itu"
+    },
+    "fallout": {
+      "0": "berbaikan lagi",
+      "1": "menemukan teman baru"
+    },
+    "firstlove": {
+      "0": "mendengarkan lagu sedih untuk sementara",
+      "1": "sadar mereka bisa melewati perasaan berat",
+      "2": "dihibur teman-temannya"
+    },
+    "grandparent": {
+      "0": "mendengar banyak cerita keluarga",
+      "1": "belajar memasak bersama kakek atau nenek"
+    },
+    "illness": {
+      "0": "ikut merawat orang tuanya",
+      "1": "merasa lebih dewasa"
+    },
+    "job": {
+      "0": "menabung untuk sesuatu yang besar",
+      "1": "terbiasa bicara dengan orang asing"
+    },
+    "language": {
+      "0": "menonton film dalam bahasa baru itu",
+      "1": "berteman dengan penutur bahasa itu"
+    },
+    "leader": {
+      "0": "berpidato di depan kelas",
+      "1": "merasa lebih bertanggung jawab"
+    },
+    "longhours": {
+      "0": "lebih banyak waktu sendirian",
+      "1": "belajar menyelesaikan masalah sendiri",
+      "2": "rindu orang tuanya saat waktu tidur"
+    },
+    "mentor": {
+      "0": "menemukan tujuan untuk diperjuangkan",
+      "1": "mencoba hal yang tak pernah terbayang"
+    },
+    "money": {
+      "0": "lebih banyak membantu di rumah",
+      "1": "khawatir soal uang",
+      "2": "jarang ikut klub dan jalan-jalan untuk sementara"
+    },
+    "move": {
+      "0": "belajar bahasa baru",
+      "1": "merasa kesepian di tahun pertama",
+      "2": "menemukan sahabat baru di sana"
+    },
+    "music": {
+      "0": "tampil di konser",
+      "1": "sempat merasa latihan itu membosankan"
+    },
+    "nature": {
+      "0": "hafal nama burung dan pohon",
+      "1": "berkemah dan menyukainya"
+    },
+    "newschool": {
+      "0": "cepat dapat teman baru",
+      "1": "rindu teman lamanya"
+    },
+    "pet": {
+      "0": "mengajak anjing jalan setiap hari",
+      "1": "bilang anjing itu sahabat terbaiknya"
+    },
+    "prize": {
+      "0": "menceritakannya ke semua orang",
+      "1": "mulai berusaha meraih hadiah berikutnya"
+    },
+    "reading": {
+      "0": "sering memakai kartu perpustakaan",
+      "1": "mulai menulis cerita sendiri"
+    },
+    "scouts": {
+      "0": "mengumpulkan banyak lencana",
+      "1": "tidur di tenda untuk pertama kali"
+    },
+    "screen": {
+      "0": "tidur lebih sedikit",
+      "1": "berteman secara online",
+      "2": "jadi jago sebuah game"
+    },
+    "sibling": {
+      "0": "awalnya merasa cemburu",
+      "1": "jadi dekat dengan adiknya",
+      "2": "ikut mengasuh bayinya"
+    },
+    "sleep": {
+      "0": "paginya lebih mudah",
+      "1": "lebih mudah fokus di sekolah"
+    },
+    "sport": {
+      "0": "berteman di tim",
+      "1": "cedera olahraga lalu pulih",
+      "2": "menang pertandingan yang masih diceritakan"
+    },
+    "strict": {
+      "0": "mulai memendam hal sendiri",
+      "1": "jadi sangat pandai mengikuti aturan"
+    },
+    "summer": {
+      "0": "masih mengenangnya sebagai liburan terbaik",
+      "1": "mendapat teman seumur hidup musim itu"
+    },
+    "teacher": {
+      "0": "menemukan pelajaran yang mereka sukai",
+      "1": "mulai percaya bisa melakukan hal sulit"
+    },
+    "travel": {
+      "0": "mengenal kata-kata dari banyak bahasa",
+      "1": "kadang rindu rumah",
+      "2": "belajar merasa betah di mana saja"
+    },
+    "volunteer": {
+      "0": "mendapat ucapan terima kasih dari orang yang dibantu",
+      "1": "mulai memimpin relawan lain"
+    }
+  },
+  "home": {
+    "baby": {
+      "help": {
+        "easy": "Bayi yang tenang dan riang. Kebanyakan tetap sedikit lebih tenang saat tumbuh.",
+        "energy": "Ceria, ramai, dan tak bisa diam. Banyak yang tetap supel.",
+        "mixed": "Ada yang santai, ada yang pemalu, ada yang penuh energi.",
+        "slow": "Awalnya hati-hati dengan orang dan tempat baru. Banyak yang tetap sedikit pendiam."
+      }
+    },
+    "home": {
+      "help": {
+        "busy": "Selalu ada kegiatan: sedikit lebih supel, sedikit kurang rapi.",
+        "stable": "Rumah yang damai.",
+        "unstable": "Orang dewasa sering bertengkar. Anak-anak cenderung lebih cemas."
+      }
+    },
+    "money": {
+      "help": {
+        "comfy": "Cukup untuk hal tambahan seperti jalan-jalan dan les.",
+        "ok": "Cukup untuk kebutuhan.",
+        "tight": "Uang sering kurang. Anak-anak sedikit lebih cemas."
+      }
+    },
+    "place": {
+      "help": {
+        "city": "Banyak orang dan hal baru di sekitar.",
+        "country": "Tenang, dengan banyak alam.",
+        "town": "Sedikit dari keduanya."
+      }
+    },
+    "school": {
+      "help": {
+        "crowded": "Kelas besar; guru hanya punya sedikit waktu untuk tiap anak.",
+        "great": "Guru yang membangkitkan minat: sedikit lebih ingin tahu dan teratur.",
+        "ordinary": "Sekolah biasa."
+      }
+    },
+    "screens": {
+      "help": {
+        "none": "Layar kapan saja: sedikit kurang teratur, lebih cemas.",
+        "some": "Sedikit waktu layar setiap hari.",
+        "strict": "Layar hanya sesekali."
+      }
+    },
+    "shape": {
+      "help": {
+        "big": "Kakek-nenek, om, atau tante juga tinggal bersama: banyak bantuan.",
+        "one": "Satu orang tua mengurus semuanya: anak-anak sering ikut membantu.",
+        "two": "Ayah dan ibu, dua ibu, atau dua ayah, tinggal bersama di rumah.",
+        "twohomes": "Orang tua tinggal terpisah; anak-anak bolak-balik."
+      }
+    },
+    "sib": {
+      "help": {
+        "0": "Anak tunggal: sedikit kurang terlatih berbagi.",
+        "1": "Ada adik untuk dijaga: sedikit lebih baik hati, sedikit lebih teratur.",
+        "2": "Rumah ramai penuh anak: lebih banyak berbagi, lebih banyak mengobrol.",
+        "older": "Ada kakak untuk dijadikan teladan."
+      }
+    },
+    "style": {
+      "help": {
+        "authoritarian": "Banyak aturan, sedikit kehangatan. Anak cenderung teratur tapi lebih cemas.",
+        "authoritative": "Penuh kasih dan aturan jelas. Anak cenderung sedikit lebih teratur dan tenang.",
+        "neglectful": "Orang tua sibuk dan berjarak. Anak cenderung lebih cemas dan kurang teratur.",
+        "permissive": "Penuh kasih, sedikit aturan. Anak cenderung supel tapi kurang teratur."
+      }
+    },
+    "time": {
+      "help": {
+        "long": "Lebih sedikit waktu bersama di rumah.",
+        "lots": "Banyak waktu bermain dan mengobrol bersama: sedikit lebih tenang dan baik hati.",
+        "ordinary": "Ada waktu bersama hampir setiap hari."
+      }
+    }
+  },
+  "kid": {
+    "between": "di tengah-tengah untuk hampir semua hal",
+    "betweenLess": "di tengah-tengah untuk hampir semua hal, sedikit kurang {trait}",
+    "betweenMore": "di tengah-tengah untuk hampir semua hal, sedikit lebih {trait}",
+    "line": "{name}, {age}: {body}.",
+    "short": "{a}, {b}",
+    "three": "{a} dan {b}, {c}"
+  },
+  "kind": {
+    "activity": "kegiatan",
+    "change": "perubahan",
+    "everyday": "sehari-hari",
+    "home": "rumah",
+    "luck": "keberuntungan",
+    "milestone": "tonggak",
+    "move": "perubahan besar",
+    "ripple": "yang menyusul",
+    "school": "sekolah",
+    "together": "bersamaan"
+  },
+  "len": {
+    "good": "selamanya",
+    "once": "sekali saja",
+    "year": "sekitar setahun",
+    "years": "sekitar {n} tahun"
+  },
+  "life": {
+    "0": "Masa kecil",
+    "1": "Masa sekolah",
+    "2": "Masa remaja",
+    "3": "Rumah pertama",
+    "4": "Rumah sendiri"
+  },
+  "meta": {
+    "hint": "Tekan putar untuk melihat mereka tumbuh, lalu coba sebuah perubahan.",
+    "intro": "Dua orang tua yang sama bisa punya banyak anak yang berbeda. Inilah 120 di antaranya, tumbuh dari usia 1 sampai 60. Gen, rumah, hal-hal yang terjadi, dan keberuntungan semuanya membentuk siapa mereka nanti. Tekan putar, lalu coba perubahan: semuanya bertambah, dan kamu memilih kapan terjadi dan berapa lama. Ketuk wajah di \"Semua 120 anak\" untuk mengikuti satu anak.",
+    "name": "Anak",
+    "sub": "Akan jadi siapa mereka?"
+  },
+  "metric": {
+    "A": {
+      "label": "Baik hati"
+    },
+    "A_hi": {
+      "label": "Baik hati: batas atas kebanyakan anak"
+    },
+    "A_lo": {
+      "label": "Baik hati: batas bawah kebanyakan anak"
+    },
+    "C": {
+      "label": "Teratur"
+    },
+    "C_hi": {
+      "label": "Teratur: batas atas kebanyakan anak"
+    },
+    "C_lo": {
+      "label": "Teratur: batas bawah kebanyakan anak"
+    },
+    "Calm": {
+      "label": "Tenang"
+    },
+    "Calm_hi": {
+      "label": "Tenang: batas atas kebanyakan anak"
+    },
+    "Calm_lo": {
+      "label": "Tenang: batas bawah kebanyakan anak"
+    },
+    "E": {
+      "label": "Supel"
+    },
+    "E_hi": {
+      "label": "Supel: batas atas kebanyakan anak"
+    },
+    "E_lo": {
+      "label": "Supel: batas bawah kebanyakan anak"
+    },
+    "O": {
+      "label": "Ingin tahu"
+    },
+    "O_hi": {
+      "label": "Ingin tahu: batas atas kebanyakan anak"
+    },
+    "O_lo": {
+      "label": "Ingin tahu: batas bawah kebanyakan anak"
+    },
+    "b_calm": {
+      "label": "Mungkin tetap tenang sebelum ujian (dari 100)",
+      "unit": "anak"
+    },
+    "b_food": {
+      "label": "Mungkin mencoba makanan yang belum pernah dimakan (dari 100)",
+      "unit": "anak"
+    },
+    "b_hand": {
+      "label": "Mungkin mengacungkan tangan di kelas (dari 100)",
+      "unit": "anak"
+    },
+    "b_help": {
+      "label": "Mungkin membantu murid baru di sekolah (dari 100)",
+      "unit": "anak"
+    },
+    "b_proj": {
+      "label": "Mungkin menyelesaikan tugas sekolah yang panjang (dari 100)",
+      "unit": "anak"
+    },
+    "b_tidy": {
+      "label": "Mungkin menjaga kamarnya rapi (dari 100)",
+      "unit": "anak"
+    },
+    "hiA": {
+      "label": "sangat baik hati (dari 120)",
+      "unit": "anak"
+    },
+    "hiC": {
+      "label": "sangat teratur (dari 120)",
+      "unit": "anak"
+    },
+    "hiCalm": {
+      "label": "sangat tenang (dari 120)",
+      "unit": "anak"
+    },
+    "hiE": {
+      "label": "sangat supel (dari 120)",
+      "unit": "anak"
+    },
+    "hiO": {
+      "label": "sangat ingin tahu (dari 120)",
+      "unit": "anak"
+    },
+    "loA": {
+      "label": "sangat keras kepala (dari 120)",
+      "unit": "anak"
+    },
+    "loC": {
+      "label": "sangat berantakan (dari 120)",
+      "unit": "anak"
+    },
+    "loCalm": {
+      "label": "sangat pencemas (dari 120)",
+      "unit": "anak"
+    },
+    "loE": {
+      "label": "sangat pemalu (dari 120)",
+      "unit": "anak"
+    },
+    "loO": {
+      "label": "bertahan pada yang dikenal (dari 120)",
+      "unit": "anak"
+    }
+  },
+  "more": {
+    "A": {
+      "0": "{d, select, bit {sedikit kurang baik hati} much {jauh kurang baik hati} other {kurang baik hati}}",
+      "1": "{d, select, bit {sedikit lebih baik hati} much {jauh lebih baik hati} other {lebih baik hati}}"
+    },
+    "C": {
+      "0": "{d, select, bit {sedikit kurang teratur} much {jauh kurang teratur} other {kurang teratur}}",
+      "1": "{d, select, bit {sedikit lebih teratur} much {jauh lebih teratur} other {lebih teratur}}"
+    },
+    "Calm": {
+      "0": "{d, select, bit {sedikit lebih cemas} much {jauh lebih cemas} other {lebih cemas}}",
+      "1": "{d, select, bit {sedikit lebih tenang} much {jauh lebih tenang} other {lebih tenang}}"
+    },
+    "E": {
+      "0": "{d, select, bit {sedikit lebih pendiam} much {jauh lebih pendiam} other {lebih pendiam}}",
+      "1": "{d, select, bit {sedikit lebih supel} much {jauh lebih supel} other {lebih supel}}"
+    },
+    "O": {
+      "0": "{d, select, bit {sedikit kurang ingin tahu} much {jauh kurang ingin tahu} other {kurang ingin tahu}}",
+      "1": "{d, select, bit {sedikit lebih ingin tahu} much {jauh lebih ingin tahu} other {lebih ingin tahu}}"
+    }
+  },
+  "name": {
+    "own": "Keluargamu sendiri",
+    "ownFrom": "Keluargamu sendiri (berdasarkan {from})"
+  },
+  "part": {
+    "chance": "Kebetulan",
+    "genes": "Gen",
+    "home": "Rumah",
+    "life": "Peristiwa hidup",
+    "pct": "{part} {n} %"
+  },
+  "partLc": {
+    "chance": "kebetulan",
+    "genes": "gen",
+    "home": "rumah",
+    "life": "peristiwa hidup"
+  },
+  "phrase": {
+    "A": {
+      "0": "blak-blakan",
+      "1": "baik pada orang lain"
+    },
+    "C": {
+      "0": "agak berantakan",
+      "1": "menjaga semuanya rapi"
+    },
+    "Calm": {
+      "0": "kadang cemas",
+      "1": "tetap tenang"
+    },
+    "E": {
+      "0": "suka waktu tenang",
+      "1": "suka bersama orang"
+    },
+    "O": {
+      "0": "suka hal yang dikenal",
+      "1": "ingin tahu segalanya"
+    }
+  },
+  "science": {
+    "A": "keramahan (agreeableness)",
+    "C": "kehati-hatian (conscientiousness)",
+    "Calm": "neurotisisme rendah",
+    "E": "ekstraversi",
+    "O": "keterbukaan (openness)"
+  },
+  "speed": {
+    "0": "½ thn/dtk",
+    "1": "1 thn/dtk",
+    "2": "2 thn/dtk",
+    "3": "5 thn/dtk"
+  },
+  "stage": {
+    "age": "Usia {age} — {cap}",
+    "all": "Semua 120 anak",
+    "back": "Kembali ke anak yang biasa",
+    "between": "di tengah-tengah",
+    "crowdHint": "{trait} · tiap wajah adalah satu kemungkinan anak · ketuk untuk berkenalan",
+    "hover": "{name}: {short} · ketuk untuk berkenalan",
+    "of100": "{n} dari 100",
+    "one": "Satu anak",
+    "oneOf": "{name}, satu dari 120",
+    "pileTrait": "Sifat yang ditunjukkan tumpukan",
+    "planned": "Dijadwalkan di usia {age} — {cap}",
+    "typical": "Anak yang paling biasa dari 120",
+    "view": "Yang ditampilkan panggung",
+    "was": "tadinya {n}",
+    "with": "dengan perubahanmu",
+    "without": "tanpa"
+  },
+  "step": {
+    "A": {
+      "0": "sangat keras kepala",
+      "1": "agak keras kepala",
+      "2": "di tengah-tengah",
+      "3": "cukup baik hati",
+      "4": "sangat baik hati"
+    },
+    "C": {
+      "0": "sangat berantakan",
+      "1": "agak berantakan",
+      "2": "di tengah-tengah",
+      "3": "agak teratur",
+      "4": "sangat teratur"
+    },
+    "Calm": {
+      "0": "sangat pencemas",
+      "1": "agak cemas",
+      "2": "di tengah-tengah",
+      "3": "cukup tenang",
+      "4": "sangat tenang"
+    },
+    "E": {
+      "0": "sangat pemalu",
+      "1": "agak pemalu",
+      "2": "di tengah-tengah",
+      "3": "agak supel",
+      "4": "sangat supel"
+    },
+    "O": {
+      "0": "bertahan pada yang dikenal",
+      "1": "kurang ingin tahu",
+      "2": "di tengah-tengah",
+      "3": "agak ingin tahu",
+      "4": "sangat ingin tahu"
+    }
+  },
+  "story": {
+    "compared": "Dibanding anak-anak yang sama tanpa perubahan, di usia {age}:",
+    "differ": "Mereka tetap sangat berbeda: {hi} dari 100 {high}, sementara {lo} {low}.",
+    "differCalm": "Mereka tetap sangat berbeda: {hi} dari 100 {high}, sementara {lo} sangat pencemas.",
+    "fade": {
+      "bounced": ", lalu kebanyakan pulih kembali",
+      "faded": ", dan sebagian besar memudar kemudian",
+      "stopped": ", sampai berhenti di usia {n}"
+    },
+    "little": "Anak kecil pun sudah berbeda: ada yang berani, ada yang hati-hati.",
+    "middle": "Usia {age}: kebanyakan dari 120 anak ini berada di tengah-tengah untuk tiap sifat.",
+    "planned": "Dijadwalkan di usia {age}: {cap}.",
+    "rip": ", dan {n} dari 100 {have}",
+    "sentence": "{s}.",
+    "settled": "Sekarang kepribadian sudah cukup mapan. Ia terus berubah perlahan sepanjang hidup.",
+    "siblings": "Saudara kandung tetap berbeda: masing-masing dapat campuran gen dan keberuntungan yang berbeda.",
+    "style": {
+      "authoritarian": "Orang tua yang ketat membuat kebanyakan anak sedikit lebih teratur, tapi juga lebih cemas.",
+      "authoritative": "Orang tua yang hangat dan tegas membantu kebanyakan anak merasa lebih tenang dan teratur.",
+      "neglectful": "Dengan orang tua yang berjarak, banyak anak lebih cemas dan kurang teratur.",
+      "permissive": "Orang tua yang serba boleh: anak cenderung lebih supel, tapi kurang teratur."
+    },
+    "teen": "Masa remaja: kecemasan naik dan kerapian turun untuk sementara. Itu wajar.",
+    "they": "mereka {list}.",
+    "theySame": "sejauh ini mereka kurang lebih sama.",
+    "top": "Usia {age}: kebanyakan dari 120 anak ini {list}.",
+    "when": "Saat {past} di usia {at}, kebanyakan anak menjadi {effect}{fade}{rip}."
+  },
+  "time": {
+    "age": "Usia {n}"
+  },
+  "tl": {
+    "all": "Semua",
+    "alt": "Hanya dengan perubahanmu",
+    "base": "Hanya tanpa perubahan",
+    "both": "Keduanya",
+    "changes": "Perubahan",
+    "effects": "Dampak",
+    "growing": "Tumbuh besar",
+    "label": "Tampilkan di linimasa",
+    "none": "Belum ada. Tekan putar, atau coba sebuah perubahan.",
+    "noneKind": "Belum ada yang seperti ini."
+  },
+  "track": {
+    "A": {
+      "0": "semaunya",
+      "1": "baik hati"
+    },
+    "C": {
+      "0": "berantakan",
+      "1": "teratur"
+    },
+    "Calm": {
+      "0": "cemas",
+      "1": "tenang"
+    },
+    "E": {
+      "0": "pemalu",
+      "1": "supel"
+    },
+    "O": {
+      "0": "suka yang biasa",
+      "1": "ingin tahu"
+    }
+  },
+  "trait": {
+    "A": "Baik hati",
+    "C": "Teratur",
+    "Calm": "Tenang",
+    "E": "Supel",
+    "O": "Ingin tahu"
+  },
+  "traitLc": {
+    "A": "baik hati",
+    "C": "teratur",
+    "Calm": "tenang",
+    "E": "supel",
+    "O": "ingin tahu"
+  },
+  "ui": {
+    "age": "usia {n}",
+    "ages": "usia {list}",
+    "another": "Kenalan dengan yang lain",
+    "askTabs": "Tanya",
+    "atAge": "Di usia {n}",
+    "atAgePast": "Di usia {n} (sudah lewat: sekarang)",
+    "bestAges": "paling kuat sekitar usia {a}–{b}",
+    "changesEmpty": "Setiap perubahan yang kamu buat muncul di sini dengan centang, jadi bisa kamu keluarkan dan masukkan lagi.",
+    "done": "Selesai",
+    "earlier": "Lebih awal",
+    "earlierAria": "Satu tahun lebih awal",
+    "edit": "Ubah",
+    "fromAge": "sejak {n}",
+    "glossLine": "{meaning} Misalnya, anak yang {a}, atau {b}.",
+    "glossTitle": "Apa arti kelima kata ini?",
+    "happening": "Apa yang terjadi",
+    "kidAge": "{name}, usia {age}",
+    "kidN": "Anak #{n} dari 120",
+    "later": "Lebih lambat",
+    "laterAria": "Satu tahun lebih lambat",
+    "made": "{n} dibuat",
+    "madeTimes": "dibuat {n} kali",
+    "meet": "Kenalan dengan anaknya",
+    "meetNote": "Orang tua sama, rumah sama, tapi tiap anak tetap berbeda.",
+    "mostTypical": "Anak yang paling biasa",
+    "nextAt": "Klik berikutnya terjadi di usia {n}.",
+    "nextNow": "Klik berikutnya terjadi sekarang.",
+    "nowAge": "Sekarang (usia {n})",
+    "parents": "Orang tuanya",
+    "parentsNote": "Tiap anak dapat campuran berbeda dari kedua orang tua. Mengubah keluarga akan memulai ulang.",
+    "pickFamily": "Pilih keluarga",
+    "plannedFor": "{name} · dijadwalkan di {n}",
+    "rulerEmpty": "Perubahanmu akan muncul di sini, di garis dari lahir sampai 18.",
+    "rulerLabel": "{cap}, usia {age}, {len}",
+    "rulerLabelPlanned": "{cap}, usia {age}, {len}, dijadwalkan: tombol panah memindahkannya",
+    "rulerPanel": "{name} · usia {age} · {len} · {state}",
+    "science": "Tentang sainsnya",
+    "science1": "Ilmuwan sering menggambarkan kepribadian dengan lima sifat, disebut Big Five. Di sini namanya dibuat sederhana:",
+    "science2": "Angkanya kasar dan terinspirasi riset, bukan pasti. Itu menggambarkan rata-rata, bukan takdir: anak sungguhan tidak bisa diramal oleh model.",
+    "scienceItem": "{trait} adalah {science}: dari “{a}” sampai “{b}”.",
+    "state": {
+      "going": "berjalan",
+      "over": "selesai",
+      "planned": "dijadwalkan",
+      "stopped": "berhenti di {n}"
+    },
+    "stopNow": "Hentikan sekarang",
+    "tab": {
+      "changes": "Perubahan",
+      "family": "Keluarga"
+    },
+    "things": "Hal yang bisa terjadi",
+    "thingsHint": "Semuanya bertambah. Pilih kapan, seberapa besar, dan berapa lama, lalu klik.",
+    "toTry": "{n} untuk dicoba",
+    "tuneNote": "Pengaturan bawaan dan kebetulan memulai ulang dunia. Pengaturan perubahan berlaku saat klik berikutnya.",
+    "undo": "Urungkan",
+    "usualLen": "Tiap perubahan berlangsung selama biasanya.",
+    "usually": "Biasanya: {what}",
+    "variables": "Variabel",
+    "whatChanged": "Apa yang berubah",
+    "whyBar": "{trait}: {list}",
+    "whyIntro": "Dari semua perbedaan di antara 120 saudara kandung ini, seberapa banyak berasal dari tiap bagian:",
+    "whyNote": "Gen: tiap anak dapat campuran berbeda dari orang tua. Rumah: rumah yang sama memengaruhi tiap anak sedikit berbeda. Peristiwa hidup: perubahanmu dan suka duka sehari-hari. Kebetulan: semua sisanya.",
+    "whyTitle": "Kenapa anak-anak ini berbeda?",
+    "yourChanges": "Perubahanmu"
+  },
+  "whatif": {
+    "authoritative": "Hangat dan tegas",
+    "bestfriend": "Sahabat",
+    "bullied": "Dirundung",
+    "carer": "Mengasuh adik",
+    "chores": "Tugas di rumah",
+    "coding": "Klub coding",
+    "countryside": "Pindah ke desa",
+    "dinners": "Makan malam keluarga",
+    "divorce": "Orang tua berpisah",
+    "drama": "Klub teater",
+    "exam": "Gagal ujian",
+    "fallout": "Bertengkar dengan teman",
+    "firstlove": "Cinta pertama",
+    "grandparent": "Kakek/nenek ikut tinggal",
+    "illness": "Orang tua sakit",
+    "job": "Kerja akhir pekan",
+    "language": "Bahasa kedua",
+    "leader": "Ketua kelas",
+    "longhours": "Kerja lembur",
+    "mentor": "Seorang mentor",
+    "money": "Uang seret",
+    "move": "Pindah ke luar negeri",
+    "music": "Alat musik",
+    "nature": "Alam terbuka",
+    "newschool": "Sekolah baru",
+    "pet": "Seekor anjing",
+    "prize": "Menang lomba",
+    "reading": "Membaca",
+    "scouts": "Pramuka",
+    "screen": "Banyak layar",
+    "sibling": "Adik kecil",
+    "sleep": "Cukup tidur",
+    "sport": "Olahraga tim",
+    "strict": "Lebih ketat",
+    "summer": "Liburan terbaik",
+    "teacher": "Guru hebat",
+    "travel": "Setahun berkelana",
+    "volunteer": "Jadi relawan"
+  }
+}

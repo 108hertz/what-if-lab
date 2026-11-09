@@ -1,0 +1,690 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "cap": {
+    "bigger": "%{n} daha büyük",
+    "coatThicker": "{coat} daha kalın",
+    "coatThinner": "{coat} daha ince",
+    "earsLess": "kulaklar daha küçük (daha az fark eder)",
+    "earsMore": "kulaklar daha büyük (daha çok fark eder)",
+    "eyesLess": "gözler daha küçük (daha az fark eder)",
+    "eyesMore": "gözler daha büyük (daha çok fark eder)",
+    "faster": "%{n} daha hızlı",
+    "none": "Şu anda burada {many} yaşamıyor.",
+    "now": "Şimdi: {list}.",
+    "same": "0. gündekiyle hemen hemen aynı. Bedenler birçok kuşak boyunca değişir.",
+    "slower": "%{n} daha yavaş",
+    "smaller": "%{n} daha küçük"
+  },
+  "chart": {
+    "ariaBodies": "Zaman içinde hız, boyut, duyular ve örtü: {many}",
+    "ariaCounts": "Zaman içinde her hayvandan kaç tane olduğu",
+    "asFast": "aynı hızda",
+    "bigger": "%{n} daha büyük",
+    "bodies": "Bedenleri nasıl değişti",
+    "bodyDay0": "0. güne göre tipik {one}: 1,00× değişiklik yok demek, 1'in üstü daha fazla demek (daha hızlı, daha büyük, daha keskin duyular, daha kalın {coat}).",
+    "bodyVs": "Değişikliklerinle tipik {one}, değişiklik olmadan hâline göre {speed} ve {size}.",
+    "changes": "DEĞİŞİKLİKLER",
+    "counts": "Her birinden kaç tane",
+    "diff": "Değişikliklerinle, değişiklik olmadan hâline göre {be, select, is {şu fark var} other {şu farklar var}}: {list} ({day}. gün).",
+    "fasterThan": "%{n} daha hızlı",
+    "intro": "Burada her hayvandan gün gün kaç tane yaşadığı. Bu dünyayla karşılaştırmak için bir değişiklik yap.",
+    "label": "{name} {n}",
+    "noChange": "DEĞİŞİKLİK YOK",
+    "same": "Değişikliklerinle sayılar şimdilik değişiklik olmadan hâliyle aynı ({day}. gün).",
+    "sameSize": "aynı boyutta",
+    "slowerThan": "%{n} daha yavaş",
+    "smaller": "%{n} daha küçük",
+    "unitAnimals": "hayvan",
+    "unitDay0": "× 0. gün",
+    "view": "Grafik görünümü",
+    "whichAnimal": "Hangi hayvan",
+    "withChanges": "DEĞİŞİKLİKLERLE"
+  },
+  "cmp": {
+    "change": "değişikliklerin olmadan hâline göre",
+    "day0": "0. güne göre"
+  },
+  "cover": {
+    "land": "çalılıklar",
+    "water": "deniz yosunu ve kayalar"
+  },
+  "ctl": {
+    "dT": {
+      "label": "Sıcaklık değişimi",
+      "unit": "°C"
+    },
+    "food": {
+      "label": "Yiyecek büyümesi",
+      "unit": "normalin %'si"
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Değişiklik ayarları (bir sonraki tıklamanda kullanılır)",
+      "people-and-babies": "İnsanlar ve yavrular",
+      "the-place": "Yer"
+    },
+    "hab": {
+      "label": "Dolaşma alanı",
+      "unit": "toprağın %'si"
+    },
+    "habitat": {
+      "label": "Yaşam alanı",
+      "opt": {
+        "desert": "Çöl",
+        "forest": "Orman ve tundra",
+        "ice": "Deniz buzu",
+        "meadow": "Çayır",
+        "ocean": "Okyanus",
+        "savanna": "Savan"
+      }
+    },
+    "human": {
+      "label": "İnsan avcılığı",
+      "opt": {
+        "0": "Yok",
+        "10": "Biraz",
+        "30": "Orta",
+        "60": "Çok"
+      }
+    },
+    "mut": {
+      "label": "Yavrular ne kadar farklı",
+      "opt": {
+        "big": "Çok (hızlı değişim)",
+        "normal": "Normal",
+        "small": "Biraz (yavaş değişim)"
+      }
+    },
+    "s_new": {
+      "label": "Yeni gelenler",
+      "unit": "hayvan"
+    },
+    "s_sick": {
+      "label": "Hastalığın gücü",
+      "unit": "% hastalanıp ölür"
+    },
+    "seasons": {
+      "label": "Mevsimler",
+      "opt": {
+        "gentle": "Yumuşak",
+        "off": "Kapalı: yiyecek eşit büyür",
+        "strong": "Sert: kıtlık kışları"
+      }
+    }
+  },
+  "ev": {
+    "add": "{n} yeni hayvan geliyor: {many}",
+    "bigger": "{many} ortalama %20 büyüyor",
+    "boom": "{one} sayısı iki katına çıktı",
+    "cool": "Buzul çağı başlıyor: 4 °C daha soğuk, daha az yiyecek",
+    "disease": "Salgın hastalık {n} hayvanı öldürüyor: {many}",
+    "drought": "Bir yıl boyunca yağmur yağmıyor: yiyecek yarıya iniyor",
+    "faster": "Doğal seçilim: ortalama {one} artık %20 daha hızlı",
+    "fire": "Bir orman yangını toprağın üçte birini yakıyor",
+    "habitat": "Yaşam alanının yarısı tarlalara ve yollara gidiyor",
+    "hunt": "İnsanlar {many} için ava çıkmaya başlıyor",
+    "invasive": "Hızlı üreyen {n} hayvan geliyor: {many}",
+    "move": "Zıt iklime taşındılar: her şey çok daha fazla enerji gerektiriyor",
+    "noRoom": "Altıncı bir hayvan türüne yer yok",
+    "noneToRemove": "Burada çıkarılacak {many} yok",
+    "out": "{many} burada tükendi: çoğu {why}",
+    "rain": "Bol yağmurlu yıllar başlıyor: yiyecek daha hızlı büyüyor",
+    "removed": "Tüm {many} çıkarıldı",
+    "reserve": "Koruma alanı: avlanma duruyor, bitki örtüsü toparlanıyor",
+    "senses": "{many} artık yiyeceği ve tehlikeyi %20 daha uzaktan fark ediyor",
+    "slower": "Doğal seçilim: {many} enerji tasarrufu için yavaşlıyor",
+    "smaller": "{many} ortalamada küçülüyor",
+    "thicker": "Örtüler kalınlaşıyor: {many} artık %20 daha fazla {coat} taşıyor",
+    "thinner": "Örtüler inceliyor: {many} artık %20 daha az {coat} taşıyor",
+    "wanders": "Dışarıdan bir çift hayvan geliyor: {many}",
+    "warm": "İklim 3 °C ısınıyor: daha fazla enerji gerekiyor, yiyecek azalıyor"
+  },
+  "facts": {
+    "eats": "Ne yer",
+    "family": "Aile yaşamı",
+    "lifespan": "Ömür",
+    "lives": "Nerede yaşar",
+    "note": "Bu modelde bir gün kısadır: hayvanlar yıllar değil haftalar yaşar, böylece birçok kuşağı izleyebilirsin.",
+    "role": "Doğadaki rolü",
+    "title": "Hayvanlarla tanış"
+  },
+  "food": {
+    "desert": "böcekler ve tohumlar",
+    "forest": "ot ve yapraklar",
+    "ice": "kril",
+    "meadow": "çiçekler",
+    "ocean": "kril ve küçük balıklar",
+    "savanna": "ot"
+  },
+  "group": {
+    "0": "Hayvanlar",
+    "1": "İklim",
+    "2": "İnsanlar"
+  },
+  "meta": {
+    "hint": "Her hayvan biraz farklı. En iyi uyum sağlayanlar daha çok yavru yapar. Oynat'a bas ve bir değişiklik seç.",
+    "intro": "Beş türe kadar hayvan aynı yeri paylaşır. Her hayvan biraz farklıdır; en iyi uyum sağlayanlar daha çok yavru yapar, böylece bedenler zamanla değişir. Bir dünya seç ya da kendi dünyanı kur, sonra değişiklik yap: birbirine eklenirler.",
+    "name": "Hayvanlar",
+    "sub": "Evrim"
+  },
+  "metric": {
+    "co0": {
+      "label": "Örtü (hayvan 1)",
+      "unit": "× 0. gün"
+    },
+    "co1": {
+      "label": "Örtü (hayvan 2)",
+      "unit": "× 0. gün"
+    },
+    "co2": {
+      "label": "Örtü (hayvan 3)",
+      "unit": "× 0. gün"
+    },
+    "co3": {
+      "label": "Örtü (hayvan 4)",
+      "unit": "× 0. gün"
+    },
+    "co4": {
+      "label": "Örtü (hayvan 5)",
+      "unit": "× 0. gün"
+    },
+    "food": {
+      "label": "Yiyecek",
+      "unit": "parça"
+    },
+    "n0": {
+      "label": "Hayvan 1",
+      "unit": "hayvan"
+    },
+    "n1": {
+      "label": "Hayvan 2",
+      "unit": "hayvan"
+    },
+    "n2": {
+      "label": "Hayvan 3",
+      "unit": "hayvan"
+    },
+    "n3": {
+      "label": "Hayvan 4",
+      "unit": "hayvan"
+    },
+    "n4": {
+      "label": "Hayvan 5",
+      "unit": "hayvan"
+    },
+    "se0": {
+      "label": "Duyular (hayvan 1)",
+      "unit": "× 0. gün"
+    },
+    "se1": {
+      "label": "Duyular (hayvan 2)",
+      "unit": "× 0. gün"
+    },
+    "se2": {
+      "label": "Duyular (hayvan 3)",
+      "unit": "× 0. gün"
+    },
+    "se3": {
+      "label": "Duyular (hayvan 4)",
+      "unit": "× 0. gün"
+    },
+    "se4": {
+      "label": "Duyular (hayvan 5)",
+      "unit": "× 0. gün"
+    },
+    "sp0": {
+      "label": "Hız (hayvan 1)",
+      "unit": "× 0. gün"
+    },
+    "sp1": {
+      "label": "Hız (hayvan 2)",
+      "unit": "× 0. gün"
+    },
+    "sp2": {
+      "label": "Hız (hayvan 3)",
+      "unit": "× 0. gün"
+    },
+    "sp3": {
+      "label": "Hız (hayvan 4)",
+      "unit": "× 0. gün"
+    },
+    "sp4": {
+      "label": "Hız (hayvan 5)",
+      "unit": "× 0. gün"
+    },
+    "sz0": {
+      "label": "Boyut (hayvan 1)",
+      "unit": "× 0. gün"
+    },
+    "sz1": {
+      "label": "Boyut (hayvan 2)",
+      "unit": "× 0. gün"
+    },
+    "sz2": {
+      "label": "Boyut (hayvan 3)",
+      "unit": "× 0. gün"
+    },
+    "sz3": {
+      "label": "Boyut (hayvan 4)",
+      "unit": "× 0. gün"
+    },
+    "sz4": {
+      "label": "Boyut (hayvan 5)",
+      "unit": "× 0. gün"
+    }
+  },
+  "name": {
+    "own": "Kendi dünyan",
+    "ownFrom": "Kendi dünyan ({from} temelli)"
+  },
+  "q": {
+    "add": "Ya {many} buraya gelirse?",
+    "addMore": "Ya daha fazla {many} gelirse?",
+    "cool": "Ya bir buzul çağı başlarsa?",
+    "disease": "Ya {many} arasında bir hastalık yayılırsa?",
+    "drought": "Ya bir yıl boyunca yağmur yağmazsa?",
+    "fire": "Ya bir orman yangını toprağın üçte birini yakarsa?",
+    "habitat": "Ya toprağın yarısı tarla ve yol olursa?",
+    "hunt": "Ya insanlar {many} için ava çıkarsa?",
+    "invasive": "Ya hızlı üreyen bir yeni gelen ortaya çıkarsa?",
+    "move": "Ya zıt bir iklime taşınırlarsa?",
+    "rain": "Ya yıllarca bol yağmur yağarsa?",
+    "remove": "Ya {many} yok olursa?",
+    "reserve": "Ya burası koruma alanı olursa?",
+    "warm": "Ya hava 3 °C ısınırsa?"
+  },
+  "sp": {
+    "bear": {
+      "coat": "kürk",
+      "food": "Böğürtlen, kök, somon, bazen geyik yavrusu",
+      "life": "20–25 yıl",
+      "many": "ayılar",
+      "name": "Boz ayı",
+      "one": "ayı",
+      "pl": "Boz ayılar",
+      "role": "Somonları nehirlerden ormana taşıyarak ağaçları besler.",
+      "social": "Çoğunlukla yalnız. Anneler yavrularını iki üç yıl yanında tutar.",
+      "where": "Kuzey Amerika, Avrupa ve Asya'nın ormanları ve dağları"
+    },
+    "beaver": {
+      "coat": "kürk",
+      "food": "Ağaç kabuğu, dal ve su bitkileri",
+      "life": "10–12 yıl",
+      "many": "kunduzlar",
+      "name": "Kunduz",
+      "one": "kunduz",
+      "pl": "Kunduzlar",
+      "role": "Gölet oluşturan barajlar yapar; balıklara, kurbağalara ve kuşlara yuva olur.",
+      "social": "Anne, baba ve yavrulardan oluşan aileler tek bir yuvayı paylaşır.",
+      "where": "Kuzey Amerika ve Avrupa'nın nehirleri ve gölleri"
+    },
+    "bee": {
+      "coat": "tüy",
+      "food": "Çiçeklerin nektarı ve poleni",
+      "life": "İşçiler yaklaşık 6 hafta, kraliçe 2–5 yıl",
+      "many": "arılar",
+      "name": "Bal arısı",
+      "one": "arı",
+      "pl": "Bal arıları",
+      "role": "İnsanların yediği besinlerin yaklaşık üçte birini tozlaştırır.",
+      "social": "20.000–60.000 bireylik koloniler: bir kraliçe ve yaşa göre işi değişen çok sayıda işçi.",
+      "where": "Dünyanın her yerinde, yabani ya da arıcıların elinde"
+    },
+    "cheetah": {
+      "coat": "kürk",
+      "food": "Ceylan ve yabani tavşan",
+      "life": "10–12 yıl",
+      "many": "çitalar",
+      "name": "Çita",
+      "one": "çita",
+      "pl": "Çitalar",
+      "role": "Karadaki en hızlı koşucu: saatte 110 km'ye kadar, ama yalnızca kısa bir depar için.",
+      "social": "Anneler yavruları tek başına büyütür; erkek kardeşler çoğu zaman ömür boyu birlikte kalır.",
+      "where": "Afrika'nın açık otlakları, birkaçı da İran'da"
+    },
+    "elephant": {
+      "coat": "vücut yağı",
+      "food": "Ot, ağaç kabuğu ve meyve: günde yaklaşık 150 kg",
+      "life": "60–70 yıl",
+      "many": "filler",
+      "name": "Afrika fili",
+      "one": "fil",
+      "pl": "Filler",
+      "role": "Ormanlık alanları açar, su çukurları kazar ve tohum yayar.",
+      "social": "En yaşlı dişinin, yani anaerkin önderliğinde akraba dişilerden oluşan sürüler. Erkekler 13 yaş civarında ayrılır.",
+      "where": "Afrika'nın savanları ve ormanları"
+    },
+    "elk": {
+      "coat": "kürk",
+      "food": "Ot, yaprak ve ağaç kabuğu",
+      "life": "10–13 yıl",
+      "many": "geyikler",
+      "name": "Vapiti geyiği",
+      "one": "geyik",
+      "pl": "Geyikler",
+      "role": "Kurtların başlıca yemeği; otlamaları orman kenarını şekillendirir.",
+      "social": "Anneler ve yavrular büyük sürülerde yaşar; erkekler yalnız yaşar ve sonbaharda böğürür.",
+      "where": "Kuzey Amerika ve Asya'nın dağ ormanları ve çayırları"
+    },
+    "fox": {
+      "coat": "kürk",
+      "food": "Tavşan, fare, kuş, böğürtlen",
+      "life": "Doğada 3–4 yıl",
+      "many": "tilkiler",
+      "name": "Kızıl tilki",
+      "one": "tilki",
+      "pl": "Kızıl tilkiler",
+      "role": "Tavşan ve fare sayısını dengede tutar.",
+      "social": "Çiftler yavrularını birlikte büyütür; büyük kızlar bazen yardım eder.",
+      "where": "Dünyanın kuzey yarısında neredeyse her yerde, şehirlerde bile"
+    },
+    "gazelle": {
+      "coat": "kürk",
+      "food": "Kısa, taze ot",
+      "life": "10–15 yıl",
+      "many": "ceylanlar",
+      "name": "Ceylan",
+      "one": "ceylan",
+      "pl": "Ceylanlar",
+      "role": "Çitaların, aslanların ve sırtlanların yemeği; saatte 80 km hızla zikzak çizebilir.",
+      "social": "Dişi ve yavru sürüleri; erkekler küçük toprak parçalarını korur.",
+      "where": "Kenya ve Tanzanya'nın otlakları"
+    },
+    "hornet": {
+      "coat": "tüy",
+      "food": "Arılar ve başka böcekler (yavruları için), meyve ve nektar",
+      "life": "İşçiler birkaç hafta, kraliçeler yaklaşık bir yıl",
+      "many": "eşek arıları",
+      "name": "Eşek arısı",
+      "one": "eşek arısı",
+      "pl": "Eşek arıları",
+      "role": "Kovanların önünde havada durur ve eve dönen arıları yakalar.",
+      "social": "Her bahar tek bir kraliçenin kurduğu, birkaç bin bireylik kâğıt yuvalar.",
+      "where": "Asya; 2004'ten beri Avrupa'ya yayıldı"
+    },
+    "jackal": {
+      "coat": "kürk",
+      "food": "Küçük memeliler, kuşlar, böcekler",
+      "life": "8–9 yıl",
+      "many": "çakallar",
+      "name": "Kara sırtlı çakal",
+      "one": "çakal",
+      "pl": "Çakallar",
+      "role": "Küçük hayvanları avlar ve başkalarının artıklarını temizler.",
+      "social": "Ömür boyu çift olur; geçen yılın yavruları yeni batını büyütmeye yardım eder.",
+      "where": "Güney ve Doğu Afrika'nın kuru otlakları ve çöl kenarları"
+    },
+    "lion": {
+      "coat": "kürk",
+      "food": "Zebra, antilop, manda, ceylan",
+      "life": "10–14 yıl",
+      "many": "aslanlar",
+      "name": "Aslan",
+      "one": "aslan",
+      "pl": "Aslanlar",
+      "role": "Otlayan sürüleri sağlıklı ve hareket hâlinde tutar.",
+      "social": "Akraba dişiler ve 1–3 erkekten oluşan sürüler. Dişiler birlikte avlanır.",
+      "where": "Afrika savanları ve Hindistan'daki tek bir orman"
+    },
+    "lseal": {
+      "coat": "yağ tabakası",
+      "food": "Kril, penguen, balık, başka foklar",
+      "life": "12–26 yıl",
+      "many": "leopar foklar",
+      "name": "Leopar fok",
+      "one": "leopar fok",
+      "pl": "Leopar foklar",
+      "role": "Deniz buzunda katil balinadan sonraki en büyük avcı.",
+      "social": "Yalnız; yalnızca anneler yavrularıyla birlikte.",
+      "where": "Antarktika çevresindeki buz kütleleri"
+    },
+    "meerkat": {
+      "coat": "kürk",
+      "food": "Böcek, akrep, küçük kertenkele",
+      "life": "6–10 yıl",
+      "many": "mirketler",
+      "name": "Mirket",
+      "one": "mirket",
+      "pl": "Mirketler",
+      "role": "Çok sayıda böcek yer; çakallara ve kartallara yem olur.",
+      "social": "Tek bir üreyen çiftin yönettiği 20–50 bireylik gruplar; diğerleri bebeklere bakar ve sırayla nöbet tutar.",
+      "where": "Güney Afrika'da Kalahari ve Namib çölleri"
+    },
+    "orca": {
+      "coat": "yağ tabakası",
+      "food": "Gruba göre balık ya da fok",
+      "life": "50–90 yıl",
+      "many": "katil balinalar",
+      "name": "Katil balina",
+      "one": "katil balina",
+      "pl": "Katil balinalar",
+      "role": "Denizin en büyük avcısı; fok ve balık sayılarını şekillendirir.",
+      "social": "Büyükannelerin yönettiği gruplar. Her grubun kendi sesleri ve av hileleri vardır.",
+      "where": "Her okyanus, en çok soğuk sularda"
+    },
+    "penguin": {
+      "coat": "tüyler",
+      "food": "Balık, kril ve kalamar",
+      "life": "15–20 yıl",
+      "many": "penguenler",
+      "name": "İmparator penguen",
+      "one": "penguen",
+      "pl": "İmparator penguenler",
+      "role": "Bilim insanlarına deniz buzunun ne kadar sağlıklı olduğunu gösterir.",
+      "social": "Binlerce bireylik koloniler. Babalar kış boyunca birbirine sokulup yumurtayı sıcak tutar.",
+      "where": "Antarktika çevresindeki deniz buzu"
+    },
+    "rabbit": {
+      "coat": "kürk",
+      "food": "Ot ve yapraklı bitkiler",
+      "life": "Doğada 1–2 yıl",
+      "many": "tavşanlar",
+      "name": "Tavşan",
+      "one": "tavşan",
+      "pl": "Tavşanlar",
+      "role": "Tilkilere, şahinlere ve daha birçoklarına yem; çok çoğalınca toprağı çıplak bırakabilir.",
+      "social": "Yer altı tünel ağlarında gruplar hâlinde yaşar.",
+      "where": "Otlaklar ve orman kenarları; insanlar onu birçok ülkeye yaydı"
+    },
+    "salmon": {
+      "coat": "vücut yağı",
+      "food": "Kril, karides ve küçük balık",
+      "life": "4–6 yıl",
+      "many": "somonlar",
+      "name": "Atlantik somonu",
+      "one": "somon",
+      "pl": "Somonlar",
+      "role": "Okyanus besinini iç bölgelere taşır; ayılara, foklara ve kuşlara yem olur.",
+      "social": "Denizde yalnız; yetişkinler yumurtlamak için doğdukları nehre geri yüzer.",
+      "where": "Kuzey Atlantik ve ona dökülen nehirler"
+    },
+    "scorpion": {
+      "coat": "vücut yağı",
+      "food": "Böcek, cırcır böceği ve örümcek",
+      "life": "3–8 yıl",
+      "many": "akrepler",
+      "name": "Akrep",
+      "one": "akrep",
+      "pl": "Akrepler",
+      "role": "Geceleri böcek avlar; mirketler sokmalarının çoğuna karşı bağışıktır.",
+      "social": "Yalnız. Anneler yavrularını sırtında taşır.",
+      "where": "Antarktika dışında her kıtanın çölleri ve kurak toprakları"
+    },
+    "seal": {
+      "coat": "yağ tabakası",
+      "food": "Balık, kalamar, karides",
+      "life": "25–30 yıl",
+      "many": "foklar",
+      "name": "Liman foku",
+      "one": "fok",
+      "pl": "Foklar",
+      "role": "Balık yer; katil balinalara ve köpekbalıklarına yem olur.",
+      "social": "Kumsallarda ve kayalarda birlikte dinlenir ama yalnız avlanır.",
+      "where": "Kuzey Atlantik ve Kuzey Pasifik'in soğuk kıyıları"
+    },
+    "wolf": {
+      "coat": "kürk",
+      "food": "Geyik, karaca, kunduz ve tavşan",
+      "life": "Doğada 6–8 yıl",
+      "many": "kurtlar",
+      "name": "Boz kurt",
+      "one": "kurt",
+      "pl": "Boz kurtlar",
+      "role": "Geyikleri hareket hâlinde tutar; bu da nehir kenarındaki ağaçların yeniden büyümesini sağlar.",
+      "social": "4–9 bireylik sürüler: bir anne, bir baba ve yavruları. \"Alfa\" çift aslında yalnızca ebeveynlerdir.",
+      "where": "Kuzey Amerika, Avrupa ve Asya'nın ormanları, tundrası ve dağları"
+    },
+    "zebra": {
+      "coat": "kürk",
+      "food": "Sert, uzun ot",
+      "life": "20–25 yıl",
+      "many": "zebralar",
+      "name": "Zebra",
+      "one": "zebra",
+      "pl": "Zebralar",
+      "role": "Önce uzun otları yer, ceylanlara yol açar.",
+      "social": "Bir aygır, birkaç kısrak ve taylardan oluşan aileler; aileler büyük sürülerde birleşir.",
+      "where": "Doğu ve Güney Afrika'nın otlakları"
+    }
+  },
+  "spGroup": {
+    "0": "Orman ve tundra",
+    "1": "Savan",
+    "2": "Çöl",
+    "3": "Okyanus ve buz",
+    "4": "Çayır"
+  },
+  "speed": {
+    "0": "1 gün/sn",
+    "1": "3 gün/sn",
+    "2": "10 gün/sn",
+    "3": "30 gün/sn"
+  },
+  "stage": {
+    "count": "{name} {n}",
+    "gone": "yok oldu",
+    "goneNamed": "{name}: yok oldu",
+    "new": "(yeni)"
+  },
+  "story": {
+    "bigger": "{many}, {cmp} %{n} daha büyük.",
+    "biggerSafe": "{many}, {cmp} %{n} daha büyük: büyükleri yakalamak daha zor.",
+    "catch": "{hunter} için başlıca av {prey}; {prey} güvende kalmak için {cover} arasına saklanıyor.",
+    "coatLess": "{many}, {cmp} %{n} daha az {coat} taşıyor: bu onları serin tutuyor.",
+    "coatMore": "{many}, {cmp} %{n} daha fazla {coat} taşıyor: bu onları sıcak tutuyor.",
+    "compared": "Değişiklik olmayan aynı yerle karşılaştırıldığında, {day}. gün:",
+    "count": "{n, plural, one {# {one}} other {{many} (#)}}",
+    "diedOut": "{many} tükendi: çoğu {why}.",
+    "diedOutChanged": "{many} tükendi: çoğu {why}; değişikliklerin olmadan bu olmamıştı.",
+    "diff": "{be, select, is {Fark} other {Farklar}}: {list}.",
+    "faster": "{many}, {cmp} %{n} daha hızlı: hızlı olanlar daha sık kaçıyor ve daha çok yavru yapıyor.",
+    "fasterFood": "{many}, {cmp} %{n} daha hızlı: hızlı olanlar yiyeceğe önce ulaşıyor.",
+    "fewer": "{n, plural, one {{one}: # daha az} other {{many}: # daha az}}",
+    "giveTime": "Zaman tanı: birçok değişiklik ancak birkaç kuşak sonra görünür.",
+    "hungry": "Sonra {food} büyüdüğünden daha hızlı tükendi ve birçoğu aç kaldı.",
+    "hunting": "İnsanların avı yüzünden çok sayıda hayvan kayboluyor: {many}.",
+    "lessFood": "Paylaşılacak {food} azalınca daha az hayvana yer kalıyor.",
+    "lessToEat": "Yakalanacak {prey} kalmayınca {hunter} için yiyecek azalıyor.",
+    "live": "{day}. gün: burada {list} yaşıyor.",
+    "more": "{n, plural, one {{one}: # daha fazla} other {{many}: # daha fazla}}",
+    "moreFood": "Daha fazla {food}, daha çok yavrunun hayatta kalması demek.",
+    "multiplied": "Onları kovalayacak {hunter} olmayınca {prey} çoğaldı.",
+    "newcomersFailed": "Gelen {many} burada yaşayamadı: çoğu {why}.",
+    "noneLeft": "{day}. gün: burada hiç hayvan kalmadı.",
+    "pick": "Neyin farklı olacağını görmek için bir değişiklik seç.",
+    "runsShort": "O kadar çok otobur var ki {food} yetmiyor.",
+    "same": "Hayvan sayıları şimdilik aynı.",
+    "sensesLess": "{many}, {cmp} %{n} daha az fark ediyor: büyük gözler ve kulaklar enerjiye mal olur.",
+    "sensesMore": "{many}, {cmp} yiyeceği ve tehlikeyi %{n} daha uzaktan fark ediyor.",
+    "slower": "{many}, {cmp} %{n} daha yavaş: yavaş hareket etmek enerji kazandırır.",
+    "smaller": "{many}, {cmp} %{n} daha küçük: küçük bedenler daha az yiyeceğe ihtiyaç duyar.",
+    "weather": "{heat, select, hot {Daha sıcak} other {Daha soğuk}} hava {many} için zor: yalnızca hayatta kalmak için daha çok yiyecek yakıyorlar."
+  },
+  "time": {
+    "day": "{n}. gün"
+  },
+  "trait": {
+    "co": "Örtü",
+    "se": "Duyular",
+    "sp": "Hız",
+    "sz": "Boyut"
+  },
+  "trend": {
+    "falling": "azalıyor",
+    "gone": "yok oldu",
+    "rising": "artıyor",
+    "steady": "sabit"
+  },
+  "ui": {
+    "addAnimal": "Hayvan ekle",
+    "atStart": "Başlangıçta {many}",
+    "changesHint": "Birbirine eklenirler. Güçlendirmek için birine yeniden tıkla.",
+    "far": "Yuvasından uzak",
+    "farHere": "Burada yuvasından uzak",
+    "fewer": "Başlangıçta daha az {many}",
+    "fiveMost": "En fazla beş",
+    "happening": "Neler oluyor",
+    "livesHere": "{name} (burada yaşıyor)",
+    "more": "Başlangıçta daha fazla {many}",
+    "needOne": "Bir dünyada en az bir hayvan olmalı",
+    "newcomer": "Kim gelebilir",
+    "noChange": "(değişiklik olmadan: {v})",
+    "none": "yok",
+    "noneLeft": "Hiç kalmadı",
+    "pickWorld": "Bir dünya seç",
+    "portrait": "0. günde ve bugün tipik {one}, aynı ölçekte çizildi. {caption}",
+    "restart": "Burada kimin yaşadığını değiştirmek dünyayı yeniden başlatır.",
+    "rightNow": "Şu anda",
+    "takeOut": "Bu dünyadan çıkar: {many}",
+    "takeOutShort": "Çıkar: {many}",
+    "target": "Tek hayvanlık değişikliklerin hedefi",
+    "thenNow": "Önce ve şimdi",
+    "whatChanged": "Ne değişti",
+    "who": "Burada kimler yaşıyor"
+  },
+  "whatif": {
+    "add": "Bir hayvan gelir",
+    "cool": "Buzul çağı",
+    "disease": "Bir hastalık yayılır",
+    "drought": "Yağmursuz bir yıl",
+    "fire": "Orman yangını",
+    "habitat": "Toprağın yarısı kaybolur",
+    "hunt": "İnsanlar bir hayvanı avlar",
+    "invasive": "Hızlı üreyen bir yeni gelen",
+    "move": "Zıt iklim",
+    "rain": "Bol yağmurlu yıllar",
+    "remove": "Bir hayvan yok olur",
+    "reserve": "Koruma alanı",
+    "warm": "3 °C daha sıcak"
+  },
+  "why": {
+    "0": "yakalandı",
+    "1": "aç kaldı",
+    "2": "havaya dayanamadı",
+    "3": "yaşlanıp öldü",
+    "4": "insanlar tarafından avlandı"
+  },
+  "world": {
+    "antarctica": "Antarktika",
+    "atlantic": "Kuzey Atlantik",
+    "foxes": "Tilki ve tavşanlar",
+    "kalahari": "Kalahari",
+    "meadow": "Çayır",
+    "savanna": "Savan",
+    "yellowstone": "Yellowstone"
+  },
+  "worldGroup": {
+    "0": "Orman ve tundra",
+    "1": "Savan ve çöl",
+    "2": "Okyanus ve buz",
+    "3": "Çayır"
+  },
+  "worldOpt": {
+    "antarctica": "Antarktika: penguenler, leopar foklar, katil balinalar",
+    "atlantic": "Kuzey Atlantik: somonlar, foklar, katil balinalar, ayılar",
+    "foxes": "Tilki ve tavşanlar",
+    "kalahari": "Kalahari: mirketler, çakallar, akrepler",
+    "meadow": "Çayır: bal arıları ve eşek arıları",
+    "savanna": "Savan: aslanlar, zebralar, filler, ceylanlar",
+    "yellowstone": "Yellowstone: kurtlar, geyikler, kunduzlar, ayılar"
+  }
+}

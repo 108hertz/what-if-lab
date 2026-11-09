@@ -1,0 +1,1734 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "beh": {
+    "b_calm": {
+      "grown": "büyük bir günden önce sakin kalmak",
+      "kid": "sınavdan önce sakin kalmak"
+    },
+    "b_food": {
+      "grown": "hiç tatmadığı bir yemeği denemek",
+      "kid": "hiç tatmadığı bir yemeği denemek"
+    },
+    "b_hand": {
+      "grown": "bir grupta söz almak",
+      "kid": "derste el kaldırmak"
+    },
+    "b_help": {
+      "grown": "yeni bir komşuya yardım etmek",
+      "kid": "okuldaki yeni bir çocuğa yardım etmek"
+    },
+    "b_proj": {
+      "grown": "uzun bir projeyi bitirmek",
+      "kid": "uzun bir okul projesini bitirmek"
+    },
+    "b_tidy": {
+      "grown": "evini düzenli tutmak",
+      "kid": "odasını düzenli tutmak"
+    }
+  },
+  "ch": {
+    "authoritative": {
+      "cap": "ebeveynler sıcak ve kararlı olur",
+      "past": "ebeveynler sıcak ve kararlı oldu",
+      "q": "Ya ebeveynler sıcak ve kararlı olursa?"
+    },
+    "bestfriend": {
+      "cap": "en iyi bir arkadaş bulur",
+      "past": "en iyi bir arkadaş buldu",
+      "q": "Ya en iyi bir arkadaş bulursa?"
+    },
+    "bullied": {
+      "cap": "bir yıl okulda zorbalığa uğrar",
+      "past": "bir yıl zorbalığa uğradı",
+      "q": "Ya bir yıl zorbalığa uğrarsa?"
+    },
+    "carer": {
+      "cap": "küçük kardeşine bakmaya yardım eder",
+      "past": "küçük kardeşine bakmaya yardım etmeye başladı",
+      "q": "Ya küçük kardeşine bakmaya yardım ederse?"
+    },
+    "chores": {
+      "cap": "evde gerçek görevler alır",
+      "past": "evde gerçek görevler aldı",
+      "q": "Ya evde yapacak gerçek görevleri olursa?"
+    },
+    "coding": {
+      "cap": "kodlama kulübüne katılır",
+      "past": "kodlama kulübüne katıldı",
+      "q": "Ya bir kodlama ya da yapım kulübüne katılırsa?"
+    },
+    "countryside": {
+      "cap": "aile kırsala taşınır",
+      "past": "aile kırsala taşındı",
+      "q": "Ya aile kırsala taşınırsa?"
+    },
+    "dinners": {
+      "cap": "her akşam aile yemeği",
+      "past": "aile her akşam birlikte yemeye başladı",
+      "q": "Ya aile her akşam birlikte yemek yerse?"
+    },
+    "divorce": {
+      "cap": "ebeveynler ayrılır",
+      "past": "ebeveynler ayrıldı",
+      "q": "Ya ebeveynler ayrılırsa?"
+    },
+    "drama": {
+      "cap": "drama kulübüne katılır",
+      "past": "drama kulübüne katıldı",
+      "q": "Ya drama kulübüne katılırsa?"
+    },
+    "exam": {
+      "cap": "büyük bir sınavdan kalır",
+      "past": "büyük bir sınavdan kaldı",
+      "q": "Ya büyük bir sınavdan kalırsa?"
+    },
+    "fallout": {
+      "cap": "en iyi arkadaşıyla küser",
+      "past": "en iyi arkadaşıyla küstü",
+      "q": "Ya en iyi arkadaşıyla küserse?"
+    },
+    "firstlove": {
+      "cap": "karşılıksız kalan ilk aşk",
+      "past": "ilk aşkı karşılıksız kaldı",
+      "q": "Ya ilk aşkı karşılıksız kalırsa?"
+    },
+    "grandparent": {
+      "cap": "bir büyükanne ya da büyükbaba yanlarına taşınır",
+      "past": "bir büyükanne ya da büyükbaba yanlarına taşındı",
+      "q": "Ya bir büyükanne ya da büyükbaba yanlarına taşınırsa?"
+    },
+    "illness": {
+      "cap": "bir ebeveyn bir yıl hasta olur",
+      "past": "bir ebeveyn bir yıl hasta oldu",
+      "q": "Ya bir ebeveyn bir yıl ağır hastalanırsa?"
+    },
+    "job": {
+      "cap": "hafta sonu işi bulur",
+      "past": "hafta sonu işi buldu",
+      "q": "Ya bir hafta sonu işi bulursa?"
+    },
+    "language": {
+      "cap": "ikinci bir dil öğrenir",
+      "past": "ikinci bir dil öğrenmeye başladı",
+      "q": "Ya ikinci bir dil öğrenirse?"
+    },
+    "leader": {
+      "cap": "sınıf başkanı olur",
+      "past": "sınıf başkanı seçildi",
+      "q": "Ya sınıf başkanı seçilirse?"
+    },
+    "longhours": {
+      "cap": "bir ebeveyn uzun saatler çalışır",
+      "past": "bir ebeveyn uzun saatler çalışmaya başladı",
+      "q": "Ya bir ebeveyn çok uzun saatler çalışmaya başlarsa?"
+    },
+    "mentor": {
+      "cap": "bir rehber onunla ilgilenir",
+      "past": "bir rehber onunla ilgilenmeye başladı",
+      "q": "Ya bir rehber onunla ilgilenirse?"
+    },
+    "money": {
+      "cap": "bir süre para sıkışır",
+      "past": "para sıkıştı",
+      "q": "Ya birkaç yıl para sıkışırsa?"
+    },
+    "move": {
+      "cap": "aile yurt dışına taşınır",
+      "past": "aile başka bir ülkeye taşındı",
+      "q": "Ya aile başka bir ülkeye taşınırsa?"
+    },
+    "music": {
+      "cap": "bir enstrüman öğrenir",
+      "past": "bir enstrüman öğrendi",
+      "q": "Ya bir enstrüman öğrenirse?"
+    },
+    "nature": {
+      "cap": "dışarıda çok zaman geçirir",
+      "past": "dışarıda zaman geçirmeye başladı",
+      "q": "Ya dışarıda çok zaman geçirirse?"
+    },
+    "newschool": {
+      "cap": "okul değiştirir",
+      "past": "okul değiştirdi",
+      "q": "Ya okul değiştirirse?"
+    },
+    "pet": {
+      "cap": "aile bir köpek alır",
+      "past": "aile bir köpek aldı",
+      "q": "Ya aile bir köpek alırsa?"
+    },
+    "prize": {
+      "cap": "büyük bir yarışma kazanır",
+      "past": "büyük bir yarışma kazandı",
+      "q": "Ya büyük bir yarışma kazanırsa?"
+    },
+    "reading": {
+      "cap": "her gece kitap okur",
+      "past": "her gece kitap okumaya başladı",
+      "q": "Ya her gece kitap okursa?"
+    },
+    "scouts": {
+      "cap": "izcilere katılır",
+      "past": "izcilere katıldı",
+      "q": "Ya izcilere ya da bir doğa kulübüne katılırsa?"
+    },
+    "screen": {
+      "cap": "çok ekran süresi başlar",
+      "past": "çok ekran süresi başladı",
+      "q": "Ya çok ekran süresi olursa?"
+    },
+    "sibling": {
+      "cap": "küçük bir kardeş gelir",
+      "past": "küçük bir kardeş geldi",
+      "q": "Ya küçük bir kardeş gelirse?"
+    },
+    "sleep": {
+      "cap": "her gece yeterli uyku",
+      "past": "yeterince uyumaya başladı",
+      "q": "Ya her zaman yeterince uyursa?"
+    },
+    "sport": {
+      "cap": "bir takım sporuna katılır",
+      "past": "bir takım sporuna katıldı",
+      "q": "Ya bir takım sporuna katılırsa?"
+    },
+    "strict": {
+      "cap": "ebeveynler daha katı olur",
+      "past": "ebeveynler daha katı oldu",
+      "q": "Ya ebeveynler çok daha katı olursa?"
+    },
+    "summer": {
+      "cap": "gelmiş geçmiş en güzel yaz",
+      "past": "gelmiş geçmiş en güzel yazı yaşadı",
+      "q": "Ya gelmiş geçmiş en güzel yazı yaşarsa?"
+    },
+    "teacher": {
+      "cap": "harika bir öğretmeni olur",
+      "past": "harika bir öğretmeni oldu",
+      "q": "Ya harika bir öğretmeni olursa?"
+    },
+    "travel": {
+      "cap": "aile bir yıl seyahat eder",
+      "past": "aile bir yıl seyahat etti",
+      "q": "Ya aile bir yıl seyahat ederse?"
+    },
+    "volunteer": {
+      "cap": "gönüllülüğe başlar",
+      "past": "gönüllülüğe başladı",
+      "q": "Ya başkalarına yardım etmeye (gönüllülüğe) başlarsa?"
+    }
+  },
+  "chart": {
+    "aria": {
+      "0": "120 çocuk arasında her özellikte nerede olduğu: {who}",
+      "1": "Yıllar içinde meraklı, düzenli, dışa dönük, nazik ve sakin",
+      "2": "100 çocuktan kaçının her gündelik şeyi yapma olasılığı yüksek",
+      "3": "Her değişikliğin şu özelliği ne kadar oynattığı: {trait}"
+    },
+    "atDiff": "{age} yaşında ({life} yılları): değişikliklerinle çocukların çoğu {list}.",
+    "atSame": "{age} yaşında ({life} yılları): değişikliklerin olmadan hâliyle aşağı yukarı aynı.",
+    "atTypical": "{age} yaşında ({life} yılları): tipik çocuk {step}.",
+    "axis": "← daha az {trait}  ·  çocuklar zaten ne kadar farklı  ·  daha fazla →",
+    "dayDiff": "{what}: değişikliklerinle {count} çocuk (önceden {was}).",
+    "dayIntro": "Bunlar gibi 100 çocuktan kaçının her şeyi yapma olasılığı yüksek. Kesin değil, olası.",
+    "dayLittle": "Şimdilik değişikliklerin gündelik hayatta pek fark yaratmıyor.",
+    "faded": "çoğu silindi",
+    "growIntro": "Her satır yıllar içinde bir özellik; bant, çoğu çocuğun bulunduğu yer. Okumak için bir yaşın üzerine gel.",
+    "hardly": "neredeyse hiç",
+    "life": {
+      "0": "küçüklük",
+      "1": "okul",
+      "2": "ergenlik",
+      "3": "genç yetişkinlik",
+      "4": "yetişkinlik"
+    },
+    "nowDiff": "Değişikliklerinle, {age} yaşında {who, select, most {çocukların çoğu} other {bu çocuklar}} {list}.",
+    "nowIntro": "Her soluk işaret 120 çocuktan biri; büyük nokta: {who}. Karşılaştırmak için bir değişiklik dene.",
+    "of100": "100'de {n}",
+    "ongoing": "sürüyor",
+    "planned": "Değişikliğin daha sonraya planlandı.",
+    "pressPlay": "Büyümelerini izlemek için oynat'a bas…",
+    "rowChange": "{name} · {age}",
+    "rowCombo": "{a} + {b}",
+    "rowWord": "{word} · {state}",
+    "sameSoFar": "Değişikliklerinle bu çocuklar şimdilik aşağı yukarı aynı ({age} yaş).",
+    "stayedSame": "{list} aşağı yukarı aynı kaldı.",
+    "still": "hâlâ var",
+    "typical": "tipik çocuk",
+    "view": {
+      "0": "Şimdi",
+      "1": "Büyürken",
+      "2": "Her gün",
+      "3": "Ne önemliydi"
+    },
+    "viewLabel": "Grafik görünümü",
+    "was": "önceden {n}",
+    "whichTrait": "Hangi özellik",
+    "whyEmpty": "Burada ne kadar önemli olduğunu görmek için bir değişiklik yap.",
+    "whyFaded": "{trait} üzerinde en büyük farkı yaratan: {change}; ama etkisinin çoğu silindi.",
+    "whyIntro": "Her değişikliğin şu özelliği ne kadar oynattığı: {trait}; yanında çocukların zaten ne kadar farklı olduğu.",
+    "whyLasted": "{trait} üzerinde en büyük farkı yaratan: {change}; ve etkisi kalıcı oldu.",
+    "whyOngoing": "{trait} üzerinde en büyük farkı yaratan: {change}; ve hâlâ sürüyor."
+  },
+  "chip": {
+    "ripple": {
+      "authoritative": {
+        "0": "100 çocuktan {n} tanesi evde ne bekleyeceğini bildi"
+      },
+      "bestfriend": {
+        "0": "100 çocuktan {n} tanesi okulda kendini daha cesur hissetti",
+        "1": "100 çocuktan {n} tanesi arkadaşıyla maceralara atıldı"
+      },
+      "bullied": {
+        "0": "100 çocuktan {n} tanesi birine anlattı ve durum düzeldi",
+        "1": "100 çocuktan {n} tanesi bir süre derste el kaldırmayı bıraktı",
+        "2": "100 çocuktan {n} tanesi dışlanan çocuklara karşı daha nazik oldu"
+      },
+      "carer": {
+        "0": "100 çocuktan {n} tanesi çok sabırlı oldu",
+        "1": "100 çocuktan {n} tanesi bazen yorgun hissetti"
+      },
+      "chores": {
+        "0": "100 çocuktan {n} tanesi iyi yapılmış bir işle gurur duydu",
+        "1": "100 çocuktan {n} tanesi ev işlerinden yakındı (ama yine de yaptı)"
+      },
+      "coding": {
+        "0": "100 çocuktan {n} tanesi kendi küçük oyununu yaptı",
+        "1": "100 çocuktan {n} tanesi aynı şeyleri seven arkadaşlar edindi"
+      },
+      "countryside": {
+        "0": "100 çocuktan {n} tanesi hayvanlara baktı",
+        "1": "100 çocuktan {n} tanesi bazen şehri özledi",
+        "2": "100 çocuktan {n} tanesi her gün dışarıda oynadı"
+      },
+      "dinners": {
+        "0": "100 çocuktan {n} tanesi her akşam gününü anlattı",
+        "1": "100 çocuktan {n} tanesi akşam yemeğinde yeni yiyecekler denedi"
+      },
+      "divorce": {
+        "0": "100 çocuktan {n} tanesi bir süre bunun kendi suçu olup olmadığını düşündü (asla değildir)",
+        "1": "100 çocuktan {n} tanesi iki eve ve iki doğum gününe alıştı",
+        "2": "100 çocuktan {n} tanesi ebeveynlerden birine daha çok yakınlaştı"
+      },
+      "drama": {
+        "0": "100 çocuktan {n} tanesi gerçek bir sahnede oynadı",
+        "1": "100 çocuktan {n} tanesi duyguları anlamakta ustalaştı"
+      },
+      "exam": {
+        "0": "100 çocuktan {n} tanesi yeniden denedi ve geçti",
+        "1": "100 çocuktan {n} tanesi bir süre o derste kötü olduğuna karar verdi"
+      },
+      "fallout": {
+        "0": "100 çocuktan {n} tanesi yeniden barıştı",
+        "1": "100 çocuktan {n} tanesi yeni arkadaşlar buldu"
+      },
+      "firstlove": {
+        "0": "100 çocuktan {n} tanesi bir süre hüzünlü şarkılar dinledi",
+        "1": "100 çocuktan {n} tanesi zor duyguları atlatabileceğini keşfetti",
+        "2": "100 çocuktan {n} tanesi arkadaşları ona sahip çıktı"
+      },
+      "grandparent": {
+        "0": "100 çocuktan {n} tanesi birçok aile hikâyesi dinledi",
+        "1": "100 çocuktan {n} tanesi büyükanne ya da büyükbabasıyla yemek yapmayı öğrendi"
+      },
+      "illness": {
+        "0": "100 çocuktan {n} tanesi ebeveynin bakımına yardım etti",
+        "1": "100 çocuktan {n} tanesi kendini daha büyümüş hissetti"
+      },
+      "job": {
+        "0": "100 çocuktan {n} tanesi büyük bir şey için para biriktirdi",
+        "1": "100 çocuktan {n} tanesi yabancılarla konuşmaya alıştı"
+      },
+      "language": {
+        "0": "100 çocuktan {n} tanesi yeni dilde filmler izledi",
+        "1": "100 çocuktan {n} tanesi o dili konuşan bir arkadaş edindi"
+      },
+      "leader": {
+        "0": "100 çocuktan {n} tanesi sınıfın önünde konuşma yaptı",
+        "1": "100 çocuktan {n} tanesi kendini daha sorumlu hissetti"
+      },
+      "longhours": {
+        "0": "100 çocuktan {n} tanesi kendi başına daha çok zaman geçirdi",
+        "1": "100 çocuktan {n} tanesi işlerini kendi başına halletmeyi öğrendi",
+        "2": "100 çocuktan {n} tanesi yatma saatinde ebeveynini özledi"
+      },
+      "mentor": {
+        "0": "100 çocuktan {n} tanesi üzerinde çalışacağı bir hedef buldu",
+        "1": "100 çocuktan {n} tanesi asla denemeyeceği şeyleri denedi"
+      },
+      "money": {
+        "0": "100 çocuktan {n} tanesi evde daha çok yardım etti",
+        "1": "100 çocuktan {n} tanesi para için endişelendi",
+        "2": "100 çocuktan {n} tanesi bir süre daha az kulübe ve geziye gitti"
+      },
+      "move": {
+        "0": "100 çocuktan {n} tanesi yeni dili öğrendi",
+        "1": "100 çocuktan {n} tanesi ilk yıl yalnız hissetti",
+        "2": "100 çocuktan {n} tanesi orada yeni bir en iyi arkadaş edindi"
+      },
+      "music": {
+        "0": "100 çocuktan {n} tanesi bir konserde çaldı",
+        "1": "100 çocuktan {n} tanesi bir süre pratik yapmayı sıkıcı buldu"
+      },
+      "nature": {
+        "0": "100 çocuktan {n} tanesi kuşların ve ağaçların adlarını öğrendi",
+        "1": "100 çocuktan {n} tanesi kampa gitti ve bayıldı"
+      },
+      "newschool": {
+        "0": "100 çocuktan {n} tanesi hızla yeni arkadaşlar edindi",
+        "1": "100 çocuktan {n} tanesi eski arkadaşlarını özledi"
+      },
+      "pet": {
+        "0": "100 çocuktan {n} tanesi köpeği her gün gezdirdi",
+        "1": "100 çocuktan {n} tanesi köpeğin en iyi arkadaşı olduğunu söylüyor"
+      },
+      "prize": {
+        "0": "100 çocuktan {n} tanesi bunu herkese anlattı",
+        "1": "100 çocuktan {n} tanesi bir sonraki ödül için çalışmaya başladı"
+      },
+      "reading": {
+        "0": "100 çocuktan {n} tanesi kütüphane kartını çok kullandı",
+        "1": "100 çocuktan {n} tanesi kendi hikâyelerini yazmaya başladı"
+      },
+      "scouts": {
+        "0": "100 çocuktan {n} tanesi birçok rozet kazandı",
+        "1": "100 çocuktan {n} tanesi ilk kez çadırda uyudu"
+      },
+      "screen": {
+        "0": "100 çocuktan {n} tanesi daha az uyudu",
+        "1": "100 çocuktan {n} tanesi internette arkadaşlar edindi",
+        "2": "100 çocuktan {n} tanesi bir oyunda gerçekten iyi oldu"
+      },
+      "sibling": {
+        "0": "100 çocuktan {n} tanesi önce kıskandı",
+        "1": "100 çocuktan {n} tanesi küçük kardeşine çok yakınlaştı",
+        "2": "100 çocuktan {n} tanesi bebeğe bakmaya yardım etti"
+      },
+      "sleep": {
+        "0": "100 çocuktan {n} tanesi sabahları daha kolay geçti",
+        "1": "100 çocuktan {n} tanesi okulda odaklanmayı daha kolay buldu"
+      },
+      "sport": {
+        "0": "100 çocuktan {n} tanesi takımda arkadaşlar edindi",
+        "1": "100 çocuktan {n} tanesi spor sakatlığı geçirdi ve iyileşti",
+        "2": "100 çocuktan {n} tanesi hâlâ konuştuğu bir maç kazandı"
+      },
+      "strict": {
+        "0": "100 çocuktan {n} tanesi her şeyi içine atmaya başladı",
+        "1": "100 çocuktan {n} tanesi kurallara uymakta çok iyi oldu"
+      },
+      "summer": {
+        "0": "100 çocuktan {n} tanesi o yazı hâlâ en güzel yaz olarak hatırlıyor",
+        "1": "100 çocuktan {n} tanesi o yaz ömürlük arkadaşlar edindi"
+      },
+      "teacher": {
+        "0": "100 çocuktan {n} tanesi sevdiği bir ders buldu",
+        "1": "100 çocuktan {n} tanesi zor şeyleri yapabileceğine inanmaya başladı"
+      },
+      "travel": {
+        "0": "100 çocuktan {n} tanesi birçok dilden sözcük kaptı",
+        "1": "100 çocuktan {n} tanesi bazen evini özledi",
+        "2": "100 çocuktan {n} tanesi her yerde kendini evinde hissetmeyi öğrendi"
+      },
+      "volunteer": {
+        "0": "100 çocuktan {n} tanesi yardım ettiği biri ona teşekkür etti",
+        "1": "100 çocuktan {n} tanesi diğer gönüllülere önderlik etmeye başladı"
+      }
+    }
+  },
+  "cmp": {
+    "less": "{d, select, bit {biraz daha az} much {çok daha az} other {daha az}}",
+    "more": "{d, select, bit {biraz daha fazla} much {çok daha fazla} other {daha fazla}}"
+  },
+  "ctl": {
+    "aA": {
+      "label": "Nazik"
+    },
+    "aC": {
+      "label": "Düzenli"
+    },
+    "aE": {
+      "label": "Dışa dönük"
+    },
+    "aN": {
+      "label": "Endişe (100 − sakinlik)"
+    },
+    "aO": {
+      "label": "Meraklı"
+    },
+    "bA": {
+      "label": "Nazik"
+    },
+    "bC": {
+      "label": "Düzenli"
+    },
+    "bE": {
+      "label": "Dışa dönük"
+    },
+    "bN": {
+      "label": "Endişe (100 − sakinlik)"
+    },
+    "bO": {
+      "label": "Meraklı"
+    },
+    "baby": {
+      "label": "Bebekken nasıllardı?",
+      "opt": {
+        "easy": "Uysal",
+        "energy": "Enerji dolu",
+        "mixed": "Her biri farklı",
+        "slow": "Geç ısınan"
+      }
+    },
+    "events": {
+      "label": "Gündelik iniş çıkışlar",
+      "opt": {
+        "lots": "Çok",
+        "normal": "Normal",
+        "off": "Kapalı"
+      }
+    },
+    "fade": {
+      "label": "Etkiler ne kadar sürer",
+      "opt": {
+        "fast": "Çabuk silinir",
+        "normal": "Normal",
+        "stick": "Kalıcı olur"
+      }
+    },
+    "family": {
+      "label": "Aile",
+      "opt": {
+        "artists": "Meraklı sanatçılar",
+        "average": "Ortalama ebeveynler",
+        "calm": "İki sakin, düzenli ebeveyn",
+        "custom": "Kendin kur",
+        "everyday": "Bir meraklı, bir düzenli ebeveyn",
+        "lively": "İki canlı, dışa dönük ebeveyn",
+        "worrier": "Biri endişeli, biri rahat"
+      }
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Değişiklik ayarları (bir sonraki tıklamanda kullanılır)",
+      "home": "Ev",
+      "nature-and-chance": "Doğa ve şans",
+      "parent-a": "Ebeveyn A",
+      "parent-b": "Ebeveyn B"
+    },
+    "home": {
+      "label": "Ev yaşamı",
+      "opt": {
+        "busy": "Hareketli",
+        "stable": "Sakin",
+        "unstable": "Çok tartışma"
+      }
+    },
+    "inherit": {
+      "label": "Ne kadarı kalıtsal",
+      "opt": {
+        "25": "Düşük (%25)",
+        "40": "Normal (%40)",
+        "55": "Yüksek (%55)"
+      }
+    },
+    "luck": {
+      "label": "Ne kadar tesadüf ve şans",
+      "opt": {
+        "big": "Çok",
+        "normal": "Normal",
+        "small": "Az"
+      }
+    },
+    "money": {
+      "label": "Evdeki para",
+      "opt": {
+        "comfy": "Rahat",
+        "ok": "Yeterli",
+        "tight": "Kıt"
+      }
+    },
+    "place": {
+      "label": "Nerede yaşıyorlar",
+      "opt": {
+        "city": "Şehir",
+        "country": "Kırsal",
+        "town": "Kasaba"
+      }
+    },
+    "s_age": {
+      "label": "Ne zaman olur",
+      "opt": {
+        "1": "1 yaşında",
+        "2": "2 yaşında",
+        "3": "3 yaşında",
+        "4": "4 yaşında",
+        "5": "5 yaşında",
+        "6": "6 yaşında",
+        "7": "7 yaşında",
+        "8": "8 yaşında",
+        "9": "9 yaşında",
+        "10": "10 yaşında",
+        "11": "11 yaşında",
+        "12": "12 yaşında",
+        "13": "13 yaşında",
+        "14": "14 yaşında",
+        "15": "15 yaşında",
+        "16": "16 yaşında",
+        "17": "17 yaşında",
+        "now": "Şimdi"
+      }
+    },
+    "s_len": {
+      "label": "Ne kadar sürer",
+      "opt": {
+        "few": "Birkaç yıl",
+        "good": "Kalıcı",
+        "moment": "Bir an",
+        "usual": "Olağan süre",
+        "year": "Yaklaşık bir yıl"
+      }
+    },
+    "s_size": {
+      "label": "Ne kadar büyük",
+      "opt": {
+        "big": "Büyük",
+        "medium": "Orta",
+        "small": "Küçük"
+      }
+    },
+    "school": {
+      "label": "Okul",
+      "opt": {
+        "crowded": "Kalabalık",
+        "great": "Harika öğretmenler",
+        "ordinary": "Sıradan"
+      }
+    },
+    "screens": {
+      "label": "Ekran kuralları",
+      "opt": {
+        "none": "Kural yok",
+        "some": "Biraz",
+        "strict": "Katı"
+      }
+    },
+    "sens": {
+      "label": "Hayat onları ne kadar etkiler",
+      "opt": {
+        "all": "Tüm çocuklar çok hassas",
+        "same": "Her çocuk için aynı",
+        "some": "Bazı çocuklar çok daha fazla hisseder"
+      }
+    },
+    "shape": {
+      "label": "Kimlerle yaşıyorlar",
+      "opt": {
+        "big": "Aynı çatı altında kalabalık aile",
+        "one": "Tek ebeveyn",
+        "two": "İki ebeveyn",
+        "twohomes": "İki ev"
+      }
+    },
+    "sib": {
+      "label": "Kardeşler",
+      "opt": {
+        "0": "Yok",
+        "1": "Bir küçük kardeş",
+        "2": "İki ya da daha fazla",
+        "older": "Bir büyük kardeş"
+      }
+    },
+    "style": {
+      "label": "Ebeveynler onları nasıl yetiştiriyor",
+      "opt": {
+        "authoritarian": "Katı",
+        "authoritative": "Sıcak ve kararlı",
+        "neglectful": "Mesafeli",
+        "permissive": "Rahat"
+      }
+    },
+    "time": {
+      "label": "Birlikte geçen zaman",
+      "opt": {
+        "long": "Ebeveynler uzun saatler çalışıyor",
+        "lots": "Aileyle bol zaman",
+        "ordinary": "Sıradan"
+      }
+    }
+  },
+  "eff": {
+    "same": "aşağı yukarı aynı"
+  },
+  "ends": {
+    "A": {
+      "0": "düşündüğünü söyler, kazanmayı sever",
+      "1": "çok nazik"
+    },
+    "C": {
+      "0": "akışına bırakır, biraz dağınık",
+      "1": "çok düzenli"
+    },
+    "Calm": {
+      "0": "çok endişelenir",
+      "1": "çok sakin"
+    },
+    "E": {
+      "0": "sessiz, biraz utangaç",
+      "1": "çok dışa dönük"
+    },
+    "O": {
+      "0": "bildiklerinden şaşmaz",
+      "1": "çok meraklı"
+    }
+  },
+  "ev": {
+    "already": "Ebeveynler onları zaten bu şekilde yetiştiriyordu",
+    "buffer": {
+      "0": "En iyi bir arkadaşı olması zorbalığın acısını hafifletti",
+      "1": "Harika öğretmenler devreye girdi, zorbalık daha az acıttı",
+      "2": "Sakin bir ev, zorbalığı atlatmasına yardım etti",
+      "3": "Sıcak ve kararlı ebeveynler ayrılığı kolaylaştırdı",
+      "4": "Sıcak ve kararlı ebeveynler para kaygılarının fazla yaralamasını önledi",
+      "5": "Evdeki büyükanne ya da büyükbaba para sıkışıkken yardım etti",
+      "6": "Evdeki büyükanne ya da büyükbaba ebeveyn hastayken yardım etti",
+      "7": "Bir kardeşle birlikte taşınmak daha kolaydı",
+      "8": "Takımı yeni okula alışmasına yardım etti",
+      "9": "Her gece kitap okumak ekran süresini dengeledi",
+      "10": "Net ekran kuralları ekranın her şeyi ele geçirmesini önledi",
+      "11": "Yeterli uyku ekranların onu yormasını önledi",
+      "12": "Harika bir öğretmen sınavdan kalmayı atlatmasına yardım etti",
+      "13": "Yeterli uyku sınavdan kalmanın ardından toparlanmasına yardım etti",
+      "14": "Köpeğe sarılmak arkadaşıyla küstükten sonra iyi geldi",
+      "15": "En iyi arkadaşı ilk kalp kırıklığını atlatmasına yardım etti",
+      "16": "Aile yemekleri ona konuşacak birini verdi",
+      "17": "Bir ebeveyn uzun saatler çalışırken evdeki büyükanne ya da büyükbaba yardım etti",
+      "18": "Bir ebeveyn uzun saatler çalışırken aynı çatı altındaki kalabalık aile yardım etti",
+      "19": "Ebeveyn hastayken kalabalık aile yardım etti",
+      "20": "Para sıkışıkken kalabalık aile elindekini paylaştı",
+      "21": "Aileyle geçen bol zaman, zorbalık hakkında konuşabilmesini sağladı"
+    },
+    "calm": "Çoğu çocuk ergenlikten sonra yeniden sakinleşir",
+    "change": {
+      "authoritative": "Ebeveynler sıcak ve kararlı olur: net kurallar, bol sevgi",
+      "bestfriend": "En iyi bir arkadaş bulur",
+      "bullied": "Bir yıl okulda zorbalığa uğrar",
+      "carer": "Küçük kardeşine bakmaya yardım etmeye başlar",
+      "chores": "Evde gerçek görevler yapmaya başlar",
+      "coding": "Kodlama ve yapım kulübüne katılır",
+      "countryside": "Aile kırsala taşınır",
+      "dinners": "Aile her akşam birlikte yemek yemeye başlar",
+      "divorce": "Ebeveynler ayrılır ve iki ayrı ev kurar",
+      "drama": "Drama kulübüne katılır",
+      "exam": "Büyük bir sınavdan kalır",
+      "fallout": "En iyi arkadaşıyla küser",
+      "firstlove": "İlk aşkı karşılıksız kalır",
+      "grandparent": "Bir büyükanne ya da büyükbaba yanlarına taşınır",
+      "illness": "Bir ebeveyn bir yıl ağır hasta olur, sonra iyileşir",
+      "job": "Hafta sonu işi bulur",
+      "language": "İkinci bir dil öğrenmeye başlar",
+      "leader": "Sınıf başkanı seçilir",
+      "longhours": "Bir ebeveyn çok uzun saatler çalışmaya başlar",
+      "mentor": "Bir rehber onunla ilgilenir",
+      "money": "Birkaç yıl para sıkışır",
+      "move": "Aile başka bir ülkeye taşınır",
+      "music": "Bir enstrüman öğrenir",
+      "nature": "Dışarıda çok zaman geçirmeye başlar",
+      "newschool": "Okul değiştirir",
+      "pet": "Aile bir köpek alır",
+      "prize": "Büyük bir yarışma kazanır",
+      "reading": "Her gece kitap okumaya başlar",
+      "scouts": "İzcilere katılır",
+      "screen": "Her gün çok ekran süresi başlar",
+      "sibling": "Küçük bir kardeş gelir",
+      "sleep": "Her gece yeterince uyumaya başlar",
+      "sport": "Bir takım sporuna katılır",
+      "strict": "Ebeveynler çok daha katı olur",
+      "summer": "Gelmiş geçmiş en güzel yazı yaşar",
+      "teacher": "Harika bir öğretmeni olur",
+      "travel": "Aile bir yıllık seyahate çıkar",
+      "volunteer": "Gönüllü olarak başkalarına yardım etmeye başlar"
+    },
+    "combo": {
+      "0": "Takım sporu ve en iyi arkadaş: takımda birlikte oynadılar",
+      "1": "Her gece okuma ve harika bir öğretmen: öğrenmeyi sevmeye başladı",
+      "2": "Bir enstrüman ve bir rehber: pratik meyvesini vermeye başladı",
+      "3": "Yeni bir ülke ve en iyi arkadaş: alışmak kolaylaştı",
+      "4": "Bir köpek ve açık hava: her gün uzun yürüyüşler",
+      "5": "Gönüllülük ve evde büyükanne/büyükbaba: yardım etmek alışkanlık oldu",
+      "6": "Ekranlar ve açık hava: açık hava ekranları dengeledi",
+      "7": "Küçük kardeş ve sıcak, kararlı ebeveynler: kardeşler iyi anlaştı",
+      "8": "Drama kulübü ve sınıf başkanlığı: söz almak kolaylaştı",
+      "9": "Kodlama kulübü ve bir rehber: gerçek bir şey yaptı"
+    },
+    "ms": {
+      "ms1": "İlk sözcükler: çoğu çocuk konuşmaya başlar",
+      "ms13": "Ergenlik başlar: ruh hâli inip çıkar",
+      "ms18": "Okulu bitirir",
+      "ms20": "Birçoğu ilk işine başlar",
+      "ms28": "Birçoğu düzenini kurar",
+      "ms5": "Okula başlar",
+      "ms7": "Çoğu çocuğun ilk en iyi arkadaşı olur"
+    },
+    "ripple": {
+      "authoritative": {
+        "0": "{age} yaşında ebeveynler sıcak ve kararlı oldu; ardından 100 çocuktan {n} tanesi evde ne bekleyeceğini bildi"
+      },
+      "bestfriend": {
+        "0": "{age} yaşında en iyi bir arkadaş buldu; ardından 100 çocuktan {n} tanesi okulda kendini daha cesur hissetti",
+        "1": "{age} yaşında en iyi bir arkadaş buldu; ardından 100 çocuktan {n} tanesi arkadaşıyla maceralara atıldı"
+      },
+      "bullied": {
+        "0": "{age} yaşında bir yıl zorbalığa uğradı; ardından 100 çocuktan {n} tanesi birine anlattı ve durum düzeldi",
+        "1": "{age} yaşında bir yıl zorbalığa uğradı; ardından 100 çocuktan {n} tanesi bir süre derste el kaldırmayı bıraktı",
+        "2": "{age} yaşında bir yıl zorbalığa uğradı; ardından 100 çocuktan {n} tanesi dışlanan çocuklara karşı daha nazik oldu"
+      },
+      "carer": {
+        "0": "{age} yaşında küçük kardeşine bakmaya yardım etmeye başladı; ardından 100 çocuktan {n} tanesi çok sabırlı oldu",
+        "1": "{age} yaşında küçük kardeşine bakmaya yardım etmeye başladı; ardından 100 çocuktan {n} tanesi bazen yorgun hissetti"
+      },
+      "chores": {
+        "0": "{age} yaşında evde gerçek görevler aldı; ardından 100 çocuktan {n} tanesi iyi yapılmış bir işle gurur duydu",
+        "1": "{age} yaşında evde gerçek görevler aldı; ardından 100 çocuktan {n} tanesi ev işlerinden yakındı (ama yine de yaptı)"
+      },
+      "coding": {
+        "0": "{age} yaşında kodlama kulübüne katıldı; ardından 100 çocuktan {n} tanesi kendi küçük oyununu yaptı",
+        "1": "{age} yaşında kodlama kulübüne katıldı; ardından 100 çocuktan {n} tanesi aynı şeyleri seven arkadaşlar edindi"
+      },
+      "countryside": {
+        "0": "{age} yaşında aile kırsala taşındı; ardından 100 çocuktan {n} tanesi hayvanlara baktı",
+        "1": "{age} yaşında aile kırsala taşındı; ardından 100 çocuktan {n} tanesi bazen şehri özledi",
+        "2": "{age} yaşında aile kırsala taşındı; ardından 100 çocuktan {n} tanesi her gün dışarıda oynadı"
+      },
+      "dinners": {
+        "0": "{age} yaşında aile her akşam birlikte yemeye başladı; ardından 100 çocuktan {n} tanesi her akşam gününü anlattı",
+        "1": "{age} yaşında aile her akşam birlikte yemeye başladı; ardından 100 çocuktan {n} tanesi akşam yemeğinde yeni yiyecekler denedi"
+      },
+      "divorce": {
+        "0": "{age} yaşında ebeveynler ayrıldı; ardından 100 çocuktan {n} tanesi bir süre bunun kendi suçu olup olmadığını düşündü (asla değildir)",
+        "1": "{age} yaşında ebeveynler ayrıldı; ardından 100 çocuktan {n} tanesi iki eve ve iki doğum gününe alıştı",
+        "2": "{age} yaşında ebeveynler ayrıldı; ardından 100 çocuktan {n} tanesi ebeveynlerden birine daha çok yakınlaştı"
+      },
+      "drama": {
+        "0": "{age} yaşında drama kulübüne katıldı; ardından 100 çocuktan {n} tanesi gerçek bir sahnede oynadı",
+        "1": "{age} yaşında drama kulübüne katıldı; ardından 100 çocuktan {n} tanesi duyguları anlamakta ustalaştı"
+      },
+      "exam": {
+        "0": "{age} yaşında büyük bir sınavdan kaldı; ardından 100 çocuktan {n} tanesi yeniden denedi ve geçti",
+        "1": "{age} yaşında büyük bir sınavdan kaldı; ardından 100 çocuktan {n} tanesi bir süre o derste kötü olduğuna karar verdi"
+      },
+      "fallout": {
+        "0": "{age} yaşında en iyi arkadaşıyla küstü; ardından 100 çocuktan {n} tanesi yeniden barıştı",
+        "1": "{age} yaşında en iyi arkadaşıyla küstü; ardından 100 çocuktan {n} tanesi yeni arkadaşlar buldu"
+      },
+      "firstlove": {
+        "0": "{age} yaşında ilk aşkı karşılıksız kaldı; ardından 100 çocuktan {n} tanesi bir süre hüzünlü şarkılar dinledi",
+        "1": "{age} yaşında ilk aşkı karşılıksız kaldı; ardından 100 çocuktan {n} tanesi zor duyguları atlatabileceğini keşfetti",
+        "2": "{age} yaşında ilk aşkı karşılıksız kaldı; ardından 100 çocuktan {n} tanesi arkadaşları ona sahip çıktı"
+      },
+      "grandparent": {
+        "0": "{age} yaşında bir büyükanne ya da büyükbaba yanlarına taşındı; ardından 100 çocuktan {n} tanesi birçok aile hikâyesi dinledi",
+        "1": "{age} yaşında bir büyükanne ya da büyükbaba yanlarına taşındı; ardından 100 çocuktan {n} tanesi büyükanne ya da büyükbabasıyla yemek yapmayı öğrendi"
+      },
+      "illness": {
+        "0": "{age} yaşında bir ebeveyn bir yıl hasta oldu; ardından 100 çocuktan {n} tanesi ebeveynin bakımına yardım etti",
+        "1": "{age} yaşında bir ebeveyn bir yıl hasta oldu; ardından 100 çocuktan {n} tanesi kendini daha büyümüş hissetti"
+      },
+      "job": {
+        "0": "{age} yaşında hafta sonu işi buldu; ardından 100 çocuktan {n} tanesi büyük bir şey için para biriktirdi",
+        "1": "{age} yaşında hafta sonu işi buldu; ardından 100 çocuktan {n} tanesi yabancılarla konuşmaya alıştı"
+      },
+      "language": {
+        "0": "{age} yaşında ikinci bir dil öğrenmeye başladı; ardından 100 çocuktan {n} tanesi yeni dilde filmler izledi",
+        "1": "{age} yaşında ikinci bir dil öğrenmeye başladı; ardından 100 çocuktan {n} tanesi o dili konuşan bir arkadaş edindi"
+      },
+      "leader": {
+        "0": "{age} yaşında sınıf başkanı seçildi; ardından 100 çocuktan {n} tanesi sınıfın önünde konuşma yaptı",
+        "1": "{age} yaşında sınıf başkanı seçildi; ardından 100 çocuktan {n} tanesi kendini daha sorumlu hissetti"
+      },
+      "longhours": {
+        "0": "{age} yaşında bir ebeveyn uzun saatler çalışmaya başladı; ardından 100 çocuktan {n} tanesi kendi başına daha çok zaman geçirdi",
+        "1": "{age} yaşında bir ebeveyn uzun saatler çalışmaya başladı; ardından 100 çocuktan {n} tanesi işlerini kendi başına halletmeyi öğrendi",
+        "2": "{age} yaşında bir ebeveyn uzun saatler çalışmaya başladı; ardından 100 çocuktan {n} tanesi yatma saatinde ebeveynini özledi"
+      },
+      "mentor": {
+        "0": "{age} yaşında bir rehber onunla ilgilenmeye başladı; ardından 100 çocuktan {n} tanesi üzerinde çalışacağı bir hedef buldu",
+        "1": "{age} yaşında bir rehber onunla ilgilenmeye başladı; ardından 100 çocuktan {n} tanesi asla denemeyeceği şeyleri denedi"
+      },
+      "money": {
+        "0": "{age} yaşında para sıkıştı; ardından 100 çocuktan {n} tanesi evde daha çok yardım etti",
+        "1": "{age} yaşında para sıkıştı; ardından 100 çocuktan {n} tanesi para için endişelendi",
+        "2": "{age} yaşında para sıkıştı; ardından 100 çocuktan {n} tanesi bir süre daha az kulübe ve geziye gitti"
+      },
+      "move": {
+        "0": "{age} yaşında aile başka bir ülkeye taşındı; ardından 100 çocuktan {n} tanesi yeni dili öğrendi",
+        "1": "{age} yaşında aile başka bir ülkeye taşındı; ardından 100 çocuktan {n} tanesi ilk yıl yalnız hissetti",
+        "2": "{age} yaşında aile başka bir ülkeye taşındı; ardından 100 çocuktan {n} tanesi orada yeni bir en iyi arkadaş edindi"
+      },
+      "music": {
+        "0": "{age} yaşında bir enstrüman öğrendi; ardından 100 çocuktan {n} tanesi bir konserde çaldı",
+        "1": "{age} yaşında bir enstrüman öğrendi; ardından 100 çocuktan {n} tanesi bir süre pratik yapmayı sıkıcı buldu"
+      },
+      "nature": {
+        "0": "{age} yaşında dışarıda zaman geçirmeye başladı; ardından 100 çocuktan {n} tanesi kuşların ve ağaçların adlarını öğrendi",
+        "1": "{age} yaşında dışarıda zaman geçirmeye başladı; ardından 100 çocuktan {n} tanesi kampa gitti ve bayıldı"
+      },
+      "newschool": {
+        "0": "{age} yaşında okul değiştirdi; ardından 100 çocuktan {n} tanesi hızla yeni arkadaşlar edindi",
+        "1": "{age} yaşında okul değiştirdi; ardından 100 çocuktan {n} tanesi eski arkadaşlarını özledi"
+      },
+      "pet": {
+        "0": "{age} yaşında aile bir köpek aldı; ardından 100 çocuktan {n} tanesi köpeği her gün gezdirdi",
+        "1": "{age} yaşında aile bir köpek aldı; ardından 100 çocuktan {n} tanesi köpeğin en iyi arkadaşı olduğunu söylüyor"
+      },
+      "prize": {
+        "0": "{age} yaşında büyük bir yarışma kazandı; ardından 100 çocuktan {n} tanesi bunu herkese anlattı",
+        "1": "{age} yaşında büyük bir yarışma kazandı; ardından 100 çocuktan {n} tanesi bir sonraki ödül için çalışmaya başladı"
+      },
+      "reading": {
+        "0": "{age} yaşında her gece kitap okumaya başladı; ardından 100 çocuktan {n} tanesi kütüphane kartını çok kullandı",
+        "1": "{age} yaşında her gece kitap okumaya başladı; ardından 100 çocuktan {n} tanesi kendi hikâyelerini yazmaya başladı"
+      },
+      "scouts": {
+        "0": "{age} yaşında izcilere katıldı; ardından 100 çocuktan {n} tanesi birçok rozet kazandı",
+        "1": "{age} yaşında izcilere katıldı; ardından 100 çocuktan {n} tanesi ilk kez çadırda uyudu"
+      },
+      "screen": {
+        "0": "{age} yaşında çok ekran süresi başladı; ardından 100 çocuktan {n} tanesi daha az uyudu",
+        "1": "{age} yaşında çok ekran süresi başladı; ardından 100 çocuktan {n} tanesi internette arkadaşlar edindi",
+        "2": "{age} yaşında çok ekran süresi başladı; ardından 100 çocuktan {n} tanesi bir oyunda gerçekten iyi oldu"
+      },
+      "sibling": {
+        "0": "{age} yaşında küçük bir kardeş geldi; ardından 100 çocuktan {n} tanesi önce kıskandı",
+        "1": "{age} yaşında küçük bir kardeş geldi; ardından 100 çocuktan {n} tanesi küçük kardeşine çok yakınlaştı",
+        "2": "{age} yaşında küçük bir kardeş geldi; ardından 100 çocuktan {n} tanesi bebeğe bakmaya yardım etti"
+      },
+      "sleep": {
+        "0": "{age} yaşında yeterince uyumaya başladı; ardından 100 çocuktan {n} tanesi sabahları daha kolay geçti",
+        "1": "{age} yaşında yeterince uyumaya başladı; ardından 100 çocuktan {n} tanesi okulda odaklanmayı daha kolay buldu"
+      },
+      "sport": {
+        "0": "{age} yaşında bir takım sporuna katıldı; ardından 100 çocuktan {n} tanesi takımda arkadaşlar edindi",
+        "1": "{age} yaşında bir takım sporuna katıldı; ardından 100 çocuktan {n} tanesi spor sakatlığı geçirdi ve iyileşti",
+        "2": "{age} yaşında bir takım sporuna katıldı; ardından 100 çocuktan {n} tanesi hâlâ konuştuğu bir maç kazandı"
+      },
+      "strict": {
+        "0": "{age} yaşında ebeveynler daha katı oldu; ardından 100 çocuktan {n} tanesi her şeyi içine atmaya başladı",
+        "1": "{age} yaşında ebeveynler daha katı oldu; ardından 100 çocuktan {n} tanesi kurallara uymakta çok iyi oldu"
+      },
+      "summer": {
+        "0": "{age} yaşında gelmiş geçmiş en güzel yazı yaşadı; ardından 100 çocuktan {n} tanesi o yazı hâlâ en güzel yaz olarak hatırlıyor",
+        "1": "{age} yaşında gelmiş geçmiş en güzel yazı yaşadı; ardından 100 çocuktan {n} tanesi o yaz ömürlük arkadaşlar edindi"
+      },
+      "teacher": {
+        "0": "{age} yaşında harika bir öğretmeni oldu; ardından 100 çocuktan {n} tanesi sevdiği bir ders buldu",
+        "1": "{age} yaşında harika bir öğretmeni oldu; ardından 100 çocuktan {n} tanesi zor şeyleri yapabileceğine inanmaya başladı"
+      },
+      "travel": {
+        "0": "{age} yaşında aile bir yıl seyahat etti; ardından 100 çocuktan {n} tanesi birçok dilden sözcük kaptı",
+        "1": "{age} yaşında aile bir yıl seyahat etti; ardından 100 çocuktan {n} tanesi bazen evini özledi",
+        "2": "{age} yaşında aile bir yıl seyahat etti; ardından 100 çocuktan {n} tanesi her yerde kendini evinde hissetmeyi öğrendi"
+      },
+      "volunteer": {
+        "0": "{age} yaşında gönüllülüğe başladı; ardından 100 çocuktan {n} tanesi yardım ettiği biri ona teşekkür etti",
+        "1": "{age} yaşında gönüllülüğe başladı; ardından 100 çocuktan {n} tanesi diğer gönüllülere önderlik etmeye başladı"
+      }
+    },
+    "stop": {
+      "authoritative": "Ebeveynler artık o kadar sıcak ve kararlı değil",
+      "bestfriend": "En iyi arkadaş başka yere taşınır",
+      "bullied": "Zorbalık sona erer",
+      "carer": "Küçük kardeşe bakmayı bırakır",
+      "chores": "Artık ev görevi yok",
+      "coding": "Kodlama kulübünden ayrılır",
+      "countryside": "Aile şehre geri taşınır",
+      "dinners": "Aile yemekleri sona erer",
+      "divorce": "Ebeveynler yeniden bir araya gelir",
+      "drama": "Drama kulübünden ayrılır",
+      "exam": "Sınavdan kalmayı atlatır",
+      "fallout": "Küslüğü atlatır",
+      "firstlove": "İlk aşkı atlatır",
+      "grandparent": "Büyükanne ya da büyükbaba evden taşınır",
+      "illness": "Ebeveyn yeniden sağlıklı",
+      "job": "Hafta sonu işini bırakır",
+      "language": "Dil öğrenmeyi bırakır",
+      "leader": "Sınıf başkanlığı biter",
+      "longhours": "Ebeveyn yeniden normal saatlerde çalışır",
+      "mentor": "Rehber yoluna devam eder",
+      "money": "Para durumu yeniden iyi",
+      "move": "Aile memlekete geri döner",
+      "music": "Enstrüman çalmayı bırakır",
+      "nature": "Dışarıda o kadar çok zaman geçirmeyi bırakır",
+      "newschool": "Yeni okula alışır",
+      "pet": "Köpek bir çiftlikte yaşamaya gider",
+      "prize": "Ödül artık mutlu bir anı",
+      "reading": "Her gece okumayı bırakır",
+      "scouts": "İzcilikten ayrılır",
+      "screen": "Ekran süresi azaltılır",
+      "sibling": "Küçük kardeş evden ayrılır",
+      "sleep": "Yatma saatleri yeniden geç olur",
+      "sport": "Takım sporunu bırakır",
+      "strict": "Ebeveynler artık o kadar katı değil",
+      "summer": "Yaz biter",
+      "teacher": "Harika öğretmen ayrılır",
+      "travel": "Aile seyahatten eve döner",
+      "volunteer": "Gönüllülüğü bırakır"
+    },
+    "tally": {
+      "arm": "{age} yaşına kadar 100 çocuktan {n} tanesi kolunu ya da bacağını kırdı",
+      "bike": "{age} yaşına kadar 100 çocuktan {n} tanesi bisiklete binmeyi öğrendi",
+      "camp": "{age} yaşına kadar 100 çocuktan {n} tanesi yaz kampına gitti",
+      "cousin": "{age} yaşına kadar 100 çocuktan {n} tanesinin yanına bir yaz kuzeni kalmaya geldi",
+      "friend": "{age} yaşına kadar 100 çocuktan {n} tanesinin yakın arkadaşı başka yere taşındı",
+      "glasses": "{age} yaşına kadar 100 çocuktan {n} tanesi gözlük taktı",
+      "holiday": "{age} yaşına kadar 100 çocuktan {n} tanesi uzak bir aile tatiline çıktı",
+      "house": "{age} yaşına kadar 100 çocuktan {n} tanesi en az bir kez ev değiştirdi",
+      "pet": "{age} yaşına kadar 100 çocuktan {n} tanesinin evcil hayvanı oldu",
+      "play": "{age} yaşına kadar 100 çocuktan {n} tanesi bir okul oyununda rol aldı",
+      "sib": "{age} yaşına kadar 100 çocuktan {n} tanesinin yeni bir küçük kardeşi oldu",
+      "team": "{age} yaşına kadar 100 çocuktan {n} tanesi okul takımına girdi",
+      "visits": "{age} yaşına kadar 100 çocuktan {n} tanesinin sık ziyarete gelen bir büyükanne ya da büyükbabası var",
+      "win": "{age} yaşına kadar 100 çocuktan {n} tanesi yarış ya da ödül gibi büyük bir şey kazandı"
+    }
+  },
+  "gloss": {
+    "A": "Başkalarını önemser ve iyi geçinmeyi sever.",
+    "C": "İşleri düzende tutar ve başladığını bitirir.",
+    "Calm": "İşler ters gittiğinde soğukkanlı kalır.",
+    "E": "İnsanlarla birlikteyken enerji toplar.",
+    "O": "Yeni fikirlere, yerlere ve denenecek şeylere bayılır."
+  },
+  "glossEx": {
+    "A": {
+      "0": "son bisküviyi paylaşır",
+      "1": "düşen bir arkadaşına yardım eder"
+    },
+    "C": {
+      "0": "okul çantasını bir gece önceden hazırlar",
+      "1": "oynamadan önce ödevini yapar"
+    },
+    "Calm": {
+      "0": "sınavdan önceki gece rahat uyur",
+      "1": "kaybedilen bir oyunu umursamaz"
+    },
+    "E": {
+      "0": "yeni gelen çocukla ilk o konuşur",
+      "1": "kalabalık doğum günü partilerine bayılır"
+    },
+    "O": {
+      "0": "çok fazla \"neden?\" diye sorar",
+      "1": "tuhaf yeni meyveyi tatmak ister"
+    }
+  },
+  "group": {
+    "0": "Ev",
+    "1": "Okul ve arkadaşlar",
+    "2": "Etkinlikler",
+    "3": "Büyük değişimler",
+    "4": "İyi şans"
+  },
+  "have": {
+    "authoritative": {
+      "0": "evde ne bekleyeceğini bildi"
+    },
+    "bestfriend": {
+      "0": "okulda kendini daha cesur hissetti",
+      "1": "arkadaşıyla maceralara atıldı"
+    },
+    "bullied": {
+      "0": "birine anlattı ve durum düzeldi",
+      "1": "bir süre derste el kaldırmayı bıraktı",
+      "2": "dışlanan çocuklara karşı daha nazik oldu"
+    },
+    "carer": {
+      "0": "çok sabırlı oldu",
+      "1": "bazen yorgun hissetti"
+    },
+    "chores": {
+      "0": "iyi yapılmış bir işle gurur duydu",
+      "1": "ev işlerinden yakındı (ama yine de yaptı)"
+    },
+    "coding": {
+      "0": "kendi küçük oyununu yaptı",
+      "1": "aynı şeyleri seven arkadaşlar edindi"
+    },
+    "countryside": {
+      "0": "hayvanlara baktı",
+      "1": "bazen şehri özledi",
+      "2": "her gün dışarıda oynadı"
+    },
+    "dinners": {
+      "0": "her akşam gününü anlattı",
+      "1": "akşam yemeğinde yeni yiyecekler denedi"
+    },
+    "divorce": {
+      "0": "bir süre bunun kendi suçu olup olmadığını düşündü (asla değildir)",
+      "1": "iki eve ve iki doğum gününe alıştı",
+      "2": "ebeveynlerden birine daha çok yakınlaştı"
+    },
+    "drama": {
+      "0": "gerçek bir sahnede oynadı",
+      "1": "duyguları anlamakta ustalaştı"
+    },
+    "exam": {
+      "0": "yeniden denedi ve geçti",
+      "1": "bir süre o derste kötü olduğuna karar verdi"
+    },
+    "fallout": {
+      "0": "yeniden barıştı",
+      "1": "yeni arkadaşlar buldu"
+    },
+    "firstlove": {
+      "0": "bir süre hüzünlü şarkılar dinledi",
+      "1": "zor duyguları atlatabileceğini keşfetti",
+      "2": "arkadaşları ona sahip çıktı"
+    },
+    "grandparent": {
+      "0": "birçok aile hikâyesi dinledi",
+      "1": "büyükanne ya da büyükbabasıyla yemek yapmayı öğrendi"
+    },
+    "illness": {
+      "0": "ebeveynin bakımına yardım etti",
+      "1": "kendini daha büyümüş hissetti"
+    },
+    "job": {
+      "0": "büyük bir şey için para biriktirdi",
+      "1": "yabancılarla konuşmaya alıştı"
+    },
+    "language": {
+      "0": "yeni dilde filmler izledi",
+      "1": "o dili konuşan bir arkadaş edindi"
+    },
+    "leader": {
+      "0": "sınıfın önünde konuşma yaptı",
+      "1": "kendini daha sorumlu hissetti"
+    },
+    "longhours": {
+      "0": "kendi başına daha çok zaman geçirdi",
+      "1": "işlerini kendi başına halletmeyi öğrendi",
+      "2": "yatma saatinde ebeveynini özledi"
+    },
+    "mentor": {
+      "0": "üzerinde çalışacağı bir hedef buldu",
+      "1": "asla denemeyeceği şeyleri denedi"
+    },
+    "money": {
+      "0": "evde daha çok yardım etti",
+      "1": "para için endişelendi",
+      "2": "bir süre daha az kulübe ve geziye gitti"
+    },
+    "move": {
+      "0": "yeni dili öğrendi",
+      "1": "ilk yıl yalnız hissetti",
+      "2": "orada yeni bir en iyi arkadaş edindi"
+    },
+    "music": {
+      "0": "bir konserde çaldı",
+      "1": "bir süre pratik yapmayı sıkıcı buldu"
+    },
+    "nature": {
+      "0": "kuşların ve ağaçların adlarını öğrendi",
+      "1": "kampa gitti ve bayıldı"
+    },
+    "newschool": {
+      "0": "hızla yeni arkadaşlar edindi",
+      "1": "eski arkadaşlarını özledi"
+    },
+    "pet": {
+      "0": "köpeği her gün gezdirdi",
+      "1": "köpeğin en iyi arkadaşı olduğunu söylüyor"
+    },
+    "prize": {
+      "0": "bunu herkese anlattı",
+      "1": "bir sonraki ödül için çalışmaya başladı"
+    },
+    "reading": {
+      "0": "kütüphane kartını çok kullandı",
+      "1": "kendi hikâyelerini yazmaya başladı"
+    },
+    "scouts": {
+      "0": "birçok rozet kazandı",
+      "1": "ilk kez çadırda uyudu"
+    },
+    "screen": {
+      "0": "daha az uyudu",
+      "1": "internette arkadaşlar edindi",
+      "2": "bir oyunda gerçekten iyi oldu"
+    },
+    "sibling": {
+      "0": "önce kıskandı",
+      "1": "küçük kardeşine çok yakınlaştı",
+      "2": "bebeğe bakmaya yardım etti"
+    },
+    "sleep": {
+      "0": "sabahları daha kolay geçti",
+      "1": "okulda odaklanmayı daha kolay buldu"
+    },
+    "sport": {
+      "0": "takımda arkadaşlar edindi",
+      "1": "spor sakatlığı geçirdi ve iyileşti",
+      "2": "hâlâ konuştuğu bir maç kazandı"
+    },
+    "strict": {
+      "0": "her şeyi içine atmaya başladı",
+      "1": "kurallara uymakta çok iyi oldu"
+    },
+    "summer": {
+      "0": "o yazı hâlâ en güzel yaz olarak hatırlıyor",
+      "1": "o yaz ömürlük arkadaşlar edindi"
+    },
+    "teacher": {
+      "0": "sevdiği bir ders buldu",
+      "1": "zor şeyleri yapabileceğine inanmaya başladı"
+    },
+    "travel": {
+      "0": "birçok dilden sözcük kaptı",
+      "1": "bazen evini özledi",
+      "2": "her yerde kendini evinde hissetmeyi öğrendi"
+    },
+    "volunteer": {
+      "0": "yardım ettiği biri ona teşekkür etti",
+      "1": "diğer gönüllülere önderlik etmeye başladı"
+    }
+  },
+  "home": {
+    "baby": {
+      "help": {
+        "easy": "Sakin, mutlu bebekler. Çoğu büyüdükçe biraz daha sakin kalır.",
+        "energy": "Canlı, gürültülü ve hep hareket hâlinde. Birçoğu dışa dönük kalır.",
+        "mixed": "Kimi uysal, kimi utangaç, kimi enerji dolu.",
+        "slow": "Önce yeni insanlara ve yerlere karşı temkinli. Birçoğu biraz daha sessiz kalır."
+      }
+    },
+    "home": {
+      "help": {
+        "busy": "Hep bir şeyler oluyor: biraz daha dışa dönük, biraz daha az düzenli.",
+        "stable": "Huzurlu bir ev.",
+        "unstable": "Büyükler sık sık tartışıyor. Çocuklar daha çok endişelenme eğiliminde."
+      }
+    },
+    "money": {
+      "help": {
+        "comfy": "Gezi ve kurs gibi ekstralara yetiyor.",
+        "ok": "İhtiyaçlara yetiyor.",
+        "tight": "Para çoğu zaman yetmiyor. Çocuklar biraz daha çok endişeleniyor."
+      }
+    },
+    "place": {
+      "help": {
+        "city": "Çevrede bol insan ve yeni şey.",
+        "country": "Sakin, bol doğa.",
+        "town": "Biraz ikisinden de."
+      }
+    },
+    "school": {
+      "help": {
+        "crowded": "Kalabalık sınıflar; öğretmenlerin her çocuğa ayıracak az vakti var.",
+        "great": "İlgi uyandıran öğretmenler: biraz daha meraklı ve düzenli.",
+        "ordinary": "Normal bir okul."
+      }
+    },
+    "screens": {
+      "help": {
+        "none": "İstedikleri zaman ekran: biraz daha az düzenli, daha endişeli.",
+        "some": "Her gün biraz ekran süresi.",
+        "strict": "Ekran yalnızca arada bir."
+      }
+    },
+    "shape": {
+      "help": {
+        "big": "Büyükanne-büyükbaba, teyze, hala, amca ya da dayılar da birlikte yaşıyor: bol yardım.",
+        "one": "Her şeyi tek ebeveyn yapıyor: çocuklar çoğu zaman biraz daha fazla yardım eder.",
+        "two": "Anne ve baba, iki anne ya da iki baba, evde birlikte.",
+        "twohomes": "Ebeveynler ayrı yaşıyor; çocuklar iki ev arasında gidip geliyor."
+      }
+    },
+    "sib": {
+      "help": {
+        "0": "Tek çocuk: paylaşma pratiği biraz daha az.",
+        "1": "Bakılacak bir küçük: biraz daha nazik, biraz daha düzenli.",
+        "2": "Çocuk dolu kalabalık bir ev: daha çok paylaşma, daha çok sohbet.",
+        "older": "Örnek alınacak bir ağabey ya da abla."
+      }
+    },
+    "style": {
+      "help": {
+        "authoritarian": "Çok kural, az sıcaklık. Çocuklar düzenli ama daha endişeli olma eğiliminde.",
+        "authoritative": "Bol sevgi ve net kurallar. Çocuklar biraz daha düzenli ve sakin olma eğiliminde.",
+        "neglectful": "Ebeveynler meşgul ve uzak. Çocuklar daha çok endişelenme ve daha az düzenli olma eğiliminde.",
+        "permissive": "Bol sevgi, az kural. Çocuklar dışa dönük ama daha az düzenli olma eğiliminde."
+      }
+    },
+    "time": {
+      "help": {
+        "long": "Evde birlikte daha az zaman.",
+        "lots": "Birlikte oynamak ve konuşmak için bol zaman: biraz daha sakin ve nazik.",
+        "ordinary": "Çoğu gün birlikte biraz zaman."
+      }
+    }
+  },
+  "kid": {
+    "between": "çoğu konuda ortada",
+    "betweenLess": "çoğu konuda ortada, biraz daha az {trait}",
+    "betweenMore": "çoğu konuda ortada, biraz daha {trait}",
+    "line": "{name}, {age}: {body}.",
+    "short": "{a}, {b}",
+    "three": "{a} ve {b}, {c}"
+  },
+  "kind": {
+    "activity": "etkinlik",
+    "change": "değişiklik",
+    "everyday": "gündelik",
+    "home": "ev",
+    "luck": "iyi şans",
+    "milestone": "dönüm noktası",
+    "move": "büyük değişim",
+    "ripple": "ardından gelen",
+    "school": "okul",
+    "together": "birlikte"
+  },
+  "len": {
+    "good": "kalıcı olarak",
+    "once": "yalnızca bir kez",
+    "year": "yaklaşık bir yıl",
+    "years": "yaklaşık {n} yıl"
+  },
+  "life": {
+    "0": "Küçüklük yılları",
+    "1": "Okul yılları",
+    "2": "Ergenlik yılları",
+    "3": "İlk ev",
+    "4": "Kendi evi"
+  },
+  "meta": {
+    "hint": "Büyümelerini izlemek için oynat'a bas, sonra bir değişiklik dene.",
+    "intro": "Aynı iki ebeveynin birbirinden çok farklı çocukları olabilir. İşte onlardan 120'si, 1 yaşından 60 yaşına kadar büyüyor. Genler, ev, yaşananlar ve düpedüz şans kim olacaklarını şekillendirir. Oynat'a bas, sonra değişiklik dene: birbirine eklenirler; ne zaman olacaklarını ve ne kadar süreceklerini sen seçersin. Bir çocuğu takip etmek için \"120 çocuğun hepsi\" görünümünde bir yüze dokun.",
+    "name": "Çocuk",
+    "sub": "Kim olacaklar?"
+  },
+  "metric": {
+    "A": {
+      "label": "Nazik"
+    },
+    "A_hi": {
+      "label": "Nazik: çoğu çocuğun üst ucu"
+    },
+    "A_lo": {
+      "label": "Nazik: çoğu çocuğun alt ucu"
+    },
+    "C": {
+      "label": "Düzenli"
+    },
+    "C_hi": {
+      "label": "Düzenli: çoğu çocuğun üst ucu"
+    },
+    "C_lo": {
+      "label": "Düzenli: çoğu çocuğun alt ucu"
+    },
+    "Calm": {
+      "label": "Sakin"
+    },
+    "Calm_hi": {
+      "label": "Sakin: çoğu çocuğun üst ucu"
+    },
+    "Calm_lo": {
+      "label": "Sakin: çoğu çocuğun alt ucu"
+    },
+    "E": {
+      "label": "Dışa dönük"
+    },
+    "E_hi": {
+      "label": "Dışa dönük: çoğu çocuğun üst ucu"
+    },
+    "E_lo": {
+      "label": "Dışa dönük: çoğu çocuğun alt ucu"
+    },
+    "O": {
+      "label": "Meraklı"
+    },
+    "O_hi": {
+      "label": "Meraklı: çoğu çocuğun üst ucu"
+    },
+    "O_lo": {
+      "label": "Meraklı: çoğu çocuğun alt ucu"
+    },
+    "b_calm": {
+      "label": "Sınavdan önce büyük olasılıkla sakin kalır (100'de)",
+      "unit": "çocuk"
+    },
+    "b_food": {
+      "label": "Hiç tatmadığı bir yemeği büyük olasılıkla dener (100'de)",
+      "unit": "çocuk"
+    },
+    "b_hand": {
+      "label": "Derste büyük olasılıkla el kaldırır (100'de)",
+      "unit": "çocuk"
+    },
+    "b_help": {
+      "label": "Okuldaki yeni çocuğa büyük olasılıkla yardım eder (100'de)",
+      "unit": "çocuk"
+    },
+    "b_proj": {
+      "label": "Uzun bir okul projesini büyük olasılıkla bitirir (100'de)",
+      "unit": "çocuk"
+    },
+    "b_tidy": {
+      "label": "Odasını büyük olasılıkla düzenli tutar (100'de)",
+      "unit": "çocuk"
+    },
+    "hiA": {
+      "label": "çok nazik (120'de)",
+      "unit": "çocuk"
+    },
+    "hiC": {
+      "label": "çok düzenli (120'de)",
+      "unit": "çocuk"
+    },
+    "hiCalm": {
+      "label": "çok sakin (120'de)",
+      "unit": "çocuk"
+    },
+    "hiE": {
+      "label": "çok dışa dönük (120'de)",
+      "unit": "çocuk"
+    },
+    "hiO": {
+      "label": "çok meraklı (120'de)",
+      "unit": "çocuk"
+    },
+    "loA": {
+      "label": "çok inatçı (120'de)",
+      "unit": "çocuk"
+    },
+    "loC": {
+      "label": "çok dağınık (120'de)",
+      "unit": "çocuk"
+    },
+    "loCalm": {
+      "label": "çok endişelenir (120'de)",
+      "unit": "çocuk"
+    },
+    "loE": {
+      "label": "çok utangaç (120'de)",
+      "unit": "çocuk"
+    },
+    "loO": {
+      "label": "alışık olduğuna bağlı (120'de)",
+      "unit": "çocuk"
+    }
+  },
+  "more": {
+    "A": {
+      "0": "{d, select, bit {biraz daha az nazik} much {çok daha az nazik} other {daha az nazik}}",
+      "1": "{d, select, bit {biraz daha nazik} much {çok daha nazik} other {daha nazik}}"
+    },
+    "C": {
+      "0": "{d, select, bit {biraz daha az düzenli} much {çok daha az düzenli} other {daha az düzenli}}",
+      "1": "{d, select, bit {biraz daha düzenli} much {çok daha düzenli} other {daha düzenli}}"
+    },
+    "Calm": {
+      "0": "{d, select, bit {biraz daha endişeli} much {çok daha endişeli} other {daha endişeli}}",
+      "1": "{d, select, bit {biraz daha sakin} much {çok daha sakin} other {daha sakin}}"
+    },
+    "E": {
+      "0": "{d, select, bit {biraz daha sessiz} much {çok daha sessiz} other {daha sessiz}}",
+      "1": "{d, select, bit {biraz daha dışa dönük} much {çok daha dışa dönük} other {daha dışa dönük}}"
+    },
+    "O": {
+      "0": "{d, select, bit {biraz daha az meraklı} much {çok daha az meraklı} other {daha az meraklı}}",
+      "1": "{d, select, bit {biraz daha meraklı} much {çok daha meraklı} other {daha meraklı}}"
+    }
+  },
+  "name": {
+    "own": "Kendi ailen",
+    "ownFrom": "Kendi ailen ({from} temelli)"
+  },
+  "part": {
+    "chance": "Şans",
+    "genes": "Genler",
+    "home": "Ev",
+    "life": "Yaşam olayları",
+    "pct": "{part} %{n}"
+  },
+  "partLc": {
+    "chance": "şans",
+    "genes": "genler",
+    "home": "ev",
+    "life": "yaşam olayları"
+  },
+  "phrase": {
+    "A": {
+      "0": "düşündüğünü söylüyor",
+      "1": "başkalarına karşı nazik"
+    },
+    "C": {
+      "0": "biraz dağınık",
+      "1": "her şeyi derli toplu tutuyor"
+    },
+    "Calm": {
+      "0": "bazen endişeleniyor",
+      "1": "sakin kalıyor"
+    },
+    "E": {
+      "0": "sessiz zamanlardan hoşlanıyor",
+      "1": "insanlarla olmayı seviyor"
+    },
+    "O": {
+      "0": "bildiği şeyleri seviyor",
+      "1": "her şeyi merak ediyor"
+    }
+  },
+  "science": {
+    "A": "uyumluluk",
+    "C": "sorumluluk",
+    "Calm": "düşük nevrotiklik",
+    "E": "dışadönüklük",
+    "O": "deneyime açıklık"
+  },
+  "speed": {
+    "0": "½ yıl/sn",
+    "1": "1 yıl/sn",
+    "2": "2 yıl/sn",
+    "3": "5 yıl/sn"
+  },
+  "stage": {
+    "age": "{age} yaş — {cap}",
+    "all": "120 çocuğun hepsi",
+    "back": "Tipik çocuğa dön",
+    "between": "ortada",
+    "crowdHint": "{trait} · her yüz olası bir çocuk · tanışmak için birine dokun",
+    "hover": "{name}: {short} · tanışmak için dokun",
+    "of100": "100'de {n}",
+    "one": "Tek çocuk",
+    "oneOf": "{name}, 120 çocuktan biri",
+    "pileTrait": "Yığınların gösterdiği özellik",
+    "planned": "{age} yaşına planlandı — {cap}",
+    "typical": "120 çocuğun en tipiği",
+    "view": "Sahnenin gösterdiği",
+    "was": "önceden {n}",
+    "with": "değişikliklerinle",
+    "without": "değişiklik olmadan"
+  },
+  "step": {
+    "A": {
+      "0": "çok inatçı",
+      "1": "biraz inatçı",
+      "2": "ortada",
+      "3": "epey nazik",
+      "4": "çok nazik"
+    },
+    "C": {
+      "0": "çok dağınık",
+      "1": "biraz dağınık",
+      "2": "ortada",
+      "3": "biraz düzenli",
+      "4": "çok düzenli"
+    },
+    "Calm": {
+      "0": "çok endişeli",
+      "1": "biraz endişeli",
+      "2": "ortada",
+      "3": "epey sakin",
+      "4": "çok sakin"
+    },
+    "E": {
+      "0": "çok utangaç",
+      "1": "biraz utangaç",
+      "2": "ortada",
+      "3": "biraz dışa dönük",
+      "4": "çok dışa dönük"
+    },
+    "O": {
+      "0": "alışık olduğuna bağlı",
+      "1": "pek meraklı değil",
+      "2": "ortada",
+      "3": "biraz meraklı",
+      "4": "çok meraklı"
+    }
+  },
+  "story": {
+    "compared": "Değişiklik olmayan aynı çocuklarla karşılaştırıldığında, {age} yaşında:",
+    "differ": "Hâlâ çok farklılar: 100 çocuktan {hi} tanesi {high}, {lo} tanesi ise {low}.",
+    "differCalm": "Hâlâ çok farklılar: 100 çocuktan {hi} tanesi {high}, {lo} tanesi ise çok endişeleniyor.",
+    "fade": {
+      "bounced": ", sonra çoğu eski hâline döndü",
+      "faded": ", sonradan etkinin çoğu silindi",
+      "stopped": " ({n} yaşında durana kadar)"
+    },
+    "little": "Küçük çocuklar bile farklı: kimi atak, kimi temkinli.",
+    "middle": "{age} yaş: bu 120 çocuğun çoğu her özellikte ortalarda bir yerde.",
+    "planned": "{age} yaşına planlandı: {cap}.",
+    "rip": "; 100 çocuktan {n} tanesi {have}",
+    "sentence": "{s}.",
+    "settled": "Artık kişilik büyük ölçüde oturdu. Yine de hayat boyu yavaşça değişmeye devam eder.",
+    "siblings": "Kardeşler yine de farklı: her biri farklı bir gen karışımı ve farklı bir şans alır.",
+    "style": {
+      "authoritarian": "Katı ebeveynler çoğu çocuğu biraz daha düzenli ama aynı zamanda daha endişeli yapar.",
+      "authoritative": "Sıcak ve kararlı ebeveynler çoğu çocuğun daha sakin ve düzenli olmasına yardım eder.",
+      "neglectful": "Mesafeli ebeveynlerle birçok çocuk daha çok endişelenir ve daha az düzenli olur.",
+      "permissive": "Rahat ebeveynler: çocuklar daha dışa dönük ama daha az düzenli olma eğiliminde."
+    },
+    "teen": "Ergenlik yılları: endişeler artar, düzen bir süre bozulur. Bu normaldir.",
+    "they": "çocuklar {list}.",
+    "theySame": "çocuklar şimdilik aşağı yukarı aynı.",
+    "top": "{age} yaş: bu 120 çocuğun çoğu {list}.",
+    "when": "{at} yaşında {past}: çocukların çoğu {effect}{fade}{rip}."
+  },
+  "time": {
+    "age": "{n} yaş"
+  },
+  "tl": {
+    "all": "Hepsi",
+    "alt": "Yalnızca değişikliklerinle",
+    "base": "Yalnızca değişiklik olmadan",
+    "both": "İkisi de",
+    "changes": "Değişiklikler",
+    "effects": "Etkiler",
+    "growing": "Büyüme",
+    "label": "Zaman çizelgesinde göster",
+    "none": "Henüz bir şey yok. Oynat'a bas ya da bir değişiklik dene.",
+    "noneKind": "Henüz bu türden bir şey yok."
+  },
+  "track": {
+    "A": {
+      "0": "kendi bildiği",
+      "1": "nazik"
+    },
+    "C": {
+      "0": "dağınık",
+      "1": "düzenli"
+    },
+    "Calm": {
+      "0": "endişeli",
+      "1": "sakin"
+    },
+    "E": {
+      "0": "utangaç",
+      "1": "dışa dönük"
+    },
+    "O": {
+      "0": "alışılmışı sever",
+      "1": "meraklı"
+    }
+  },
+  "trait": {
+    "A": "Nazik",
+    "C": "Düzenli",
+    "Calm": "Sakin",
+    "E": "Dışa dönük",
+    "O": "Meraklı"
+  },
+  "traitLc": {
+    "A": "nazik",
+    "C": "düzenli",
+    "Calm": "sakin",
+    "E": "dışa dönük",
+    "O": "meraklı"
+  },
+  "ui": {
+    "age": "{n} yaş",
+    "ages": "yaşlar: {list}",
+    "another": "Başka biriyle tanış",
+    "askTabs": "Sor",
+    "atAge": "{n} yaşında",
+    "atAgePast": "{n} yaşında (geçti: şimdi)",
+    "bestAges": "en güçlü {a}–{b} yaş civarında",
+    "changesEmpty": "Yaptığın her değişiklik buraya bir onay işaretiyle gelir; böylece onu çıkarıp yeniden koyabilirsin.",
+    "done": "Tamam",
+    "earlier": "Daha erken",
+    "earlierAria": "Bir yıl erken",
+    "edit": "Düzenle",
+    "fromAge": "{n} yaşından itibaren",
+    "glossLine": "{meaning} Örneğin bir çocuk {a} ya da {b}.",
+    "glossTitle": "Bu beş sözcük ne anlama geliyor?",
+    "happening": "Neler oluyor",
+    "kidAge": "{name}, {age} yaşında",
+    "kidN": "120 çocuktan #{n}",
+    "later": "Daha geç",
+    "laterAria": "Bir yıl geç",
+    "made": "{n} yapıldı",
+    "madeTimes": "{n} kez yapıldı",
+    "meet": "Çocukla tanış",
+    "meetNote": "Aynı ebeveynler, aynı ev; yine de her çocuk farklı.",
+    "mostTypical": "En tipik çocuk",
+    "nextAt": "Bir sonraki tıklaman {n} yaşında gerçekleşir.",
+    "nextNow": "Bir sonraki tıklaman şimdi gerçekleşir.",
+    "nowAge": "Şimdi ({n} yaş)",
+    "parents": "Ebeveynler",
+    "parentsNote": "Her çocuk iki ebeveynden farklı bir karışım alır. Aileyi değiştirmek her şeyi yeniden başlatır.",
+    "pickFamily": "Bir aile seç",
+    "plannedFor": "{name} · {n} yaşına planlandı",
+    "rulerEmpty": "Değişikliklerin burada, doğumdan 18 yaşına uzanan bir çizgide görünecek.",
+    "rulerLabel": "{cap}, {age} yaş, {len}",
+    "rulerLabelPlanned": "{cap}, {age} yaş, {len}, planlandı: ok tuşlarıyla taşı",
+    "rulerPanel": "{name} · {age} yaş · {len} · {state}",
+    "science": "Bilimi hakkında",
+    "science1": "Bilim insanları kişiliği çoğu zaman Beş Büyük Faktör denen beş özellikle anlatır. Burada sade adları var:",
+    "science2": "Sayılar kaba ve araştırmalardan esinlenmiştir, kesin değildir. Kaderi değil ortalamaları anlatırlar: gerçek çocuklar bir modelle öngörülemez.",
+    "scienceItem": "{trait}, bilimdeki adıyla {science}: “{a}” ile “{b}” arasında.",
+    "state": {
+      "going": "sürüyor",
+      "over": "bitti",
+      "planned": "planlandı",
+      "stopped": "{n} yaşında durdu"
+    },
+    "stopNow": "Şimdi durdur",
+    "tab": {
+      "changes": "Değişiklikler",
+      "family": "Aile"
+    },
+    "things": "Olabilecek şeyler",
+    "thingsHint": "Birbirine eklenirler. Ne zaman, ne kadar büyük ve ne kadar süreceğini seç, sonra tıkla.",
+    "toTry": "{n} denenecek",
+    "tuneNote": "Doğa ve şans ayarları dünyayı yeniden başlatır. Değişiklik ayarları bir sonraki tıklamana uygulanır.",
+    "undo": "Geri al",
+    "usualLen": "Her değişiklik olağan süresi kadar sürer.",
+    "usually": "Genelde: {what}",
+    "variables": "Değişkenler",
+    "whatChanged": "Ne değişti",
+    "whyBar": "{trait}: {list}",
+    "whyIntro": "Bu 120 kardeş arasındaki tüm farklardan her parçanın payı:",
+    "whyNote": "Genler: her çocuk ebeveynlerden farklı bir karışım alır. Ev: aynı ev çocukları biraz farklı etkiler. Yaşam olayları: değişikliklerin ve gündelik iniş çıkışlar. Şans: geri kalan her şey.",
+    "whyTitle": "Bu çocuklar neden farklı?",
+    "yourChanges": "Değişikliklerin"
+  },
+  "whatif": {
+    "authoritative": "Sıcak ve kararlı",
+    "bestfriend": "En iyi arkadaş",
+    "bullied": "Zorbalık",
+    "carer": "Küçük kardeşe bakar",
+    "chores": "Ev görevleri",
+    "coding": "Kodlama kulübü",
+    "countryside": "Kırsala taşınır",
+    "dinners": "Aile yemekleri",
+    "divorce": "Ebeveynler ayrılır",
+    "drama": "Drama kulübü",
+    "exam": "Sınavdan kaldı",
+    "fallout": "Arkadaşıyla küstü",
+    "firstlove": "İlk aşk",
+    "grandparent": "Büyükanne/büyükbaba gelir",
+    "illness": "Hasta ebeveyn",
+    "job": "Hafta sonu işi",
+    "language": "İkinci dil",
+    "leader": "Sınıf başkanı",
+    "longhours": "Uzun çalışma saatleri",
+    "mentor": "Bir rehber",
+    "money": "Para sıkıntısı",
+    "move": "Yurt dışına taşınır",
+    "music": "Bir enstrüman",
+    "nature": "Açık hava",
+    "newschool": "Yeni okul",
+    "pet": "Bir köpek",
+    "prize": "Yarışma kazanır",
+    "reading": "Kitap okuma",
+    "scouts": "İzcilik",
+    "screen": "Çok ekran",
+    "sibling": "Küçük kardeş",
+    "sleep": "Yeterli uyku",
+    "sport": "Takım sporu",
+    "strict": "Daha katı",
+    "summer": "En güzel yaz",
+    "teacher": "Harika öğretmen",
+    "travel": "Bir yıl seyahat",
+    "volunteer": "Gönüllülük"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "what if… — на главную",
+    "worlds": "Миры",
+    "worldButton": "Мир: {name}. Сменить мир",
+    "wordmark": "what if"
+  },
+  "theme": {
+    "toDark": "Включить тёмную тему",
+    "toLight": "Включить светлую тему"
+  },
+  "lang": {
+    "label": "Язык",
+    "button": "Язык: {name}. Сменить язык",
+    "draft": "ещё не готов",
+    "alsoIn": "Есть и на языке: {language}",
+    "dismiss": "Не предлагать другой язык"
+  }
+}

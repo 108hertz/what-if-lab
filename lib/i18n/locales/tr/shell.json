@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "what if… ana sayfa",
+    "worlds": "Dünyalar",
+    "worldButton": "Dünya: {name}. Dünyayı değiştir",
+    "wordmark": "what if"
+  },
+  "theme": {
+    "toDark": "Koyu temaya geç",
+    "toLight": "Açık temaya geç"
+  },
+  "lang": {
+    "label": "Dil",
+    "button": "Dil: {name}. Dili değiştir",
+    "draft": "henüz hazır değil",
+    "alsoIn": "Ayrıca şu dilde: {language}",
+    "dismiss": "Başka dil önerme"
+  }
+}

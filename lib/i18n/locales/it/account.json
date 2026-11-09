@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "Gli account non sono attivi in questa versione. Qui è tutto gratis.",
+    "loading": "Controllo del tuo account…",
+    "signedOut": "Il laboratorio è gratis anche senza account. Accedi per usare Premium su qualsiasi dispositivo.",
+    "free": "Piano gratuito. Ogni mondo e ogni \"e se\" sono tuoi.",
+    "premium": "Premium è attivo: niente pubblicità, ed esportazione di video e slide.",
+    "error": "Il servizio account non ha risposto.",
+    "keepPremium": "Per ora Premium resta attivo."
+  },
+  "menu": {
+    "account": "Account",
+    "signIn": "Accedi",
+    "createAccount": "Crea account",
+    "goPremium": "Passa a Premium",
+    "price": "15 $ all'anno",
+    "manage": "Gestisci abbonamento",
+    "settings": "Impostazioni account",
+    "signOut": "Esci",
+    "retry": "Riprova",
+    "yourAccount": "Il tuo account del laboratorio",
+    "premium": "Premium",
+    "free": "Gratis",
+    "plan": "Piano {plan}",
+    "buttonLabel": "{label}, piano {plan}",
+    "devPremium": "Simula Premium",
+    "devOnly": "solo versione di sviluppo"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Niente pubblicità",
+        "text": "Ogni spazio pubblicitario sparisce, in ogni mondo."
+      },
+      "phone": {
+        "name": "Video per telefono",
+        "text": "Clip 1080 × 1920 del tuo \"e se\" per Shorts, Reels e TikTok."
+      },
+      "wide": {
+        "name": "Video per YouTube",
+        "text": "Clip 1920 × 1080 con i due mondi fianco a fianco."
+      },
+      "slides": {
+        "name": "Slide",
+        "text": "Una presentazione PDF: la situazione, il \"e se\", i momenti chiave e il risultato."
+      }
+    },
+    "lead": {
+      "export": "Video e slide fanno parte di Premium.",
+      "ads": "Premium toglie la pubblicità.",
+      "menu": "Sostieni il laboratorio e ottieni gli strumenti per condividere quello che scopri."
+    },
+    "createContinue": "Crea account e continua",
+    "haveAccount": "Ho già un account",
+    "noteSignedOut": "Prima un account, così Premium funziona su ogni dispositivo. Poi il pagamento si apre proprio qui.",
+    "openingCheckout": "Apertura del pagamento…",
+    "continueCheckout": "Continua al pagamento",
+    "noteFree": "Accesso come {who}. Il pagamento è gestito da {provider} e Stripe; il laboratorio non vede mai la tua carta.",
+    "you": "te",
+    "ourProvider": "il nostro fornitore",
+    "back": "Torna al laboratorio",
+    "manage": "Gestisci abbonamento",
+    "checking": "Controllo del tuo account…",
+    "retry": "Riprova",
+    "noteDev": "Gli account non sono attivi in questa versione. Per provare Premium, attiva Simula Premium nel menu account.",
+    "noteOff": "Premium non è ancora in vendita in questa versione del laboratorio.",
+    "titleOn": "Premium è attivo",
+    "title": "Premium",
+    "amount": "15 $",
+    "per": "all'anno · disdici quando vuoi",
+    "thanks": "Grazie. La pubblicità è sparita e le esportazioni sono sbloccate in ogni mondo.",
+    "free": "Ogni mondo e ogni \"e se\" restano gratis, con o senza Premium."
+  },
+  "errors": {
+    "noCheckout": "Il pagamento non è disponibile in questa versione. Riprova più tardi.",
+    "notOnSale": "Premium non è ancora in vendita. Riprova più tardi.",
+    "checkoutFailed": "Impossibile aprire il pagamento. Riprova tra un momento.",
+    "offline": "Sei offline. Gli account tornano quando ti riconnetti.",
+    "noAnswer": "Il servizio account non ha risposto. Controlla la connessione e riprova."
+  },
+  "yourAccount": "Il tuo account"
+}

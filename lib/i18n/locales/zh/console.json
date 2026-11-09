@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "播放",
+    "pause": "暂停",
+    "speed": "速度",
+    "slower": "慢一点",
+    "faster": "快一点",
+    "reset": "重置",
+    "resetLabel": "全部重置",
+    "resetTitle": "全部重置：设置、改变和时间",
+    "hintFull": "退出全屏才能做改变。",
+    "hint": "选择改变。它们会叠加；取消勾选即可对比。"
+  },
+  "fullscreen": {
+    "enter": "全屏",
+    "leave": "退出全屏",
+    "title": "{label}（F）"
+  },
+  "changes": {
+    "title": "你的改变",
+    "count": "{total}项中开启{on}项",
+    "empty": "还没有任何改变。你做的每个改变都会带着勾选框出现在这里，可以随时关掉再打开。",
+    "remove": "从列表中移除“{name}”",
+    "removeTitle": "从列表中移除",
+    "allOn": "全部开启",
+    "allOff": "全部关闭",
+    "clear": "清空列表",
+    "throw": "扔进一颗行星"
+  },
+  "about": {
+    "label": "关于这个模型",
+    "body": "一切都由内置规则和简化数据驱动，在你的浏览器里实时运行。结果展示的是合理的走向，而不是预测。"
+  },
+  "whatifs": {
+    "title": "做出改变",
+    "applied": "已应用{n}次"
+  },
+  "readouts": {
+    "title": "当前"
+  },
+  "world": {
+    "base": "不改变",
+    "alt": "有改变",
+    "both": "两个世界",
+    "onlyBase": "仅在不改变的世界",
+    "onlyAlt": "仅在有改变的世界"
+  },
+  "tune": {
+    "title": "变量",
+    "live": "改变初始世界会让它重新开始。“如果”的设置在你下次选择“如果”时生效。",
+    "restart": "改动这些会让世界重新开始。"
+  },
+  "chart": {
+    "withChanges": "有改变：",
+    "noDiff": "暂时没有明显差别",
+    "overTime": "{metric}随时间变化",
+    "collecting": "正在收集数据……",
+    "fork": "分岔"
+  },
+  "stage": {
+    "label": "模拟舞台",
+    "edge": "What-If Lab · 种子 {seed}"
+  },
+  "timeline": {
+    "title": "时间线",
+    "empty": "还没有值得注意的事。让它运行一会儿，或者做个改变。"
+  },
+  "dock": {
+    "tools": "工具",
+    "ask": "如果",
+    "tune": "调节",
+    "read": "数据",
+    "log": "记录"
+  },
+  "ad": {
+    "label": "广告",
+    "promo": "Premium 无广告 · $15/年",
+    "short": "广告"
+  }
+}

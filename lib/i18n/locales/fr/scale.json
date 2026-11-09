@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Zoomer",
+    "zoomOut": "Dézoomer",
+    "zoomLevel": "Niveau de zoom",
+    "hint": "Faites défiler, pincez ou glissez. Touchez une étiquette dorée pour ouvrir son monde."
+  },
+  "panel": {
+    "inView": "À l’écran",
+    "openThis": "Ouvrir ce monde",
+    "openWorld": "Ouvrir un monde",
+    "jumpTo": "Aller à"
+  },
+  "hero": {
+    "title": "Que se passe-t-il si…",
+    "body": "Zoomez d’un proton à l’Univers observable, dix fois plus à chaque pas. Les étiquettes dorées sont des mondes vivants : ouvrez-en un, changez-le et comparez son avenir avec le monde laissé tel quel."
+  },
+  "stage": {
+    "open": "Ouvrir le monde →",
+    "screen": "Largeur de l’écran ≈ {len}"
+  }
+}

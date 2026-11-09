@@ -1,0 +1,690 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "cap": {
+    "bigger": "większy o {n}%",
+    "coatThicker": "grubsza okrywa ({coat})",
+    "coatThinner": "cieńsza okrywa ({coat})",
+    "earsLess": "mniejsze uszy (zauważa mniej)",
+    "earsMore": "większe uszy (zauważa więcej)",
+    "eyesLess": "mniejsze oczy (zauważa mniej)",
+    "eyesMore": "większe oczy (zauważa więcej)",
+    "faster": "szybszy o {n}%",
+    "none": "Żadne {many} teraz tu nie żyją.",
+    "now": "Teraz: {list}.",
+    "same": "Mniej więcej tak samo jak w dniu 0. Ciała zmieniają się przez wiele pokoleń.",
+    "slower": "wolniejszy o {n}%",
+    "smaller": "mniejszy o {n}%"
+  },
+  "chart": {
+    "ariaBodies": "Szybkość, rozmiar, zmysły i okrywa w czasie: {many}",
+    "ariaCounts": "Liczebność każdego zwierzęcia w czasie",
+    "asFast": "tak samo szybki jak",
+    "bigger": "o {n}% większy",
+    "bodies": "Jak zmieniły się ich ciała",
+    "bodyDay0": "Typowy osobnik ({one}) w porównaniu z dniem 0: 1,00× to brak zmiany, powyżej 1 to więcej (szybciej, większy, ostrzejsze zmysły, grubsza okrywa: {coat}).",
+    "bodyVs": "Typowy osobnik ({one}) z Twoimi zmianami jest {speed} bez nich i {size}.",
+    "changes": "ZMIANY",
+    "counts": "Ile jest każdego",
+    "diff": "Z Twoimi zmianami w porównaniu z brakiem zmian (dzień {day}): {be, select, is {{list}} other {{list}}}.",
+    "fasterThan": "o {n}% szybszy niż",
+    "intro": "Ile zwierząt każdego gatunku żyje tu dzień po dniu. Wprowadź zmianę, aby porównać z tym światem.",
+    "label": "{name} {n}",
+    "noChange": "BEZ ZMIAN",
+    "same": "Z Twoimi zmianami liczby są na razie takie same jak bez nich (dzień {day}).",
+    "sameSize": "tego samego rozmiaru",
+    "slowerThan": "o {n}% wolniejszy niż",
+    "smaller": "o {n}% mniejszy",
+    "unitAnimals": "zwierząt",
+    "unitDay0": "× dzień 0",
+    "view": "Widok wykresu",
+    "whichAnimal": "Które zwierzę",
+    "withChanges": "ZE ZMIANAMI"
+  },
+  "cmp": {
+    "change": "niż bez Twoich zmian",
+    "day0": "niż w dniu 0"
+  },
+  "cover": {
+    "land": "krzaki",
+    "water": "wodorosty i skały"
+  },
+  "ctl": {
+    "dT": {
+      "label": "Zmiana temperatury",
+      "unit": "°C"
+    },
+    "food": {
+      "label": "Przyrost pożywienia",
+      "unit": "% normy"
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Ustawienia zmian (dla następnego kliknięcia)",
+      "people-and-babies": "Ludzie i młode",
+      "the-place": "Miejsce"
+    },
+    "hab": {
+      "label": "Przestrzeń do życia",
+      "unit": "% terenu"
+    },
+    "habitat": {
+      "label": "Środowisko",
+      "opt": {
+        "desert": "Pustynia",
+        "forest": "Las i tundra",
+        "ice": "Lód morski",
+        "meadow": "Łąka",
+        "ocean": "Ocean",
+        "savanna": "Sawanna"
+      }
+    },
+    "human": {
+      "label": "Polowania ludzi",
+      "opt": {
+        "0": "Brak",
+        "10": "Trochę",
+        "30": "Sporo",
+        "60": "Dużo"
+      }
+    },
+    "mut": {
+      "label": "Jak różne są młode",
+      "opt": {
+        "big": "Bardzo (szybka zmiana)",
+        "normal": "Normalnie",
+        "small": "Trochę (powolna zmiana)"
+      }
+    },
+    "s_new": {
+      "label": "Przybysze",
+      "unit": "zwierząt"
+    },
+    "s_sick": {
+      "label": "Siła choroby",
+      "unit": "% choruje i ginie"
+    },
+    "seasons": {
+      "label": "Pory roku",
+      "opt": {
+        "gentle": "Łagodne",
+        "off": "Wył.: pożywienie rośnie równo",
+        "strong": "Silne: chude zimy"
+      }
+    }
+  },
+  "ev": {
+    "add": "Wprowadzają się {many}: {n}",
+    "bigger": "{many} rosną średnio o 20%",
+    "boom": "{one}: liczebność się podwoiła",
+    "cool": "Zaczyna się epoka lodowcowa: o 4 °C zimniej, mniej pożywienia",
+    "disease": "Epidemia zabija: {many} ({n})",
+    "drought": "Przez rok nie pada: pożywienia jest o połowę mniej",
+    "faster": "Dobór naturalny: przeciętny osobnik ({one}) jest teraz o 20% szybszy",
+    "fire": "Pożar trawi jedną trzecią terenu",
+    "habitat": "Połowę siedlisk zajmują pola i drogi",
+    "hunt": "Ludzie zaczynają polować na {many}",
+    "invasive": "Przybywają szybko rozmnażające się {many}: {n}",
+    "move": "Przeniesione do odwrotnego klimatu: wszystko kosztuje dużo więcej energii",
+    "noRoom": "Nie ma miejsca na szósty gatunek zwierząt",
+    "noneToRemove": "Żadne {many} tu nie żyją, nie ma czego zabrać",
+    "out": "{many} wymarły tutaj; główna przyczyna: {why}",
+    "rain": "Zaczynają się lata dobrych deszczów: pożywienie rośnie szybciej",
+    "removed": "Usunięto wszystkie {many}",
+    "reserve": "Rezerwat: koniec polowań, roślinność się odradza",
+    "senses": "{many} zauważają teraz jedzenie i zagrożenie o 20% dalej",
+    "slower": "Dobór naturalny: {many} zwalniają, by oszczędzać energię",
+    "smaller": "{many} średnio maleją",
+    "thicker": "Okrywa gęstnieje: {many} mają teraz o 20% grubszą warstwę ({coat})",
+    "thinner": "Okrywa się przerzedza: {many} mają teraz o 20% cieńszą warstwę ({coat})",
+    "wanders": "Z zewnątrz przybłąkuje się para: {many}",
+    "warm": "Klimat ociepla się o 3 °C: potrzeba więcej energii, jest mniej pożywienia"
+  },
+  "facts": {
+    "eats": "Je",
+    "family": "Życie rodzinne",
+    "lifespan": "Długość życia",
+    "lives": "Żyje",
+    "note": "W tym modelu dzień jest krótki: zwierzęta żyją tygodnie, a nie lata, więc możesz obserwować wiele pokoleń.",
+    "role": "Rola w przyrodzie",
+    "title": "Poznaj zwierzęta"
+  },
+  "food": {
+    "desert": "owady i nasiona",
+    "forest": "trawa i liście",
+    "ice": "kryl",
+    "meadow": "kwiaty",
+    "ocean": "kryl i małe ryby",
+    "savanna": "trawa"
+  },
+  "group": {
+    "0": "Zwierzęta",
+    "1": "Klimat",
+    "2": "Ludzie"
+  },
+  "meta": {
+    "hint": "Każde zwierzę jest trochę inne. Te najlepiej dopasowane mają więcej młodych. Naciśnij start i wybierz zmianę.",
+    "intro": "Do pięciu gatunków zwierząt dzieli jedno miejsce. Każde zwierzę jest trochę inne; te najlepiej dopasowane mają więcej młodych, więc ciała zmieniają się z czasem. Wybierz świat albo zbuduj własny i wprowadzaj zmiany: sumują się.",
+    "name": "Zwierzęta",
+    "sub": "Ewolucja"
+  },
+  "metric": {
+    "co0": {
+      "label": "Okrywa (zwierzę 1)",
+      "unit": "× dzień 0"
+    },
+    "co1": {
+      "label": "Okrywa (zwierzę 2)",
+      "unit": "× dzień 0"
+    },
+    "co2": {
+      "label": "Okrywa (zwierzę 3)",
+      "unit": "× dzień 0"
+    },
+    "co3": {
+      "label": "Okrywa (zwierzę 4)",
+      "unit": "× dzień 0"
+    },
+    "co4": {
+      "label": "Okrywa (zwierzę 5)",
+      "unit": "× dzień 0"
+    },
+    "food": {
+      "label": "Pożywienie",
+      "unit": "kęsów"
+    },
+    "n0": {
+      "label": "Zwierzę 1",
+      "unit": "zwierząt"
+    },
+    "n1": {
+      "label": "Zwierzę 2",
+      "unit": "zwierząt"
+    },
+    "n2": {
+      "label": "Zwierzę 3",
+      "unit": "zwierząt"
+    },
+    "n3": {
+      "label": "Zwierzę 4",
+      "unit": "zwierząt"
+    },
+    "n4": {
+      "label": "Zwierzę 5",
+      "unit": "zwierząt"
+    },
+    "se0": {
+      "label": "Zmysły (zwierzę 1)",
+      "unit": "× dzień 0"
+    },
+    "se1": {
+      "label": "Zmysły (zwierzę 2)",
+      "unit": "× dzień 0"
+    },
+    "se2": {
+      "label": "Zmysły (zwierzę 3)",
+      "unit": "× dzień 0"
+    },
+    "se3": {
+      "label": "Zmysły (zwierzę 4)",
+      "unit": "× dzień 0"
+    },
+    "se4": {
+      "label": "Zmysły (zwierzę 5)",
+      "unit": "× dzień 0"
+    },
+    "sp0": {
+      "label": "Szybkość (zwierzę 1)",
+      "unit": "× dzień 0"
+    },
+    "sp1": {
+      "label": "Szybkość (zwierzę 2)",
+      "unit": "× dzień 0"
+    },
+    "sp2": {
+      "label": "Szybkość (zwierzę 3)",
+      "unit": "× dzień 0"
+    },
+    "sp3": {
+      "label": "Szybkość (zwierzę 4)",
+      "unit": "× dzień 0"
+    },
+    "sp4": {
+      "label": "Szybkość (zwierzę 5)",
+      "unit": "× dzień 0"
+    },
+    "sz0": {
+      "label": "Rozmiar (zwierzę 1)",
+      "unit": "× dzień 0"
+    },
+    "sz1": {
+      "label": "Rozmiar (zwierzę 2)",
+      "unit": "× dzień 0"
+    },
+    "sz2": {
+      "label": "Rozmiar (zwierzę 3)",
+      "unit": "× dzień 0"
+    },
+    "sz3": {
+      "label": "Rozmiar (zwierzę 4)",
+      "unit": "× dzień 0"
+    },
+    "sz4": {
+      "label": "Rozmiar (zwierzę 5)",
+      "unit": "× dzień 0"
+    }
+  },
+  "name": {
+    "own": "Twój własny świat",
+    "ownFrom": "Twój własny świat (na bazie: {from})"
+  },
+  "q": {
+    "add": "Co jeśli wprowadzą się {many}?",
+    "addMore": "Co jeśli wprowadzą się kolejne {many}?",
+    "cool": "Co jeśli zacznie się epoka lodowcowa?",
+    "disease": "Co jeśli {many} dopadnie choroba?",
+    "drought": "Co jeśli przez rok nie będzie padać?",
+    "fire": "Co jeśli pożar strawi jedną trzecią terenu?",
+    "habitat": "Co jeśli połowę terenu zajmą pola i drogi?",
+    "hunt": "Co jeśli ludzie zaczną polować na {many}?",
+    "invasive": "Co jeśli przybędzie szybko rozmnażający się gatunek?",
+    "move": "Co jeśli przeniesiemy je do odwrotnego klimatu?",
+    "rain": "Co jeśli nadejdą lata dobrych deszczów?",
+    "remove": "Co jeśli {many} znikną?",
+    "reserve": "Co jeśli powstanie tu rezerwat?",
+    "warm": "Co jeśli zrobi się o 3 °C cieplej?"
+  },
+  "sp": {
+    "bear": {
+      "coat": "futro",
+      "food": "Jagody, korzenie, łososie, czasem młode wapiti",
+      "life": "20–25 lat",
+      "many": "niedźwiedzie",
+      "name": "Niedźwiedź brunatny",
+      "one": "niedźwiedź",
+      "pl": "Niedźwiedzie brunatne",
+      "role": "Przenosi łososie z rzek do lasu i w ten sposób karmi drzewa.",
+      "social": "Zwykle samotnie. Matki trzymają młode przy sobie przez dwa–trzy lata.",
+      "where": "Lasy i góry Ameryki Północnej, Europy i Azji"
+    },
+    "beaver": {
+      "coat": "futro",
+      "food": "Kora, gałązki i rośliny wodne",
+      "life": "10–12 lat",
+      "many": "bobry",
+      "name": "Bóbr",
+      "one": "bóbr",
+      "pl": "Bobry",
+      "role": "Buduje tamy, które tworzą stawy: dom dla ryb, żab i ptaków.",
+      "social": "Rodzina: matka, ojciec i młode dzielą jedno żeremie.",
+      "where": "Rzeki i jeziora Ameryki Północnej i Europy"
+    },
+    "bee": {
+      "coat": "meszek",
+      "food": "Nektar i pyłek z kwiatów",
+      "life": "Robotnice około 6 tygodni, królowa 2–5 lat",
+      "many": "pszczoły",
+      "name": "Pszczoła miodna",
+      "one": "pszczoła",
+      "pl": "Pszczoły miodne",
+      "role": "Zapyla około jednej trzeciej jedzenia, które jedzą ludzie.",
+      "social": "Rodziny po 20 000–60 000: jedna królowa i wiele robotnic, których praca zmienia się z wiekiem.",
+      "where": "Cały świat, dziko i u pszczelarzy"
+    },
+    "cheetah": {
+      "coat": "futro",
+      "food": "Gazele i zające",
+      "life": "10–12 lat",
+      "many": "gepardy",
+      "name": "Gepard",
+      "one": "gepard",
+      "pl": "Gepardy",
+      "role": "Najszybszy biegacz na lądzie: do 110 km/h, ale tylko w krótkim sprincie.",
+      "social": "Matki samotnie wychowują młode; bracia często trzymają się razem całe życie.",
+      "where": "Otwarte trawiaste równiny Afryki, kilka w Iranie"
+    },
+    "elephant": {
+      "coat": "tłuszcz",
+      "food": "Trawa, kora i owoce: około 150 kg dziennie",
+      "life": "60–70 lat",
+      "many": "słonie",
+      "name": "Słoń afrykański",
+      "one": "słoń",
+      "pl": "Słonie",
+      "role": "Przerzedza lasy, kopie wodopoje i roznosi nasiona.",
+      "social": "Stada spokrewnionych samic prowadzone przez najstarszą, matriarchinię. Samce odchodzą w wieku około 13 lat.",
+      "where": "Sawanny i lasy Afryki"
+    },
+    "elk": {
+      "coat": "futro",
+      "food": "Trawa, liście i kora",
+      "life": "10–13 lat",
+      "many": "wapiti",
+      "name": "Wapiti",
+      "one": "wapiti",
+      "pl": "Wapiti",
+      "role": "Główny posiłek wilków; ich wypas kształtuje skraj lasu.",
+      "social": "Matki z młodymi żyją w dużych stadach; samce żyją osobno i jesienią głośno ryczą.",
+      "where": "Górskie lasy i łąki Ameryki Północnej i Azji"
+    },
+    "fox": {
+      "coat": "futro",
+      "food": "Króliki, myszy, ptaki, jagody",
+      "life": "3–4 lata na wolności",
+      "many": "lisy",
+      "name": "Lis rudy",
+      "one": "lis",
+      "pl": "Lisy rude",
+      "role": "Pilnuje, by królików i myszy nie było za dużo.",
+      "social": "Pary wspólnie wychowują młode; starsze córki czasem pomagają.",
+      "where": "Prawie wszędzie na północnej półkuli, nawet w miastach"
+    },
+    "gazelle": {
+      "coat": "futro",
+      "food": "Krótka, świeża trawa",
+      "life": "10–15 lat",
+      "many": "gazele",
+      "name": "Gazela",
+      "one": "gazela",
+      "pl": "Gazele",
+      "role": "Pożywienie gepardów, lwów i hien; potrafi biec zygzakiem z prędkością 80 km/h.",
+      "social": "Stada samic z młodymi; samce strzegą małych kawałków terenu.",
+      "where": "Trawiaste równiny Kenii i Tanzanii"
+    },
+    "hornet": {
+      "coat": "meszek",
+      "food": "Pszczoły i inne owady (dla młodych), owoce i nektar",
+      "life": "Robotnice kilka tygodni, królowe około roku",
+      "many": "szerszenie",
+      "name": "Szerszeń",
+      "one": "szerszeń",
+      "pl": "Szerszenie",
+      "role": "Krąży przed ulami i łapie pszczoły wracające do domu.",
+      "social": "Papierowe gniazda liczące kilka tysięcy owadów, zakładane każdej wiosny przez jedną królową.",
+      "where": "Azja; od 2004 roku rozprzestrzenia się w Europie"
+    },
+    "jackal": {
+      "coat": "futro",
+      "food": "Małe ssaki, ptaki, owady",
+      "life": "8–9 lat",
+      "many": "szakale",
+      "name": "Szakal czaprakowy",
+      "one": "szakal",
+      "pl": "Szakale",
+      "role": "Poluje na małe zwierzęta i sprząta to, co zostawią inni.",
+      "social": "Pary na całe życie; zeszłoroczne młode pomagają wychować nowy miot.",
+      "where": "Suche trawiaste tereny i skraje pustyń w południowej i wschodniej Afryce"
+    },
+    "lion": {
+      "coat": "futro",
+      "food": "Zebry, gnu, bawoły, gazele",
+      "life": "10–14 lat",
+      "many": "lwy",
+      "name": "Lew",
+      "one": "lew",
+      "pl": "Lwy",
+      "role": "Dba, by stada roślinożerców były zdrowe i w ruchu.",
+      "social": "Stada spokrewnionych samic z 1–3 samcami. Samice polują razem.",
+      "where": "Sawanny Afryki i jeden las w Indiach"
+    },
+    "lseal": {
+      "coat": "tłuszcz",
+      "food": "Kryl, pingwiny, ryby, inne foki",
+      "life": "12–26 lat",
+      "many": "lamparty morskie",
+      "name": "Lampart morski",
+      "one": "lampart morski",
+      "pl": "Lamparty morskie",
+      "role": "Najważniejszy łowca na lodzie morskim, zaraz po orce.",
+      "social": "Samotnie, poza matkami z młodymi.",
+      "where": "Pak lodowy wokół Antarktydy"
+    },
+    "meerkat": {
+      "coat": "futro",
+      "food": "Chrząszcze, skorpiony, małe jaszczurki",
+      "life": "6–10 lat",
+      "many": "surykatki",
+      "name": "Surykatka",
+      "one": "surykatka",
+      "pl": "Surykatki",
+      "role": "Zjada ogromne ilości owadów; pożywienie szakali i orłów.",
+      "social": "Grupy po 20–50 prowadzone przez jedną parę rodzicielską; reszta niańczy młode i na zmianę pełni wartę.",
+      "where": "Pustynie Kalahari i Namib, południowa Afryka"
+    },
+    "orca": {
+      "coat": "tłuszcz",
+      "food": "Ryby lub foki, zależnie od stada",
+      "life": "50–90 lat",
+      "many": "orki",
+      "name": "Orka",
+      "one": "orka",
+      "pl": "Orki",
+      "role": "Szczytowy drapieżnik morza, który kształtuje liczebność fok i ryb.",
+      "social": "Stada prowadzone przez babcie. Każde stado ma własne odgłosy i sztuczki łowieckie.",
+      "where": "Wszystkie oceany, najczęściej w zimnych wodach"
+    },
+    "penguin": {
+      "coat": "pióra",
+      "food": "Ryby, kryl i kałamarnice",
+      "life": "15–20 lat",
+      "many": "pingwiny",
+      "name": "Pingwin cesarski",
+      "one": "pingwin",
+      "pl": "Pingwiny cesarskie",
+      "role": "Mówi naukowcom, w jakiej kondycji jest lód morski.",
+      "social": "Kolonie liczące tysiące ptaków. Ojcowie tulą się do siebie i całą zimę ogrzewają jajo.",
+      "where": "Lód morski wokół Antarktydy"
+    },
+    "rabbit": {
+      "coat": "futro",
+      "food": "Trawa i rośliny liściaste",
+      "life": "1–2 lata na wolności",
+      "many": "króliki",
+      "name": "Królik",
+      "one": "królik",
+      "pl": "Króliki",
+      "role": "Pożywienie lisów, jastrzębi i wielu innych; gdy jest ich za dużo, ogałacają teren.",
+      "social": "Żyją w grupach w podziemnych korytarzach zwanych norami.",
+      "where": "Łąki i skraje lasów; ludzie przenieśli je do wielu krajów"
+    },
+    "salmon": {
+      "coat": "tłuszcz",
+      "food": "Kryl, krewetki i małe ryby",
+      "life": "4–6 lat",
+      "many": "łososie",
+      "name": "Łosoś atlantycki",
+      "one": "łosoś",
+      "pl": "Łososie",
+      "role": "Przenosi pożywienie z oceanu daleko w głąb lądu; pokarm niedźwiedzi, fok i ptaków.",
+      "social": "Samotnie w morzu; dorosłe wracają do rzeki, w której się wykluły, by złożyć ikrę.",
+      "where": "Północny Atlantyk i wpadające do niego rzeki"
+    },
+    "scorpion": {
+      "coat": "tłuszcz",
+      "food": "Chrząszcze, świerszcze i pająki",
+      "life": "3–8 lat",
+      "many": "skorpiony",
+      "name": "Skorpion",
+      "one": "skorpion",
+      "pl": "Skorpiony",
+      "role": "Nocą poluje na owady; surykatki są odporne na wiele ich użądleń.",
+      "social": "Samotnie. Matki noszą młode na grzbiecie.",
+      "where": "Pustynie i suche tereny na każdym kontynencie poza Antarktydą"
+    },
+    "seal": {
+      "coat": "tłuszcz",
+      "food": "Ryby, kałamarnice, krewetki",
+      "life": "25–30 lat",
+      "many": "foki",
+      "name": "Foka pospolita",
+      "one": "foka",
+      "pl": "Foki",
+      "role": "Je ryby; pożywienie orek i rekinów.",
+      "social": "Odpoczywają razem na plażach i skałach, ale polują samotnie.",
+      "where": "Zimne wybrzeża północnego Atlantyku i północnego Pacyfiku"
+    },
+    "wolf": {
+      "coat": "futro",
+      "food": "Wapiti, jelenie, bobry i króliki",
+      "life": "6–8 lat na wolności",
+      "many": "wilki",
+      "name": "Wilk szary",
+      "one": "wilk",
+      "pl": "Wilki szare",
+      "role": "Nie pozwala wapiti stać w miejscu, dzięki czemu drzewa nad rzekami odrastają.",
+      "social": "Watahy po 4–9: matka, ojciec i ich młode. Para „alfa” to po prostu rodzice.",
+      "where": "Lasy, tundra i góry Ameryki Północnej, Europy i Azji"
+    },
+    "zebra": {
+      "coat": "futro",
+      "food": "Twarda, wysoka trawa",
+      "life": "20–25 lat",
+      "many": "zebry",
+      "name": "Zebra",
+      "one": "zebra",
+      "pl": "Zebry",
+      "role": "Pierwsza zjada wysoką trawę i otwiera drogę gazelom.",
+      "social": "Rodziny: jeden ogier, kilka klaczy i źrebięta; rodziny łączą się w duże stada.",
+      "where": "Trawiaste równiny wschodniej i południowej Afryki"
+    }
+  },
+  "spGroup": {
+    "0": "Las i tundra",
+    "1": "Sawanna",
+    "2": "Pustynia",
+    "3": "Ocean i lód",
+    "4": "Łąka"
+  },
+  "speed": {
+    "0": "1 dz./s",
+    "1": "3 dni/s",
+    "2": "10 dni/s",
+    "3": "30 dni/s"
+  },
+  "stage": {
+    "count": "{name} {n}",
+    "gone": "brak",
+    "goneNamed": "{name}: brak",
+    "new": "(nowe)"
+  },
+  "story": {
+    "bigger": "{many} są o {n}% większe {cmp}.",
+    "biggerSafe": "{many} są o {n}% większe {cmp}: duże trudniej złapać.",
+    "catch": "{hunter} łapią głównie tę zdobycz: {prey}; ofiary chowają się w kryjówkach ({cover}), by przetrwać.",
+    "coatLess": "{many} mają o {n}% cieńszą okrywę ({coat}) {cmp}: to je chłodzi.",
+    "coatMore": "{many} mają o {n}% grubszą okrywę ({coat}) {cmp}: to je grzeje.",
+    "compared": "W porównaniu z tym samym miejscem bez zmian, dzień {day}:",
+    "count": "{n, plural, one {{one}: #} few {{many}: #} many {{many}: #} other {{many}: #}}",
+    "diedOut": "{many} wymarły; główna przyczyna: {why}.",
+    "diedOutChanged": "{many} wymarły; główna przyczyna: {why}. Bez Twoich zmian tak się nie stało.",
+    "diff": "{be, select, is {Różnica: {list}.} other {Różnica: {list}.}}",
+    "faster": "{many} są o {n}% szybsze {cmp}: szybkie częściej uciekają i mają więcej młodych.",
+    "fasterFood": "{many} są o {n}% szybsze {cmp}: szybkie pierwsze docierają do jedzenia.",
+    "fewer": "{n, plural, one {{one}: o # mniej} few {{many}: o # mniej} many {{many}: o # mniej} other {{many}: o # mniej}}",
+    "giveTime": "Daj temu czas: wiele zmian widać dopiero po kilku pokoleniach.",
+    "hungry": "Potem zjadały pożywienie ({food}) szybciej, niż odrastało, i wiele głodowało.",
+    "hunting": "Ludzie polują na {many} i zabijają wiele z nich.",
+    "lessFood": "Mniej pożywienia ({food}), więc miejsca starcza dla mniejszej liczby zwierząt.",
+    "lessToEat": "Nie ma już kogo łapać ({prey}), więc {hunter} mają mniej do jedzenia.",
+    "live": "Dzień {day}. Tu żyją: {list}.",
+    "more": "{n, plural, one {{one}: o # więcej} few {{many}: o # więcej} many {{many}: o # więcej} other {{many}: o # więcej}}",
+    "moreFood": "Więcej pożywienia ({food}) oznacza, że przeżywa więcej młodych.",
+    "multiplied": "Nikt ich nie goni ({hunter} zniknęły), więc {prey} się rozmnożyły.",
+    "newcomersFailed": "{many}, które się wprowadziły, nie przetrwały tutaj; główna przyczyna: {why}.",
+    "noneLeft": "Dzień {day}: nie zostało tu żadne zwierzę.",
+    "pick": "Wybierz zmianę, aby zobaczyć, co byłoby inaczej.",
+    "runsShort": "Roślinożerców jest tak dużo, że brakuje pożywienia ({food}).",
+    "same": "Liczba zwierząt jest na razie taka sama.",
+    "sensesLess": "{many} zauważają o {n}% mniej {cmp}: duże oczy i uszy kosztują energię.",
+    "sensesMore": "{many} zauważają jedzenie i zagrożenie o {n}% dalej {cmp}.",
+    "slower": "{many} są o {n}% wolniejsze {cmp}: powolny ruch oszczędza energię.",
+    "smaller": "{many} są o {n}% mniejsze {cmp}: małe ciała potrzebują mniej jedzenia.",
+    "weather": "{heat, select, hot {Cieplejsza} other {Zimniejsza}} pogoda daje się we znaki: {many} spalają więcej jedzenia, żeby po prostu funkcjonować."
+  },
+  "time": {
+    "day": "Dzień {n}"
+  },
+  "trait": {
+    "co": "Okrywa",
+    "se": "Zmysły",
+    "sp": "Szybkość",
+    "sz": "Rozmiar"
+  },
+  "trend": {
+    "falling": "spada",
+    "gone": "brak",
+    "rising": "rośnie",
+    "steady": "stabilnie"
+  },
+  "ui": {
+    "addAnimal": "Dodaj zwierzę",
+    "atStart": "{many} na starcie",
+    "changesHint": "Sumują się. Kliknij ponownie, aby wzmocnić.",
+    "far": "Daleko od domu",
+    "farHere": "Tu daleko od domu",
+    "fewer": "Mniej na starcie: {many}",
+    "fiveMost": "Najwyżej pięć",
+    "happening": "Co się dzieje",
+    "livesHere": "{name} (żyje tu)",
+    "more": "Więcej na starcie: {many}",
+    "needOne": "Świat potrzebuje co najmniej jednego zwierzęcia",
+    "newcomer": "Kto mógłby się wprowadzić",
+    "noChange": "(bez zmian: {v})",
+    "none": "brak",
+    "noneLeft": "Nikt nie został",
+    "pickWorld": "Wybierz świat",
+    "portrait": "Typowy osobnik ({one}) w dniu 0 i dziś, w tej samej skali. {caption}",
+    "restart": "Zmiana mieszkańców uruchamia świat od nowa.",
+    "rightNow": "Teraz",
+    "takeOut": "Usuń {many} z tego świata",
+    "takeOutShort": "Usuń {many}",
+    "target": "Zmiany dla jednego zwierzęcia dotyczą",
+    "thenNow": "Wtedy i teraz",
+    "whatChanged": "Co się zmieniło",
+    "who": "Kto tu żyje"
+  },
+  "whatif": {
+    "add": "Wprowadza się zwierzę",
+    "cool": "Epoka lodowcowa",
+    "disease": "Szerzy się choroba",
+    "drought": "Rok bez deszczu",
+    "fire": "Pożar",
+    "habitat": "Połowa terenu stracona",
+    "hunt": "Ludzie polują na zwierzę",
+    "invasive": "Szybko rozmnażający się przybysz",
+    "move": "Odwrotny klimat",
+    "rain": "Lata dobrych deszczów",
+    "remove": "Zwierzę znika",
+    "reserve": "Rezerwat przyrody",
+    "warm": "O 3 °C cieplej"
+  },
+  "why": {
+    "0": "drapieżniki",
+    "1": "głód",
+    "2": "zbyt trudna pogoda",
+    "3": "starość",
+    "4": "polowania ludzi"
+  },
+  "world": {
+    "antarctica": "Antarktyda",
+    "atlantic": "Północny Atlantyk",
+    "foxes": "Lis i króliki",
+    "kalahari": "Kalahari",
+    "meadow": "Łąka",
+    "savanna": "Sawanna",
+    "yellowstone": "Yellowstone"
+  },
+  "worldGroup": {
+    "0": "Las i tundra",
+    "1": "Sawanna i pustynia",
+    "2": "Ocean i lód",
+    "3": "Łąka"
+  },
+  "worldOpt": {
+    "antarctica": "Antarktyda: pingwiny, lamparty morskie, orki",
+    "atlantic": "Północny Atlantyk: łososie, foki, orki, niedźwiedzie",
+    "foxes": "Lis i króliki",
+    "kalahari": "Kalahari: surykatki, szakale, skorpiony",
+    "meadow": "Łąka: pszczoły miodne i szerszenie",
+    "savanna": "Sawanna: lwy, zebry, słonie, gazele",
+    "yellowstone": "Yellowstone: wilki, wapiti, bobry, niedźwiedzie"
+  }
+}

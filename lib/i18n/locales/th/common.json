@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "ซูมจากโปรตอนไปถึงเอกภพที่สังเกตได้ เปิดโลกหนึ่งใบ เปลี่ยนมันด้วย “ถ้าหาก” แล้วเทียบอนาคตกับโลกที่ไม่ได้เปลี่ยน",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "ขนาด",
+    "sub": "โปรตอน → เอกภพ"
+  },
+  "intro": {
+    "worlds": "โลก",
+    "whatifs": "ถ้าหาก…"
+  },
+  "notFound": {
+    "title": "ไม่พบหน้านี้",
+    "body": "หน้านี้ไม่มีอยู่ในแล็บ",
+    "home": "กลับไปที่แล็บ"
+  },
+  "unit": {
+    "gyr": "{n} พันล้านปี",
+    "myr": "{n} ล้านปี",
+    "kyr": "{n} พันปี",
+    "yr": "{n} ปี"
+  },
+  "dur": {
+    "days": "{n} วัน",
+    "months": "{n} เดือน",
+    "years": "{n} ปี"
+  }
+}

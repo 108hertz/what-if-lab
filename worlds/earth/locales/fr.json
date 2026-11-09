@@ -1,0 +1,129 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": { "label": "CO₂ dans l’air", "unit": "ppm" },
+    "emis": { "label": "Émissions de CO₂ par an", "unit": "Gt" },
+    "forest": { "label": "Couverture forestière", "unit": "% des terres" },
+    "front": { "label": "Hauteur du front de mer", "unit": "m au-dessus de la mer" },
+    "h": {
+      "air-today": "L’air aujourd’hui",
+      "emissions": "Émissions",
+      "my-future-used-by-build-my-own-future": "Mon avenir (utilisé par « Construire mon propre avenir »)",
+      "planet": "Planète",
+      "your-town": "Votre ville"
+    },
+    "mDac": { "label": "Retrait de CO₂", "unit": "Gt par an" },
+    "mDim": { "label": "Aérosols qui voilent le soleil", "unit": "%" },
+    "mEm": { "label": "Changer les émissions de", "unit": "%" },
+    "mMeth": { "label": "Baisse du méthane", "unit": "%" },
+    "mTrees": { "label": "Arbres plantés", "unit": "billions" },
+    "mWall": { "label": "Digue", "unit": "m" },
+    "mYrs": { "label": "En", "unit": "ans" },
+    "meth": { "label": "Méthane dans l’air", "unit": "ppb" },
+    "path": {
+      "label": "Évolution des émissions",
+      "opt": {
+        "fall": "Baisse lente (engagements actuels)",
+        "flat": "Stabilisation",
+        "grow": "Hausse continue"
+      }
+    },
+    "sens": { "label": "Sensibilité du climat", "unit": "°C par CO₂ doublé" },
+    "tip": {
+      "label": "Points de bascule",
+      "opt": {
+        "off": "Désactivés",
+        "on": "Activés : pergélisol et calottes peuvent basculer"
+      }
+    },
+    "uptake": { "label": "Absorption par l’océan et les sols", "unit": "% d’aujourd’hui" }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "L’Amazonie commence à se changer en savane",
+      "dac": "Des machines commencent à retirer le CO₂ de l’air",
+      "double": "Les émissions commencent à grimper vers le double",
+      "ev": "Passage à l’énergie propre : les émissions baissent de 7 % par an",
+      "geo": "Des aérosols sont pulvérisés dans la stratosphère",
+      "melt": "La calotte de l’Antarctique Ouest commence à s’effondrer",
+      "methane": "On commence à réparer les fuites et sources de méthane",
+      "permafrost": "Le pergélisol commence à dégeler vite",
+      "seawall": "Une digue de 3 m est construite autour du port",
+      "trees": "Mille milliards d’arbres sont plantés",
+      "volcano": "Un supervolcan entre en éruption : un voile de cendres masque le soleil",
+      "zero": "Toutes les émissions s’arrêtent"
+    },
+    "back": "Le réchauffement repasse sous 1,5 °C",
+    "fl1": "Les marées de tempête atteignent les premières maisons",
+    "fl50": "La moitié de la ville est inondée à marée haute",
+    "geoend": "Fin des pulvérisations : choc de terminaison, réchauffement rapide",
+    "gr": "La glace du Groenland fond plus vite",
+    "mix0": "Mon avenir : aucun changement",
+    "mix1": "Mon avenir : {p0}",
+    "mix2": "Mon avenir : {p0}, {p1}",
+    "mix3": "Mon avenir : {p0}, {p1}, {p2}",
+    "mix4": "Mon avenir : {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Mon avenir : {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Mon avenir : {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Le réchauffement culmine à {t} °C",
+    "pf": "Le pergélisol commence à dégeler, libérant CO₂ et méthane",
+    "s0_5": "Mer +0,5 m : inondations régulières dans les deltas bas",
+    "s1": "Mer +1 m : les logements d’environ 200 millions de personnes menacés",
+    "s2": "Mer +2 m : beaucoup de villes côtières doivent construire des digues ou déménager",
+    "snow": "La limite des neiges dépasse 2 000 m : le glacier a presque disparu",
+    "t1_5": "Plus de 1,5 °C : les récifs coralliens sont en grande partie perdus",
+    "t2": "Plus de 2 °C : canicules mortelles courantes, étés arctiques sans glace",
+    "t3": "Plus de 3 °C : les zones agricoles se déplacent, l’Amazonie risque de dépérir",
+    "t4": "Plus de 4 °C : certaines régions proches de la limite de chaleur supportable",
+    "wa": "La glace de l’Antarctique Ouest commence à glisser dans la mer",
+    "wallover": "La mer passe par-dessus la digue"
+  },
+  "meta": {
+    "intro": "Une ville de fjord aujourd’hui. Regardez la neige, la forêt, les champs et le port au fil des décennies.",
+    "name": "Terre",
+    "sub": "Climat"
+  },
+  "metric": {
+    "co2": { "label": "CO₂", "unit": "ppm" },
+    "crops": { "label": "Récoltes", "unit": "indice" },
+    "flood": { "label": "Inondations", "unit": "% des maisons" },
+    "sea": { "label": "Niveau de la mer", "unit": "m" },
+    "snow": { "label": "Neige", "unit": "% d’aujourd’hui" },
+    "temp": { "label": "Réchauffement", "unit": "°C" }
+  },
+  "mix": {
+    "dac": "{n} Gt de CO₂ retirées par an",
+    "dim": "soleil voilé de {n} %",
+    "emDown": "émissions −{n} % en {yrs} ans",
+    "emUp": "émissions +{n} % en {yrs} ans",
+    "meth": "méthane −{n} %",
+    "trees": "{n} billions d’arbres",
+    "wall": "digue de {n} m"
+  },
+  "speed": {
+    "0": "1 an/s",
+    "1": "5 ans/s",
+    "2": "20 ans/s",
+    "3": "60 ans/s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · mer +{sea} m · {co2} ppm",
+    "snow": "Limite des neiges {m} m"
+  },
+  "whatif": {
+    "amazon": "L’Amazonie devient une savane",
+    "dac": "Retirer le CO₂ de l’air",
+    "double": "Les émissions doublent",
+    "ev": "Passer vite à l’énergie propre",
+    "geo": "Voiler le soleil avec des aérosols pendant 30 ans",
+    "melt": "La calotte de l’Antarctique Ouest s’effondre",
+    "methane": "Réduire le méthane de moitié",
+    "mix": "Construire mon propre avenir",
+    "permafrost": "Le pergélisol dégèle vite",
+    "seawall": "Construire une digue de 3 m",
+    "trees": "Planter mille milliards d’arbres",
+    "volcano": "Un supervolcan entre en éruption",
+    "zero": "Arrêter toutes les émissions maintenant"
+  }
+}

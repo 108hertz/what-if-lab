@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Lecture",
+    "pause": "Pause",
+    "speed": "Vitesse",
+    "slower": "Plus lent",
+    "faster": "Plus vite",
+    "reset": "Réinitialiser",
+    "resetLabel": "Tout réinitialiser",
+    "resetTitle": "Tout réinitialiser : réglages, changements et temps",
+    "hintFull": "Quittez le plein écran pour faire un changement.",
+    "hint": "Choisissez des changements. Ils s’additionnent ; décochez-les pour comparer."
+  },
+  "fullscreen": {
+    "enter": "Plein écran",
+    "leave": "Quitter le plein écran",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Vos changements",
+    "count": "{on} sur {total} actifs",
+    "empty": "Rien n’a encore changé. Chaque changement arrive ici avec une case cochée : vous pouvez l’éteindre et le rallumer.",
+    "remove": "Retirer « {name} » de la liste",
+    "removeTitle": "Retirer de la liste",
+    "allOn": "Tout activer",
+    "allOff": "Tout désactiver",
+    "clear": "Vider la liste",
+    "throw": "Lancer une planète"
+  },
+  "about": {
+    "label": "À propos de ce modèle",
+    "body": "Tout fonctionne avec des règles intégrées et des données simplifiées, en direct dans votre navigateur. Les résultats montrent des comportements plausibles, pas des prévisions."
+  },
+  "whatifs": {
+    "title": "Faire des changements",
+    "applied": "appliqué {n} fois"
+  },
+  "readouts": {
+    "title": "En ce moment"
+  },
+  "world": {
+    "base": "Sans changement",
+    "alt": "Avec changements",
+    "both": "Les deux mondes",
+    "onlyBase": "Seulement sans changement",
+    "onlyAlt": "Seulement avec changements"
+  },
+  "tune": {
+    "title": "Variables",
+    "live": "Modifier le monde de départ le redémarre. Les réglages des « et si » s’appliquent la prochaine fois que vous en choisissez un.",
+    "restart": "Modifier ces valeurs redémarre le monde."
+  },
+  "chart": {
+    "withChanges": "Avec changements :",
+    "noDiff": "pas encore de vraie différence",
+    "overTime": "{metric} dans le temps",
+    "collecting": "Collecte des données…",
+    "fork": "FOURCHE"
+  },
+  "stage": {
+    "label": "Scène de simulation",
+    "edge": "What-If Lab · Graine {seed}"
+  },
+  "timeline": {
+    "title": "Chronologie",
+    "empty": "Rien de notable pour l’instant. Laissez tourner, ou faites un changement."
+  },
+  "dock": {
+    "tools": "Outils",
+    "ask": "Et si",
+    "tune": "Régler",
+    "read": "Lire",
+    "log": "Journal"
+  },
+  "ad": {
+    "label": "Publicité",
+    "promo": "Sans pub avec Premium · 15 $/an",
+    "short": "Pub"
+  }
+}

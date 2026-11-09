@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "확대",
+    "zoomOut": "축소",
+    "zoomLevel": "확대 단계",
+    "hint": "스크롤하거나, 손가락으로 벌리거나, 끌어 보세요. 금색 이름을 누르면 그 세계가 열려요."
+  },
+  "panel": {
+    "inView": "지금 보이는 것",
+    "openThis": "이 세계 열기",
+    "openWorld": "세계 열기",
+    "jumpTo": "바로 가기"
+  },
+  "hero": {
+    "title": "만약에 이렇게 되면…",
+    "body": "양성자에서 관측 가능한 우주까지, 한 단계마다 열 배씩 확대·축소해 보세요. 금색 이름은 살아 움직이는 세계예요. 하나를 열어 바꿔 보고, 그대로 둔 세계와 미래를 비교해 보세요."
+  },
+  "stage": {
+    "open": "세계 열기 →",
+    "screen": "화면 너비 ≈ {len}"
+  }
+}

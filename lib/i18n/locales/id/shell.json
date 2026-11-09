@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "what if… beranda",
+    "worlds": "Dunia",
+    "worldButton": "Dunia: {name}. Ganti dunia",
+    "wordmark": "what if"
+  },
+  "theme": {
+    "toDark": "Ganti ke tema gelap",
+    "toLight": "Ganti ke tema terang"
+  },
+  "lang": {
+    "label": "Bahasa",
+    "button": "Bahasa: {name}. Ganti bahasa",
+    "draft": "belum siap",
+    "alsoIn": "Tersedia juga dalam {language}",
+    "dismiss": "Jangan sarankan bahasa lain"
+  }
+}

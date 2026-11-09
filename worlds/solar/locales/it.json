@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "il buco nero",
+    "earth": "la Terra",
+    "jupiter": "Giove",
+    "mars": "Marte",
+    "mercury": "Mercurio",
+    "neptune": "Nettuno",
+    "saturn": "Saturno",
+    "sun": "il Sole",
+    "uranus": "Urano",
+    "venus": "Venere",
+    "yourplanet": "il tuo pianeta"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Massa del Sole",
+      "unit": "× Sole"
+    },
+    "view": {
+      "label": "Vista",
+      "opt": {
+        "inner": "Pianeti interni",
+        "mid": "Fino a Giove",
+        "outer": "Tutto il sistema"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Un buco nero di 4 Soli entra dal bordo del sistema",
+    "escape": "{body} fugge nello spazio interstellare",
+    "giant": "Il Sole si gonfia in una gigante rossa larga 0,85 UA e perde un terzo della sua massa",
+    "intoBh": "{body} cade nel buco nero",
+    "intoSun": "{body} cade nel Sole",
+    "jupstar": "Giove diventa 80 volte più pesante e si accende come nana rossa",
+    "mars": "La Terra viene spostata sull'orbita di Marte",
+    "nosun": "Il Sole sparisce: i pianeti volano via in linea retta",
+    "smash": "{body} si schianta contro {other}",
+    "stop": "La Terra si ferma di colpo nella sua orbita",
+    "sun2": "Il Sole raddoppia la sua massa: attrazione più forte, luce 11 volte più intensa",
+    "swallowed": "{body} viene inghiottito dalla gigante rossa",
+    "throw": "Lanci un nuovo pianeta"
+  },
+  "info": {
+    "changed": "Con cambiamenti",
+    "now": "La Terra adesso"
+  },
+  "meta": {
+    "hint": "Trascina per lanciare un pianeta. I cambiamenti si sommano.",
+    "intro": "Vera gravità newtoniana per il Sole e gli otto pianeti. Trascina sulla scena per lanciare un tuo pianeta.",
+    "name": "Sistema solare",
+    "sub": "Gravità"
+  },
+  "metric": {
+    "dist": {
+      "label": "Distanza Terra–Sole",
+      "unit": "UA"
+    },
+    "temp": {
+      "label": "Temperatura della Terra",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Durata dell'anno",
+      "unit": "giorni"
+    }
+  },
+  "name": {
+    "blackhole": "Buco nero",
+    "earth": "Terra",
+    "jupiter": "Giove",
+    "mars": "Marte",
+    "mercury": "Mercurio",
+    "neptune": "Nettuno",
+    "saturn": "Saturno",
+    "uranus": "Urano",
+    "venus": "Venere",
+    "yourplanet": "Il tuo pianeta"
+  },
+  "speed": {
+    "0": "1 mese/s",
+    "1": "6 mesi/s",
+    "2": "2 anni/s",
+    "3": "10 anni/s"
+  },
+  "status": {
+    "boiling": "oceani in ebollizione",
+    "destroyed": "distrutta",
+    "flying": "vola via",
+    "frozen": "tutta ghiacciata",
+    "habitable": "abitabile"
+  },
+  "whatif": {
+    "bh": "Passa un buco nero",
+    "giant": "Il Sole diventa una gigante rossa",
+    "jupstar": "Giove si accende come stella",
+    "mars": "Sposta la Terra sull'orbita di Marte",
+    "nosun": "Il Sole sparisce",
+    "stop": "La Terra si ferma nella sua orbita",
+    "sun2": "Il Sole raddoppia la sua massa"
+  }
+}

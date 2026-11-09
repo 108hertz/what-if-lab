@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "재생",
+    "pause": "일시정지",
+    "speed": "속도",
+    "slower": "느리게",
+    "faster": "빠르게",
+    "reset": "초기화",
+    "resetLabel": "모두 초기화",
+    "resetTitle": "모두 초기화: 설정, 변화, 시간",
+    "hintFull": "변화를 주려면 전체 화면을 나가세요.",
+    "hint": "변화를 골라 보세요. 서로 더해지고, 체크를 끄면 비교할 수 있어요."
+  },
+  "fullscreen": {
+    "enter": "전체 화면",
+    "leave": "전체 화면 나가기",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "내 변화",
+    "count": "{total}개 중 {on}개 켬",
+    "empty": "아직 바꾼 게 없어요. 변화를 주면 체크 표시와 함께 여기에 쌓여서, 껐다 켰다 할 수 있어요.",
+    "remove": "목록에서 “{name}” 지우기",
+    "removeTitle": "목록에서 지우기",
+    "allOn": "모두 켜기",
+    "allOff": "모두 끄기",
+    "clear": "목록 비우기",
+    "throw": "행성 던져 넣기"
+  },
+  "about": {
+    "label": "이 모델에 대해",
+    "body": "모든 것은 내장된 규칙과 단순화한 데이터로 브라우저에서 바로 돌아가요. 결과는 그럴듯한 흐름을 보여 줄 뿐, 예측이 아니에요."
+  },
+  "whatifs": {
+    "title": "변화 주기",
+    "applied": "{n}번 적용함"
+  },
+  "readouts": {
+    "title": "지금"
+  },
+  "world": {
+    "base": "변화 없음",
+    "alt": "변화 있음",
+    "both": "두 세계 모두",
+    "onlyBase": "변화 없는 세계에만",
+    "onlyAlt": "변화 있는 세계에만"
+  },
+  "tune": {
+    "title": "변수",
+    "live": "처음 세계를 바꾸면 다시 시작해요. 만약 설정은 다음에 '만약'을 고를 때 적용돼요.",
+    "restart": "이 값을 바꾸면 세계가 다시 시작돼요."
+  },
+  "chart": {
+    "withChanges": "변화 있음:",
+    "noDiff": "아직 큰 차이 없음",
+    "overTime": "시간에 따른 {metric}",
+    "collecting": "데이터 모으는 중…",
+    "fork": "갈림길"
+  },
+  "stage": {
+    "label": "시뮬레이션 무대",
+    "edge": "What-If Lab · 시드 {seed}"
+  },
+  "timeline": {
+    "title": "타임라인",
+    "empty": "아직 눈에 띄는 일이 없어요. 그대로 두거나 변화를 줘 보세요."
+  },
+  "dock": {
+    "tools": "도구",
+    "ask": "질문",
+    "tune": "조정",
+    "read": "보기",
+    "log": "기록"
+  },
+  "ad": {
+    "label": "광고",
+    "promo": "Premium으로 광고 없이 · 연 $15",
+    "short": "광고"
+  }
+}

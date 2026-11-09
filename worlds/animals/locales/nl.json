@@ -1,0 +1,690 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "cap": {
+    "bigger": "{n}% groter",
+    "coatThicker": "{coat} dikker",
+    "coatThinner": "{coat} dunner",
+    "earsLess": "kleinere oren (merkt minder op)",
+    "earsMore": "grotere oren (merkt meer op)",
+    "eyesLess": "kleinere ogen (merkt minder op)",
+    "eyesMore": "grotere ogen (merkt meer op)",
+    "faster": "{n}% sneller",
+    "none": "Er wonen hier nu geen {many}.",
+    "now": "Nu {list}.",
+    "same": "Ongeveer hetzelfde als op dag 0. Lichamen veranderen pas over vele generaties.",
+    "slower": "{n}% langzamer",
+    "smaller": "{n}% kleiner"
+  },
+  "chart": {
+    "ariaBodies": "Snelheid, grootte, zintuigen en vacht van de {many} door de tijd",
+    "ariaCounts": "Hoeveel van elk dier door de tijd",
+    "asFast": "even snel als",
+    "bigger": "{n}% groter",
+    "bodies": "Hoe hun lichaam veranderde",
+    "bodyDay0": "Een doorsnee {one} vergeleken met dag 0: 1,00× betekent geen verandering, boven 1 betekent meer (sneller, groter, scherpere zintuigen, meer {coat}).",
+    "bodyVs": "Met je wijzigingen is een doorsnee {one} {speed} zonder, en {size}.",
+    "changes": "WIJZIGINGEN",
+    "counts": "Hoeveel van elk",
+    "diff": "Met je wijzigingen {be, select, is {is} other {zijn}} er {list} dan zonder (dag {day}).",
+    "fasterThan": "{n}% sneller dan",
+    "intro": "Hoeveel van elk dier hier leven, dag na dag. Verander iets om met deze wereld te vergelijken.",
+    "label": "{name} {n}",
+    "noChange": "GEEN WIJZIGING",
+    "same": "Met je wijzigingen zijn de aantallen tot nu toe hetzelfde als zonder (dag {day}).",
+    "sameSize": "even groot",
+    "slowerThan": "{n}% langzamer dan",
+    "smaller": "{n}% kleiner",
+    "unitAnimals": "dieren",
+    "unitDay0": "× dag 0",
+    "view": "Grafiekweergave",
+    "whichAnimal": "Welk dier",
+    "withChanges": "MET WIJZIGINGEN"
+  },
+  "cmp": {
+    "change": "dan zonder je wijzigingen",
+    "day0": "dan op dag 0"
+  },
+  "cover": {
+    "land": "de struiken",
+    "water": "kelp en rotsen"
+  },
+  "ctl": {
+    "dT": {
+      "label": "Temperatuurverandering",
+      "unit": "°C"
+    },
+    "food": {
+      "label": "Groei van voedsel",
+      "unit": "% van normaal"
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Instellingen voor wijzigingen (voor je volgende klik)",
+      "people-and-babies": "Mensen en jongen",
+      "the-place": "De plek"
+    },
+    "hab": {
+      "label": "Ruimte om te zwerven",
+      "unit": "% van het land"
+    },
+    "habitat": {
+      "label": "Leefgebied",
+      "opt": {
+        "desert": "Woestijn",
+        "forest": "Bos en toendra",
+        "ice": "Zee-ijs",
+        "meadow": "Weide",
+        "ocean": "Oceaan",
+        "savanna": "Savanne"
+      }
+    },
+    "human": {
+      "label": "Jacht door mensen",
+      "opt": {
+        "0": "Geen",
+        "10": "Een beetje",
+        "30": "Wat",
+        "60": "Veel"
+      }
+    },
+    "mut": {
+      "label": "Hoe verschillend jongen zijn",
+      "opt": {
+        "big": "Heel (snelle verandering)",
+        "normal": "Normaal",
+        "small": "Een beetje (trage verandering)"
+      }
+    },
+    "s_new": {
+      "label": "Nieuwkomers",
+      "unit": "dieren"
+    },
+    "s_sick": {
+      "label": "Kracht van de ziekte",
+      "unit": "% wordt ziek en sterft"
+    },
+    "seasons": {
+      "label": "Seizoenen",
+      "opt": {
+        "gentle": "Mild",
+        "off": "Uit: voedsel groeit gelijkmatig",
+        "strong": "Sterk: magere winters"
+      }
+    }
+  },
+  "ev": {
+    "add": "{n} {many} komen erbij wonen",
+    "bigger": "{many} worden gemiddeld 20% groter",
+    "boom": "{one}: het aantal is verdubbeld",
+    "cool": "Een ijstijd begint: 4 °C kouder, minder voedsel",
+    "disease": "Een ziekte doodt {n} {many}",
+    "drought": "Een jaar lang geen regen: het voedsel halveert",
+    "faster": "Natuurlijke selectie: een doorsnee {one} is nu 20% sneller",
+    "fire": "Een bosbrand verwoest een derde van het land",
+    "habitat": "De helft van het leefgebied verdwijnt voor boerderijen en wegen",
+    "hunt": "Mensen beginnen op de {many} te jagen",
+    "invasive": "{n} snel voortplantende {many} komen aan",
+    "move": "Verhuisd naar het tegenovergestelde klimaat: alles kost veel meer energie",
+    "noRoom": "Er is geen plek voor een zesde diersoort",
+    "noneToRemove": "Er zijn hier geen {many} om weg te halen",
+    "out": "De {many} zijn hier uitgestorven: de meeste {why}",
+    "rain": "Jaren met goede regen beginnen: het voedsel groeit sneller",
+    "removed": "Alle {many} weggehaald",
+    "reserve": "Beschermd natuurgebied: de jacht stopt, de begroeiing herstelt",
+    "senses": "{many} merken voedsel en gevaar nu 20% verder weg op",
+    "slower": "Natuurlijke selectie: {many} worden langzamer om energie te sparen",
+    "smaller": "{many} krimpen gemiddeld",
+    "thicker": "Warmer ingepakt: {many} hebben nu 20% meer {coat}",
+    "thinner": "Minder ingepakt: {many} hebben nu 20% minder {coat}",
+    "wanders": "Een paartje {many} zwerft van buitenaf binnen",
+    "warm": "Het klimaat warmt 3 °C op: meer energie nodig, minder voedsel"
+  },
+  "facts": {
+    "eats": "Eet",
+    "family": "Gezinsleven",
+    "lifespan": "Levensduur",
+    "lives": "Leeft",
+    "note": "In dit model is een dag kort: dieren leven weken, geen jaren, zodat je veel generaties kunt zien.",
+    "role": "Rol in de natuur",
+    "title": "Maak kennis met de dieren"
+  },
+  "food": {
+    "desert": "insecten en zaden",
+    "forest": "gras en bladeren",
+    "ice": "krill",
+    "meadow": "bloemen",
+    "ocean": "krill en kleine vis",
+    "savanna": "gras"
+  },
+  "group": {
+    "0": "Dieren",
+    "1": "Klimaat",
+    "2": "Mensen"
+  },
+  "meta": {
+    "hint": "Elk dier is een beetje anders. Wie het best past, krijgt meer jongen. Druk op afspelen en kies een wijziging.",
+    "intro": "Tot vijf diersoorten delen één plek. Elk dier is een beetje anders; wie het best past, krijgt meer jongen, dus lichamen veranderen met de tijd. Kies een wereld of bouw je eigen, en verander dingen: ze tellen op.",
+    "name": "Dieren",
+    "sub": "Evolutie"
+  },
+  "metric": {
+    "co0": {
+      "label": "Vacht (dier 1)",
+      "unit": "× dag 0"
+    },
+    "co1": {
+      "label": "Vacht (dier 2)",
+      "unit": "× dag 0"
+    },
+    "co2": {
+      "label": "Vacht (dier 3)",
+      "unit": "× dag 0"
+    },
+    "co3": {
+      "label": "Vacht (dier 4)",
+      "unit": "× dag 0"
+    },
+    "co4": {
+      "label": "Vacht (dier 5)",
+      "unit": "× dag 0"
+    },
+    "food": {
+      "label": "Voedsel",
+      "unit": "stukjes"
+    },
+    "n0": {
+      "label": "Dier 1",
+      "unit": "dieren"
+    },
+    "n1": {
+      "label": "Dier 2",
+      "unit": "dieren"
+    },
+    "n2": {
+      "label": "Dier 3",
+      "unit": "dieren"
+    },
+    "n3": {
+      "label": "Dier 4",
+      "unit": "dieren"
+    },
+    "n4": {
+      "label": "Dier 5",
+      "unit": "dieren"
+    },
+    "se0": {
+      "label": "Zintuigen (dier 1)",
+      "unit": "× dag 0"
+    },
+    "se1": {
+      "label": "Zintuigen (dier 2)",
+      "unit": "× dag 0"
+    },
+    "se2": {
+      "label": "Zintuigen (dier 3)",
+      "unit": "× dag 0"
+    },
+    "se3": {
+      "label": "Zintuigen (dier 4)",
+      "unit": "× dag 0"
+    },
+    "se4": {
+      "label": "Zintuigen (dier 5)",
+      "unit": "× dag 0"
+    },
+    "sp0": {
+      "label": "Snelheid (dier 1)",
+      "unit": "× dag 0"
+    },
+    "sp1": {
+      "label": "Snelheid (dier 2)",
+      "unit": "× dag 0"
+    },
+    "sp2": {
+      "label": "Snelheid (dier 3)",
+      "unit": "× dag 0"
+    },
+    "sp3": {
+      "label": "Snelheid (dier 4)",
+      "unit": "× dag 0"
+    },
+    "sp4": {
+      "label": "Snelheid (dier 5)",
+      "unit": "× dag 0"
+    },
+    "sz0": {
+      "label": "Grootte (dier 1)",
+      "unit": "× dag 0"
+    },
+    "sz1": {
+      "label": "Grootte (dier 2)",
+      "unit": "× dag 0"
+    },
+    "sz2": {
+      "label": "Grootte (dier 3)",
+      "unit": "× dag 0"
+    },
+    "sz3": {
+      "label": "Grootte (dier 4)",
+      "unit": "× dag 0"
+    },
+    "sz4": {
+      "label": "Grootte (dier 5)",
+      "unit": "× dag 0"
+    }
+  },
+  "name": {
+    "own": "Je eigen wereld",
+    "ownFrom": "Je eigen wereld (op basis van {from})"
+  },
+  "q": {
+    "add": "Wat als er {many} kwamen wonen?",
+    "addMore": "Wat als er meer {many} kwamen wonen?",
+    "cool": "Wat als er een ijstijd begon?",
+    "disease": "Wat als er een ziekte rondging onder de {many}?",
+    "drought": "Wat als het een jaar niet regende?",
+    "fire": "Wat als een bosbrand een derde van het land verwoestte?",
+    "habitat": "Wat als de helft van het land boerderijen en wegen werd?",
+    "hunt": "Wat als mensen op de {many} jaagden?",
+    "invasive": "Wat als er een snel voortplantende nieuwkomer kwam?",
+    "move": "Wat als ze naar het tegenovergestelde klimaat verhuisden?",
+    "rain": "Wat als er jaren met goede regen kwamen?",
+    "remove": "Wat als de {many} verdwenen?",
+    "reserve": "Wat als het een beschermd natuurgebied werd?",
+    "warm": "Wat als het 3 °C warmer werd?"
+  },
+  "sp": {
+    "bear": {
+      "coat": "vacht",
+      "food": "Bessen, wortels, zalm, soms wapitikalveren",
+      "life": "20–25 jaar",
+      "many": "beren",
+      "name": "Bruine beer",
+      "one": "beer",
+      "pl": "Bruine beren",
+      "role": "Brengt zalm van de rivier het bos in en voedt zo de bomen.",
+      "social": "Meestal alleen. Moeders houden hun jongen twee tot drie jaar bij zich.",
+      "where": "Bossen en bergen van Noord-Amerika, Europa en Azië"
+    },
+    "beaver": {
+      "coat": "vacht",
+      "food": "Schors, takjes en waterplanten",
+      "life": "10–12 jaar",
+      "many": "bevers",
+      "name": "Bever",
+      "one": "bever",
+      "pl": "Bevers",
+      "role": "Bouwt dammen die vijvers maken, een thuis voor vissen, kikkers en vogels.",
+      "social": "Gezinnen van een moeder, een vader en hun jongen delen één burcht.",
+      "where": "Rivieren en meren van Noord-Amerika en Europa"
+    },
+    "bee": {
+      "coat": "dons",
+      "food": "Nectar en stuifmeel van bloemen",
+      "life": "Werksters ongeveer 6 weken, de koningin 2–5 jaar",
+      "many": "bijen",
+      "name": "Honingbij",
+      "one": "bij",
+      "pl": "Honingbijen",
+      "role": "Bestuift ongeveer een derde van het voedsel dat mensen eten.",
+      "social": "Volken van 20.000–60.000: één koningin en veel werksters waarvan de taak met de leeftijd verandert.",
+      "where": "Overal ter wereld, wild en gehouden door imkers"
+    },
+    "cheetah": {
+      "coat": "vacht",
+      "food": "Gazellen en hazen",
+      "life": "10–12 jaar",
+      "many": "jachtluipaarden",
+      "name": "Jachtluipaard",
+      "one": "jachtluipaard",
+      "pl": "Jachtluipaarden",
+      "role": "De snelste renner op land: tot 110 km/u, maar alleen voor een korte sprint.",
+      "social": "Moeders voeden hun jongen alleen op; broers blijven vaak hun hele leven samen.",
+      "where": "Open graslanden van Afrika, een paar in Iran"
+    },
+    "elephant": {
+      "coat": "lichaamsvet",
+      "food": "Gras, schors en fruit: ongeveer 150 kg per dag",
+      "life": "60–70 jaar",
+      "many": "olifanten",
+      "name": "Afrikaanse olifant",
+      "one": "olifant",
+      "pl": "Olifanten",
+      "role": "Maakt bossen open, graaft waterpoelen en verspreidt zaden.",
+      "social": "Kuddes van verwante vrouwtjes, geleid door de oudste, de matriarch. Mannetjes vertrekken rond hun 13e.",
+      "where": "Savannes en bossen van Afrika"
+    },
+    "elk": {
+      "coat": "vacht",
+      "food": "Gras, bladeren en schors",
+      "life": "10–13 jaar",
+      "many": "wapiti's",
+      "name": "Wapiti",
+      "one": "wapiti",
+      "pl": "Wapiti's",
+      "role": "Het hoofdmaal van wolven; hun grazen vormt de bosrand.",
+      "social": "Moeders en jongen leven in grote kuddes; mannetjes leven alleen en burlen in de herfst.",
+      "where": "Bergbossen en weiden van Noord-Amerika en Azië"
+    },
+    "fox": {
+      "coat": "vacht",
+      "food": "Konijnen, muizen, vogels, bessen",
+      "life": "3–4 jaar in het wild",
+      "many": "vossen",
+      "name": "Vos",
+      "one": "vos",
+      "pl": "Vossen",
+      "role": "Houdt het aantal konijnen en muizen in toom.",
+      "social": "Paartjes voeden hun jongen samen op; oudere dochters helpen soms.",
+      "where": "Bijna overal op het noordelijk halfrond, zelfs in steden"
+    },
+    "gazelle": {
+      "coat": "vacht",
+      "food": "Kort, vers gras",
+      "life": "10–15 jaar",
+      "many": "gazellen",
+      "name": "Gazelle",
+      "one": "gazelle",
+      "pl": "Gazellen",
+      "role": "Voedsel voor jachtluipaarden, leeuwen en hyena's; kan zigzaggend 80 km/u rennen.",
+      "social": "Kuddes van vrouwtjes en jongen; mannetjes bewaken kleine stukjes land.",
+      "where": "Graslanden van Kenia en Tanzania"
+    },
+    "hornet": {
+      "coat": "dons",
+      "food": "Bijen en andere insecten (voor de jongen), fruit en nectar",
+      "life": "Werksters een paar weken, koninginnen ongeveer een jaar",
+      "many": "hoornaars",
+      "name": "Hoornaar",
+      "one": "hoornaar",
+      "pl": "Hoornaars",
+      "role": "Hangt in de lucht voor bijenkasten en vangt bijen die naar huis vliegen.",
+      "social": "Papieren nesten van een paar duizend, elk voorjaar gestart door één koningin.",
+      "where": "Azië; sinds 2004 verspreid naar Europa"
+    },
+    "jackal": {
+      "coat": "vacht",
+      "food": "Kleine zoogdieren, vogels, insecten",
+      "life": "8–9 jaar",
+      "many": "jakhalzen",
+      "name": "Zadeljakhals",
+      "one": "jakhals",
+      "pl": "Jakhalzen",
+      "role": "Jaagt op kleine dieren en ruimt op wat anderen achterlaten.",
+      "social": "Paren voor het leven; de jongen van vorig jaar helpen het nieuwe nest groot te brengen.",
+      "where": "Droog grasland en woestijnranden van zuidelijk en oostelijk Afrika"
+    },
+    "lion": {
+      "coat": "vacht",
+      "food": "Zebra's, gnoes, buffels, gazellen",
+      "life": "10–14 jaar",
+      "many": "leeuwen",
+      "name": "Leeuw",
+      "one": "leeuw",
+      "pl": "Leeuwen",
+      "role": "Houdt grazende kuddes gezond en in beweging.",
+      "social": "Groepen van verwante vrouwtjes met 1–3 mannetjes. De vrouwtjes jagen samen.",
+      "where": "Savannes van Afrika, en één bos in India"
+    },
+    "lseal": {
+      "coat": "speklaag",
+      "food": "Krill, pinguïns, vis, andere zeehonden",
+      "life": "12–26 jaar",
+      "many": "zeeluipaarden",
+      "name": "Zeeluipaard",
+      "one": "zeeluipaard",
+      "pl": "Zeeluipaarden",
+      "role": "Na de orka de grootste jager op het zee-ijs.",
+      "social": "Alleen, behalve moeders met jongen.",
+      "where": "Pakijs rond Antarctica"
+    },
+    "meerkat": {
+      "coat": "vacht",
+      "food": "Kevers, schorpioenen, kleine hagedissen",
+      "life": "6–10 jaar",
+      "many": "stokstaartjes",
+      "name": "Stokstaartje",
+      "one": "stokstaartje",
+      "pl": "Stokstaartjes",
+      "role": "Eet enorm veel insecten; voedsel voor jakhalzen en arenden.",
+      "social": "Groepen van 20–50, geleid door één fokpaar; anderen passen op de jongen en houden om de beurt de wacht.",
+      "where": "Kalahari- en Namibwoestijn, zuidelijk Afrika"
+    },
+    "orca": {
+      "coat": "speklaag",
+      "food": "Vis of zeehonden, afhankelijk van de groep",
+      "life": "50–90 jaar",
+      "many": "orka's",
+      "name": "Orka",
+      "one": "orka",
+      "pl": "Orka's",
+      "role": "De grootste jager van de zee, die het aantal zeehonden en vissen bepaalt.",
+      "social": "Groepen geleid door grootmoeders. Elke groep heeft eigen roepen en jachttrucs.",
+      "where": "Alle oceanen, het meest in koud water"
+    },
+    "penguin": {
+      "coat": "veren",
+      "food": "Vis, krill en inktvis",
+      "life": "15–20 jaar",
+      "many": "pinguïns",
+      "name": "Keizerspinguïn",
+      "one": "pinguïn",
+      "pl": "Keizerspinguïns",
+      "role": "Vertelt wetenschappers hoe gezond het zee-ijs is.",
+      "social": "Kolonies van duizenden. Vaders kruipen tegen elkaar aan en houden het ei de hele winter warm.",
+      "where": "Zee-ijs rond Antarctica"
+    },
+    "rabbit": {
+      "coat": "vacht",
+      "food": "Gras en bladplanten",
+      "life": "1–2 jaar in het wild",
+      "many": "konijnen",
+      "name": "Konijn",
+      "one": "konijn",
+      "pl": "Konijnen",
+      "role": "Voedsel voor vossen, haviken en vele anderen; kan het land kaalvreten als het er te veel zijn.",
+      "social": "Leven in groepen in ondergrondse gangen, een konijnenburcht.",
+      "where": "Grasland en bosranden; door mensen naar veel landen gebracht"
+    },
+    "salmon": {
+      "coat": "lichaamsvet",
+      "food": "Krill, garnalen en kleine vis",
+      "life": "4–6 jaar",
+      "many": "zalmen",
+      "name": "Atlantische zalm",
+      "one": "zalm",
+      "pl": "Zalmen",
+      "role": "Brengt voedsel uit de oceaan ver landinwaarts; voedsel voor beren, zeehonden en vogels.",
+      "social": "Alleen op zee; volwassenen zwemmen terug naar de rivier waar ze uit het ei kwamen om eitjes te leggen.",
+      "where": "De Noord-Atlantische Oceaan en de rivieren die erin uitmonden"
+    },
+    "scorpion": {
+      "coat": "lichaamsvet",
+      "food": "Kevers, krekels en spinnen",
+      "life": "3–8 jaar",
+      "many": "schorpioenen",
+      "name": "Schorpioen",
+      "one": "schorpioen",
+      "pl": "Schorpioenen",
+      "role": "Jaagt 's nachts op insecten; stokstaartjes zijn immuun voor veel van hun steken.",
+      "social": "Alleen. Moeders dragen hun jongen op hun rug.",
+      "where": "Woestijnen en droge gebieden op elk continent behalve Antarctica"
+    },
+    "seal": {
+      "coat": "speklaag",
+      "food": "Vis, inktvis, garnalen",
+      "life": "25–30 jaar",
+      "many": "zeehonden",
+      "name": "Gewone zeehond",
+      "one": "zeehond",
+      "pl": "Zeehonden",
+      "role": "Eet vis; voedsel voor orka's en haaien.",
+      "social": "Rusten samen op stranden en rotsen, maar jagen alleen.",
+      "where": "Koude kusten van de noordelijke Atlantische en Stille Oceaan"
+    },
+    "wolf": {
+      "coat": "vacht",
+      "food": "Wapiti's, herten, bevers en konijnen",
+      "life": "6–8 jaar in het wild",
+      "many": "wolven",
+      "name": "Grijze wolf",
+      "one": "wolf",
+      "pl": "Grijze wolven",
+      "role": "Houdt wapiti's in beweging, waardoor bomen langs de rivier terug kunnen groeien.",
+      "social": "Roedels van 4–9: een moeder, een vader en hun jongen. Het \"alfapaar\" zijn gewoon de ouders.",
+      "where": "Bossen, toendra en bergen in Noord-Amerika, Europa en Azië"
+    },
+    "zebra": {
+      "coat": "vacht",
+      "food": "Taai, hoog gras",
+      "life": "20–25 jaar",
+      "many": "zebra's",
+      "name": "Zebra",
+      "one": "zebra",
+      "pl": "Zebra's",
+      "role": "Eet eerst het hoge gras en maakt zo de weg vrij voor gazellen.",
+      "social": "Gezinnen van één hengst, een paar merries en veulens; gezinnen vormen samen grote kuddes.",
+      "where": "Graslanden van oostelijk en zuidelijk Afrika"
+    }
+  },
+  "spGroup": {
+    "0": "Bos en toendra",
+    "1": "Savanne",
+    "2": "Woestijn",
+    "3": "Oceaan en ijs",
+    "4": "Weide"
+  },
+  "speed": {
+    "0": "1 d/s",
+    "1": "3 d/s",
+    "2": "10 d/s",
+    "3": "30 d/s"
+  },
+  "stage": {
+    "count": "{name} {n}",
+    "gone": "weg",
+    "goneNamed": "{name}: weg",
+    "new": "(nieuw)"
+  },
+  "story": {
+    "bigger": "{many} zijn {n}% groter {cmp}.",
+    "biggerSafe": "{many} zijn {n}% groter {cmp}: grote zijn moeilijker te vangen.",
+    "catch": "De {hunter} vangen vooral {prey}; de {prey} verstoppen zich tussen {cover} om veilig te blijven.",
+    "coatLess": "{many} hebben {n}% minder {coat} {cmp}: zo blijven ze koel.",
+    "coatMore": "{many} hebben {n}% meer {coat} {cmp}: zo blijven ze warm.",
+    "compared": "Vergeleken met dezelfde plek zonder wijziging, op dag {day}:",
+    "count": "{n, plural, one {# {one}} other {# {many}}}",
+    "diedOut": "De {many} zijn uitgestorven: de meeste {why}.",
+    "diedOutChanged": "De {many} zijn uitgestorven: de meeste {why}, wat zonder je wijzigingen niet gebeurde.",
+    "diff": "Er {be, select, is {is} other {zijn}} {list}.",
+    "faster": "{many} zijn {n}% sneller {cmp}: de snelle ontsnappen vaker en krijgen meer jongen.",
+    "fasterFood": "{many} zijn {n}% sneller {cmp}: de snelle zijn eerst bij het voedsel.",
+    "fewer": "{n, plural, one {# {one} minder} other {# {many} minder}}",
+    "giveTime": "Geef het tijd: veel veranderingen worden pas na een paar generaties zichtbaar.",
+    "hungry": "Toen aten ze {food} sneller op dan het groeide, en velen kregen honger.",
+    "hunting": "Jagende mensen doden veel {many}.",
+    "lessFood": "Met minder {food} voor iedereen is er plek voor minder dieren.",
+    "lessToEat": "Zonder {prey} om te vangen hebben de {hunter} minder te eten.",
+    "live": "Dag {day}: hier leven {list}.",
+    "more": "{n, plural, one {# {one} meer} other {# {many} meer}}",
+    "moreFood": "Meer {food} betekent dat meer jongen overleven.",
+    "multiplied": "Zonder {hunter} die op ze jagen, vermenigvuldigden de {prey} zich.",
+    "newcomersFailed": "De {many} die erbij kwamen konden hier niet overleven: de meeste {why}.",
+    "noneLeft": "Dag {day}: er zijn hier geen dieren meer.",
+    "pick": "Kies een wijziging om te zien wat er anders zou zijn.",
+    "runsShort": "Er zijn zoveel planteneters dat er te weinig {food} is.",
+    "same": "De aantallen dieren zijn tot nu toe hetzelfde.",
+    "sensesLess": "{many} merken {n}% minder op {cmp}: grote ogen en oren kosten energie.",
+    "sensesMore": "{many} merken voedsel en gevaar {n}% verder weg op {cmp}.",
+    "slower": "{many} zijn {n}% langzamer {cmp}: langzaam bewegen spaart energie.",
+    "smaller": "{many} zijn {n}% kleiner {cmp}: kleine lichamen hebben minder voedsel nodig.",
+    "weather": "Het {heat, select, hot {warmere} other {koudere}} weer is zwaar voor de {many}: ze verbranden meer voedsel om op de been te blijven."
+  },
+  "time": {
+    "day": "Dag {n}"
+  },
+  "trait": {
+    "co": "Vacht",
+    "se": "Zintuigen",
+    "sp": "Snelheid",
+    "sz": "Grootte"
+  },
+  "trend": {
+    "falling": "dalend",
+    "gone": "weg",
+    "rising": "stijgend",
+    "steady": "stabiel"
+  },
+  "ui": {
+    "addAnimal": "Een dier toevoegen",
+    "atStart": "{many} bij de start",
+    "changesHint": "Ze tellen op. Klik er nog eens op om hem sterker te maken.",
+    "far": "Ver van huis",
+    "farHere": "Hier ver van huis",
+    "fewer": "Minder {many} bij de start",
+    "fiveMost": "Vijf is het maximum",
+    "happening": "Wat er gebeurt",
+    "livesHere": "{name} (woont hier)",
+    "more": "Meer {many} bij de start",
+    "needOne": "Een wereld heeft minstens één dier nodig",
+    "newcomer": "Wie erbij kan komen",
+    "noChange": "(zonder wijziging: {v})",
+    "none": "geen",
+    "noneLeft": "Niemand meer over",
+    "pickWorld": "Kies een wereld",
+    "portrait": "Een doorsnee {one} op dag 0 en vandaag, op dezelfde schaal getekend. {caption}",
+    "restart": "Als je verandert wie hier woont, begint de wereld opnieuw.",
+    "rightNow": "Nu",
+    "takeOut": "Haal {many} uit deze wereld",
+    "takeOutShort": "Haal {many} weg",
+    "target": "Wijzigingen aan één dier gelden voor",
+    "thenNow": "Toen en nu",
+    "whatChanged": "Wat er veranderde",
+    "who": "Wie woont hier"
+  },
+  "whatif": {
+    "add": "Er komt een dier bij",
+    "cool": "Een ijstijd",
+    "disease": "Een ziekte breekt uit",
+    "drought": "Een jaar zonder regen",
+    "fire": "Een bosbrand",
+    "habitat": "Half het land kwijt",
+    "hunt": "Mensen jagen op een dier",
+    "invasive": "Een snel voortplantende nieuwkomer",
+    "move": "Het tegenovergestelde klimaat",
+    "rain": "Jaren met goede regen",
+    "remove": "Een dier verdwijnt",
+    "reserve": "Een beschermd natuurgebied",
+    "warm": "3 °C warmer"
+  },
+  "why": {
+    "0": "werden gevangen",
+    "1": "kregen honger",
+    "2": "konden het weer niet aan",
+    "3": "werden oud",
+    "4": "werden door mensen gejaagd"
+  },
+  "world": {
+    "antarctica": "Antarctica",
+    "atlantic": "Noord-Atlantische Oceaan",
+    "foxes": "Vos en konijnen",
+    "kalahari": "Kalahari",
+    "meadow": "Weide",
+    "savanna": "Savanne",
+    "yellowstone": "Yellowstone"
+  },
+  "worldGroup": {
+    "0": "Bos en toendra",
+    "1": "Savanne en woestijn",
+    "2": "Oceaan en ijs",
+    "3": "Weide"
+  },
+  "worldOpt": {
+    "antarctica": "Antarctica: pinguïns, zeeluipaarden, orka's",
+    "atlantic": "Noord-Atlantisch: zalmen, zeehonden, orka's, beren",
+    "foxes": "Vos en konijnen",
+    "kalahari": "Kalahari: stokstaartjes, jakhalzen, schorpioenen",
+    "meadow": "Weide: honingbijen en hoornaars",
+    "savanna": "Savanne: leeuwen, zebra's, olifanten, gazellen",
+    "yellowstone": "Yellowstone: wolven, wapiti's, bevers, beren"
+  }
+}

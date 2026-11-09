@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Chạy",
+    "pause": "Dừng",
+    "speed": "Tốc độ",
+    "slower": "Chậm hơn",
+    "faster": "Nhanh hơn",
+    "reset": "Làm lại",
+    "resetLabel": "Làm lại tất cả",
+    "resetTitle": "Làm lại tất cả: cài đặt, thay đổi và thời gian",
+    "hintFull": "Thoát toàn màn hình để thay đổi.",
+    "hint": "Chọn thay đổi. Chúng cộng dồn; bỏ tích để so sánh."
+  },
+  "fullscreen": {
+    "enter": "Toàn màn hình",
+    "leave": "Thoát toàn màn hình",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Thay đổi của bạn",
+    "count": "Bật {on}/{total}",
+    "empty": "Chưa có gì thay đổi. Mỗi thay đổi bạn tạo sẽ xuất hiện ở đây kèm dấu tích, để bạn tắt rồi bật lại.",
+    "remove": "Xoá “{name}” khỏi danh sách",
+    "removeTitle": "Xoá khỏi danh sách",
+    "allOn": "Bật tất cả",
+    "allOff": "Tắt tất cả",
+    "clear": "Xoá danh sách",
+    "throw": "Ném thêm một hành tinh"
+  },
+  "about": {
+    "label": "Về mô hình này",
+    "body": "Mọi thứ chạy từ các quy tắc dựng sẵn và dữ liệu đơn giản hoá, ngay trong trình duyệt của bạn. Kết quả cho thấy diễn biến hợp lý, không phải dự báo."
+  },
+  "whatifs": {
+    "title": "Tạo thay đổi",
+    "applied": "đã áp dụng {n} lần"
+  },
+  "readouts": {
+    "title": "Hiện tại"
+  },
+  "world": {
+    "base": "Không đổi",
+    "alt": "Có thay đổi",
+    "both": "Cả hai thế giới",
+    "onlyBase": "Chỉ khi không đổi",
+    "onlyAlt": "Chỉ khi có thay đổi"
+  },
+  "tune": {
+    "title": "Biến số",
+    "live": "Đổi thế giới ban đầu sẽ khởi động lại nó. Cài đặt nếu như có hiệu lực từ lần tiếp theo bạn chọn một nếu như.",
+    "restart": "Đổi các mục này sẽ khởi động lại thế giới."
+  },
+  "chart": {
+    "withChanges": "Có thay đổi:",
+    "noDiff": "chưa khác biệt rõ",
+    "overTime": "{metric} theo thời gian",
+    "collecting": "Đang thu thập dữ liệu…",
+    "fork": "RẼ NHÁNH"
+  },
+  "stage": {
+    "label": "Sân khấu mô phỏng",
+    "edge": "What-If Lab · Hạt giống {seed}"
+  },
+  "timeline": {
+    "title": "Dòng thời gian",
+    "empty": "Chưa có gì đáng chú ý. Cứ để nó chạy, hoặc tạo một thay đổi."
+  },
+  "dock": {
+    "tools": "Công cụ",
+    "ask": "Hỏi",
+    "tune": "Chỉnh",
+    "read": "Xem",
+    "log": "Nhật ký"
+  },
+  "ad": {
+    "label": "Quảng cáo",
+    "promo": "Không quảng cáo với Premium · 15 $/năm",
+    "short": "QC"
+  }
+}

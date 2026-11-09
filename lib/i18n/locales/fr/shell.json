@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "et si… accueil",
+    "worlds": "Mondes",
+    "worldButton": "Monde : {name}. Changer de monde",
+    "wordmark": "et si"
+  },
+  "theme": {
+    "toDark": "Passer au thème sombre",
+    "toLight": "Passer au thème clair"
+  },
+  "lang": {
+    "label": "Langue",
+    "button": "Langue : {name}. Changer de langue",
+    "draft": "pas encore prêt",
+    "alsoIn": "Aussi en {language}",
+    "dismiss": "Ne pas proposer d’autre langue"
+  }
+}

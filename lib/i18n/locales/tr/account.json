@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "Bu sürümde hesaplar kurulu değil. Buradaki her şey ücretsiz.",
+    "loading": "Hesabın kontrol ediliyor…",
+    "signedOut": "Laboratuvar hesapsız da ücretsiz. Premium'u her cihazda kullanmak için giriş yap.",
+    "free": "Ücretsiz plan. Her dünya ve her “ya … olursa?” senin.",
+    "premium": "Premium açık: reklam yok, video ve slayt dışa aktarma var.",
+    "error": "Hesap hizmeti yanıt vermedi.",
+    "keepPremium": "Premium şimdilik açık kalıyor."
+  },
+  "menu": {
+    "account": "Hesap",
+    "signIn": "Giriş yap",
+    "createAccount": "Hesap oluştur",
+    "goPremium": "Premium'a geç",
+    "price": "Yılda 15 $",
+    "manage": "Aboneliği yönet",
+    "settings": "Hesap ayarları",
+    "signOut": "Çıkış yap",
+    "retry": "Tekrar dene",
+    "yourAccount": "Laboratuvar hesabın",
+    "premium": "Premium",
+    "free": "Ücretsiz",
+    "plan": "Plan: {plan}",
+    "buttonLabel": "{label}, plan: {plan}",
+    "devPremium": "Premium'u taklit et",
+    "devOnly": "yalnızca geliştirici sürümü"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Reklam yok",
+        "text": "Her dünyada tüm reklam alanları kaybolur."
+      },
+      "phone": {
+        "name": "Telefon videoları",
+        "text": "Shorts, Reels ve TikTok için “ya … olursa?” denemenden 1080 × 1920 klipler."
+      },
+      "wide": {
+        "name": "YouTube videoları",
+        "text": "İki dünyayı yan yana gösteren 1920 × 1080 klipler."
+      },
+      "slides": {
+        "name": "Slaytlar",
+        "text": "Bir PDF sunumu: başlangıç, değişiklik, önemli anlar ve sonuç."
+      }
+    },
+    "lead": {
+      "export": "Videolar ve slaytlar Premium'un bir parçası.",
+      "ads": "Premium reklamları kaldırır.",
+      "menu": "Laboratuvarı destekle ve bulduklarını paylaşmak için araçları al."
+    },
+    "createContinue": "Hesap oluştur ve devam et",
+    "haveAccount": "Hesabım var",
+    "noteSignedOut": "Önce bir hesap, böylece Premium her cihazda çalışır. Ardından ödeme sayfası hemen burada açılır.",
+    "openingCheckout": "Ödeme açılıyor…",
+    "continueCheckout": "Ödemeye devam et",
+    "noteFree": "Giriş yapan: {who}. Ödemeyi {provider} ve Stripe yürütür; laboratuvar kartını asla görmez.",
+    "you": "sen",
+    "ourProvider": "hizmet sağlayıcımız",
+    "back": "Laboratuvara dön",
+    "manage": "Aboneliği yönet",
+    "checking": "Hesabın kontrol ediliyor…",
+    "retry": "Tekrar dene",
+    "noteDev": "Bu sürümde hesaplar kurulu değil. Premium'u denemek için hesap menüsünde “Premium'u taklit et”i aç.",
+    "noteOff": "Premium, laboratuvarın bu sürümünde henüz satışta değil.",
+    "titleOn": "Premium açık",
+    "title": "Premium",
+    "amount": "15 $",
+    "per": "yıllık · istediğin zaman iptal et",
+    "thanks": "Teşekkürler. Reklamlar kalktı ve dışa aktarma her dünyada açıldı.",
+    "free": "Premium olsun olmasın, her dünya ve her “ya … olursa?” ücretsiz kalır."
+  },
+  "errors": {
+    "noCheckout": "Bu sürümde ödeme kullanılamıyor. Daha sonra tekrar dene.",
+    "notOnSale": "Premium henüz satışta değil. Lütfen daha sonra tekrar dene.",
+    "checkoutFailed": "Ödeme açılamadı. Birazdan tekrar dene.",
+    "offline": "Çevrimdışısın. Yeniden bağlandığında hesaplar geri gelir.",
+    "noAnswer": "Hesap hizmeti yanıt vermedi. Bağlantını kontrol edip tekrar dene."
+  },
+  "yourAccount": "Hesabın"
+}

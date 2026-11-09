@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "zoomLevel": "缩放级别",
+    "hint": "滚动、双指缩放或拖动。点金色标签即可打开它的世界。"
+  },
+  "panel": {
+    "inView": "视野中",
+    "openThis": "打开这个世界",
+    "openWorld": "打开一个世界",
+    "jumpTo": "跳到"
+  },
+  "hero": {
+    "title": "如果……会怎样？",
+    "body": "从质子缩放到可观测宇宙，每一步放大十倍。金色标签是可运行的世界：打开一个，改变它，再和保持原样的世界比较未来。"
+  },
+  "stage": {
+    "open": "打开世界 →",
+    "screen": "屏幕宽度 ≈ {len}"
+  }
+}

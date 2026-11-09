@@ -1,0 +1,113 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": {
+      "label": "Wiek",
+      "unit": "lat"
+    },
+    "disc": {
+      "label": "Samodyscyplina"
+    },
+    "health": {
+      "label": "Obecne zdrowie"
+    },
+    "mood": {
+      "label": "Obecne samopoczucie"
+    },
+    "soc": {
+      "label": "Towarzyskość"
+    },
+    "stress": {
+      "label": "Poziom stresu"
+    }
+  },
+  "dim": {
+    "career": "Praca i umiejętności",
+    "health": "Zdrowie",
+    "social": "Relacje",
+    "well": "Samopoczucie"
+  },
+  "ev": {
+    "again": "Znowu zaczyna {habit}",
+    "b6": "Pół roku później: głód i tolerancja utrudniają rzucenie",
+    "d66": "Dzień 66: u tych, którzy wytrwali, nawyk jest już automatyczny",
+    "half": "Połowa wersji się poddała",
+    "high": "{dim}: mocny poziom",
+    "low": "{dim}: spadek do strefy zagrożenia",
+    "start": "Zaczyna {habit}",
+    "w3": "Tydzień 3: spadek motywacji, teraz najwięcej osób rezygnuje",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "dużo pić alkohol",
+    "exercise": "ćwiczyć 30 min dziennie",
+    "isolate": "odsuwać się od znajomych",
+    "learn": "uczyć się nowej umiejętności 1 h dziennie",
+    "meditate": "medytować 10 min dziennie",
+    "read": "czytać 30 min dziennie",
+    "sleep": "spać 8 godzin o stałych porach",
+    "smoke": "palić",
+    "social": "żyć bez mediów społecznościowych"
+  },
+  "meta": {
+    "intro": "Jedna osoba, 100 równoległych wersji jej życia. Wypróbuj nowe nawyki i zobacz, ile wersji wytrwa i co to zmieni.",
+    "name": "Charakter",
+    "sub": "100 równoległych żyć"
+  },
+  "metric": {
+    "career": {
+      "label": "Praca i umiejętności",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Zdrowie",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Wciąż to robi",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Relacje",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Samopoczucie",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "Dużo picia",
+    "exercise": "Ćwiczenia",
+    "isolate": "Odsunięcie od znajomych",
+    "learn": "Nauka umiejętności",
+    "meditate": "Medytacja",
+    "read": "Czytanie",
+    "sleep": "Sen",
+    "smoke": "Palenie",
+    "social": "Bez social mediów"
+  },
+  "speed": {
+    "0": "1 tydz./s",
+    "1": "1 mies./s",
+    "2": "6 mies./s",
+    "3": "2 lata/s"
+  },
+  "stage": {
+    "caption": "{what} · uśmiech = samopoczucie · jasność = zdrowie",
+    "many": "{h, plural, one {# nawyk} few {# nawyki} many {# nawyków} other {# nawyku}} · {n} na 100 wciąż trzyma się co najmniej jednego",
+    "none": "Jeszcze bez nowego nawyku",
+    "one": "{n} na 100 wciąż to robi"
+  },
+  "whatif": {
+    "drink": "Zacznij dużo pić",
+    "exercise": "Ćwicz 30 min dziennie",
+    "isolate": "Odsuń się od znajomych",
+    "learn": "Ucz się umiejętności 1 h dziennie",
+    "meditate": "Medytuj 10 min dziennie",
+    "read": "Czytaj 30 min dziennie",
+    "sleep": "Śpij 8 godzin o stałych porach",
+    "smoke": "Zacznij palić",
+    "social": "Rzuć media społecznościowe"
+  }
+}

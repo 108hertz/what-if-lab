@@ -1,0 +1,85 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": { "label": "Âge", "unit": "ans" },
+    "disc": { "label": "Autodiscipline" },
+    "health": { "label": "Santé actuelle" },
+    "mood": { "label": "Bien-être actuel" },
+    "soc": { "label": "Sociabilité" },
+    "stress": { "label": "Niveau de stress" }
+  },
+  "dim": {
+    "career": "Carrière et compétences",
+    "health": "Santé",
+    "social": "Relations",
+    "well": "Bien-être"
+  },
+  "ev": {
+    "again": "Reprend : {habit}",
+    "b6": "Six mois plus tard : l’envie et la tolérance rendent l’arrêt difficile",
+    "d66": "Jour 66 : pour ceux qui continuent, l’habitude est devenue automatique",
+    "half": "La moitié des versions ont abandonné",
+    "high": "{dim} atteint un bon niveau",
+    "low": "{dim} tombe dans la zone de danger",
+    "start": "Commence : {habit}",
+    "w3": "Semaine 3 : la motivation baisse, la plupart abandonnent maintenant",
+    "withHabit": "{habit} : {line}"
+  },
+  "habit": {
+    "drink": "se mettre à boire beaucoup",
+    "exercise": "faire 30 min de sport par jour",
+    "isolate": "s’éloigner de ses amis",
+    "learn": "apprendre une compétence 1 h par jour",
+    "meditate": "méditer 10 min par jour",
+    "read": "lire 30 min par jour",
+    "sleep": "dormir 8 h, horaires fixes",
+    "smoke": "se mettre à fumer",
+    "social": "arrêter les réseaux sociaux"
+  },
+  "meta": {
+    "intro": "Une personne, 100 versions parallèles de sa vie. Essayez de nouvelles habitudes et voyez combien tiennent le coup et ce que ça change.",
+    "name": "Caractère",
+    "sub": "100 vies parallèles"
+  },
+  "metric": {
+    "career": { "label": "Carrière et compétences", "unit": "/100" },
+    "health": { "label": "Santé", "unit": "/100" },
+    "kept": { "label": "Continue encore", "unit": "%" },
+    "social": { "label": "Relations", "unit": "/100" },
+    "well": { "label": "Bien-être", "unit": "/100" }
+  },
+  "short": {
+    "drink": "Boire beaucoup",
+    "exercise": "Sport",
+    "isolate": "S’éloigner des amis",
+    "learn": "Apprendre",
+    "meditate": "Méditer",
+    "read": "Lire",
+    "sleep": "Sommeil",
+    "smoke": "Fumer",
+    "social": "Arrêter les réseaux"
+  },
+  "speed": {
+    "0": "1 sem./s",
+    "1": "1 mois/s",
+    "2": "6 mois/s",
+    "3": "2 ans/s"
+  },
+  "stage": {
+    "caption": "{what} · sourire = bien-être · luminosité = santé",
+    "many": "{h, plural, one {# habitude} many {# habitudes} other {# habitudes}} · {n} sur 100 en gardent au moins une",
+    "none": "Pas encore de nouvelle habitude",
+    "one": "{n} sur 100 continuent encore"
+  },
+  "whatif": {
+    "drink": "Se mettre à boire beaucoup",
+    "exercise": "Faire 30 min de sport par jour",
+    "isolate": "S’éloigner de ses amis",
+    "learn": "Apprendre une compétence 1 h par jour",
+    "meditate": "Méditer 10 min par jour",
+    "read": "Lire 30 min par jour",
+    "sleep": "Dormir 8 h, horaires fixes",
+    "smoke": "Se mettre à fumer",
+    "social": "Arrêter les réseaux sociaux"
+  }
+}

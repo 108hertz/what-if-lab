@@ -1,0 +1,87 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": { "label": "Lệch khỏi tâm", "unit": "nghìn nas" },
+    "bhm": { "label": "Khối lượng hố đen", "unit": "× Ngân Hà" },
+    "count": { "label": "Số thiên hà rơi vào" },
+    "dm": { "label": "Vật chất tối", "unit": "×" },
+    "dmleft": { "label": "Lực hấp dẫn còn lại", "unit": "%" },
+    "fly": { "label": "Tốc độ lao qua", "unit": "km/s" },
+    "h": { "starting-world": "Thế giới ban đầu", "what-if-settings": "Cài đặt nếu như" },
+    "mass": { "label": "Khối lượng Andromeda", "unit": "× Ngân Hà" },
+    "neigh": {
+      "label": "Láng giềng lúc đầu",
+      "opt": { "m33": "Tam Giác", "m33lmc": "Tam Giác + LMC", "none": "Không có" }
+    },
+    "shape": {
+      "label": "Hình dạng Andromeda",
+      "opt": { "elliptical": "Elip", "spiral": "Xoắn ốc" }
+    },
+    "size": { "label": "Kích thước của chúng", "unit": "× Ngân Hà" },
+    "speed": { "label": "Tốc độ tiến lại", "unit": "km/s" },
+    "spin": {
+      "label": "Andromeda quay",
+      "opt": { "against": "Ngược chiều ta", "same": "Cùng chiều ta" }
+    },
+    "stars": { "label": "Số sao mỗi thiên hà" }
+  },
+  "ev": {
+    "bhBig": "Một hố đen nặng gấp {x} lần Ngân Hà xuất hiện ở tâm",
+    "bhSmall": "Một hố đen bằng {pct}% khối lượng Ngân Hà xuất hiện ở tâm",
+    "bullet": "Một thiên hà lao thẳng xuyên qua với tốc độ {speed} km/s",
+    "closing": "Andromeda đang tiến lại gần với tốc độ khoảng {speed} km/s",
+    "flipmw": "Mọi ngôi sao của Ngân Hà đảo chiều quỹ đạo",
+    "freeze": "Mọi ngôi sao của Ngân Hà ngừng quay quanh tâm",
+    "headon": "Andromeda chuyển hướng lao thẳng vào tâm ta",
+    "lmc": "Đám Mây Magellan Lớn bay quanh Ngân Hà",
+    "merge": "Hai lõi hợp nhất: một thiên hà elip khổng lồ, “Milkomeda”",
+    "miss": "Andromeda bị đẩy sang đường bay lướt qua",
+    "nodmAll": "Vật chất tối biến mất: lực hấp dẫn giảm còn {left}%, các ngôi sao bỗng quá nhanh",
+    "nodmSome": "Một phần vật chất tối biến mất: lực hấp dẫn giảm còn {left}%, các ngôi sao bỗng quá nhanh",
+    "pass1": "Lần lướt đầu: hai thiên hà lao xuyên qua nhau",
+    "punch": "Một thiên hà lùn đâm xuyên qua tâm ta",
+    "reverse": "Andromeda quay đầu và đi xa dần",
+    "ring": "Đĩa của ta bật lại thành một vòng sao nở rộng",
+    "stop": "Andromeda dừng hẳn, rồi bắt đầu rơi vào",
+    "swallowed": "Thêm một thiên hà bị nuốt chửng",
+    "swarm": "{n, plural, =1 {Thêm một thiên hà rơi vào} other {Thêm # thiên hà rơi vào}}",
+    "tails": "Chúng văng ra xa, kéo theo những cái đuôi thuỷ triều dài bằng sao",
+    "third": "Một thiên hà thứ ba (như Tam Giác) rơi vào",
+    "triangulum": "Thiên hà Tam Giác trôi vào từ một bên"
+  },
+  "meta": {
+    "intro": "Ngân Hà và Andromeda, trên đường va chạm thật của chúng, được tua nhanh. Mỗi chấm là một ngôi sao.",
+    "name": "Thiên hà",
+    "sub": "Va chạm"
+  },
+  "metric": {
+    "disc": { "label": "Sao trong đĩa", "unit": "%" },
+    "galaxies": { "label": "Thiên hà còn lại" },
+    "sep": { "label": "Khoảng cách", "unit": "nghìn nas" },
+    "thrown": { "label": "Sao bị văng ra", "unit": "%" }
+  },
+  "speed": {
+    "0": "5 tr năm/s",
+    "1": "10 tr năm/s",
+    "2": "25 tr năm/s",
+    "3": "50 tr năm/s",
+    "4": "150 tr năm/s",
+    "5": "400 tr năm/s",
+    "6": "1 tỷ năm/s"
+  },
+  "stage": { "scale": "{n} năm ánh sáng" },
+  "whatif": {
+    "bh": "Một hố đen nặng như cả thiên hà xuất hiện ở tâm ta",
+    "bullet": "Một thiên hà lao thẳng xuyên qua",
+    "flipmw": "Ngân Hà quay theo chiều ngược lại",
+    "freeze": "Sao của Ngân Hà ngừng quay",
+    "headon": "Nhắm Andromeda thẳng vào tâm",
+    "miss": "Andromeda bay lướt qua",
+    "nodm": "Vật chất tối biến mất",
+    "reverse": "Andromeda quay đầu",
+    "ring": "Một thiên hà nhỏ đâm xuyên qua tâm ta",
+    "stop": "Andromeda dừng hẳn",
+    "swarm": "Thêm nhiều thiên hà rơi vào",
+    "third": "Thiên hà thứ ba nhập cuộc"
+  }
+}

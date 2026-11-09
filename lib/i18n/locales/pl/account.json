@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "Konta nie są skonfigurowane w tej wersji. Wszystko tutaj jest za darmo.",
+    "loading": "Sprawdzanie konta…",
+    "signedOut": "Laboratorium jest darmowe bez konta. Zaloguj się, aby korzystać z Premium na każdym urządzeniu.",
+    "free": "Plan darmowy. Każdy świat i każde „co jeśli” są Twoje.",
+    "premium": "Premium jest włączone: bez reklam, z eksportem wideo i slajdów.",
+    "error": "Usługa kont nie odpowiedziała.",
+    "keepPremium": "Na razie Premium pozostaje włączone."
+  },
+  "menu": {
+    "account": "Konto",
+    "signIn": "Zaloguj się",
+    "createAccount": "Załóż konto",
+    "goPremium": "Przejdź na Premium",
+    "price": "15 $ rocznie",
+    "manage": "Zarządzaj subskrypcją",
+    "settings": "Ustawienia konta",
+    "signOut": "Wyloguj się",
+    "retry": "Spróbuj ponownie",
+    "yourAccount": "Twoje konto w laboratorium",
+    "premium": "Premium",
+    "free": "Darmowy",
+    "plan": "Plan: {plan}",
+    "buttonLabel": "{label}, plan: {plan}",
+    "devPremium": "Symuluj Premium",
+    "devOnly": "tylko wersja deweloperska"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Bez reklam",
+        "text": "Wszystkie miejsca na reklamy znikają, w każdym świecie."
+      },
+      "phone": {
+        "name": "Filmy na telefon",
+        "text": "Klipy 1080 × 1920 z Twoim „co jeśli” na Shorts, Reels i TikToka."
+      },
+      "wide": {
+        "name": "Filmy na YouTube",
+        "text": "Klipy 1920 × 1080 z oboma światami obok siebie."
+      },
+      "slides": {
+        "name": "Slajdy",
+        "text": "Prezentacja PDF: punkt wyjścia, „co jeśli”, kluczowe chwile i wynik."
+      }
+    },
+    "lead": {
+      "export": "Filmy i slajdy są częścią Premium.",
+      "ads": "Premium usuwa reklamy.",
+      "menu": "Wesprzyj laboratorium i zdobądź narzędzia do dzielenia się odkryciami."
+    },
+    "createContinue": "Załóż konto i kontynuuj",
+    "haveAccount": "Mam konto",
+    "noteSignedOut": "Najpierw konto, żeby Premium działało na każdym urządzeniu. Potem płatność otworzy się właśnie tutaj.",
+    "openingCheckout": "Otwieranie płatności…",
+    "continueCheckout": "Przejdź do płatności",
+    "noteFree": "Zalogowano jako {who}. Płatność obsługuje {provider} i Stripe; laboratorium nigdy nie widzi Twojej karty.",
+    "you": "Ty",
+    "ourProvider": "nasz dostawca",
+    "back": "Wróć do laboratorium",
+    "manage": "Zarządzaj subskrypcją",
+    "checking": "Sprawdzanie konta…",
+    "retry": "Spróbuj ponownie",
+    "noteDev": "Konta nie są skonfigurowane w tej wersji. Aby wypróbować Premium, włącz „Symuluj Premium” w menu konta.",
+    "noteOff": "Premium nie jest jeszcze dostępne w tej wersji laboratorium.",
+    "titleOn": "Premium jest włączone",
+    "title": "Premium",
+    "amount": "15 $",
+    "per": "rocznie · anuluj w dowolnej chwili",
+    "thanks": "Dziękujemy. Reklamy zniknęły, a eksporty są odblokowane w każdym świecie.",
+    "free": "Każdy świat i każde „co jeśli” pozostają darmowe, z Premium lub bez."
+  },
+  "errors": {
+    "noCheckout": "Płatność nie jest dostępna w tej wersji. Spróbuj później.",
+    "notOnSale": "Premium nie jest jeszcze w sprzedaży. Spróbuj później.",
+    "checkoutFailed": "Nie udało się otworzyć płatności. Spróbuj za chwilę.",
+    "offline": "Jesteś offline. Konta wrócą, gdy połączenie zostanie przywrócone.",
+    "noAnswer": "Usługa kont nie odpowiedziała. Sprawdź połączenie i spróbuj ponownie."
+  },
+  "yourAccount": "Twoje konto"
+}

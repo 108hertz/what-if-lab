@@ -1,0 +1,690 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "cap": {
+    "bigger": "{n}% lebih besar",
+    "coatThicker": "{coat} lebih tebal",
+    "coatThinner": "{coat} lebih tipis",
+    "earsLess": "telinga lebih kecil (kurang peka)",
+    "earsMore": "telinga lebih besar (lebih peka)",
+    "eyesLess": "mata lebih kecil (kurang peka)",
+    "eyesMore": "mata lebih besar (lebih peka)",
+    "faster": "{n}% lebih cepat",
+    "none": "Saat ini tidak ada {many} yang tinggal di sini.",
+    "now": "Sekarang {list}.",
+    "same": "Kurang lebih sama seperti hari ke-0. Tubuh berubah setelah banyak generasi.",
+    "slower": "{n}% lebih lambat",
+    "smaller": "{n}% lebih kecil"
+  },
+  "chart": {
+    "ariaBodies": "Kecepatan, ukuran, indra, dan lapisan tubuh {many} dari waktu ke waktu",
+    "ariaCounts": "Jumlah tiap hewan dari waktu ke waktu",
+    "asFast": "sama cepatnya dengan",
+    "bigger": "{n}% lebih besar",
+    "bodies": "Bagaimana tubuh mereka berubah",
+    "bodyDay0": "{one} biasa dibanding hari ke-0: 1,00× berarti tidak berubah, di atas 1 berarti lebih (lebih cepat, lebih besar, indra lebih tajam, {coat} lebih tebal).",
+    "bodyVs": "{one} biasa dengan perubahanmu {speed} tanpa perubahan, dan {size}.",
+    "changes": "PERUBAHAN",
+    "counts": "Jumlah tiap hewan",
+    "diff": "Dengan perubahanmu {be, select, is {ada} other {ada}} {list} dibanding tanpa perubahan (hari {day}).",
+    "fasterThan": "{n}% lebih cepat daripada",
+    "intro": "Berapa banyak tiap hewan yang tinggal di sini, hari demi hari. Buat perubahan untuk membandingkan dengan dunia ini.",
+    "label": "{name} {n}",
+    "noChange": "TANPA PERUBAHAN",
+    "same": "Dengan perubahanmu jumlahnya sejauh ini sama dengan tanpa perubahan (hari {day}).",
+    "sameSize": "ukurannya sama",
+    "slowerThan": "{n}% lebih lambat daripada",
+    "smaller": "{n}% lebih kecil",
+    "unitAnimals": "hewan",
+    "unitDay0": "× hari ke-0",
+    "view": "Tampilan grafik",
+    "whichAnimal": "Hewan yang mana",
+    "withChanges": "DENGAN PERUBAHAN"
+  },
+  "cmp": {
+    "change": "dibanding tanpa perubahanmu",
+    "day0": "dibanding hari ke-0"
+  },
+  "cover": {
+    "land": "semak",
+    "water": "rumput laut dan bebatuan"
+  },
+  "ctl": {
+    "dT": {
+      "label": "Perubahan suhu",
+      "unit": "°C"
+    },
+    "food": {
+      "label": "Pertumbuhan makanan",
+      "unit": "% dari normal"
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Pengaturan perubahan (dipakai saat klik berikutnya)",
+      "people-and-babies": "Manusia dan anak hewan",
+      "the-place": "Tempatnya"
+    },
+    "hab": {
+      "label": "Ruang jelajah",
+      "unit": "% daratan"
+    },
+    "habitat": {
+      "label": "Habitat",
+      "opt": {
+        "desert": "Gurun",
+        "forest": "Hutan dan tundra",
+        "ice": "Es laut",
+        "meadow": "Padang bunga",
+        "ocean": "Lautan",
+        "savanna": "Sabana"
+      }
+    },
+    "human": {
+      "label": "Perburuan manusia",
+      "opt": {
+        "0": "Tidak ada",
+        "10": "Sedikit",
+        "30": "Lumayan",
+        "60": "Banyak"
+      }
+    },
+    "mut": {
+      "label": "Seberapa beda anak-anaknya",
+      "opt": {
+        "big": "Sangat (berubah cepat)",
+        "normal": "Normal",
+        "small": "Sedikit (berubah lambat)"
+      }
+    },
+    "s_new": {
+      "label": "Pendatang",
+      "unit": "hewan"
+    },
+    "s_sick": {
+      "label": "Kekuatan penyakit",
+      "unit": "% sakit dan mati"
+    },
+    "seasons": {
+      "label": "Musim",
+      "opt": {
+        "gentle": "Ringan",
+        "off": "Mati: makanan tumbuh merata",
+        "strong": "Kuat: musim dingin paceklik"
+      }
+    }
+  },
+  "ev": {
+    "add": "{n} {many} pindah masuk",
+    "bigger": "{many} rata-rata tumbuh 20% lebih besar",
+    "boom": "Jumlah {one} jadi dua kali lipat",
+    "cool": "Zaman es dimulai: 4 °C lebih dingin, makanan berkurang",
+    "disease": "Wabah penyakit membunuh {n} {many}",
+    "drought": "Hujan berhenti selama setahun: makanan tinggal separuh",
+    "faster": "Seleksi alam: {one} rata-rata kini 20% lebih cepat",
+    "fire": "Kebakaran hutan membakar sepertiga daratan",
+    "habitat": "Separuh habitat hilang jadi ladang dan jalan",
+    "hunt": "Manusia mulai memburu {many}",
+    "invasive": "{n} {many} yang cepat berkembang biak datang",
+    "move": "Dipindah ke iklim sebaliknya: semuanya butuh energi jauh lebih banyak",
+    "noRoom": "Tidak ada ruang untuk jenis hewan keenam",
+    "noneToRemove": "Tidak ada {many} di sini untuk diambil",
+    "out": "{many} punah di sini: kebanyakan {why}",
+    "rain": "Tahun-tahun hujan yang baik dimulai: makanan tumbuh lebih cepat",
+    "removed": "Semua {many} disingkirkan",
+    "reserve": "Cagar alam: perburuan berhenti, tumbuhan pulih",
+    "senses": "{many} kini menyadari makanan dan bahaya 20% lebih jauh",
+    "slower": "Seleksi alam: {many} jadi lebih lambat untuk hemat energi",
+    "smaller": "{many} rata-rata menyusut",
+    "thicker": "Lapisan tubuh menebal: {many} kini punya {coat} 20% lebih banyak",
+    "thinner": "Lapisan tubuh menipis: {many} kini punya {coat} 20% lebih sedikit",
+    "wanders": "Sepasang {many} datang dari luar",
+    "warm": "Iklim menghangat 3 °C: butuh lebih banyak energi, makanan berkurang"
+  },
+  "facts": {
+    "eats": "Makanan",
+    "family": "Kehidupan keluarga",
+    "lifespan": "Umur",
+    "lives": "Tempat hidup",
+    "note": "Di model ini sehari itu singkat: hewan hidup berminggu-minggu, bukan bertahun-tahun, jadi kamu bisa melihat banyak generasi.",
+    "role": "Peran di alam",
+    "title": "Kenalan dengan hewan-hewannya"
+  },
+  "food": {
+    "desert": "serangga dan biji",
+    "forest": "rumput dan daun",
+    "ice": "krill",
+    "meadow": "bunga",
+    "ocean": "krill dan ikan kecil",
+    "savanna": "rumput"
+  },
+  "group": {
+    "0": "Hewan",
+    "1": "Iklim",
+    "2": "Manusia"
+  },
+  "meta": {
+    "hint": "Setiap hewan sedikit berbeda. Yang paling cocok punya lebih banyak anak. Tekan putar dan pilih perubahan.",
+    "intro": "Hingga lima jenis hewan berbagi satu tempat. Setiap hewan sedikit berbeda; yang paling cocok punya lebih banyak anak, jadi tubuh mereka berubah seiring waktu. Pilih dunia atau buat sendiri, lalu buat perubahan: semuanya bertambah.",
+    "name": "Hewan",
+    "sub": "Evolusi"
+  },
+  "metric": {
+    "co0": {
+      "label": "Lapisan (hewan 1)",
+      "unit": "× hari ke-0"
+    },
+    "co1": {
+      "label": "Lapisan (hewan 2)",
+      "unit": "× hari ke-0"
+    },
+    "co2": {
+      "label": "Lapisan (hewan 3)",
+      "unit": "× hari ke-0"
+    },
+    "co3": {
+      "label": "Lapisan (hewan 4)",
+      "unit": "× hari ke-0"
+    },
+    "co4": {
+      "label": "Lapisan (hewan 5)",
+      "unit": "× hari ke-0"
+    },
+    "food": {
+      "label": "Makanan",
+      "unit": "butir"
+    },
+    "n0": {
+      "label": "Hewan 1",
+      "unit": "hewan"
+    },
+    "n1": {
+      "label": "Hewan 2",
+      "unit": "hewan"
+    },
+    "n2": {
+      "label": "Hewan 3",
+      "unit": "hewan"
+    },
+    "n3": {
+      "label": "Hewan 4",
+      "unit": "hewan"
+    },
+    "n4": {
+      "label": "Hewan 5",
+      "unit": "hewan"
+    },
+    "se0": {
+      "label": "Indra (hewan 1)",
+      "unit": "× hari ke-0"
+    },
+    "se1": {
+      "label": "Indra (hewan 2)",
+      "unit": "× hari ke-0"
+    },
+    "se2": {
+      "label": "Indra (hewan 3)",
+      "unit": "× hari ke-0"
+    },
+    "se3": {
+      "label": "Indra (hewan 4)",
+      "unit": "× hari ke-0"
+    },
+    "se4": {
+      "label": "Indra (hewan 5)",
+      "unit": "× hari ke-0"
+    },
+    "sp0": {
+      "label": "Kecepatan (hewan 1)",
+      "unit": "× hari ke-0"
+    },
+    "sp1": {
+      "label": "Kecepatan (hewan 2)",
+      "unit": "× hari ke-0"
+    },
+    "sp2": {
+      "label": "Kecepatan (hewan 3)",
+      "unit": "× hari ke-0"
+    },
+    "sp3": {
+      "label": "Kecepatan (hewan 4)",
+      "unit": "× hari ke-0"
+    },
+    "sp4": {
+      "label": "Kecepatan (hewan 5)",
+      "unit": "× hari ke-0"
+    },
+    "sz0": {
+      "label": "Ukuran (hewan 1)",
+      "unit": "× hari ke-0"
+    },
+    "sz1": {
+      "label": "Ukuran (hewan 2)",
+      "unit": "× hari ke-0"
+    },
+    "sz2": {
+      "label": "Ukuran (hewan 3)",
+      "unit": "× hari ke-0"
+    },
+    "sz3": {
+      "label": "Ukuran (hewan 4)",
+      "unit": "× hari ke-0"
+    },
+    "sz4": {
+      "label": "Ukuran (hewan 5)",
+      "unit": "× hari ke-0"
+    }
+  },
+  "name": {
+    "own": "Duniamu sendiri",
+    "ownFrom": "Duniamu sendiri (berdasarkan {from})"
+  },
+  "q": {
+    "add": "Bagaimana jika {many} pindah ke sini?",
+    "addMore": "Bagaimana jika lebih banyak {many} pindah ke sini?",
+    "cool": "Bagaimana jika zaman es dimulai?",
+    "disease": "Bagaimana jika penyakit menyebar di antara {many}?",
+    "drought": "Bagaimana jika hujan berhenti selama setahun?",
+    "fire": "Bagaimana jika kebakaran membakar sepertiga daratan?",
+    "habitat": "Bagaimana jika separuh daratan jadi ladang dan jalan?",
+    "hunt": "Bagaimana jika manusia memburu {many}?",
+    "invasive": "Bagaimana jika pendatang yang cepat berkembang biak tiba?",
+    "move": "Bagaimana jika mereka dipindah ke iklim sebaliknya?",
+    "rain": "Bagaimana jika bertahun-tahun hujan turun dengan baik?",
+    "remove": "Bagaimana jika {many} menghilang?",
+    "reserve": "Bagaimana jika tempat ini jadi cagar alam?",
+    "warm": "Bagaimana jika suhu naik 3 °C?"
+  },
+  "sp": {
+    "bear": {
+      "coat": "bulu",
+      "food": "Buah beri, akar, salmon, kadang anak rusa",
+      "life": "20–25 tahun",
+      "many": "beruang",
+      "name": "Beruang cokelat",
+      "one": "beruang",
+      "pl": "Beruang cokelat",
+      "role": "Membawa salmon dari sungai ke hutan, memberi makan pepohonan.",
+      "social": "Kebanyakan hidup sendiri. Induk merawat anaknya dua sampai tiga tahun.",
+      "where": "Hutan dan pegunungan Amerika Utara, Eropa, dan Asia"
+    },
+    "beaver": {
+      "coat": "bulu",
+      "food": "Kulit kayu, ranting, dan tanaman air",
+      "life": "10–12 tahun",
+      "many": "berang-berang",
+      "name": "Berang-berang",
+      "one": "berang-berang",
+      "pl": "Berang-berang",
+      "role": "Membangun bendungan yang membentuk kolam, rumah bagi ikan, katak, dan burung.",
+      "social": "Keluarga berisi induk betina, induk jantan, dan anak-anaknya berbagi satu sarang.",
+      "where": "Sungai dan danau di Amerika Utara dan Eropa"
+    },
+    "bee": {
+      "coat": "bulu halus",
+      "food": "Nektar dan serbuk sari bunga",
+      "life": "Pekerja sekitar 6 minggu, ratu 2–5 tahun",
+      "many": "lebah",
+      "name": "Lebah madu",
+      "one": "lebah",
+      "pl": "Lebah madu",
+      "role": "Menyerbuki sekitar sepertiga makanan yang dimakan manusia.",
+      "social": "Koloni 20.000–60.000: satu ratu dan banyak pekerja yang tugasnya berubah sesuai umur.",
+      "where": "Seluruh dunia, liar maupun dipelihara peternak lebah"
+    },
+    "cheetah": {
+      "coat": "bulu",
+      "food": "Gazel dan kelinci liar",
+      "life": "10–12 tahun",
+      "many": "cheetah",
+      "name": "Cheetah",
+      "one": "cheetah",
+      "pl": "Cheetah",
+      "role": "Pelari tercepat di darat: hingga 110 km/jam, tapi hanya untuk lari singkat.",
+      "social": "Induk membesarkan anak sendirian; saudara jantan sering bersama seumur hidup.",
+      "where": "Padang rumput terbuka Afrika, sedikit di Iran"
+    },
+    "elephant": {
+      "coat": "lemak tubuh",
+      "food": "Rumput, kulit kayu, dan buah: sekitar 150 kg sehari",
+      "life": "60–70 tahun",
+      "many": "gajah",
+      "name": "Gajah Afrika",
+      "one": "gajah",
+      "pl": "Gajah",
+      "role": "Membuka hutan, menggali lubang air, dan menyebarkan biji.",
+      "social": "Kawanan betina yang bersaudara dipimpin yang tertua, sang matriark. Jantan pergi di usia sekitar 13.",
+      "where": "Sabana dan hutan Afrika"
+    },
+    "elk": {
+      "coat": "bulu",
+      "food": "Rumput, daun, dan kulit kayu",
+      "life": "10–13 tahun",
+      "many": "rusa elk",
+      "name": "Rusa elk",
+      "one": "rusa elk",
+      "pl": "Rusa elk",
+      "role": "Santapan utama serigala; cara mereka merumput membentuk tepi hutan.",
+      "social": "Induk dan anak hidup dalam kawanan besar; jantan hidup sendiri dan melenguh keras di musim gugur.",
+      "where": "Hutan pegunungan dan padang rumput Amerika Utara dan Asia"
+    },
+    "fox": {
+      "coat": "bulu",
+      "food": "Kelinci, tikus, burung, buah beri",
+      "life": "3–4 tahun di alam liar",
+      "many": "rubah",
+      "name": "Rubah merah",
+      "one": "rubah",
+      "pl": "Rubah merah",
+      "role": "Menjaga jumlah kelinci dan tikus tetap terkendali.",
+      "social": "Pasangan membesarkan anak bersama; anak betina yang lebih tua kadang membantu.",
+      "where": "Hampir di mana saja di belahan bumi utara, bahkan di kota"
+    },
+    "gazelle": {
+      "coat": "bulu",
+      "food": "Rumput pendek yang segar",
+      "life": "10–15 tahun",
+      "many": "gazel",
+      "name": "Gazel",
+      "one": "gazel",
+      "pl": "Gazel",
+      "role": "Makanan cheetah, singa, dan hiena; bisa berlari zig-zag 80 km/jam.",
+      "social": "Kawanan betina dan anak-anak; jantan menjaga petak tanah kecil.",
+      "where": "Padang rumput Kenya dan Tanzania"
+    },
+    "hornet": {
+      "coat": "bulu halus",
+      "food": "Lebah dan serangga lain (untuk anaknya), buah, dan nektar",
+      "life": "Pekerja beberapa minggu, ratu sekitar setahun",
+      "many": "tawon",
+      "name": "Tawon vespa",
+      "one": "tawon",
+      "pl": "Tawon vespa",
+      "role": "Melayang di depan sarang lebah dan menangkap lebah yang pulang.",
+      "social": "Sarang kertas berisi beberapa ribu, dimulai setiap musim semi oleh satu ratu.",
+      "where": "Asia; menyebar ke Eropa sejak 2004"
+    },
+    "jackal": {
+      "coat": "bulu",
+      "food": "Mamalia kecil, burung, serangga",
+      "life": "8–9 tahun",
+      "many": "jakal",
+      "name": "Jakal punggung hitam",
+      "one": "jakal",
+      "pl": "Jakal",
+      "role": "Memburu hewan kecil dan membersihkan sisa buruan hewan lain.",
+      "social": "Berpasangan seumur hidup; anak tahun lalu membantu membesarkan adik-adiknya.",
+      "where": "Padang rumput kering dan tepi gurun di Afrika selatan dan timur"
+    },
+    "lion": {
+      "coat": "bulu",
+      "food": "Zebra, wildebeest, kerbau, gazel",
+      "life": "10–14 tahun",
+      "many": "singa",
+      "name": "Singa",
+      "one": "singa",
+      "pl": "Singa",
+      "role": "Menjaga kawanan perumput tetap sehat dan terus bergerak.",
+      "social": "Kelompok betina yang bersaudara dengan 1–3 jantan. Para betina berburu bersama.",
+      "where": "Sabana Afrika, dan satu hutan di India"
+    },
+    "lseal": {
+      "coat": "lemak tebal",
+      "food": "Krill, penguin, ikan, anjing laut lain",
+      "life": "12–26 tahun",
+      "many": "anjing laut macan tutul",
+      "name": "Anjing laut macan tutul",
+      "one": "anjing laut macan tutul",
+      "pl": "Anjing laut macan tutul",
+      "role": "Pemburu puncak di es laut, setelah orca.",
+      "social": "Hidup sendiri, kecuali induk dengan anaknya.",
+      "where": "Bongkahan es di sekitar Antartika"
+    },
+    "meerkat": {
+      "coat": "bulu",
+      "food": "Kumbang, kalajengking, kadal kecil",
+      "life": "6–10 tahun",
+      "many": "meerkat",
+      "name": "Meerkat",
+      "one": "meerkat",
+      "pl": "Meerkat",
+      "role": "Memakan banyak sekali serangga; makanan jakal dan elang.",
+      "social": "Kelompok 20–50 dipimpin satu pasangan induk; yang lain mengasuh anak dan bergiliran berjaga.",
+      "where": "Gurun Kalahari dan Namib, Afrika bagian selatan"
+    },
+    "orca": {
+      "coat": "lemak tebal",
+      "food": "Ikan atau anjing laut, tergantung kelompoknya",
+      "life": "50–90 tahun",
+      "many": "orca",
+      "name": "Orca",
+      "one": "orca",
+      "pl": "Orca",
+      "role": "Pemburu puncak lautan, mengatur jumlah anjing laut dan ikan.",
+      "social": "Kelompok dipimpin para nenek. Tiap kelompok punya suara dan trik berburu sendiri.",
+      "where": "Semua samudra, paling banyak di air dingin"
+    },
+    "penguin": {
+      "coat": "bulu",
+      "food": "Ikan, krill, dan cumi-cumi",
+      "life": "15–20 tahun",
+      "many": "penguin",
+      "name": "Penguin kaisar",
+      "one": "penguin",
+      "pl": "Penguin kaisar",
+      "role": "Memberi tahu ilmuwan seberapa sehat es lautnya.",
+      "social": "Koloni berisi ribuan. Para ayah berkerumun dan menghangatkan telur sepanjang musim dingin.",
+      "where": "Es laut di sekitar Antartika"
+    },
+    "rabbit": {
+      "coat": "bulu",
+      "food": "Rumput dan tanaman berdaun",
+      "life": "1–2 tahun di alam liar",
+      "many": "kelinci",
+      "name": "Kelinci",
+      "one": "kelinci",
+      "pl": "Kelinci",
+      "role": "Makanan rubah, elang, dan banyak lagi; bisa menggunduli tanah kalau terlalu banyak.",
+      "social": "Hidup berkelompok di terowongan bawah tanah yang disebut liang.",
+      "where": "Padang rumput dan tepi hutan; disebarkan manusia ke banyak negara"
+    },
+    "salmon": {
+      "coat": "lemak tubuh",
+      "food": "Krill, udang, dan ikan kecil",
+      "life": "4–6 tahun",
+      "many": "salmon",
+      "name": "Salmon Atlantik",
+      "one": "salmon",
+      "pl": "Salmon",
+      "role": "Membawa makanan laut jauh ke darat; makanan beruang, anjing laut, dan burung.",
+      "social": "Sendiri di laut; yang dewasa berenang kembali ke sungai tempat menetas untuk bertelur.",
+      "where": "Atlantik Utara dan sungai-sungai yang bermuara ke sana"
+    },
+    "scorpion": {
+      "coat": "lemak tubuh",
+      "food": "Kumbang, jangkrik, dan laba-laba",
+      "life": "3–8 tahun",
+      "many": "kalajengking",
+      "name": "Kalajengking",
+      "one": "kalajengking",
+      "pl": "Kalajengking",
+      "role": "Memburu serangga di malam hari; meerkat kebal terhadap banyak sengatannya.",
+      "social": "Hidup sendiri. Induk menggendong anak-anaknya di punggung.",
+      "where": "Gurun dan tanah kering di semua benua kecuali Antartika"
+    },
+    "seal": {
+      "coat": "lemak tebal",
+      "food": "Ikan, cumi-cumi, udang",
+      "life": "25–30 tahun",
+      "many": "anjing laut",
+      "name": "Anjing laut pelabuhan",
+      "one": "anjing laut",
+      "pl": "Anjing laut",
+      "role": "Memakan ikan; makanan orca dan hiu.",
+      "social": "Beristirahat bersama di pantai dan bebatuan, tapi berburu sendiri.",
+      "where": "Pantai dingin Atlantik Utara dan Pasifik Utara"
+    },
+    "wolf": {
+      "coat": "bulu",
+      "food": "Rusa elk, rusa, berang-berang, dan kelinci",
+      "life": "6–8 tahun di alam liar",
+      "many": "serigala",
+      "name": "Serigala abu-abu",
+      "one": "serigala",
+      "pl": "Serigala abu-abu",
+      "role": "Membuat rusa elk terus berpindah, sehingga pohon di tepi sungai tumbuh lagi.",
+      "social": "Kawanan 4–9: induk betina, induk jantan, dan anak-anaknya. Pasangan \"alfa\" sebenarnya hanyalah orang tuanya.",
+      "where": "Hutan, tundra, dan pegunungan di Amerika Utara, Eropa, dan Asia"
+    },
+    "zebra": {
+      "coat": "bulu",
+      "food": "Rumput tinggi yang keras",
+      "life": "20–25 tahun",
+      "many": "zebra",
+      "name": "Zebra",
+      "one": "zebra",
+      "pl": "Zebra",
+      "role": "Memakan rumput tinggi lebih dulu, membuka jalan bagi gazel.",
+      "social": "Keluarga berisi satu pejantan, beberapa betina, dan anak-anaknya; keluarga bergabung jadi kawanan besar.",
+      "where": "Padang rumput Afrika timur dan selatan"
+    }
+  },
+  "spGroup": {
+    "0": "Hutan dan tundra",
+    "1": "Sabana",
+    "2": "Gurun",
+    "3": "Lautan dan es",
+    "4": "Padang bunga"
+  },
+  "speed": {
+    "0": "1 hr/dtk",
+    "1": "3 hr/dtk",
+    "2": "10 hr/dtk",
+    "3": "30 hr/dtk"
+  },
+  "stage": {
+    "count": "{name} {n}",
+    "gone": "habis",
+    "goneNamed": "{name}: habis",
+    "new": "(baru)"
+  },
+  "story": {
+    "bigger": "{many} {n}% lebih besar {cmp}.",
+    "biggerSafe": "{many} {n}% lebih besar {cmp}: yang besar lebih sulit ditangkap.",
+    "catch": "{hunter} kebanyakan menangkap {prey}; {prey} bersembunyi di {cover} agar aman.",
+    "coatLess": "{many} punya {coat} {n}% lebih sedikit {cmp}: itu membuat mereka tetap sejuk.",
+    "coatMore": "{many} punya {coat} {n}% lebih banyak {cmp}: itu membuat mereka tetap hangat.",
+    "compared": "Dibanding tempat yang sama tanpa perubahan, pada hari {day}:",
+    "count": "{n, plural, =1 {# {one}} other {# {many}}}",
+    "diedOut": "{many} punah: kebanyakan {why}.",
+    "diedOutChanged": "{many} punah: kebanyakan {why}, yang tidak terjadi tanpa perubahanmu.",
+    "diff": "{be, select, is {Ada} other {Ada}} {list}.",
+    "faster": "{many} {n}% lebih cepat {cmp}: yang gesit lebih sering lolos dan punya lebih banyak anak.",
+    "fasterFood": "{many} {n}% lebih cepat {cmp}: yang gesit sampai ke makanan lebih dulu.",
+    "fewer": "{n, plural, =1 {# {one} lebih sedikit} other {# {many} lebih sedikit}}",
+    "giveTime": "Beri waktu: banyak perubahan baru terlihat setelah beberapa generasi.",
+    "hungry": "Lalu mereka memakan {food} lebih cepat daripada tumbuhnya, dan banyak yang kelaparan.",
+    "hunting": "Perburuan manusia mengambil banyak {many}.",
+    "lessFood": "Dengan {food} yang lebih sedikit untuk dibagi, ruang untuk hewan jadi lebih sempit.",
+    "lessToEat": "Tanpa {prey} yang tersisa untuk ditangkap, {hunter} jadi kurang makan.",
+    "live": "Hari {day}: {list} tinggal di sini.",
+    "more": "{n, plural, =1 {# {one} lebih banyak} other {# {many} lebih banyak}}",
+    "moreFood": "Lebih banyak {food} berarti lebih banyak anak yang bertahan hidup.",
+    "multiplied": "Tanpa {hunter} yang mengejar, {prey} berlipat ganda.",
+    "newcomersFailed": "{many} yang pindah ke sini tidak bisa bertahan: kebanyakan {why}.",
+    "noneLeft": "Hari {day}: tidak ada hewan yang tersisa di sini.",
+    "pick": "Pilih perubahan untuk melihat apa yang akan berbeda.",
+    "runsShort": "Pemakan tumbuhan begitu banyak sampai {food} kurang.",
+    "same": "Jumlah hewan sejauh ini masih sama.",
+    "sensesLess": "{many} {n}% kurang peka {cmp}: mata dan telinga besar butuh energi.",
+    "sensesMore": "{many} menyadari makanan dan bahaya {n}% lebih jauh {cmp}.",
+    "slower": "{many} {n}% lebih lambat {cmp}: bergerak pelan menghemat energi.",
+    "smaller": "{many} {n}% lebih kecil {cmp}: tubuh kecil butuh lebih sedikit makanan.",
+    "weather": "Cuaca yang {heat, select, hot {lebih panas} other {lebih dingin}} berat bagi {many}: mereka membakar lebih banyak makanan hanya untuk bertahan."
+  },
+  "time": {
+    "day": "Hari {n}"
+  },
+  "trait": {
+    "co": "Lapisan",
+    "se": "Indra",
+    "sp": "Kecepatan",
+    "sz": "Ukuran"
+  },
+  "trend": {
+    "falling": "turun",
+    "gone": "habis",
+    "rising": "naik",
+    "steady": "stabil"
+  },
+  "ui": {
+    "addAnimal": "Tambah hewan",
+    "atStart": "{many} di awal",
+    "changesHint": "Semuanya bertambah. Klik lagi untuk membuatnya lebih kuat.",
+    "far": "Jauh dari asalnya",
+    "farHere": "Di sini jauh dari asalnya",
+    "fewer": "Lebih sedikit {many} di awal",
+    "fiveMost": "Paling banyak lima",
+    "happening": "Apa yang terjadi",
+    "livesHere": "{name} (tinggal di sini)",
+    "more": "Lebih banyak {many} di awal",
+    "needOne": "Sebuah dunia butuh setidaknya satu hewan",
+    "newcomer": "Siapa yang bisa pindah ke sini",
+    "noChange": "(tanpa perubahan: {v})",
+    "none": "tidak ada",
+    "noneLeft": "Tidak ada yang tersisa",
+    "pickWorld": "Pilih dunia",
+    "portrait": "{one} biasa pada hari ke-0 dan hari ini, digambar dengan skala yang sama. {caption}",
+    "restart": "Mengubah siapa yang tinggal di sini akan memulai ulang dunia.",
+    "rightNow": "Saat ini",
+    "takeOut": "Keluarkan {many} dari dunia ini",
+    "takeOutShort": "Keluarkan {many}",
+    "target": "Perubahan untuk satu hewan berlaku pada",
+    "thenNow": "Dulu dan sekarang",
+    "whatChanged": "Apa yang berubah",
+    "who": "Siapa yang tinggal di sini"
+  },
+  "whatif": {
+    "add": "Hewan baru pindah masuk",
+    "cool": "Zaman es",
+    "disease": "Penyakit menyebar",
+    "drought": "Setahun tanpa hujan",
+    "fire": "Kebakaran hutan",
+    "habitat": "Separuh daratan hilang",
+    "hunt": "Manusia memburu hewan",
+    "invasive": "Pendatang cepat berbiak",
+    "move": "Iklim sebaliknya",
+    "rain": "Tahun-tahun hujan baik",
+    "remove": "Satu hewan menghilang",
+    "reserve": "Cagar alam",
+    "warm": "3 °C lebih hangat"
+  },
+  "why": {
+    "0": "tertangkap",
+    "1": "kelaparan",
+    "2": "tak tahan cuacanya",
+    "3": "mati tua",
+    "4": "diburu manusia"
+  },
+  "world": {
+    "antarctica": "Antartika",
+    "atlantic": "Atlantik Utara",
+    "foxes": "Rubah dan kelinci",
+    "kalahari": "Kalahari",
+    "meadow": "Padang bunga",
+    "savanna": "Sabana",
+    "yellowstone": "Yellowstone"
+  },
+  "worldGroup": {
+    "0": "Hutan dan tundra",
+    "1": "Sabana dan gurun",
+    "2": "Lautan dan es",
+    "3": "Padang bunga"
+  },
+  "worldOpt": {
+    "antarctica": "Antartika: penguin, anjing laut macan tutul, orca",
+    "atlantic": "Atlantik Utara: salmon, anjing laut, orca, beruang",
+    "foxes": "Rubah dan kelinci",
+    "kalahari": "Kalahari: meerkat, jakal, kalajengking",
+    "meadow": "Padang bunga: lebah madu dan tawon",
+    "savanna": "Sabana: singa, zebra, gajah, gazel",
+    "yellowstone": "Yellowstone: serigala, rusa elk, berang-berang, beruang"
+  }
+}

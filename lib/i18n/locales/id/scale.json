@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Perbesar",
+    "zoomOut": "Perkecil",
+    "zoomLevel": "Tingkat zoom",
+    "hint": "Gulir, cubit, atau seret. Ketuk label emas untuk membuka dunianya."
+  },
+  "panel": {
+    "inView": "Terlihat",
+    "openThis": "Buka dunia ini",
+    "openWorld": "Buka sebuah dunia",
+    "jumpTo": "Lompat ke"
+  },
+  "hero": {
+    "title": "Apa yang terjadi jika…",
+    "body": "Perbesar dari proton hingga alam semesta teramati, sepuluh kali lipat tiap langkah. Label emas adalah dunia hidup: buka satu, ubah, lalu bandingkan masa depannya dengan dunia yang dibiarkan apa adanya."
+  },
+  "stage": {
+    "open": "Buka dunia →",
+    "screen": "Lebar layar ≈ {len}"
+  }
+}

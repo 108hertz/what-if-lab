@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Phóng to",
+    "zoomOut": "Thu nhỏ",
+    "zoomLevel": "Mức phóng",
+    "hint": "Cuộn, chụm hoặc kéo. Chạm vào nhãn vàng để mở thế giới của nó."
+  },
+  "panel": {
+    "inView": "Đang xem",
+    "openThis": "Mở thế giới này",
+    "openWorld": "Mở một thế giới",
+    "jumpTo": "Nhảy đến"
+  },
+  "hero": {
+    "title": "Chuyện gì xảy ra nếu…",
+    "body": "Phóng to từ một proton đến cả vũ trụ quan sát được, mỗi bước gấp mười lần. Nhãn vàng là các thế giới đang chạy: mở một cái, thay đổi nó và so sánh tương lai của nó với thế giới vẫn giữ nguyên."
+  },
+  "stage": {
+    "open": "Mở thế giới →",
+    "screen": "Chiều rộng màn hình ≈ {len}"
+  }
+}

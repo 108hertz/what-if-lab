@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "ถ้าหาก… หน้าแรก",
+    "worlds": "โลก",
+    "worldButton": "โลก: {name} เปลี่ยนโลก",
+    "wordmark": "ถ้าหาก"
+  },
+  "theme": {
+    "toDark": "เปลี่ยนเป็นธีมมืด",
+    "toLight": "เปลี่ยนเป็นธีมสว่าง"
+  },
+  "lang": {
+    "label": "ภาษา",
+    "button": "ภาษา: {name} เปลี่ยนภาษา",
+    "draft": "ยังไม่พร้อม",
+    "alsoIn": "มีเป็น{language}ด้วย",
+    "dismiss": "ไม่ต้องแนะนำภาษาอื่น"
+  }
+}

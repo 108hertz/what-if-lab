@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Celuj obok środka",
+      "unit": "tys. lś"
+    },
+    "bhm": {
+      "label": "Masa czarnej dziury",
+      "unit": "× Droga Mleczna"
+    },
+    "count": {
+      "label": "Ile galaktyk wpada"
+    },
+    "dm": {
+      "label": "Ciemna materia",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Pozostała grawitacja",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Prędkość przelotu",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Świat startowy",
+      "what-if-settings": "Ustawienia „co jeśli”"
+    },
+    "mass": {
+      "label": "Masa Andromedy",
+      "unit": "× Droga Mleczna"
+    },
+    "neigh": {
+      "label": "Sąsiedzi na starcie",
+      "opt": {
+        "m33": "Galaktyka Trójkąta",
+        "m33lmc": "Trójkąt + WOM",
+        "none": "Brak"
+      }
+    },
+    "shape": {
+      "label": "Kształt Andromedy",
+      "opt": {
+        "elliptical": "Eliptyczna",
+        "spiral": "Spiralna"
+      }
+    },
+    "size": {
+      "label": "Ich rozmiar",
+      "unit": "× Droga Mleczna"
+    },
+    "speed": {
+      "label": "Prędkość zbliżania",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Obrót Andromedy",
+      "opt": {
+        "against": "Przeciwnie do naszej",
+        "same": "Tak jak nasza"
+      }
+    },
+    "stars": {
+      "label": "Gwiazd na galaktykę"
+    }
+  },
+  "ev": {
+    "bhBig": "W jej środku pojawia się czarna dziura {x}× cięższa od Drogi Mlecznej",
+    "bhSmall": "W jej środku pojawia się czarna dziura o masie {pct}% Drogi Mlecznej",
+    "bullet": "Galaktyka przelatuje na wylot z prędkością {speed} km/s",
+    "closing": "Andromeda zbliża się z prędkością około {speed} km/s",
+    "flipmw": "Każda gwiazda Drogi Mlecznej odwraca kierunek orbity",
+    "freeze": "Każda gwiazda Drogi Mlecznej przestaje krążyć",
+    "headon": "Andromeda kieruje się prosto w nasz środek",
+    "lmc": "Wielki Obłok Magellana krąży wokół Drogi Mlecznej",
+    "merge": "Jądra się łączą: jedna olbrzymia galaktyka eliptyczna, „Mlekomeda”",
+    "miss": "Andromeda zostaje zepchnięta na tor przelotu obok",
+    "nodmAll": "Ciemna materia znika: grawitacja spada do {left}%, gwiazdy nagle są za szybkie",
+    "nodmSome": "Część ciemnej materii znika: grawitacja spada do {left}%, gwiazdy nagle są za szybkie",
+    "pass1": "Pierwsze przejście: galaktyki przenikają się nawzajem",
+    "punch": "Galaktyka karłowata przebija się przez nasz środek",
+    "reverse": "Andromeda zawraca i się oddala",
+    "ring": "Nasz dysk odbija się w rozszerzający się pierścień gwiazd",
+    "stop": "Andromeda staje w miejscu, a potem zaczyna spadać",
+    "swallowed": "Kolejna galaktyka zostaje pochłonięta",
+    "swarm": "{n, plural, one {Wpada kolejna galaktyka} few {Wpadają # kolejne galaktyki} many {Wpada # kolejnych galaktyk} other {Wpada # kolejnej galaktyki}}",
+    "tails": "Rozchodzą się, ciągnąc długie pływowe ogony gwiazd",
+    "third": "Wpada trzecia galaktyka (jak Galaktyka Trójkąta)",
+    "triangulum": "Galaktyka Trójkąta nadpływa z boku"
+  },
+  "meta": {
+    "intro": "Droga Mleczna i Andromeda na ich prawdziwym kursie kolizyjnym, przyspieszonym. Każda kropka to gwiazda.",
+    "name": "Galaktyki",
+    "sub": "Zderzenia"
+  },
+  "metric": {
+    "disc": {
+      "label": "Gwiazdy w dysku",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Pozostałe galaktyki"
+    },
+    "sep": {
+      "label": "Odległość",
+      "unit": "tys. lś"
+    },
+    "thrown": {
+      "label": "Wyrzucone gwiazdy",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 mln lat/s",
+    "1": "10 mln lat/s",
+    "2": "25 mln lat/s",
+    "3": "50 mln lat/s",
+    "4": "150 mln lat/s",
+    "5": "400 mln lat/s",
+    "6": "1 mld lat/s"
+  },
+  "stage": {
+    "scale": "{n} lat świetlnych"
+  },
+  "whatif": {
+    "bh": "W naszym środku pojawia się czarna dziura ciężka jak galaktyka",
+    "bullet": "Galaktyka przelatuje na wylot",
+    "flipmw": "Droga Mleczna obraca się w drugą stronę",
+    "freeze": "Gwiazdy Drogi Mlecznej przestają krążyć",
+    "headon": "Wyceluj Andromedę w sam środek",
+    "miss": "Andromeda przelatuje obok",
+    "nodm": "Ciemna materia znika",
+    "reverse": "Andromeda zawraca",
+    "ring": "Mała galaktyka przebija się przez nasz środek",
+    "stop": "Andromeda staje w miejscu",
+    "swarm": "Wpada więcej galaktyk",
+    "third": "Dołącza trzecia galaktyka"
+  }
+}

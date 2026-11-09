@@ -1,0 +1,129 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": { "label": "Havadaki CO₂", "unit": "ppm" },
+    "emis": { "label": "Yıllık CO₂ salımı", "unit": "Gt" },
+    "forest": { "label": "Orman örtüsü", "unit": "kara yüzdesi" },
+    "front": { "label": "Kıyı yüksekliği", "unit": "m, deniz üstü" },
+    "h": {
+      "air-today": "Bugünkü hava",
+      "emissions": "Salımlar",
+      "my-future-used-by-build-my-own-future": "Benim geleceğim (“Kendi geleceğimi kur” kullanır)",
+      "planet": "Gezegen",
+      "your-town": "Kasaban"
+    },
+    "mDac": { "label": "CO₂ giderme", "unit": "Gt/yıl" },
+    "mDim": { "label": "Güneşi karartan aerosoller", "unit": "%" },
+    "mEm": { "label": "Salım değişimi", "unit": "%" },
+    "mMeth": { "label": "Metan azaltımı", "unit": "%" },
+    "mTrees": { "label": "Dikilen ağaç", "unit": "trilyon" },
+    "mWall": { "label": "Deniz duvarı", "unit": "m" },
+    "mYrs": { "label": "Süre", "unit": "yıl" },
+    "meth": { "label": "Havadaki metan", "unit": "ppb" },
+    "path": {
+      "label": "Salımların gidişi",
+      "opt": {
+        "fall": "Yavaşça düşer (bugünkü taahhütler)",
+        "flat": "Sabitlenir",
+        "grow": "Artmaya devam eder"
+      }
+    },
+    "sens": { "label": "İklim duyarlılığı", "unit": "°C / 2× CO₂" },
+    "tip": {
+      "label": "Devrilme noktaları",
+      "opt": {
+        "off": "Kapalı",
+        "on": "Açık: donmuş toprak ve buz tabakaları devrilebilir"
+      }
+    },
+    "uptake": { "label": "Okyanus ve toprak emilimi", "unit": "bugünün %'si" }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "Amazon ormanı çayıra dönüşmeye başlıyor",
+      "dac": "Makineler havadan CO₂ çekmeye başlıyor",
+      "double": "Salımlar iki katına doğru tırmanmaya başlıyor",
+      "ev": "Temiz enerjiye geçiş: salımlar yılda %7 düşüyor",
+      "geo": "Stratosfere aerosol püskürtülüyor",
+      "melt": "Batı Antarktika buz tabakası çökmeye başlıyor",
+      "methane": "Metan sızıntıları ve kaynakları onarılmaya başlıyor",
+      "permafrost": "Donmuş toprak hızla çözülmeye başlıyor",
+      "seawall": "Limanın çevresine 3 m'lik bir deniz duvarı yapılıyor",
+      "trees": "Toprağa bir trilyon ağaç dikiliyor",
+      "volcano": "Süper yanardağ patlıyor: kül perdesi güneşi kapatıyor",
+      "zero": "Tüm salımlar duruyor"
+    },
+    "back": "Isınma yeniden 1,5 °C'nin altına iniyor",
+    "fl1": "Fırtına kabarmaları kasabanın ilk evlerine ulaşıyor",
+    "fl50": "Kasabanın yarısı yüksek gelgitte su basıyor",
+    "geoend": "Aerosol püskürtme duruyor: sonlanma şoku, hızlı ısınma",
+    "gr": "Grönland'ın buzu daha hızlı erimeye başlıyor",
+    "mix0": "Benim geleceğim: değişiklik yok",
+    "mix1": "Benim geleceğim: {p0}",
+    "mix2": "Benim geleceğim: {p0}, {p1}",
+    "mix3": "Benim geleceğim: {p0}, {p1}, {p2}",
+    "mix4": "Benim geleceğim: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Benim geleceğim: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Benim geleceğim: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Isınma {t} °C ile zirveye ulaşıyor",
+    "pf": "Donmuş toprak çözülmeye başlıyor, CO₂ ve metan salıyor",
+    "s0_5": "Deniz seviyesi +0,5 m: alçak nehir deltalarında düzenli sel",
+    "s1": "Deniz seviyesi +1 m: ~200 milyon insanın evi risk altında",
+    "s2": "Deniz seviyesi +2 m: birçok kıyı şehri duvar ya da taşınma gerektiriyor",
+    "snow": "Kar çizgisi 2.000 m'yi geçiyor: buzul neredeyse yok oldu",
+    "t1_5": "1,5 °C aşıldı: mercan resiflerinin çoğu kayboldu",
+    "t2": "2 °C aşıldı: ölümcül sıcak hava dalgaları olağan, Arktik yazları buzsuz",
+    "t3": "3 °C aşıldı: tarım kuşakları kayıyor, Amazon'da kuruma riski",
+    "t4": "4 °C aşıldı: bazı bölgeler insanın sıcağa dayanma sınırına yakın",
+    "wa": "Batı Antarktika'nın buzu denize kaymaya başlıyor",
+    "wallover": "Deniz duvarının üstünden su aşıyor"
+  },
+  "meta": {
+    "intro": "Bugün bir fiyort kasabası. On yıllar geçerken kara, ormana, tarlalara ve limana bak.",
+    "name": "Dünya",
+    "sub": "İklim"
+  },
+  "metric": {
+    "co2": { "label": "CO₂", "unit": "ppm" },
+    "crops": { "label": "Ürünler", "unit": "endeks" },
+    "flood": { "label": "Sel", "unit": "evlerin %'si" },
+    "sea": { "label": "Deniz seviyesi", "unit": "m" },
+    "snow": { "label": "Kar", "unit": "bugünün %'si" },
+    "temp": { "label": "Isınma", "unit": "°C" }
+  },
+  "mix": {
+    "dac": "yılda {n} Gt CO₂ giderildi",
+    "dim": "güneş ışığı %{n} karartıldı",
+    "emDown": "salımlar {yrs} yılda −%{n}",
+    "emUp": "salımlar {yrs} yılda +%{n}",
+    "meth": "metan −%{n}",
+    "trees": "{n} trilyon ağaç",
+    "wall": "{n} m deniz duvarı"
+  },
+  "speed": {
+    "0": "1 yıl/sn",
+    "1": "5 yıl/sn",
+    "2": "20 yıl/sn",
+    "3": "60 yıl/sn"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · deniz +{sea} m · {co2} ppm",
+    "snow": "Kar çizgisi {m} m"
+  },
+  "whatif": {
+    "amazon": "Amazon çayıra dönüşür",
+    "dac": "Havadan CO₂ çek",
+    "double": "Salımlar iki katına çıkar",
+    "ev": "Hızla temiz enerjiye geç",
+    "geo": "30 yıl boyunca aerosollerle güneşi karart",
+    "melt": "Batı Antarktika buz tabakası çöker",
+    "methane": "Metanı yarıya indir",
+    "mix": "Kendi geleceğimi kur",
+    "permafrost": "Donmuş toprak hızla çözülür",
+    "seawall": "3 m'lik deniz duvarı yap",
+    "trees": "Bir trilyon ağaç dik",
+    "volcano": "Bir süper yanardağ patlar",
+    "zero": "Tüm salımları hemen durdur"
+  }
+}

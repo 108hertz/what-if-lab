@@ -1,0 +1,189 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ in de lucht",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Jaarlijkse CO₂-uitstoot",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Bosoppervlak",
+      "unit": "% van het land"
+    },
+    "front": {
+      "label": "Hoogte van de kade",
+      "unit": "m boven zee"
+    },
+    "h": {
+      "air-today": "Lucht vandaag",
+      "emissions": "Uitstoot",
+      "my-future-used-by-build-my-own-future": "Mijn toekomst (voor “Bouw mijn eigen toekomst”)",
+      "planet": "Planeet",
+      "your-town": "Jouw stad"
+    },
+    "mDac": {
+      "label": "CO₂ uit de lucht halen",
+      "unit": "Gt per jaar"
+    },
+    "mDim": {
+      "label": "Zonlicht dimmen met aerosolen",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Uitstoot veranderen met",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Minder methaan",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Geplante bomen",
+      "unit": "biljoen"
+    },
+    "mWall": {
+      "label": "Zeewering",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "In",
+      "unit": "jaar"
+    },
+    "meth": {
+      "label": "Methaan in de lucht",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Waar de uitstoot heen gaat",
+      "opt": {
+        "fall": "Langzaam dalen (beloftes van nu)",
+        "flat": "Gelijk blijven",
+        "grow": "Blijven groeien"
+      }
+    },
+    "sens": {
+      "label": "Klimaatgevoeligheid",
+      "unit": "°C per 2× CO₂"
+    },
+    "tip": {
+      "label": "Kantelpunten",
+      "opt": {
+        "off": "Uit",
+        "on": "Aan: permafrost en ijskappen kunnen kantelen"
+      }
+    },
+    "uptake": {
+      "label": "Opname door oceaan en bodem",
+      "unit": "% van nu"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "De Amazone begint in grasland te veranderen",
+      "dac": "Machines beginnen CO₂ uit de lucht te halen",
+      "double": "De uitstoot begint richting het dubbele te stijgen",
+      "ev": "Overstap op schone energie: de uitstoot daalt 7% per jaar",
+      "geo": "Aerosolen worden in de stratosfeer gespoten",
+      "melt": "De West-Antarctische ijskap begint in te storten",
+      "methane": "Methaanlekken en -bronnen worden aangepakt",
+      "permafrost": "De permafrost begint snel te ontdooien",
+      "seawall": "Er komt een zeewering van 3 m rond de haven",
+      "trees": "Er gaan duizend miljard bomen de grond in",
+      "volcano": "Een supervulkaan barst uit: een aswolk houdt de zon tegen",
+      "zero": "Alle uitstoot stopt"
+    },
+    "back": "De opwarming zakt weer onder 1,5 °C",
+    "fl1": "Stormvloed bereikt de eerste huizen in de stad",
+    "fl50": "Bij hoogwater staat de halve stad onder water",
+    "geoend": "Het sproeien van aerosolen stopt: terugslag, snelle opwarming",
+    "gr": "Het ijs van Groenland smelt steeds sneller",
+    "mix0": "Mijn toekomst: geen wijzigingen",
+    "mix1": "Mijn toekomst: {p0}",
+    "mix2": "Mijn toekomst: {p0}, {p1}",
+    "mix3": "Mijn toekomst: {p0}, {p1}, {p2}",
+    "mix4": "Mijn toekomst: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Mijn toekomst: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Mijn toekomst: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "De opwarming piekt op {t} °C",
+    "pf": "De permafrost begint te ontdooien en laat CO₂ en methaan vrij",
+    "s0_5": "Zeespiegel +0,5 m: geregeld overstromingen in lage rivierdelta's",
+    "s1": "Zeespiegel +1 m: huizen van ~200 miljoen mensen in gevaar",
+    "s2": "Zeespiegel +2 m: veel kuststeden hebben dijken nodig of moeten verhuizen",
+    "snow": "Sneeuwgrens boven 2000 m: de gletsjer is bijna weg",
+    "t1_5": "Voorbij 1,5 °C: koraalriffen grotendeels verloren",
+    "t2": "Voorbij 2 °C: dodelijke hittegolven heel gewoon, ijsvrije zomers op de Noordpool",
+    "t3": "Voorbij 3 °C: landbouwgordels verschuiven, kans op afsterven van de Amazone",
+    "t4": "Voorbij 4 °C: sommige gebieden bijna te heet voor mensen",
+    "wa": "Het ijs van West-Antarctica begint de zee in te glijden",
+    "wallover": "De zee slaat over de zeewering"
+  },
+  "meta": {
+    "intro": "Een fjordstadje vandaag. Kijk naar de sneeuw, het bos, de akkers en de haven terwijl de decennia voorbijgaan.",
+    "name": "Aarde",
+    "sub": "Klimaat"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Oogst",
+      "unit": "index"
+    },
+    "flood": {
+      "label": "Overstroming",
+      "unit": "% van de huizen"
+    },
+    "sea": {
+      "label": "Zeespiegel",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Sneeuw",
+      "unit": "% van nu"
+    },
+    "temp": {
+      "label": "Opwarming",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt CO₂ per jaar uit de lucht",
+    "dim": "zonlicht {n}% gedimd",
+    "emDown": "uitstoot −{n}% in {yrs} jr",
+    "emUp": "uitstoot +{n}% in {yrs} jr",
+    "meth": "methaan −{n}%",
+    "trees": "{n} biljoen bomen",
+    "wall": "zeewering van {n} m"
+  },
+  "speed": {
+    "0": "1 jr/s",
+    "1": "5 jr/s",
+    "2": "20 jr/s",
+    "3": "60 jr/s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · zee +{sea} m · {co2} ppm",
+    "snow": "Sneeuwgrens {m} m"
+  },
+  "whatif": {
+    "amazon": "De Amazone wordt grasland",
+    "dac": "Haal CO₂ uit de lucht",
+    "double": "De uitstoot verdubbelt",
+    "ev": "Snel over op schone energie",
+    "geo": "Dim het zonlicht 30 jaar met aerosolen",
+    "melt": "De West-Antarctische ijskap stort in",
+    "methane": "Halveer methaan",
+    "mix": "Bouw mijn eigen toekomst",
+    "permafrost": "De permafrost ontdooit snel",
+    "seawall": "Bouw een zeewering van 3 m",
+    "trees": "Plant duizend miljard bomen",
+    "volcano": "Een supervulkaan barst uit",
+    "zero": "Stop nu alle uitstoot"
+  }
+}

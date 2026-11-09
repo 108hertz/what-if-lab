@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Приближайтесь от протона до наблюдаемой Вселенной, откройте мир, измените его вопросом «а что, если…» и сравните его будущее с миром без изменений.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Масштаб",
+    "sub": "Протон → Вселенная"
+  },
+  "intro": {
+    "worlds": "Миры",
+    "whatifs": "А что, если…"
+  },
+  "notFound": {
+    "title": "Страница не найдена",
+    "body": "Такой страницы в лаборатории нет.",
+    "home": "Назад в лабораторию"
+  },
+  "unit": {
+    "gyr": "{n} млрд лет",
+    "myr": "{n} млн лет",
+    "kyr": "{n} тыс. лет",
+    "yr": "{n, plural, one {# год} few {# года} many {# лет} other {# года}}"
+  },
+  "dur": {
+    "days": "{n, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
+    "months": "{n} мес.",
+    "years": "{n, plural, one {# год} few {# года} many {# лет} other {# года}}"
+  }
+}

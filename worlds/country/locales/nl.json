@@ -1,0 +1,330 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "calm": {
+    "0": "Protesten vullen de straten.",
+    "1": "Veel mensen zijn boos; protesten zijn dichtbij.",
+    "2": "Het leven is vooral rustig, met wat woede richting de top.",
+    "3": "Het leven is rustig en mensen vertrouwen elkaar meestal."
+  },
+  "ctl": {
+    "corr": {
+      "label": "Corruptie",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Scholen",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Inkomen per persoon",
+      "unit": "k$ per jaar"
+    },
+    "gov": {
+      "label": "Regering",
+      "opt": {
+        "auto": "Eén leider of partij",
+        "dem": "Democratie",
+        "hybrid": "Gemengd: verkiezingen, weinig vrijheden"
+      }
+    },
+    "h": {
+      "money": "Geld",
+      "people": "Mensen",
+      "policy-sizes-used-by-your-next-click": "Omvang van beleid (voor je volgende klik)",
+      "public-life": "Openbaar leven"
+    },
+    "jobless": {
+      "label": "Zonder werk",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Zorg: levensduur",
+      "unit": "jaar"
+    },
+    "pop": {
+      "label": "Bevolking",
+      "unit": "miljoen"
+    },
+    "popg": {
+      "label": "Bevolkingsgroei",
+      "unit": "% per jaar"
+    },
+    "preset": {
+      "group": {
+        "0": "Europa",
+        "1": "Azië",
+        "2": "Midden-Oosten en Kaukasus",
+        "3": "Afrika",
+        "4": "Amerika",
+        "5": "Oceanië",
+        "6": "Je eigen"
+      },
+      "label": "Land",
+      "opt": {
+        "am": "Armenië",
+        "ar": "Argentinië",
+        "au": "Australië",
+        "bd": "Bangladesh",
+        "br": "Brazilië",
+        "ca": "Canada",
+        "ch": "Zwitserland",
+        "cl": "Chili",
+        "cn": "China",
+        "co": "Colombia",
+        "custom": "Je eigen land",
+        "de": "Duitsland",
+        "dk": "Denemarken",
+        "eg": "Egypte",
+        "es": "Spanje",
+        "et": "Ethiopië",
+        "fr": "Frankrijk",
+        "gb": "Verenigd Koninkrijk",
+        "gr": "Griekenland",
+        "id": "Indonesië",
+        "il": "Israël",
+        "in": "India",
+        "ir": "Iran",
+        "it": "Italië",
+        "jp": "Japan",
+        "ke": "Kenia",
+        "kr": "Zuid-Korea",
+        "mx": "Mexico",
+        "ng": "Nigeria",
+        "nl": "Nederland",
+        "no": "Noorwegen",
+        "ph": "Filipijnen",
+        "pk": "Pakistan",
+        "pl": "Polen",
+        "sa": "Saudi-Arabië",
+        "se": "Zweden",
+        "th": "Thailand",
+        "tr": "Turkije",
+        "ua": "Oekraïne",
+        "us": "Verenigde Staten",
+        "vn": "Vietnam",
+        "za": "Zuid-Afrika"
+      }
+    },
+    "res": {
+      "label": "Grondstoffen (olie, metalen)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Belastingverlaging",
+      "unit": "punten"
+    },
+    "s_open": {
+      "label": "Nieuwe huishoudens"
+    },
+    "s_rich": {
+      "label": "Extra belasting voor de rijksten",
+      "unit": "punten"
+    },
+    "s_ubi": {
+      "label": "Hoogte basisinkomen",
+      "unit": "% van gemiddeld inkomen"
+    },
+    "s_wage": {
+      "label": "Verhoging minimumloon",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Duur van de oorlog",
+      "unit": "jaar"
+    },
+    "tax": {
+      "label": "Belastingen",
+      "unit": "% van inkomen"
+    }
+  },
+  "diff": {
+    "calmer": "{n, plural, one {# punt rustiger} other {# punten rustiger}}",
+    "famLess": "{usd} minder per maand",
+    "famMore": "{usd} meer per maand",
+    "gapBigger": "de kloof is {n}× groter",
+    "gapSmaller": "de kloof is {n}× kleiner",
+    "jobFewer": "{n, plural, one {# volwassene op de 100 minder zonder werk} other {# volwassenen op de 100 minder zonder werk}}",
+    "jobMore": "{n, plural, one {# volwassene op de 100 meer zonder werk} other {# volwassenen op de 100 meer zonder werk}}",
+    "lessCalm": "{n, plural, one {# punt minder rustig} other {# punten minder rustig}}",
+    "longer": "{n} jaar langer leven",
+    "popFewer": "{n} miljoen mensen minder",
+    "popMore": "{n} miljoen mensen meer",
+    "povFewer": "{n, plural, one {# persoon op de 100 minder is arm} other {# mensen op de 100 minder zijn arm}}",
+    "povMore": "{n, plural, one {# persoon op de 100 meer is arm} other {# mensen op de 100 meer zijn arm}}",
+    "shorter": "{n} jaar korter leven"
+  },
+  "ev": {
+    "apply": {
+      "aging": "Het geboortecijfer stort in",
+      "build": "De bouw van wegen, spoor en stroomlijnen begint",
+      "corr": "Een aanpak van corruptie begint",
+      "drought": "Een lange droogte begint",
+      "edu": "Het onderwijsbudget verdubbelt",
+      "health": "Zorg wordt gratis voor iedereen",
+      "minwage": "Het minimumloon gaat omhoog",
+      "oil": "Olie gevonden: exportboom",
+      "open": "De grenzen gaan open: {n} nieuwe huishoudens komen aan",
+      "pandemic": "Een pandemie slaat toe: scholen en winkels gaan dicht",
+      "robots": "Robots komen in de fabrieken",
+      "taxcut": "De belastingen gaan omlaag voor iedereen",
+      "taxrich": "De rijksten betalen meer belasting",
+      "trade": "De grenzen gaan dicht voor handel: import wordt duurder",
+      "ubi": "Het basisinkomen begint: armoede daalt, belastingen stijgen",
+      "war": "Er breekt oorlog uit: de economie krimpt snel"
+    },
+    "built": "Nieuwe wegen, spoorlijnen en stroomlijnen gaan open",
+    "c": "Grote kans op een staatsgreep of ineenstorting van de staat",
+    "curse": "Grondstoffenvloek: oliegeld voedt de corruptie",
+    "dbl": "Het inkomen per persoon verdubbelt",
+    "eduw": "De eerste generatie van de betere scholen gaat aan het werk",
+    "hi": "Wordt een land met een hoog inkomen",
+    "jl15": "1 op de 7 volwassenen is nu zonder werk",
+    "life5": "Mensen leven nu 5 jaar langer dan in 2026",
+    "lifed": "De levensduur daalt met 5 jaar",
+    "pand": "De pandemie is voorbij; winkels en scholen gaan weer open",
+    "pk": "De bevolking piekt op {n} mln.",
+    "povh": "De armoede is gehalveerd sinds 2026",
+    "rain": "De regen komt terug",
+    "robo2": "Rond de robots ontstaan nieuwe soorten banen",
+    "t10": "De rijkste 10% bezit nu de helft van alle vermogen",
+    "u": "Onrust: massale protesten vullen de straten",
+    "wend": "De oorlog is voorbij; een wederopbouwboom begint"
+  },
+  "group": {
+    "0": "Geld",
+    "1": "Voorzieningen",
+    "2": "Samenleving",
+    "3": "Schokken"
+  },
+  "info": {
+    "about": "Over de getallen",
+    "aboutText": "De startcijfers zijn afgeronde, geschatte waarden uit het midden van de jaren 2020. Daarna draait het land op eenvoudige regels: het laat zien hoe dingen elkaar beïnvloeden, geen voorspelling.",
+    "changed": "Wat er veranderde",
+    "curious": "Voor wie het wil weten",
+    "gini": "Vermogens-Gini {gini} · rijkste 10% bezit {pct}% van het vermogen",
+    "life": "Mensen worden ongeveer {n} jaar oud. {calm}",
+    "noChange": "Zonder wijziging, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} miljoen mensen. Een gewoon gezin leeft van {usd} per maand.",
+    "poor": "{pov} van de 100 mensen zijn arm; {jobless} van de 100 volwassenen zijn zonder werk."
+  },
+  "meta": {
+    "intro": "Een straat in het land, en hetzelfde land als 100 mensen van arm naar rijk. Kies een land en verander dingen: ze tellen op.",
+    "name": "Landen",
+    "sub": "Economie en samenleving"
+  },
+  "metric": {
+    "calm": {
+      "help": "Hoe rustig en vol vertrouwen het land is: 100 is vreedzaam, onder 30 betekent protesten op straat.",
+      "label": "Vrede",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "Geld dat een gewoon gezin elke maand heeft, na belasting en steun.",
+      "label": "Gezinsinkomen",
+      "unit": "$ per maand"
+    },
+    "gap": {
+      "help": "Hoeveel keer meer de rijkste 10 mensen krijgen dan de armste 10.",
+      "label": "Kloof rijk–arm"
+    },
+    "jobless": {
+      "help": "Van 100 volwassenen die werk willen: hoeveel er geen baan vinden.",
+      "label": "Zonder werk",
+      "unit": "van 100"
+    },
+    "life": {
+      "help": "Hoeveel jaar een baby die nu geboren wordt kan verwachten te leven.",
+      "label": "Levensduur",
+      "unit": "jaar"
+    },
+    "pop": {
+      "help": "Hoeveel mensen er in het land wonen, in miljoenen.",
+      "label": "Mensen",
+      "unit": "miljoen"
+    },
+    "pov": {
+      "help": "Van 100 mensen: hoeveel er leven van minder dan ongeveer $250 per gezin per maand, of van veel minder dan de meeste gezinnen om hen heen.",
+      "label": "Arm",
+      "unit": "van 100"
+    }
+  },
+  "name": {
+    "ownFrom": "Je eigen land (op basis van {from})",
+    "this": "Dit land"
+  },
+  "speed": {
+    "0": "3 mnd/s",
+    "1": "1 jr/s",
+    "2": "3 jr/s",
+    "3": "8 jr/s"
+  },
+  "stage": {
+    "band": {
+      "0": "ARM",
+      "1": "REDT HET",
+      "2": "WELGESTELD"
+    },
+    "clinic": "KLINIEK +",
+    "fam": "een gewoon gezin heeft {usd} per maand",
+    "jobless": "{n} van 100 volwassenen zonder werk",
+    "kidsOut": "{n, plural, one {# kind} other {# kinderen}} niet op school",
+    "legend": {
+      "jobless": "ZONDER WERK",
+      "kid": "KIND OP SCHOOL",
+      "kidOut": "KIND NIET OP SCHOOL",
+      "poverty": "ARMOEDEGRENS",
+      "retired": "GEPENSIONEERD",
+      "work": "WERKT"
+    },
+    "noChange": "(zonder wijziging: {v})",
+    "poor": "{n, plural, one {# is arm} other {# zijn arm}}",
+    "poorer": "← ARMER",
+    "richer": "RIJKER →",
+    "school": "SCHOOL",
+    "title": "{year} · ALS DIT LAND 100 MENSEN WAS",
+    "titleShort": "{year} · ALS 100 MENSEN",
+    "titleWide": "{year} · ALS DIT LAND 100 MENSEN WAS · VAN ARMST NAAR RIJKST"
+  },
+  "story": {
+    "angrier": "Mensen zijn bozer.",
+    "calmer": "Het land is rustiger.",
+    "famLess": "Een gewoon gezin heeft {usd} minder per maand.",
+    "famMore": "Een gewoon gezin heeft {usd} meer per maand.",
+    "gapBigger": "De kloof tussen rijk en arm is groter.",
+    "gapSmaller": "De kloof tussen rijk en arm is kleiner.",
+    "head": "Vergeleken met hetzelfde land zonder wijziging, in {year}:",
+    "jobFewer": "{n, plural, one {# volwassene op de 100 minder is zonder werk.} other {# volwassenen op de 100 minder zijn zonder werk.}}",
+    "jobMore": "{n, plural, one {# volwassene op de 100 meer is zonder werk.} other {# volwassenen op de 100 meer zijn zonder werk.}}",
+    "longer": "Mensen leven {n} jaar langer.",
+    "none": "Er is nog niet veel anders. Geef het een paar jaar.",
+    "popFewer": "Er wonen hier {n} miljoen mensen minder.",
+    "popMore": "Er wonen hier {n} miljoen mensen meer.",
+    "povFewer": "{n, plural, one {# persoon op de 100 minder is arm.} other {# mensen op de 100 minder zijn arm.}}",
+    "povMore": "{n, plural, one {# persoon op de 100 meer is arm.} other {# mensen op de 100 meer zijn arm.}}",
+    "shorter": "Mensen leven {n} jaar korter.",
+    "stopped": "De protesten zijn gestopt."
+  },
+  "ui": {
+    "changesHint": "Ze tellen op. De omvang stel je in bij Instellen. Vink ze hierboven uit om te vergelijken.",
+    "pick": "Kies een land"
+  },
+  "whatif": {
+    "aging": "Het geboortecijfer stort in",
+    "build": "Bouw wegen, spoor en stroom",
+    "corr": "Halveer de corruptie",
+    "drought": "Jaren van droogte",
+    "edu": "Verdubbel het onderwijsbudget",
+    "health": "Gratis zorg voor iedereen",
+    "minwage": "Verhoog het minimumloon",
+    "oil": "Ontdek enorme olievoorraden",
+    "open": "Open de grenzen voor migranten",
+    "pandemic": "Een pandemie slaat toe",
+    "robots": "Robots doen de helft van het fabriekswerk",
+    "taxcut": "Verlaag de belasting voor iedereen",
+    "taxrich": "Belast de rijksten meer",
+    "trade": "Sluit de grenzen voor handel",
+    "ubi": "Universeel basisinkomen",
+    "war": "Voer een oorlog"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Oynat",
+    "pause": "Duraklat",
+    "speed": "Hız",
+    "slower": "Daha yavaş",
+    "faster": "Daha hızlı",
+    "reset": "Sıfırla",
+    "resetLabel": "Her şeyi sıfırla",
+    "resetTitle": "Her şeyi sıfırla: ayarlar, değişiklikler ve zaman",
+    "hintFull": "Değişiklik yapmak için tam ekrandan çık.",
+    "hint": "Değişiklik seç. Birbirine eklenirler; karşılaştırmak için işaretlerini kaldır."
+  },
+  "fullscreen": {
+    "enter": "Tam ekran",
+    "leave": "Tam ekrandan çık",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Değişikliklerin",
+    "count": "{total} değişiklikten {on} tanesi açık",
+    "empty": "Henüz bir şey değişmedi. Yaptığın her değişiklik buraya bir onay işaretiyle gelir; böylece onu kapatıp yeniden açabilirsin.",
+    "remove": "“{name}” listeden kaldır",
+    "removeTitle": "Listeden kaldır",
+    "allOn": "Hepsini aç",
+    "allOff": "Hepsini kapat",
+    "clear": "Listeyi temizle",
+    "throw": "Bir gezegen fırlat"
+  },
+  "about": {
+    "label": "Bu model hakkında",
+    "body": "Her şey yerleşik kurallar ve sadeleştirilmiş verilerle, canlı olarak tarayıcında çalışır. Sonuçlar tahmin değil, akla yatkın davranışlardır."
+  },
+  "whatifs": {
+    "title": "Değişiklik yap",
+    "applied": "{n} kez uygulandı"
+  },
+  "readouts": {
+    "title": "Şu anda"
+  },
+  "world": {
+    "base": "Değişiklik yok",
+    "alt": "Değişikliklerle",
+    "both": "İki dünyada da",
+    "onlyBase": "Yalnızca değişiklik olmadan",
+    "onlyAlt": "Yalnızca değişikliklerle"
+  },
+  "tune": {
+    "title": "Değişkenler",
+    "live": "Başlangıç dünyası ayarları dünyayı yeniden başlatır. Ya … olursa ayarları, bir sonraki seçişinde geçerli olur.",
+    "restart": "Bunları değiştirmek dünyayı yeniden başlatır."
+  },
+  "chart": {
+    "withChanges": "Değişikliklerle:",
+    "noDiff": "henüz gerçek bir fark yok",
+    "overTime": "Zaman içinde: {metric}",
+    "collecting": "Veri toplanıyor…",
+    "fork": "ÇATAL"
+  },
+  "stage": {
+    "label": "Simülasyon sahnesi",
+    "edge": "What-If Lab · Tohum {seed}"
+  },
+  "timeline": {
+    "title": "Zaman çizelgesi",
+    "empty": "Henüz kayda değer bir şey yok. Çalışmaya bırak ya da bir değişiklik yap."
+  },
+  "dock": {
+    "tools": "Araçlar",
+    "ask": "Sor",
+    "tune": "Ayarla",
+    "read": "Oku",
+    "log": "Kayıt"
+  },
+  "ad": {
+    "label": "Reklam",
+    "promo": "Premium ile reklamsız · yılda 15 $",
+    "short": "Reklam"
+  }
+}

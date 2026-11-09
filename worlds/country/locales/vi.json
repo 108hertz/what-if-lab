@@ -1,0 +1,272 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "calm": {
+    "0": "Biểu tình tràn ngập đường phố.",
+    "1": "Nhiều người đang tức giận; biểu tình sắp nổ ra.",
+    "2": "Cuộc sống phần lớn yên ổn, có chút bất bình với giới cầm quyền.",
+    "3": "Cuộc sống yên ổn và mọi người phần lớn tin tưởng nhau."
+  },
+  "ctl": {
+    "corr": { "label": "Tham nhũng", "unit": "/100" },
+    "edu": { "label": "Trường học", "unit": "/100" },
+    "gdp": { "label": "Thu nhập bình quân", "unit": "nghìn $/năm" },
+    "gov": {
+      "label": "Chính quyền",
+      "opt": {
+        "auto": "Một người hoặc một đảng cầm quyền",
+        "dem": "Dân chủ",
+        "hybrid": "Hỗn hợp: có bầu cử, ít tự do"
+      }
+    },
+    "h": {
+      "money": "Tiền bạc",
+      "people": "Con người",
+      "policy-sizes-used-by-your-next-click": "Mức chính sách (dùng cho lần bấm tiếp theo)",
+      "public-life": "Đời sống chung"
+    },
+    "jobless": { "label": "Thất nghiệp", "unit": "%" },
+    "life": { "label": "Y tế: tuổi thọ", "unit": "năm" },
+    "pop": { "label": "Dân số", "unit": "triệu" },
+    "popg": { "label": "Tăng dân số", "unit": "%/năm" },
+    "preset": {
+      "group": {
+        "0": "Châu Âu",
+        "1": "Châu Á",
+        "2": "Trung Đông và Kavkaz",
+        "3": "Châu Phi",
+        "4": "Châu Mỹ",
+        "5": "Châu Đại Dương",
+        "6": "Của riêng bạn"
+      },
+      "label": "Quốc gia",
+      "opt": {
+        "am": "Armenia",
+        "ar": "Argentina",
+        "au": "Úc",
+        "bd": "Bangladesh",
+        "br": "Brazil",
+        "ca": "Canada",
+        "ch": "Thuỵ Sĩ",
+        "cl": "Chile",
+        "cn": "Trung Quốc",
+        "co": "Colombia",
+        "custom": "Đất nước của riêng bạn",
+        "de": "Đức",
+        "dk": "Đan Mạch",
+        "eg": "Ai Cập",
+        "es": "Tây Ban Nha",
+        "et": "Ethiopia",
+        "fr": "Pháp",
+        "gb": "Vương quốc Anh",
+        "gr": "Hy Lạp",
+        "id": "Indonesia",
+        "il": "Israel",
+        "in": "Ấn Độ",
+        "ir": "Iran",
+        "it": "Ý",
+        "jp": "Nhật Bản",
+        "ke": "Kenya",
+        "kr": "Hàn Quốc",
+        "mx": "Mexico",
+        "ng": "Nigeria",
+        "nl": "Hà Lan",
+        "no": "Na Uy",
+        "ph": "Philippines",
+        "pk": "Pakistan",
+        "pl": "Ba Lan",
+        "sa": "Ả Rập Xê Út",
+        "se": "Thuỵ Điển",
+        "th": "Thái Lan",
+        "tr": "Thổ Nhĩ Kỳ",
+        "ua": "Ukraina",
+        "us": "Hoa Kỳ",
+        "vn": "Việt Nam",
+        "za": "Nam Phi"
+      }
+    },
+    "res": { "label": "Tài nguyên (dầu, kim loại)", "unit": "/100" },
+    "s_cut": { "label": "Giảm thuế", "unit": "điểm" },
+    "s_open": { "label": "Số hộ mới đến" },
+    "s_rich": { "label": "Thuế thêm cho người giàu nhất", "unit": "điểm" },
+    "s_ubi": { "label": "Mức thu nhập cơ bản", "unit": "% thu nhập trung bình" },
+    "s_wage": { "label": "Tăng lương tối thiểu", "unit": "%" },
+    "s_war": { "label": "Thời gian chiến tranh", "unit": "năm" },
+    "tax": { "label": "Thuế", "unit": "% thu nhập" }
+  },
+  "diff": {
+    "calmer": "{n, plural, other {yên bình hơn # điểm}}",
+    "famLess": "ít hơn {usd} mỗi tháng",
+    "famMore": "nhiều hơn {usd} mỗi tháng",
+    "gapBigger": "khoảng cách lớn gấp {n} lần",
+    "gapSmaller": "khoảng cách nhỏ đi {n} lần",
+    "jobFewer": "{n, plural, other {ít hơn # trên 100 người lớn thất nghiệp}}",
+    "jobMore": "{n, plural, other {thêm # trên 100 người lớn thất nghiệp}}",
+    "lessCalm": "{n, plural, other {kém yên bình # điểm}}",
+    "longer": "sống lâu hơn {n} năm",
+    "popFewer": "ít hơn {n} triệu người",
+    "popMore": "thêm {n} triệu người",
+    "povFewer": "{n, plural, other {ít hơn # trên 100 người nghèo}}",
+    "povMore": "{n, plural, other {thêm # trên 100 người nghèo}}",
+    "shorter": "sống ngắn hơn {n} năm"
+  },
+  "ev": {
+    "apply": {
+      "aging": "Tỷ lệ sinh lao dốc",
+      "build": "Bắt đầu xây đường, đường sắt và lưới điện",
+      "corr": "Chiến dịch chống tham nhũng bắt đầu",
+      "drought": "Một đợt hạn hán dài bắt đầu",
+      "edu": "Ngân sách giáo dục tăng gấp đôi",
+      "health": "Y tế miễn phí cho mọi người",
+      "minwage": "Lương tối thiểu tăng",
+      "oil": "Tìm thấy dầu: bùng nổ xuất khẩu",
+      "open": "Mở cửa biên giới: {n} hộ mới đến",
+      "pandemic": "Đại dịch ập đến: trường học và cửa hàng đóng cửa",
+      "robots": "Robot vào các nhà máy",
+      "taxcut": "Giảm thuế cho mọi người",
+      "taxrich": "Người giàu nhất đóng thuế nhiều hơn",
+      "trade": "Đóng cửa thương mại: hàng nhập khẩu đắt hơn",
+      "ubi": "Thu nhập cơ bản bắt đầu: nghèo đói giảm, thuế tăng",
+      "war": "Chiến tranh nổ ra: kinh tế co lại nhanh"
+    },
+    "built": "Đường mới, đường sắt và lưới điện đi vào hoạt động",
+    "c": "Nguy cơ cao xảy ra đảo chính hoặc nhà nước sụp đổ",
+    "curse": "Lời nguyền tài nguyên: tiền dầu nuôi tham nhũng",
+    "dbl": "Thu nhập bình quân tăng gấp đôi",
+    "eduw": "Lứa đầu tiên từ trường học tốt hơn bắt đầu đi làm",
+    "hi": "Trở thành nước thu nhập cao",
+    "jl15": "Giờ cứ 7 người lớn thì có 1 người thất nghiệp",
+    "life5": "Người dân giờ sống lâu hơn năm 2026 là 5 năm",
+    "lifed": "Tuổi thọ giảm 5 năm",
+    "pand": "Đại dịch kết thúc; cửa hàng và trường học mở lại",
+    "pk": "Dân số đạt đỉnh {n} triệu",
+    "povh": "Nghèo đói đã giảm một nửa so với năm 2026",
+    "rain": "Mưa đã trở lại",
+    "robo2": "Những loại việc làm mới xuất hiện quanh robot",
+    "t10": "10% giàu nhất giờ sở hữu một nửa toàn bộ của cải",
+    "u": "Bất ổn: biểu tình lớn tràn ngập đường phố",
+    "wend": "Chiến tranh kết thúc; bùng nổ tái thiết bắt đầu"
+  },
+  "group": { "0": "Tiền bạc", "1": "Dịch vụ", "2": "Xã hội", "3": "Cú sốc" },
+  "info": {
+    "about": "Về các con số",
+    "aboutText": "Số liệu ban đầu là giá trị làm tròn, gần đúng từ giữa thập niên 2020. Sau đó đất nước chạy theo quy tắc đơn giản: nó cho thấy các yếu tố tác động nhau thế nào, không phải dự báo.",
+    "changed": "Điều gì đã thay đổi",
+    "curious": "Cho người tò mò",
+    "gini": "Gini của cải {gini} · 10% giàu nhất sở hữu {pct}% của cải",
+    "life": "Người dân sống khoảng {n} năm. {calm}",
+    "noChange": "Nếu không đổi, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} triệu người. Một gia đình điển hình sống với {usd} mỗi tháng.",
+    "poor": "{pov} trên 100 người nghèo; {jobless} trên 100 người lớn thất nghiệp."
+  },
+  "meta": {
+    "intro": "Một con phố trong nước, và cũng đất nước ấy như 100 người từ nghèo nhất đến giàu nhất. Chọn một nước, rồi tạo thay đổi: chúng cộng dồn.",
+    "name": "Quốc gia",
+    "sub": "Kinh tế & xã hội"
+  },
+  "metric": {
+    "calm": {
+      "help": "Đất nước yên bình và tin tưởng nhau đến đâu: 100 là thanh bình, dưới 30 nghĩa là biểu tình trên đường phố.",
+      "label": "Hoà bình",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "Số tiền một gia đình điển hình có mỗi tháng, sau thuế và trợ cấp.",
+      "label": "Thu nhập gia đình",
+      "unit": "$/tháng"
+    },
+    "gap": {
+      "help": "10 người giàu nhất nhận gấp bao nhiêu lần 10 người nghèo nhất.",
+      "label": "Khoảng cách giàu nghèo"
+    },
+    "jobless": {
+      "help": "Trong 100 người lớn muốn đi làm, bao nhiêu người không tìm được việc.",
+      "label": "Thất nghiệp",
+      "unit": "/100"
+    },
+    "life": {
+      "help": "Một em bé sinh ra bây giờ có thể sống bao nhiêu năm.",
+      "label": "Tuổi thọ",
+      "unit": "năm"
+    },
+    "pop": {
+      "help": "Bao nhiêu người sống trong nước, tính bằng triệu.",
+      "label": "Dân số",
+      "unit": "triệu"
+    },
+    "pov": {
+      "help": "Trong 100 người, bao nhiêu người sống với chưa đến khoảng 250 $ mỗi gia đình mỗi tháng, hoặc kém xa hầu hết các gia đình xung quanh.",
+      "label": "Người nghèo",
+      "unit": "/100"
+    }
+  },
+  "name": {
+    "ownFrom": "Đất nước của riêng bạn (từ {from})",
+    "this": "Đất nước này"
+  },
+  "speed": { "0": "3 tháng/s", "1": "1 năm/s", "2": "3 năm/s", "3": "8 năm/s" },
+  "stage": {
+    "band": { "0": "NGHÈO", "1": "ĐỦ SỐNG", "2": "KHÁ GIẢ" },
+    "clinic": "TRẠM Y TẾ +",
+    "fam": "một gia đình điển hình có {usd} mỗi tháng",
+    "jobless": "{n}/100 người lớn thất nghiệp",
+    "kidsOut": "{n, plural, other {# trẻ}} không đi học",
+    "legend": {
+      "jobless": "THẤT NGHIỆP",
+      "kid": "TRẺ ĐI HỌC",
+      "kidOut": "TRẺ KHÔNG ĐI HỌC",
+      "poverty": "NGƯỠNG NGHÈO",
+      "retired": "NGHỈ HƯU",
+      "work": "ĐANG LÀM"
+    },
+    "noChange": "(không đổi: {v})",
+    "poor": "{n, plural, other {# người nghèo}}",
+    "poorer": "← NGHÈO HƠN",
+    "richer": "GIÀU HƠN →",
+    "school": "TRƯỜNG",
+    "title": "{year} · NẾU ĐẤT NƯỚC NÀY LÀ 100 NGƯỜI",
+    "titleShort": "{year} · NHƯ 100 NGƯỜI",
+    "titleWide": "{year} · NẾU ĐẤT NƯỚC NÀY LÀ 100 NGƯỜI · TỪ NGHÈO NHẤT ĐẾN GIÀU NHẤT"
+  },
+  "story": {
+    "angrier": "Người dân giận dữ hơn.",
+    "calmer": "Đất nước yên bình hơn.",
+    "famLess": "Một gia đình điển hình có ít hơn {usd} mỗi tháng.",
+    "famMore": "Một gia đình điển hình có thêm {usd} mỗi tháng.",
+    "gapBigger": "Khoảng cách giàu nghèo lớn hơn.",
+    "gapSmaller": "Khoảng cách giàu nghèo nhỏ hơn.",
+    "head": "So với cùng đất nước ấy khi không thay đổi, vào năm {year}:",
+    "jobFewer": "{n, plural, other {Ít hơn # trên 100 người lớn thất nghiệp.}}",
+    "jobMore": "{n, plural, other {Thêm # trên 100 người lớn thất nghiệp.}}",
+    "longer": "Người dân sống lâu hơn {n} năm.",
+    "none": "Chưa khác nhiều. Hãy chờ vài năm.",
+    "popFewer": "Ít hơn {n} triệu người sống ở đây.",
+    "popMore": "Thêm {n} triệu người sống ở đây.",
+    "povFewer": "{n, plural, other {Ít hơn # trên 100 người nghèo.}}",
+    "povMore": "{n, plural, other {Thêm # trên 100 người nghèo.}}",
+    "shorter": "Người dân sống ngắn hơn {n} năm.",
+    "stopped": "Biểu tình đã chấm dứt."
+  },
+  "ui": {
+    "changesHint": "Chúng cộng dồn. Mức độ chỉnh ở mục Chỉnh. Bỏ tích ở trên để so sánh.",
+    "pick": "Chọn một nước"
+  },
+  "whatif": {
+    "aging": "Tỷ lệ sinh lao dốc",
+    "build": "Xây đường, đường sắt và điện",
+    "corr": "Giảm một nửa tham nhũng",
+    "drought": "Nhiều năm hạn hán",
+    "edu": "Tăng gấp đôi chi cho giáo dục",
+    "health": "Y tế miễn phí cho mọi người",
+    "minwage": "Tăng lương tối thiểu",
+    "oil": "Phát hiện trữ lượng dầu khổng lồ",
+    "open": "Mở cửa biên giới cho người nhập cư",
+    "pandemic": "Đại dịch ập đến",
+    "robots": "Robot làm một nửa việc ở nhà máy",
+    "taxcut": "Giảm thuế cho mọi người",
+    "taxrich": "Đánh thuế người giàu nhất nhiều hơn",
+    "trade": "Đóng cửa thương mại",
+    "ubi": "Thu nhập cơ bản phổ quát",
+    "war": "Đánh một cuộc chiến"
+  }
+}

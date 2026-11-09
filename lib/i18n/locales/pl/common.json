@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Przybliżaj od protonu do obserwowalnego Wszechświata, otwórz świat, zmieniaj go pytaniami „co jeśli” i porównaj jego przyszłość ze światem bez zmian.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Skala",
+    "sub": "Proton → Wszechświat"
+  },
+  "intro": {
+    "worlds": "Światy",
+    "whatifs": "Co jeśli…"
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "body": "Tej strony nie ma w laboratorium.",
+    "home": "Wróć do laboratorium"
+  },
+  "unit": {
+    "gyr": "{n} mld lat",
+    "myr": "{n} mln lat",
+    "kyr": "{n} tys. lat",
+    "yr": "{n} lat"
+  },
+  "dur": {
+    "days": "{n} dni",
+    "months": "{n} mies.",
+    "years": "{n} lat"
+  }
+}

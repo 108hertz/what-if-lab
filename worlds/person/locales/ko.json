@@ -1,0 +1,113 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": {
+      "label": "나이",
+      "unit": "세"
+    },
+    "disc": {
+      "label": "자기 절제"
+    },
+    "health": {
+      "label": "지금 건강"
+    },
+    "mood": {
+      "label": "지금 행복감"
+    },
+    "soc": {
+      "label": "사교성"
+    },
+    "stress": {
+      "label": "스트레스"
+    }
+  },
+  "dim": {
+    "career": "일과 기술",
+    "health": "건강",
+    "social": "인간관계",
+    "well": "행복감"
+  },
+  "ev": {
+    "again": "다시 시작: {habit}",
+    "b6": "6개월째: 갈망과 내성 때문에 끊기 어려워요",
+    "d66": "66일째: 아직 하고 있는 사람에겐 이제 습관이 저절로 돼요",
+    "half": "절반의 버전이 포기했어요",
+    "high": "{dim}: 튼튼한 수준에 닿았어요",
+    "low": "{dim}: 위험 구간으로 떨어졌어요",
+    "start": "시작: {habit}",
+    "w3": "3주째: 의욕이 떨어지는 때, 대부분 지금 그만둬요",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "술을 많이 마시기 시작",
+    "exercise": "매일 30분 운동",
+    "isolate": "친구들과 멀어지기",
+    "learn": "하루 1시간 기술 배우기",
+    "meditate": "하루 10분 명상",
+    "read": "하루 30분 독서",
+    "sleep": "정해진 시간에 8시간 자기",
+    "smoke": "담배 피우기 시작",
+    "social": "SNS 끊기"
+  },
+  "meta": {
+    "intro": "한 사람, 그 삶의 평행한 버전 100개. 새 습관을 시도하고, 몇 명이 계속하는지, 무엇이 달라지는지 보세요.",
+    "name": "성격",
+    "sub": "평행한 삶 100개"
+  },
+  "metric": {
+    "career": {
+      "label": "일과 기술",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "건강",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "아직 하는 중",
+      "unit": "%"
+    },
+    "social": {
+      "label": "인간관계",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "행복감",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "과음 시작",
+    "exercise": "운동",
+    "isolate": "친구와 멀어지기",
+    "learn": "기술 배우기",
+    "meditate": "명상",
+    "read": "독서",
+    "sleep": "잠",
+    "smoke": "흡연 시작",
+    "social": "SNS 끊기"
+  },
+  "speed": {
+    "0": "초당 1주",
+    "1": "초당 1개월",
+    "2": "초당 6개월",
+    "3": "초당 2년"
+  },
+  "stage": {
+    "caption": "{what} · 미소 = 행복감 · 밝기 = 건강",
+    "many": "{h, plural, other {습관 #개}} · 100명 중 {n}명이 하나 이상 계속하는 중",
+    "none": "아직 새 습관 없음",
+    "one": "100명 중 {n}명이 아직 하는 중"
+  },
+  "whatif": {
+    "drink": "술을 많이 마시기 시작",
+    "exercise": "매일 30분 운동하기",
+    "isolate": "친구들과 멀어지기",
+    "learn": "하루 1시간 기술 배우기",
+    "meditate": "하루 10분 명상하기",
+    "read": "하루 30분 책 읽기",
+    "sleep": "정해진 시간에 8시간 자기",
+    "smoke": "담배 피우기 시작",
+    "social": "SNS 끊기"
+  }
+}

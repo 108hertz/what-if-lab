@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "what if… হোম",
+    "worlds": "জগৎগুলো",
+    "worldButton": "জগৎ: {name}। জগৎ বদলান",
+    "wordmark": "what if"
+  },
+  "theme": {
+    "toDark": "গাঢ় থিমে যান",
+    "toLight": "হালকা থিমে যান"
+  },
+  "lang": {
+    "label": "ভাষা",
+    "button": "ভাষা: {name}। ভাষা বদলান",
+    "draft": "এখনো তৈরি নয়",
+    "alsoIn": "{language} ভাষাতেও আছে",
+    "dismiss": "অন্য ভাষার পরামর্শ দেবেন না"
+  }
+}

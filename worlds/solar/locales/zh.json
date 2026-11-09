@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "黑洞",
+    "earth": "地球",
+    "jupiter": "木星",
+    "mars": "火星",
+    "mercury": "水星",
+    "neptune": "海王星",
+    "saturn": "土星",
+    "sun": "太阳",
+    "uranus": "天王星",
+    "venus": "金星",
+    "yourplanet": "你的行星"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "太阳质量",
+      "unit": "× 太阳"
+    },
+    "view": {
+      "label": "视图",
+      "opt": {
+        "inner": "内行星",
+        "mid": "到木星",
+        "outer": "整个太阳系"
+      }
+    }
+  },
+  "ev": {
+    "bh": "一个 4 倍太阳质量的黑洞从太阳系边缘闯入",
+    "escape": "{body}逃进了星际空间",
+    "giant": "太阳膨胀成宽 0.85 AU 的红巨星，失去三分之一的质量",
+    "intoBh": "{body}掉进了黑洞",
+    "intoSun": "{body}掉进了太阳",
+    "jupstar": "木星质量增加到 80 倍，点燃成一颗红矮星",
+    "mars": "地球被移到火星的轨道",
+    "nosun": "太阳消失：行星沿直线飞走",
+    "smash": "{body}撞上了{other}",
+    "stop": "地球在轨道上突然停住",
+    "sun2": "太阳质量翻倍：引力更强，阳光亮 11 倍",
+    "swallowed": "{body}被红巨星吞没",
+    "throw": "你扔进了一颗新行星"
+  },
+  "info": {
+    "changed": "有改变",
+    "now": "现在的地球"
+  },
+  "meta": {
+    "hint": "拖动来扔一颗行星。改变会叠加。",
+    "intro": "太阳和八大行星，遵循真实的牛顿引力。在舞台上拖动，扔进你自己的行星。",
+    "name": "太阳系",
+    "sub": "引力"
+  },
+  "metric": {
+    "dist": {
+      "label": "日地距离",
+      "unit": "AU"
+    },
+    "temp": {
+      "label": "地球温度",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "一年的长度",
+      "unit": "天"
+    }
+  },
+  "name": {
+    "blackhole": "黑洞",
+    "earth": "地球",
+    "jupiter": "木星",
+    "mars": "火星",
+    "mercury": "水星",
+    "neptune": "海王星",
+    "saturn": "土星",
+    "uranus": "天王星",
+    "venus": "金星",
+    "yourplanet": "你的行星"
+  },
+  "speed": {
+    "0": "每秒1个月",
+    "1": "每秒6个月",
+    "2": "每秒2年",
+    "3": "每秒10年"
+  },
+  "status": {
+    "boiling": "海洋沸腾",
+    "destroyed": "已毁灭",
+    "flying": "正在飞离",
+    "frozen": "冻成冰球",
+    "habitable": "宜居"
+  },
+  "whatif": {
+    "bh": "一个黑洞飞过",
+    "giant": "太阳变成红巨星",
+    "jupstar": "木星点燃成恒星",
+    "mars": "把地球移到火星轨道",
+    "nosun": "太阳消失",
+    "stop": "地球在轨道上停住",
+    "sun2": "太阳质量翻倍"
+  }
+}

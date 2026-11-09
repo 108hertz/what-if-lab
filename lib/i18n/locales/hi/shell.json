@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "क्या होगा अगर… होम",
+    "worlds": "दुनियाएँ",
+    "worldButton": "दुनिया: {name}। दुनिया बदलें",
+    "wordmark": "क्या होगा अगर"
+  },
+  "theme": {
+    "toDark": "डार्क थीम पर जाएँ",
+    "toLight": "लाइट थीम पर जाएँ"
+  },
+  "lang": {
+    "label": "भाषा",
+    "button": "भाषा: {name}। भाषा बदलें",
+    "draft": "अभी तैयार नहीं",
+    "alsoIn": "{language} में भी उपलब्ध",
+    "dismiss": "कोई और भाषा न सुझाएँ"
+  }
+}

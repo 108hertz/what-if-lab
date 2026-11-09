@@ -28,7 +28,7 @@ one-viewport consoles with no page scroll.
 - **Every word goes through the catalogs** (change 0025, ADR 0010): shared UI uses `useT()` / `pageT()` with keys in
   `lib/i18n/locales/en/*.json`; a world's words stay in its code (labels, `messages`) and are said with `worldSay(sb)`
   (`ctl.<id>.label`, `whatif.<id>`, `metric.<k>.label`…). Run `npm run i18n:extract` after changing a world's English.
-  Ready languages (`lib/i18n/locales.ts`: en es pt de ja ar) need every key in `lib/i18n/locales/<code>/` and
+  Ready languages (`lib/i18n/locales.ts`: all 20, machine drafts awaiting native review) need every key in `lib/i18n/locales/<code>/` and
   `worlds/<key>/locales/<code>.json`; `tests/i18n-catalogs.test.ts` checks placeholders, plural categories and gaps.
   Changing a world's English means updating those files too (or the language's test fails). `?pseudo` shows leftover English.
 - Never introduce a server, API route, server action, or secret in client code without a superseding ADR.

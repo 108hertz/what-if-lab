@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "만약에… 홈",
+    "worlds": "세계",
+    "worldButton": "세계: {name}. 세계 바꾸기",
+    "wordmark": "만약에"
+  },
+  "theme": {
+    "toDark": "어두운 테마로 바꾸기",
+    "toLight": "밝은 테마로 바꾸기"
+  },
+  "lang": {
+    "label": "언어",
+    "button": "언어: {name}. 언어 바꾸기",
+    "draft": "아직 준비 중",
+    "alsoIn": "{language}로도 볼 수 있어요",
+    "dismiss": "다른 언어 추천 그만 보기"
+  }
+}

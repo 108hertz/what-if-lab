@@ -28,9 +28,8 @@ pages.
 - SEO: translated titles and descriptions, hreflang between languages, one sitemap with every ready
   language, a crawlable static page per route.
 - A language appears only when it is `ready`: every key translated (`READY` in `lib/i18n/locales.ts`).
-  Ready now: English, Spanish, Portuguese (Brazil), German, Japanese, Arabic. The five translations are machine
-  drafts (`_status` in each file) and still need a native speaker's review; the other 14 languages build but are
-  hidden and noindex.
+  Ready now: all 20. The 19 translations are machine drafts (`_status` in each file) and still need a native
+  speaker's review; take a language out of `READY` to hide it again (picker, sitemap, hreflang; its pages noindex).
 - Clerk's own windows (sign-in, sign-up, checkout, profile) use `@clerk/localizations`, loaded only for the
   page's language.
 

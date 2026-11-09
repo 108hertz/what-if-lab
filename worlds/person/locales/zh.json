@@ -1,0 +1,85 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": { "label": "年龄", "unit": "岁" },
+    "disc": { "label": "自律" },
+    "health": { "label": "目前健康" },
+    "mood": { "label": "目前幸福感" },
+    "soc": { "label": "社交性" },
+    "stress": { "label": "压力水平" }
+  },
+  "dim": {
+    "career": "事业与技能",
+    "health": "健康",
+    "social": "人际关系",
+    "well": "幸福感"
+  },
+  "ev": {
+    "again": "重新开始：{habit}",
+    "b6": "六个月后：渴望和耐受让停下来变得很难",
+    "d66": "第 66 天：对还在坚持的人来说，习惯已经自动化了",
+    "half": "一半的版本已经放弃",
+    "high": "{dim}达到很好的水平",
+    "low": "{dim}跌入危险区",
+    "start": "开始：{habit}",
+    "w3": "第 3 周：动力低谷，大多数放弃发生在这时",
+    "withHabit": "{habit}：{line}"
+  },
+  "habit": {
+    "drink": "开始酗酒",
+    "exercise": "每天运动 30 分钟",
+    "isolate": "疏远朋友",
+    "learn": "每天学一项技能 1 小时",
+    "meditate": "每天冥想 10 分钟",
+    "read": "每天阅读 30 分钟",
+    "sleep": "每天睡 8 小时，作息固定",
+    "smoke": "开始吸烟",
+    "social": "戒掉社交媒体"
+  },
+  "meta": {
+    "intro": "一个人，100 个平行版本的人生。试试新习惯，看看有多少版本能坚持下去，又会改变什么。",
+    "name": "性格",
+    "sub": "100 种平行人生"
+  },
+  "metric": {
+    "career": { "label": "事业与技能", "unit": "/100" },
+    "health": { "label": "健康", "unit": "/100" },
+    "kept": { "label": "仍在坚持", "unit": "%" },
+    "social": { "label": "人际关系", "unit": "/100" },
+    "well": { "label": "幸福感", "unit": "/100" }
+  },
+  "short": {
+    "drink": "开始酗酒",
+    "exercise": "运动",
+    "isolate": "疏远朋友",
+    "learn": "学技能",
+    "meditate": "冥想",
+    "read": "阅读",
+    "sleep": "睡眠",
+    "smoke": "开始吸烟",
+    "social": "戒社交媒体"
+  },
+  "speed": {
+    "0": "每秒1周",
+    "1": "每秒1个月",
+    "2": "每秒6个月",
+    "3": "每秒2年"
+  },
+  "stage": {
+    "caption": "{what} · 笑脸 = 幸福感 · 亮度 = 健康",
+    "many": "{h, plural, other {# 个习惯}} · 100 人中有 {n} 人至少还在坚持一个",
+    "none": "还没有新习惯",
+    "one": "100 人中有 {n} 人仍在坚持"
+  },
+  "whatif": {
+    "drink": "开始酗酒",
+    "exercise": "每天运动 30 分钟",
+    "isolate": "疏远朋友",
+    "learn": "每天学一项技能 1 小时",
+    "meditate": "每天冥想 10 分钟",
+    "read": "每天阅读 30 分钟",
+    "sleep": "每天睡 8 小时，作息固定",
+    "smoke": "开始吸烟",
+    "social": "戒掉社交媒体"
+  }
+}

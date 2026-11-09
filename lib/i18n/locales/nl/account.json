@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "Accounts zijn in deze versie niet ingesteld. Alles hier is gratis.",
+    "loading": "Je account wordt gecontroleerd…",
+    "signedOut": "Het lab is gratis zonder account. Log in om Premium op elk apparaat te gebruiken.",
+    "free": "Gratis abonnement. Elke wereld en elke wat-als is van jou.",
+    "premium": "Premium staat aan: geen advertenties, en video- en dia-exports.",
+    "error": "De accountdienst gaf geen antwoord.",
+    "keepPremium": "Premium blijft voorlopig aan."
+  },
+  "menu": {
+    "account": "Account",
+    "signIn": "Inloggen",
+    "createAccount": "Account maken",
+    "goPremium": "Neem Premium",
+    "price": "$15 per jaar",
+    "manage": "Abonnement beheren",
+    "settings": "Accountinstellingen",
+    "signOut": "Uitloggen",
+    "retry": "Opnieuw proberen",
+    "yourAccount": "Je labaccount",
+    "premium": "Premium",
+    "free": "Gratis",
+    "plan": "Abonnement: {plan}",
+    "buttonLabel": "{label}, abonnement: {plan}",
+    "devPremium": "Premium simuleren",
+    "devOnly": "alleen dev-build"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Geen advertenties",
+        "text": "Elk advertentievak verdwijnt, in elke wereld."
+      },
+      "phone": {
+        "name": "Telefoonvideo's",
+        "text": "Clips van 1080 × 1920 van je wat-als voor Shorts, Reels en TikTok."
+      },
+      "wide": {
+        "name": "YouTube-video's",
+        "text": "Clips van 1920 × 1080 met beide werelden naast elkaar."
+      },
+      "slides": {
+        "name": "Dia's",
+        "text": "Een pdf-presentatie: de opzet, de wat-als, belangrijke momenten en de uitkomst."
+      }
+    },
+    "lead": {
+      "export": "Video's en dia's horen bij Premium.",
+      "ads": "Premium haalt de advertenties weg.",
+      "menu": "Steun het lab en krijg de tools om te delen wat je ontdekt."
+    },
+    "createContinue": "Account maken en doorgaan",
+    "haveAccount": "Ik heb een account",
+    "noteSignedOut": "Eerst een account, zodat Premium op elk apparaat werkt. Daarna opent het afrekenen hier.",
+    "openingCheckout": "Afrekenen wordt geopend…",
+    "continueCheckout": "Door naar afrekenen",
+    "noteFree": "Ingelogd als {who}. De betaling loopt via {provider} en Stripe; het lab ziet je kaart nooit.",
+    "you": "jij",
+    "ourProvider": "onze aanbieder",
+    "back": "Terug naar het lab",
+    "manage": "Abonnement beheren",
+    "checking": "Je account wordt gecontroleerd…",
+    "retry": "Opnieuw proberen",
+    "noteDev": "Accounts zijn in deze versie niet ingesteld. Zet Premium simuleren aan in het accountmenu om Premium te proberen.",
+    "noteOff": "Premium is in deze versie van het lab nog niet te koop.",
+    "titleOn": "Premium staat aan",
+    "title": "Premium",
+    "amount": "$15",
+    "per": "per jaar · altijd opzegbaar",
+    "thanks": "Dank je. De advertenties zijn weg en exports zijn ontgrendeld in elke wereld.",
+    "free": "Elke wereld en elke wat-als blijft gratis, met of zonder Premium."
+  },
+  "errors": {
+    "noCheckout": "Afrekenen is in deze versie niet beschikbaar. Probeer het later opnieuw.",
+    "notOnSale": "Premium is nog niet te koop. Probeer het later opnieuw.",
+    "checkoutFailed": "Afrekenen kon niet worden geopend. Probeer het zo opnieuw.",
+    "offline": "Je bent offline. Accounts komen terug zodra je weer verbinding hebt.",
+    "noAnswer": "De accountdienst gaf geen antwoord. Controleer je verbinding en probeer het opnieuw."
+  },
+  "yourAccount": "Je account"
+}

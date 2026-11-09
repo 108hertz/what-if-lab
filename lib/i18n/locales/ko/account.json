@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "이 버전에는 계정 기능이 없어요. 여기 있는 건 모두 무료예요.",
+    "loading": "계정 확인 중…",
+    "signedOut": "실험실은 계정 없이도 무료예요. 로그인하면 어느 기기에서든 Premium을 쓸 수 있어요.",
+    "free": "무료 플랜. 모든 세계와 모든 '만약'을 쓸 수 있어요.",
+    "premium": "Premium 사용 중: 광고 없음, 동영상과 슬라이드 내보내기.",
+    "error": "계정 서비스가 응답하지 않았어요.",
+    "keepPremium": "일단 Premium은 계속 켜져 있어요."
+  },
+  "menu": {
+    "account": "계정",
+    "signIn": "로그인",
+    "createAccount": "계정 만들기",
+    "goPremium": "Premium 시작하기",
+    "price": "연 $15",
+    "manage": "구독 관리",
+    "settings": "계정 설정",
+    "signOut": "로그아웃",
+    "retry": "다시 시도",
+    "yourAccount": "내 실험실 계정",
+    "premium": "Premium",
+    "free": "무료",
+    "plan": "{plan} 플랜",
+    "buttonLabel": "{label}, {plan} 플랜",
+    "devPremium": "Premium 흉내 내기",
+    "devOnly": "개발 버전 전용"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "광고 없음",
+        "text": "모든 세계에서 광고 자리가 모두 사라져요."
+      },
+      "phone": {
+        "name": "휴대폰 동영상",
+        "text": "Shorts, Reels, TikTok용 1080 × 1920 '만약' 클립."
+      },
+      "wide": {
+        "name": "YouTube 동영상",
+        "text": "두 세계를 나란히 보여 주는 1920 × 1080 클립."
+      },
+      "slides": {
+        "name": "슬라이드",
+        "text": "PDF 발표 자료: 처음 상황, '만약', 중요한 순간, 결과."
+      }
+    },
+    "lead": {
+      "export": "동영상과 슬라이드는 Premium 기능이에요.",
+      "ads": "Premium이면 광고가 사라져요.",
+      "menu": "실험실을 응원하고, 발견한 것을 나눌 도구를 받으세요."
+    },
+    "createContinue": "계정 만들고 계속하기",
+    "haveAccount": "계정이 있어요",
+    "noteSignedOut": "먼저 계정을 만들어야 어느 기기에서든 Premium이 돼요. 그다음 바로 여기서 결제 창이 열려요.",
+    "openingCheckout": "결제 창 여는 중…",
+    "continueCheckout": "결제로 계속하기",
+    "noteFree": "{who}(으)로 로그인했어요. 결제는 {provider}와 Stripe가 처리하며, 실험실은 카드 정보를 보지 않아요.",
+    "you": "나",
+    "ourProvider": "결제 대행사",
+    "back": "실험실로 돌아가기",
+    "manage": "구독 관리",
+    "checking": "계정 확인 중…",
+    "retry": "다시 시도",
+    "noteDev": "이 버전에는 계정 기능이 없어요. Premium을 써 보려면 계정 메뉴에서 'Premium 흉내 내기'를 켜세요.",
+    "noteOff": "이 버전의 실험실에서는 아직 Premium을 팔지 않아요.",
+    "titleOn": "Premium 사용 중",
+    "title": "Premium",
+    "amount": "$15",
+    "per": "1년 · 언제든 해지 가능",
+    "thanks": "고마워요. 모든 세계에서 광고가 사라지고 내보내기가 열렸어요.",
+    "free": "Premium이 있든 없든, 모든 세계와 모든 '만약'은 계속 무료예요."
+  },
+  "errors": {
+    "noCheckout": "이 버전에서는 결제를 할 수 없어요. 나중에 다시 시도해 주세요.",
+    "notOnSale": "아직 Premium을 팔지 않아요. 나중에 다시 시도해 주세요.",
+    "checkoutFailed": "결제 창을 열 수 없었어요. 잠시 후 다시 시도해 주세요.",
+    "offline": "오프라인 상태예요. 다시 연결되면 계정 기능이 돌아와요.",
+    "noAnswer": "계정 서비스가 응답하지 않았어요. 연결을 확인하고 다시 시도해 주세요."
+  },
+  "yourAccount": "내 계정"
+}

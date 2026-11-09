@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "nếu như… trang chủ",
+    "worlds": "Thế giới",
+    "worldButton": "Thế giới: {name}. Đổi thế giới",
+    "wordmark": "nếu như"
+  },
+  "theme": {
+    "toDark": "Chuyển sang giao diện tối",
+    "toLight": "Chuyển sang giao diện sáng"
+  },
+  "lang": {
+    "label": "Ngôn ngữ",
+    "button": "Ngôn ngữ: {name}. Đổi ngôn ngữ",
+    "draft": "chưa hoàn thiện",
+    "alsoIn": "Cũng có bằng {language}",
+    "dismiss": "Đừng gợi ý ngôn ngữ khác"
+  }
+}

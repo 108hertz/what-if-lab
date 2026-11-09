@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "co jeśli… strona główna",
+    "worlds": "Światy",
+    "worldButton": "Świat: {name}. Zmień świat",
+    "wordmark": "co jeśli"
+  },
+  "theme": {
+    "toDark": "Włącz ciemny motyw",
+    "toLight": "Włącz jasny motyw"
+  },
+  "lang": {
+    "label": "Język",
+    "button": "Język: {name}. Zmień język",
+    "draft": "jeszcze niegotowy",
+    "alsoIn": "Dostępne też w języku: {language}",
+    "dismiss": "Nie proponuj innego języka"
+  }
+}

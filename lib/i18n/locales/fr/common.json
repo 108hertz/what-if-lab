@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Zoomez d’un proton à l’Univers observable, ouvrez un monde, changez-le avec des « et si… » et comparez son avenir avec le monde laissé tel quel.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Échelle",
+    "sub": "Proton → Univers"
+  },
+  "intro": {
+    "worlds": "Mondes",
+    "whatifs": "Et si…"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "body": "Cette page n’existe pas dans le labo.",
+    "home": "Retour au labo"
+  },
+  "unit": {
+    "gyr": "{n} Ga",
+    "myr": "{n} Ma",
+    "kyr": "{n} ka",
+    "yr": "{n} ans"
+  },
+  "dur": {
+    "days": "{n} jours",
+    "months": "{n} mois",
+    "years": "{n} ans"
+  }
+}

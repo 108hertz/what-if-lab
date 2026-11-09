@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Mikken naast het midden",
+      "unit": "klj"
+    },
+    "bhm": {
+      "label": "Massa zwart gat",
+      "unit": "× Melkweg"
+    },
+    "count": {
+      "label": "Stelsels die invallen"
+    },
+    "dm": {
+      "label": "Donkere materie",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Overgebleven zwaartekracht",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Snelheid erdoorheen",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Startwereld",
+      "what-if-settings": "Wat-als-instellingen"
+    },
+    "mass": {
+      "label": "Massa Andromeda",
+      "unit": "× Melkweg"
+    },
+    "neigh": {
+      "label": "Buren bij de start",
+      "opt": {
+        "m33": "Driehoeksnevel",
+        "m33lmc": "Driehoeksnevel + GMW",
+        "none": "Geen"
+      }
+    },
+    "shape": {
+      "label": "Vorm van Andromeda",
+      "opt": {
+        "elliptical": "Elliptisch",
+        "spiral": "Spiraal"
+      }
+    },
+    "size": {
+      "label": "Hun grootte",
+      "unit": "× Melkweg"
+    },
+    "speed": {
+      "label": "Naderingssnelheid",
+      "unit": "km/s"
+    },
+    "spin": {
+      "label": "Andromeda draait",
+      "opt": {
+        "against": "Tegen de onze in",
+        "same": "Net als de onze"
+      }
+    },
+    "stars": {
+      "label": "Sterren per stelsel"
+    }
+  },
+  "ev": {
+    "bhBig": "Een zwart gat {x}× zo zwaar als de Melkweg verschijnt in het midden",
+    "bhSmall": "Een zwart gat met {pct}% van de massa van de Melkweg verschijnt in het midden",
+    "bullet": "Een sterrenstelsel schiet er recht doorheen met {speed} km/s",
+    "closing": "Andromeda nadert met ongeveer {speed} km/s",
+    "flipmw": "Elke ster van de Melkweg keert haar baan om",
+    "freeze": "Elke ster van de Melkweg stopt met draaien",
+    "headon": "Andromeda koerst recht op ons midden af",
+    "lmc": "De Grote Magelhaense Wolk draait om de Melkweg",
+    "merge": "De kernen smelten samen: één reusachtig elliptisch stelsel, “Melkomeda”",
+    "miss": "Andromeda wordt op een koers langs ons heen geduwd",
+    "nodmAll": "Donkere materie verdwijnt: de zwaartekracht zakt naar {left}%, sterren zijn ineens te snel",
+    "nodmSome": "Een deel van de donkere materie verdwijnt: de zwaartekracht zakt naar {left}%, sterren zijn ineens te snel",
+    "pass1": "Eerste passage: de stelsels duiken door elkaar heen",
+    "punch": "Een dwergstelsel slaat door ons midden heen",
+    "reverse": "Andromeda keert om en gaat weg",
+    "ring": "Onze schijf veert terug in een uitdijende ring van sterren",
+    "stop": "Andromeda staat stil en begint dan te vallen",
+    "swallowed": "Weer een stelsel wordt opgeslokt",
+    "swarm": "{n, plural, one {Nog een stelsel valt in} other {Nog # stelsels vallen in}}",
+    "tails": "Ze zwaaien uit elkaar, met lange getijdenstaarten van sterren",
+    "third": "Een derde stelsel (zoals de Driehoeksnevel) valt in",
+    "triangulum": "De Driehoeksnevel drijft van opzij binnen"
+  },
+  "meta": {
+    "intro": "De Melkweg en Andromeda, op hun echte botsingskoers, versneld. Elke stip is een ster.",
+    "name": "Sterrenstelsels",
+    "sub": "Botsingen"
+  },
+  "metric": {
+    "disc": {
+      "label": "Sterren in een schijf",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Stelsels over"
+    },
+    "sep": {
+      "label": "Afstand",
+      "unit": "klj"
+    },
+    "thrown": {
+      "label": "Weggeslingerde sterren",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 mln. jr/s",
+    "1": "10 mln. jr/s",
+    "2": "25 mln. jr/s",
+    "3": "50 mln. jr/s",
+    "4": "150 mln. jr/s",
+    "5": "400 mln. jr/s",
+    "6": "1 mld. jr/s"
+  },
+  "stage": {
+    "scale": "{n} lichtjaar"
+  },
+  "whatif": {
+    "bh": "Een zwart gat zo zwaar als een stelsel verschijnt in ons midden",
+    "bullet": "Een stelsel schiet er recht doorheen",
+    "flipmw": "De Melkweg draait de andere kant op",
+    "freeze": "Sterren van de Melkweg stoppen met draaien",
+    "headon": "Mik Andromeda precies op het midden",
+    "miss": "Andromeda vliegt voorbij",
+    "nodm": "Donkere materie verdwijnt",
+    "reverse": "Andromeda keert om",
+    "ring": "Een klein stelsel slaat door ons midden",
+    "stop": "Andromeda staat ineens stil",
+    "swarm": "Er vallen meer stelsels in",
+    "third": "Een derde stelsel doet mee"
+  }
+}

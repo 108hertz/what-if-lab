@@ -1,0 +1,189 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ di udara",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Emisi CO₂ tahunan",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Tutupan hutan",
+      "unit": "% daratan"
+    },
+    "front": {
+      "label": "Tinggi tepi laut",
+      "unit": "m di atas laut"
+    },
+    "h": {
+      "air-today": "Udara hari ini",
+      "emissions": "Emisi",
+      "my-future-used-by-build-my-own-future": "Masa depanku (dipakai oleh “Bangun masa depanku”)",
+      "planet": "Planet",
+      "your-town": "Kotamu"
+    },
+    "mDac": {
+      "label": "Penyerapan CO₂",
+      "unit": "Gt per tahun"
+    },
+    "mDim": {
+      "label": "Aerosol peredup matahari",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Ubah emisi sebesar",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Pengurangan metana",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Pohon ditanam",
+      "unit": "triliun"
+    },
+    "mWall": {
+      "label": "Tanggul laut",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "Selama",
+      "unit": "tahun"
+    },
+    "meth": {
+      "label": "Metana di udara",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Arah emisi",
+      "opt": {
+        "fall": "Turun perlahan (janji saat ini)",
+        "flat": "Mendatar",
+        "grow": "Terus naik"
+      }
+    },
+    "sens": {
+      "label": "Sensitivitas iklim",
+      "unit": "°C per 2× CO₂"
+    },
+    "tip": {
+      "label": "Titik kritis",
+      "opt": {
+        "off": "Mati",
+        "on": "Nyala: permafrost dan lapisan es bisa runtuh"
+      }
+    },
+    "uptake": {
+      "label": "Serapan laut dan tanah",
+      "unit": "% hari ini"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "Amazon mulai berubah jadi padang rumput",
+      "dac": "Mesin mulai menyedot CO₂ dari udara",
+      "double": "Emisi mulai naik menuju dua kali lipat",
+      "ev": "Beralih ke energi bersih: emisi turun 7% per tahun",
+      "geo": "Aerosol disemprotkan ke stratosfer",
+      "melt": "Lapisan es Antartika Barat mulai runtuh",
+      "methane": "Kebocoran dan sumber metana mulai diperbaiki",
+      "permafrost": "Permafrost mulai mencair dengan cepat",
+      "seawall": "Tanggul laut 3 m dibangun di sekeliling pelabuhan",
+      "trees": "Satu triliun pohon ditanam",
+      "volcano": "Supervulkan meletus: selubung abu menghalangi matahari",
+      "zero": "Semua emisi berhenti"
+    },
+    "back": "Pemanasan turun lagi di bawah 1,5 °C",
+    "fl1": "Pasang badai mencapai rumah-rumah pertama di kota",
+    "fl50": "Separuh kota banjir saat air pasang",
+    "geoend": "Penyemprotan aerosol berhenti: kejutan penghentian, pemanasan cepat",
+    "gr": "Es Greenland mulai mencair lebih cepat",
+    "mix0": "Masa depanku: tanpa perubahan",
+    "mix1": "Masa depanku: {p0}",
+    "mix2": "Masa depanku: {p0}, {p1}",
+    "mix3": "Masa depanku: {p0}, {p1}, {p2}",
+    "mix4": "Masa depanku: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Masa depanku: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Masa depanku: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Pemanasan memuncak di {t} °C",
+    "pf": "Permafrost mulai mencair, melepas CO₂ dan metana",
+    "s0_5": "Muka laut +0,5 m: banjir rutin di delta sungai yang rendah",
+    "s1": "Muka laut +1 m: rumah ~200 juta orang terancam",
+    "s2": "Muka laut +2 m: banyak kota pesisir butuh tanggul atau pindah",
+    "snow": "Garis salju melewati 2.000 m: gletser hampir habis",
+    "t1_5": "Melewati 1,5 °C: sebagian besar terumbu karang hilang",
+    "t2": "Melewati 2 °C: gelombang panas mematikan jadi rutin, musim panas Arktik tanpa es",
+    "t3": "Melewati 3 °C: sabuk pertanian bergeser, Amazon terancam mati",
+    "t4": "Melewati 4 °C: beberapa wilayah mendekati batas panas yang bisa ditahan manusia",
+    "wa": "Es Antartika Barat mulai meluncur ke laut",
+    "wallover": "Tanggul laut terlampaui"
+  },
+  "meta": {
+    "intro": "Sebuah kota fjord hari ini. Saksikan salju, hutan, ladang, dan pelabuhan seiring berlalunya puluhan tahun.",
+    "name": "Bumi",
+    "sub": "Iklim"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Panen",
+      "unit": "indeks"
+    },
+    "flood": {
+      "label": "Banjir",
+      "unit": "% rumah"
+    },
+    "sea": {
+      "label": "Muka laut",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Salju",
+      "unit": "% hari ini"
+    },
+    "temp": {
+      "label": "Pemanasan",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt CO₂ diserap per tahun",
+    "dim": "sinar matahari diredupkan {n}%",
+    "emDown": "emisi −{n}% selama {yrs} thn",
+    "emUp": "emisi +{n}% selama {yrs} thn",
+    "meth": "metana −{n}%",
+    "trees": "{n} triliun pohon",
+    "wall": "tanggul laut {n} m"
+  },
+  "speed": {
+    "0": "1 thn/dtk",
+    "1": "5 thn/dtk",
+    "2": "20 thn/dtk",
+    "3": "60 thn/dtk"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · laut +{sea} m · {co2} ppm",
+    "snow": "Garis salju {m} m"
+  },
+  "whatif": {
+    "amazon": "Amazon berubah jadi padang rumput",
+    "dac": "Sedot CO₂ dari udara",
+    "double": "Emisi jadi dua kali lipat",
+    "ev": "Cepat beralih ke energi bersih",
+    "geo": "Redupkan sinar matahari dengan aerosol selama 30 tahun",
+    "melt": "Lapisan es Antartika Barat runtuh",
+    "methane": "Potong metana separuhnya",
+    "mix": "Bangun masa depanku",
+    "permafrost": "Permafrost mencair cepat",
+    "seawall": "Bangun tanggul laut 3 m",
+    "trees": "Tanam satu triliun pohon",
+    "volcano": "Supervulkan meletus",
+    "zero": "Hentikan semua emisi sekarang"
+  }
+}

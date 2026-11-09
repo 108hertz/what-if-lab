@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "het zwarte gat",
+    "earth": "de aarde",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercurius",
+    "neptune": "Neptunus",
+    "saturn": "Saturnus",
+    "sun": "de zon",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "jouw planeet"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Massa zon",
+      "unit": "× zon"
+    },
+    "view": {
+      "label": "Beeld",
+      "opt": {
+        "inner": "Binnenplaneten",
+        "mid": "Tot Jupiter",
+        "outer": "Heel het stelsel"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Een zwart gat van 4 zonsmassa's komt binnen vanaf de rand van het stelsel",
+    "escape": "{body} ontsnapt naar de interstellaire ruimte",
+    "giant": "De zon zwelt op tot een rode reus van 0,85 AE breed en verliest een derde van haar massa",
+    "intoBh": "{body} valt in het zwarte gat",
+    "intoSun": "{body} valt in de zon",
+    "jupstar": "Jupiter krijgt 80× zijn massa en gaat stralen als rode dwerg",
+    "mars": "De aarde wordt naar de baan van Mars verplaatst",
+    "nosun": "De zon verdwijnt: de planeten vliegen in rechte lijnen weg",
+    "smash": "{body} botst op {other}",
+    "stop": "De aarde staat stil in haar baan",
+    "sun2": "De zon wordt twee keer zo zwaar: sterkere aantrekking, zonlicht 11× feller",
+    "swallowed": "{body} wordt opgeslokt door de rode reus",
+    "throw": "Je gooit er een nieuwe planeet in"
+  },
+  "info": {
+    "changed": "Met wijzigingen",
+    "now": "Aarde nu"
+  },
+  "meta": {
+    "hint": "Sleep om een planeet te gooien. Wijzigingen tellen op.",
+    "intro": "Echte zwaartekracht volgens Newton voor de zon en acht planeten. Sleep op het podium om je eigen planeet erin te gooien.",
+    "name": "Zonnestelsel",
+    "sub": "Zwaartekracht"
+  },
+  "metric": {
+    "dist": {
+      "label": "Afstand aarde–zon",
+      "unit": "AE"
+    },
+    "temp": {
+      "label": "Temperatuur aarde",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Lengte van een jaar",
+      "unit": "dagen"
+    }
+  },
+  "name": {
+    "blackhole": "Zwart gat",
+    "earth": "Aarde",
+    "jupiter": "Jupiter",
+    "mars": "Mars",
+    "mercury": "Mercurius",
+    "neptune": "Neptunus",
+    "saturn": "Saturnus",
+    "uranus": "Uranus",
+    "venus": "Venus",
+    "yourplanet": "Jouw planeet"
+  },
+  "speed": {
+    "0": "1 mnd/s",
+    "1": "6 mnd/s",
+    "2": "2 jr/s",
+    "3": "10 jr/s"
+  },
+  "status": {
+    "boiling": "kokende oceanen",
+    "destroyed": "verwoest",
+    "flying": "vliegt weg",
+    "frozen": "bevroren",
+    "habitable": "bewoonbaar"
+  },
+  "whatif": {
+    "bh": "Er vliegt een zwart gat doorheen",
+    "giant": "De zon wordt een rode reus",
+    "jupstar": "Jupiter ontbrandt tot een ster",
+    "mars": "Verplaats de aarde naar de baan van Mars",
+    "nosun": "De zon verdwijnt",
+    "stop": "De aarde staat stil in haar baan",
+    "sun2": "De zon wordt twee keer zo zwaar"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Perbesar dari proton hingga alam semesta teramati, buka sebuah dunia, ubah dengan what-if, lalu bandingkan masa depannya dengan dunia yang dibiarkan apa adanya.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Skala",
+    "sub": "Proton → alam semesta"
+  },
+  "intro": {
+    "worlds": "Dunia",
+    "whatifs": "Bagaimana jika…"
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan",
+    "body": "Halaman ini tidak ada di lab.",
+    "home": "Kembali ke lab"
+  },
+  "unit": {
+    "gyr": "{n} miliar thn",
+    "myr": "{n} juta thn",
+    "kyr": "{n} ribu thn",
+    "yr": "{n} thn"
+  },
+  "dur": {
+    "days": "{n} hari",
+    "months": "{n} bln",
+    "years": "{n} thn"
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "calm": {
+    "0": "Demo memenuhi jalanan.",
+    "1": "Banyak orang marah; demo sudah dekat.",
+    "2": "Hidup sebagian besar tenang, dengan sedikit amarah ke penguasa.",
+    "3": "Hidup tenang dan orang-orang umumnya saling percaya."
+  },
+  "ctl": {
+    "corr": {
+      "label": "Korupsi",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Sekolah",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Pendapatan per orang",
+      "unit": "rb $ per tahun"
+    },
+    "gov": {
+      "label": "Pemerintahan",
+      "opt": {
+        "auto": "Satu penguasa atau partai",
+        "dem": "Demokrasi",
+        "hybrid": "Campuran: ada pemilu, sedikit kebebasan"
+      }
+    },
+    "h": {
+      "money": "Uang",
+      "people": "Penduduk",
+      "policy-sizes-used-by-your-next-click": "Besar kebijakan (dipakai saat klik berikutnya)",
+      "public-life": "Kehidupan publik"
+    },
+    "jobless": {
+      "label": "Menganggur",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Kesehatan: usia harapan hidup",
+      "unit": "tahun"
+    },
+    "pop": {
+      "label": "Populasi",
+      "unit": "juta"
+    },
+    "popg": {
+      "label": "Pertumbuhan populasi",
+      "unit": "% per tahun"
+    },
+    "preset": {
+      "group": {
+        "0": "Eropa",
+        "1": "Asia",
+        "2": "Timur Tengah dan Kaukasus",
+        "3": "Afrika",
+        "4": "Amerika",
+        "5": "Oseania",
+        "6": "Buatan sendiri"
+      },
+      "label": "Negara",
+      "opt": {
+        "am": "Armenia",
+        "ar": "Argentina",
+        "au": "Australia",
+        "bd": "Bangladesh",
+        "br": "Brasil",
+        "ca": "Kanada",
+        "ch": "Swiss",
+        "cl": "Chili",
+        "cn": "Tiongkok",
+        "co": "Kolombia",
+        "custom": "Negaramu sendiri",
+        "de": "Jerman",
+        "dk": "Denmark",
+        "eg": "Mesir",
+        "es": "Spanyol",
+        "et": "Etiopia",
+        "fr": "Prancis",
+        "gb": "Britania Raya",
+        "gr": "Yunani",
+        "id": "Indonesia",
+        "il": "Israel",
+        "in": "India",
+        "ir": "Iran",
+        "it": "Italia",
+        "jp": "Jepang",
+        "ke": "Kenya",
+        "kr": "Korea Selatan",
+        "mx": "Meksiko",
+        "ng": "Nigeria",
+        "nl": "Belanda",
+        "no": "Norwegia",
+        "ph": "Filipina",
+        "pk": "Pakistan",
+        "pl": "Polandia",
+        "sa": "Arab Saudi",
+        "se": "Swedia",
+        "th": "Thailand",
+        "tr": "Turki",
+        "ua": "Ukraina",
+        "us": "Amerika Serikat",
+        "vn": "Vietnam",
+        "za": "Afrika Selatan"
+      }
+    },
+    "res": {
+      "label": "Sumber daya alam (minyak, logam)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Potongan pajak",
+      "unit": "poin"
+    },
+    "s_open": {
+      "label": "Rumah tangga pendatang"
+    },
+    "s_rich": {
+      "label": "Pajak tambahan untuk yang terkaya",
+      "unit": "poin"
+    },
+    "s_ubi": {
+      "label": "Besar pendapatan dasar",
+      "unit": "% pendapatan rata-rata"
+    },
+    "s_wage": {
+      "label": "Kenaikan upah minimum",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Lama perang",
+      "unit": "tahun"
+    },
+    "tax": {
+      "label": "Pajak",
+      "unit": "% pendapatan"
+    }
+  },
+  "diff": {
+    "calmer": "{n, plural, other {# poin lebih tenang}}",
+    "famLess": "{usd} lebih sedikit per bulan",
+    "famMore": "{usd} lebih banyak per bulan",
+    "gapBigger": "kesenjangan {n}× lebih besar",
+    "gapSmaller": "kesenjangan {n}× lebih kecil",
+    "jobFewer": "{n, plural, other {# orang dewasa lebih sedikit dari 100 yang menganggur}}",
+    "jobMore": "{n, plural, other {# orang dewasa lebih banyak dari 100 yang menganggur}}",
+    "lessCalm": "{n, plural, other {# poin kurang tenang}}",
+    "longer": "hidup {n} tahun lebih panjang",
+    "popFewer": "{n} juta orang lebih sedikit",
+    "popMore": "{n} juta orang lebih banyak",
+    "povFewer": "{n, plural, other {# orang lebih sedikit dari 100 yang miskin}}",
+    "povMore": "{n, plural, other {# orang lebih banyak dari 100 yang miskin}}",
+    "shorter": "hidup {n} tahun lebih pendek"
+  },
+  "ev": {
+    "apply": {
+      "aging": "Angka kelahiran anjlok",
+      "build": "Pembangunan jalan, rel, dan jaringan listrik dimulai",
+      "corr": "Gerakan antikorupsi dimulai",
+      "drought": "Kemarau panjang dimulai",
+      "edu": "Anggaran pendidikan jadi dua kali",
+      "health": "Layanan kesehatan jadi gratis untuk semua",
+      "minwage": "Upah minimum naik",
+      "oil": "Minyak ditemukan: ekspor melonjak",
+      "open": "Perbatasan dibuka: {n} rumah tangga baru datang",
+      "pandemic": "Pandemi melanda: sekolah dan toko tutup",
+      "robots": "Robot hadir di pabrik-pabrik",
+      "taxcut": "Pajak dipotong untuk semua",
+      "taxrich": "Yang terkaya membayar pajak lebih",
+      "trade": "Perbatasan ditutup untuk perdagangan: barang impor makin mahal",
+      "ubi": "Pendapatan dasar dimulai: kemiskinan turun, pajak naik",
+      "war": "Perang pecah: ekonomi menyusut cepat"
+    },
+    "built": "Jalan, rel, dan jaringan listrik baru dibuka",
+    "c": "Risiko tinggi kudeta atau runtuhnya negara",
+    "curse": "Kutukan sumber daya: uang minyak menyuburkan korupsi",
+    "dbl": "Pendapatan per orang jadi dua kali",
+    "eduw": "Generasi pertama dari sekolah yang lebih baik mulai bekerja",
+    "hi": "Menjadi negara berpendapatan tinggi",
+    "jl15": "1 dari 7 orang dewasa kini menganggur",
+    "life5": "Orang kini hidup 5 tahun lebih lama daripada tahun 2026",
+    "lifed": "Usia harapan hidup turun 5 tahun",
+    "pand": "Pandemi berakhir; toko dan sekolah buka lagi",
+    "pk": "Populasi memuncak di {n} jt",
+    "povh": "Kemiskinan turun separuh sejak 2026",
+    "rain": "Hujan kembali turun",
+    "robo2": "Jenis pekerjaan baru muncul di sekitar robot",
+    "t10": "10% terkaya kini memiliki separuh seluruh kekayaan",
+    "u": "Kerusuhan: demo besar memenuhi jalanan",
+    "wend": "Perang berakhir; masa pembangunan kembali dimulai"
+  },
+  "group": {
+    "0": "Uang",
+    "1": "Layanan",
+    "2": "Masyarakat",
+    "3": "Guncangan"
+  },
+  "info": {
+    "about": "Tentang angka-angkanya",
+    "aboutText": "Angka awal adalah perkiraan yang dibulatkan dari pertengahan 2020-an. Setelah itu negara berjalan dengan aturan sederhana: ini menunjukkan bagaimana hal-hal saling memengaruhi, bukan ramalan.",
+    "changed": "Apa yang berubah",
+    "curious": "Untuk yang penasaran",
+    "gini": "Gini kekayaan {gini} · 10% terkaya memiliki {pct}% kekayaan",
+    "life": "Orang hidup sekitar {n} tahun. {calm}",
+    "noChange": "Tanpa perubahan, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} juta orang. Keluarga biasa hidup dengan {usd} per bulan.",
+    "poor": "{pov} dari 100 orang miskin; {jobless} dari 100 orang dewasa menganggur."
+  },
+  "meta": {
+    "intro": "Sebuah jalan di negara itu, dan negara yang sama sebagai 100 orang dari termiskin hingga terkaya. Pilih negara, lalu buat perubahan: semuanya bertambah.",
+    "name": "Negara",
+    "sub": "Ekonomi & masyarakat"
+  },
+  "metric": {
+    "calm": {
+      "help": "Seberapa tenang dan saling percaya negara itu: 100 berarti damai, di bawah 30 berarti demo di jalanan.",
+      "label": "Kedamaian",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "Uang yang dimiliki keluarga biasa setiap bulan, setelah pajak dan bantuan.",
+      "label": "Pendapatan keluarga",
+      "unit": "$ per bulan"
+    },
+    "gap": {
+      "help": "Berapa kali lipat yang didapat 10 orang terkaya dibanding 10 orang termiskin.",
+      "label": "Kesenjangan kaya–miskin"
+    },
+    "jobless": {
+      "help": "Dari 100 orang dewasa yang ingin bekerja, berapa yang tidak dapat pekerjaan.",
+      "label": "Menganggur",
+      "unit": "dari 100"
+    },
+    "life": {
+      "help": "Berapa tahun bayi yang lahir sekarang bisa berharap hidup.",
+      "label": "Usia harapan hidup",
+      "unit": "tahun"
+    },
+    "pop": {
+      "help": "Berapa banyak orang yang tinggal di negara itu, dalam juta.",
+      "label": "Penduduk",
+      "unit": "juta"
+    },
+    "pov": {
+      "help": "Dari 100 orang, berapa yang hidup dengan kurang dari sekitar $250 per keluarga per bulan, atau jauh di bawah kebanyakan keluarga di sekitarnya.",
+      "label": "Miskin",
+      "unit": "dari 100"
+    }
+  },
+  "name": {
+    "ownFrom": "Negaramu sendiri (dari {from})",
+    "this": "Negara ini"
+  },
+  "speed": {
+    "0": "3 bln/dtk",
+    "1": "1 thn/dtk",
+    "2": "3 thn/dtk",
+    "3": "8 thn/dtk"
+  },
+  "stage": {
+    "band": {
+      "0": "MISKIN",
+      "1": "PAS-PASAN",
+      "2": "BERKECUKUPAN"
+    },
+    "clinic": "KLINIK +",
+    "fam": "keluarga biasa punya {usd} per bulan",
+    "jobless": "{n} dari 100 orang dewasa menganggur",
+    "kidsOut": "{n, plural, other {# anak}} tidak bersekolah",
+    "legend": {
+      "jobless": "MENGANGGUR",
+      "kid": "ANAK BERSEKOLAH",
+      "kidOut": "ANAK TIDAK BERSEKOLAH",
+      "poverty": "GARIS KEMISKINAN",
+      "retired": "PENSIUN",
+      "work": "BEKERJA"
+    },
+    "noChange": "(tanpa perubahan: {v})",
+    "poor": "{n, plural, other {# miskin}}",
+    "poorer": "← LEBIH MISKIN",
+    "richer": "LEBIH KAYA →",
+    "school": "SEKOLAH",
+    "title": "{year} · JIKA NEGARA INI 100 ORANG",
+    "titleShort": "{year} · SEBAGAI 100 ORANG",
+    "titleWide": "{year} · JIKA NEGARA INI 100 ORANG · TERMISKIN KE TERKAYA"
+  },
+  "story": {
+    "angrier": "Orang-orang lebih marah.",
+    "calmer": "Negara lebih tenang.",
+    "famLess": "Keluarga biasa punya {usd} lebih sedikit per bulan.",
+    "famMore": "Keluarga biasa punya {usd} lebih banyak per bulan.",
+    "gapBigger": "Kesenjangan antara kaya dan miskin lebih besar.",
+    "gapSmaller": "Kesenjangan antara kaya dan miskin lebih kecil.",
+    "head": "Dibanding negara yang sama tanpa perubahan, pada {year}:",
+    "jobFewer": "{n, plural, other {Dari 100 orang dewasa, # lebih sedikit yang menganggur.}}",
+    "jobMore": "{n, plural, other {Dari 100 orang dewasa, # lebih banyak yang menganggur.}}",
+    "longer": "Orang hidup {n} tahun lebih lama.",
+    "none": "Belum banyak bedanya. Beri waktu beberapa tahun.",
+    "popFewer": "{n} juta orang lebih sedikit tinggal di sini.",
+    "popMore": "{n} juta orang lebih banyak tinggal di sini.",
+    "povFewer": "{n, plural, other {Dari 100 orang, # lebih sedikit yang miskin.}}",
+    "povMore": "{n, plural, other {Dari 100 orang, # lebih banyak yang miskin.}}",
+    "shorter": "Orang hidup {n} tahun lebih singkat.",
+    "stopped": "Demo sudah berhenti."
+  },
+  "ui": {
+    "changesHint": "Semuanya bertambah. Besarnya ada di Atur. Matikan centangnya di atas untuk membandingkan.",
+    "pick": "Pilih negara"
+  },
+  "whatif": {
+    "aging": "Angka kelahiran anjlok",
+    "build": "Bangun jalan, rel, dan listrik",
+    "corr": "Potong korupsi separuhnya",
+    "drought": "Kemarau bertahun-tahun",
+    "edu": "Gandakan belanja pendidikan",
+    "health": "Kesehatan gratis untuk semua",
+    "minwage": "Naikkan upah minimum",
+    "oil": "Temukan cadangan minyak raksasa",
+    "open": "Buka perbatasan untuk migran",
+    "pandemic": "Pandemi melanda",
+    "robots": "Robot mengerjakan separuh kerja pabrik",
+    "taxcut": "Potong pajak untuk semua",
+    "taxrich": "Pajaki yang terkaya lebih banyak",
+    "trade": "Tutup perbatasan untuk perdagangan",
+    "ubi": "Pendapatan dasar universal",
+    "war": "Berperang"
+  }
+}

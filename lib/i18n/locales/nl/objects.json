@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ant": {
+    "fact": "Mieren kunnen 10 tot 50 keer hun eigen lichaamsgewicht dragen.",
+    "name": "Mier"
+  },
+  "bee": {
+    "fact": "Bezoekt tot 100 bloemen op één tocht.",
+    "name": "Honingbij"
+  },
+  "burj": {
+    "fact": "Het hoogste gebouw op aarde.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "In ongeveer 6 miljoen jaar uitgesleten door de Colorado-rivier.",
+    "name": "Grand Canyon"
+  },
+  "child": {
+    "fact": "Persoonlijkheid is ongeveer voor 40% erfelijk; de rest komt van ervaring en toeval.",
+    "name": "Kind, 5 jaar"
+  },
+  "country": {
+    "fact": "Economieën groeien, stagneren en storten in door beleid, grondstoffen en geluk.",
+    "name": "Een groot land"
+  },
+  "dna": {
+    "fact": "Afgewikkeld zou het DNA in één van je cellen ongeveer 2 meter lang zijn.",
+    "name": "DNA-dubbelhelix"
+  },
+  "earth": {
+    "fact": "De enige planeet waarvan we weten dat er leven is; hij warmt ongeveer 0,2 °C per tien jaar op.",
+    "name": "Aarde"
+  },
+  "ecoli": {
+    "fact": "In je darmen zitten ongeveer evenveel bacteriën als er cellen in je lichaam zijn.",
+    "name": "Bacterie (E. coli)"
+  },
+  "egg": {
+    "fact": "De grootste menselijke cel, net met het blote oog te zien.",
+    "name": "Menselijke eicel"
+  },
+  "eiffel": {
+    "fact": "Wordt in de zomerhitte ongeveer 15 cm hoger.",
+    "name": "Eiffeltoren"
+  },
+  "elephant": {
+    "fact": "Het grootste landdier, geleid door het oudste vrouwtje.",
+    "name": "Afrikaanse olifant"
+  },
+  "everest": {
+    "fact": "Rijst nog steeds ongeveer 4 mm per jaar.",
+    "name": "Mount Everest"
+  },
+  "flu": {
+    "fact": "Kan zich niet zelf voortplanten; het kaapt je cellen om zichzelf te kopiëren.",
+    "name": "Griepvirus"
+  },
+  "human": {
+    "fact": "Ongeveer 37 biljoen cellen, je hele leven lang vervangen en vernieuwd.",
+    "name": "Volwassen mens"
+  },
+  "hydrogen": {
+    "fact": "Bijna helemaal lege ruimte: de kern is 100.000× kleiner dan het atoom.",
+    "name": "Waterstofatoom"
+  },
+  "jump": {
+    "0": "Atoom",
+    "1": "Cel",
+    "2": "Jij",
+    "3": "Stad",
+    "4": "Aarde",
+    "5": "Zonnestelsel",
+    "6": "Melkweg",
+    "7": "Heelal"
+  },
+  "jupiter": {
+    "fact": "Er passen meer dan 1300 aardes in.",
+    "name": "Jupiter"
+  },
+  "liberty": {
+    "fact": "Haar koperen huid is maar 2,4 mm dik.",
+    "name": "Vrijheidsbeeld"
+  },
+  "lightyear": {
+    "fact": "De afstand die licht in een jaar aflegt: 9,46 biljoen km.",
+    "name": "Eén lichtjaar"
+  },
+  "lion": {
+    "fact": "De enige echt sociale kat.",
+    "name": "Leeuw"
+  },
+  "localgroup": {
+    "fact": "Meer dan 80 sterrenstelsels, bij elkaar gehouden door de zwaartekracht.",
+    "name": "Lokale Groep"
+  },
+  "meerkat": {
+    "fact": "Wachters houden de wacht en blaffen waarschuwingen terwijl de groep voedsel zoekt.",
+    "name": "Stokstaartje"
+  },
+  "milkyway": {
+    "fact": "100 tot 400 miljard sterren, en op weg om met Andromeda samen te smelten.",
+    "name": "Melkweg"
+  },
+  "moon": {
+    "fact": "Drijft langzaam van de aarde weg, 3,8 cm per jaar.",
+    "name": "Maan"
+  },
+  "mouse": {
+    "fact": "Zijn hart klopt ongeveer 600 keer per minuut.",
+    "name": "Muis"
+  },
+  "orbit": {
+    "fact": "Zonlicht doet er 8 minuten over om ons te bereiken.",
+    "name": "Baan van de aarde"
+  },
+  "orca": {
+    "fact": "Verschillende groepen spreken verschillende dialecten.",
+    "name": "Orka"
+  },
+  "orion": {
+    "fact": "Een kraamkamer van sterren op 1300 lichtjaar afstand.",
+    "name": "Orionnevel"
+  },
+  "proton": {
+    "fact": "Drie aan elkaar gebonden quarks; de kern van elk waterstofatoom.",
+    "name": "Proton"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, op 4,2 lichtjaar afstand.",
+    "name": "Naar de dichtstbijzijnde ster"
+  },
+  "rbc": {
+    "fact": "Je maakt er elke seconde ongeveer 2 miljoen van.",
+    "name": "Rode bloedcel"
+  },
+  "sand": {
+    "fact": "Er zijn meer sterren in het heelal dan zandkorrels op alle stranden van de aarde.",
+    "name": "Zandkorrel"
+  },
+  "solar": {
+    "fact": "Neptunus doet 165 jaar over één rondje.",
+    "name": "Zonnestelsel (tot Neptunus)"
+  },
+  "sun": {
+    "fact": "Bevat 99,86% van alle massa in het zonnestelsel.",
+    "name": "Zon"
+  },
+  "universe": {
+    "fact": "93 miljard lichtjaar breed: het verste licht dat ons kan hebben bereikt.",
+    "name": "Waarneembaar heelal"
+  },
+  "whale": {
+    "fact": "Het grootste dier dat ooit heeft geleefd.",
+    "name": "Blauwe vinvis"
+  },
+  "wolf": {
+    "fact": "Wolven die terugkeerden in Yellowstone veranderden de loop van de rivieren.",
+    "name": "Grijze wolf"
+  }
+}

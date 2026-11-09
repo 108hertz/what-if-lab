@@ -1,0 +1,85 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": { "label": "Yaş", "unit": "yaş" },
+    "disc": { "label": "Öz disiplin" },
+    "health": { "label": "Şu anki sağlık" },
+    "mood": { "label": "Şu anki iyi oluş" },
+    "soc": { "label": "Sosyallik" },
+    "stress": { "label": "Stres düzeyi" }
+  },
+  "dim": {
+    "career": "Kariyer ve beceriler",
+    "health": "Sağlık",
+    "social": "İlişkiler",
+    "well": "İyi oluş"
+  },
+  "ev": {
+    "again": "Yeniden başlıyor: {habit}",
+    "b6": "Altı ay oldu: istek ve tolerans bırakmayı zorlaştırıyor",
+    "d66": "66. gün: devam edenler için alışkanlık artık otomatik",
+    "half": "Versiyonların yarısı vazgeçti",
+    "high": "Güçlü düzeye ulaştı: {dim}",
+    "low": "Tehlike bölgesine düştü: {dim}",
+    "start": "Başlıyor: {habit}",
+    "w3": "3. hafta: motivasyon düşüşü, bırakmaların çoğu şimdi olur",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "çok içki içmeye başlamak",
+    "exercise": "her gün 30 dk egzersiz",
+    "isolate": "arkadaşlardan uzaklaşmak",
+    "learn": "günde 1 saat beceri öğrenmek",
+    "meditate": "günde 10 dk meditasyon",
+    "read": "günde 30 dk okumak",
+    "sleep": "düzenli saatlerde 8 saat uyku",
+    "smoke": "sigaraya başlamak",
+    "social": "sosyal medyayı bırakmak"
+  },
+  "meta": {
+    "intro": "Bir kişi, hayatının 100 paralel versiyonu. Yeni alışkanlıklar dene; kaçının sürdürdüğünü ve neyi değiştirdiğini gör.",
+    "name": "Karakter",
+    "sub": "100 paralel hayat"
+  },
+  "metric": {
+    "career": { "label": "Kariyer ve beceriler", "unit": "/100" },
+    "health": { "label": "Sağlık", "unit": "/100" },
+    "kept": { "label": "Hâlâ sürdüren", "unit": "%" },
+    "social": { "label": "İlişkiler", "unit": "/100" },
+    "well": { "label": "İyi oluş", "unit": "/100" }
+  },
+  "short": {
+    "drink": "Çok içmeye başla",
+    "exercise": "Egzersiz",
+    "isolate": "Arkadaşlardan uzaklaş",
+    "learn": "Beceri öğren",
+    "meditate": "Meditasyon",
+    "read": "Okuma",
+    "sleep": "Uyku",
+    "smoke": "Sigaraya başla",
+    "social": "Sosyal medyayı bırak"
+  },
+  "speed": {
+    "0": "1 hafta/sn",
+    "1": "1 ay/sn",
+    "2": "6 ay/sn",
+    "3": "2 yıl/sn"
+  },
+  "stage": {
+    "caption": "{what} · gülümseme = iyi oluş · parlaklık = sağlık",
+    "many": "{h, plural, one {# alışkanlık} other {# alışkanlık}} · 100 kişiden {n} tanesi en az birini sürdürüyor",
+    "none": "Henüz yeni alışkanlık yok",
+    "one": "100 kişiden {n} tanesi hâlâ sürdürüyor"
+  },
+  "whatif": {
+    "drink": "Çok içki içmeye başla",
+    "exercise": "Her gün 30 dk egzersiz yap",
+    "isolate": "Arkadaşlarından uzaklaş",
+    "learn": "Günde 1 saat beceri öğren",
+    "meditate": "Günde 10 dk meditasyon yap",
+    "read": "Günde 30 dk oku",
+    "sleep": "Düzenli saatlerde 8 saat uyu",
+    "smoke": "Sigaraya başla",
+    "social": "Sosyal medyayı bırak"
+  }
+}

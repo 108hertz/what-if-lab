@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Phóng to từ một proton đến cả vũ trụ quan sát được, mở một thế giới, thay đổi nó bằng các giả thuyết “nếu như” và so sánh tương lai của nó với thế giới vẫn giữ nguyên.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Thang đo",
+    "sub": "Proton → vũ trụ"
+  },
+  "intro": {
+    "worlds": "Thế giới",
+    "whatifs": "Nếu như…"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "body": "Trang này không có trong phòng thí nghiệm.",
+    "home": "Quay lại phòng thí nghiệm"
+  },
+  "unit": {
+    "gyr": "{n} tỷ năm",
+    "myr": "{n} triệu năm",
+    "kyr": "{n} nghìn năm",
+    "yr": "{n} năm"
+  },
+  "dur": {
+    "days": "{n} ngày",
+    "months": "{n} tháng",
+    "years": "{n} năm"
+  }
+}

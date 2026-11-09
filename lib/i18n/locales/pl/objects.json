@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ant": {
+    "fact": "Mrówki potrafią unieść od 10 do 50 razy więcej, niż same ważą.",
+    "name": "Mrówka"
+  },
+  "bee": {
+    "fact": "Podczas jednego lotu odwiedza nawet 100 kwiatów.",
+    "name": "Pszczoła miodna"
+  },
+  "burj": {
+    "fact": "Najwyższy budynek na Ziemi.",
+    "name": "Burdż Chalifa"
+  },
+  "canyon": {
+    "fact": "Wyżłobiony przez rzekę Kolorado w ciągu około 6 milionów lat.",
+    "name": "Wielki Kanion"
+  },
+  "child": {
+    "fact": "Osobowość jest dziedziczna mniej więcej w 40%; reszta to doświadczenia i przypadek.",
+    "name": "Dziecko, 5 lat"
+  },
+  "country": {
+    "fact": "Gospodarki rosną, stoją w miejscu i upadają przez politykę, zasoby i szczęście.",
+    "name": "Duży kraj"
+  },
+  "dna": {
+    "fact": "Rozwinięte DNA z jednej Twojej komórki miałoby około 2 metrów długości.",
+    "name": "Podwójna helisa DNA"
+  },
+  "earth": {
+    "fact": "Jedyna znana planeta z życiem, ociepla się o około 0,2 °C na dekadę.",
+    "name": "Ziemia"
+  },
+  "ecoli": {
+    "fact": "W Twoich jelitach jest mniej więcej tyle bakterii, ile komórek w Twoim ciele.",
+    "name": "Bakteria (E. coli)"
+  },
+  "egg": {
+    "fact": "Największa komórka człowieka, ledwo widoczna gołym okiem.",
+    "name": "Ludzka komórka jajowa"
+  },
+  "eiffel": {
+    "fact": "W letnim upale rośnie o około 15 cm.",
+    "name": "Wieża Eiffla"
+  },
+  "elephant": {
+    "fact": "Największe zwierzę lądowe; stadem kieruje najstarsza samica.",
+    "name": "Słoń afrykański"
+  },
+  "everest": {
+    "fact": "Wciąż rośnie o około 4 mm rocznie.",
+    "name": "Mount Everest"
+  },
+  "flu": {
+    "fact": "Nie rozmnaża się sam; przejmuje Twoje komórki, żeby się kopiować.",
+    "name": "Wirus grypy"
+  },
+  "human": {
+    "fact": "Około 37 bilionów komórek, wymienianych i odnawianych przez całe życie.",
+    "name": "Dorosły człowiek"
+  },
+  "hydrogen": {
+    "fact": "Prawie sama pusta przestrzeń: jądro jest 100 000× mniejsze od atomu.",
+    "name": "Atom wodoru"
+  },
+  "jump": {
+    "0": "Atom",
+    "1": "Komórka",
+    "2": "Ty",
+    "3": "Miasto",
+    "4": "Ziemia",
+    "5": "Układ Słoneczny",
+    "6": "Galaktyka",
+    "7": "Wszechświat"
+  },
+  "jupiter": {
+    "fact": "Zmieściłoby się w nim ponad 1300 Ziem.",
+    "name": "Jowisz"
+  },
+  "liberty": {
+    "fact": "Jej miedziana powłoka ma tylko 2,4 mm grubości.",
+    "name": "Statua Wolności"
+  },
+  "lightyear": {
+    "fact": "Odległość, jaką światło pokonuje w rok: 9,46 biliona km.",
+    "name": "Jeden rok świetlny"
+  },
+  "lion": {
+    "fact": "Jedyny naprawdę stadny kot.",
+    "name": "Lew"
+  },
+  "localgroup": {
+    "fact": "Ponad 80 galaktyk związanych grawitacją.",
+    "name": "Grupa Lokalna"
+  },
+  "meerkat": {
+    "fact": "Wartownicy stoją na straży i ostrzegają szczekaniem, gdy reszta stada szuka jedzenia.",
+    "name": "Surykatka"
+  },
+  "milkyway": {
+    "fact": "100–400 miliardów gwiazd, w drodze do zderzenia z Andromedą.",
+    "name": "Droga Mleczna"
+  },
+  "moon": {
+    "fact": "Powoli oddala się od Ziemi o 3,8 cm rocznie.",
+    "name": "Księżyc"
+  },
+  "mouse": {
+    "fact": "Jej serce bije około 600 razy na minutę.",
+    "name": "Mysz"
+  },
+  "orbit": {
+    "fact": "Światło Słońca dociera do nas w 8 minut.",
+    "name": "Orbita Ziemi"
+  },
+  "orca": {
+    "fact": "Różne stada mówią różnymi dialektami.",
+    "name": "Orka"
+  },
+  "orion": {
+    "fact": "Żłobek gwiazd oddalony o 1300 lat świetlnych.",
+    "name": "Mgławica Oriona"
+  },
+  "proton": {
+    "fact": "Trzy związane ze sobą kwarki; jądro każdego atomu wodoru.",
+    "name": "Proton"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, 4,2 roku świetlnego stąd.",
+    "name": "Do najbliższej gwiazdy"
+  },
+  "rbc": {
+    "fact": "Wytwarzasz ich około 2 milionów na sekundę.",
+    "name": "Czerwona krwinka"
+  },
+  "sand": {
+    "fact": "We Wszechświecie jest więcej gwiazd niż ziaren piasku na wszystkich plażach Ziemi.",
+    "name": "Ziarnko piasku"
+  },
+  "solar": {
+    "fact": "Neptun okrąża Słońce raz na 165 lat.",
+    "name": "Układ Słoneczny (do Neptuna)"
+  },
+  "sun": {
+    "fact": "Skupia 99,86% całej masy Układu Słonecznego.",
+    "name": "Słońce"
+  },
+  "universe": {
+    "fact": "93 miliardy lat świetlnych średnicy: najdalsze światło, które mogło do nas dotrzeć.",
+    "name": "Obserwowalny Wszechświat"
+  },
+  "whale": {
+    "fact": "Największe zwierzę, jakie kiedykolwiek żyło.",
+    "name": "Płetwal błękitny"
+  },
+  "wolf": {
+    "fact": "Wilki, które wróciły do Yellowstone, zmieniły bieg tamtejszych rzek.",
+    "name": "Wilk szary"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "这个版本没有设置账户。这里的一切都免费。",
+    "loading": "正在检查你的账户……",
+    "signedOut": "不用账户也能免费使用实验室。登录后可在任何设备上使用 Premium。",
+    "free": "免费方案。每个世界、每个“如果”都可以用。",
+    "premium": "Premium 已开启：无广告，可导出视频和幻灯片。",
+    "error": "账户服务没有响应。",
+    "keepPremium": "Premium 暂时保持开启。"
+  },
+  "menu": {
+    "account": "账户",
+    "signIn": "登录",
+    "createAccount": "创建账户",
+    "goPremium": "升级 Premium",
+    "price": "每年 $15",
+    "manage": "管理订阅",
+    "settings": "账户设置",
+    "signOut": "退出登录",
+    "retry": "重试",
+    "yourAccount": "你的实验室账户",
+    "premium": "Premium",
+    "free": "免费",
+    "plan": "{plan}方案",
+    "buttonLabel": "{label}，{plan}方案",
+    "devPremium": "模拟 Premium",
+    "devOnly": "仅限开发版"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "无广告",
+        "text": "每个世界里的所有广告位都会消失。"
+      },
+      "phone": {
+        "name": "手机视频",
+        "text": "1080 × 1920 的“如果”短片，适合抖音、快手、Shorts 和 Reels。"
+      },
+      "wide": {
+        "name": "YouTube 视频",
+        "text": "1920 × 1080 的短片，两个世界并排展示。"
+      },
+      "slides": {
+        "name": "幻灯片",
+        "text": "一份 PDF 演示稿：初始设置、“如果”、关键时刻和结果。"
+      }
+    },
+    "lead": {
+      "export": "视频和幻灯片属于 Premium 功能。",
+      "ads": "Premium 会去掉广告。",
+      "menu": "支持实验室，并获得分享发现的工具。"
+    },
+    "createContinue": "创建账户并继续",
+    "haveAccount": "我已有账户",
+    "noteSignedOut": "先创建账户，这样 Premium 在每台设备上都能用。然后就在这里打开付款页面。",
+    "openingCheckout": "正在打开付款页面……",
+    "continueCheckout": "继续付款",
+    "noteFree": "已登录为{who}。付款由{provider}和 Stripe 处理；实验室不会看到你的银行卡信息。",
+    "you": "你",
+    "ourProvider": "我们的服务商",
+    "back": "回到实验室",
+    "manage": "管理订阅",
+    "checking": "正在检查你的账户……",
+    "retry": "重试",
+    "noteDev": "这个版本没有设置账户。想试用 Premium，请在账户菜单中打开“模拟 Premium”。",
+    "noteOff": "这个版本的实验室还没有开售 Premium。",
+    "titleOn": "Premium 已开启",
+    "title": "Premium",
+    "amount": "$15",
+    "per": "每年 · 随时可取消",
+    "thanks": "谢谢你！所有世界的广告都已消失，导出功能已解锁。",
+    "free": "无论有没有 Premium，每个世界、每个“如果”都永远免费。"
+  },
+  "errors": {
+    "noCheckout": "这个版本无法付款。请稍后再试。",
+    "notOnSale": "Premium 还没有开售。请稍后再试。",
+    "checkoutFailed": "付款页面打不开。请稍等片刻再试。",
+    "offline": "你已离线。重新联网后账户功能会恢复。",
+    "noAnswer": "账户服务没有响应。请检查网络后重试。"
+  },
+  "yourAccount": "你的账户"
+}

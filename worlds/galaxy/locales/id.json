@@ -1,0 +1,141 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": {
+      "label": "Bidikan meleset",
+      "unit": "rb tc"
+    },
+    "bhm": {
+      "label": "Massa lubang hitam",
+      "unit": "× Bima Sakti"
+    },
+    "count": {
+      "label": "Galaksi yang jatuh masuk"
+    },
+    "dm": {
+      "label": "Materi gelap",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Sisa gravitasi",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Kecepatan melintas",
+      "unit": "km/dtk"
+    },
+    "h": {
+      "starting-world": "Dunia awal",
+      "what-if-settings": "Pengaturan what-if"
+    },
+    "mass": {
+      "label": "Massa Andromeda",
+      "unit": "× Bima Sakti"
+    },
+    "neigh": {
+      "label": "Tetangga di awal",
+      "opt": {
+        "m33": "Triangulum",
+        "m33lmc": "Triangulum + LMC",
+        "none": "Tidak ada"
+      }
+    },
+    "shape": {
+      "label": "Bentuk Andromeda",
+      "opt": {
+        "elliptical": "Eliptis",
+        "spiral": "Spiral"
+      }
+    },
+    "size": {
+      "label": "Ukurannya",
+      "unit": "× Bima Sakti"
+    },
+    "speed": {
+      "label": "Kecepatan mendekat",
+      "unit": "km/dtk"
+    },
+    "spin": {
+      "label": "Putaran Andromeda",
+      "opt": {
+        "against": "Berlawanan dengan kita",
+        "same": "Searah dengan kita"
+      }
+    },
+    "stars": {
+      "label": "Bintang per galaksi"
+    }
+  },
+  "ev": {
+    "bhBig": "Lubang hitam {x}× seberat Bima Sakti muncul di pusatnya",
+    "bhSmall": "Lubang hitam seberat {pct}% massa Bima Sakti muncul di pusatnya",
+    "bullet": "Sebuah galaksi melesat menembus lurus dengan {speed} km/dtk",
+    "closing": "Andromeda mendekat dengan sekitar {speed} km/dtk",
+    "flipmw": "Setiap bintang Bima Sakti membalik arah orbitnya",
+    "freeze": "Setiap bintang Bima Sakti berhenti mengorbit",
+    "headon": "Andromeda berbelok lurus ke pusat kita",
+    "lmc": "Awan Magellan Besar mengitari Bima Sakti",
+    "merge": "Inti-intinya bergabung: satu galaksi eliptis raksasa, “Milkomeda”",
+    "miss": "Andromeda didorong ke jalur lewat",
+    "nodmAll": "Materi gelap lenyap: gravitasi turun ke {left}%, bintang tiba-tiba terlalu cepat",
+    "nodmSome": "Sebagian materi gelap lenyap: gravitasi turun ke {left}%, bintang tiba-tiba terlalu cepat",
+    "pass1": "Lintasan pertama: kedua galaksi saling menembus",
+    "punch": "Galaksi kerdil menembus pusat kita",
+    "reverse": "Andromeda berbalik dan menjauh",
+    "ring": "Cakram kita memantul jadi cincin bintang yang mengembang",
+    "stop": "Andromeda berhenti total, lalu mulai jatuh",
+    "swallowed": "Satu galaksi lagi tertelan",
+    "swarm": "{n, plural, =1 {Satu galaksi lagi jatuh masuk} other {# galaksi lagi jatuh masuk}}",
+    "tails": "Keduanya berayun menjauh, menyeret ekor pasang surut bintang yang panjang",
+    "third": "Galaksi ketiga (seperti Triangulum) jatuh masuk",
+    "triangulum": "Triangulum hanyut masuk dari samping"
+  },
+  "meta": {
+    "intro": "Bima Sakti dan Andromeda, di jalur tabrakan aslinya, dipercepat. Setiap titik adalah bintang.",
+    "name": "Galaksi",
+    "sub": "Tabrakan"
+  },
+  "metric": {
+    "disc": {
+      "label": "Bintang di cakram",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Galaksi tersisa"
+    },
+    "sep": {
+      "label": "Jarak pisah",
+      "unit": "rb tc"
+    },
+    "thrown": {
+      "label": "Bintang terlempar",
+      "unit": "%"
+    }
+  },
+  "speed": {
+    "0": "5 jt thn/dtk",
+    "1": "10 jt thn/dtk",
+    "2": "25 jt thn/dtk",
+    "3": "50 jt thn/dtk",
+    "4": "150 jt thn/dtk",
+    "5": "400 jt thn/dtk",
+    "6": "1 M thn/dtk"
+  },
+  "stage": {
+    "scale": "{n} tahun cahaya"
+  },
+  "whatif": {
+    "bh": "Lubang hitam seberat galaksi muncul di pusat kita",
+    "bullet": "Sebuah galaksi melesat menembus",
+    "flipmw": "Bima Sakti berputar ke arah sebaliknya",
+    "freeze": "Bintang Bima Sakti berhenti mengorbit",
+    "headon": "Arahkan Andromeda tepat ke pusat",
+    "miss": "Andromeda melintas lewat",
+    "nodm": "Materi gelap lenyap",
+    "reverse": "Andromeda berbalik arah",
+    "ring": "Galaksi kecil menembus pusat kita",
+    "stop": "Andromeda berhenti total",
+    "swarm": "Lebih banyak galaksi jatuh masuk",
+    "third": "Galaksi ketiga bergabung"
+  }
+}

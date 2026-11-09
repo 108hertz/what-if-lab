@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "양성자에서 관측 가능한 우주까지 확대·축소해 보고, 세계를 열어 '만약'으로 바꾼 뒤 그대로 둔 세계와 미래를 비교해 보세요.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "크기",
+    "sub": "양성자 → 우주"
+  },
+  "intro": {
+    "worlds": "세계",
+    "whatifs": "만약에…"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없어요",
+    "body": "이 페이지는 실험실에 없어요.",
+    "home": "실험실로 돌아가기"
+  },
+  "unit": {
+    "gyr": "{n}십억 년",
+    "myr": "{n}백만 년",
+    "kyr": "{n}천 년",
+    "yr": "{n}년"
+  },
+  "dur": {
+    "days": "{n}일",
+    "months": "{n}개월",
+    "years": "{n}년"
+  }
+}

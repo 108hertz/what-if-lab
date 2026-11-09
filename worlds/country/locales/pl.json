@@ -1,0 +1,330 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "calm": {
+    "0": "Ulice wypełniają protesty.",
+    "1": "Wielu ludzi jest wściekłych; protesty wiszą w powietrzu.",
+    "2": "Życie jest raczej spokojne, choć jest trochę złości na władzę.",
+    "3": "Życie jest spokojne, a ludzie zwykle sobie ufają."
+  },
+  "ctl": {
+    "corr": {
+      "label": "Korupcja",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Szkoły",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Dochód na osobę",
+      "unit": "tys. $ rocznie"
+    },
+    "gov": {
+      "label": "Władza",
+      "opt": {
+        "auto": "Jeden władca lub partia",
+        "dem": "Demokracja",
+        "hybrid": "Mieszana: wybory, mało wolności"
+      }
+    },
+    "h": {
+      "money": "Pieniądze",
+      "people": "Ludzie",
+      "policy-sizes-used-by-your-next-click": "Skala polityk (dla następnego kliknięcia)",
+      "public-life": "Życie publiczne"
+    },
+    "jobless": {
+      "label": "Bez pracy",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Opieka zdrowotna: długość życia",
+      "unit": "lat"
+    },
+    "pop": {
+      "label": "Ludność",
+      "unit": "mln"
+    },
+    "popg": {
+      "label": "Przyrost ludności",
+      "unit": "% rocznie"
+    },
+    "preset": {
+      "group": {
+        "0": "Europa",
+        "1": "Azja",
+        "2": "Bliski Wschód i Kaukaz",
+        "3": "Afryka",
+        "4": "Ameryki",
+        "5": "Oceania",
+        "6": "Własny"
+      },
+      "label": "Kraj",
+      "opt": {
+        "am": "Armenia",
+        "ar": "Argentyna",
+        "au": "Australia",
+        "bd": "Bangladesz",
+        "br": "Brazylia",
+        "ca": "Kanada",
+        "ch": "Szwajcaria",
+        "cl": "Chile",
+        "cn": "Chiny",
+        "co": "Kolumbia",
+        "custom": "Twój własny kraj",
+        "de": "Niemcy",
+        "dk": "Dania",
+        "eg": "Egipt",
+        "es": "Hiszpania",
+        "et": "Etiopia",
+        "fr": "Francja",
+        "gb": "Wielka Brytania",
+        "gr": "Grecja",
+        "id": "Indonezja",
+        "il": "Izrael",
+        "in": "Indie",
+        "ir": "Iran",
+        "it": "Włochy",
+        "jp": "Japonia",
+        "ke": "Kenia",
+        "kr": "Korea Południowa",
+        "mx": "Meksyk",
+        "ng": "Nigeria",
+        "nl": "Holandia",
+        "no": "Norwegia",
+        "ph": "Filipiny",
+        "pk": "Pakistan",
+        "pl": "Polska",
+        "sa": "Arabia Saudyjska",
+        "se": "Szwecja",
+        "th": "Tajlandia",
+        "tr": "Turcja",
+        "ua": "Ukraina",
+        "us": "Stany Zjednoczone",
+        "vn": "Wietnam",
+        "za": "Republika Południowej Afryki"
+      }
+    },
+    "res": {
+      "label": "Surowce naturalne (ropa, metale)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Obniżka podatków",
+      "unit": "pkt"
+    },
+    "s_open": {
+      "label": "Nowe gospodarstwa domowe"
+    },
+    "s_rich": {
+      "label": "Dodatkowy podatek dla najbogatszych",
+      "unit": "pkt"
+    },
+    "s_ubi": {
+      "label": "Wysokość dochodu podstawowego",
+      "unit": "% średniego dochodu"
+    },
+    "s_wage": {
+      "label": "Podwyżka płacy minimalnej",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Długość wojny",
+      "unit": "lat"
+    },
+    "tax": {
+      "label": "Podatki",
+      "unit": "% dochodu"
+    }
+  },
+  "diff": {
+    "calmer": "{n, plural, one {spokojniej o # punkt} few {spokojniej o # punkty} many {spokojniej o # punktów} other {spokojniej o # punktu}}",
+    "famLess": "o {usd} mniej miesięcznie",
+    "famMore": "o {usd} więcej miesięcznie",
+    "gapBigger": "przepaść jest {n}× większa",
+    "gapSmaller": "przepaść jest {n}× mniejsza",
+    "jobFewer": "{n, plural, other {bez pracy: o # na 100 dorosłych mniej}}",
+    "jobMore": "{n, plural, other {bez pracy: o # na 100 dorosłych więcej}}",
+    "lessCalm": "{n, plural, one {mniej spokojnie o # punkt} few {mniej spokojnie o # punkty} many {mniej spokojnie o # punktów} other {mniej spokojnie o # punktu}}",
+    "longer": "życie dłuższe o {n} lat",
+    "popFewer": "o {n} mln ludzi mniej",
+    "popMore": "o {n} mln ludzi więcej",
+    "povFewer": "{n, plural, other {w biedzie: o # na 100 mniej}}",
+    "povMore": "{n, plural, other {w biedzie: o # na 100 więcej}}",
+    "shorter": "życie krótsze o {n} lat"
+  },
+  "ev": {
+    "apply": {
+      "aging": "Liczba urodzeń gwałtownie spada",
+      "build": "Rusza budowa dróg, kolei i linii energetycznych",
+      "corr": "Rusza walka z korupcją",
+      "drought": "Zaczyna się długa susza",
+      "edu": "Budżet edukacji się podwaja",
+      "health": "Opieka zdrowotna staje się darmowa dla wszystkich",
+      "minwage": "Płaca minimalna rośnie",
+      "oil": "Odkryto ropę: boom eksportowy",
+      "open": "Granice otwarte: przybywa {n} nowych gospodarstw domowych",
+      "pandemic": "Uderza pandemia: szkoły i sklepy zamknięte",
+      "robots": "Do fabryk wchodzą roboty",
+      "taxcut": "Podatki obniżone dla wszystkich",
+      "taxrich": "Najbogatsi płacą wyższe podatki",
+      "trade": "Granice zamknięte dla handlu: import drożeje",
+      "ubi": "Startuje dochód podstawowy: bieda spada, podatki rosną",
+      "war": "Wybucha wojna: gospodarka szybko się kurczy"
+    },
+    "built": "Otwarto nowe drogi, koleje i linie energetyczne",
+    "c": "Wysokie ryzyko zamachu stanu lub upadku państwa",
+    "curse": "Klątwa surowcowa: pieniądze z ropy napędzają korupcję",
+    "dbl": "Dochód na osobę się podwaja",
+    "eduw": "Pierwsze pokolenie z lepszych szkół idzie do pracy",
+    "hi": "Kraj staje się krajem o wysokim dochodzie",
+    "jl15": "Co siódmy dorosły jest teraz bez pracy",
+    "life5": "Ludzie żyją teraz o 5 lat dłużej niż w 2026",
+    "lifed": "Długość życia spada o 5 lat",
+    "pand": "Pandemia się kończy; sklepy i szkoły znów otwarte",
+    "pk": "Liczba ludności osiąga szczyt: {n} mln",
+    "povh": "Bieda zmalała o połowę od 2026",
+    "rain": "Wracają deszcze",
+    "robo2": "Wokół robotów pojawiają się nowe rodzaje pracy",
+    "t10": "Najbogatsze 10% ma teraz połowę całego majątku",
+    "u": "Niepokoje: masowe protesty na ulicach",
+    "wend": "Wojna się kończy; zaczyna się boom odbudowy"
+  },
+  "group": {
+    "0": "Pieniądze",
+    "1": "Usługi",
+    "2": "Społeczeństwo",
+    "3": "Wstrząsy"
+  },
+  "info": {
+    "about": "O liczbach",
+    "aboutText": "Dane startowe to zaokrąglone, przybliżone wartości z połowy lat 2020. Potem kraj działa według prostych reguł: pokazuje, jak rzeczy na siebie wpływają, a nie prognozę.",
+    "changed": "Co się zmieniło",
+    "curious": "Dla ciekawych",
+    "gini": "Gini majątku {gini} · najbogatsze 10% ma {pct}% majątku",
+    "life": "Ludzie żyją około {n} lat. {calm}",
+    "noChange": "Bez zmian, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} mln ludzi. Typowa rodzina żyje za {usd} miesięcznie.",
+    "poor": "{pov} na 100 osób żyje w biedzie; {jobless} na 100 dorosłych nie ma pracy."
+  },
+  "meta": {
+    "intro": "Ulica w kraju i ten sam kraj jako 100 osób, od najbiedniejszej do najbogatszej. Wybierz kraj i wprowadzaj zmiany: sumują się.",
+    "name": "Kraje",
+    "sub": "Gospodarka i społeczeństwo"
+  },
+  "metric": {
+    "calm": {
+      "help": "Jak spokojny i ufny jest kraj: 100 to pokój, poniżej 30 to protesty na ulicach.",
+      "label": "Spokój",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "Pieniądze, które typowa rodzina ma co miesiąc, po podatkach i pomocy.",
+      "label": "Dochód rodziny",
+      "unit": "$ miesięcznie"
+    },
+    "gap": {
+      "help": "Ile razy więcej dostaje 10 najbogatszych osób niż 10 najbiedniejszych.",
+      "label": "Przepaść bogaci–biedni"
+    },
+    "jobless": {
+      "help": "Ilu na 100 dorosłych, którzy chcą pracować, nie może znaleźć pracy.",
+      "label": "Bez pracy",
+      "unit": "na 100"
+    },
+    "life": {
+      "help": "Ile lat może się spodziewać przeżyć dziecko urodzone teraz.",
+      "label": "Długość życia",
+      "unit": "lat"
+    },
+    "pop": {
+      "help": "Ilu ludzi mieszka w kraju, w milionach.",
+      "label": "Ludzie",
+      "unit": "mln"
+    },
+    "pov": {
+      "help": "Ile osób na 100 żyje za mniej niż około 250 $ na rodzinę miesięcznie albo za dużo mniej niż większość rodzin wokół.",
+      "label": "W biedzie",
+      "unit": "na 100"
+    }
+  },
+  "name": {
+    "ownFrom": "Twój własny kraj (na bazie: {from})",
+    "this": "Ten kraj"
+  },
+  "speed": {
+    "0": "3 mies./s",
+    "1": "1 rok/s",
+    "2": "3 lata/s",
+    "3": "8 lat/s"
+  },
+  "stage": {
+    "band": {
+      "0": "BIEDA",
+      "1": "WYSTARCZA",
+      "2": "DOSTATEK"
+    },
+    "clinic": "PRZYCHODNIA +",
+    "fam": "typowa rodzina ma {usd} miesięcznie",
+    "jobless": "{n} na 100 dorosłych bez pracy",
+    "kidsOut": "{n, plural, one {# dziecko} few {# dzieci} many {# dzieci} other {# dziecka}} poza szkołą",
+    "legend": {
+      "jobless": "BEZ PRACY",
+      "kid": "DZIECKO W SZKOLE",
+      "kidOut": "DZIECKO POZA SZKOŁĄ",
+      "poverty": "GRANICA UBÓSTWA",
+      "retired": "NA EMERYTURZE",
+      "work": "PRACUJE"
+    },
+    "noChange": "(bez zmian: {v})",
+    "poor": "{n, plural, other {# w biedzie}}",
+    "poorer": "← BIEDNIEJ",
+    "richer": "BOGACIEJ →",
+    "school": "SZKOŁA",
+    "title": "{year} · GDYBY TEN KRAJ BYŁ 100 OSOBAMI",
+    "titleShort": "{year} · JAKO 100 OSÓB",
+    "titleWide": "{year} · GDYBY TEN KRAJ BYŁ 100 OSOBAMI · OD NAJBIEDNIEJSZYCH DO NAJBOGATSZYCH"
+  },
+  "story": {
+    "angrier": "Ludzie są bardziej rozgniewani.",
+    "calmer": "W kraju jest spokojniej.",
+    "famLess": "Typowa rodzina ma o {usd} mniej miesięcznie.",
+    "famMore": "Typowa rodzina ma o {usd} więcej miesięcznie.",
+    "gapBigger": "Przepaść między bogatymi a biednymi jest większa.",
+    "gapSmaller": "Przepaść między bogatymi a biednymi jest mniejsza.",
+    "head": "W porównaniu z tym samym krajem bez zmian, w {year}:",
+    "jobFewer": "{n, plural, other {Bez pracy jest o # na 100 dorosłych mniej.}}",
+    "jobMore": "{n, plural, other {Bez pracy jest o # na 100 dorosłych więcej.}}",
+    "longer": "Ludzie żyją o {n} lat dłużej.",
+    "none": "Na razie niewiele się różni. Daj temu kilka lat.",
+    "popFewer": "Mieszka tu o {n} mln ludzi mniej.",
+    "popMore": "Mieszka tu o {n} mln ludzi więcej.",
+    "povFewer": "{n, plural, other {W biedzie żyje o # na 100 osób mniej.}}",
+    "povMore": "{n, plural, other {W biedzie żyje o # na 100 osób więcej.}}",
+    "shorter": "Ludzie żyją o {n} lat krócej.",
+    "stopped": "Protesty ustały."
+  },
+  "ui": {
+    "changesHint": "Sumują się. Skalę ustawisz w „Ustaw”. Odznacz je powyżej, aby porównać.",
+    "pick": "Wybierz kraj"
+  },
+  "whatif": {
+    "aging": "Liczba urodzeń gwałtownie spada",
+    "build": "Zbuduj drogi, kolej i sieć energetyczną",
+    "corr": "Zmniejsz korupcję o połowę",
+    "drought": "Lata suszy",
+    "edu": "Podwój wydatki na edukację",
+    "health": "Darmowa opieka zdrowotna dla wszystkich",
+    "minwage": "Podnieś płacę minimalną",
+    "oil": "Odkryj ogromne złoża ropy",
+    "open": "Otwórz granice dla migrantów",
+    "pandemic": "Uderza pandemia",
+    "robots": "Roboty wykonują połowę pracy w fabrykach",
+    "taxcut": "Obniż podatki wszystkim",
+    "taxrich": "Opodatkuj najbogatszych bardziej",
+    "trade": "Zamknij granice dla handlu",
+    "ubi": "Powszechny dochód podstawowy",
+    "war": "Prowadź wojnę"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ant": {
+    "fact": "Semut bisa mengangkat 10–50 kali berat badannya sendiri.",
+    "name": "Semut"
+  },
+  "bee": {
+    "fact": "Mengunjungi hingga 100 bunga dalam sekali terbang.",
+    "name": "Lebah madu"
+  },
+  "burj": {
+    "fact": "Gedung tertinggi di Bumi.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "Dipahat oleh Sungai Colorado selama sekitar 6 juta tahun.",
+    "name": "Grand Canyon"
+  },
+  "child": {
+    "fact": "Kepribadian kira-kira 40% diwariskan; sisanya dari pengalaman dan kebetulan.",
+    "name": "Anak, usia 5"
+  },
+  "country": {
+    "fact": "Ekonomi tumbuh, macet, dan runtuh karena kebijakan, sumber daya, dan keberuntungan.",
+    "name": "Sebuah negara besar"
+  },
+  "dna": {
+    "fact": "Jika diurai, DNA dalam satu selmu panjangnya sekitar 2 meter.",
+    "name": "Heliks ganda DNA"
+  },
+  "earth": {
+    "fact": "Satu-satunya planet yang diketahui punya kehidupan, menghangat sekitar 0,2 °C per dekade.",
+    "name": "Bumi"
+  },
+  "ecoli": {
+    "fact": "Ususmu menyimpan bakteri kira-kira sebanyak jumlah sel tubuhmu.",
+    "name": "Bakteri (E. coli)"
+  },
+  "egg": {
+    "fact": "Sel manusia terbesar, nyaris terlihat dengan mata telanjang.",
+    "name": "Sel telur manusia"
+  },
+  "eiffel": {
+    "fact": "Bertambah tinggi sekitar 15 cm saat panas musim panas.",
+    "name": "Menara Eiffel"
+  },
+  "elephant": {
+    "fact": "Hewan darat terbesar, dipimpin oleh betina tertua.",
+    "name": "Gajah Afrika"
+  },
+  "everest": {
+    "fact": "Masih naik sekitar 4 mm per tahun.",
+    "name": "Gunung Everest"
+  },
+  "flu": {
+    "fact": "Tak bisa berkembang biak sendiri; ia membajak selmu untuk menyalin dirinya.",
+    "name": "Virus flu"
+  },
+  "human": {
+    "fact": "Sekitar 37 triliun sel, terus diganti dan diperbarui sepanjang hidup.",
+    "name": "Manusia dewasa"
+  },
+  "hydrogen": {
+    "fact": "Hampir seluruhnya ruang kosong: intinya 100.000× lebih kecil dari atomnya.",
+    "name": "Atom hidrogen"
+  },
+  "jump": {
+    "0": "Atom",
+    "1": "Sel",
+    "2": "Kamu",
+    "3": "Kota",
+    "4": "Bumi",
+    "5": "Tata surya",
+    "6": "Galaksi",
+    "7": "Alam semesta"
+  },
+  "jupiter": {
+    "fact": "Lebih dari 1.300 Bumi bisa muat di dalamnya.",
+    "name": "Jupiter"
+  },
+  "liberty": {
+    "fact": "Kulit tembaganya hanya setebal 2,4 mm.",
+    "name": "Patung Liberty"
+  },
+  "lightyear": {
+    "fact": "Jarak yang ditempuh cahaya dalam setahun: 9,46 triliun km.",
+    "name": "Satu tahun cahaya"
+  },
+  "lion": {
+    "fact": "Satu-satunya kucing yang benar-benar hidup berkelompok.",
+    "name": "Singa"
+  },
+  "localgroup": {
+    "fact": "Lebih dari 80 galaksi yang terikat oleh gravitasi.",
+    "name": "Grup Lokal"
+  },
+  "meerkat": {
+    "fact": "Penjaga berdiri berjaga dan menyalak memberi peringatan saat kawanan mencari makan.",
+    "name": "Meerkat"
+  },
+  "milkyway": {
+    "fact": "100–400 miliar bintang, dan sedang menuju tabrakan dengan Andromeda.",
+    "name": "Bima Sakti"
+  },
+  "moon": {
+    "fact": "Perlahan menjauh dari Bumi 3,8 cm per tahun.",
+    "name": "Bulan"
+  },
+  "mouse": {
+    "fact": "Jantungnya berdetak sekitar 600 kali per menit.",
+    "name": "Tikus"
+  },
+  "orbit": {
+    "fact": "Cahaya Matahari butuh 8 menit untuk sampai ke kita.",
+    "name": "Orbit Bumi"
+  },
+  "orca": {
+    "fact": "Kelompok yang berbeda berbicara dengan dialek yang berbeda.",
+    "name": "Orca"
+  },
+  "orion": {
+    "fact": "Tempat lahir bintang sejauh 1.300 tahun cahaya.",
+    "name": "Nebula Orion"
+  },
+  "proton": {
+    "fact": "Tiga kuark yang terikat; inti setiap atom hidrogen.",
+    "name": "Proton"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, sejauh 4,2 tahun cahaya.",
+    "name": "Ke bintang terdekat"
+  },
+  "rbc": {
+    "fact": "Tubuhmu membuat sekitar 2 juta sel ini setiap detik.",
+    "name": "Sel darah merah"
+  },
+  "sand": {
+    "fact": "Bintang di alam semesta lebih banyak daripada butir pasir di semua pantai Bumi.",
+    "name": "Butir pasir"
+  },
+  "solar": {
+    "fact": "Neptunus butuh 165 tahun untuk sekali mengelilingi Matahari.",
+    "name": "Tata surya (hingga Neptunus)"
+  },
+  "sun": {
+    "fact": "Menyimpan 99,86% dari seluruh massa Tata Surya.",
+    "name": "Matahari"
+  },
+  "universe": {
+    "fact": "Lebarnya 93 miliar tahun cahaya, cahaya terjauh yang bisa sampai ke kita.",
+    "name": "Alam semesta teramati"
+  },
+  "whale": {
+    "fact": "Hewan terbesar yang pernah hidup.",
+    "name": "Paus biru"
+  },
+  "wolf": {
+    "fact": "Kembalinya serigala ke Yellowstone mengubah aliran sungai-sungainya.",
+    "name": "Serigala abu-abu"
+  }
+}

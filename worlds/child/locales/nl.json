@@ -1,0 +1,1734 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "beh": {
+    "b_calm": {
+      "grown": "rustig blijven voor een grote dag",
+      "kid": "rustig blijven voor een toets"
+    },
+    "b_food": {
+      "grown": "iets eten wat ze nog nooit gehad hebben",
+      "kid": "iets eten wat ze nog nooit gehad hebben"
+    },
+    "b_hand": {
+      "grown": "iets zeggen in een groep",
+      "kid": "hun vinger opsteken in de klas"
+    },
+    "b_help": {
+      "grown": "een nieuwe buur helpen",
+      "kid": "een nieuw kind op school helpen"
+    },
+    "b_proj": {
+      "grown": "een lang project afmaken",
+      "kid": "een lang schoolproject afmaken"
+    },
+    "b_tidy": {
+      "grown": "hun huis netjes houden",
+      "kid": "hun kamer netjes houden"
+    }
+  },
+  "ch": {
+    "authoritative": {
+      "cap": "ouders worden warm en duidelijk",
+      "past": "de ouders warm en duidelijk werden",
+      "q": "Wat als de ouders warm en duidelijk werden?"
+    },
+    "bestfriend": {
+      "cap": "vindt een beste maatje",
+      "past": "ze een beste maatje vonden",
+      "q": "Wat als ze een beste maatje vonden?"
+    },
+    "bullied": {
+      "cap": "een jaar gepest op school",
+      "past": "ze een jaar lang gepest werden",
+      "q": "Wat als ze een jaar lang gepest werden?"
+    },
+    "carer": {
+      "cap": "helpt zorgen voor een kleintje",
+      "past": "ze met een jonger broertje of zusje gingen helpen",
+      "q": "Wat als ze hielpen zorgen voor een jonger broertje of zusje?"
+    },
+    "chores": {
+      "cap": "krijgt echte taken thuis",
+      "past": "ze echte taken thuis kregen",
+      "q": "Wat als ze thuis echte taken hadden?"
+    },
+    "coding": {
+      "cap": "gaat naar een programmeerclub",
+      "past": "ze bij een programmeerclub gingen",
+      "q": "Wat als ze bij een programmeer- of bouwclub gingen?"
+    },
+    "countryside": {
+      "cap": "het gezin verhuist naar het platteland",
+      "past": "het gezin naar het platteland verhuisde",
+      "q": "Wat als het gezin naar het platteland verhuisde?"
+    },
+    "dinners": {
+      "cap": "elke avond samen eten",
+      "past": "het gezin elke avond samen ging eten",
+      "q": "Wat als het gezin elke avond samen at?"
+    },
+    "divorce": {
+      "cap": "de ouders gaan uit elkaar",
+      "past": "de ouders uit elkaar gingen",
+      "q": "Wat als de ouders uit elkaar gingen?"
+    },
+    "drama": {
+      "cap": "gaat op toneelles",
+      "past": "ze op toneelles gingen",
+      "q": "Wat als ze op toneelles gingen?"
+    },
+    "exam": {
+      "cap": "zakt voor een grote toets",
+      "past": "ze voor een grote toets zakten",
+      "q": "Wat als ze voor een grote toets zakten?"
+    },
+    "fallout": {
+      "cap": "ruzie met een beste maatje",
+      "past": "ze ruzie kregen met hun beste maatje",
+      "q": "Wat als ze ruzie kregen met hun beste maatje?"
+    },
+    "firstlove": {
+      "cap": "een eerste verliefdheid die niets wordt",
+      "past": "ze een eerste verliefdheid hadden die niets werd",
+      "q": "Wat als hun eerste verliefdheid niets werd?"
+    },
+    "grandparent": {
+      "cap": "een opa of oma komt inwonen",
+      "past": "een opa of oma kwam inwonen",
+      "q": "Wat als een opa of oma kwam inwonen?"
+    },
+    "illness": {
+      "cap": "een ouder is een jaar ziek",
+      "past": "een ouder een jaar ziek was",
+      "q": "Wat als een ouder een jaar ernstig ziek werd?"
+    },
+    "job": {
+      "cap": "krijgt een weekendbaantje",
+      "past": "ze een weekendbaantje kregen",
+      "q": "Wat als ze een weekendbaantje kregen?"
+    },
+    "language": {
+      "cap": "leert een tweede taal",
+      "past": "ze een tweede taal gingen leren",
+      "q": "Wat als ze een tweede taal leerden?"
+    },
+    "leader": {
+      "cap": "wordt klassenvertegenwoordiger",
+      "past": "ze klassenvertegenwoordiger werden",
+      "q": "Wat als ze klassenvertegenwoordiger werden?"
+    },
+    "longhours": {
+      "cap": "een ouder maakt lange dagen",
+      "past": "een ouder lange dagen ging maken",
+      "q": "Wat als een ouder heel lange dagen ging werken?"
+    },
+    "mentor": {
+      "cap": "een mentor toont interesse",
+      "past": "een mentor interesse in ze toonde",
+      "q": "Wat als een mentor interesse in ze toonde?"
+    },
+    "money": {
+      "cap": "het geld is een tijd krap",
+      "past": "het geld krap werd",
+      "q": "Wat als het geld een paar jaar krap was?"
+    },
+    "move": {
+      "cap": "het gezin verhuist naar het buitenland",
+      "past": "het gezin naar een ander land verhuisde",
+      "q": "Wat als het gezin naar een ander land verhuisde?"
+    },
+    "music": {
+      "cap": "leert een instrument spelen",
+      "past": "ze een instrument leerden spelen",
+      "q": "Wat als ze een instrument leerden spelen?"
+    },
+    "nature": {
+      "cap": "is veel buiten",
+      "past": "ze veel tijd buiten gingen doorbrengen",
+      "q": "Wat als ze veel buiten waren?"
+    },
+    "newschool": {
+      "cap": "gaat naar een andere school",
+      "past": "ze naar een andere school gingen",
+      "q": "Wat als ze naar een andere school gingen?"
+    },
+    "pet": {
+      "cap": "het gezin neemt een hond",
+      "past": "het gezin een hond nam",
+      "q": "Wat als het gezin een hond nam?"
+    },
+    "prize": {
+      "cap": "wint een grote wedstrijd",
+      "past": "ze een grote wedstrijd wonnen",
+      "q": "Wat als ze een grote wedstrijd wonnen?"
+    },
+    "reading": {
+      "cap": "leest elke avond",
+      "past": "ze elke avond gingen lezen",
+      "q": "Wat als ze elke avond lazen?"
+    },
+    "scouts": {
+      "cap": "gaat bij de scouting",
+      "past": "ze bij de scouting gingen",
+      "q": "Wat als ze bij de scouting of een natuurclub gingen?"
+    },
+    "screen": {
+      "cap": "veel schermtijd begint",
+      "past": "er veel schermtijd kwam",
+      "q": "Wat als ze veel schermtijd kregen?"
+    },
+    "sibling": {
+      "cap": "er komt een broertje of zusje",
+      "past": "er een broertje of zusje kwam",
+      "q": "Wat als er een broertje of zusje kwam?"
+    },
+    "sleep": {
+      "cap": "elke nacht genoeg slaap",
+      "past": "ze genoeg gingen slapen",
+      "q": "Wat als ze altijd genoeg sliepen?"
+    },
+    "sport": {
+      "cap": "gaat op een teamsport",
+      "past": "ze op een teamsport gingen",
+      "q": "Wat als ze op een teamsport gingen?"
+    },
+    "strict": {
+      "cap": "ouders worden strenger",
+      "past": "de ouders strenger werden",
+      "q": "Wat als de ouders veel strenger werden?"
+    },
+    "summer": {
+      "cap": "de beste zomer ooit",
+      "past": "ze de beste zomer ooit hadden",
+      "q": "Wat als ze de beste zomer ooit hadden?"
+    },
+    "teacher": {
+      "cap": "heeft een geweldige leraar",
+      "past": "ze een geweldige leraar hadden",
+      "q": "Wat als ze een geweldige leraar hadden?"
+    },
+    "travel": {
+      "cap": "het gezin reist een jaar",
+      "past": "het gezin een jaar ging reizen",
+      "q": "Wat als het gezin een jaar ging reizen?"
+    },
+    "volunteer": {
+      "cap": "begint vrijwilligerswerk",
+      "past": "ze vrijwilligerswerk gingen doen",
+      "q": "Wat als ze anderen gingen helpen (vrijwilligerswerk)?"
+    }
+  },
+  "chart": {
+    "aria": {
+      "0": "Waar {who} staat op elke eigenschap tussen alle 120 kinderen",
+      "1": "Nieuwsgierig, georganiseerd, open, vriendelijk en rustig door de jaren heen",
+      "2": "Van de 100 kinderen: hoeveel waarschijnlijk elk alledaags ding doen",
+      "3": "Hoeveel elke wijziging {trait} veranderde"
+    },
+    "atDiff": "Op {age} ({life} jaar): met je wijzigingen zijn de meeste kinderen {list}.",
+    "atSame": "Op {age} ({life} jaar): ongeveer hetzelfde als zonder je wijzigingen.",
+    "atTypical": "Op {age} ({life} jaar): het doorsnee kind is {step}.",
+    "axis": "← minder {trait}  ·  hoeveel kinderen sowieso verschillen  ·  meer →",
+    "dayDiff": "Met je wijzigingen zullen {count} kinderen waarschijnlijk {what} (was {was}).",
+    "dayIntro": "Van de 100 kinderen zoals deze: hoeveel elk ding waarschijnlijk doen. Waarschijnlijk, niet zeker.",
+    "dayLittle": "Tot nu toe maken je wijzigingen weinig verschil voor het dagelijks leven.",
+    "faded": "grotendeels vervaagd",
+    "growIntro": "Elke rij is één eigenschap door de jaren; de band is waar de meeste kinderen zitten. Wijs een leeftijd aan om af te lezen.",
+    "hardly": "bijna geen",
+    "life": {
+      "0": "klein",
+      "1": "school",
+      "2": "tiener",
+      "3": "jongvolwassen",
+      "4": "volwassen"
+    },
+    "nowDiff": "Met je wijzigingen zijn op {age} {who, select, most {de meeste kinderen} other {deze kinderen}} {list}.",
+    "nowIntro": "Elk vaag streepje is een van de 120 kinderen; de grote stip is {who}. Probeer een wijziging om te vergelijken.",
+    "of100": "{n} van 100",
+    "ongoing": "loopt nog",
+    "planned": "Je wijziging staat gepland voor later.",
+    "pressPlay": "Druk op afspelen en zie ze opgroeien…",
+    "rowChange": "{name} · {age}",
+    "rowCombo": "{a} + {b}",
+    "rowWord": "{word} · {state}",
+    "sameSoFar": "Met je wijzigingen zijn deze kinderen tot nu toe ongeveer hetzelfde (leeftijd {age}).",
+    "stayedSame": "{list}: ongeveer hetzelfde gebleven.",
+    "still": "nog steeds aanwezig",
+    "typical": "het doorsnee kind",
+    "view": {
+      "0": "Nu",
+      "1": "Opgroeien",
+      "2": "Elke dag",
+      "3": "Wat telde"
+    },
+    "viewLabel": "Grafiekweergave",
+    "was": "was {n}",
+    "whichTrait": "Welke eigenschap",
+    "whyEmpty": "Verander iets om te zien hoeveel het hier uitmaakt.",
+    "whyFaded": "{change} maakte het grootste verschil voor {trait}, maar het meeste is vervaagd.",
+    "whyIntro": "Hoeveel elke wijziging {trait} veranderde, naast hoeveel kinderen sowieso verschillen.",
+    "whyLasted": "{change} maakte het grootste verschil voor {trait}, en dat bleef.",
+    "whyOngoing": "{change} maakte het grootste verschil voor {trait}, en het loopt nog."
+  },
+  "chip": {
+    "ripple": {
+      "authoritative": {
+        "0": "{n} van 100 kinderen wisten wat ze thuis konden verwachten"
+      },
+      "bestfriend": {
+        "0": "{n} van 100 kinderen voelden zich dapperder op school",
+        "1": "{n} van 100 kinderen gingen samen op avontuur"
+      },
+      "bullied": {
+        "0": "{n} van 100 kinderen vertelden het iemand, en het werd beter",
+        "1": "{n} van 100 kinderen staken een tijd hun vinger niet meer op in de klas",
+        "2": "{n} van 100 kinderen werden aardiger tegen kinderen die buiten de groep vallen"
+      },
+      "carer": {
+        "0": "{n} van 100 kinderen werden heel geduldig",
+        "1": "{n} van 100 kinderen waren soms moe"
+      },
+      "chores": {
+        "0": "{n} van 100 kinderen waren trots op goed werk",
+        "1": "{n} van 100 kinderen mopperden over klusjes (en deden ze toch)"
+      },
+      "coding": {
+        "0": "{n} van 100 kinderen maakten hun eigen spelletje",
+        "1": "{n} van 100 kinderen vonden vrienden die van dezelfde dingen houden"
+      },
+      "countryside": {
+        "0": "{n} van 100 kinderen zorgden voor dieren",
+        "1": "{n} van 100 kinderen misten soms de stad",
+        "2": "{n} van 100 kinderen speelden elke dag buiten"
+      },
+      "dinners": {
+        "0": "{n} van 100 kinderen vertelden elke avond over hun dag",
+        "1": "{n} van 100 kinderen probeerden nieuw eten aan tafel"
+      },
+      "divorce": {
+        "0": "{n} van 100 kinderen vroegen zich een tijd af of het hun schuld was (dat is het nooit)",
+        "1": "{n} van 100 kinderen wenden aan twee huizen en twee verjaardagen",
+        "2": "{n} van 100 kinderen kwamen dichter bij één ouder"
+      },
+      "drama": {
+        "0": "{n} van 100 kinderen stonden op een echt podium",
+        "1": "{n} van 100 kinderen werden goed in het begrijpen van gevoelens"
+      },
+      "exam": {
+        "0": "{n} van 100 kinderen probeerden het opnieuw en slaagden",
+        "1": "{n} van 100 kinderen dachten een tijd dat ze slecht waren in dat vak"
+      },
+      "fallout": {
+        "0": "{n} van 100 kinderen maakten het weer goed",
+        "1": "{n} van 100 kinderen vonden nieuwe vrienden"
+      },
+      "firstlove": {
+        "0": "{n} van 100 kinderen luisterden een tijd naar droevige liedjes",
+        "1": "{n} van 100 kinderen ontdekten dat ze moeilijke gevoelens aankunnen",
+        "2": "{n} van 100 kinderen werden opgevangen door hun vrienden"
+      },
+      "grandparent": {
+        "0": "{n} van 100 kinderen hoorden veel familieverhalen",
+        "1": "{n} van 100 kinderen leerden koken met opa of oma"
+      },
+      "illness": {
+        "0": "{n} van 100 kinderen hielpen voor de ouder zorgen",
+        "1": "{n} van 100 kinderen voelden zich volwassener"
+      },
+      "job": {
+        "0": "{n} van 100 kinderen spaarden voor iets groots",
+        "1": "{n} van 100 kinderen wenden aan praten met vreemden"
+      },
+      "language": {
+        "0": "{n} van 100 kinderen keken films in de nieuwe taal",
+        "1": "{n} van 100 kinderen kregen een vriend of vriendin die die taal spreekt"
+      },
+      "leader": {
+        "0": "{n} van 100 kinderen hielden een praatje voor de klas",
+        "1": "{n} van 100 kinderen voelden zich verantwoordelijker"
+      },
+      "longhours": {
+        "0": "{n} van 100 kinderen waren vaker alleen",
+        "1": "{n} van 100 kinderen leerden dingen zelf op te lossen",
+        "2": "{n} van 100 kinderen misten hun ouder bij het slapengaan"
+      },
+      "mentor": {
+        "0": "{n} van 100 kinderen vonden een doel om naartoe te werken",
+        "1": "{n} van 100 kinderen probeerden dingen die ze anders nooit hadden gedaan"
+      },
+      "money": {
+        "0": "{n} van 100 kinderen hielpen meer thuis",
+        "1": "{n} van 100 kinderen maakten zich zorgen over geld",
+        "2": "{n} van 100 kinderen hadden een tijd minder clubs en uitjes"
+      },
+      "move": {
+        "0": "{n} van 100 kinderen leerden de nieuwe taal",
+        "1": "{n} van 100 kinderen voelden zich het eerste jaar eenzaam",
+        "2": "{n} van 100 kinderen vonden daar een nieuw beste maatje"
+      },
+      "music": {
+        "0": "{n} van 100 kinderen speelden in een concert",
+        "1": "{n} van 100 kinderen vonden oefenen een tijd saai"
+      },
+      "nature": {
+        "0": "{n} van 100 kinderen leerden de namen van vogels en bomen",
+        "1": "{n} van 100 kinderen gingen kamperen en vonden het geweldig"
+      },
+      "newschool": {
+        "0": "{n} van 100 kinderen maakten snel nieuwe vrienden",
+        "1": "{n} van 100 kinderen misten hun oude vrienden"
+      },
+      "pet": {
+        "0": "{n} van 100 kinderen lieten de hond elke dag uit",
+        "1": "{n} van 100 kinderen zeggen dat de hond hun beste vriend is"
+      },
+      "prize": {
+        "0": "{n} van 100 kinderen vertelden het aan iedereen",
+        "1": "{n} van 100 kinderen begonnen te werken voor de volgende prijs"
+      },
+      "reading": {
+        "0": "{n} van 100 kinderen gebruikten hun bibliotheekpas veel",
+        "1": "{n} van 100 kinderen begonnen hun eigen verhalen te schrijven"
+      },
+      "scouts": {
+        "0": "{n} van 100 kinderen verdienden veel insignes",
+        "1": "{n} van 100 kinderen sliepen voor het eerst in een tent"
+      },
+      "screen": {
+        "0": "{n} van 100 kinderen sliepen minder",
+        "1": "{n} van 100 kinderen maakten online vrienden",
+        "2": "{n} van 100 kinderen werden heel goed in een game"
+      },
+      "sibling": {
+        "0": "{n} van 100 kinderen waren eerst jaloers",
+        "1": "{n} van 100 kinderen kregen een hechte band met hun broertje of zusje",
+        "2": "{n} van 100 kinderen hielpen voor de baby zorgen"
+      },
+      "sleep": {
+        "0": "{n} van 100 kinderen hadden makkelijkere ochtenden",
+        "1": "{n} van 100 kinderen konden zich op school beter concentreren"
+      },
+      "sport": {
+        "0": "{n} van 100 kinderen maakten vrienden in het team",
+        "1": "{n} van 100 kinderen raakten geblesseerd en knapten weer op",
+        "2": "{n} van 100 kinderen wonnen een wedstrijd waar ze het nog steeds over hebben"
+      },
+      "strict": {
+        "0": "{n} van 100 kinderen begonnen dingen voor zich te houden",
+        "1": "{n} van 100 kinderen werden heel goed in regels volgen"
+      },
+      "summer": {
+        "0": "{n} van 100 kinderen herinneren het zich nog als de beste zomer",
+        "1": "{n} van 100 kinderen maakten die zomer vrienden voor het leven"
+      },
+      "teacher": {
+        "0": "{n} van 100 kinderen vonden een vak waar ze van houden",
+        "1": "{n} van 100 kinderen gingen geloven dat ze moeilijke dingen kunnen"
+      },
+      "travel": {
+        "0": "{n} van 100 kinderen pikten woorden op in veel talen",
+        "1": "{n} van 100 kinderen hadden soms heimwee",
+        "2": "{n} van 100 kinderen leerden zich overal thuis te voelen"
+      },
+      "volunteer": {
+        "0": "{n} van 100 kinderen werden bedankt door iemand die ze hielpen",
+        "1": "{n} van 100 kinderen gingen andere vrijwilligers leiden"
+      }
+    }
+  },
+  "cmp": {
+    "less": "{d, select, bit {iets minder} much {veel minder} other {minder}}",
+    "more": "{d, select, bit {iets meer} much {veel meer} other {meer}}"
+  },
+  "ctl": {
+    "aA": {
+      "label": "Vriendelijk"
+    },
+    "aC": {
+      "label": "Georganiseerd"
+    },
+    "aE": {
+      "label": "Open"
+    },
+    "aN": {
+      "label": "Zorgen (100 − rustig)"
+    },
+    "aO": {
+      "label": "Nieuwsgierig"
+    },
+    "bA": {
+      "label": "Vriendelijk"
+    },
+    "bC": {
+      "label": "Georganiseerd"
+    },
+    "bE": {
+      "label": "Open"
+    },
+    "bN": {
+      "label": "Zorgen (100 − rustig)"
+    },
+    "bO": {
+      "label": "Nieuwsgierig"
+    },
+    "baby": {
+      "label": "Hoe waren ze als baby?",
+      "opt": {
+        "easy": "Makkelijk",
+        "energy": "Vol energie",
+        "mixed": "Elk anders",
+        "slow": "Wat afwachtend"
+      }
+    },
+    "events": {
+      "label": "Alledaagse ups en downs",
+      "opt": {
+        "lots": "Veel",
+        "normal": "Normaal",
+        "off": "Uit"
+      }
+    },
+    "fade": {
+      "label": "Hoe lang effecten blijven",
+      "opt": {
+        "fast": "Ze vervagen snel",
+        "normal": "Normaal",
+        "stick": "Ze blijven"
+      }
+    },
+    "family": {
+      "label": "Gezin",
+      "opt": {
+        "artists": "Nieuwsgierige kunstenaars",
+        "average": "Gemiddelde ouders",
+        "calm": "Twee rustige, georganiseerde ouders",
+        "custom": "Stel zelf samen",
+        "everyday": "Een nieuwsgierige en een georganiseerde ouder",
+        "lively": "Twee levendige, open ouders",
+        "worrier": "Een piekeraar en een makkelijke"
+      }
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Instellingen voor wijzigingen (voor je volgende klik)",
+      "home": "Thuis",
+      "nature-and-chance": "Aanleg en toeval",
+      "parent-a": "Ouder A",
+      "parent-b": "Ouder B"
+    },
+    "home": {
+      "label": "Thuissituatie",
+      "opt": {
+        "busy": "Druk",
+        "stable": "Rustig",
+        "unstable": "Veel ruzie"
+      }
+    },
+    "inherit": {
+      "label": "Hoeveel erfelijk is",
+      "opt": {
+        "25": "Laag (25 %)",
+        "40": "Normaal (40 %)",
+        "55": "Hoog (55 %)"
+      }
+    },
+    "luck": {
+      "label": "Hoeveel toeval en geluk",
+      "opt": {
+        "big": "Veel",
+        "normal": "Normaal",
+        "small": "Weinig"
+      }
+    },
+    "money": {
+      "label": "Geld thuis",
+      "opt": {
+        "comfy": "Ruim",
+        "ok": "Oké",
+        "tight": "Krap"
+      }
+    },
+    "place": {
+      "label": "Waar ze wonen",
+      "opt": {
+        "city": "Stad",
+        "country": "Platteland",
+        "town": "Dorp"
+      }
+    },
+    "s_age": {
+      "label": "Wanneer het gebeurt",
+      "opt": {
+        "1": "Op 1 jaar",
+        "2": "Op 2 jaar",
+        "3": "Op 3 jaar",
+        "4": "Op 4 jaar",
+        "5": "Op 5 jaar",
+        "6": "Op 6 jaar",
+        "7": "Op 7 jaar",
+        "8": "Op 8 jaar",
+        "9": "Op 9 jaar",
+        "10": "Op 10 jaar",
+        "11": "Op 11 jaar",
+        "12": "Op 12 jaar",
+        "13": "Op 13 jaar",
+        "14": "Op 14 jaar",
+        "15": "Op 15 jaar",
+        "16": "Op 16 jaar",
+        "17": "Op 17 jaar",
+        "now": "Nu"
+      }
+    },
+    "s_len": {
+      "label": "Hoe lang",
+      "opt": {
+        "few": "Een paar jaar",
+        "good": "Voorgoed",
+        "moment": "Even",
+        "usual": "Zoals gewoonlijk",
+        "year": "Ongeveer een jaar"
+      }
+    },
+    "s_size": {
+      "label": "Hoe groot",
+      "opt": {
+        "big": "Groot",
+        "medium": "Middel",
+        "small": "Klein"
+      }
+    },
+    "school": {
+      "label": "School",
+      "opt": {
+        "crowded": "Overvol",
+        "great": "Geweldige leraren",
+        "ordinary": "Gewoon"
+      }
+    },
+    "screens": {
+      "label": "Schermregels",
+      "opt": {
+        "none": "Geen regels",
+        "some": "Een paar",
+        "strict": "Streng"
+      }
+    },
+    "sens": {
+      "label": "Hoeveel het leven ze raakt",
+      "opt": {
+        "all": "Alle kinderen zijn heel gevoelig",
+        "same": "Voor elk kind hetzelfde",
+        "some": "Sommige kinderen voelen veel meer"
+      }
+    },
+    "shape": {
+      "label": "Met wie ze wonen",
+      "opt": {
+        "big": "Een grote familie onder één dak",
+        "one": "Eén ouder",
+        "two": "Twee ouders",
+        "twohomes": "Twee huizen"
+      }
+    },
+    "sib": {
+      "label": "Broers en zussen",
+      "opt": {
+        "0": "Geen",
+        "1": "Eén jongere",
+        "2": "Twee of meer",
+        "older": "Eén oudere"
+      }
+    },
+    "style": {
+      "label": "Hoe de ouders opvoeden",
+      "opt": {
+        "authoritarian": "Streng",
+        "authoritative": "Warm en duidelijk",
+        "neglectful": "Afstandelijk",
+        "permissive": "Toegeeflijk"
+      }
+    },
+    "time": {
+      "label": "Tijd samen",
+      "opt": {
+        "long": "Ouders maken lange dagen",
+        "lots": "Veel tijd als gezin",
+        "ordinary": "Gewoon"
+      }
+    }
+  },
+  "eff": {
+    "same": "ongeveer hetzelfde"
+  },
+  "ends": {
+    "A": {
+      "0": "zegt wat het denkt, wint graag",
+      "1": "heel vriendelijk"
+    },
+    "C": {
+      "0": "gaat mee met de stroom, wat rommelig",
+      "1": "heel georganiseerd"
+    },
+    "Calm": {
+      "0": "maakt zich veel zorgen",
+      "1": "heel rustig"
+    },
+    "E": {
+      "0": "stil, wat verlegen",
+      "1": "heel open"
+    },
+    "O": {
+      "0": "houdt het bij wat het kent",
+      "1": "heel nieuwsgierig"
+    }
+  },
+  "ev": {
+    "already": "De ouders voedden ze al zo op",
+    "buffer": {
+      "0": "Een beste maatje maakte het pesten minder pijnlijk",
+      "1": "Geweldige leraren grepen in, dus het pesten deed minder pijn",
+      "2": "Een rustig thuis hielp ze door het pesten heen",
+      "3": "Warme, duidelijke ouders maakten de scheiding makkelijker",
+      "4": "Warme, duidelijke ouders zorgden dat geldzorgen niet te veel pijn deden",
+      "5": "Een opa of oma in huis hielp toen het geld krap was",
+      "6": "Een opa of oma in huis hielp toen de ouder ziek was",
+      "7": "Verhuizen met een broer of zus was makkelijker",
+      "8": "Hun team hielp ze te wennen op de nieuwe school",
+      "9": "Elke avond lezen woog op tegen de schermtijd",
+      "10": "Duidelijke schermregels hielden de schermtijd in toom",
+      "11": "Genoeg slaap zorgde dat schermen ze niet moe maakten",
+      "12": "Een geweldige leraar hielp ze over de gezakte toets heen",
+      "13": "Genoeg slaap hielp ze herstellen van de gezakte toets",
+      "14": "Knuffelen met de hond hielp na de ruzie met hun maatje",
+      "15": "Een beste maatje hielp ze door het eerste liefdesverdriet",
+      "16": "Samen eten gaf ze iemand om mee te praten",
+      "17": "Een opa of oma in huis hielp toen een ouder lange dagen maakte",
+      "18": "Een grote familie onder één dak hielp toen een ouder lange dagen maakte",
+      "19": "De grote familie hielp toen de ouder ziek was",
+      "20": "De grote familie deelde wat ze had toen het geld krap was",
+      "21": "Veel tijd als gezin betekende dat ze over het pesten konden praten"
+    },
+    "calm": "De meeste kinderen zijn na de tienerjaren weer rustiger",
+    "change": {
+      "authoritative": "Ouders worden warm en duidelijk: heldere regels, veel liefde",
+      "bestfriend": "Vindt een beste maatje",
+      "bullied": "Een jaar lang gepest op school",
+      "carer": "Gaat helpen zorgen voor een jonger broertje of zusje",
+      "chores": "Gaat echte taken thuis doen",
+      "coding": "Gaat bij een programmeer- en bouwclub",
+      "countryside": "Het gezin verhuist naar het platteland",
+      "dinners": "Het gezin gaat elke avond samen eten",
+      "divorce": "De ouders gaan uit elkaar en krijgen elk een eigen huis",
+      "drama": "Gaat op toneelles",
+      "exam": "Zakt voor een grote toets",
+      "fallout": "Krijgt ruzie met hun beste maatje",
+      "firstlove": "Een eerste verliefdheid die niets wordt",
+      "grandparent": "Een opa of oma komt inwonen",
+      "illness": "Een ouder is een jaar ernstig ziek en wordt dan beter",
+      "job": "Krijgt een weekendbaantje",
+      "language": "Gaat een tweede taal leren",
+      "leader": "Wordt klassenvertegenwoordiger",
+      "longhours": "Een ouder gaat heel lange dagen werken",
+      "mentor": "Een mentor toont interesse in ze",
+      "money": "Het geld is een paar jaar krap",
+      "move": "Het gezin verhuist naar een ander land",
+      "music": "Leert een instrument spelen",
+      "nature": "Gaat veel tijd buiten doorbrengen",
+      "newschool": "Gaat naar een andere school",
+      "pet": "Het gezin neemt een hond",
+      "prize": "Wint een grote wedstrijd",
+      "reading": "Gaat elke avond lezen",
+      "scouts": "Gaat bij de scouting",
+      "screen": "Elke dag veel schermtijd begint",
+      "sibling": "Er komt een broertje of zusje",
+      "sleep": "Gaat elke nacht genoeg slapen",
+      "sport": "Gaat op een teamsport",
+      "strict": "Ouders worden veel strenger",
+      "summer": "Heeft de beste zomer ooit",
+      "teacher": "Heeft een geweldige leraar",
+      "travel": "Het gezin gaat een jaar op reis",
+      "volunteer": "Gaat anderen helpen als vrijwilliger"
+    },
+    "combo": {
+      "0": "Teamsport en een beste maatje: ze speelden samen in het team",
+      "1": "Elke avond lezen en een geweldige leraar: ze kregen plezier in leren",
+      "2": "Een instrument en een mentor: oefenen begon te lonen",
+      "3": "Een nieuw land en een beste maatje: wennen werd makkelijker",
+      "4": "Een hond en tijd buiten: elke dag lange wandelingen",
+      "5": "Vrijwilligerswerk en een opa of oma in huis: helpen werd een gewoonte",
+      "6": "Schermen en tijd buiten: buiten zijn woog op tegen de schermen",
+      "7": "Een broertje of zusje en warme, duidelijke ouders: de kinderen konden goed met elkaar overweg",
+      "8": "Toneelles en klassenvertegenwoordiger: het woord nemen werd makkelijk",
+      "9": "Een programmeerclub en een mentor: ze bouwden iets echts"
+    },
+    "ms": {
+      "ms1": "Eerste woordjes: de meeste kinderen beginnen te praten",
+      "ms13": "De tienerjaren beginnen: stemmingen gaan op en neer",
+      "ms18": "Maakt school af",
+      "ms20": "Velen beginnen aan een eerste baan",
+      "ms28": "Velen gaan zich settelen",
+      "ms5": "Gaat naar school",
+      "ms7": "De meeste kinderen hebben een eerste beste maatje"
+    },
+    "ripple": {
+      "authoritative": {
+        "0": "Nadat de ouders warm en duidelijk werden ({age} jaar): {n} van 100 kinderen wisten wat ze thuis konden verwachten"
+      },
+      "bestfriend": {
+        "0": "Nadat ze een beste maatje vonden ({age} jaar): {n} van 100 kinderen voelden zich dapperder op school",
+        "1": "Nadat ze een beste maatje vonden ({age} jaar): {n} van 100 kinderen gingen samen op avontuur"
+      },
+      "bullied": {
+        "0": "Nadat ze een jaar lang gepest werden ({age} jaar): {n} van 100 kinderen vertelden het iemand, en het werd beter",
+        "1": "Nadat ze een jaar lang gepest werden ({age} jaar): {n} van 100 kinderen staken een tijd hun vinger niet meer op in de klas",
+        "2": "Nadat ze een jaar lang gepest werden ({age} jaar): {n} van 100 kinderen werden aardiger tegen kinderen die buiten de groep vallen"
+      },
+      "carer": {
+        "0": "Nadat ze met een jonger broertje of zusje gingen helpen ({age} jaar): {n} van 100 kinderen werden heel geduldig",
+        "1": "Nadat ze met een jonger broertje of zusje gingen helpen ({age} jaar): {n} van 100 kinderen waren soms moe"
+      },
+      "chores": {
+        "0": "Nadat ze echte taken thuis kregen ({age} jaar): {n} van 100 kinderen waren trots op goed werk",
+        "1": "Nadat ze echte taken thuis kregen ({age} jaar): {n} van 100 kinderen mopperden over klusjes (en deden ze toch)"
+      },
+      "coding": {
+        "0": "Nadat ze bij een programmeerclub gingen ({age} jaar): {n} van 100 kinderen maakten hun eigen spelletje",
+        "1": "Nadat ze bij een programmeerclub gingen ({age} jaar): {n} van 100 kinderen vonden vrienden die van dezelfde dingen houden"
+      },
+      "countryside": {
+        "0": "Nadat het gezin naar het platteland verhuisde ({age} jaar): {n} van 100 kinderen zorgden voor dieren",
+        "1": "Nadat het gezin naar het platteland verhuisde ({age} jaar): {n} van 100 kinderen misten soms de stad",
+        "2": "Nadat het gezin naar het platteland verhuisde ({age} jaar): {n} van 100 kinderen speelden elke dag buiten"
+      },
+      "dinners": {
+        "0": "Nadat het gezin elke avond samen ging eten ({age} jaar): {n} van 100 kinderen vertelden elke avond over hun dag",
+        "1": "Nadat het gezin elke avond samen ging eten ({age} jaar): {n} van 100 kinderen probeerden nieuw eten aan tafel"
+      },
+      "divorce": {
+        "0": "Nadat de ouders uit elkaar gingen ({age} jaar): {n} van 100 kinderen vroegen zich een tijd af of het hun schuld was (dat is het nooit)",
+        "1": "Nadat de ouders uit elkaar gingen ({age} jaar): {n} van 100 kinderen wenden aan twee huizen en twee verjaardagen",
+        "2": "Nadat de ouders uit elkaar gingen ({age} jaar): {n} van 100 kinderen kwamen dichter bij één ouder"
+      },
+      "drama": {
+        "0": "Nadat ze op toneelles gingen ({age} jaar): {n} van 100 kinderen stonden op een echt podium",
+        "1": "Nadat ze op toneelles gingen ({age} jaar): {n} van 100 kinderen werden goed in het begrijpen van gevoelens"
+      },
+      "exam": {
+        "0": "Nadat ze voor een grote toets zakten ({age} jaar): {n} van 100 kinderen probeerden het opnieuw en slaagden",
+        "1": "Nadat ze voor een grote toets zakten ({age} jaar): {n} van 100 kinderen dachten een tijd dat ze slecht waren in dat vak"
+      },
+      "fallout": {
+        "0": "Nadat ze ruzie kregen met hun beste maatje ({age} jaar): {n} van 100 kinderen maakten het weer goed",
+        "1": "Nadat ze ruzie kregen met hun beste maatje ({age} jaar): {n} van 100 kinderen vonden nieuwe vrienden"
+      },
+      "firstlove": {
+        "0": "Nadat ze een eerste verliefdheid hadden die niets werd ({age} jaar): {n} van 100 kinderen luisterden een tijd naar droevige liedjes",
+        "1": "Nadat ze een eerste verliefdheid hadden die niets werd ({age} jaar): {n} van 100 kinderen ontdekten dat ze moeilijke gevoelens aankunnen",
+        "2": "Nadat ze een eerste verliefdheid hadden die niets werd ({age} jaar): {n} van 100 kinderen werden opgevangen door hun vrienden"
+      },
+      "grandparent": {
+        "0": "Nadat een opa of oma kwam inwonen ({age} jaar): {n} van 100 kinderen hoorden veel familieverhalen",
+        "1": "Nadat een opa of oma kwam inwonen ({age} jaar): {n} van 100 kinderen leerden koken met opa of oma"
+      },
+      "illness": {
+        "0": "Nadat een ouder een jaar ziek was ({age} jaar): {n} van 100 kinderen hielpen voor de ouder zorgen",
+        "1": "Nadat een ouder een jaar ziek was ({age} jaar): {n} van 100 kinderen voelden zich volwassener"
+      },
+      "job": {
+        "0": "Nadat ze een weekendbaantje kregen ({age} jaar): {n} van 100 kinderen spaarden voor iets groots",
+        "1": "Nadat ze een weekendbaantje kregen ({age} jaar): {n} van 100 kinderen wenden aan praten met vreemden"
+      },
+      "language": {
+        "0": "Nadat ze een tweede taal gingen leren ({age} jaar): {n} van 100 kinderen keken films in de nieuwe taal",
+        "1": "Nadat ze een tweede taal gingen leren ({age} jaar): {n} van 100 kinderen kregen een vriend of vriendin die die taal spreekt"
+      },
+      "leader": {
+        "0": "Nadat ze klassenvertegenwoordiger werden ({age} jaar): {n} van 100 kinderen hielden een praatje voor de klas",
+        "1": "Nadat ze klassenvertegenwoordiger werden ({age} jaar): {n} van 100 kinderen voelden zich verantwoordelijker"
+      },
+      "longhours": {
+        "0": "Nadat een ouder lange dagen ging maken ({age} jaar): {n} van 100 kinderen waren vaker alleen",
+        "1": "Nadat een ouder lange dagen ging maken ({age} jaar): {n} van 100 kinderen leerden dingen zelf op te lossen",
+        "2": "Nadat een ouder lange dagen ging maken ({age} jaar): {n} van 100 kinderen misten hun ouder bij het slapengaan"
+      },
+      "mentor": {
+        "0": "Nadat een mentor interesse in ze toonde ({age} jaar): {n} van 100 kinderen vonden een doel om naartoe te werken",
+        "1": "Nadat een mentor interesse in ze toonde ({age} jaar): {n} van 100 kinderen probeerden dingen die ze anders nooit hadden gedaan"
+      },
+      "money": {
+        "0": "Nadat het geld krap werd ({age} jaar): {n} van 100 kinderen hielpen meer thuis",
+        "1": "Nadat het geld krap werd ({age} jaar): {n} van 100 kinderen maakten zich zorgen over geld",
+        "2": "Nadat het geld krap werd ({age} jaar): {n} van 100 kinderen hadden een tijd minder clubs en uitjes"
+      },
+      "move": {
+        "0": "Nadat het gezin naar een ander land verhuisde ({age} jaar): {n} van 100 kinderen leerden de nieuwe taal",
+        "1": "Nadat het gezin naar een ander land verhuisde ({age} jaar): {n} van 100 kinderen voelden zich het eerste jaar eenzaam",
+        "2": "Nadat het gezin naar een ander land verhuisde ({age} jaar): {n} van 100 kinderen vonden daar een nieuw beste maatje"
+      },
+      "music": {
+        "0": "Nadat ze een instrument leerden spelen ({age} jaar): {n} van 100 kinderen speelden in een concert",
+        "1": "Nadat ze een instrument leerden spelen ({age} jaar): {n} van 100 kinderen vonden oefenen een tijd saai"
+      },
+      "nature": {
+        "0": "Nadat ze veel tijd buiten gingen doorbrengen ({age} jaar): {n} van 100 kinderen leerden de namen van vogels en bomen",
+        "1": "Nadat ze veel tijd buiten gingen doorbrengen ({age} jaar): {n} van 100 kinderen gingen kamperen en vonden het geweldig"
+      },
+      "newschool": {
+        "0": "Nadat ze naar een andere school gingen ({age} jaar): {n} van 100 kinderen maakten snel nieuwe vrienden",
+        "1": "Nadat ze naar een andere school gingen ({age} jaar): {n} van 100 kinderen misten hun oude vrienden"
+      },
+      "pet": {
+        "0": "Nadat het gezin een hond nam ({age} jaar): {n} van 100 kinderen lieten de hond elke dag uit",
+        "1": "Nadat het gezin een hond nam ({age} jaar): {n} van 100 kinderen zeggen dat de hond hun beste vriend is"
+      },
+      "prize": {
+        "0": "Nadat ze een grote wedstrijd wonnen ({age} jaar): {n} van 100 kinderen vertelden het aan iedereen",
+        "1": "Nadat ze een grote wedstrijd wonnen ({age} jaar): {n} van 100 kinderen begonnen te werken voor de volgende prijs"
+      },
+      "reading": {
+        "0": "Nadat ze elke avond gingen lezen ({age} jaar): {n} van 100 kinderen gebruikten hun bibliotheekpas veel",
+        "1": "Nadat ze elke avond gingen lezen ({age} jaar): {n} van 100 kinderen begonnen hun eigen verhalen te schrijven"
+      },
+      "scouts": {
+        "0": "Nadat ze bij de scouting gingen ({age} jaar): {n} van 100 kinderen verdienden veel insignes",
+        "1": "Nadat ze bij de scouting gingen ({age} jaar): {n} van 100 kinderen sliepen voor het eerst in een tent"
+      },
+      "screen": {
+        "0": "Nadat er veel schermtijd kwam ({age} jaar): {n} van 100 kinderen sliepen minder",
+        "1": "Nadat er veel schermtijd kwam ({age} jaar): {n} van 100 kinderen maakten online vrienden",
+        "2": "Nadat er veel schermtijd kwam ({age} jaar): {n} van 100 kinderen werden heel goed in een game"
+      },
+      "sibling": {
+        "0": "Nadat er een broertje of zusje kwam ({age} jaar): {n} van 100 kinderen waren eerst jaloers",
+        "1": "Nadat er een broertje of zusje kwam ({age} jaar): {n} van 100 kinderen kregen een hechte band met hun broertje of zusje",
+        "2": "Nadat er een broertje of zusje kwam ({age} jaar): {n} van 100 kinderen hielpen voor de baby zorgen"
+      },
+      "sleep": {
+        "0": "Nadat ze genoeg gingen slapen ({age} jaar): {n} van 100 kinderen hadden makkelijkere ochtenden",
+        "1": "Nadat ze genoeg gingen slapen ({age} jaar): {n} van 100 kinderen konden zich op school beter concentreren"
+      },
+      "sport": {
+        "0": "Nadat ze op een teamsport gingen ({age} jaar): {n} van 100 kinderen maakten vrienden in het team",
+        "1": "Nadat ze op een teamsport gingen ({age} jaar): {n} van 100 kinderen raakten geblesseerd en knapten weer op",
+        "2": "Nadat ze op een teamsport gingen ({age} jaar): {n} van 100 kinderen wonnen een wedstrijd waar ze het nog steeds over hebben"
+      },
+      "strict": {
+        "0": "Nadat de ouders strenger werden ({age} jaar): {n} van 100 kinderen begonnen dingen voor zich te houden",
+        "1": "Nadat de ouders strenger werden ({age} jaar): {n} van 100 kinderen werden heel goed in regels volgen"
+      },
+      "summer": {
+        "0": "Nadat ze de beste zomer ooit hadden ({age} jaar): {n} van 100 kinderen herinneren het zich nog als de beste zomer",
+        "1": "Nadat ze de beste zomer ooit hadden ({age} jaar): {n} van 100 kinderen maakten die zomer vrienden voor het leven"
+      },
+      "teacher": {
+        "0": "Nadat ze een geweldige leraar hadden ({age} jaar): {n} van 100 kinderen vonden een vak waar ze van houden",
+        "1": "Nadat ze een geweldige leraar hadden ({age} jaar): {n} van 100 kinderen gingen geloven dat ze moeilijke dingen kunnen"
+      },
+      "travel": {
+        "0": "Nadat het gezin een jaar ging reizen ({age} jaar): {n} van 100 kinderen pikten woorden op in veel talen",
+        "1": "Nadat het gezin een jaar ging reizen ({age} jaar): {n} van 100 kinderen hadden soms heimwee",
+        "2": "Nadat het gezin een jaar ging reizen ({age} jaar): {n} van 100 kinderen leerden zich overal thuis te voelen"
+      },
+      "volunteer": {
+        "0": "Nadat ze vrijwilligerswerk gingen doen ({age} jaar): {n} van 100 kinderen werden bedankt door iemand die ze hielpen",
+        "1": "Nadat ze vrijwilligerswerk gingen doen ({age} jaar): {n} van 100 kinderen gingen andere vrijwilligers leiden"
+      }
+    },
+    "stop": {
+      "authoritative": "De ouders zijn niet meer zo warm en duidelijk",
+      "bestfriend": "Het beste maatje verhuist",
+      "bullied": "Het pesten stopt",
+      "carer": "Zorgt niet meer voor het kleintje",
+      "chores": "Geen taken thuis meer",
+      "coding": "Stopt met de programmeerclub",
+      "countryside": "Het gezin verhuist terug naar de stad",
+      "dinners": "Het samen eten stopt",
+      "divorce": "De ouders komen weer bij elkaar",
+      "drama": "Stopt met toneelles",
+      "exam": "Komt over de gezakte toets heen",
+      "fallout": "Komt over de ruzie heen",
+      "firstlove": "Komt over de eerste verliefdheid heen",
+      "grandparent": "Opa of oma gaat weer ergens anders wonen",
+      "illness": "De ouder is weer beter",
+      "job": "Stopt met het weekendbaantje",
+      "language": "Stopt met de taal leren",
+      "leader": "Is geen klassenvertegenwoordiger meer",
+      "longhours": "De ouder werkt weer gewone uren",
+      "mentor": "De mentor gaat verder",
+      "money": "Het geld is weer oké",
+      "move": "Het gezin verhuist terug naar huis",
+      "music": "Stopt met het instrument",
+      "nature": "Is niet meer zo veel buiten",
+      "newschool": "Is gewend op de nieuwe school",
+      "pet": "De hond gaat op een boerderij wonen",
+      "prize": "De prijs is een fijne herinnering",
+      "reading": "Leest niet meer elke avond",
+      "scouts": "Stopt met de scouting",
+      "screen": "De schermtijd wordt beperkt",
+      "sibling": "Het broertje of zusje gaat het huis uit",
+      "sleep": "Bedtijden worden weer laat",
+      "sport": "Stopt met de teamsport",
+      "strict": "De ouders zijn niet meer zo streng",
+      "summer": "De zomer is voorbij",
+      "teacher": "De geweldige leraar vertrekt",
+      "travel": "Het gezin komt thuis van de reis",
+      "volunteer": "Stopt met vrijwilligerswerk"
+    },
+    "tally": {
+      "arm": "Op {age} jaar hebben {n} van 100 kinderen een arm of been gebroken",
+      "bike": "Op {age} jaar kunnen {n} van 100 kinderen fietsen",
+      "camp": "Op {age} jaar zijn {n} van 100 kinderen op zomerkamp geweest",
+      "cousin": "Op {age} jaar heeft bij {n} van 100 kinderen een neef of nicht een zomer gelogeerd",
+      "friend": "Op {age} jaar is bij {n} van 100 kinderen een goede vriend of vriendin verhuisd",
+      "glasses": "Op {age} jaar hebben {n} van 100 kinderen een bril gekregen",
+      "holiday": "Op {age} jaar zijn {n} van 100 kinderen met het gezin ver op vakantie geweest",
+      "house": "Op {age} jaar zijn {n} van 100 kinderen minstens één keer verhuisd",
+      "pet": "Op {age} jaar hebben {n} van 100 kinderen een huisdier gekregen",
+      "play": "Op {age} jaar hebben {n} van 100 kinderen een rol gehad in een schoolvoorstelling",
+      "sib": "Op {age} jaar hebben {n} van 100 kinderen een nieuw broertje of zusje",
+      "team": "Op {age} jaar zitten {n} van 100 kinderen in een schoolteam",
+      "visits": "Op {age} jaar hebben {n} van 100 kinderen een opa of oma die vaak langskomt",
+      "win": "Op {age} jaar hebben {n} van 100 kinderen iets groots gewonnen, zoals een race of een prijs"
+    }
+  },
+  "gloss": {
+    "A": "Geeft om anderen en wil goed met iedereen omgaan.",
+    "C": "Houdt dingen op orde en maakt af waar het aan begint.",
+    "Calm": "Blijft kalm als er iets misgaat.",
+    "E": "Krijgt energie van samen zijn met mensen.",
+    "O": "Houdt van nieuwe ideeën, plekken en dingen om te proberen."
+  },
+  "glossEx": {
+    "A": {
+      "0": "het laatste koekje deelt",
+      "1": "een vriendje helpt dat gevallen is"
+    },
+    "C": {
+      "0": "de avond ervoor de schooltas inpakt",
+      "1": "eerst huiswerk maakt en dan pas speelt"
+    },
+    "Calm": {
+      "0": "de nacht voor een toets prima slaapt",
+      "1": "na een verloren spel de schouders ophaalt"
+    },
+    "E": {
+      "0": "als eerste met het nieuwe kind praat",
+      "1": "dol is op een groot verjaardagsfeest"
+    },
+    "O": {
+      "0": "heel veel \"waarom?\"-vragen stelt",
+      "1": "de vreemde nieuwe vrucht wil proeven"
+    }
+  },
+  "group": {
+    "0": "Thuis",
+    "1": "School en vrienden",
+    "2": "Activiteiten",
+    "3": "Grote stappen",
+    "4": "Geluk"
+  },
+  "have": {
+    "authoritative": {
+      "0": "wisten wat ze thuis konden verwachten"
+    },
+    "bestfriend": {
+      "0": "voelden zich dapperder op school",
+      "1": "gingen samen op avontuur"
+    },
+    "bullied": {
+      "0": "vertelden het iemand, en het werd beter",
+      "1": "staken een tijd hun vinger niet meer op in de klas",
+      "2": "werden aardiger tegen kinderen die buiten de groep vallen"
+    },
+    "carer": {
+      "0": "werden heel geduldig",
+      "1": "waren soms moe"
+    },
+    "chores": {
+      "0": "waren trots op goed werk",
+      "1": "mopperden over klusjes (en deden ze toch)"
+    },
+    "coding": {
+      "0": "maakten hun eigen spelletje",
+      "1": "vonden vrienden die van dezelfde dingen houden"
+    },
+    "countryside": {
+      "0": "zorgden voor dieren",
+      "1": "misten soms de stad",
+      "2": "speelden elke dag buiten"
+    },
+    "dinners": {
+      "0": "vertelden elke avond over hun dag",
+      "1": "probeerden nieuw eten aan tafel"
+    },
+    "divorce": {
+      "0": "vroegen zich een tijd af of het hun schuld was (dat is het nooit)",
+      "1": "wenden aan twee huizen en twee verjaardagen",
+      "2": "kwamen dichter bij één ouder"
+    },
+    "drama": {
+      "0": "stonden op een echt podium",
+      "1": "werden goed in het begrijpen van gevoelens"
+    },
+    "exam": {
+      "0": "probeerden het opnieuw en slaagden",
+      "1": "dachten een tijd dat ze slecht waren in dat vak"
+    },
+    "fallout": {
+      "0": "maakten het weer goed",
+      "1": "vonden nieuwe vrienden"
+    },
+    "firstlove": {
+      "0": "luisterden een tijd naar droevige liedjes",
+      "1": "ontdekten dat ze moeilijke gevoelens aankunnen",
+      "2": "werden opgevangen door hun vrienden"
+    },
+    "grandparent": {
+      "0": "hoorden veel familieverhalen",
+      "1": "leerden koken met opa of oma"
+    },
+    "illness": {
+      "0": "hielpen voor de ouder zorgen",
+      "1": "voelden zich volwassener"
+    },
+    "job": {
+      "0": "spaarden voor iets groots",
+      "1": "wenden aan praten met vreemden"
+    },
+    "language": {
+      "0": "keken films in de nieuwe taal",
+      "1": "kregen een vriend of vriendin die die taal spreekt"
+    },
+    "leader": {
+      "0": "hielden een praatje voor de klas",
+      "1": "voelden zich verantwoordelijker"
+    },
+    "longhours": {
+      "0": "waren vaker alleen",
+      "1": "leerden dingen zelf op te lossen",
+      "2": "misten hun ouder bij het slapengaan"
+    },
+    "mentor": {
+      "0": "vonden een doel om naartoe te werken",
+      "1": "probeerden dingen die ze anders nooit hadden gedaan"
+    },
+    "money": {
+      "0": "hielpen meer thuis",
+      "1": "maakten zich zorgen over geld",
+      "2": "hadden een tijd minder clubs en uitjes"
+    },
+    "move": {
+      "0": "leerden de nieuwe taal",
+      "1": "voelden zich het eerste jaar eenzaam",
+      "2": "vonden daar een nieuw beste maatje"
+    },
+    "music": {
+      "0": "speelden in een concert",
+      "1": "vonden oefenen een tijd saai"
+    },
+    "nature": {
+      "0": "leerden de namen van vogels en bomen",
+      "1": "gingen kamperen en vonden het geweldig"
+    },
+    "newschool": {
+      "0": "maakten snel nieuwe vrienden",
+      "1": "misten hun oude vrienden"
+    },
+    "pet": {
+      "0": "lieten de hond elke dag uit",
+      "1": "zeggen dat de hond hun beste vriend is"
+    },
+    "prize": {
+      "0": "vertelden het aan iedereen",
+      "1": "begonnen te werken voor de volgende prijs"
+    },
+    "reading": {
+      "0": "gebruikten hun bibliotheekpas veel",
+      "1": "begonnen hun eigen verhalen te schrijven"
+    },
+    "scouts": {
+      "0": "verdienden veel insignes",
+      "1": "sliepen voor het eerst in een tent"
+    },
+    "screen": {
+      "0": "sliepen minder",
+      "1": "maakten online vrienden",
+      "2": "werden heel goed in een game"
+    },
+    "sibling": {
+      "0": "waren eerst jaloers",
+      "1": "kregen een hechte band met hun broertje of zusje",
+      "2": "hielpen voor de baby zorgen"
+    },
+    "sleep": {
+      "0": "hadden makkelijkere ochtenden",
+      "1": "konden zich op school beter concentreren"
+    },
+    "sport": {
+      "0": "maakten vrienden in het team",
+      "1": "raakten geblesseerd en knapten weer op",
+      "2": "wonnen een wedstrijd waar ze het nog steeds over hebben"
+    },
+    "strict": {
+      "0": "begonnen dingen voor zich te houden",
+      "1": "werden heel goed in regels volgen"
+    },
+    "summer": {
+      "0": "herinneren het zich nog als de beste zomer",
+      "1": "maakten die zomer vrienden voor het leven"
+    },
+    "teacher": {
+      "0": "vonden een vak waar ze van houden",
+      "1": "gingen geloven dat ze moeilijke dingen kunnen"
+    },
+    "travel": {
+      "0": "pikten woorden op in veel talen",
+      "1": "hadden soms heimwee",
+      "2": "leerden zich overal thuis te voelen"
+    },
+    "volunteer": {
+      "0": "werden bedankt door iemand die ze hielpen",
+      "1": "gingen andere vrijwilligers leiden"
+    }
+  },
+  "home": {
+    "baby": {
+      "help": {
+        "easy": "Rustige, blije baby's. De meesten blijven wat rustiger als ze opgroeien.",
+        "energy": "Levendig, luid en altijd in beweging. Velen blijven open.",
+        "mixed": "Sommige makkelijk, sommige verlegen, sommige vol energie.",
+        "slow": "Eerst voorzichtig met nieuwe mensen en plekken. Velen blijven wat stiller."
+      }
+    },
+    "home": {
+      "help": {
+        "busy": "Altijd iets te doen: wat opener, wat minder netjes.",
+        "stable": "Een vredig thuis.",
+        "unstable": "Volwassenen maken vaak ruzie. Kinderen maken zich vaker zorgen."
+      }
+    },
+    "money": {
+      "help": {
+        "comfy": "Genoeg voor extra's zoals uitjes en lessen.",
+        "ok": "Genoeg voor wat ze nodig hebben.",
+        "tight": "Er is vaak te weinig geld. Kinderen maken zich wat meer zorgen."
+      }
+    },
+    "place": {
+      "help": {
+        "city": "Veel mensen en nieuwe dingen om je heen.",
+        "country": "Rustig, met veel natuur.",
+        "town": "Een beetje van allebei."
+      }
+    },
+    "school": {
+      "help": {
+        "crowded": "Grote klassen; leraren hebben weinig tijd per kind.",
+        "great": "Leraren die interesse wekken: wat nieuwsgieriger en georganiseerder.",
+        "ordinary": "Een gewone school."
+      }
+    },
+    "screens": {
+      "help": {
+        "none": "Schermen wanneer ze willen: wat minder georganiseerd, meer zorgen.",
+        "some": "Elke dag wat schermtijd.",
+        "strict": "Schermen alleen af en toe."
+      }
+    },
+    "shape": {
+      "help": {
+        "big": "Opa's, oma's, tantes of ooms wonen ook in huis: veel hulp.",
+        "one": "Eén ouder doet alles: kinderen helpen vaak wat meer mee.",
+        "two": "Mama en papa, twee mama's of twee papa's, samen thuis.",
+        "twohomes": "Ouders wonen apart; kinderen gaan heen en weer."
+      }
+    },
+    "sib": {
+      "help": {
+        "0": "Enig kind: wat minder oefening in delen.",
+        "1": "Een kleintje om voor te zorgen: wat vriendelijker, wat georganiseerder.",
+        "2": "Een druk huis vol kinderen: meer delen, meer kletsen.",
+        "older": "Een grote broer of zus om tegen op te kijken."
+      }
+    },
+    "style": {
+      "help": {
+        "authoritarian": "Veel regels, weinig warmte. Kinderen zijn vaak georganiseerd maar maken zich meer zorgen.",
+        "authoritative": "Veel liefde en duidelijke regels. Kinderen zijn vaak wat georganiseerder en rustiger.",
+        "neglectful": "Ouders zijn druk en ver weg. Kinderen maken zich vaak meer zorgen en zijn minder georganiseerd.",
+        "permissive": "Veel liefde, weinig regels. Kinderen zijn vaak open maar minder georganiseerd."
+      }
+    },
+    "time": {
+      "help": {
+        "long": "Minder tijd samen thuis.",
+        "lots": "Veel tijd om samen te spelen en te praten: wat rustiger en vriendelijker.",
+        "ordinary": "De meeste dagen wat tijd samen."
+      }
+    }
+  },
+  "kid": {
+    "between": "op de meeste punten ergens in het midden",
+    "betweenLess": "op de meeste punten in het midden, iets minder {trait}",
+    "betweenMore": "op de meeste punten in het midden, iets meer {trait}",
+    "line": "{name}, {age}: {body}.",
+    "short": "{a}, {b}",
+    "three": "{a} en {b}, {c}"
+  },
+  "kind": {
+    "activity": "activiteit",
+    "change": "wijziging",
+    "everyday": "dagelijks",
+    "home": "thuis",
+    "luck": "geluk",
+    "milestone": "mijlpaal",
+    "move": "grote stap",
+    "ripple": "wat volgde",
+    "school": "school",
+    "together": "samen"
+  },
+  "len": {
+    "good": "voorgoed",
+    "once": "maar één keer",
+    "year": "ongeveer een jaar",
+    "years": "ongeveer {n} jaar"
+  },
+  "life": {
+    "0": "Kleine jaren",
+    "1": "Schooljaren",
+    "2": "Tienerjaren",
+    "3": "Eerste woning",
+    "4": "Eigen huis"
+  },
+  "meta": {
+    "hint": "Druk op afspelen en zie ze opgroeien; probeer dan een wijziging.",
+    "intro": "Dezelfde twee ouders kunnen heel verschillende kinderen krijgen. Hier zijn er 120, die opgroeien van 1 tot 60. Genen, thuis, wat er gebeurt en gewoon geluk bepalen samen wie ze worden. Druk op afspelen en probeer wijzigingen: ze tellen op, en jij kiest wanneer ze gebeuren en hoe lang ze duren. Tik op een gezicht in \"Alle 120 kinderen\" om één kind te volgen.",
+    "name": "Kind",
+    "sub": "Wie worden ze?"
+  },
+  "metric": {
+    "A": {
+      "label": "Vriendelijk"
+    },
+    "A_hi": {
+      "label": "Vriendelijk: bovenkant van de meeste kinderen"
+    },
+    "A_lo": {
+      "label": "Vriendelijk: onderkant van de meeste kinderen"
+    },
+    "C": {
+      "label": "Georganiseerd"
+    },
+    "C_hi": {
+      "label": "Georganiseerd: bovenkant van de meeste kinderen"
+    },
+    "C_lo": {
+      "label": "Georganiseerd: onderkant van de meeste kinderen"
+    },
+    "Calm": {
+      "label": "Rustig"
+    },
+    "Calm_hi": {
+      "label": "Rustig: bovenkant van de meeste kinderen"
+    },
+    "Calm_lo": {
+      "label": "Rustig: onderkant van de meeste kinderen"
+    },
+    "E": {
+      "label": "Open"
+    },
+    "E_hi": {
+      "label": "Open: bovenkant van de meeste kinderen"
+    },
+    "E_lo": {
+      "label": "Open: onderkant van de meeste kinderen"
+    },
+    "O": {
+      "label": "Nieuwsgierig"
+    },
+    "O_hi": {
+      "label": "Nieuwsgierig: bovenkant van de meeste kinderen"
+    },
+    "O_lo": {
+      "label": "Nieuwsgierig: onderkant van de meeste kinderen"
+    },
+    "b_calm": {
+      "label": "Blijft waarschijnlijk rustig voor een toets (van 100)",
+      "unit": "kinderen"
+    },
+    "b_food": {
+      "label": "Probeert waarschijnlijk onbekend eten (van 100)",
+      "unit": "kinderen"
+    },
+    "b_hand": {
+      "label": "Steekt waarschijnlijk de vinger op in de klas (van 100)",
+      "unit": "kinderen"
+    },
+    "b_help": {
+      "label": "Helpt waarschijnlijk een nieuw kind op school (van 100)",
+      "unit": "kinderen"
+    },
+    "b_proj": {
+      "label": "Maakt waarschijnlijk een lang schoolproject af (van 100)",
+      "unit": "kinderen"
+    },
+    "b_tidy": {
+      "label": "Houdt waarschijnlijk de kamer netjes (van 100)",
+      "unit": "kinderen"
+    },
+    "hiA": {
+      "label": "heel vriendelijk (van 120)",
+      "unit": "kinderen"
+    },
+    "hiC": {
+      "label": "heel georganiseerd (van 120)",
+      "unit": "kinderen"
+    },
+    "hiCalm": {
+      "label": "heel rustig (van 120)",
+      "unit": "kinderen"
+    },
+    "hiE": {
+      "label": "heel open (van 120)",
+      "unit": "kinderen"
+    },
+    "hiO": {
+      "label": "heel nieuwsgierig (van 120)",
+      "unit": "kinderen"
+    },
+    "loA": {
+      "label": "heel koppig (van 120)",
+      "unit": "kinderen"
+    },
+    "loC": {
+      "label": "heel rommelig (van 120)",
+      "unit": "kinderen"
+    },
+    "loCalm": {
+      "label": "maakt zich veel zorgen (van 120)",
+      "unit": "kinderen"
+    },
+    "loE": {
+      "label": "heel verlegen (van 120)",
+      "unit": "kinderen"
+    },
+    "loO": {
+      "label": "houdt het bij het bekende (van 120)",
+      "unit": "kinderen"
+    }
+  },
+  "more": {
+    "A": {
+      "0": "{d, select, bit {iets minder vriendelijk} much {veel minder vriendelijk} other {minder vriendelijk}}",
+      "1": "{d, select, bit {iets vriendelijker} much {veel vriendelijker} other {vriendelijker}}"
+    },
+    "C": {
+      "0": "{d, select, bit {iets minder georganiseerd} much {veel minder georganiseerd} other {minder georganiseerd}}",
+      "1": "{d, select, bit {iets georganiseerder} much {veel georganiseerder} other {georganiseerder}}"
+    },
+    "Calm": {
+      "0": "{d, select, bit {iets bezorgder} much {veel bezorgder} other {bezorgder}}",
+      "1": "{d, select, bit {iets rustiger} much {veel rustiger} other {rustiger}}"
+    },
+    "E": {
+      "0": "{d, select, bit {iets stiller} much {veel stiller} other {stiller}}",
+      "1": "{d, select, bit {iets opener} much {veel opener} other {opener}}"
+    },
+    "O": {
+      "0": "{d, select, bit {iets minder nieuwsgierig} much {veel minder nieuwsgierig} other {minder nieuwsgierig}}",
+      "1": "{d, select, bit {iets nieuwsgieriger} much {veel nieuwsgieriger} other {nieuwsgieriger}}"
+    }
+  },
+  "name": {
+    "own": "Je eigen gezin",
+    "ownFrom": "Je eigen gezin (op basis van {from})"
+  },
+  "part": {
+    "chance": "Toeval",
+    "genes": "Genen",
+    "home": "Thuis",
+    "life": "Gebeurtenissen",
+    "pct": "{part} {n} %"
+  },
+  "partLc": {
+    "chance": "toeval",
+    "genes": "genen",
+    "home": "thuis",
+    "life": "gebeurtenissen"
+  },
+  "phrase": {
+    "A": {
+      "0": "zegt wat het denkt",
+      "1": "vriendelijk voor anderen"
+    },
+    "C": {
+      "0": "wat rommelig",
+      "1": "houdt dingen netjes"
+    },
+    "Calm": {
+      "0": "maakt zich soms zorgen",
+      "1": "blijft rustig"
+    },
+    "E": {
+      "0": "houdt van rustige tijd",
+      "1": "is graag met mensen"
+    },
+    "O": {
+      "0": "houdt van bekende dingen",
+      "1": "nieuwsgierig naar alles"
+    }
+  },
+  "science": {
+    "A": "altruïsme",
+    "C": "consciëntieusheid",
+    "Calm": "emotionele stabiliteit (weinig neuroticisme)",
+    "E": "extraversie",
+    "O": "openheid"
+  },
+  "speed": {
+    "0": "½ jr/s",
+    "1": "1 jr/s",
+    "2": "2 jr/s",
+    "3": "5 jr/s"
+  },
+  "stage": {
+    "age": "{age} jaar — {cap}",
+    "all": "Alle 120 kinderen",
+    "back": "Terug naar het doorsnee kind",
+    "between": "ertussenin",
+    "crowdHint": "{trait} · elk gezicht is een mogelijk kind · tik er een aan om kennis te maken",
+    "hover": "{name}: {short} · tik om kennis te maken",
+    "of100": "{n} van 100",
+    "one": "Eén kind",
+    "oneOf": "{name}, een van de 120",
+    "pileTrait": "Welke eigenschap de stapels tonen",
+    "planned": "Gepland voor {age} jaar — {cap}",
+    "typical": "Het doorsnee kind van de 120",
+    "view": "Wat het podium toont",
+    "was": "was {n}",
+    "with": "met je wijzigingen",
+    "without": "zonder"
+  },
+  "step": {
+    "A": {
+      "0": "heel koppig",
+      "1": "wat koppig",
+      "2": "ertussenin",
+      "3": "best vriendelijk",
+      "4": "heel vriendelijk"
+    },
+    "C": {
+      "0": "heel rommelig",
+      "1": "wat rommelig",
+      "2": "ertussenin",
+      "3": "wat georganiseerd",
+      "4": "heel georganiseerd"
+    },
+    "Calm": {
+      "0": "maakt zich veel zorgen",
+      "1": "maakt zich wat zorgen",
+      "2": "ertussenin",
+      "3": "best rustig",
+      "4": "heel rustig"
+    },
+    "E": {
+      "0": "heel verlegen",
+      "1": "wat verlegen",
+      "2": "ertussenin",
+      "3": "wat open",
+      "4": "heel open"
+    },
+    "O": {
+      "0": "houdt het bij het bekende",
+      "1": "niet zo nieuwsgierig",
+      "2": "ertussenin",
+      "3": "wat nieuwsgierig",
+      "4": "heel nieuwsgierig"
+    }
+  },
+  "story": {
+    "compared": "Vergeleken met dezelfde kinderen zonder wijzigingen, op {age}:",
+    "differ": "Ze verschillen nog steeds veel: {hi} van 100 zijn {high}, terwijl {lo} {low} zijn.",
+    "differCalm": "Ze verschillen nog steeds veel: {hi} van 100 zijn {high}, terwijl {lo} zich veel zorgen maken.",
+    "fade": {
+      "bounced": ", daarna herstelden de meesten",
+      "faded": ", en veel ervan vervaagde later",
+      "stopped": ", tot het stopte op {n}"
+    },
+    "little": "Kleine kinderen verschillen al: sommige zijn dapper, sommige voorzichtig.",
+    "middle": "{age} jaar: de meeste van deze 120 kinderen zitten op elke eigenschap ergens in het midden.",
+    "planned": "Gepland voor {age} jaar: {cap}.",
+    "rip": ", en {n} van 100 {have}",
+    "sentence": "{s}.",
+    "settled": "Inmiddels ligt de persoonlijkheid grotendeels vast. Ze blijft het hele leven langzaam veranderen.",
+    "siblings": "Broers en zussen verschillen nog steeds: elk krijgt een andere mix van genen en ander geluk.",
+    "style": {
+      "authoritarian": "Strenge ouders maken de meeste kinderen wat georganiseerder, maar ook bezorgder.",
+      "authoritative": "Warme, duidelijke ouders helpen de meeste kinderen rustiger en georganiseerder te worden.",
+      "neglectful": "Met afstandelijke ouders maken veel kinderen zich meer zorgen en zijn ze minder georganiseerd.",
+      "permissive": "Toegeeflijke ouders: kinderen zijn vaak opener, maar minder georganiseerd."
+    },
+    "teen": "De tienerjaren: de zorgen nemen toe en de netheid zakt een tijdje in. Dat is normaal.",
+    "they": "ze zijn {list}.",
+    "theySame": "ze zijn tot nu toe ongeveer hetzelfde.",
+    "top": "{age} jaar: de meeste van deze 120 kinderen zijn {list}.",
+    "when": "Toen {past} ({at}), werden de meeste kinderen {effect}{fade}{rip}."
+  },
+  "time": {
+    "age": "{n} jaar"
+  },
+  "tl": {
+    "all": "Alles",
+    "alt": "Alleen met je wijzigingen",
+    "base": "Alleen zonder wijzigingen",
+    "both": "Beide",
+    "changes": "Wijzigingen",
+    "effects": "Gevolgen",
+    "growing": "Opgroeien",
+    "label": "Tonen in de tijdlijn",
+    "none": "Nog niets. Druk op afspelen of probeer een wijziging.",
+    "noneKind": "Nog niets van deze soort."
+  },
+  "track": {
+    "A": {
+      "0": "eigen weg",
+      "1": "vriendelijk"
+    },
+    "C": {
+      "0": "rommelig",
+      "1": "georganiseerd"
+    },
+    "Calm": {
+      "0": "bezorgd",
+      "1": "rustig"
+    },
+    "E": {
+      "0": "verlegen",
+      "1": "open"
+    },
+    "O": {
+      "0": "houdt van het gewone",
+      "1": "nieuwsgierig"
+    }
+  },
+  "trait": {
+    "A": "Vriendelijk",
+    "C": "Georganiseerd",
+    "Calm": "Rustig",
+    "E": "Open",
+    "O": "Nieuwsgierig"
+  },
+  "traitLc": {
+    "A": "vriendelijk",
+    "C": "georganiseerd",
+    "Calm": "rustig",
+    "E": "open",
+    "O": "nieuwsgierig"
+  },
+  "ui": {
+    "age": "{n} jaar",
+    "ages": "leeftijden {list}",
+    "another": "Ontmoet een ander kind",
+    "askTabs": "Vragen",
+    "atAge": "Op {n} jaar",
+    "atAgePast": "Op {n} jaar (al voorbij: nu)",
+    "bestAges": "het sterkst rond {a}–{b}",
+    "changesEmpty": "Elke wijziging komt hier met een vinkje, zodat je haar eruit kunt halen en terug kunt zetten.",
+    "done": "Klaar",
+    "earlier": "Eerder",
+    "earlierAria": "Een jaar eerder",
+    "edit": "Bewerken",
+    "fromAge": "vanaf {n}",
+    "glossLine": "{meaning} Bijvoorbeeld een kind dat {a}, of {b}.",
+    "glossTitle": "Wat betekenen de vijf woorden?",
+    "happening": "Wat er gebeurt",
+    "kidAge": "{name}, {age} jaar",
+    "kidN": "Kind #{n} van 120",
+    "later": "Later",
+    "laterAria": "Een jaar later",
+    "made": "{n} gemaakt",
+    "madeTimes": "{n} keer gemaakt",
+    "meet": "Maak kennis met het kind",
+    "meetNote": "Dezelfde ouders, hetzelfde thuis, en toch is elk kind anders.",
+    "mostTypical": "Het meest doorsnee kind",
+    "nextAt": "Je volgende klik gebeurt op {n} jaar.",
+    "nextNow": "Je volgende klik gebeurt nu.",
+    "nowAge": "Nu ({n} jaar)",
+    "parents": "De ouders",
+    "parentsNote": "Elk kind krijgt een andere mix van de twee ouders. Als je het gezin verandert, begint alles opnieuw.",
+    "pickFamily": "Kies een gezin",
+    "plannedFor": "{name} · gepland voor {n}",
+    "rulerEmpty": "Je wijzigingen verschijnen hier, op een lijn van geboorte tot 18.",
+    "rulerLabel": "{cap}, {age} jaar, {len}",
+    "rulerLabelPlanned": "{cap}, {age} jaar, {len}, gepland: verplaats met de pijltjestoetsen",
+    "rulerPanel": "{name} · {age} jaar · {len} · {state}",
+    "science": "Over de wetenschap",
+    "science1": "Wetenschappers beschrijven persoonlijkheid vaak met vijf eigenschappen, de Big Five. Hier hebben ze gewone namen:",
+    "science2": "De getallen zijn ruwe schattingen, geïnspireerd op onderzoek, niet exact. Ze beschrijven gemiddelden, geen lot: echte kinderen worden niet door een model voorspeld.",
+    "scienceItem": "{trait} is {science}: van “{a}” tot “{b}”.",
+    "state": {
+      "going": "loopt nog",
+      "over": "voorbij",
+      "planned": "gepland",
+      "stopped": "gestopt op {n}"
+    },
+    "stopNow": "Nu stoppen",
+    "tab": {
+      "changes": "Wijzigingen",
+      "family": "Gezin"
+    },
+    "things": "Dingen die kunnen gebeuren",
+    "thingsHint": "Ze tellen op. Kies wanneer, hoe groot en hoe lang, en klik dan.",
+    "toTry": "{n} om te proberen",
+    "tuneNote": "Instellingen voor aanleg en toeval starten de wereld opnieuw. Instellingen voor wijzigingen gelden voor je volgende klik.",
+    "undo": "Ongedaan maken",
+    "usualLen": "Elke wijziging duurt zo lang als ze meestal duurt.",
+    "usually": "Meestal: {what}",
+    "variables": "Variabelen",
+    "whatChanged": "Wat er veranderde",
+    "whyBar": "{trait}: {list}",
+    "whyIntro": "Van alle verschillen tussen deze 120 broers en zussen: hoeveel komt van elk deel:",
+    "whyNote": "Genen: elk kind krijgt een andere mix van de ouders. Thuis: hetzelfde thuis raakt kinderen net iets anders. Gebeurtenissen: je wijzigingen en de alledaagse ups en downs. Toeval: al het andere.",
+    "whyTitle": "Waarom zijn deze kinderen verschillend?",
+    "yourChanges": "Je wijzigingen"
+  },
+  "whatif": {
+    "authoritative": "Warm en duidelijk",
+    "bestfriend": "Beste maatje",
+    "bullied": "Gepest",
+    "carer": "Helpt met een kleintje",
+    "chores": "Taken thuis",
+    "coding": "Programmeerclub",
+    "countryside": "Naar het platteland",
+    "dinners": "Samen eten",
+    "divorce": "Ouders gaan uit elkaar",
+    "drama": "Toneelles",
+    "exam": "Gezakt voor een toets",
+    "fallout": "Ruzie met een vriend",
+    "firstlove": "Eerste verliefdheid",
+    "grandparent": "Opa of oma komt inwonen",
+    "illness": "Een ouder ziek",
+    "job": "Weekendbaantje",
+    "language": "Een tweede taal",
+    "leader": "Klassenvertegenwoordiger",
+    "longhours": "Lange werkdagen",
+    "mentor": "Een mentor",
+    "money": "Krap bij kas",
+    "move": "Naar het buitenland",
+    "music": "Een instrument",
+    "nature": "Buiten",
+    "newschool": "Nieuwe school",
+    "pet": "Een hond",
+    "prize": "Wint een wedstrijd",
+    "reading": "Lezen",
+    "scouts": "Scouting",
+    "screen": "Veel schermen",
+    "sibling": "Een broertje of zusje",
+    "sleep": "Genoeg slaap",
+    "sport": "Teamsport",
+    "strict": "Strenger",
+    "summer": "Beste zomer ooit",
+    "teacher": "Geweldige leraar",
+    "travel": "Een jaar op reis",
+    "volunteer": "Vrijwilligerswerk"
+  }
+}

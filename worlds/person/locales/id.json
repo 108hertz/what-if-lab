@@ -1,0 +1,113 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": {
+      "label": "Usia",
+      "unit": "thn"
+    },
+    "disc": {
+      "label": "Disiplin diri"
+    },
+    "health": {
+      "label": "Kesehatan saat ini"
+    },
+    "mood": {
+      "label": "Kesejahteraan saat ini"
+    },
+    "soc": {
+      "label": "Kemampuan bergaul"
+    },
+    "stress": {
+      "label": "Tingkat stres"
+    }
+  },
+  "dim": {
+    "career": "Karier & keterampilan",
+    "health": "Kesehatan",
+    "social": "Hubungan",
+    "well": "Kesejahteraan"
+  },
+  "ev": {
+    "again": "Mulai lagi: {habit}",
+    "b6": "Enam bulan berjalan: rasa ketagihan dan toleransi membuat sulit berhenti",
+    "d66": "Hari ke-66: bagi yang masih bertahan, kebiasaan ini sudah otomatis",
+    "half": "Separuh versi sudah menyerah",
+    "high": "{dim} mencapai tingkat yang kuat",
+    "low": "{dim} turun ke zona bahaya",
+    "start": "Mulai: {habit}",
+    "w3": "Minggu ke-3: motivasi menurun, paling banyak yang berhenti sekarang",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "mulai minum alkohol berlebihan",
+    "exercise": "olahraga 30 menit setiap hari",
+    "isolate": "menjauh dari teman",
+    "learn": "belajar keterampilan 1 jam sehari",
+    "meditate": "meditasi 10 menit sehari",
+    "read": "membaca 30 menit sehari",
+    "sleep": "tidur 8 jam, jadwal tetap",
+    "smoke": "mulai merokok",
+    "social": "berhenti main media sosial"
+  },
+  "meta": {
+    "intro": "Satu orang, 100 versi paralel hidupnya. Coba kebiasaan baru dan lihat berapa yang bertahan dan apa yang berubah.",
+    "name": "Karakter",
+    "sub": "100 hidup paralel"
+  },
+  "metric": {
+    "career": {
+      "label": "Karier & keterampilan",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Kesehatan",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Masih menjalani",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Hubungan",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Kesejahteraan",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "Mulai minum berlebihan",
+    "exercise": "Olahraga",
+    "isolate": "Menjauh dari teman",
+    "learn": "Belajar keterampilan",
+    "meditate": "Meditasi",
+    "read": "Membaca",
+    "sleep": "Tidur",
+    "smoke": "Mulai merokok",
+    "social": "Berhenti medsos"
+  },
+  "speed": {
+    "0": "1 mgg/dtk",
+    "1": "1 bln/dtk",
+    "2": "6 bln/dtk",
+    "3": "2 thn/dtk"
+  },
+  "stage": {
+    "caption": "{what} · senyum = kesejahteraan · kecerahan = kesehatan",
+    "many": "{h, plural, other {# kebiasaan}} · {n} dari 100 masih menjalani setidaknya satu",
+    "none": "Belum ada kebiasaan baru",
+    "one": "{n} dari 100 masih menjalaninya"
+  },
+  "whatif": {
+    "drink": "Mulai minum alkohol berlebihan",
+    "exercise": "Olahraga 30 menit setiap hari",
+    "isolate": "Menjauh dari teman",
+    "learn": "Belajar keterampilan 1 jam sehari",
+    "meditate": "Meditasi 10 menit sehari",
+    "read": "Membaca 30 menit sehari",
+    "sleep": "Tidur 8 jam, jadwal tetap",
+    "smoke": "Mulai merokok",
+    "social": "Berhenti main media sosial"
+  }
+}

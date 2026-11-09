@@ -1,0 +1,189 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": {
+      "label": "CO₂ nell'aria",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Emissioni annue di CO₂",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Copertura forestale",
+      "unit": "% delle terre"
+    },
+    "front": {
+      "label": "Altezza del lungomare",
+      "unit": "m sul mare"
+    },
+    "h": {
+      "air-today": "L'aria oggi",
+      "emissions": "Emissioni",
+      "my-future-used-by-build-my-own-future": "Il mio futuro (usato da “Costruisci il tuo futuro”)",
+      "planet": "Pianeta",
+      "your-town": "La tua città"
+    },
+    "mDac": {
+      "label": "Rimozione di CO₂",
+      "unit": "Gt all'anno"
+    },
+    "mDim": {
+      "label": "Aerosol che oscurano il sole",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Cambia le emissioni del",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Taglio del metano",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Alberi piantati",
+      "unit": "migliaia di miliardi"
+    },
+    "mWall": {
+      "label": "Diga marina",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "In",
+      "unit": "anni"
+    },
+    "meth": {
+      "label": "Metano nell'aria",
+      "unit": "ppb"
+    },
+    "path": {
+      "label": "Dove vanno le emissioni",
+      "opt": {
+        "fall": "Calano piano (impegni di oggi)",
+        "flat": "Si stabilizzano",
+        "grow": "Continuano a crescere"
+      }
+    },
+    "sens": {
+      "label": "Sensibilità climatica",
+      "unit": "°C per 2× CO₂"
+    },
+    "tip": {
+      "label": "Punti di non ritorno",
+      "opt": {
+        "off": "No",
+        "on": "Sì: permafrost e calotte possono cedere"
+      }
+    },
+    "uptake": {
+      "label": "Assorbimento di oceani e suolo",
+      "unit": "% di oggi"
+    }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "L'Amazzonia comincia a trasformarsi in prateria",
+      "dac": "Le macchine iniziano a togliere CO₂ dall'aria",
+      "double": "Le emissioni cominciano a salire verso il doppio",
+      "ev": "Passaggio all'energia pulita: le emissioni calano del 7% all'anno",
+      "geo": "Aerosol spruzzati nella stratosfera",
+      "melt": "La calotta dell'Antartide occidentale comincia a crollare",
+      "methane": "Si cominciano a riparare perdite e fonti di metano",
+      "permafrost": "Il permafrost comincia a sciogliersi in fretta",
+      "seawall": "Intorno al porto viene costruita una diga di 3 m",
+      "trees": "Mille miliardi di alberi vengono piantati",
+      "volcano": "Erutta un supervulcano: un velo di cenere copre il sole",
+      "zero": "Tutte le emissioni si fermano"
+    },
+    "back": "Il riscaldamento torna sotto 1,5 °C",
+    "fl1": "Le mareggiate raggiungono le prime case della città",
+    "fl50": "Con l'alta marea metà della città si allaga",
+    "geoend": "Stop agli aerosol: shock da interruzione, riscaldamento rapido",
+    "gr": "Il ghiaccio della Groenlandia comincia a sciogliersi più in fretta",
+    "mix0": "Il mio futuro: nessun cambiamento",
+    "mix1": "Il mio futuro: {p0}",
+    "mix2": "Il mio futuro: {p0}, {p1}",
+    "mix3": "Il mio futuro: {p0}, {p1}, {p2}",
+    "mix4": "Il mio futuro: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Il mio futuro: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Il mio futuro: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Il riscaldamento tocca il massimo a {t} °C",
+    "pf": "Il permafrost comincia a sciogliersi, liberando CO₂ e metano",
+    "s0_5": "Mare +0,5 m: allagamenti regolari nei delta bassi dei fiumi",
+    "s1": "Mare +1 m: a rischio le case di ~200 milioni di persone",
+    "s2": "Mare +2 m: molte città costiere hanno bisogno di dighe o di spostarsi",
+    "snow": "Il limite della neve supera i 2000 m: il ghiacciaio è quasi sparito",
+    "t1_5": "Oltre 1,5 °C: barriere coralline in gran parte perse",
+    "t2": "Oltre 2 °C: ondate di calore mortali normali, estati artiche senza ghiaccio",
+    "t3": "Oltre 3 °C: le fasce agricole si spostano, rischio di deperimento dell'Amazzonia",
+    "t4": "Oltre 4 °C: alcune regioni vicine al limite di calore sopportabile dall'uomo",
+    "wa": "Il ghiaccio dell'Antartide occidentale comincia a scivolare in mare",
+    "wallover": "Il mare scavalca la diga"
+  },
+  "meta": {
+    "intro": "Una città sul fiordo, oggi. Guarda la neve, il bosco, i campi e il porto mentre passano i decenni.",
+    "name": "Terra",
+    "sub": "Clima"
+  },
+  "metric": {
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Raccolti",
+      "unit": "indice"
+    },
+    "flood": {
+      "label": "Allagamenti",
+      "unit": "% delle case"
+    },
+    "sea": {
+      "label": "Livello del mare",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Neve",
+      "unit": "% di oggi"
+    },
+    "temp": {
+      "label": "Riscaldamento",
+      "unit": "°C"
+    }
+  },
+  "mix": {
+    "dac": "{n} Gt di CO₂ tolte all'anno",
+    "dim": "luce del sole ridotta del {n}%",
+    "emDown": "emissioni −{n}% in {yrs} anni",
+    "emUp": "emissioni +{n}% in {yrs} anni",
+    "meth": "metano −{n}%",
+    "trees": "{n} mila miliardi di alberi",
+    "wall": "diga di {n} m"
+  },
+  "speed": {
+    "0": "1 anno/s",
+    "1": "5 anni/s",
+    "2": "20 anni/s",
+    "3": "60 anni/s"
+  },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · mare +{sea} m · {co2} ppm",
+    "snow": "Limite della neve {m} m"
+  },
+  "whatif": {
+    "amazon": "L'Amazzonia diventa prateria",
+    "dac": "Togli CO₂ dall'aria",
+    "double": "Le emissioni raddoppiano",
+    "ev": "Passa in fretta all'energia pulita",
+    "geo": "Oscura il sole con aerosol per 30 anni",
+    "melt": "Crolla la calotta dell'Antartide occidentale",
+    "methane": "Dimezza il metano",
+    "mix": "Costruisci il tuo futuro",
+    "permafrost": "Il permafrost si scioglie in fretta",
+    "seawall": "Costruisci una diga di 3 m",
+    "trees": "Pianta mille miliardi di alberi",
+    "volcano": "Erutta un supervulcano",
+    "zero": "Ferma subito tutte le emissioni"
+  }
+}

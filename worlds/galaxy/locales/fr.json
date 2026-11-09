@@ -1,0 +1,102 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": { "label": "Visée décentrée", "unit": "kal" },
+    "bhm": { "label": "Masse du trou noir", "unit": "× Voie lactée" },
+    "count": { "label": "Galaxies qui tombent" },
+    "dm": { "label": "Matière noire", "unit": "×" },
+    "dmleft": { "label": "Gravité restante", "unit": "%" },
+    "fly": { "label": "Vitesse de traversée", "unit": "km/s" },
+    "h": {
+      "starting-world": "Monde de départ",
+      "what-if-settings": "Réglages des « et si »"
+    },
+    "mass": { "label": "Masse d’Andromède", "unit": "× Voie lactée" },
+    "neigh": {
+      "label": "Voisines au départ",
+      "opt": {
+        "m33": "Triangle",
+        "m33lmc": "Triangle + GNM",
+        "none": "Aucune"
+      }
+    },
+    "shape": {
+      "label": "Forme d’Andromède",
+      "opt": {
+        "elliptical": "Elliptique",
+        "spiral": "Spirale"
+      }
+    },
+    "size": { "label": "Leur taille", "unit": "× Voie lactée" },
+    "speed": { "label": "Vitesse d’approche", "unit": "km/s" },
+    "spin": {
+      "label": "Rotation d’Andromède",
+      "opt": {
+        "against": "Contraire à la nôtre",
+        "same": "Même sens que la nôtre"
+      }
+    },
+    "stars": { "label": "Étoiles par galaxie" }
+  },
+  "ev": {
+    "bhBig": "Un trou noir {x} fois plus lourd que la Voie lactée apparaît en son centre",
+    "bhSmall": "Un trou noir de {pct} % de la masse de la Voie lactée apparaît en son centre",
+    "bullet": "Une galaxie traverse tout droit à {speed} km/s",
+    "closing": "Andromède approche à environ {speed} km/s",
+    "flipmw": "Chaque étoile de la Voie lactée inverse son orbite",
+    "freeze": "Toutes les étoiles de la Voie lactée cessent d’orbiter",
+    "headon": "Andromède fonce droit sur notre centre",
+    "lmc": "Le Grand Nuage de Magellan tourne autour de la Voie lactée",
+    "merge": "Les cœurs fusionnent : une galaxie elliptique géante, « Milkomeda »",
+    "miss": "Andromède est déviée sur une trajectoire de survol",
+    "nodmAll": "La matière noire disparaît : la gravité tombe à {left} %, les étoiles vont soudain trop vite",
+    "nodmSome": "Une partie de la matière noire disparaît : la gravité tombe à {left} %, les étoiles vont soudain trop vite",
+    "pass1": "Premier passage : les galaxies plongent l’une à travers l’autre",
+    "punch": "Une galaxie naine traverse notre centre",
+    "reverse": "Andromède fait demi-tour et s’éloigne",
+    "ring": "Notre disque rebondit en un anneau d’étoiles qui s’élargit",
+    "stop": "Andromède s’arrête net, puis commence à tomber",
+    "swallowed": "Une autre galaxie est avalée",
+    "swarm": "{n, plural, one {Une autre galaxie tombe} many {# galaxies de plus tombent} other {# galaxies de plus tombent}}",
+    "tails": "Elles s’écartent en traînant de longues queues de marée d’étoiles",
+    "third": "Une troisième galaxie (comme celle du Triangle) tombe",
+    "triangulum": "La galaxie du Triangle arrive par le côté"
+  },
+  "meta": {
+    "intro": "La Voie lactée et Andromède, sur leur vraie trajectoire de collision, en accéléré. Chaque point est une étoile.",
+    "name": "Galaxies",
+    "sub": "Collisions"
+  },
+  "metric": {
+    "disc": { "label": "Étoiles dans un disque", "unit": "%" },
+    "galaxies": { "label": "Galaxies restantes" },
+    "sep": { "label": "Distance", "unit": "kal" },
+    "thrown": { "label": "Étoiles éjectées", "unit": "%" }
+  },
+  "speed": {
+    "0": "5 Ma/s",
+    "1": "10 Ma/s",
+    "2": "25 Ma/s",
+    "3": "50 Ma/s",
+    "4": "150 Ma/s",
+    "5": "400 Ma/s",
+    "6": "1 Ga/s"
+  },
+  "stage": {
+    "scale": "{n} années-lumière"
+  },
+  "whatif": {
+    "bh": "Un trou noir aussi lourd qu’une galaxie apparaît en notre centre",
+    "bullet": "Une galaxie traverse tout droit",
+    "flipmw": "La Voie lactée tourne dans l’autre sens",
+    "freeze": "Les étoiles de la Voie lactée cessent d’orbiter",
+    "headon": "Viser Andromède en plein centre",
+    "miss": "Andromède passe à côté",
+    "nodm": "La matière noire disparaît",
+    "reverse": "Andromède fait demi-tour",
+    "ring": "Une petite galaxie traverse notre centre",
+    "stop": "Andromède s’arrête net",
+    "swarm": "D’autres galaxies tombent",
+    "third": "Une troisième galaxie arrive"
+  }
+}

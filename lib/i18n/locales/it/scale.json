@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Ingrandisci",
+    "zoomOut": "Riduci",
+    "zoomLevel": "Livello di zoom",
+    "hint": "Scorri, pizzica o trascina. Tocca un'etichetta dorata per aprire il suo mondo."
+  },
+  "panel": {
+    "inView": "In vista",
+    "openThis": "Apri questo mondo",
+    "openWorld": "Apri un mondo",
+    "jumpTo": "Vai a"
+  },
+  "hero": {
+    "title": "Cosa succede se…",
+    "body": "Zooma da un protone all'universo osservabile, dieci volte per passo. Le etichette dorate sono mondi vivi: aprine uno, cambialo e confronta il suo futuro con quello del mondo rimasto com'era."
+  },
+  "stage": {
+    "open": "Apri il mondo →",
+    "screen": "Larghezza schermo ≈ {len}"
+  }
+}

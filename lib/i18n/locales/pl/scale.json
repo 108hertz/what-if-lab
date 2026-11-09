@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Przybliż",
+    "zoomOut": "Oddal",
+    "zoomLevel": "Poziom przybliżenia",
+    "hint": "Przewijaj, szczypaj lub przeciągaj. Dotknij złotej etykiety, aby otworzyć jej świat."
+  },
+  "panel": {
+    "inView": "Na widoku",
+    "openThis": "Otwórz ten świat",
+    "openWorld": "Otwórz świat",
+    "jumpTo": "Przejdź do"
+  },
+  "hero": {
+    "title": "Co się stanie, jeśli…",
+    "body": "Przybliżaj od protonu do obserwowalnego Wszechświata, dziesięć razy na krok. Złote etykiety to żywe światy: otwórz jeden, zmień go i porównaj jego przyszłość ze światem bez zmian."
+  },
+  "stage": {
+    "open": "Otwórz świat →",
+    "screen": "Szerokość ekranu ≈ {len}"
+  }
+}

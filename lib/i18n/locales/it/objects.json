@@ -1,0 +1,161 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ant": {
+    "fact": "Le formiche possono trasportare da 10 a 50 volte il proprio peso.",
+    "name": "Formica"
+  },
+  "bee": {
+    "fact": "Visita fino a 100 fiori in un solo viaggio.",
+    "name": "Ape"
+  },
+  "burj": {
+    "fact": "L'edificio più alto della Terra.",
+    "name": "Burj Khalifa"
+  },
+  "canyon": {
+    "fact": "Scavato dal fiume Colorado in circa 6 milioni di anni.",
+    "name": "Grand Canyon"
+  },
+  "child": {
+    "fact": "La personalità è ereditata per circa il 40%; il resto viene dall'esperienza e dal caso.",
+    "name": "Bambino di 5 anni"
+  },
+  "country": {
+    "fact": "Le economie crescono, si fermano e crollano per politiche, risorse e fortuna.",
+    "name": "Un grande paese"
+  },
+  "dna": {
+    "fact": "Srotolato, il DNA di una sola tua cellula sarebbe lungo circa 2 metri.",
+    "name": "Doppia elica del DNA"
+  },
+  "earth": {
+    "fact": "L'unico pianeta noto che ospita la vita; si scalda di circa 0,2 °C ogni decennio.",
+    "name": "Terra"
+  },
+  "ecoli": {
+    "fact": "Il tuo intestino ospita circa tanti batteri quante sono le cellule del tuo corpo.",
+    "name": "Batterio (E. coli)"
+  },
+  "egg": {
+    "fact": "La cellula umana più grande, appena visibile a occhio nudo.",
+    "name": "Ovulo umano"
+  },
+  "eiffel": {
+    "fact": "Con il caldo estivo cresce di circa 15 cm.",
+    "name": "Torre Eiffel"
+  },
+  "elephant": {
+    "fact": "Il più grande animale terrestre, guidato dalla femmina più anziana.",
+    "name": "Elefante africano"
+  },
+  "everest": {
+    "fact": "Si alza ancora di circa 4 mm all'anno.",
+    "name": "Monte Everest"
+  },
+  "flu": {
+    "fact": "Non si riproduce da solo: si impadronisce delle tue cellule per copiarsi.",
+    "name": "Virus dell'influenza"
+  },
+  "human": {
+    "fact": "Circa 37 000 miliardi di cellule, sostituite e rinnovate per tutta la vita.",
+    "name": "Essere umano adulto"
+  },
+  "hydrogen": {
+    "fact": "Quasi tutto spazio vuoto: il nucleo è 100 000 volte più piccolo dell'atomo.",
+    "name": "Atomo di idrogeno"
+  },
+  "jump": {
+    "0": "Atomo",
+    "1": "Cellula",
+    "2": "Tu",
+    "3": "Città",
+    "4": "Terra",
+    "5": "Sistema solare",
+    "6": "Galassia",
+    "7": "Universo"
+  },
+  "jupiter": {
+    "fact": "Ci starebbero dentro più di 1300 Terre.",
+    "name": "Giove"
+  },
+  "liberty": {
+    "fact": "La sua pelle di rame è spessa solo 2,4 mm.",
+    "name": "Statua della Libertà"
+  },
+  "lightyear": {
+    "fact": "La distanza che la luce percorre in un anno: 9460 miliardi di km.",
+    "name": "Un anno luce"
+  },
+  "lion": {
+    "fact": "L'unico felino davvero sociale.",
+    "name": "Leone"
+  },
+  "localgroup": {
+    "fact": "Più di 80 galassie tenute insieme dalla gravità.",
+    "name": "Gruppo Locale"
+  },
+  "meerkat": {
+    "fact": "Le sentinelle fanno la guardia e lanciano l'allarme mentre il gruppo cerca cibo.",
+    "name": "Suricato"
+  },
+  "milkyway": {
+    "fact": "Da 100 a 400 miliardi di stelle, e in rotta per fondersi con Andromeda.",
+    "name": "Via Lattea"
+  },
+  "moon": {
+    "fact": "Si allontana lentamente dalla Terra, 3,8 cm all'anno.",
+    "name": "Luna"
+  },
+  "mouse": {
+    "fact": "Il suo cuore batte circa 600 volte al minuto.",
+    "name": "Topo"
+  },
+  "orbit": {
+    "fact": "La luce del Sole impiega 8 minuti per arrivare fino a noi.",
+    "name": "Orbita della Terra"
+  },
+  "orca": {
+    "fact": "Gruppi diversi parlano dialetti diversi.",
+    "name": "Orca"
+  },
+  "orion": {
+    "fact": "Un vivaio di stelle a 1300 anni luce da noi.",
+    "name": "Nebulosa di Orione"
+  },
+  "proton": {
+    "fact": "Tre quark legati insieme; il nucleo di ogni atomo di idrogeno.",
+    "name": "Protone"
+  },
+  "proxima": {
+    "fact": "Proxima Centauri, a 4,2 anni luce.",
+    "name": "Fino alla stella più vicina"
+  },
+  "rbc": {
+    "fact": "Ne produci circa 2 milioni ogni secondo.",
+    "name": "Globulo rosso"
+  },
+  "sand": {
+    "fact": "Nell'universo ci sono più stelle che granelli di sabbia su tutte le spiagge della Terra.",
+    "name": "Granello di sabbia"
+  },
+  "solar": {
+    "fact": "Nettuno impiega 165 anni per fare un giro completo.",
+    "name": "Sistema solare (fino a Nettuno)"
+  },
+  "sun": {
+    "fact": "Contiene il 99,86% di tutta la massa del Sistema solare.",
+    "name": "Sole"
+  },
+  "universe": {
+    "fact": "93 miliardi di anni luce di diametro: la luce più lontana che poteva raggiungerci.",
+    "name": "Universo osservabile"
+  },
+  "whale": {
+    "fact": "L'animale più grande mai esistito.",
+    "name": "Balenottera azzurra"
+  },
+  "wolf": {
+    "fact": "Il ritorno dei lupi a Yellowstone ha cambiato il corso dei suoi fiumi.",
+    "name": "Lupo grigio"
+  }
+}

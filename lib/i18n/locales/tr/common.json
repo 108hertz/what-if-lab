@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "Bir protondan gözlemlenebilir evrene yakınlaş, bir dünya aç, onu “ya … olursa?” sorularıyla değiştir ve geleceğini hiç değişmeyen dünyayla karşılaştır.",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "Ölçek",
+    "sub": "Proton → evren"
+  },
+  "intro": {
+    "worlds": "Dünyalar",
+    "whatifs": "Ya … olursa?"
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "body": "Bu sayfa laboratuvarda yok.",
+    "home": "Laboratuvara dön"
+  },
+  "unit": {
+    "gyr": "{n} milyar yıl",
+    "myr": "{n} milyon yıl",
+    "kyr": "{n} bin yıl",
+    "yr": "{n} yıl"
+  },
+  "dur": {
+    "days": "{n} gün",
+    "months": "{n} ay",
+    "years": "{n} yıl"
+  }
+}

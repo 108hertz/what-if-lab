@@ -1,0 +1,103 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "body": {
+    "blackhole": "czarna dziura",
+    "earth": "Ziemia",
+    "jupiter": "Jowisz",
+    "mars": "Mars",
+    "mercury": "Merkury",
+    "neptune": "Neptun",
+    "saturn": "Saturn",
+    "sun": "Słońce",
+    "uranus": "Uran",
+    "venus": "Wenus",
+    "yourplanet": "Twoja planeta"
+  },
+  "ctl": {
+    "sunm": {
+      "label": "Masa Słońca",
+      "unit": "× Słońce"
+    },
+    "view": {
+      "label": "Widok",
+      "opt": {
+        "inner": "Planety wewnętrzne",
+        "mid": "Do Jowisza",
+        "outer": "Cały układ"
+      }
+    }
+  },
+  "ev": {
+    "bh": "Czarna dziura o masie 4 Słońc wlatuje z krawędzi układu",
+    "escape": "{body}: ucieczka w przestrzeń międzygwiezdną",
+    "giant": "Słońce puchnie w czerwonego olbrzyma szerokiego na 0,85 AU i traci jedną trzecią masy",
+    "intoBh": "{body}: wpada do czarnej dziury",
+    "intoSun": "{body}: wpada w Słońce",
+    "jupstar": "Jowisz zyskuje 80× swojej masy i rozbłyska jako czerwony karzeł",
+    "mars": "Ziemia zostaje przesunięta na orbitę Marsa",
+    "nosun": "Słońce znika: planety odlatują po liniach prostych",
+    "smash": "Zderzenie: {body} i {other}",
+    "stop": "Ziemia staje w miejscu na swojej orbicie",
+    "sun2": "Słońce podwaja masę: silniejsze przyciąganie, światło 11× jaśniejsze",
+    "swallowed": "{body}: pochłonięcie przez czerwonego olbrzyma",
+    "throw": "Wrzucasz nową planetę"
+  },
+  "info": {
+    "changed": "Ze zmianami",
+    "now": "Ziemia teraz"
+  },
+  "meta": {
+    "hint": "Przeciągnij, aby rzucić planetę. Zmiany się sumują.",
+    "intro": "Prawdziwa grawitacja Newtona dla Słońca i ośmiu planet. Przeciągnij po scenie, aby wrzucić własną planetę.",
+    "name": "Układ Słoneczny",
+    "sub": "Grawitacja"
+  },
+  "metric": {
+    "dist": {
+      "label": "Odległość Ziemia–Słońce",
+      "unit": "AU"
+    },
+    "temp": {
+      "label": "Temperatura Ziemi",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Długość roku",
+      "unit": "dni"
+    }
+  },
+  "name": {
+    "blackhole": "Czarna dziura",
+    "earth": "Ziemia",
+    "jupiter": "Jowisz",
+    "mars": "Mars",
+    "mercury": "Merkury",
+    "neptune": "Neptun",
+    "saturn": "Saturn",
+    "uranus": "Uran",
+    "venus": "Wenus",
+    "yourplanet": "Twoja planeta"
+  },
+  "speed": {
+    "0": "1 mies./s",
+    "1": "6 mies./s",
+    "2": "2 lata/s",
+    "3": "10 lat/s"
+  },
+  "status": {
+    "boiling": "oceany wrą",
+    "destroyed": "zniszczona",
+    "flying": "odlatuje",
+    "frozen": "zamarznięta",
+    "habitable": "nadaje się do życia"
+  },
+  "whatif": {
+    "bh": "Przelatuje czarna dziura",
+    "giant": "Słońce staje się czerwonym olbrzymem",
+    "jupstar": "Jowisz zapala się jak gwiazda",
+    "mars": "Przesuń Ziemię na orbitę Marsa",
+    "nosun": "Słońce znika",
+    "stop": "Ziemia staje na orbicie",
+    "sun2": "Słońce podwaja masę"
+  }
+}

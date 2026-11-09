@@ -1,0 +1,81 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "play": "Start",
+    "pause": "Pauza",
+    "speed": "Tempo",
+    "slower": "Wolniej",
+    "faster": "Szybciej",
+    "reset": "Reset",
+    "resetLabel": "Resetuj wszystko",
+    "resetTitle": "Resetuj wszystko: ustawienia, zmiany i czas",
+    "hintFull": "Wyjdź z pełnego ekranu, aby coś zmienić.",
+    "hint": "Wybieraj zmiany. Sumują się; odznacz je, aby porównać."
+  },
+  "fullscreen": {
+    "enter": "Pełny ekran",
+    "leave": "Wyjdź z pełnego ekranu",
+    "title": "{label} (F)"
+  },
+  "changes": {
+    "title": "Twoje zmiany",
+    "count": "Włączone: {on} z {total}",
+    "empty": "Nic jeszcze nie zmieniono. Każda zmiana trafia tutaj z ptaszkiem, więc możesz ją wyłączać i włączać.",
+    "remove": "Usuń „{name}” z listy",
+    "removeTitle": "Usuń z listy",
+    "allOn": "Włącz wszystkie",
+    "allOff": "Wyłącz wszystkie",
+    "clear": "Wyczyść listę",
+    "throw": "Wrzuć planetę"
+  },
+  "about": {
+    "label": "O tym modelu",
+    "body": "Wszystko działa na wbudowanych regułach i uproszczonych danych, na żywo w Twojej przeglądarce. Wyniki pokazują prawdopodobne zachowanie, a nie prognozy."
+  },
+  "whatifs": {
+    "title": "Wprowadź zmiany",
+    "applied": "użyto {n} ×"
+  },
+  "readouts": {
+    "title": "Teraz"
+  },
+  "world": {
+    "base": "Bez zmian",
+    "alt": "Ze zmianami",
+    "both": "Oba światy",
+    "onlyBase": "Tylko bez zmian",
+    "onlyAlt": "Tylko ze zmianami"
+  },
+  "tune": {
+    "title": "Zmienne",
+    "live": "Zmiany świata startowego uruchamiają go od nowa. Ustawienia „co jeśli” działają przy następnym wyborze.",
+    "restart": "Zmiana tych ustawień uruchamia świat od nowa."
+  },
+  "chart": {
+    "withChanges": "Ze zmianami:",
+    "noDiff": "na razie bez realnej różnicy",
+    "overTime": "{metric} w czasie",
+    "collecting": "Zbieranie danych…",
+    "fork": "ROZWIDLENIE"
+  },
+  "stage": {
+    "label": "Scena symulacji",
+    "edge": "What-If Lab · Ziarno {seed}"
+  },
+  "timeline": {
+    "title": "Oś czasu",
+    "empty": "Na razie nic ciekawego. Poczekaj chwilę albo wprowadź zmianę."
+  },
+  "dock": {
+    "tools": "Narzędzia",
+    "ask": "Pytaj",
+    "tune": "Ustaw",
+    "read": "Czytaj",
+    "log": "Dziennik"
+  },
+  "ad": {
+    "label": "Reklama",
+    "promo": "Bez reklam z Premium · 15 $/rok",
+    "short": "Reklama"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "status": {
+    "off": "Bản này chưa thiết lập tài khoản. Mọi thứ ở đây đều miễn phí.",
+    "loading": "Đang kiểm tra tài khoản…",
+    "signedOut": "Phòng thí nghiệm miễn phí, không cần tài khoản. Đăng nhập để dùng Premium trên mọi thiết bị.",
+    "free": "Gói miễn phí. Mọi thế giới và mọi nếu như đều là của bạn.",
+    "premium": "Premium đang bật: không quảng cáo, có xuất video và trang trình chiếu.",
+    "error": "Dịch vụ tài khoản không phản hồi.",
+    "keepPremium": "Premium vẫn bật lúc này."
+  },
+  "menu": {
+    "account": "Tài khoản",
+    "signIn": "Đăng nhập",
+    "createAccount": "Tạo tài khoản",
+    "goPremium": "Lên Premium",
+    "price": "15 $ một năm",
+    "manage": "Quản lý gói đăng ký",
+    "settings": "Cài đặt tài khoản",
+    "signOut": "Đăng xuất",
+    "retry": "Thử lại",
+    "yourAccount": "Tài khoản phòng thí nghiệm",
+    "premium": "Premium",
+    "free": "Miễn phí",
+    "plan": "Gói {plan}",
+    "buttonLabel": "{label}, gói {plan}",
+    "devPremium": "Giả lập Premium",
+    "devOnly": "chỉ bản dev"
+  },
+  "premium": {
+    "perks": {
+      "noads": {
+        "name": "Không quảng cáo",
+        "text": "Mọi ô quảng cáo đều biến mất, trong mọi thế giới."
+      },
+      "phone": {
+        "name": "Video điện thoại",
+        "text": "Clip 1080 × 1920 về nếu như của bạn cho Shorts, Reels và TikTok."
+      },
+      "wide": {
+        "name": "Video YouTube",
+        "text": "Clip 1920 × 1080 với hai thế giới đặt cạnh nhau."
+      },
+      "slides": {
+        "name": "Trang trình chiếu",
+        "text": "Một bộ PDF: bối cảnh, nếu như, các khoảnh khắc chính và kết quả."
+      }
+    },
+    "lead": {
+      "export": "Video và trang trình chiếu thuộc gói Premium.",
+      "ads": "Premium bỏ quảng cáo đi.",
+      "menu": "Ủng hộ phòng thí nghiệm và nhận công cụ để chia sẻ những gì bạn khám phá."
+    },
+    "createContinue": "Tạo tài khoản và tiếp tục",
+    "haveAccount": "Tôi đã có tài khoản",
+    "noteSignedOut": "Trước tiên cần một tài khoản để Premium dùng được trên mọi thiết bị. Sau đó trang thanh toán mở ngay tại đây.",
+    "openingCheckout": "Đang mở trang thanh toán…",
+    "continueCheckout": "Tiếp tục thanh toán",
+    "noteFree": "Đã đăng nhập: {who}. Việc thanh toán do {provider} và Stripe xử lý; phòng thí nghiệm không bao giờ thấy thẻ của bạn.",
+    "you": "bạn",
+    "ourProvider": "nhà cung cấp của chúng tôi",
+    "back": "Quay lại phòng thí nghiệm",
+    "manage": "Quản lý gói đăng ký",
+    "checking": "Đang kiểm tra tài khoản…",
+    "retry": "Thử lại",
+    "noteDev": "Bản này chưa thiết lập tài khoản. Để thử Premium, hãy bật Giả lập Premium trong menu tài khoản.",
+    "noteOff": "Premium chưa được bán trong phiên bản này.",
+    "titleOn": "Premium đang bật",
+    "title": "Premium",
+    "amount": "15 $",
+    "per": "một năm · huỷ bất cứ lúc nào",
+    "thanks": "Cảm ơn bạn. Quảng cáo đã biến mất và tính năng xuất đã mở trong mọi thế giới.",
+    "free": "Mọi thế giới và mọi nếu như vẫn miễn phí, dù có Premium hay không."
+  },
+  "errors": {
+    "noCheckout": "Phiên bản này chưa có thanh toán. Hãy thử lại sau.",
+    "notOnSale": "Premium chưa được bán. Vui lòng thử lại sau.",
+    "checkoutFailed": "Không mở được trang thanh toán. Thử lại sau giây lát.",
+    "offline": "Bạn đang ngoại tuyến. Tài khoản sẽ trở lại khi bạn kết nối lại.",
+    "noAnswer": "Dịch vụ tài khoản không phản hồi. Kiểm tra kết nối và thử lại."
+  },
+  "yourAccount": "Tài khoản của bạn"
+}

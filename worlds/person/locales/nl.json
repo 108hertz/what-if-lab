@@ -1,0 +1,113 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "age": {
+      "label": "Leeftijd",
+      "unit": "jr"
+    },
+    "disc": {
+      "label": "Zelfdiscipline"
+    },
+    "health": {
+      "label": "Huidige gezondheid"
+    },
+    "mood": {
+      "label": "Huidig welzijn"
+    },
+    "soc": {
+      "label": "Sociaal"
+    },
+    "stress": {
+      "label": "Stressniveau"
+    }
+  },
+  "dim": {
+    "career": "Werk en vaardigheden",
+    "health": "Gezondheid",
+    "social": "Relaties",
+    "well": "Welzijn"
+  },
+  "ev": {
+    "again": "Begint opnieuw: {habit}",
+    "b6": "Zes maanden verder: verlangen en gewenning maken stoppen moeilijk",
+    "d66": "Dag 66: wie nog bezig is, doet het nu automatisch",
+    "half": "De helft van de versies heeft het opgegeven",
+    "high": "{dim}: een sterk niveau bereikt",
+    "low": "{dim}: zakt in de gevarenzone",
+    "start": "Begint: {habit}",
+    "w3": "Week 3: de motivatiedip, nu haken de meesten af",
+    "withHabit": "{habit}: {line}"
+  },
+  "habit": {
+    "drink": "veel gaan drinken",
+    "exercise": "elke dag 30 min. bewegen",
+    "isolate": "zich terugtrekken van vrienden",
+    "learn": "elke dag 1 uur iets leren",
+    "meditate": "elke dag 10 min. mediteren",
+    "read": "elke dag 30 min. lezen",
+    "sleep": "8 uur slapen, vaste tijden",
+    "smoke": "gaan roken",
+    "social": "stoppen met sociale media"
+  },
+  "meta": {
+    "intro": "Eén persoon, 100 parallelle versies van zijn of haar leven. Probeer nieuwe gewoontes en zie hoeveel versies het volhouden en wat het verandert.",
+    "name": "Karakter",
+    "sub": "100 parallelle levens"
+  },
+  "metric": {
+    "career": {
+      "label": "Werk en vaardigheden",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Gezondheid",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Houdt het vol",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Relaties",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Welzijn",
+      "unit": "/100"
+    }
+  },
+  "short": {
+    "drink": "Veel gaan drinken",
+    "exercise": "Bewegen",
+    "isolate": "Terugtrekken van vrienden",
+    "learn": "Iets leren",
+    "meditate": "Mediteren",
+    "read": "Lezen",
+    "sleep": "Slapen",
+    "smoke": "Gaan roken",
+    "social": "Stoppen met sociale media"
+  },
+  "speed": {
+    "0": "1 wk/s",
+    "1": "1 mnd/s",
+    "2": "6 mnd/s",
+    "3": "2 jr/s"
+  },
+  "stage": {
+    "caption": "{what} · glimlach = welzijn · helderheid = gezondheid",
+    "many": "{h, plural, one {# gewoonte} other {# gewoontes}} · {n} van 100 doen er nog minstens één",
+    "none": "Nog geen nieuwe gewoonte",
+    "one": "{n} van 100 houden het vol"
+  },
+  "whatif": {
+    "drink": "Veel gaan drinken",
+    "exercise": "Elke dag 30 min. bewegen",
+    "isolate": "Je terugtrekken van vrienden",
+    "learn": "Elke dag 1 uur iets leren",
+    "meditate": "Elke dag 10 min. mediteren",
+    "read": "Elke dag 30 min. lezen",
+    "sleep": "8 uur slapen, vaste tijden",
+    "smoke": "Gaan roken",
+    "social": "Stoppen met sociale media"
+  }
+}

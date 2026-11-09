@@ -1,0 +1,690 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "cap": {
+    "bigger": "to hơn {n}%",
+    "coatThicker": "{coat} dày hơn",
+    "coatThinner": "{coat} mỏng hơn",
+    "earsLess": "tai nhỏ hơn (ít nhận biết hơn)",
+    "earsMore": "tai to hơn (nhận biết nhiều hơn)",
+    "eyesLess": "mắt nhỏ hơn (ít nhận biết hơn)",
+    "eyesMore": "mắt to hơn (nhận biết nhiều hơn)",
+    "faster": "nhanh hơn {n}%",
+    "none": "Hiện không có con {many} nào sống ở đây.",
+    "now": "Giờ {list}.",
+    "same": "Gần như giống ngày 0. Cơ thể thay đổi qua nhiều thế hệ.",
+    "slower": "chậm hơn {n}%",
+    "smaller": "nhỏ hơn {n}%"
+  },
+  "chart": {
+    "ariaBodies": "Tốc độ, kích thước, giác quan và lớp phủ của {many} theo thời gian",
+    "ariaCounts": "Số lượng mỗi loài theo thời gian",
+    "asFast": "nhanh bằng",
+    "bigger": "to hơn {n}%",
+    "bodies": "Cơ thể chúng đã thay đổi ra sao",
+    "bodyDay0": "Con {one} điển hình so với ngày 0: 1,00× nghĩa là không đổi, trên 1 là nhiều hơn (nhanh hơn, to hơn, giác quan nhạy hơn, {coat} dày hơn).",
+    "bodyVs": "Con {one} điển hình khi có thay đổi {speed} khi không có, và {size}.",
+    "changes": "CÓ THAY ĐỔI",
+    "counts": "Số lượng mỗi loài",
+    "diff": "Khi có thay đổi, {be, select, is {có} other {có}} {list} so với khi không có (ngày {day}).",
+    "fasterThan": "nhanh hơn {n}% so với con",
+    "intro": "Số lượng mỗi loài sống ở đây, theo từng ngày. Tạo một thay đổi để so sánh với thế giới này.",
+    "label": "{name} {n}",
+    "noChange": "KHÔNG ĐỔI",
+    "same": "Khi có thay đổi, các con số đến giờ vẫn giống khi không có (ngày {day}).",
+    "sameSize": "to bằng",
+    "slowerThan": "chậm hơn {n}% so với con",
+    "smaller": "nhỏ hơn {n}%",
+    "unitAnimals": "con",
+    "unitDay0": "× ngày 0",
+    "view": "Kiểu biểu đồ",
+    "whichAnimal": "Loài nào",
+    "withChanges": "CÓ THAY ĐỔI"
+  },
+  "cmp": {
+    "change": "so với khi không có thay đổi",
+    "day0": "so với ngày 0"
+  },
+  "cover": {
+    "land": "bụi rậm",
+    "water": "tảo bẹ và đá"
+  },
+  "ctl": {
+    "dT": {
+      "label": "Thay đổi nhiệt độ",
+      "unit": "°C"
+    },
+    "food": {
+      "label": "Thức ăn mọc",
+      "unit": "% bình thường"
+    },
+    "h": {
+      "change-settings-used-by-your-next-click": "Cài đặt thay đổi (dùng cho lần bấm tiếp theo)",
+      "people-and-babies": "Con người và con non",
+      "the-place": "Nơi sống"
+    },
+    "hab": {
+      "label": "Không gian đi lại",
+      "unit": "% đất"
+    },
+    "habitat": {
+      "label": "Môi trường sống",
+      "opt": {
+        "desert": "Sa mạc",
+        "forest": "Rừng và lãnh nguyên",
+        "ice": "Băng biển",
+        "meadow": "Đồng cỏ hoa",
+        "ocean": "Đại dương",
+        "savanna": "Thảo nguyên"
+      }
+    },
+    "human": {
+      "label": "Con người săn bắt",
+      "opt": {
+        "0": "Không",
+        "10": "Một ít",
+        "30": "Vừa",
+        "60": "Rất nhiều"
+      }
+    },
+    "mut": {
+      "label": "Con non khác nhau bao nhiêu",
+      "opt": {
+        "big": "Rất khác (thay đổi nhanh)",
+        "normal": "Bình thường",
+        "small": "Hơi khác (thay đổi chậm)"
+      }
+    },
+    "s_new": {
+      "label": "Kẻ mới đến",
+      "unit": "con"
+    },
+    "s_sick": {
+      "label": "Độ mạnh của dịch bệnh",
+      "unit": "% mắc bệnh và chết"
+    },
+    "seasons": {
+      "label": "Mùa",
+      "opt": {
+        "gentle": "Nhẹ",
+        "off": "Tắt: thức ăn mọc đều",
+        "strong": "Mạnh: mùa đông thiếu ăn"
+      }
+    }
+  },
+  "ev": {
+    "add": "{n} con {many} chuyển đến",
+    "bigger": "{many} to lên trung bình 20%",
+    "boom": "Số {one} đã tăng gấp đôi",
+    "cool": "Kỷ băng hà bắt đầu: lạnh hơn 4 °C, ít thức ăn hơn",
+    "disease": "Dịch bệnh giết chết {n} con {many}",
+    "drought": "Một năm không mưa: thức ăn giảm một nửa",
+    "faster": "Chọn lọc tự nhiên: con {one} trung bình giờ nhanh hơn 20%",
+    "fire": "Cháy rừng thiêu rụi một phần ba đất",
+    "habitat": "Một nửa môi trường sống mất vào nông trại và đường sá",
+    "hunt": "Con người bắt đầu săn {many}",
+    "invasive": "{n} con {many} sinh sản nhanh kéo đến",
+    "move": "Chuyển sang khí hậu ngược lại: mọi thứ tốn năng lượng hơn nhiều",
+    "noRoom": "Không còn chỗ cho loài thứ sáu",
+    "noneToRemove": "Ở đây không có con {many} nào để mang đi",
+    "out": "{many} đã tuyệt chủng ở đây: phần lớn {why}",
+    "rain": "Nhiều năm mưa thuận bắt đầu: thức ăn mọc nhanh hơn",
+    "removed": "Đã mang đi toàn bộ {many}",
+    "reserve": "Khu bảo tồn: ngừng săn bắt, cây cối hồi phục",
+    "senses": "{many} giờ nhận ra thức ăn và nguy hiểm từ xa hơn 20%",
+    "slower": "Chọn lọc tự nhiên: {many} chậm lại để tiết kiệm năng lượng",
+    "smaller": "{many} nhỏ đi trung bình",
+    "thicker": "Lớp phủ dày lên: {many} giờ có {coat} nhiều hơn 20%",
+    "thinner": "Lớp phủ mỏng đi: {many} giờ có {coat} ít hơn 20%",
+    "wanders": "Một cặp {many} từ bên ngoài lạc vào",
+    "warm": "Khí hậu ấm lên 3 °C: cần nhiều năng lượng hơn, ít thức ăn hơn"
+  },
+  "facts": {
+    "eats": "Ăn gì",
+    "family": "Đời sống gia đình",
+    "lifespan": "Tuổi thọ",
+    "lives": "Sống ở",
+    "note": "Trong mô hình này một ngày rất ngắn: con vật sống vài tuần chứ không phải vài năm, để bạn xem được nhiều thế hệ.",
+    "role": "Vai trò trong tự nhiên",
+    "title": "Làm quen với các loài"
+  },
+  "food": {
+    "desert": "bọ và hạt",
+    "forest": "cỏ và lá",
+    "ice": "nhuyễn thể",
+    "meadow": "hoa",
+    "ocean": "nhuyễn thể và cá nhỏ",
+    "savanna": "cỏ"
+  },
+  "group": {
+    "0": "Động vật",
+    "1": "Khí hậu",
+    "2": "Con người"
+  },
+  "meta": {
+    "hint": "Mỗi con vật hơi khác nhau. Con nào hợp nhất sẽ đẻ nhiều con hơn. Bấm chạy và chọn một thay đổi.",
+    "intro": "Tối đa năm loài cùng chung một nơi. Mỗi con hơi khác nhau; con nào hợp nhất sẽ đẻ nhiều con hơn, nên cơ thể thay đổi theo thời gian. Chọn một thế giới hoặc tự tạo, rồi tạo thay đổi: chúng cộng dồn.",
+    "name": "Động vật",
+    "sub": "Tiến hoá"
+  },
+  "metric": {
+    "co0": {
+      "label": "Lớp phủ (loài 1)",
+      "unit": "× ngày 0"
+    },
+    "co1": {
+      "label": "Lớp phủ (loài 2)",
+      "unit": "× ngày 0"
+    },
+    "co2": {
+      "label": "Lớp phủ (loài 3)",
+      "unit": "× ngày 0"
+    },
+    "co3": {
+      "label": "Lớp phủ (loài 4)",
+      "unit": "× ngày 0"
+    },
+    "co4": {
+      "label": "Lớp phủ (loài 5)",
+      "unit": "× ngày 0"
+    },
+    "food": {
+      "label": "Thức ăn",
+      "unit": "phần"
+    },
+    "n0": {
+      "label": "Loài 1",
+      "unit": "con"
+    },
+    "n1": {
+      "label": "Loài 2",
+      "unit": "con"
+    },
+    "n2": {
+      "label": "Loài 3",
+      "unit": "con"
+    },
+    "n3": {
+      "label": "Loài 4",
+      "unit": "con"
+    },
+    "n4": {
+      "label": "Loài 5",
+      "unit": "con"
+    },
+    "se0": {
+      "label": "Giác quan (loài 1)",
+      "unit": "× ngày 0"
+    },
+    "se1": {
+      "label": "Giác quan (loài 2)",
+      "unit": "× ngày 0"
+    },
+    "se2": {
+      "label": "Giác quan (loài 3)",
+      "unit": "× ngày 0"
+    },
+    "se3": {
+      "label": "Giác quan (loài 4)",
+      "unit": "× ngày 0"
+    },
+    "se4": {
+      "label": "Giác quan (loài 5)",
+      "unit": "× ngày 0"
+    },
+    "sp0": {
+      "label": "Tốc độ (loài 1)",
+      "unit": "× ngày 0"
+    },
+    "sp1": {
+      "label": "Tốc độ (loài 2)",
+      "unit": "× ngày 0"
+    },
+    "sp2": {
+      "label": "Tốc độ (loài 3)",
+      "unit": "× ngày 0"
+    },
+    "sp3": {
+      "label": "Tốc độ (loài 4)",
+      "unit": "× ngày 0"
+    },
+    "sp4": {
+      "label": "Tốc độ (loài 5)",
+      "unit": "× ngày 0"
+    },
+    "sz0": {
+      "label": "Kích thước (loài 1)",
+      "unit": "× ngày 0"
+    },
+    "sz1": {
+      "label": "Kích thước (loài 2)",
+      "unit": "× ngày 0"
+    },
+    "sz2": {
+      "label": "Kích thước (loài 3)",
+      "unit": "× ngày 0"
+    },
+    "sz3": {
+      "label": "Kích thước (loài 4)",
+      "unit": "× ngày 0"
+    },
+    "sz4": {
+      "label": "Kích thước (loài 5)",
+      "unit": "× ngày 0"
+    }
+  },
+  "name": {
+    "own": "Thế giới của riêng bạn",
+    "ownFrom": "Thế giới của riêng bạn (dựa trên {from})"
+  },
+  "q": {
+    "add": "Nếu {many} chuyển đến thì sao?",
+    "addMore": "Nếu thêm {many} chuyển đến thì sao?",
+    "cool": "Nếu kỷ băng hà bắt đầu thì sao?",
+    "disease": "Nếu dịch bệnh lan trong đàn {many} thì sao?",
+    "drought": "Nếu trời không mưa suốt một năm thì sao?",
+    "fire": "Nếu cháy rừng thiêu rụi một phần ba đất thì sao?",
+    "habitat": "Nếu một nửa đất thành nông trại và đường sá thì sao?",
+    "hunt": "Nếu con người săn {many} thì sao?",
+    "invasive": "Nếu một kẻ mới đến sinh sản nhanh xuất hiện thì sao?",
+    "move": "Nếu chúng bị chuyển sang khí hậu ngược lại thì sao?",
+    "rain": "Nếu có nhiều năm mưa thuận thì sao?",
+    "remove": "Nếu {many} biến mất thì sao?",
+    "reserve": "Nếu nơi này thành khu bảo tồn thì sao?",
+    "warm": "Nếu trời ấm hơn 3 °C thì sao?"
+  },
+  "sp": {
+    "bear": {
+      "coat": "lông",
+      "food": "Quả mọng, rễ cây, cá hồi, đôi khi nai sừng tấm con",
+      "life": "20–25 năm",
+      "many": "gấu",
+      "name": "Gấu nâu",
+      "one": "gấu",
+      "pl": "Gấu nâu",
+      "role": "Mang cá hồi từ sông vào rừng, nuôi dưỡng cây cối.",
+      "social": "Phần lớn sống một mình. Gấu mẹ nuôi con hai đến ba năm.",
+      "where": "Rừng và núi ở Bắc Mỹ, châu Âu và châu Á"
+    },
+    "beaver": {
+      "coat": "lông",
+      "food": "Vỏ cây, cành nhỏ và cây thuỷ sinh",
+      "life": "10–12 năm",
+      "many": "hải ly",
+      "name": "Hải ly",
+      "one": "hải ly",
+      "pl": "Hải ly",
+      "role": "Xây đập tạo thành ao, nơi ở cho cá, ếch và chim.",
+      "social": "Gia đình gồm bố, mẹ và con cùng sống chung một tổ.",
+      "where": "Sông hồ ở Bắc Mỹ và châu Âu"
+    },
+    "bee": {
+      "coat": "lông tơ",
+      "food": "Mật hoa và phấn hoa",
+      "life": "Ong thợ khoảng 6 tuần, ong chúa 2–5 năm",
+      "many": "ong",
+      "name": "Ong mật",
+      "one": "ong",
+      "pl": "Ong mật",
+      "role": "Thụ phấn cho khoảng một phần ba lượng thức ăn con người ăn.",
+      "social": "Đàn 20.000–60.000 con: một ong chúa và nhiều ong thợ đổi việc theo tuổi.",
+      "where": "Khắp thế giới, cả hoang dã lẫn do người nuôi"
+    },
+    "cheetah": {
+      "coat": "lông",
+      "food": "Linh dương gazelle và thỏ rừng",
+      "life": "10–12 năm",
+      "many": "báo săn",
+      "name": "Báo săn",
+      "one": "báo săn",
+      "pl": "Báo săn",
+      "role": "Kẻ chạy nhanh nhất trên cạn: tới 110 km/h, nhưng chỉ trong một cú lao ngắn.",
+      "social": "Báo mẹ nuôi con một mình; anh em thường ở bên nhau cả đời.",
+      "where": "Đồng cỏ rộng ở châu Phi, một ít ở Iran"
+    },
+    "elephant": {
+      "coat": "mỡ",
+      "food": "Cỏ, vỏ cây và trái cây: khoảng 150 kg mỗi ngày",
+      "life": "60–70 năm",
+      "many": "voi",
+      "name": "Voi châu Phi",
+      "one": "voi",
+      "pl": "Voi",
+      "role": "Mở lối trong rừng thưa, đào hố nước và phát tán hạt giống.",
+      "social": "Đàn voi cái có họ hàng, do con già nhất dẫn đầu. Voi đực rời đàn khi khoảng 13 tuổi.",
+      "where": "Thảo nguyên và rừng ở châu Phi"
+    },
+    "elk": {
+      "coat": "lông",
+      "food": "Cỏ, lá và vỏ cây",
+      "life": "10–13 năm",
+      "many": "nai sừng tấm",
+      "name": "Nai sừng tấm",
+      "one": "nai sừng tấm",
+      "pl": "Nai sừng tấm",
+      "role": "Bữa ăn chính của sói; việc gặm cỏ của chúng định hình bìa rừng.",
+      "social": "Con mẹ và con non sống thành đàn lớn; con đực sống riêng và rống vang vào mùa thu.",
+      "where": "Rừng núi và đồng cỏ ở Bắc Mỹ và châu Á"
+    },
+    "fox": {
+      "coat": "lông",
+      "food": "Thỏ, chuột, chim, quả mọng",
+      "life": "3–4 năm ngoài tự nhiên",
+      "many": "cáo",
+      "name": "Cáo đỏ",
+      "one": "cáo",
+      "pl": "Cáo đỏ",
+      "role": "Giữ số lượng thỏ và chuột trong tầm kiểm soát.",
+      "social": "Cáo bố mẹ cùng nuôi con; đôi khi con gái lớn phụ giúp.",
+      "where": "Gần như khắp nửa bắc thế giới, cả trong thành phố"
+    },
+    "gazelle": {
+      "coat": "lông",
+      "food": "Cỏ non, ngắn",
+      "life": "10–15 năm",
+      "many": "linh dương",
+      "name": "Linh dương gazelle",
+      "one": "linh dương",
+      "pl": "Linh dương gazelle",
+      "role": "Thức ăn cho báo săn, sư tử và linh cẩu; chạy zíc zắc tới 80 km/h.",
+      "social": "Đàn con cái và con non; con đực canh giữ những mảnh đất nhỏ.",
+      "where": "Đồng cỏ Kenya và Tanzania"
+    },
+    "hornet": {
+      "coat": "lông tơ",
+      "food": "Ong và côn trùng khác (cho con non), trái cây và mật hoa",
+      "life": "Ong thợ vài tuần, ong chúa khoảng một năm",
+      "many": "ong bắp cày",
+      "name": "Ong bắp cày",
+      "one": "ong bắp cày",
+      "pl": "Ong bắp cày",
+      "role": "Lượn ngoài tổ ong mật và bắt ong khi chúng bay về.",
+      "social": "Tổ giấy vài nghìn con, mỗi mùa xuân do một ong chúa lập nên.",
+      "where": "Châu Á; lan sang châu Âu từ năm 2004"
+    },
+    "jackal": {
+      "coat": "lông",
+      "food": "Thú nhỏ, chim, côn trùng",
+      "life": "8–9 năm",
+      "many": "chó rừng",
+      "name": "Chó rừng lưng đen",
+      "one": "chó rừng",
+      "pl": "Chó rừng",
+      "role": "Săn thú nhỏ và dọn sạch những gì kẻ khác bỏ lại.",
+      "social": "Sống thành đôi suốt đời; lứa con năm trước giúp nuôi lứa mới.",
+      "where": "Đồng cỏ khô và rìa sa mạc ở nam và đông châu Phi"
+    },
+    "lion": {
+      "coat": "lông",
+      "food": "Ngựa vằn, linh dương đầu bò, trâu rừng, linh dương",
+      "life": "10–14 năm",
+      "many": "sư tử",
+      "name": "Sư tử",
+      "one": "sư tử",
+      "pl": "Sư tử",
+      "role": "Giữ cho các đàn ăn cỏ khoẻ mạnh và luôn di chuyển.",
+      "social": "Bầy sư tử cái có họ hàng cùng 1–3 con đực. Con cái đi săn cùng nhau.",
+      "where": "Thảo nguyên châu Phi, và một khu rừng ở Ấn Độ"
+    },
+    "lseal": {
+      "coat": "mỡ dày",
+      "food": "Nhuyễn thể, chim cánh cụt, cá, các loài hải cẩu khác",
+      "life": "12–26 năm",
+      "many": "hải cẩu báo",
+      "name": "Hải cẩu báo",
+      "one": "hải cẩu báo",
+      "pl": "Hải cẩu báo",
+      "role": "Thợ săn hàng đầu trên băng biển, chỉ sau cá voi sát thủ.",
+      "social": "Sống một mình, trừ hải cẩu mẹ với con.",
+      "where": "Băng trôi quanh châu Nam Cực"
+    },
+    "meerkat": {
+      "coat": "lông",
+      "food": "Bọ cánh cứng, bọ cạp, thằn lằn nhỏ",
+      "life": "6–10 năm",
+      "many": "chồn đất",
+      "name": "Chồn đất",
+      "one": "chồn đất",
+      "pl": "Chồn đất",
+      "role": "Ăn rất nhiều côn trùng; là thức ăn cho chó rừng và đại bàng.",
+      "social": "Bầy 20–50 con do một cặp sinh sản dẫn đầu; những con khác trông con hộ và thay phiên canh gác.",
+      "where": "Sa mạc Kalahari và Namib, miền nam châu Phi"
+    },
+    "orca": {
+      "coat": "mỡ dày",
+      "food": "Cá hoặc hải cẩu, tuỳ từng đàn",
+      "life": "50–90 năm",
+      "many": "cá voi sát thủ",
+      "name": "Cá voi sát thủ",
+      "one": "cá voi sát thủ",
+      "pl": "Cá voi sát thủ",
+      "role": "Thợ săn đứng đầu đại dương, định hình số lượng hải cẩu và cá.",
+      "social": "Đàn do các bà dẫn dắt. Mỗi đàn có tiếng gọi và mẹo săn riêng.",
+      "where": "Mọi đại dương, nhiều nhất ở vùng nước lạnh"
+    },
+    "penguin": {
+      "coat": "lông vũ",
+      "food": "Cá, nhuyễn thể và mực",
+      "life": "15–20 năm",
+      "many": "chim cánh cụt",
+      "name": "Chim cánh cụt hoàng đế",
+      "one": "chim cánh cụt",
+      "pl": "Chim cánh cụt hoàng đế",
+      "role": "Cho các nhà khoa học biết băng biển khoẻ đến đâu.",
+      "social": "Đàn hàng nghìn con. Chim bố túm tụm bên nhau và ấp trứng suốt mùa đông.",
+      "where": "Băng biển quanh châu Nam Cực"
+    },
+    "rabbit": {
+      "coat": "lông",
+      "food": "Cỏ và cây lá",
+      "life": "1–2 năm ngoài tự nhiên",
+      "many": "thỏ",
+      "name": "Thỏ",
+      "one": "thỏ",
+      "pl": "Thỏ",
+      "role": "Thức ăn cho cáo, diều hâu và nhiều loài khác; có thể gặm trụi đất khi quá đông.",
+      "social": "Sống thành nhóm trong hệ thống hang ngầm.",
+      "where": "Đồng cỏ và bìa rừng; được con người mang đến nhiều nước"
+    },
+    "salmon": {
+      "coat": "mỡ",
+      "food": "Nhuyễn thể, tôm và cá nhỏ",
+      "life": "4–6 năm",
+      "many": "cá hồi",
+      "name": "Cá hồi Đại Tây Dương",
+      "one": "cá hồi",
+      "pl": "Cá hồi",
+      "role": "Mang thức ăn từ biển vào sâu đất liền; là mồi của gấu, hải cẩu và chim.",
+      "social": "Sống một mình ngoài biển; cá trưởng thành bơi ngược về con sông nơi chúng nở ra để đẻ trứng.",
+      "where": "Bắc Đại Tây Dương và các con sông đổ ra đó"
+    },
+    "scorpion": {
+      "coat": "mỡ",
+      "food": "Bọ cánh cứng, dế và nhện",
+      "life": "3–8 năm",
+      "many": "bọ cạp",
+      "name": "Bọ cạp",
+      "one": "bọ cạp",
+      "pl": "Bọ cạp",
+      "role": "Săn côn trùng ban đêm; chồn đất miễn nhiễm với nhiều vết chích của chúng.",
+      "social": "Sống một mình. Bọ cạp mẹ cõng con trên lưng.",
+      "where": "Sa mạc và vùng khô trên mọi châu lục trừ châu Nam Cực"
+    },
+    "seal": {
+      "coat": "mỡ dày",
+      "food": "Cá, mực, tôm",
+      "life": "25–30 năm",
+      "many": "hải cẩu",
+      "name": "Hải cẩu cảng",
+      "one": "hải cẩu",
+      "pl": "Hải cẩu",
+      "role": "Ăn cá; là mồi của cá voi sát thủ và cá mập.",
+      "social": "Nghỉ cùng nhau trên bãi biển và đá, nhưng đi săn một mình.",
+      "where": "Bờ biển lạnh ở Bắc Đại Tây Dương và Bắc Thái Bình Dương"
+    },
+    "wolf": {
+      "coat": "lông",
+      "food": "Nai sừng tấm, hươu, hải ly và thỏ",
+      "life": "6–8 năm ngoài tự nhiên",
+      "many": "sói",
+      "name": "Sói xám",
+      "one": "sói",
+      "pl": "Sói xám",
+      "role": "Khiến nai sừng tấm luôn di chuyển, nhờ đó cây ven sông mọc lại.",
+      "social": "Bầy 4–9 con: sói bố, sói mẹ và con. Cặp \"đầu đàn\" chỉ đơn giản là bố mẹ.",
+      "where": "Rừng, lãnh nguyên và núi khắp Bắc Mỹ, châu Âu và châu Á"
+    },
+    "zebra": {
+      "coat": "lông",
+      "food": "Cỏ cao, cứng",
+      "life": "20–25 năm",
+      "many": "ngựa vằn",
+      "name": "Ngựa vằn",
+      "one": "ngựa vằn",
+      "pl": "Ngựa vằn",
+      "role": "Ăn cỏ cao trước, mở đường cho linh dương.",
+      "social": "Gia đình gồm một ngựa đực, vài ngựa cái và ngựa con; các gia đình nhập thành đàn lớn.",
+      "where": "Đồng cỏ ở đông và nam châu Phi"
+    }
+  },
+  "spGroup": {
+    "0": "Rừng và lãnh nguyên",
+    "1": "Thảo nguyên",
+    "2": "Sa mạc",
+    "3": "Đại dương và băng",
+    "4": "Đồng cỏ hoa"
+  },
+  "speed": {
+    "0": "1 ngày/s",
+    "1": "3 ngày/s",
+    "2": "10 ngày/s",
+    "3": "30 ngày/s"
+  },
+  "stage": {
+    "count": "{name} {n}",
+    "gone": "đã hết",
+    "goneNamed": "{name}: đã hết",
+    "new": "(mới)"
+  },
+  "story": {
+    "bigger": "{many} to hơn {n}% {cmp}.",
+    "biggerSafe": "{many} to hơn {n}% {cmp}: con to khó bị bắt hơn.",
+    "catch": "{hunter} chủ yếu bắt {prey}; {prey} trốn trong {cover} để được an toàn.",
+    "coatLess": "{many} có {coat} ít hơn {n}% {cmp}: giúp chúng mát hơn.",
+    "coatMore": "{many} có {coat} nhiều hơn {n}% {cmp}: giúp chúng ấm hơn.",
+    "compared": "So với cùng nơi ấy khi không đổi, vào ngày {day}:",
+    "count": "{n, plural, =1 {# con {one}} other {# con {many}}}",
+    "diedOut": "{many} đã tuyệt chủng: phần lớn {why}.",
+    "diedOutChanged": "{many} đã tuyệt chủng: phần lớn {why}, điều không xảy ra khi không có thay đổi.",
+    "diff": "{be, select, is {Có} other {Có}} {list}.",
+    "faster": "{many} nhanh hơn {n}% {cmp}: con nhanh thoát được thường hơn và đẻ nhiều con hơn.",
+    "fasterFood": "{many} nhanh hơn {n}% {cmp}: con nhanh đến chỗ thức ăn trước.",
+    "fewer": "{n, plural, =1 {ít hơn # con {one}} other {ít hơn # con {many}}}",
+    "giveTime": "Hãy cho nó thời gian: nhiều thay đổi chỉ lộ ra sau vài thế hệ.",
+    "hungry": "Rồi chúng ăn {food} nhanh hơn tốc độ mọc, và nhiều con bị đói.",
+    "hunting": "Con người săn bắt nhiều {many}.",
+    "lessFood": "Ít {food} hơn để chia nhau, nên chỉ đủ chỗ cho ít con vật hơn.",
+    "lessToEat": "Không còn {prey} để bắt, {hunter} có ít thức ăn hơn.",
+    "live": "Ngày {day}: {list} sống ở đây.",
+    "more": "{n, plural, =1 {thêm # con {one}} other {thêm # con {many}}}",
+    "moreFood": "Nhiều {food} hơn nghĩa là nhiều con non sống sót hơn.",
+    "multiplied": "Không có {hunter} đuổi bắt, {prey} sinh sôi nhanh.",
+    "newcomersFailed": "{many} chuyển đến không sống nổi ở đây: phần lớn {why}.",
+    "noneLeft": "Ngày {day}: không còn con vật nào ở đây.",
+    "pick": "Chọn một thay đổi để xem điều gì sẽ khác.",
+    "runsShort": "Có quá nhiều loài ăn cỏ nên {food} bị thiếu.",
+    "same": "Đến giờ số lượng con vật vẫn như nhau.",
+    "sensesLess": "{many} nhận biết kém hơn {n}% {cmp}: mắt to và tai to tốn năng lượng.",
+    "sensesMore": "{many} nhận ra thức ăn và nguy hiểm từ xa hơn {n}% {cmp}.",
+    "slower": "{many} chậm hơn {n}% {cmp}: di chuyển chậm tiết kiệm năng lượng.",
+    "smaller": "{many} nhỏ hơn {n}% {cmp}: cơ thể nhỏ cần ít thức ăn hơn.",
+    "weather": "Thời tiết {heat, select, hot {nóng hơn} other {lạnh hơn}} làm khó {many}: chúng đốt nhiều thức ăn hơn chỉ để sống."
+  },
+  "time": {
+    "day": "Ngày {n}"
+  },
+  "trait": {
+    "co": "Lớp phủ",
+    "se": "Giác quan",
+    "sp": "Tốc độ",
+    "sz": "Kích thước"
+  },
+  "trend": {
+    "falling": "đang giảm",
+    "gone": "đã hết",
+    "rising": "đang tăng",
+    "steady": "ổn định"
+  },
+  "ui": {
+    "addAnimal": "Thêm một loài",
+    "atStart": "{many} lúc đầu",
+    "changesHint": "Chúng cộng dồn. Bấm lại một lần nữa để mạnh hơn.",
+    "far": "Xa nhà",
+    "farHere": "Ở đây là xa nhà",
+    "fewer": "Ít {many} hơn lúc đầu",
+    "fiveMost": "Tối đa là năm",
+    "happening": "Chuyện gì đang xảy ra",
+    "livesHere": "{name} (sống ở đây)",
+    "more": "Nhiều {many} hơn lúc đầu",
+    "needOne": "Một thế giới cần ít nhất một loài",
+    "newcomer": "Ai có thể chuyển đến",
+    "noChange": "(không đổi: {v})",
+    "none": "không có",
+    "noneLeft": "Không còn con nào",
+    "pickWorld": "Chọn một thế giới",
+    "portrait": "Con {one} điển hình vào ngày 0 và hôm nay, vẽ cùng tỷ lệ. {caption}",
+    "restart": "Đổi loài sống ở đây sẽ khởi động lại thế giới.",
+    "rightNow": "Hiện tại",
+    "takeOut": "Mang {many} ra khỏi thế giới này",
+    "takeOutShort": "Mang {many} đi",
+    "target": "Thay đổi cho một loài áp dụng cho",
+    "thenNow": "Trước và nay",
+    "whatChanged": "Điều gì đã thay đổi",
+    "who": "Ai sống ở đây"
+  },
+  "whatif": {
+    "add": "Một loài chuyển đến",
+    "cool": "Kỷ băng hà",
+    "disease": "Dịch bệnh lan rộng",
+    "drought": "Một năm không mưa",
+    "fire": "Cháy rừng",
+    "habitat": "Mất một nửa đất",
+    "hunt": "Con người săn một loài",
+    "invasive": "Kẻ mới đến sinh sản nhanh",
+    "move": "Khí hậu ngược lại",
+    "rain": "Nhiều năm mưa thuận",
+    "remove": "Một loài biến mất",
+    "reserve": "Khu bảo tồn",
+    "warm": "Ấm hơn 3 °C"
+  },
+  "why": {
+    "0": "bị bắt ăn thịt",
+    "1": "bị đói",
+    "2": "không chịu nổi thời tiết",
+    "3": "chết già",
+    "4": "bị con người săn"
+  },
+  "world": {
+    "antarctica": "Châu Nam Cực",
+    "atlantic": "Bắc Đại Tây Dương",
+    "foxes": "Cáo và thỏ",
+    "kalahari": "Kalahari",
+    "meadow": "Đồng cỏ hoa",
+    "savanna": "Thảo nguyên",
+    "yellowstone": "Yellowstone"
+  },
+  "worldGroup": {
+    "0": "Rừng và lãnh nguyên",
+    "1": "Thảo nguyên và sa mạc",
+    "2": "Đại dương và băng",
+    "3": "Đồng cỏ hoa"
+  },
+  "worldOpt": {
+    "antarctica": "Châu Nam Cực: chim cánh cụt, hải cẩu báo, cá voi sát thủ",
+    "atlantic": "Bắc Đại Tây Dương: cá hồi, hải cẩu, cá voi sát thủ, gấu",
+    "foxes": "Cáo và thỏ",
+    "kalahari": "Kalahari: chồn đất, chó rừng, bọ cạp",
+    "meadow": "Đồng cỏ hoa: ong mật và ong bắp cày",
+    "savanna": "Thảo nguyên: sư tử, ngựa vằn, voi, linh dương",
+    "yellowstone": "Yellowstone: sói, nai sừng tấm, hải ly, gấu"
+  }
+}

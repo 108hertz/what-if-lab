@@ -1,0 +1,286 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "calm": {
+    "0": "Sokaklar protestocularla dolu.",
+    "1": "Birçok insan öfkeli; protestolar yakın.",
+    "2": "Hayat çoğunlukla sakin, yönetime karşı biraz öfke var.",
+    "3": "Hayat sakin ve insanlar çoğunlukla birbirine güveniyor."
+  },
+  "ctl": {
+    "corr": { "label": "Yolsuzluk", "unit": "/100" },
+    "edu": { "label": "Okullar", "unit": "/100" },
+    "gdp": { "label": "Kişi başı gelir", "unit": "bin $/yıl" },
+    "gov": {
+      "label": "Yönetim",
+      "opt": {
+        "auto": "Tek lider ya da parti",
+        "dem": "Demokrasi",
+        "hybrid": "Karma: seçim var, özgürlük az"
+      }
+    },
+    "h": {
+      "money": "Para",
+      "people": "İnsanlar",
+      "policy-sizes-used-by-your-next-click": "Politika boyutları (bir sonraki tıklamanda kullanılır)",
+      "public-life": "Kamusal yaşam"
+    },
+    "jobless": { "label": "İşsiz", "unit": "%" },
+    "life": { "label": "Sağlık: yaşam süresi", "unit": "yıl" },
+    "pop": { "label": "Nüfus", "unit": "milyon" },
+    "popg": { "label": "Nüfus artışı", "unit": "%/yıl" },
+    "preset": {
+      "group": {
+        "0": "Avrupa",
+        "1": "Asya",
+        "2": "Orta Doğu ve Kafkasya",
+        "3": "Afrika",
+        "4": "Amerika",
+        "5": "Okyanusya",
+        "6": "Kendi ülken"
+      },
+      "label": "Ülke",
+      "opt": {
+        "am": "Ermenistan",
+        "ar": "Arjantin",
+        "au": "Avustralya",
+        "bd": "Bangladeş",
+        "br": "Brezilya",
+        "ca": "Kanada",
+        "ch": "İsviçre",
+        "cl": "Şili",
+        "cn": "Çin",
+        "co": "Kolombiya",
+        "custom": "Kendi ülken",
+        "de": "Almanya",
+        "dk": "Danimarka",
+        "eg": "Mısır",
+        "es": "İspanya",
+        "et": "Etiyopya",
+        "fr": "Fransa",
+        "gb": "Birleşik Krallık",
+        "gr": "Yunanistan",
+        "id": "Endonezya",
+        "il": "İsrail",
+        "in": "Hindistan",
+        "ir": "İran",
+        "it": "İtalya",
+        "jp": "Japonya",
+        "ke": "Kenya",
+        "kr": "Güney Kore",
+        "mx": "Meksika",
+        "ng": "Nijerya",
+        "nl": "Hollanda",
+        "no": "Norveç",
+        "ph": "Filipinler",
+        "pk": "Pakistan",
+        "pl": "Polonya",
+        "sa": "Suudi Arabistan",
+        "se": "İsveç",
+        "th": "Tayland",
+        "tr": "Türkiye",
+        "ua": "Ukrayna",
+        "us": "Amerika Birleşik Devletleri",
+        "vn": "Vietnam",
+        "za": "Güney Afrika"
+      }
+    },
+    "res": { "label": "Doğal kaynaklar (petrol, metaller)", "unit": "/100" },
+    "s_cut": { "label": "Vergi indirimi", "unit": "puan" },
+    "s_open": { "label": "Gelen yeni haneler" },
+    "s_rich": { "label": "En zenginlere ek vergi", "unit": "puan" },
+    "s_ubi": { "label": "Temel gelir miktarı", "unit": "ortalama gelirin %'si" },
+    "s_wage": { "label": "Asgari ücret artışı", "unit": "%" },
+    "s_war": { "label": "Savaş süresi", "unit": "yıl" },
+    "tax": { "label": "Vergiler", "unit": "gelirin %'si" }
+  },
+  "diff": {
+    "calmer": "{n, plural, one {# puan daha sakin} other {# puan daha sakin}}",
+    "famLess": "ayda {usd} daha az",
+    "famMore": "ayda {usd} daha fazla",
+    "gapBigger": "uçurum {n} kat daha büyük",
+    "gapSmaller": "uçurum {n} kat daha küçük",
+    "jobFewer": "{n, plural, one {100 yetişkinden # kişi daha az işsiz} other {100 yetişkinden # kişi daha az işsiz}}",
+    "jobMore": "{n, plural, one {100 yetişkinden # kişi daha fazla işsiz} other {100 yetişkinden # kişi daha fazla işsiz}}",
+    "lessCalm": "{n, plural, one {# puan daha az sakin} other {# puan daha az sakin}}",
+    "longer": "{n} yıl daha uzun ömür",
+    "popFewer": "{n} milyon daha az insan",
+    "popMore": "{n} milyon daha fazla insan",
+    "povFewer": "{n, plural, one {100 kişiden # kişi daha az yoksul} other {100 kişiden # kişi daha az yoksul}}",
+    "povMore": "{n, plural, one {100 kişiden # kişi daha fazla yoksul} other {100 kişiden # kişi daha fazla yoksul}}",
+    "shorter": "{n} yıl daha kısa ömür"
+  },
+  "ev": {
+    "apply": {
+      "aging": "Doğum oranı çöküyor",
+      "build": "Yol, demiryolu ve elektrik hatları yapımı başlıyor",
+      "corr": "Yolsuzlukla mücadele başlıyor",
+      "drought": "Uzun bir kuraklık başlıyor",
+      "edu": "Eğitim bütçesi iki katına çıkıyor",
+      "health": "Sağlık hizmetleri herkese ücretsiz oluyor",
+      "minwage": "Asgari ücret artıyor",
+      "oil": "Petrol bulundu: ihracat patlaması",
+      "open": "Sınırlar açılıyor: {n} yeni hane geliyor",
+      "pandemic": "Bir salgın vuruyor: okullar ve dükkânlar kapanıyor",
+      "robots": "Fabrikalara robotlar geliyor",
+      "taxcut": "Herkes için vergiler düşürülüyor",
+      "taxrich": "En zenginler daha çok vergi ödüyor",
+      "trade": "Sınırlar ticarete kapanıyor: ithalat pahalanıyor",
+      "ubi": "Temel gelir başlıyor: yoksulluk düşüyor, vergiler artıyor",
+      "war": "Savaş çıkıyor: ekonomi hızla küçülüyor"
+    },
+    "built": "Yeni yollar, demiryolları ve elektrik hatları açılıyor",
+    "c": "Yüksek darbe ya da devletin çökme riski",
+    "curse": "Kaynak laneti: petrol parası yolsuzluğu besliyor",
+    "dbl": "Kişi başı gelir iki katına çıkıyor",
+    "eduw": "Daha iyi okullardan çıkan ilk kuşak çalışmaya başlıyor",
+    "hi": "Yüksek gelirli bir ülke oluyor",
+    "jl15": "Artık her 7 yetişkinden 1'i işsiz",
+    "life5": "İnsanlar artık 2026'dan 5 yıl daha uzun yaşıyor",
+    "lifed": "Yaşam süresi 5 yıl düşüyor",
+    "pand": "Salgın bitiyor; dükkânlar ve okullar yeniden açılıyor",
+    "pk": "Nüfus {n} milyonla zirveye ulaşıyor",
+    "povh": "Yoksulluk 2026'dan bu yana yarıya indi",
+    "rain": "Yağmurlar geri dönüyor",
+    "robo2": "Robotların çevresinde yeni tür işler ortaya çıkıyor",
+    "t10": "En zengin %10 artık tüm servetin yarısına sahip",
+    "u": "Huzursuzluk: kitlesel protestolar sokakları dolduruyor",
+    "wend": "Savaş bitiyor; yeniden inşa patlaması başlıyor"
+  },
+  "group": {
+    "0": "Para",
+    "1": "Hizmetler",
+    "2": "Toplum",
+    "3": "Şoklar"
+  },
+  "info": {
+    "about": "Sayılar hakkında",
+    "aboutText": "Başlangıç rakamları 2020'lerin ortasından yuvarlanmış, yaklaşık değerlerdir. Sonrasında ülke basit kurallarla işler: tahmin değil, şeylerin birbirini nasıl ittiğini gösterir.",
+    "changed": "Ne değişti",
+    "curious": "Merak edenler için",
+    "gini": "Servet Gini {gini} · en zengin %10 servetin %{pct}'sine sahip",
+    "life": "İnsanlar yaklaşık {n} yıl yaşıyor. {calm}",
+    "noChange": "Değişiklik olmadan, {year}",
+    "now": "{country}, {year}",
+    "people": "{pop} milyon insan. Tipik bir aile ayda {usd} ile yaşıyor.",
+    "poor": "100 kişiden {pov} kişi yoksul; 100 yetişkinden {jobless} kişi işsiz."
+  },
+  "meta": {
+    "intro": "Ülkeden bir sokak ve aynı ülke, en yoksuldan en zengine 100 kişi olarak. Bir ülke seç, sonra değişiklik yap: birbirine eklenirler.",
+    "name": "Ülkeler",
+    "sub": "Ekonomi ve toplum"
+  },
+  "metric": {
+    "calm": {
+      "help": "Ülkenin ne kadar sakin ve güvenli olduğu: 100 barışçıl, 30'un altı sokaklarda protesto demek.",
+      "label": "Barış",
+      "unit": "/100"
+    },
+    "fam": {
+      "help": "Tipik bir ailenin vergi ve yardımlardan sonra her ay elinde kalan para.",
+      "label": "Aile geliri",
+      "unit": "$/ay"
+    },
+    "gap": {
+      "help": "En zengin 10 kişinin, en yoksul 10 kişiden kaç kat fazla kazandığı.",
+      "label": "Zengin–yoksul uçurumu"
+    },
+    "jobless": {
+      "help": "İş isteyen 100 yetişkinden kaçının iş bulamadığı.",
+      "label": "İşsiz",
+      "unit": "/100"
+    },
+    "life": {
+      "help": "Şimdi doğan bir bebeğin kaç yıl yaşamayı bekleyebileceği.",
+      "label": "Yaşam süresi",
+      "unit": "yıl"
+    },
+    "pop": {
+      "help": "Ülkede milyon olarak kaç kişinin yaşadığı.",
+      "label": "İnsanlar",
+      "unit": "milyon"
+    },
+    "pov": {
+      "help": "100 kişiden kaçının aile başına ayda yaklaşık 250 $'dan az ya da çevresindeki çoğu aileden çok daha az parayla yaşadığı.",
+      "label": "Yoksul",
+      "unit": "/100"
+    }
+  },
+  "name": {
+    "ownFrom": "Kendi ülken ({from} temelli)",
+    "this": "Bu ülke"
+  },
+  "speed": {
+    "0": "3 ay/sn",
+    "1": "1 yıl/sn",
+    "2": "3 yıl/sn",
+    "3": "8 yıl/sn"
+  },
+  "stage": {
+    "band": {
+      "0": "YOKSUL",
+      "1": "GEÇİNİYOR",
+      "2": "HALİ VAKTİ YERİNDE"
+    },
+    "clinic": "KLİNİK +",
+    "fam": "tipik bir ailenin ayda {usd} geliri var",
+    "jobless": "100 yetişkinden {n} kişi işsiz",
+    "kidsOut": "{n, plural, one {# çocuk okula gitmiyor} other {# çocuk okula gitmiyor}}",
+    "legend": {
+      "jobless": "İŞSİZ",
+      "kid": "OKULDAKİ ÇOCUK",
+      "kidOut": "OKULA GİTMEYEN ÇOCUK",
+      "poverty": "YOKSULLUK SINIRI",
+      "retired": "EMEKLİ",
+      "work": "ÇALIŞIYOR"
+    },
+    "noChange": "(değişiklik olmadan: {v})",
+    "poor": "{n, plural, one {# kişi yoksul} other {# kişi yoksul}}",
+    "poorer": "← DAHA YOKSUL",
+    "richer": "DAHA ZENGİN →",
+    "school": "OKUL",
+    "title": "{year} · BU ÜLKE 100 KİŞİ OLSAYDI",
+    "titleShort": "{year} · 100 KİŞİ OLARAK",
+    "titleWide": "{year} · BU ÜLKE 100 KİŞİ OLSAYDI · EN YOKSULDAN EN ZENGİNE"
+  },
+  "story": {
+    "angrier": "İnsanlar daha öfkeli.",
+    "calmer": "Ülke daha sakin.",
+    "famLess": "Tipik bir ailenin ayda {usd} daha az parası var.",
+    "famMore": "Tipik bir ailenin ayda {usd} daha fazla parası var.",
+    "gapBigger": "Zenginle yoksul arasındaki uçurum daha büyük.",
+    "gapSmaller": "Zenginle yoksul arasındaki uçurum daha küçük.",
+    "head": "Değişiklik olmayan aynı ülkeyle karşılaştırıldığında, {year}:",
+    "jobFewer": "{n, plural, one {100 yetişkinden # kişi daha az işsiz.} other {100 yetişkinden # kişi daha az işsiz.}}",
+    "jobMore": "{n, plural, one {100 yetişkinden # kişi daha fazla işsiz.} other {100 yetişkinden # kişi daha fazla işsiz.}}",
+    "longer": "İnsanlar {n} yıl daha uzun yaşıyor.",
+    "none": "Henüz pek bir fark yok. Birkaç yıl bekle.",
+    "popFewer": "Burada {n} milyon daha az insan yaşıyor.",
+    "popMore": "Burada {n} milyon daha fazla insan yaşıyor.",
+    "povFewer": "{n, plural, one {100 kişiden # kişi daha az yoksul.} other {100 kişiden # kişi daha az yoksul.}}",
+    "povMore": "{n, plural, one {100 kişiden # kişi daha fazla yoksul.} other {100 kişiden # kişi daha fazla yoksul.}}",
+    "shorter": "İnsanlar {n} yıl daha kısa yaşıyor.",
+    "stopped": "Protestolar durdu."
+  },
+  "ui": {
+    "changesHint": "Birbirine eklenirler. Boyutlar Ayarla bölümünde. Karşılaştırmak için yukarıda işaretlerini kaldır.",
+    "pick": "Bir ülke seç"
+  },
+  "whatif": {
+    "aging": "Doğum oranı çöker",
+    "build": "Yol, demiryolu ve elektrik hattı yap",
+    "corr": "Yolsuzluğu yarıya indir",
+    "drought": "Yıllarca kuraklık",
+    "edu": "Eğitim harcamasını iki katına çıkar",
+    "health": "Herkese ücretsiz sağlık",
+    "minwage": "Asgari ücreti artır",
+    "oil": "Dev petrol rezervleri bul",
+    "open": "Sınırları göçmenlere aç",
+    "pandemic": "Bir salgın vurur",
+    "robots": "Fabrika işinin yarısını robotlar yapar",
+    "taxcut": "Herkesin vergisini düşür",
+    "taxrich": "En zenginleri daha çok vergilendir",
+    "trade": "Sınırları ticarete kapat",
+    "ubi": "Evrensel temel gelir",
+    "war": "Savaşa gir"
+  }
+}

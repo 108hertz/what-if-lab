@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "what if… home",
+    "worlds": "Werelden",
+    "worldButton": "Wereld: {name}. Andere wereld kiezen",
+    "wordmark": "what if"
+  },
+  "theme": {
+    "toDark": "Naar donker thema",
+    "toLight": "Naar licht thema"
+  },
+  "lang": {
+    "label": "Taal",
+    "button": "Taal: {name}. Andere taal kiezen",
+    "draft": "nog niet klaar",
+    "alsoIn": "Ook in het {language}",
+    "dismiss": "Geen andere taal voorstellen"
+  }
+}

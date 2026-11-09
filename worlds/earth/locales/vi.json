@@ -1,0 +1,121 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "co2": { "label": "CO₂ trong không khí", "unit": "ppm" },
+    "emis": { "label": "Lượng CO₂ thải mỗi năm", "unit": "Gt" },
+    "forest": { "label": "Độ che phủ rừng", "unit": "% đất liền" },
+    "front": { "label": "Độ cao bờ biển", "unit": "m trên mực biển" },
+    "h": {
+      "air-today": "Không khí hôm nay",
+      "emissions": "Phát thải",
+      "my-future-used-by-build-my-own-future": "Tương lai của tôi (dùng cho “Tự tạo tương lai”)",
+      "planet": "Hành tinh",
+      "your-town": "Thị trấn của bạn"
+    },
+    "mDac": { "label": "Hút bớt CO₂", "unit": "Gt mỗi năm" },
+    "mDim": { "label": "Sol khí làm mờ nắng", "unit": "%" },
+    "mEm": { "label": "Đổi lượng phát thải", "unit": "%" },
+    "mMeth": { "label": "Cắt giảm metan", "unit": "%" },
+    "mTrees": { "label": "Cây được trồng", "unit": "nghìn tỷ" },
+    "mWall": { "label": "Đê biển", "unit": "m" },
+    "mYrs": { "label": "Trong vòng", "unit": "năm" },
+    "meth": { "label": "Metan trong không khí", "unit": "ppb" },
+    "path": {
+      "label": "Xu hướng phát thải",
+      "opt": {
+        "fall": "Giảm dần (cam kết hiện nay)",
+        "flat": "Chững lại",
+        "grow": "Tiếp tục tăng"
+      }
+    },
+    "sens": { "label": "Độ nhạy khí hậu", "unit": "°C mỗi lần CO₂ ×2" },
+    "tip": {
+      "label": "Điểm tới hạn",
+      "opt": { "off": "Tắt", "on": "Bật: băng vĩnh cửu và dải băng có thể sụp" }
+    },
+    "uptake": { "label": "Đại dương và đất hấp thụ", "unit": "% so với nay" }
+  },
+  "ev": {
+    "apply": {
+      "amazon": "Rừng Amazon bắt đầu biến thành đồng cỏ",
+      "dac": "Máy móc bắt đầu hút CO₂ khỏi không khí",
+      "double": "Phát thải bắt đầu tăng dần tới gấp đôi",
+      "ev": "Chuyển sang năng lượng sạch: phát thải giảm 7% mỗi năm",
+      "geo": "Sol khí được phun lên tầng bình lưu",
+      "melt": "Dải băng Tây Nam Cực bắt đầu sụp đổ",
+      "methane": "Các chỗ rò và nguồn metan bắt đầu được khắc phục",
+      "permafrost": "Băng vĩnh cửu bắt đầu tan nhanh",
+      "seawall": "Một con đê biển cao 3 m được xây quanh bến cảng",
+      "trees": "Một nghìn tỷ cây được trồng xuống đất",
+      "volcano": "Siêu núi lửa phun trào: màn tro che khuất mặt trời",
+      "zero": "Mọi phát thải dừng lại"
+    },
+    "back": "Mức ấm lên giảm lại dưới 1,5 °C",
+    "fl1": "Triều cường dâng tới những ngôi nhà đầu tiên trong thị trấn",
+    "fl50": "Nửa thị trấn ngập khi triều lên",
+    "geoend": "Ngừng phun sol khí: cú sốc chấm dứt, nóng lên rất nhanh",
+    "gr": "Băng ở Greenland bắt đầu tan nhanh hơn",
+    "mix0": "Tương lai của tôi: không thay đổi",
+    "mix1": "Tương lai của tôi: {p0}",
+    "mix2": "Tương lai của tôi: {p0}, {p1}",
+    "mix3": "Tương lai của tôi: {p0}, {p1}, {p2}",
+    "mix4": "Tương lai của tôi: {p0}, {p1}, {p2}, {p3}",
+    "mix5": "Tương lai của tôi: {p0}, {p1}, {p2}, {p3}, {p4}",
+    "mix6": "Tương lai của tôi: {p0}, {p1}, {p2}, {p3}, {p4}, {p5}",
+    "peak": "Mức ấm lên đạt đỉnh {t} °C",
+    "pf": "Băng vĩnh cửu bắt đầu tan, thải ra CO₂ và metan",
+    "s0_5": "Mực nước biển +0,5 m: lũ lụt thường xuyên ở các châu thổ thấp",
+    "s1": "Mực nước biển +1 m: nhà của ~200 triệu người gặp nguy",
+    "s2": "Mực nước biển +2 m: nhiều thành phố ven biển cần đê hoặc phải di dời",
+    "snow": "Ranh giới tuyết vượt 2.000 m: sông băng gần như biến mất",
+    "t1_5": "Vượt 1,5 °C: phần lớn rạn san hô mất đi",
+    "t2": "Vượt 2 °C: sóng nhiệt chết người thành chuyện thường, mùa hè Bắc Cực không còn băng",
+    "t3": "Vượt 3 °C: vành đai cây trồng dịch chuyển, nguy cơ rừng Amazon chết dần",
+    "t4": "Vượt 4 °C: một số vùng gần ngưỡng chịu nóng của con người",
+    "wa": "Băng ở Tây Nam Cực bắt đầu trượt xuống biển",
+    "wallover": "Nước biển tràn qua đê"
+  },
+  "meta": {
+    "intro": "Một thị trấn bên vịnh hẹp ngày nay. Hãy ngắm tuyết, rừng, đồng ruộng và bến cảng khi các thập kỷ trôi qua.",
+    "name": "Trái Đất",
+    "sub": "Khí hậu"
+  },
+  "metric": {
+    "co2": { "label": "CO₂", "unit": "ppm" },
+    "crops": { "label": "Mùa màng", "unit": "chỉ số" },
+    "flood": { "label": "Ngập lụt", "unit": "% số nhà" },
+    "sea": { "label": "Mực nước biển", "unit": "m" },
+    "snow": { "label": "Tuyết", "unit": "% so với nay" },
+    "temp": { "label": "Mức ấm lên", "unit": "°C" }
+  },
+  "mix": {
+    "dac": "hút {n} Gt CO₂ mỗi năm",
+    "dim": "nắng mờ đi {n}%",
+    "emDown": "phát thải −{n}% trong {yrs} năm",
+    "emUp": "phát thải +{n}% trong {yrs} năm",
+    "meth": "metan −{n}%",
+    "trees": "{n} nghìn tỷ cây",
+    "wall": "đê biển {n} m"
+  },
+  "speed": { "0": "1 năm/s", "1": "5 năm/s", "2": "20 năm/s", "3": "60 năm/s" },
+  "stage": {
+    "gauge": "{n} m",
+    "readout": "{temp} °C · biển +{sea} m · {co2} ppm",
+    "snow": "Ranh giới tuyết {m} m"
+  },
+  "whatif": {
+    "amazon": "Rừng Amazon thành đồng cỏ",
+    "dac": "Hút CO₂ khỏi không khí",
+    "double": "Phát thải tăng gấp đôi",
+    "ev": "Chuyển nhanh sang năng lượng sạch",
+    "geo": "Làm mờ nắng bằng sol khí trong 30 năm",
+    "melt": "Dải băng Tây Nam Cực sụp đổ",
+    "methane": "Cắt giảm một nửa metan",
+    "mix": "Tự tạo tương lai",
+    "permafrost": "Băng vĩnh cửu tan nhanh",
+    "seawall": "Xây đê biển cao 3 m",
+    "trees": "Trồng một nghìn tỷ cây",
+    "volcano": "Một siêu núi lửa phun trào",
+    "zero": "Dừng mọi phát thải ngay"
+  }
+}

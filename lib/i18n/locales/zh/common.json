@@ -1,0 +1,33 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "site": {
+    "name": "What-If Lab",
+    "description": "从质子一路缩放到可观测宇宙，打开一个世界，用“如果……”改变它，再和保持原样的世界比较未来。",
+    "titleWorld": "{world} · What-If Lab"
+  },
+  "none": "—",
+  "scale": {
+    "name": "尺度",
+    "sub": "质子 → 宇宙"
+  },
+  "intro": {
+    "worlds": "世界",
+    "whatifs": "如果……"
+  },
+  "notFound": {
+    "title": "找不到页面",
+    "body": "实验室里没有这个页面。",
+    "home": "回到实验室"
+  },
+  "unit": {
+    "gyr": "{n}十亿年",
+    "myr": "{n}百万年",
+    "kyr": "{n}千年",
+    "yr": "{n}年"
+  },
+  "dur": {
+    "days": "{n}天",
+    "months": "{n}个月",
+    "years": "{n}年"
+  }
+}

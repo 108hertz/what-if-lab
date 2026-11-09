@@ -1,0 +1,23 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "transport": {
+    "zoomIn": "Inzoomen",
+    "zoomOut": "Uitzoomen",
+    "zoomLevel": "Zoomniveau",
+    "hint": "Scroll, knijp of sleep. Tik op een gouden label om de wereld te openen."
+  },
+  "panel": {
+    "inView": "In beeld",
+    "openThis": "Deze wereld openen",
+    "openWorld": "Een wereld openen",
+    "jumpTo": "Ga naar"
+  },
+  "hero": {
+    "title": "Wat gebeurt er als…",
+    "body": "Zoom van een proton naar het waarneembare heelal, steeds tien keer zo groot. Gouden labels zijn levende werelden: open er een, verander hem en vergelijk zijn toekomst met de wereld zoals hij was."
+  },
+  "stage": {
+    "open": "Wereld openen →",
+    "screen": "Schermbreedte ≈ {len}"
+  }
+}

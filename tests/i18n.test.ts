@@ -33,8 +33,8 @@ describe("locales", () => {
     expect(localeInfo("xx-nope").code).toBe("en");
   });
 
-  it("the first five languages are ready (change 0025, step 14)", () => {
-    expect(READY_LOCALES().map((l) => l.code)).toEqual(["en", "es", "pt", "de", "ja", "ar"]);
+  it("every language is ready (change 0025: all drafted, awaiting native review)", () => {
+    expect(READY_LOCALES().map((l) => l.code)).toEqual(LOCALES.map((l) => l.code));
   });
 });
 

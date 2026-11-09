@@ -1,0 +1,90 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "ctl": {
+    "aim": { "label": "Merkezden sapma", "unit": "bin ışık yılı" },
+    "bhm": { "label": "Kara delik kütlesi", "unit": "× Samanyolu" },
+    "count": { "label": "Düşen gökadalar" },
+    "dm": { "label": "Karanlık madde", "unit": "×" },
+    "dmleft": { "label": "Kalan kütleçekim", "unit": "%" },
+    "fly": { "label": "Geçiş hızı", "unit": "km/sn" },
+    "h": {
+      "starting-world": "Başlangıç dünyası",
+      "what-if-settings": "Değişiklik ayarları"
+    },
+    "mass": { "label": "Andromeda kütlesi", "unit": "× Samanyolu" },
+    "neigh": {
+      "label": "Başlangıçtaki komşular",
+      "opt": { "m33": "Üçgen", "m33lmc": "Üçgen + BMB", "none": "Yok" }
+    },
+    "shape": {
+      "label": "Andromeda'nın biçimi",
+      "opt": { "elliptical": "Eliptik", "spiral": "Sarmal" }
+    },
+    "size": { "label": "Boyutları", "unit": "× Samanyolu" },
+    "speed": { "label": "Yaklaşma hızı", "unit": "km/sn" },
+    "spin": {
+      "label": "Andromeda'nın dönüşü",
+      "opt": { "against": "Bizimkinin tersine", "same": "Bizimkiyle aynı yönde" }
+    },
+    "stars": { "label": "Gökada başına yıldız" }
+  },
+  "ev": {
+    "bhBig": "Merkezde Samanyolu'nun {x} katı ağırlığında bir kara delik belirir",
+    "bhSmall": "Merkezde Samanyolu kütlesinin %{pct} kadarı olan bir kara delik belirir",
+    "bullet": "Bir gökada {speed} km/sn hızla dosdoğru içinden geçer",
+    "closing": "Andromeda yaklaşık {speed} km/sn hızla yaklaşıyor",
+    "flipmw": "Samanyolu'nun her yıldızı yörüngesini tersine çevirir",
+    "freeze": "Samanyolu'nun her yıldızı dönmeyi bırakır",
+    "headon": "Andromeda doğrudan merkezimize yönelir",
+    "lmc": "Büyük Macellan Bulutu Samanyolu'nun çevresinde döner",
+    "merge": "Çekirdekler birleşir: tek bir dev eliptik gökada, “Samandromeda”",
+    "miss": "Andromeda yanından geçecek bir yola itilir",
+    "nodmAll": "Karanlık madde yok olur: kütleçekim %{left}'e düşer, yıldızlar birden fazla hızlı kalır",
+    "nodmSome": "Karanlık maddenin bir kısmı yok olur: kütleçekim %{left}'e düşer, yıldızlar birden fazla hızlı kalır",
+    "pass1": "İlk geçiş: gökadalar birbirinin içinden dalar",
+    "punch": "Bir cüce gökada merkezimizi delip geçer",
+    "reverse": "Andromeda geri dönüp uzaklaşır",
+    "ring": "Diskimiz geri seker ve genişleyen bir yıldız halkasına dönüşür",
+    "stop": "Andromeda olduğu yerde durur, sonra düşmeye başlar",
+    "swallowed": "Bir gökada daha yutuldu",
+    "swarm": "{n, plural, one {Bir gökada daha düşüyor} other {# gökada daha düşüyor}}",
+    "tails": "Birbirlerinden uzaklaşırlar, arkalarında uzun gelgit yıldız kuyrukları bırakırlar",
+    "third": "Üçüncü bir gökada (Üçgen gibi) düşer",
+    "triangulum": "Üçgen Gökadası yandan süzülerek gelir"
+  },
+  "meta": {
+    "intro": "Samanyolu ve Andromeda, gerçek çarpışma rotalarında, hızlandırılmış. Her nokta bir yıldız.",
+    "name": "Gökadalar",
+    "sub": "Çarpışmalar"
+  },
+  "metric": {
+    "disc": { "label": "Diskteki yıldızlar", "unit": "%" },
+    "galaxies": { "label": "Kalan gökadalar" },
+    "sep": { "label": "Aradaki uzaklık", "unit": "bin ışık yılı" },
+    "thrown": { "label": "Fırlatılan yıldızlar", "unit": "%" }
+  },
+  "speed": {
+    "0": "5 milyon yıl/sn",
+    "1": "10 milyon yıl/sn",
+    "2": "25 milyon yıl/sn",
+    "3": "50 milyon yıl/sn",
+    "4": "150 milyon yıl/sn",
+    "5": "400 milyon yıl/sn",
+    "6": "1 milyar yıl/sn"
+  },
+  "stage": { "scale": "{n} ışık yılı" },
+  "whatif": {
+    "bh": "Merkezimizde gökada ağırlığında bir kara delik belirir",
+    "bullet": "Bir gökada dosdoğru içinden geçer",
+    "flipmw": "Samanyolu ters yöne döner",
+    "freeze": "Samanyolu yıldızları dönmeyi bırakır",
+    "headon": "Andromeda'yı tam merkeze nişanla",
+    "miss": "Andromeda yanımızdan geçer",
+    "nodm": "Karanlık madde yok olur",
+    "reverse": "Andromeda geri döner",
+    "ring": "Küçük bir gökada merkezimizi delip geçer",
+    "stop": "Andromeda olduğu yerde durur",
+    "swarm": "Daha çok gökada düşer",
+    "third": "Üçüncü bir gökada katılır"
+  }
+}

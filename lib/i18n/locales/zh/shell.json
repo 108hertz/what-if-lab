@@ -1,0 +1,20 @@
+{
+  "_status": "draft: machine translation (change 0025); needs native review",
+  "nav": {
+    "home": "如果…… 首页",
+    "worlds": "世界",
+    "worldButton": "世界：{name}。切换世界",
+    "wordmark": "如果"
+  },
+  "theme": {
+    "toDark": "切换到深色主题",
+    "toLight": "切换到浅色主题"
+  },
+  "lang": {
+    "label": "语言",
+    "button": "语言：{name}。切换语言",
+    "draft": "尚未完成",
+    "alsoIn": "也有{language}版",
+    "dismiss": "不再推荐其他语言"
+  }
+}
