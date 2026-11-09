@@ -3,7 +3,8 @@
   "nav": {
     "home": "e se… início",
     "worlds": "Mundos",
-    "worldButton": "Mundo: {name}. Trocar de mundo",
+    "more": "Mais",
+    "moreAria": "Mais mundos",
     "wordmark": "e se"
   },
   "theme": {
@@ -22,5 +23,13 @@
   "boot": {
     "starting": "Iniciando o mundo",
     "slow": "Ainda iniciando…"
+  },
+  "disclaimer": {
+    "label": "Simulação · não é real",
+    "labelAria": "Sobre estas simulações: não são dados reais. Abrir a nota",
+    "title": "Só uma simulação",
+    "body": "Tudo aqui é um modelo feito de teorias científicas e números arredondados. Os resultados não são dados reais nem previsões sobre pessoas, lugares ou o futuro reais.",
+    "use": "Use para brincar, explorar e ver o que poderia acontecer se…",
+    "ok": "Entendi"
   }
 }

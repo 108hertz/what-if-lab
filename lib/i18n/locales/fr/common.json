@@ -16,6 +16,7 @@
   },
   "notFound": {
     "title": "Page introuvable",
+    "space": "Rien ici, à part l’espace vide.",
     "body": "Cette page n’existe pas dans le labo.",
     "home": "Retour au labo"
   },

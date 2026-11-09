@@ -3,7 +3,8 @@
   "nav": {
     "home": "et si… accueil",
     "worlds": "Mondes",
-    "worldButton": "Monde : {name}. Changer de monde",
+    "more": "Plus",
+    "moreAria": "Autres mondes",
     "wordmark": "et si"
   },
   "theme": {
@@ -22,5 +23,13 @@
   "boot": {
     "starting": "Démarrage du monde",
     "slow": "Démarrage en cours…"
+  },
+  "disclaimer": {
+    "label": "Simulation · pas réel",
+    "labelAria": "À propos de ces simulations : pas de données réelles. Ouvrir la note",
+    "title": "Juste une simulation",
+    "body": "Tout ici est un modèle construit à partir de théories scientifiques et de chiffres arrondis. Les résultats ne sont pas des données réelles ni des prédictions sur de vraies personnes, de vrais lieux ou l’avenir.",
+    "use": "Utilisez-le pour jouer, explorer et voir ce qui pourrait arriver si…",
+    "ok": "Compris"
   }
 }

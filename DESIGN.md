@@ -368,17 +368,24 @@ signal (`--fill` set by `ControlsForm`), a 14 × 18 ink thumb (signal on hover).
 While a lab page loads, a full-screen overlay plays the boot scene in the visitor's theme (graphite: `--stage` with additive
 glow; day shift: `--bg`, the light tokens' teal, blue and amber painted plainly): signal-teal sparks with glow and light streaks fly into the world's silhouette (`WorldMeta.boot`, `lib/boot/shapes.ts`), hold and
 breathe until the console is ready, then a soft shimmer sweeps across and forks the shape into the two channels (blue
-left, amber right) as the overlay fades out over 250 ms. This is the **only** surface allowed glow, streaks and shimmer.
-The console never borrows them. Words: the world name as a Label and "Starting the world" in ink-2, bottom centre.
+left, amber right) as the overlay fades out over 250 ms. This is the **only** surface allowed glow, streaks and shimmer
+(and the 404 page below, which reuses its sparks). The console never borrows them. Words: the world name as a Label and "Starting the world" in ink-2, bottom centre.
 Rules: never a progress number, no flashes above 3 a second, light peaks well below white, any tap or key skips it, and
 reduced motion shows the forked shape still and fades it in 150 ms.
 
+### 404 page (change 0030)
+The boot scene's sparks fly in and form an astronaut on a cut tether, then drift and tumble slowly through empty space;
+far stars (plain ink-2 dots, no glow) slide left with a slight pointer parallax, and a faint meteor crosses every 9 s.
+Under it: the title in Title, one line in Body (ink-2), the one primary button "Back to the lab"; the wordmark top left and
+`WHAT-IF LAB · 404` as the edge label. Theme-aware like the boot scene; reduced motion draws one still frame.
+
 ### Navigation
-- The bar reads as a sentence ([change 0021](docs/changes/0021-sentence-topbar.md)): the wordmark
-  `what if…` (condensed 600 at 20 px, lowercase identity, the ellipsis in signal) links home, then the
-  world menu button (panel fill, 1 px line, the world glyph in signal, the name in Barlow 16) finishes it.
-- World list popover: raised, 48 px rows (glyph, Label name, Small subtitle); the current world on a
-  panel-tone row with its glyph in signal.
+- The bar ([change 0029](docs/changes/0029-world-tabs.md)): the wordmark `what if…` (condensed 600 at 20 px,
+  lowercase identity, the ellipsis in signal) links home, then every world as a tab (glyph + Label name, 44 px, ink-2);
+  the current tab is raised with the signal bar under it and its glyph in signal. Tabs that don't fit go, in order,
+  under a **More ▾** tab at the end of the row; the current world always keeps its tab (it takes the last visible place).
+- More popover: raised, 48 px rows (glyph, Label name, Small subtitle), only the worlds without a tab; hangs under
+  More from 768 px, spans the bar on phones.
 - Account and theme icon buttons at the far right; account popover rows 44 px.
 - **Theme tip:** on a first visit (no saved theme), once the boot scene is gone, a raised note with a 1 px signal edge and
   a caret hangs under the theme button: "Dark by default. Prefer light? Switch here any time." Once per browser; it
@@ -397,7 +404,7 @@ reduced motion shows the forked shape still and fades it in 150 ms.
 - Animate only transform, opacity and colour with `--ease-out` at 150 / 250 ms.
 
 ### Don't
-- Don't add shadows, glows, gradients-as-depth, scanlines, bezels or other sci-fi costume (the boot scene is the one exception).
+- Don't add shadows, glows, gradients-as-depth, scanlines, bezels or other sci-fi costume (the boot scene and the 404 page that reuses it are the exception).
 - Don't use signal for data, or blue/amber for controls (except the what-if row's amber).
 - Don't track mixed-case or mono text; don't use mono for words.
 - Don't nest boxes inside panels or put a kicker above a heading.

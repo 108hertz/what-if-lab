@@ -3,7 +3,8 @@
   "nav": {
     "home": "nếu như… trang chủ",
     "worlds": "Thế giới",
-    "worldButton": "Thế giới: {name}. Đổi thế giới",
+    "more": "Thêm",
+    "moreAria": "Thế giới khác",
     "wordmark": "nếu như"
   },
   "theme": {
@@ -22,5 +23,13 @@
   "boot": {
     "starting": "Đang khởi động thế giới",
     "slow": "Vẫn đang khởi động…"
+  },
+  "disclaimer": {
+    "label": "Mô phỏng · không có thật",
+    "labelAria": "Về các mô phỏng này: không phải dữ liệu thật. Mở ghi chú",
+    "title": "Chỉ là mô phỏng",
+    "body": "Mọi thứ ở đây là một mô hình dựng từ các lý thuyết khoa học và những con số làm tròn. Kết quả không phải dữ liệu thật và không phải dự đoán về con người, nơi chốn hay tương lai thật.",
+    "use": "Hãy dùng nó để chơi, khám phá và xem điều gì có thể xảy ra nếu…",
+    "ok": "Đã hiểu"
   }
 }

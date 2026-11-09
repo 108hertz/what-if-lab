@@ -12,6 +12,7 @@ export default function PageIntro({ locale, mode }: { locale: string; mode: Mode
     <main className="page-intro">
       <h1 className="title">{c.heading}</h1>
       <p className="desc">{c.description}</p>
+      <p className="desc disclaimer-line">{c.disclaimer}</p>
       {c.whatifs.length > 0 && (
         <section>
           <h2 className="headline">{c.whatifsHeading}</h2>

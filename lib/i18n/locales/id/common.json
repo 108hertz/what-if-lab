@@ -16,6 +16,7 @@
   },
   "notFound": {
     "title": "Halaman tidak ditemukan",
+    "space": "Tidak ada apa-apa di sini selain ruang hampa.",
     "body": "Halaman ini tidak ada di lab.",
     "home": "Kembali ke lab"
   },

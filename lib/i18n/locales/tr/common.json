@@ -16,6 +16,7 @@
   },
   "notFound": {
     "title": "Sayfa bulunamadı",
+    "space": "Burada boş uzaydan başka bir şey yok.",
     "body": "Bu sayfa laboratuvarda yok.",
     "home": "Laboratuvara dön"
   },

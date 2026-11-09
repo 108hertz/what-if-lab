@@ -15,6 +15,7 @@ import PremiumDialog from "../account/PremiumDialog";
 import WorldMenu from "./WorldMenu";
 import ThemeToggle from "./ThemeToggle";
 import LangMenu, { LangHint } from "./LangMenu";
+import Disclaimer from "./Disclaimer";
 import { useHref, useT } from "../i18n/I18nProvider";
 
 /**
@@ -58,6 +59,7 @@ function Shell({ mode }: { mode: Mode }) {
         <WorldMenu mode={mode} />
         <div className="nav-end">
           {PREMIUM_ON_SALE && <AccountMenu />}
+          <Disclaimer />
           <LangHint />
           <LangMenu />
           <ThemeToggle />

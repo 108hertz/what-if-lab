@@ -16,6 +16,7 @@
   },
   "notFound": {
     "title": "Pagina non trovata",
+    "space": "Qui fuori non c’è altro che spazio vuoto.",
     "body": "Questa pagina non è nel laboratorio.",
     "home": "Torna al laboratorio"
   },

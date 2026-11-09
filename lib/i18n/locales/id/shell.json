@@ -3,7 +3,8 @@
   "nav": {
     "home": "what if… beranda",
     "worlds": "Dunia",
-    "worldButton": "Dunia: {name}. Ganti dunia",
+    "more": "Lainnya",
+    "moreAria": "Dunia lainnya",
     "wordmark": "what if"
   },
   "theme": {
@@ -22,5 +23,13 @@
   "boot": {
     "starting": "Memulai dunia",
     "slow": "Masih memulai…"
+  },
+  "disclaimer": {
+    "label": "Simulasi · bukan nyata",
+    "labelAria": "Tentang simulasi ini: bukan data nyata. Buka catatan",
+    "title": "Hanya simulasi",
+    "body": "Semua di sini adalah model yang dibangun dari teori ilmiah dan angka yang dibulatkan. Hasilnya bukan data nyata dan bukan prediksi tentang orang, tempat, atau masa depan yang nyata.",
+    "use": "Gunakan untuk bermain, menjelajah, dan melihat apa yang mungkin terjadi jika…",
+    "ok": "Mengerti"
   }
 }

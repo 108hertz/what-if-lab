@@ -147,23 +147,32 @@ html, body { height: 100%; }
 .iconbtn:hover { background: var(--surface); border-color: var(--separator); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* World menu (every width): the current world as a button; every world, named, in a popover.
-   Phones span the list across the nav; from 768 px it hangs under its button. */
-.worldmenu { flex: 0 1 auto; min-width: 0; display: flex; }
-@media (min-width: 768px) { .worldmenu { position: relative; } }
-.worldmenu-btn {
-  display: inline-flex; align-items: center; gap: var(--s-2); min-height: 40px; min-width: 0; padding: 0 var(--s-2) 0 var(--s-3);
-  border: 1px solid var(--separator); border-radius: var(--r-ctl);
-  background: var(--panel); color: var(--label); cursor: pointer; transition: background-color var(--d-fast) var(--ease-out), border-color var(--d-fast) var(--ease-out);
+/* World tabs (change 0029): every world as a tab while it fits; the rest under "More" (a popover).
+   The current tab is raised with the signal bar, like any selection. Phones span the More list across the nav;
+   from 768 px it hangs under its button, aligned to its end. */
+.worldtabs { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 2px; }
+.worldtabs-measure { position: absolute; width: 0; height: 0; overflow: hidden; visibility: hidden; pointer-events: none; display: flex; gap: 2px; inset-inline-start: 0; top: 0; white-space: nowrap; }
+.worldtab {
+  display: inline-flex; align-items: center; gap: var(--s-2); flex: 0 0 auto; min-height: 44px; min-width: 0; padding: 0 var(--s-3);
+  border: 0; border-radius: var(--r-ctl); background: transparent; color: var(--label-2); text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color var(--d-fast) var(--ease-out), color var(--d-fast) var(--ease-out);
 }
-.worldmenu-btn .lbl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-/* In the bar the world name finishes the wordmark's sentence */
-.worldmenu-btn > .lbl { font-family: var(--font-sans); font-size: var(--t-headline); font-weight: 500; line-height: 1.2; letter-spacing: 0; text-transform: none; }
-.worldmenu-btn > .icon:first-child { color: var(--signal); }
-.worldmenu-btn:hover { background: var(--surface); border-color: var(--muted-line); }
-.worldmenu-btn .icon:last-child { color: var(--label-2); transition: transform var(--d-ctl) var(--ease-out); }
-.worldmenu-btn[aria-expanded="true"] { border-color: var(--muted-line); background: var(--surface); }
-.worldmenu-btn[aria-expanded="true"] .icon:last-child { transform: rotate(180deg); }
+.worldtab .lbl { overflow: hidden; text-overflow: ellipsis; }
+.worldtab:hover { color: var(--label); background: var(--panel); }
+.worldtab[aria-current="page"] { flex-shrink: 1; color: var(--label); background: var(--surface); box-shadow: inset 0 -2px 0 var(--signal); }
+.worldtab[aria-current="page"] .icon { color: var(--signal); }
+.worldtab-more { padding-inline-end: var(--s-2); gap: var(--s-1); }
+.worldtab-more .icon { color: var(--label-2); transition: transform var(--d-ctl) var(--ease-out); }
+.worldtab-more[aria-expanded="true"] { color: var(--label); background: var(--surface); }
+.worldtab-more[aria-expanded="true"] .icon { transform: rotate(180deg); }
+/* Phones: tighter tabs and More as its chevron alone, so the current world keeps its whole name */
+@media (max-width: 479px) {
+  .worldtab { padding: 0 var(--s-2); }
+  .worldtab-more { padding: 0; width: 44px; justify-content: center; }
+  .worldtab-more .lbl { display: none; }
+}
+.worldmenu { flex: 0 0 auto; display: flex; }
+@media (min-width: 768px) { .worldmenu { position: relative; } .worldmenu .worldmenu-list { inset-inline-start: auto; inset-inline-end: 0; } }
 .worldmenu-list {
   z-index: 20; top: calc(100% + var(--s-1)); inset-inline-start: 0; inset-inline-end: auto; width: min(320px, 100%); max-height: calc(100dvh - 72px); overflow-y: auto;
   margin: 0; padding: var(--s-1); list-style: none; gap: 0;
@@ -726,6 +735,37 @@ body:has(.app) .page-intro { display: none; }
 .boot.is-out { opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .boot { transition-duration: 150ms; } }
 
+/* 404 (change 0030): the boot scene's sparks as an astronaut adrift in empty space — the second (and last) surface allowed
+   the boot scene's glow. Follows the visitor's theme like the boot scene. One viewport, no scroll. */
+.lost { position: fixed; inset: 0; overflow: hidden; background: var(--stage); color: var(--stage-ink); }
+:root[data-theme="light"] .lost { background: var(--bg); color: var(--label); }
+.lost canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.lost-mark {
+  position: absolute; top: max(var(--s-2), env(safe-area-inset-top)); inset-inline-start: max(var(--s-3), env(safe-area-inset-left));
+  padding: 0 var(--s-2); color: inherit; border-radius: var(--r-ctl);
+}
+.lost-text {
+  position: absolute; inset-inline: var(--s-4); bottom: max(var(--s-7), calc(env(safe-area-inset-bottom) + var(--s-6)));
+  display: grid; gap: var(--s-3); justify-items: center; text-align: center;
+}
+.lost-title {
+  margin: 0; font-family: var(--font-cond); font-weight: 600; font-size: var(--t-title); line-height: 0.95;
+  letter-spacing: var(--track-label); text-transform: uppercase; text-wrap: balance;
+}
+.lost-body { margin: 0 0 var(--s-2); max-width: 36ch; font-size: var(--t-body); line-height: 1.45; color: var(--stage-ink-2); text-wrap: balance; }
+:root[data-theme="light"] .lost-body { color: var(--label-2); }
+.lost .btn:focus-visible, .lost-mark:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.lost .btn { text-decoration: none; }
+.lost-edge {
+  position: absolute; right: var(--s-3); top: 50%; margin: 0; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+  font-family: var(--font-cond); font-weight: 600; font-size: var(--t-micro); letter-spacing: var(--track-micro); text-transform: uppercase;
+  color: var(--stage-ink-2); pointer-events: none;
+}
+.lost-edge span { font-family: var(--font-mono); letter-spacing: 0; }
+:root[data-theme="light"] .lost-edge { color: var(--label-2); }
+@media (max-width: 767px), (max-height: 520px) { .lost-edge { display: none; } }
+@media (max-height: 520px) { .lost-text { bottom: var(--s-4); gap: var(--s-2); } .lost-body { margin-bottom: 0; } }
+
 /* Languages (change 0025) ------------------------------------------------------------------------------------------ */
 /* Han characters look different per language: each language puts its own system fonts first */
 :root:lang(zh) { --font-cjk: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Hiragino Sans GB", "Hiragino Sans", "Apple SD Gothic Neo", "Malgun Gothic"; }
@@ -766,3 +806,22 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 .lang-hint a { color: var(--label); text-decoration: underline; text-decoration-color: var(--separator); text-underline-offset: 3px; padding: 0 var(--s-1); }
 .lang-hint a:hover { text-decoration-color: var(--signal); }
 @media (min-width: 1024px) { .lang-hint { display: inline-flex; } }
+
+/* Simulation disclaimer (change 0028): an amber "not real" label in the nav and a short first-open note */
+.disclaimer-chip {
+  display: inline-flex; align-items: center; gap: var(--s-1); min-height: 32px; max-width: 220px; margin-inline-end: var(--s-1);
+  padding: 0 var(--s-2); border: 1px solid var(--alt); border-radius: var(--r-ctl); background: transparent; color: var(--alt);
+  font: inherit; font-size: var(--t-micro); line-height: 1; white-space: nowrap; cursor: pointer;
+  transition: background var(--d-fast) var(--ease-out);
+}
+.disclaimer-chip svg { flex: 0 0 auto; }
+.disclaimer-chip-text { overflow: hidden; text-overflow: ellipsis; }
+.disclaimer-chip:hover { background: color-mix(in srgb, var(--alt) 12%, transparent); }
+.disclaimer-chip:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+@media (max-width: 767px) {
+  .disclaimer-chip { width: 44px; min-height: 44px; justify-content: center; padding: 0; margin: 0; border-color: transparent; }
+  .disclaimer-chip-text { display: none; }
+}
+@media (min-width: 768px) { .sheet.disclaimer { width: min(420px, calc(100vw - 32px)); } }
+.disclaimer .disclaimer-use { color: var(--label); }
+.page-intro .disclaimer-line { color: var(--alt); }

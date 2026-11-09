@@ -3,7 +3,8 @@
   "nav": {
     "home": "what if… home",
     "worlds": "Werelden",
-    "worldButton": "Wereld: {name}. Andere wereld kiezen",
+    "more": "Meer",
+    "moreAria": "Meer werelden",
     "wordmark": "what if"
   },
   "theme": {
@@ -22,5 +23,13 @@
   "boot": {
     "starting": "De wereld start",
     "slow": "Nog aan het starten…"
+  },
+  "disclaimer": {
+    "label": "Simulatie · niet echt",
+    "labelAria": "Over deze simulaties: geen echte gegevens. Open de notitie",
+    "title": "Gewoon een simulatie",
+    "body": "Alles hier is een model gebouwd op wetenschappelijke theorieën en afgeronde getallen. De uitkomsten zijn geen echte gegevens en geen voorspellingen over echte mensen, plaatsen of de toekomst.",
+    "use": "Gebruik het om te spelen, te ontdekken en te zien hoe het zou kunnen gaan als…",
+    "ok": "Begrepen"
   }
 }

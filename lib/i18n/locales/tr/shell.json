@@ -3,7 +3,8 @@
   "nav": {
     "home": "what if… ana sayfa",
     "worlds": "Dünyalar",
-    "worldButton": "Dünya: {name}. Dünyayı değiştir",
+    "more": "Daha fazla",
+    "moreAria": "Diğer dünyalar",
     "wordmark": "what if"
   },
   "theme": {
@@ -22,5 +23,13 @@
   "boot": {
     "starting": "Dünya başlatılıyor",
     "slow": "Hâlâ başlatılıyor…"
+  },
+  "disclaimer": {
+    "label": "Simülasyon · gerçek değil",
+    "labelAria": "Bu simülasyonlar hakkında: gerçek veri değil. Notu aç",
+    "title": "Sadece bir simülasyon",
+    "body": "Buradaki her şey bilimsel kuramlar ve yuvarlanmış sayılarla kurulmuş bir modeldir. Sonuçlar gerçek veri değildir; gerçek insanlar, yerler ya da gelecek hakkında tahmin de değildir.",
+    "use": "Oynamak, keşfetmek ve şöyle olsaydı neler olabileceğini görmek için kullan…",
+    "ok": "Anladım"
   }
 }

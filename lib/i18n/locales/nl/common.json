@@ -16,6 +16,7 @@
   },
   "notFound": {
     "title": "Pagina niet gevonden",
+    "space": "Hier is niets dan lege ruimte.",
     "body": "Deze pagina staat niet in het lab.",
     "home": "Terug naar het lab"
   },

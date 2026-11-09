@@ -16,6 +16,7 @@
   },
   "notFound": {
     "title": "Không tìm thấy trang",
+    "space": "Ngoài này chẳng có gì ngoài không gian trống.",
     "body": "Trang này không có trong phòng thí nghiệm.",
     "home": "Quay lại phòng thí nghiệm"
   },

@@ -53,7 +53,7 @@ Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.
 ```
 app/                      Next.js App Router (static). / = scale, /lab/[world] = a world
 components/
-  shell/                  Lab (nav, world switcher, account menu, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu, ThemeToggle
+  shell/                  Lab (nav, world switcher, account menu, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu (world tabs + More), ThemeToggle
   account/                useAccount() adapter: state.ts (pure rules), context.tsx (provider), clerk.tsx (the only Clerk import,
                           lazy), AccountMenu, PremiumDialog. No key ⇒ everything free, as before
   console/                shared world-console blocks: StandardConsole, Stage (+ StageInteraction), Transport,

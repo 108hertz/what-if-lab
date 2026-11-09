@@ -30,6 +30,8 @@ export interface PageCopy {
   links: { href: string; name: string; sub: string }[];
   linksHeading: string;
   whatifsHeading: string;
+  /** "Just a simulation" (change 0028): the same note the lab shows on first open. */
+  disclaimer: string;
 }
 
 export const worldName = (t: T, m: Mode) =>
@@ -40,7 +42,7 @@ const worldSub = (t: T, m: Mode) =>
 export function pageCopy(locale: string, mode: Mode): PageCopy {
   const t = serverT(locale);
   const links = MODES.filter((m) => m !== mode).map((m) => ({ href: modeHref(m, locale), name: worldName(t, m), sub: worldSub(t, m) }));
-  const common = { links, linksHeading: t("common.intro.worlds"), whatifsHeading: t("common.intro.whatifs") };
+  const common = { links, linksHeading: t("common.intro.worlds"), whatifsHeading: t("common.intro.whatifs"), disclaimer: t("shell.disclaimer.body") };
   if (mode === "scale") {
     return { ...common, title: t("common.site.name"), heading: t("common.site.name"), description: t("common.site.description"), whatifs: [] };
   }
