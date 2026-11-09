@@ -11,3 +11,6 @@ coverage
 # Impeccable: platform binary is re-downloaded and checksum-verified by the launcher; local config stays local
 .claude/skills/impeccable/scripts/bin/
 .impeccable/config.local.json
+
+# Claude Code worktrees (local only; also keeps them out of `vercel deploy` uploads)
+.claude/worktrees/
