@@ -319,6 +319,9 @@
       "unsupported": "Bu tarayıcı videoya ses ekleyemiyor. Güncel bir Chrome, Edge veya Firefox deneyin.",
       "captionsNote": "Kaydetmeye vaktiniz yok mu? Videoda satırlar için Anlatım'ı (Metin sekmesi) açın ya da altyazı dosyasını uygulamanızın kendi sesiyle kullanın.",
       "silent": "Bu tarayıcı sessiz kaydetti."
+    },
+    "rail": {
+      "styles": "Stiller"
     }
   },
   "style": {

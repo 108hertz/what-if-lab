@@ -319,6 +319,9 @@
       "unsupported": "Ce navigateur ne peut pas ajouter de son à une vidéo. Essayez un Chrome, Edge ou Firefox récent.",
       "captionsNote": "Pas le temps d'enregistrer ? Activez Narration (onglet Texte) pour des lignes sur la vidéo, ou utilisez le fichier de sous-titres avec la voix de votre appli.",
       "silent": "Ce navigateur l'a enregistrée sans son."
+    },
+    "rail": {
+      "styles": "Styles"
     }
   },
   "style": {

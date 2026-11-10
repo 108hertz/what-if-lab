@@ -319,6 +319,9 @@
       "unsupported": "This browser can't add sound to a video. Try a recent Chrome, Edge or Firefox.",
       "captionsNote": "No time to record? Turn on Narration (Text tab) for lines on the video, or use the subtitles file with your app's own voice.",
       "silent": "This browser recorded it without sound."
+    },
+    "rail": {
+      "styles": "Styles"
     }
   },
   "style": {

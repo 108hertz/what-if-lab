@@ -17,12 +17,16 @@ import { IntroTab, SoundTab, type SoundCtl } from "./StudioMore";
 import { Cancelled, clipInfo, exportName, loadFonts, recordVideo, renderSlides, renderStills, renderText, save, saveBlob, videoSupport, zip, type Meta, type Progress } from "./render";
 import { NO_SOUND, audioContext, hasSound, playSound, type Mix, type Sound } from "./sound";
 import { narration } from "@/lib/export/text";
+import ToolRail, { type RailTool } from "./ToolRail";
+import { useMedia } from "../../ui/useMedia";
 import { deleteStyle, lastStyle, rememberStyle, saveStyle, savedStyles, type SavedStyle } from "./styles";
 import { pageT } from "@/lib/i18n/page";
 import { worldSay } from "@/lib/sim/say";
 
 type Tab = "output" | "text" | "intro" | "sound" | "look" | "timing";
 const TABS: Tab[] = ["output", "text", "intro", "sound", "look", "timing"];
+/** Phone rail glyphs (change 0035). */
+const GLYPH: Record<Tab | "styles", RailTool["icon"]> = { output: "video", text: "text", intro: "intro", sound: "note", look: "look", timing: "clock", styles: "layers" };
 
 type Phase =
   | { at: "idle" }
@@ -38,15 +42,16 @@ const S = (k: string, v?: Record<string, string | number>) => pageT()(`export.st
  * Transport button (before full screen). Every world gets it through the shared Transport. Shown to everyone
  * (change 0031): Premium opens the studio, everyone else Quick export (one landscape video, nothing to edit).
  */
-export function ExportButton({ engine }: { engine: SimEngine }) {
+export function ExportButton({ engine, tool }: { engine: SimEngine; tool?: boolean }) {
   const [open, setOpen] = useState(false);
   const full = exportLevel(useAccount()) === "full";
   const label = full ? S("open") : pageT()("export.quick.open");
   return (
     <>
-      <button type="button" className="btn export-btn" aria-label={label} title={label} onClick={() => setOpen(true)}>
-        <Icon name="download" size={18} />
-        <span className="btn-text">{S("button")}</span>
+      {/* `tool`: the phone tool bar's button (change 0035), always with its word */}
+      <button type="button" className={tool ? "tool-btn" : "btn export-btn"} aria-label={label} title={label} onClick={() => setOpen(true)}>
+        <Icon name="download" size={tool ? 20 : 18} />
+        <span className={tool ? "tool-l" : "btn-text"}>{S("button")}</span>
       </button>
       {open && (full ? <ExportDialog engine={engine} onClose={() => setOpen(false)} /> : <QuickExport engine={engine} onClose={() => setOpen(false)} />)}
     </>
@@ -72,6 +77,9 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
   });
   const [out, setOut] = useState<Out>("video");
   const [tab, setTab] = useState<Tab>("output");
+  // Phones (change 0035): a full-screen editor; the rail tool whose settings are open under the preview (none = all preview)
+  const phone = useMedia("(max-width: 767px)");
+  const [tool, setTool] = useState<Tab | "styles" | null>(null);
   const [selected, setSelected] = useState<LayerId | null>(null);
   const [range, setRange] = useState<{ from?: number; to?: number }>({});
   const [phase, setPhase] = useState<Phase>({ at: "idle" });
@@ -106,6 +114,7 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
     setSelected(id);
     if (!id) return;
     if (tab !== "text") setTab("text");
+    if (phone) setTool("text");
     // Show the layer: the opening title before the run, the result card at the end
     const w = style.layers[id].when;
     const total = clipFrames(plan);
@@ -244,11 +253,99 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
     </>
   );
 
+  const preview = (
+    <PreviewCanvas scrub={scrub} ready={ready} style={style} slides={out === "slides"} world={say("meta.name")} intro={say("meta.intro")}
+      selected={tab === "text" ? selected : null} jump={jump} onSelect={select} onMove={move} cues={cues} command={command} onPlay={onPlay} />
+  );
+  const panelFor = (tb: Tab) => (
+    <fieldset disabled={working}>
+      {tb === "output" && (
+        <>
+          <OutputTab out={out} setOut={setOut} style={style} set={setStyle} onSize={onSize} />
+          {textTab}
+        </>
+      )}
+      {tb === "text" && <TextTab style={style} set={setStyle} selected={selected} select={select} narration={narrationEdit} />}
+      {tb === "intro" && <IntroTab style={style} set={setStyle} onPick={() => setCommand((c) => ({ kind: "playFromStart", n: (c?.n ?? 0) + 1 }))} />}
+      {tb === "sound" && <SoundTab ctl={soundCtl} />}
+      {tb === "look" && <LookTab style={style} set={setStyle} />}
+      {tb === "timing" && (
+        <TimingTab style={style} set={setStyle} plan={plan} range={range} setRange={setRange} events={a?.summary.events ?? []} />
+      )}
+    </fieldset>
+  );
+  const status = (
+    <div className="studio-status">
+      <p className="micro export-spec">{S("specSeed", { spec, seed: plan.seed })}</p>
+      {phase.at === "working" ? (
+        <div className="export-progress" role="status" aria-live="polite">
+          <div className="bar" aria-hidden="true"><i style={{ transform: `scaleX(${phase.p.done})` }} /></div>
+          <p className="small">{S(out === "video" ? "keepOpen" : "noteEnd", { note: phase.p.note })}</p>
+        </div>
+      ) : phase.at === "done" ? (
+        <p className="small export-done" role="status">{S("saved")} <span className="num">{phase.name}</span> ({mb(phase.size)}).{phase.silent ? ` ${pageT()("export.studio.sound.silent")}` : ""}</p>
+      ) : phase.at === "error" ? (
+        <p className="small is-error" role="alert">{phase.msg}</p>
+      ) : (
+        <>
+          <p className="small export-what">{what}</p>
+          {!plan.hasWhatIf && <p className="small export-hint">{S("noWhatIf")}</p>}
+          {!plan.fromFork && plan.hasWhatIf && <p className="small export-hint">{S("fromNow")}</p>}
+          {out === "video" && !video && <p className="small is-error" role="alert">{S("noVideo")}</p>}
+          {!allowed && <p className="small export-hint">{S("tryAll")}</p>}
+        </>
+      )}
+    </div>
+  );
+  const resetStyle = () => { setStyleRaw(defaultStyle(style.size)); setRange({}); };
+
+  // Phones (change 0035): the preview takes the screen, tools down the right, the picked tool's settings slide up under it
+  if (phone) {
+    const tools: RailTool[] = [...TABS, "styles" as const].map((id) => ({ id, label: id === "styles" ? S("rail.styles") : S(`tabs.${id}`), icon: GLYPH[id] }));
+    const pick = (id: string) => {
+      if (tool === id) { setTool(null); return; }
+      setTool(id as Tab | "styles");
+      if (id !== "styles") setTab(id as Tab);
+    };
+    // One action in the header: the main one (short word on a phone); "download again" waits in the status line
+    const head = phase.at === "done"
+      ? <button className="btn primary" onClick={onClose}><Icon name="check" size={18} />{S("done")}</button>
+      : phase.at === "working" || !allowed ? actions
+      : <button className="btn primary" onClick={start} disabled={out === "video" && !video} aria-label={S(`action.${out}`)}><Icon name="download" size={18} />{phase.at === "error" ? S("retry") : S("button")}</button>;
+    const toolName = tool ? tools.find((x) => x.id === tool)!.label : "";
+    return (
+      <Dialog open onClose={onClose} title={S("title")} className="export studio studio-phone" locked={working} closeLabel={S("close")}
+        head={<div className="sp-act">{head}</div>}>
+        <div className={`sp-main${tool ? " has-panel" : ""}`}>
+          {preview}
+          <ToolRail tools={tools} active={tool} onPick={pick} disabled={working} label={S("settings")} />
+        </div>
+        {tool ? (
+          <section className="sp-panel" id="sp-panel" aria-label={toolName}>
+            <header className="sp-panel-head">
+              <h3 className="headline">{toolName}</h3>
+              <button type="button" className="iconbtn" aria-label={S("done")} onClick={() => setTool(null)}><Icon name="check" size={18} /></button>
+            </header>
+            <div className="sp-panel-body studio-panel">
+              {tool === "styles"
+                ? <StylesBody style={style} onLoad={(st) => setStyleRaw(st)} onReset={resetStyle} close={() => setTool(null)} />
+                : panelFor(tool)}
+            </div>
+          </section>
+        ) : (
+          <div className="sp-status">
+            {status}
+            {phase.at === "done" && <button className="btn" onClick={() => save(phase.url, phase.name)}>{S("again")}</button>}
+          </div>
+        )}
+      </Dialog>
+    );
+  }
+
   return (
     <Dialog open onClose={onClose} title={S("title")} className="export studio" locked={working} closeLabel={S("close")}>
       <div className="studio-main">
-        <PreviewCanvas scrub={scrub} ready={ready} style={style} slides={out === "slides"} world={say("meta.name")} intro={say("meta.intro")}
-          selected={tab === "text" ? selected : null} jump={jump} onSelect={select} onMove={move} cues={cues} command={command} onPlay={onPlay} />
+        {preview}
         <div className="studio-side">
           <div className="seg studio-tabs" role="tablist" aria-label={S("settings")}>
             {TABS.map((t) => (
@@ -256,48 +353,14 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
             ))}
           </div>
           <div className="studio-panel" id="studio-panel" role="tabpanel" aria-labelledby={`stab-${tab}`}>
-            <fieldset disabled={working}>
-              {tab === "output" && (
-                <>
-                  <OutputTab out={out} setOut={setOut} style={style} set={setStyle} onSize={onSize} />
-                  {textTab}
-                </>
-              )}
-              {tab === "text" && <TextTab style={style} set={setStyle} selected={selected} select={select} narration={narrationEdit} />}
-              {tab === "intro" && <IntroTab style={style} set={setStyle} onPick={() => setCommand((c) => ({ kind: "playFromStart", n: (c?.n ?? 0) + 1 }))} />}
-              {tab === "sound" && <SoundTab ctl={soundCtl} />}
-              {tab === "look" && <LookTab style={style} set={setStyle} />}
-              {tab === "timing" && (
-                <TimingTab style={style} set={setStyle} plan={plan} range={range} setRange={setRange} events={a?.summary.events ?? []} />
-              )}
-            </fieldset>
+            {panelFor(tab)}
           </div>
         </div>
       </div>
       <div className="studio-foot">
-        <div className="studio-status">
-          <p className="micro export-spec">{S("specSeed", { spec, seed: plan.seed })}</p>
-          {phase.at === "working" ? (
-            <div className="export-progress" role="status" aria-live="polite">
-              <div className="bar" aria-hidden="true"><i style={{ transform: `scaleX(${phase.p.done})` }} /></div>
-              <p className="small">{S(out === "video" ? "keepOpen" : "noteEnd", { note: phase.p.note })}</p>
-            </div>
-          ) : phase.at === "done" ? (
-            <p className="small export-done" role="status">{S("saved")} <span className="num">{phase.name}</span> ({mb(phase.size)}).{phase.silent ? ` ${pageT()("export.studio.sound.silent")}` : ""}</p>
-          ) : phase.at === "error" ? (
-            <p className="small is-error" role="alert">{phase.msg}</p>
-          ) : (
-            <>
-              <p className="small export-what">{what}</p>
-              {!plan.hasWhatIf && <p className="small export-hint">{S("noWhatIf")}</p>}
-              {!plan.fromFork && plan.hasWhatIf && <p className="small export-hint">{S("fromNow")}</p>}
-              {out === "video" && !video && <p className="small is-error" role="alert">{S("noVideo")}</p>}
-              {!allowed && <p className="small export-hint">{S("tryAll")}</p>}
-            </>
-          )}
-        </div>
+        {status}
         <div className="sheet-actions">
-          <MyStyles style={style} disabled={working} onLoad={(s) => setStyleRaw(s)} onReset={() => { setStyleRaw(defaultStyle(style.size)); setRange({}); }} />
+          <MyStyles style={style} disabled={working} onLoad={(s) => setStyleRaw(s)} onReset={resetStyle} />
           {actions}
         </div>
       </div>
@@ -305,46 +368,55 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
   );
 }
 
-/** Save, load, copy and paste styles; reset to the default look. */
+/** Save, load, copy and paste styles; reset to the default look. A pop-up from the footer on larger screens. */
 function MyStyles({ style, disabled, onLoad, onReset }: { style: ExportStyle; disabled: boolean; onLoad: (s: ExportStyle) => void; onReset: () => void }) {
-  const [list, setList] = useState<SavedStyle[]>([]);
-  const [name, setName] = useState("");
-  const [paste, setPaste] = useState<string | null>(null);
-  const [note, setNote] = useState("");
   const ref = useRef<HTMLDetailsElement>(null);
+  const [n, setN] = useState(0);
   const close = () => { if (ref.current) ref.current.open = false; };
   return (
-    <details className="studio-styles" ref={ref} onToggle={(e) => { if ((e.target as HTMLDetailsElement).open) { setList(savedStyles()); setNote(""); setPaste(null); } }}>
+    <details className="studio-styles" ref={ref} onToggle={(e) => { if ((e.target as HTMLDetailsElement).open) setN((x) => x + 1); }}>
       <summary className={`btn${disabled ? " is-disabled" : ""}`} aria-disabled={disabled}>{S("styles.title")}<Icon name="chevron" size={18} /></summary>
       <div className="studio-styles-pop" role="group" aria-label={S("styles.title")}>
-        <form className="studio-row" onSubmit={(e) => { e.preventDefault(); if (!name.trim()) return; setList(saveStyle(name.trim(), style)); setName(""); setNote(S("styles.savedHere")); }}>
-          <input className="studio-hex studio-name" placeholder={S("styles.namePlaceholder")} aria-label={S("styles.nameLabel")} value={name} maxLength={40} onChange={(e) => setName(e.target.value)} />
-          <button type="submit" className="btn" disabled={!name.trim()}>{S("styles.save")}</button>
-        </form>
-        {list.length > 0 && (
-          <ul className="studio-saved">
-            {list.map((s) => (
-              <li key={s.name}>
-                <button type="button" className="studio-saved-n" onClick={() => { onLoad(s.style); close(); }}>{s.name}</button>
-                <button type="button" className="iconbtn" aria-label={S("styles.delete", { name: s.name })} onClick={() => setList(deleteStyle(s.name))}><Icon name="close" size={18} /></button>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="studio-row">
-          <button type="button" className="btn" onClick={() => { navigator.clipboard?.writeText(JSON.stringify(style)).then(() => setNote(S("styles.copied")), () => setNote(S("styles.cantCopy"))); }}><Icon name="copy" size={18} />{S("styles.copy")}</button>
-          <button type="button" className="btn" onClick={() => setPaste(paste == null ? "" : null)}>{S("styles.paste")}</button>
-          <button type="button" className="btn" onClick={() => { onReset(); close(); }}>{S("styles.reset")}</button>
-        </div>
-        {paste != null && (
-          <div className="studio-field">
-            <textarea className="studio-words" rows={3} placeholder={S("styles.pastePlaceholder")} aria-label={S("styles.pasteLabel")} value={paste} onChange={(e) => setPaste(e.target.value)} />
-            <button type="button" className="btn" disabled={!paste.trim()} onClick={() => { const s = parseStyle(paste); if (s) { onLoad(s); close(); } else setNote(S("styles.notStyle")); }}>{S("styles.use")}</button>
-          </div>
-        )}
-        {note && <p className="small studio-note" role="status">{note}</p>}
+        <StylesBody key={n} style={style} onLoad={(s) => { onLoad(s); close(); }} onReset={() => { onReset(); close(); }} close={close} />
       </div>
     </details>
   );
 }
 
+/** The styles tool itself; on phones it is the rail's last tool (change 0035). */
+function StylesBody({ style, onLoad, onReset, close }: { style: ExportStyle; onLoad: (s: ExportStyle) => void; onReset: () => void; close: () => void }) {
+  const [list, setList] = useState<SavedStyle[]>(() => savedStyles());
+  const [name, setName] = useState("");
+  const [paste, setPaste] = useState<string | null>(null);
+  const [note, setNote] = useState("");
+  return (
+    <>
+      <form className="studio-row" onSubmit={(e) => { e.preventDefault(); if (!name.trim()) return; setList(saveStyle(name.trim(), style)); setName(""); setNote(S("styles.savedHere")); }}>
+        <input className="studio-hex studio-name" placeholder={S("styles.namePlaceholder")} aria-label={S("styles.nameLabel")} value={name} maxLength={40} onChange={(e) => setName(e.target.value)} />
+        <button type="submit" className="btn" disabled={!name.trim()}>{S("styles.save")}</button>
+      </form>
+      {list.length > 0 && (
+        <ul className="studio-saved">
+          {list.map((s) => (
+            <li key={s.name}>
+              <button type="button" className="studio-saved-n" onClick={() => { onLoad(s.style); close(); }}>{s.name}</button>
+              <button type="button" className="iconbtn" aria-label={S("styles.delete", { name: s.name })} onClick={() => setList(deleteStyle(s.name))}><Icon name="close" size={18} /></button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="studio-row">
+        <button type="button" className="btn" onClick={() => { navigator.clipboard?.writeText(JSON.stringify(style)).then(() => setNote(S("styles.copied")), () => setNote(S("styles.cantCopy"))); }}><Icon name="copy" size={18} />{S("styles.copy")}</button>
+        <button type="button" className="btn" onClick={() => setPaste(paste == null ? "" : null)}>{S("styles.paste")}</button>
+        <button type="button" className="btn" onClick={() => { onReset(); close(); }}>{S("styles.reset")}</button>
+      </div>
+      {paste != null && (
+        <div className="studio-field">
+          <textarea className="studio-words" rows={3} placeholder={S("styles.pastePlaceholder")} aria-label={S("styles.pasteLabel")} value={paste} onChange={(e) => setPaste(e.target.value)} />
+          <button type="button" className="btn" disabled={!paste.trim()} onClick={() => { const s = parseStyle(paste); if (s) { onLoad(s); close(); } else setNote(S("styles.notStyle")); }}>{S("styles.use")}</button>
+        </div>
+      )}
+      {note && <p className="small studio-note" role="status">{note}</p>}
+    </>
+  );
+}

@@ -319,6 +319,9 @@
       "unsupported": "Trình duyệt này không thêm được âm thanh vào video. Thử Chrome, Edge hoặc Firefox mới.",
       "captionsNote": "Không kịp ghi âm? Bật Thuyết minh (thẻ Chữ) để có dòng chữ trong video, hoặc dùng tệp phụ đề với giọng đọc của ứng dụng bạn.",
       "silent": "Trình duyệt này đã ghi video không có tiếng."
+    },
+    "rail": {
+      "styles": "Kiểu"
     }
   },
   "style": {

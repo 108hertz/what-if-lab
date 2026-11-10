@@ -17,6 +17,7 @@ import ChangeToggles from "@/components/console/Changes";
 import { COUNTRY_GROUPS } from "./data";
 import { country, countryName, WHATIF_GROUPS } from "./sim";
 import { useT } from "@/components/i18n/I18nProvider";
+import PhoneConsole from "@/components/console/phone/PhoneConsole";
 import { worldSay } from "@/lib/sim/say";
 
 type P = { engine: SimEngine; onChange: () => void };
@@ -90,6 +91,17 @@ export default function CountryConsole() {
   const chart = <div className="chart-box"><HistoryChart engine={engine} /></div>;
   const log = <div className="log-box"><h3 className="headline">{t("console.timeline.title")}</h3><Timeline engine={engine} /></div>;
 
+  // Phones (change 0035): the street fills the screen; policies and the country pick open as sheets
+  if (!desk) {
+    return (
+      <PhoneConsole engine={engine} onChange={onChange}
+        stage={<Stage engine={engine} onChange={onChange} />}
+        whatIf={<>{engine.entries.length > 0 && <ChangeToggles engine={engine} onChange={onChange} />}<PolicyList engine={engine} onChange={onChange} /></>}
+        tune={<><CountryPicker engine={engine} onChange={onChange} />{tune}</>}
+        tabs={[[t("console.phone.now"), <>{now}{info}</>], [t("console.phone.chart"), chart], [t("console.dock.log"), log], [t("console.phone.about"), <WorldHeader engine={engine} />]]} />
+    );
+  }
+
   let side: ReactNode;
   if (full) {
     side = (
@@ -98,19 +110,12 @@ export default function CountryConsole() {
         {!rails && <AdSlot size="box" promo />}
       </aside>
     );
-  } else if (desk) {
+  } else {
     side = (
       <div className="dock-col">
         <Dock key="desk" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{info}{now}</>]]} />
         <AdSlot size="box" promo />
       </div>
-    );
-  } else {
-    side = (
-      <>
-        <Dock key="phone" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{info}{chart}{now}</>], [t("console.dock.log"), log]]} />
-        <AdSlot size="banner" />
-      </>
     );
   }
 
@@ -121,7 +126,7 @@ export default function CountryConsole() {
         <Stage engine={engine} onChange={onChange} />
         <Transport engine={engine} onChange={onChange} fullscreen={fs} />
         {/* Readouts live in Ask at every width, so the chart keeps room for its seven tabs and its sentence */}
-        {desk && !fs.on && <div className="results country-results">{chart}{log}</div>}
+        {!fs.on && <div className="results country-results">{chart}{log}</div>}
       </section>
       {side}
     </main>

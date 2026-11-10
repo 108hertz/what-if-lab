@@ -319,6 +319,9 @@
       "unsupported": "Questo browser non può aggiungere suono a un video. Prova un Chrome, Edge o Firefox recente.",
       "captionsNote": "Niente tempo per registrare? Attiva Narrazione (scheda Testo) per righe sul video, oppure usa il file dei sottotitoli con la voce della tua app.",
       "silent": "Questo browser l'ha registrato senza suono."
+    },
+    "rail": {
+      "styles": "Stili"
     }
   },
   "style": {

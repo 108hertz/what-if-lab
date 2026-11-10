@@ -77,5 +77,30 @@
     "label": "โฆษณา",
     "promo": "ไม่มีโฆษณากับ Premium · $15/ปี",
     "short": "โฆษณา"
+  },
+  "phone": {
+    "close": "ปิด",
+    "speedLabel": "ความเร็ว: {speed} เปลี่ยนความเร็ว",
+    "speedTitle": "เวลาเดินเร็วแค่ไหน",
+    "speedNote": "ทุกหนึ่งวินาทีที่คุณดู เวลาในโลกผ่านไปเท่าไร",
+    "whatIf": "ถ้าหาก…",
+    "whatIfTitle": "ถ้าหาก…",
+    "results": "ผลลัพธ์",
+    "now": "ตอนนี้",
+    "chart": "กราฟ",
+    "about": "เกี่ยวกับ",
+    "openResults": "ดูผลลัพธ์",
+    "closeResults": "กลับไปที่โลก",
+    "pickFirst": "เลือก “ถ้าหาก” เพื่อเปลี่ยนโลก",
+    "onCount": "{n, plural, other {เปิดอยู่ # การเปลี่ยนแปลง}}",
+    "why": "ทำไม"
+  },
+  "speed": {
+    "d": "{n, plural, other {# วัน}} ต่อวินาที",
+    "wk": "{n, plural, other {# สัปดาห์}} ต่อวินาที",
+    "mo": "{n, plural, other {# เดือน}} ต่อวินาที",
+    "yr": "{n, plural, other {# ปี}} ต่อวินาที",
+    "myr": "{n, plural, other {# ล้านปี}} ต่อวินาที",
+    "gyr": "{n, plural, other {# พันล้านปี}} ต่อวินาที"
   }
 }

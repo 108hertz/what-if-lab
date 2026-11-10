@@ -46,7 +46,13 @@ describe("world projects", () => {
   it.each(SANDBOX_KEYS)("%s console reserves its ad slots (ADR 0007)", (key) => {
     const src = readFileSync(join(ROOT, "worlds", key, "Console.tsx"), "utf8");
     const standard = /<StandardConsole\b/.test(src);
-    const own = /size="box"/.test(src) && /size="banner"/.test(src);
-    expect(standard || own, `${relative(ROOT, join("worlds", key, "Console.tsx"))} must use StandardConsole or place box + banner AdSlots`).toBe(true);
+    // Phones (change 0035): the 320 × 50 banner lives inside the shared PhoneConsole
+    const own = /size="box"/.test(src) && (/size="banner"/.test(src) || /<PhoneConsole\b/.test(src));
+    expect(standard || own, `${relative(ROOT, join("worlds", key, "Console.tsx"))} must use StandardConsole or place a box AdSlot and a banner (own or PhoneConsole)`).toBe(true);
+  });
+
+  it("the phone console and the standard console keep the phone banner (ADR 0007)", () => {
+    expect(readFileSync(join(ROOT, "components/console/phone/PhoneConsole.tsx"), "utf8")).toMatch(/<AdSlot size="banner"/);
+    expect(readFileSync(join(ROOT, "components/console/StandardConsole.tsx"), "utf8")).toMatch(/<PhoneConsole\b/);
   });
 });

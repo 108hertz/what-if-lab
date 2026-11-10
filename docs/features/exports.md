@@ -33,8 +33,11 @@ exist (revenue). Creators get raw pieces in their own style; teachers get pictur
   Everything below describes the Premium studio.
 - **Layout:** a large sheet over the console. ≥ 1024 px: the preview on the left, settings on the right in six
   tabs (Output · Text · Intro · Sound · Look · Timing; the row scrolls sideways when it doesn't fit); only the settings
-  column scrolls. Below 1024 px: preview on top (about
-  40 % of the height), tabs under it. Footer: spec line, one sentence on what's inside, *My styles*, and one
+  column scrolls. 768–1023 px: preview on top (about
+  40 % of the height), tabs under it. Below 768 px (change 0035): a full-screen editor. The preview takes the
+  screen beside a tool rail (Output · Text · Intro · Sound · Look · Timing · Styles). A tool's settings slide up under
+  the preview, which keeps playing. The main button (EXPORT) is in the header, and the status line is under the
+  preview. Quick export also opens full screen on phones. Footer: spec line, one sentence on what's inside, *My styles*, and one
   filled button that follows the chosen output.
 - **Preview:** any frame of the clip, drawn by the same code that renders the file, with play/pause and a
   scrubber. Text layers can be dragged on it; with a layer picked, arrow keys nudge it (Shift = bigger steps).

@@ -9,7 +9,7 @@ import { Icon } from "./Icon";
  * buying Premium and recording an export. Walnut-raised, 12 px radius, cork hairline, no shadow (DESIGN.md).
  * On phones it docks to the bottom edge as a sheet.
  */
-export default function Dialog({ open, onClose, title, children, className, closeLabel = "Close", locked }: {
+export default function Dialog({ open, onClose, title, children, className, closeLabel = "Close", locked, head }: {
   open: boolean;
   onClose: () => void;
   title: string;
@@ -18,6 +18,8 @@ export default function Dialog({ open, onClose, title, children, className, clos
   closeLabel?: string;
   /** While true (e.g. recording), Esc and outside clicks do nothing; the dialog offers its own Cancel. */
   locked?: boolean;
+  /** Extra controls in the header, before ×: the phone export editor's main action (change 0035). */
+  head?: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const id = useId();
@@ -49,6 +51,7 @@ export default function Dialog({ open, onClose, title, children, className, clos
         <div className="sheet-body">
           <header className="sheet-head">
             <h2 className="headline sheet-title" id={id}>{title}</h2>
+            {head}
             <button type="button" className="iconbtn" aria-label={closeLabel} onClick={onClose} disabled={locked}>
               <Icon name="close" size={18} />
             </button>

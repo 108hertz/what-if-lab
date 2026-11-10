@@ -319,6 +319,9 @@
       "unsupported": "Este navegador no puede añadir sonido a un vídeo. Prueba un Chrome, Edge o Firefox reciente.",
       "captionsNote": "¿Sin tiempo para grabar? Activa Narración (pestaña Texto) para ver líneas en el vídeo, o usa el archivo de subtítulos con la voz de tu app.",
       "silent": "Este navegador lo grabó sin sonido."
+    },
+    "rail": {
+      "styles": "Estilos"
     }
   },
   "style": {

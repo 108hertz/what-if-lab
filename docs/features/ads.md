@@ -21,7 +21,8 @@ Revenue scales with traffic without a paywall. Must not reduce traffic by hurtin
   - ≥ 1600 px wide and ≥ 700 px tall: two 160×600 rails outside the console (shell, also on the scale view).
   - 1280–1599 px (and wide-but-short screens): one 300×250 box at the foot of the Tune column.
   - 1024–1279 px: one 300×250 box under the dock.
-  - < 1024 px: one 320×50 banner under the dock; hidden on phones held sideways (≤ 520 px tall).
+  - < 1024 px: one 320×50 banner at the foot of the phone tools, under the tool bar (inside the shared `PhoneConsole`,
+    change 0035, so no world can drop it); hidden on phones held sideways (≤ 520 px tall).
 - Fixed dimensions → CLS = 0. Pages still never scroll.
 - Empty slot (today, dev, no-fill, ad-blocker): dashed cork outline with a Micro "Ad" label; at most one per
   screen adds the quiet "Ad-free with Premium · $15/yr" line (a button that opens the Premium sheet when the build sells

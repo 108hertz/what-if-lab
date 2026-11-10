@@ -77,5 +77,30 @@
     "label": "광고",
     "promo": "Premium으로 광고 없이 · 연 $15",
     "short": "광고"
+  },
+  "phone": {
+    "close": "닫기",
+    "speedLabel": "속도: {speed}. 속도 바꾸기",
+    "speedTitle": "시간이 흐르는 빠르기",
+    "speedNote": "내가 보는 1초마다 세계에서 흐르는 시간.",
+    "whatIf": "만약에…",
+    "whatIfTitle": "만약에…",
+    "results": "결과",
+    "now": "지금",
+    "chart": "차트",
+    "about": "소개",
+    "openResults": "결과 보기",
+    "closeResults": "세계로 돌아가기",
+    "pickFirst": "‘만약에’를 골라 세계를 바꿔 보세요",
+    "onCount": "{n, plural, other {변경 #개 켜짐}}",
+    "why": "이유"
+  },
+  "speed": {
+    "d": "{n, plural, other {1초에 #일}}",
+    "wk": "{n, plural, other {1초에 #주}}",
+    "mo": "{n, plural, other {1초에 #개월}}",
+    "yr": "{n, plural, other {1초에 #년}}",
+    "myr": "{n, plural, other {1초에 #백만 년}}",
+    "gyr": "{n, plural, other {1초에 #십억 년}}"
   }
 }

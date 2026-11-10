@@ -319,6 +319,9 @@
       "unsupported": "Ta przeglądarka nie może dodać dźwięku do filmu. Spróbuj aktualnego Chrome, Edge lub Firefoksa.",
       "captionsNote": "Nie masz czasu nagrywać? Włącz Narrację (karta Tekst), aby mieć linie w filmie, albo użyj pliku napisów z głosem swojej aplikacji.",
       "silent": "Ta przeglądarka nagrała to bez dźwięku."
+    },
+    "rail": {
+      "styles": "Style"
     }
   },
   "style": {

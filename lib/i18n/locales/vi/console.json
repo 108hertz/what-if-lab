@@ -77,5 +77,30 @@
     "label": "Quảng cáo",
     "promo": "Không quảng cáo với Premium · 15 $/năm",
     "short": "QC"
+  },
+  "phone": {
+    "close": "Đóng",
+    "speedLabel": "Tốc độ: {speed}. Đổi tốc độ",
+    "speedTitle": "Thời gian trôi nhanh thế nào",
+    "speedNote": "Bao nhiêu thời gian trôi qua trong thế giới cho mỗi giây bạn xem.",
+    "whatIf": "Nếu như…",
+    "whatIfTitle": "Nếu như…",
+    "results": "Kết quả",
+    "now": "Bây giờ",
+    "chart": "Biểu đồ",
+    "about": "Giới thiệu",
+    "openResults": "Xem kết quả",
+    "closeResults": "Quay lại thế giới",
+    "pickFirst": "Chọn một “nếu như” để thay đổi thế giới",
+    "onCount": "{n, plural, other {# thay đổi đang bật}}",
+    "why": "Vì sao"
+  },
+  "speed": {
+    "d": "{n, plural, other {# ngày}} mỗi giây",
+    "wk": "{n, plural, other {# tuần}} mỗi giây",
+    "mo": "{n, plural, other {# tháng}} mỗi giây",
+    "yr": "{n, plural, other {# năm}} mỗi giây",
+    "myr": "{n, plural, other {# triệu năm}} mỗi giây",
+    "gyr": "{n, plural, other {# tỷ năm}} mỗi giây"
   }
 }

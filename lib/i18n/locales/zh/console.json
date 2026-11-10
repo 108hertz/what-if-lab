@@ -77,5 +77,30 @@
     "label": "广告",
     "promo": "Premium 无广告 · $15/年",
     "short": "广告"
+  },
+  "phone": {
+    "close": "关闭",
+    "speedLabel": "速度：{speed}。更改速度",
+    "speedTitle": "时间流逝有多快",
+    "speedNote": "你每看一秒，世界里会过去多少时间。",
+    "whatIf": "如果……",
+    "whatIfTitle": "如果……",
+    "results": "结果",
+    "now": "现在",
+    "chart": "图表",
+    "about": "关于",
+    "openResults": "查看结果",
+    "closeResults": "回到世界",
+    "pickFirst": "选一个“如果”来改变世界",
+    "onCount": "{n, plural, other {已开启 # 项改变}}",
+    "why": "为什么"
+  },
+  "speed": {
+    "d": "{n, plural, other {每秒 # 天}}",
+    "wk": "{n, plural, other {每秒 # 周}}",
+    "mo": "{n, plural, other {每秒 # 个月}}",
+    "yr": "{n, plural, other {每秒 # 年}}",
+    "myr": "{n, plural, other {每秒 # 百万年}}",
+    "gyr": "{n, plural, other {每秒 # 十亿年}}"
   }
 }

@@ -319,6 +319,9 @@
       "unsupported": "Este navegador não consegue adicionar som a um vídeo. Tente um Chrome, Edge ou Firefox recente.",
       "captionsNote": "Sem tempo para gravar? Ative Narração (aba Texto) para ter linhas no vídeo, ou use o arquivo de legendas com a voz do seu app.",
       "silent": "Este navegador gravou sem som."
+    },
+    "rail": {
+      "styles": "Estilos"
     }
   },
   "style": {

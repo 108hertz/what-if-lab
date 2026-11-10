@@ -77,5 +77,30 @@
     "label": "Reklam",
     "promo": "Premium ile reklamsız · yılda 15 $",
     "short": "Reklam"
+  },
+  "phone": {
+    "close": "Kapat",
+    "speedLabel": "Hız: {speed}. Hızı değiştir",
+    "speedTitle": "Zaman ne kadar hızlı akıyor",
+    "speedNote": "İzlediğin her saniyede dünyada ne kadar zaman geçtiği.",
+    "whatIf": "Ya şöyle olsaydı…",
+    "whatIfTitle": "Ya şöyle olsaydı…",
+    "results": "Sonuçlar",
+    "now": "Şimdi",
+    "chart": "Grafik",
+    "about": "Hakkında",
+    "openResults": "Sonuçları göster",
+    "closeResults": "Dünyaya dön",
+    "pickFirst": "Dünyayı değiştirmek için bir “ya olsaydı” seç",
+    "onCount": "{n, plural, one {# değişiklik açık} other {# değişiklik açık}}",
+    "why": "Neden"
+  },
+  "speed": {
+    "d": "{n, plural, one {saniyede # gün} other {saniyede # gün}}",
+    "wk": "{n, plural, one {saniyede # hafta} other {saniyede # hafta}}",
+    "mo": "{n, plural, one {saniyede # ay} other {saniyede # ay}}",
+    "yr": "{n, plural, one {saniyede # yıl} other {saniyede # yıl}}",
+    "myr": "{n, plural, one {saniyede # milyon yıl} other {saniyede # milyon yıl}}",
+    "gyr": "{n, plural, one {saniyede # milyar yıl} other {saniyede # milyar yıl}}"
   }
 }

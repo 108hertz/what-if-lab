@@ -319,6 +319,9 @@
       "unsupported": "Dieser Browser kann einem Video keinen Ton hinzufügen. Versuche ein aktuelles Chrome, Edge oder Firefox.",
       "captionsNote": "Keine Zeit zum Aufnehmen? Schalte Erzählung ein (Tab Text) für Zeilen im Video, oder nutze die Untertiteldatei mit der Stimme deiner App.",
       "silent": "Dieser Browser hat es ohne Ton aufgenommen."
+    },
+    "rail": {
+      "styles": "Stile"
     }
   },
   "style": {

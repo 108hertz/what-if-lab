@@ -78,6 +78,7 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [x] Free quick export: one landscape video, no editing ([change 0031](./changes/0031-free-quick-export.md))
 - [x] Export studio: styled video, pictures, text and slides; text placement, fonts, colours, grade, length ([change 0022](./changes/0022-export-studio.md))
 - [ ] Export studio, second pass: every piece removable, more fonts and text options, voice-over and audio files, narration captions, intro templates, a Premium preview link on Vercel ([change 0034](./changes/0034-export-studio-second-pass.md)) — built, awaiting browser checks on Safari/Firefox and the first preview deploy
+- [x] Phones: the world fills the screen, tools as sheets, results rise from the bottom; full-screen export editor with a tool rail ([change 0035](./changes/0035-phone-console-and-studio.md))
 - [ ] Premium features: multi what-if, Monte-Carlo, scrubbing, saved scenarios
 
 ### Phase 4 — Scale

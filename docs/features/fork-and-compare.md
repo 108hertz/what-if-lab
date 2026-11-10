@@ -56,8 +56,11 @@ This is the product. The divergence moment is what people screenshot and share.
 - Worlds keep running across tab switches (module-level engine singletons).
 - **One-screen console** (changes 0004, 0007): at ≥ 1280 px Ask (what-ifs, readouts, info) · stage +
   transport + chart/timeline · Tune (all variables) without page scroll; at 1024–1279 px the stage, chart
-  and timeline with an Ask · Tune · Read dock beside them; below 1024 px the stage with a dock
-  (Ask · Tune · Read · Log) under it, or beside it on short (≤ 520 px tall) screens. Phones switch worlds
+  and timeline with an Ask · Tune · Read dock beside them. Below 1024 px (change 0035) the stage fills most of the
+  screen. What if… and Tune open as sheets from a tool bar. The results sit in a strip under the stage (the key readout
+  in both worlds and the newest event), which rises to fill the screen with Now · Chart · Log · About while the stage
+  shrinks to a live strip. Speed is one wide button that lists every speed in words. Picking a what-if closes its sheet
+  so the fork is seen happening. Sideways phones get a tool rail on the right. Phones switch worlds
   from a world menu. See `DESIGN.md` → Layout. Each world may replace `StandardConsole` with its own
   `worlds/<key>/Console.tsx`; every world page loads only its own code.
 

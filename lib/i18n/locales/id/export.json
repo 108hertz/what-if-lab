@@ -319,6 +319,9 @@
       "unsupported": "Browser ini tidak bisa menambahkan suara ke video. Coba Chrome, Edge, atau Firefox terbaru.",
       "captionsNote": "Tidak sempat merekam? Nyalakan Narasi (tab Teks) untuk baris di video, atau pakai file subtitel dengan suara dari aplikasimu.",
       "silent": "Browser ini merekamnya tanpa suara."
+    },
+    "rail": {
+      "styles": "Gaya"
     }
   },
   "style": {

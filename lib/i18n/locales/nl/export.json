@@ -319,6 +319,9 @@
       "unsupported": "Deze browser kan geen geluid aan een video toevoegen. Probeer een recente Chrome, Edge of Firefox.",
       "captionsNote": "Geen tijd om op te nemen? Zet Vertelling aan (tab Tekst) voor regels in de video, of gebruik het ondertitelbestand met de stem van je app.",
       "silent": "Deze browser heeft het zonder geluid opgenomen."
+    },
+    "rail": {
+      "styles": "Stijlen"
     }
   },
   "style": {
