@@ -50,7 +50,7 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" v
   ${what}${word(COND, "…", 80 + whatW, 300, 150, C.signal)[0]}
   ${word(BODY, "Change one thing in a world.", 84, 384, 38, C.label2)[0]}
   ${word(BODY, "Watch its future split.", 84, 432, 38, C.label2)[0]}
-  ${word(COND, "What-If Lab", 84, 552, 32, C.label)[0]}
+  ${word(COND, "What-If Simulations - Fun Lab", 84, 552, 32, C.label)[0]}
 </svg>`;
 
 // Apple draws its own rounded corners, so the touch icon is a full square with a little margin round the mark.

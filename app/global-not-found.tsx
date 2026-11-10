@@ -26,7 +26,7 @@ export default function GlobalNotFound() {
         <div className="lost-text">
           <h1 className="lost-title">{t("common.notFound.title")}</h1>
           <p className="lost-body">{t("common.notFound.space")} {t("common.notFound.body")}</p>
-          <a className="btn primary" href="/"><Icon name="scale" />{t("common.notFound.home")}</a>
+          <a className="btn primary" href="/"><Icon name="solar" />{t("common.notFound.home")}</a>
         </div>
         <p className="lost-edge" aria-hidden="true">{t("common.site.name")} · <span>404</span></p>
         <script dangerouslySetInnerHTML={{ __html: lostScript() }} />

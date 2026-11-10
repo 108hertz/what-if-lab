@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "양성자에서 관측 가능한 우주까지 확대·축소해 보고, 세계를 열어 '만약'으로 바꾼 뒤 그대로 둔 세계와 미래를 비교해 보세요.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: 양성자부터 은하까지 만약에 시뮬레이터",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab: 양성자부터 은하까지 만약에 시뮬레이터",
     "searchDescription": "브라우저에서 쓰는 무료 만약에 시뮬레이터. 양성자에서 우주까지 확대하고, 태양계와 지구 기후, 한 나라를 바꿔 미래가 갈라지는 모습을 보세요."
   },
   "none": "—",

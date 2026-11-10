@@ -29,7 +29,7 @@ export function alternates(path: string, origin = siteOrigin(), only?: readonly 
 }
 
 /** The share card every page uses (public/og.png, drawn by scripts/brand-images.mjs). */
-export const SHARE_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "What-If Lab: change one thing in a world and watch its future split." } as const;
+export const SHARE_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "What-If Simulations - Fun Lab: change one thing in a world and watch its future split." } as const;
 
 export interface PageSeo {
   locale: string;
@@ -62,7 +62,7 @@ export function pageMetadata({ locale, path, title, description, image, locales 
     ...(ready ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       type: "website",
-      siteName: "What-If Lab",
+      siteName: "What-If Simulations - Fun Lab",
       url,
       title,
       description,

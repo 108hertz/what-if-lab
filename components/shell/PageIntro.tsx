@@ -1,6 +1,6 @@
-import { modeHref, type Mode } from "@/worlds/registry";
+import { HOME_MODE, modeHref, type Mode } from "@/worlds/registry";
 import { homeLd, ldJson, worldLd } from "@/lib/seo/jsonld";
-import { pageCopy } from "./pageCopy";
+import { pageCopy, serverT } from "./pageCopy";
 
 /**
  * The page in plain HTML (change 0025): a heading, what the page is, its what-ifs and links to every other page,
@@ -10,9 +10,9 @@ import { pageCopy } from "./pageCopy";
 export default function PageIntro({ locale, mode }: { locale: string; mode: Mode }) {
   const c = pageCopy(locale, mode);
   // Structured data (change 0033): the site on the home page, a free web app + breadcrumb on each world.
-  const ld = mode === "scale"
+  const ld = mode === HOME_MODE
     ? homeLd(locale, c.searchDescription)
-    : worldLd({ locale, path: modeHref(mode), name: c.heading, description: c.searchDescription, homeName: pageCopy(locale, "scale").heading });
+    : worldLd({ locale, path: modeHref(mode), name: c.heading, description: c.searchDescription, homeName: serverT(locale)("common.site.name") });
   return (
     <main className="page-intro">
       <h1 className="title">{c.heading}</h1>

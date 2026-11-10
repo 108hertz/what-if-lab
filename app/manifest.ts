@@ -5,8 +5,8 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "What-If Lab",
-    short_name: "What-If Lab",
+    name: "What-If Simulations - Fun Lab",
+    short_name: "What-If Fun Lab",
     description: "A free what-if simulator in your browser: change one thing in a world and watch its future split.",
     start_url: "/",
     display: "standalone",

@@ -5,7 +5,7 @@ import { EN_SHARED } from "@/lib/i18n/english";
 import { pageMetadata } from "@/lib/i18n/seo";
 import { whatifHref } from "@/lib/seo/whatifPages";
 import { SANDBOXES } from "@/worlds/sims";
-import { MODES, SANDBOX_KEYS, WORLDS, modeHref, type Mode } from "@/worlds/registry";
+import { HOME_MODE, MODES, SANDBOX_KEYS, WORLDS, modeHref, type Mode } from "@/worlds/registry";
 
 /**
  * The words a page shows before the lab loads and puts in its <head> (change 0025), in the page's language.
@@ -48,9 +48,10 @@ export function pageCopy(locale: string, mode: Mode): PageCopy {
   const links = MODES.filter((m) => m !== mode).map((m) => ({ href: modeHref(m, locale), name: worldName(t, m), sub: worldSub(t, m) }));
   const common = { links, linksHeading: t("common.intro.worlds"), whatifsHeading: t("common.intro.whatifs"), disclaimer: t("shell.disclaimer.body") };
   if (mode === "scale") {
+    const title = t("common.site.titleWorld", { world: worldName(t, "scale") });
     return {
-      ...common, title: t("common.site.name"), heading: t("common.site.name"), description: t("common.site.description"),
-      searchTitle: t("common.site.title"), searchDescription: t("common.site.searchDescription"), whatifs: [],
+      ...common, title, heading: worldName(t, "scale"), description: t("common.site.description"),
+      searchTitle: title, searchDescription: t("common.site.searchDescription"), whatifs: [],
     };
   }
   const sb = SANDBOXES[mode];
@@ -60,7 +61,8 @@ export function pageCopy(locale: string, mode: Mode): PageCopy {
   return {
     ...common,
     title,
-    searchTitle: sb.seo ? t("common.site.titleWorld", { world: or(t, `${mode}.meta.seoTitle`, sb.seo.title) }) : title,
+    // The home page (/) opens a world but keeps the site's own title.
+    searchTitle: mode === HOME_MODE ? t("common.site.title") : sb.seo ? t("common.site.titleWorld", { world: or(t, `${mode}.meta.seoTitle`, sb.seo.title) }) : title,
     searchDescription: sb.seo ? or(t, `${mode}.meta.seoDescription`, sb.seo.description) : description,
     heading: name,
     description,

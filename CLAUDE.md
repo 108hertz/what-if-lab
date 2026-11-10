@@ -1,7 +1,8 @@
 # What-If Lab — notes for Claude Code
 
-A semi-simulator for "what happens if…" experiments. Home screen is a Scale-of-the-Universe style zoom
-(proton → observable universe). Objects with a sandbox open a live world. A **what-if forks the running
+A semi-simulator for "what happens if…" experiments (site name "What-If Simulations - Fun Lab"). The home page (/)
+opens the Solar System world (`HOME_MODE` in `worlds/registry.ts`, first tab); the Scale-of-the-Universe style zoom
+(proton → observable universe) lives at /scale. Objects with a sandbox open a live world. A **what-if forks the running
 world at that moment**; the stage shows one world (the changed one) while the unchanged world runs hidden
 alongside, with a chart and timeline showing where they diverge. Every change can be ticked off/on; Reset
 starts clean; side by side exists only in exports (change 0024). No AI, no network data: everything is rule-based and deterministic.
@@ -52,7 +53,7 @@ Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.
 ## Architecture
 
 ```
-app/                      Next.js App Router (static). / = scale, /lab/[world] = a world
+app/                      Next.js App Router (static). / = solar (HOME_MODE), /scale = scale, /lab/[world] = a world
 components/
   shell/                  Lab (nav, world switcher, account menu, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu (world tabs + More), ThemeToggle
   privacy/                analytics (change 0027): Vercel script, GA4 after consent (ConsentBanner, consent.ts rules), track();

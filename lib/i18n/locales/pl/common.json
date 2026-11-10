@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "Przybliżaj od protonu do obserwowalnego Wszechświata, otwórz świat, zmieniaj go pytaniami „co jeśli” i porównaj jego przyszłość ze światem bez zmian.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: symulator „co jeśli” od protonu do galaktyk",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab: symulator „co jeśli” od protonu do galaktyk",
     "searchDescription": "Darmowy symulator „co jeśli” w przeglądarce. Przybliżaj od protonu do Wszechświata, potem zmień Układ Słoneczny, klimat Ziemi lub kraj i zobacz, jak przyszłość się rozdziela."
   },
   "none": "—",

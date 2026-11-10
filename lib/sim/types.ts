@@ -94,6 +94,9 @@ export interface Camera {
   sc: number;
   W: number;
   H: number;
+  /** Optional radial power scale (solar): a body r away is drawn sc·half·(r/half)^pow from the centre. Linear when absent. */
+  pow?: number;
+  half?: number;
 }
 
 export interface Drag {

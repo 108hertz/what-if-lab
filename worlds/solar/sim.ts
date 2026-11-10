@@ -29,7 +29,12 @@ const PLANETS: [string, number, number, string, number][] = [
   ["Mars", 1.524, 3.2e-7, "#E07A56", 2.6], ["Jupiter", 5.2, 9.55e-4, "#D9B48F", 5], ["Saturn", 9.58, 2.86e-4, "#E9D39A", 4.5],
   ["Uranus", 19.2, 4.37e-5, "#9FE0E6", 3.8], ["Neptune", 30.05, 5.15e-5, "#7B93FF", 3.8],
 ];
-const VIEW_HALF: Record<string, number> = { inner: 1.9, mid: 6, outer: 33 };
+const VIEW_HALF: Record<string, number> = { inner: 5.8, mid: 6, outer: 33 };
+/**
+ * Radial power per view: "inner" squeezes distance (r^0.55) so Mercury–Mars stay spread out while Jupiter
+ * (5.2 AU) still fits on the stage; the other views are true to scale. Display only — the sim never reads it.
+ */
+const VIEW_POW: Record<string, number> = { inner: 0.55, mid: 1, outer: 1 };
 
 function accel(w: W) {
   const b = w.b;
@@ -218,27 +223,29 @@ export const solar: Sandbox<W, P> = {
     ctx.fillRect(0, 0, W, H);
     ctx.fillStyle = "rgba(220,225,255,.5)";
     BG.forEach(([x, y], i) => ctx.fillRect(x * W, y * H, i % 7 ? 1 : 1.6, i % 7 ? 1 : 1.6));
-    const half = VIEW_HALF[p.view] ?? 1.9, sc = Math.min(W, H) / 2 / half, sun = find(w, "Sun");
+    const half = VIEW_HALF[p.view] ?? 5.8, pow = VIEW_POW[p.view] ?? 0.55, sc = Math.min(W, H) / 2 / half, sun = find(w, "Sun");
     const cx = sun ? sun.x : 0, cy = sun ? sun.y : 0;
-    ui.cams[isAlt ? 1 : 0] = { cx, cy, sc, W, H };
-    const X = (x: number) => W / 2 + (x - cx) * sc, Y = (y: number) => H / 2 + (y - cy) * sc;
+    ui.cams[isAlt ? 1 : 0] = { cx, cy, sc, W, H, pow, half };
+    /** Screen scale for a point dx, dy AU from the centre (constant when the view is linear). */
+    const k = (dx: number, dy: number) => { const r = Math.hypot(dx, dy); return pow === 1 || r < 1e-9 ? sc : sc * (r / half) ** (pow - 1); };
+    const P = (x: number, y: number): [number, number] => { const dx = x - cx, dy = y - cy, s = k(dx, dy); return [W / 2 + dx * s, H / 2 + dy * s]; };
     ctx.lineWidth = 1;
     for (const o of w.b) {
       if (o.tr.length < 4) continue;
       ctx.strokeStyle = o.bh ? "rgba(255,181,71,.35)" : o.c;
       ctx.globalAlpha = 0.35;
       ctx.beginPath();
-      for (let i = 0; i < o.tr.length; i += 2) { const x = X(o.tr[i]), y = Y(o.tr[i + 1]); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+      for (let i = 0; i < o.tr.length; i += 2) { const [x, y] = P(o.tr[i], o.tr[i + 1]); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
       ctx.stroke();
     }
     ctx.globalAlpha = 1;
     ctx.font = "11px " + FONT.body;
     const say = worldSay(solar);
     for (const o of w.b) {
-      const x = X(o.x), y = Y(o.y);
+      const [x, y] = P(o.x, o.y);
       if (x < -200 || x > W + 200 || y < -200 || y > H + 200) continue;
       if (o.L) {
-        const r = Math.max(o.px, o.cr * sc), g = ctx.createRadialGradient(x, y, r * 0.4, x, y, r * 3);
+        const r = Math.max(o.px, o.cr * k(o.cr, 0)), g = ctx.createRadialGradient(x, y, r * 0.4, x, y, r * 3);
         g.addColorStop(0, o.c); g.addColorStop(1, "rgba(255,180,80,0)");
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 3, 0, TAU); ctx.fill();
         ctx.fillStyle = o.c; ctx.globalAlpha = o.giant ? 0.7 : 1; ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.globalAlpha = 1;
@@ -248,7 +255,7 @@ export const solar: Sandbox<W, P> = {
         ctx.fillStyle = o.c; ctx.beginPath(); ctx.arc(x, y, o.px, 0, TAU); ctx.fill();
       }
       const dist = Math.hypot(o.x - cx, o.y - cy);
-      const show = o.L || o.bh || (p.view === "inner" ? dist < 2.5 : p.view === "mid" ? dist < 7 && o.n !== "Mercury" : o.m > 1e-5 || o.n === "Earth");
+      const show = o.L || o.bh || (p.view === "inner" ? dist < 6 : p.view === "mid" ? dist < 7 && o.n !== "Mercury" : o.m > 1e-5 || o.n === "Earth");
       if (show && o.n !== "Sun") { ctx.fillStyle = o.n === "Earth" ? "#CFE6FF" : "rgba(200,206,230,.8)"; ctx.fillText(say("name." + bodyId(o.n)), x + o.px + 4, y - o.px - 2); }
     }
     const d = ui.drag;

@@ -55,7 +55,7 @@ describe("page messages", () => {
   });
 
   it("the built-in English has the shared words", () => {
-    expect(EN_SHARED["common.site.name"]).toBe("What-If Lab");
+    expect(EN_SHARED["common.site.name"]).toBe("What-If Simulations - Fun Lab");
   });
 });
 

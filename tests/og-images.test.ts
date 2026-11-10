@@ -133,8 +133,10 @@ function shot(make: MakeCanvas, sb: AnySandbox, w: BaseWorld, p: Params, isAlt: 
 function brand(ctx: CanvasRenderingContext2D) {
   const x = 40, y = H - 56, s = 44 / 32;
   ctx.fillStyle = "rgba(10,14,19,0.9)";
+  ctx.font = "600 38px 'Barlow Semi Condensed'";
+  const tw = ctx.measureText("What-If Simulations - Fun Lab").width;
   ctx.beginPath();
-  ctx.roundRect(x - 12, y - 30, 262, 60, 12);
+  ctx.roundRect(x - 12, y - 30, 44 + tw + 30, 60, 12);
   ctx.fill();
   ctx.save();
   ctx.translate(x, y - 22);
@@ -148,7 +150,7 @@ function brand(ctx: CanvasRenderingContext2D) {
   ctx.font = "600 38px 'Barlow Semi Condensed'";
   ctx.textBaseline = "middle";
   ctx.textAlign = "left";
-  ctx.fillText("What-If Lab", x + 44, y + 1);
+  ctx.fillText("What-If Simulations - Fun Lab", x + 44, y + 1);
 }
 
 /** Barlow, Barlow Semi Condensed and JetBrains Mono (OFL), fetched once from the Google Fonts repository into a cache. */

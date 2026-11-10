@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "从质子一路缩放到可观测宇宙，打开一个世界，用“如果……”改变它，再和保持原样的世界比较未来。",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab：从质子到星系的“如果”模拟器",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab：从质子到星系的“如果”模拟器",
     "searchDescription": "浏览器里的免费“如果”模拟器。从质子一路放大到宇宙，再改变太阳系、地球气候或一个国家，看未来如何分岔。"
   },
   "none": "—",

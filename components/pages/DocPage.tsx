@@ -64,7 +64,7 @@ export default function DocPage({ locale, kind }: { locale: string; kind: DocKin
   } : {};
 
   const ld = kind === "about" ? {
-    "@context": "https://schema.org", "@type": "Organization", name: "What-If Lab", url: absUrl("/"),
+    "@context": "https://schema.org", "@type": "Organization", name: "What-If Simulations - Fun Lab", url: absUrl("/"),
     ...(socials.length ? { sameAs: socials.map((s) => s.url) } : {}),
     ...(email ? { email } : {}),
   } : null;

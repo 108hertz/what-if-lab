@@ -1,10 +1,10 @@
 {
   "_status": "source",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "Zoom from a proton to the observable universe, open a world, change it with what-ifs and compare its future with the world left as it was.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: What-If Simulator from Protons to Galaxies",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab",
     "searchDescription": "A free what-if simulator in your browser. Zoom from a proton to the universe, then change the solar system, Earth's climate or a country and watch the future split."
   },
   "none": "—",

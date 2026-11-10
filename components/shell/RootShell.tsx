@@ -26,7 +26,7 @@ const beng = Noto_Sans_Bengali({ subsets: ["bengali"], weight: ["400", "500", "6
 const FONT_VARS = [barlow, barlowCond, mono, cyr, arabic, deva, thai, beng].map((f) => f.variable).join(" ");
 
 export const ROOT_METADATA: Metadata = {
-  title: "What-If Lab",
+  title: "What-If Simulations - Fun Lab",
   icons: { icon: [{ url: "/icon.svg", type: "image/svg+xml" }, { url: "/favicon.ico", sizes: "32x32" }], apple: { url: "/apple-touch-icon.png", sizes: "180x180" } },
   description: "Zoom from a proton to the observable universe, open a world, change it with what-ifs and compare its future with the world left as it was.",
   // Google Search Console site ownership (public token, safe in client HTML).

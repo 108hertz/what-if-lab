@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025, step 14); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "Dê zoom de um próton até o universo observável, abra um mundo, mude-o com hipóteses e compare o futuro dele com o mundo deixado como estava.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: simulador de «e se…?» de prótons a galáxias",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab: simulador de «e se…?» de prótons a galáxias",
     "searchDescription": "Um simulador de «e se…?» grátis no seu navegador. Dê zoom de um próton até o universo, mude o sistema solar, o clima da Terra ou um país e veja o futuro se separar."
   },
   "none": "—",

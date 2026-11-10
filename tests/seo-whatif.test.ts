@@ -53,7 +53,7 @@ describe("what-if pages", () => {
     expect(c.related.map((r) => r.href)).not.toContain(p.path);
 
     const m = whatifMeta("en", p.world, p.slug);
-    expect(m.title).toBe(`${c.question} · What-If Lab`);
+    expect(m.title).toBe(`${c.question} · What-If Simulations - Fun Lab`);
     expect(m.description).toBe(c.description);
     expect(m.alternates?.canonical).toBe(absUrl(p.path));
     expect(m.alternates?.languages).toBeUndefined();
@@ -61,7 +61,7 @@ describe("what-if pages", () => {
     expect(og.images[0].url).toBe(`/og/${p.world}/${p.slug}.jpg`);
     expect(og.alternateLocale).toBeUndefined();
 
-    const ld = whatifLd({ locale: "en", path: p.path, worldPath: `/lab/${p.world}`, question: c.question, answer: c.answer, description: c.description, worldName: c.world, homeName: "What-If Lab", image: `/og/${p.world}/${p.slug}.jpg` });
+    const ld = whatifLd({ locale: "en", path: p.path, worldPath: `/lab/${p.world}`, question: c.question, answer: c.answer, description: c.description, worldName: c.world, homeName: "What-If Simulations - Fun Lab", image: `/og/${p.world}/${p.slug}.jpg` });
     const json = JSON.stringify(ld);
     expect(json).toContain(c.question);
     expect(json).toContain(JSON.stringify(c.answer).slice(1, -1));

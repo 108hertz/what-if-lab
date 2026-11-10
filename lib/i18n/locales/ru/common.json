@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "Приближайтесь от протона до наблюдаемой Вселенной, откройте мир, измените его вопросом «а что, если…» и сравните его будущее с миром без изменений.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: симулятор «а что, если» от протонов до галактик",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab: симулятор «а что, если» от протонов до галактик",
     "searchDescription": "Бесплатный симулятор «а что, если» в браузере. Приближайтесь от протона до Вселенной, меняйте Солнечную систему, климат Земли или страну и смотрите, как расходится будущее."
   },
   "none": "—",

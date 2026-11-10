@@ -92,7 +92,7 @@ describe("page words", () => {
       expect(c.whatifs).toEqual(sb.whatifs.map(([id, l]) => (sb.questions?.[id]
         ? { label: sb.questions[id].q, href: `/lab/${k}/${sb.questions[id].slug}` }
         : { label: l, href: null })));
-      expect(c.title).toBe(`${SANDBOXES[k].name} · What-If Lab`);
+      expect(c.title).toBe(`${SANDBOXES[k].name} · What-If Simulations - Fun Lab`);
       expect(c.links.map((l) => l.href)).not.toContain(modeHref(k));
       expect(c.links).toHaveLength(MODES.length - 1);
     }
@@ -103,12 +103,14 @@ describe("page words", () => {
   });
 
   it("metadata uses the search words (change 0033)", () => {
-    const m = pageMeta("en", "solar");
-    expect(m.title).toBe(`${SANDBOXES.solar.seo!.title} · What-If Lab`);
-    expect(m.description).toBe(SANDBOXES.solar.seo!.description);
+    const m = pageMeta("en", "earth");
+    expect(m.title).toBe(`${SANDBOXES.earth.seo!.title} · What-If Simulations - Fun Lab`);
+    expect(m.description).toBe(SANDBOXES.earth.seo!.description);
+    // The home page (/) opens Solar System under the site's own title.
+    expect(pageMeta("en", "solar").title).toBe("What-If Simulations - Fun Lab");
     expect(pageMeta("en", "scale").title).toBe(pageCopy("en", "scale").searchTitle);
     // Each world shares a picture of its own stage; home keeps the shared card.
-    expect((m.openGraph as { images?: { url: string; alt: string }[] }).images?.[0]).toMatchObject({ url: "/og/solar.png", width: 1200, alt: m.title });
+    expect((m.openGraph as { images?: { url: string; alt: string }[] }).images?.[0]).toMatchObject({ url: "/og/earth.png", width: 1200, alt: m.title });
     expect((pageMeta("en", "scale").openGraph as { images?: { url: string }[] }).images?.[0].url).toBe("/og.png");
   });
 
@@ -136,7 +138,7 @@ describe("structured data (change 0033)", () => {
   });
 
   it("a world is a free web app with a breadcrumb, and the JSON is safe in HTML", () => {
-    const ld = worldLd({ locale: "de", path: "/lab/solar", name: "Sonnensystem", description: "D</script>", homeName: "What-If Lab" }, O);
+    const ld = worldLd({ locale: "de", path: "/lab/solar", name: "Sonnensystem", description: "D</script>", homeName: "What-If Simulations - Fun Lab" }, O);
     const g = (ld as G)["@graph"];
     expect(g[0]).toMatchObject({ "@type": "WebApplication", url: "https://lab.test/de/lab/solar", isAccessibleForFree: true, inLanguage: "de" });
     expect(g[0]).not.toHaveProperty("aggregateRating");
@@ -149,7 +151,7 @@ describe("web app manifest (change 0033)", () => {
   it("names the site and has icons that exist", async () => {
     const { existsSync } = await import("node:fs");
     const m = manifest();
-    expect(m.name).toBe("What-If Lab");
+    expect(m.name).toBe("What-If Simulations - Fun Lab");
     for (const i of m.icons ?? []) expect(existsSync(`public${i.src}`), i.src).toBe(true);
   });
 });

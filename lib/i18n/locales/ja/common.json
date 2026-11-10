@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025, step 14); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "陽子から観測可能な宇宙までズームして世界を開き、「もしも」で変えて、そのままの世界と未来を比べましょう。",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab：陽子から銀河までの「もしも」シミュレーター",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab：陽子から銀河までの「もしも」シミュレーター",
     "searchDescription": "ブラウザで使える無料の「もしも」シミュレーター。陽子から宇宙までズームし、太陽系や地球の気候、国を変えて未来の分かれ道を見よう。"
   },
   "none": "—",

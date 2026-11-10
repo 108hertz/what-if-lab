@@ -9,7 +9,7 @@ import { localeInfo } from "../i18n/locales";
 import { localePath } from "../i18n/routes";
 import { SOCIALS, siteValue } from "../site";
 
-export const SITE_NAME = "What-If Lab";
+export const SITE_NAME = "What-If Simulations - Fun Lab";
 type Ld = Record<string, unknown>;
 
 const ids = (origin?: string) => ({ site: absUrl("/", origin) + "#website", org: absUrl("/", origin) + "#organization" });

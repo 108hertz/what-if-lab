@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "Bir protondan gözlemlenebilir evrene yakınlaş, bir dünya aç, onu “ya … olursa?” sorularıyla değiştir ve geleceğini hiç değişmeyen dünyayla karşılaştır.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: Protondan Gökadalara Ya Olsaydı Simülatörü",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab: Protondan Gökadalara Ya Olsaydı Simülatörü",
     "searchDescription": "Tarayıcında ücretsiz bir ya olsaydı simülatörü. Protondan evrene yakınlaş, sonra Güneş Sistemini, Dünya'nın iklimini ya da bir ülkeyi değiştir ve geleceğin ayrışmasını izle."
   },
   "none": "—",

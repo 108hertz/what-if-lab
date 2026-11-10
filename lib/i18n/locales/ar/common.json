@@ -1,10 +1,10 @@
 {
   "_status": "draft: machine translation (change 0025, step 14); needs native review",
   "site": {
-    "name": "What-If Lab",
+    "name": "What-If Simulations - Fun Lab",
     "description": "كبّر من البروتون إلى الكون المرئي، وافتح عالمًا، وغيّره بأسئلة «ماذا لو»، وقارن مستقبله بالعالم الذي بقي كما كان.",
-    "titleWorld": "{world} · What-If Lab",
-    "title": "What-If Lab: محاكي «ماذا لو» من البروتون إلى المجرات",
+    "titleWorld": "{world} · What-If Simulations - Fun Lab",
+    "title": "What-If Simulations - Fun Lab: محاكي «ماذا لو» من البروتون إلى المجرات",
     "searchDescription": "محاكي «ماذا لو» مجاني في متصفحك. كبّر من البروتون إلى الكون، ثم غيّر المجموعة الشمسية أو مناخ الأرض أو اقتصاد دولة وشاهد المستقبل ينقسم."
   },
   "none": "—",
