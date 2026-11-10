@@ -128,7 +128,7 @@ internal links), and the PageIntro text stays.
 
 ## Verification
 
-- [ ] Automated: every what-if has a page in every ready language, a unique title, a finite answer, an
+- [x] Automated: every what-if has a page in every ready language, a unique title, a finite answer, an
       og:image file, valid JSON-LD (parsed), sitemap entry; deep link = same state as clicking; determinism.
 - [ ] Manual: what-if pages at 375 / 768 / 1280 / 1600 px, light + dark, Arabic right to left; "Run this
       what-if" opens the lab with it applied; share a link in WhatsApp/X preview debuggers.
@@ -221,3 +221,30 @@ internal links), and the PageIntro text stays.
   under `/lab/[world]/[whatif]`), and in the dev server: solar, animals (375 px wide, no sideways scroll) and earth,
   whose button opened the lab with "Stop all emissions now" made at 2034. Seen: times read "by 20 yr" / "by Day 180"
   (the worlds' own `fmtT`); earth's intro is a scene description, not a model note — a per-world `why` would read better.
+- 2026-11-10 — step 7 done. `WHATIF_PAGE_LOCALES` = every ready language (`READY_LOCALES()`; filter one out there to hold
+  its what-if pages back). New route `app/[lang]/lab/[world]/[whatif]/page.tsx` (`/<lang>/lab/<world>/<slug>`, the
+  English slug in every language, `dynamicParams = false`); the page component was already per language. With more than
+  one locale, `pageMetadata` and `sitemapEntries` now give each page hreflang to all 20 + `x-default` (English) and
+  `og:locale:alternate`; JSON-LD `inLanguage` and breadcrumbs follow the page's language. World intros in every language
+  link their what-ifs as questions. Answers stay one run per what-if per build (`answerOf`); pictures are word-free, so
+  all languages share `public/og/<world>/<slug>.jpg`. Tests: `tests/seo-whatif.test.ts` (sitemap: every page once per
+  language with 21 alternates; intro links in every language; English head now with hreflang) and new
+  `tests/seo-whatif-langs.test.ts` (per language × world: words differ from English, nothing unsaid, related links and
+  canonical in the language, `og:locale`). Both yield between tests (`afterEach` timeout 0): ~75 s of synchronous tests
+  in one file starved vitest's worker RPC ("Timeout calling onTaskUpdate"). Checked: typecheck, all 1,977 tests, a
+  production build (2,386 pages, 2,140 under the two what-if routes; sitemap 2,360 URLs; `out/` 523 MB, of which the new
+  pages ~265 MB raw — each non-English page is ~77 KB HTML (~19 KB gzipped) + ~54 KB RSC payload, mostly the page
+  catalogs, like the existing localized world pages), and `/ar/lab/solar/earth-in-mars-orbit` in the dev server (right
+  to left, Arabic words, shared pictures). Seen: in Arabic the answer line's "−33 °C" reads with the sign after the
+  number (bidi), as elsewhere in the Arabic UI. This goes against the plan's own risk note ("ship English first, watch
+  Search Console for a few weeks"): the user asked for step 7 now; holding back a language is the one-line filter above.
+- 2026-11-10 — step 8 done (code part). IndexNow: key `public/c7d0121f3a7ed6a662fc5cfe60f8ce41.txt` (public by design;
+  engines check it on the host), `scripts/indexnow.mjs` (plain Node, no dependency) runs as npm `postbuild`: only when
+  `VERCEL_ENV=production` (or `npm run indexnow -- --force`), reads `out/sitemap.xml`, POSTs every page URL on its host to
+  `api.indexnow.org` (≤ 10,000 per request; shared with Bing, Yandex, Naver, Seznam, Yep), skips localhost and
+  `*.vercel.app`, logs the status and never fails the build. Diverged from the plan: `.mjs`, not `.ts` (runs with plain
+  Node on Vercel). Known limit: postbuild runs before the new deployment is live, so on the very first deploy the key
+  file is not served yet and the engines may answer 403 once; every later deploy has it. It sends every URL each deploy
+  (lastmod is the build date for all pages), which IndexNow accepts. Tests: `tests/indexnow.test.ts` (key file, sitemap
+  parsing, one host, batching). Left for you: Bing Webmaster Tools (import from Search Console), Yandex Webmaster, Naver
+  Search Advisor, and submit the sitemap there and in Google Search Console; the www/apex redirect from step 1.

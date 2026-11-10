@@ -3,11 +3,15 @@
  * (`Sandbox.questions`). Framework-free; used by the routes, the world intros, the sitemap and tests.
  */
 import { localePath } from "../i18n/routes";
+import { READY_LOCALES } from "../i18n/locales";
 import type { AnySandbox, SandboxKey } from "../sim/types";
 import { answerIds } from "./answer";
 
-/** Languages the what-if pages are built in. English first (step 6); step 7 adds the other ready languages. */
-export const WHATIF_PAGE_LOCALES: readonly string[] = ["en"];
+/**
+ * Languages the what-if pages are built in: every ready language (English in step 6, the other 19 in step 7). To hold a
+ * language's what-if pages back without hiding the rest of it, filter it out here.
+ */
+export const WHATIF_PAGE_LOCALES: readonly string[] = READY_LOCALES().map((l) => l.code);
 
 export const whatifPath = (world: SandboxKey, slug: string): string => `/lab/${world}/${slug}`;
 
