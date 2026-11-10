@@ -887,3 +887,24 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 .doc a:not(.btn):not(.wordmark):hover { text-decoration-color: var(--signal); }
 .doc-foot { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--separator); font-size: var(--t-small); }
 .doc-foot a[aria-current="page"] { color: var(--label-2) !important; text-decoration: none !important; }
+/* What-if pages (change 0033): a reading page. Question, answer, the two pictures, one primary button, numbers, steps. */
+.whatif-crumbs { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.whatif-crumbs span { color: var(--label-2); }
+.whatif-answer { max-width: 60ch; }
+.whatif-pics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); }
+.whatif-pics figure { margin: 0; display: grid; gap: var(--s-2); }
+.whatif-pics img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; border-radius: var(--r-card); background: var(--stage); }
+.whatif-pics .small { margin: 0; }
+.whatif-run { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3) var(--s-4); }
+.whatif-run .btn { text-decoration: none; min-height: 44px; }
+.whatif-run .small { margin: 0; max-width: 46ch; }
+.whatif-table { overflow-x: auto; }
+.whatif-table tbody th { text-align: start; padding: var(--s-4) 0 var(--s-2); }
+.whatif-table td { overflow-wrap: anywhere; }
+.whatif-steps { list-style: none; margin: 0; padding: 0; display: grid; }
+.whatif-steps li { display: grid; grid-template-columns: 7ch 1fr; gap: var(--s-1) var(--s-3); padding: var(--s-3) 0; border-top: 1px solid var(--separator); }
+.whatif-steps time { font-size: var(--t-small); color: var(--label-2); padding-top: 2px; }
+.whatif-steps .small { grid-column: 2; margin: 0; }
+.whatif-related { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); }
+.whatif-ad { display: flex; justify-content: center; }
+@media (max-width: 767px) { .whatif-pics { grid-template-columns: 1fr; } }

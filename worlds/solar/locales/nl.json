@@ -50,6 +50,8 @@
     "hint": "Sleep om een planeet te gooien. Wijzigingen tellen op.",
     "intro": "Echte zwaartekracht volgens Newton voor de zon en acht planeten. Sleep op het podium om je eigen planeet erin te gooien.",
     "name": "Zonnestelsel",
+    "seoDescription": "Echte zwaartekracht voor de zon en acht planeten. Verdubbel de zonmassa, haal de zon weg, maak van Jupiter een ster of gooi je eigen planeet erin en zie de banen veranderen.",
+    "seoTitle": "Zonnestelsel simulator: wat als de zon verdween?",
     "sub": "Zwaartekracht"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Uranus",
     "venus": "Venus",
     "yourplanet": "Jouw planeet"
+  },
+  "question": {
+    "bh": "Wat als een zwart gat door het zonnestelsel vloog?",
+    "giant": "Wat als de zon een rode reus werd?",
+    "jupstar": "Wat als Jupiter een ster werd?",
+    "mars": "Wat als de aarde in de baan van Mars stond?",
+    "nosun": "Wat als de zon verdween?",
+    "stop": "Wat als de aarde niet meer om de zon draaide?",
+    "sun2": "Wat als de zon twee keer zo zwaar was?"
   },
   "speed": {
     "0": "1 mnd/s",

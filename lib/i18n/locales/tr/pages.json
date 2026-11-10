@@ -145,5 +145,26 @@
       "h": "Uygulanacak hukuk",
       "p1": "Bu koşullar, yaşadığınız yerin hukukunun sağladığı korumayı ortadan kaldırmadan {country} yasalarına tabidir."
     }
+  },
+  "whatif": {
+    "answer": "Bu modelde, {time} itibarıyla: {label} değişiklikle {alt}, değişiklik olmadan {base}.",
+    "description": "{answer} Neler olduğunu adım adım görün, sonra ücretsiz bir simülatörde kendiniz deneyin.",
+    "fork": "Değişiklik {time} anında, dünya olduğu gibi kısa bir süre çalıştıktan sonra yapılır. Aynı başlangıç, aynı şans: yalnızca değişiklik farklı.",
+    "run": "Bu ya olursa'yı çalıştır",
+    "runNote": "Bu değişiklik yapılmış olarak canlı simülatörü açar. Başka şeyleri de değiştirin ve iki geleceğin ayrılışını izleyin.",
+    "picture": "{world}, {time}",
+    "noChange": "Değişiklik yok",
+    "withIt": "Ya olursa ile",
+    "numbers": "Rakamlar",
+    "measure": "Ölçü",
+    "by": "{time} itibarıyla",
+    "steps": "Neler oluyor, adım adım",
+    "onlyAlt": "Yalnızca değişiklikle",
+    "onlyBase": "Yalnızca değişiklik olmadan",
+    "stepsNone": "İki dünya arasında farklı bir olay yok: değişiklik rakamlarda görünüyor.",
+    "model": "Bu model hakkında",
+    "more": "Daha fazla ya olursa: {world}",
+    "others": "Diğer dünyalar",
+    "open": "{world} aç"
   }
 }

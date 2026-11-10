@@ -93,6 +93,8 @@
   "meta": {
     "intro": "A Via Láctea e Andrômeda, na rota real de colisão, aceleradas. Cada ponto é uma estrela.",
     "name": "Galáxias",
+    "seoDescription": "Veja a Via Láctea e Andrômeda colidirem, ou envie mais galáxias. Faça a matéria escura sumir, mude a mira ou o giro e compare com o céu intacto. Grátis, no seu navegador.",
+    "seoTitle": "Simulador de colisão de galáxias: Via Láctea e Andrômeda",
     "sub": "Colisões"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Estrelas arremessadas",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "E se um buraco negro tão pesado quanto uma galáxia surgisse na Via Láctea?",
+    "bullet": "E se uma galáxia atravessasse a Via Láctea?",
+    "flipmw": "E se a Via Láctea girasse ao contrário?",
+    "freeze": "E se as estrelas da Via Láctea parassem de orbitar?",
+    "headon": "E se Andrômeda batesse de frente na Via Láctea?",
+    "miss": "E se Andrômeda não colidisse com a Via Láctea?",
+    "nodm": "E se a matéria escura desaparecesse?",
+    "reverse": "E se Andrômeda desse meia-volta?",
+    "ring": "E se uma galáxia pequena atravessasse o centro da Via Láctea?",
+    "stop": "E se Andrômeda parasse de repente?",
+    "swarm": "E se mais galáxias caíssem na Via Láctea?",
+    "third": "E se uma terceira galáxia entrasse na colisão Via Láctea–Andrômeda?"
   },
   "speed": {
     "0": "5 mi anos/s",

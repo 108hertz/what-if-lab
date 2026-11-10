@@ -52,6 +52,8 @@
   "meta": {
     "intro": "One person, 100 parallel versions of their life. Try new habits and see how many stick with it and what it changes.",
     "name": "Character",
+    "seoDescription": "Start a habit like daily exercise, quitting social media or 8 hours of sleep and follow 100 versions of yourself for years: who keeps it, who quits and what it changes.",
+    "seoTitle": "Habit Simulator: 100 Versions of Your Life",
     "sub": "100 parallel lives"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Wellbeing",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "What if you started drinking heavily?",
+    "exercise": "What if you exercised 30 minutes every day?",
+    "isolate": "What if you pulled away from your friends?",
+    "learn": "What if you learned a skill 1 hour a day?",
+    "meditate": "What if you meditated 10 minutes a day?",
+    "read": "What if you read 30 minutes a day?",
+    "sleep": "What if you slept 8 hours on a fixed schedule?",
+    "smoke": "What if you started smoking?",
+    "social": "What if you quit social media?"
   },
   "short": {
     "drink": "Start drinking heavily",

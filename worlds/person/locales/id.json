@@ -52,6 +52,8 @@
   "meta": {
     "intro": "Satu orang, 100 versi paralel hidupnya. Coba kebiasaan baru dan lihat berapa yang bertahan dan apa yang berubah.",
     "name": "Karakter",
+    "seoDescription": "Mulai kebiasaan seperti olahraga harian, berhenti media sosial, atau tidur 8 jam, lalu ikuti 100 versi dirimu bertahun-tahun: siapa bertahan, siapa berhenti.",
+    "seoTitle": "Simulator Kebiasaan: 100 Versi Hidupmu",
     "sub": "100 hidup paralel"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Kesejahteraan",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "Bagaimana jika kamu mulai banyak minum alkohol?",
+    "exercise": "Bagaimana jika kamu berolahraga 30 menit setiap hari?",
+    "isolate": "Bagaimana jika kamu menjauh dari teman-temanmu?",
+    "learn": "Bagaimana jika kamu belajar keterampilan 1 jam sehari?",
+    "meditate": "Bagaimana jika kamu bermeditasi 10 menit sehari?",
+    "read": "Bagaimana jika kamu membaca 30 menit sehari?",
+    "sleep": "Bagaimana jika kamu tidur 8 jam dengan jadwal tetap?",
+    "smoke": "Bagaimana jika kamu mulai merokok?",
+    "social": "Bagaimana jika kamu berhenti main media sosial?"
   },
   "short": {
     "drink": "Mulai minum berlebihan",

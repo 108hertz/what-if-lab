@@ -145,5 +145,26 @@
       "h": "Droit applicable",
       "p1": "Ces conditions sont régies par le droit de {country}, sans vous priver de la protection du droit de votre lieu de résidence."
     }
+  },
+  "whatif": {
+    "answer": "Dans ce modèle, vers {time} : {label} {alt} avec le changement, {base} sans lui.",
+    "description": "{answer} Voyez ce qui se passe étape par étape, puis lancez-le vous-même dans un simulateur gratuit.",
+    "fork": "Le changement a lieu à {time}, après un court passage du monde tel qu'il est. Même départ, même hasard : seul le changement diffère.",
+    "run": "Lancer ce et si",
+    "runNote": "Ouvre le simulateur en direct avec ce changement. Changez autre chose et regardez les deux avenirs se séparer.",
+    "picture": "{world} à {time}",
+    "noChange": "Sans changement",
+    "withIt": "Avec le et si",
+    "numbers": "Les chiffres",
+    "measure": "Mesure",
+    "by": "Vers {time}",
+    "steps": "Ce qui se passe, étape par étape",
+    "onlyAlt": "Seulement avec le changement",
+    "onlyBase": "Seulement sans le changement",
+    "stepsNone": "Aucun événement ne distingue les deux mondes : le changement se voit dans les chiffres.",
+    "model": "À propos de ce modèle",
+    "more": "Autres et si : {world}",
+    "others": "Autres mondes",
+    "open": "Ouvrir {world}"
   }
 }

@@ -1,12 +1,25 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "age": { "label": "Yaş", "unit": "yaş" },
-    "disc": { "label": "Öz disiplin" },
-    "health": { "label": "Şu anki sağlık" },
-    "mood": { "label": "Şu anki iyi oluş" },
-    "soc": { "label": "Sosyallik" },
-    "stress": { "label": "Stres düzeyi" }
+    "age": {
+      "label": "Yaş",
+      "unit": "yaş"
+    },
+    "disc": {
+      "label": "Öz disiplin"
+    },
+    "health": {
+      "label": "Şu anki sağlık"
+    },
+    "mood": {
+      "label": "Şu anki iyi oluş"
+    },
+    "soc": {
+      "label": "Sosyallik"
+    },
+    "stress": {
+      "label": "Stres düzeyi"
+    }
   },
   "dim": {
     "career": "Kariyer ve beceriler",
@@ -39,14 +52,42 @@
   "meta": {
     "intro": "Bir kişi, hayatının 100 paralel versiyonu. Yeni alışkanlıklar dene; kaçının sürdürdüğünü ve neyi değiştirdiğini gör.",
     "name": "Karakter",
+    "seoDescription": "Her gün spor, sosyal medyayı bırakmak ya da 8 saat uyku gibi bir alışkanlık başlat ve kendinin 100 versiyonunu yıllarca izle: kim sürdürür, kim bırakır, neyi değiştirir.",
+    "seoTitle": "Alışkanlık Simülatörü: Hayatının 100 Versiyonu",
     "sub": "100 paralel hayat"
   },
   "metric": {
-    "career": { "label": "Kariyer ve beceriler", "unit": "/100" },
-    "health": { "label": "Sağlık", "unit": "/100" },
-    "kept": { "label": "Hâlâ sürdüren", "unit": "%" },
-    "social": { "label": "İlişkiler", "unit": "/100" },
-    "well": { "label": "İyi oluş", "unit": "/100" }
+    "career": {
+      "label": "Kariyer ve beceriler",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Sağlık",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Hâlâ sürdüren",
+      "unit": "%"
+    },
+    "social": {
+      "label": "İlişkiler",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "İyi oluş",
+      "unit": "/100"
+    }
+  },
+  "question": {
+    "drink": "Çok içmeye başlasaydın ne olurdu?",
+    "exercise": "Her gün 30 dakika egzersiz yapsaydın ne olurdu?",
+    "isolate": "Arkadaşlarından uzaklaşsaydın ne olurdu?",
+    "learn": "Her gün 1 saat bir beceri öğrenseydin ne olurdu?",
+    "meditate": "Günde 10 dakika meditasyon yapsaydın ne olurdu?",
+    "read": "Günde 30 dakika kitap okusaydın ne olurdu?",
+    "sleep": "Düzenli saatlerde 8 saat uyusaydın ne olurdu?",
+    "smoke": "Sigaraya başlasaydın ne olurdu?",
+    "social": "Sosyal medyayı bıraksaydın ne olurdu?"
   },
   "short": {
     "drink": "Çok içmeye başla",

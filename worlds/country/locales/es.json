@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Una calle del país, y el mismo país como 100 personas, de la más pobre a la más rica. Elige un país y haz cambios: se suman.",
     "name": "Países",
+    "seoDescription": "Prueba la renta básica universal, un salario mínimo más alto o gravar a los más ricos en 41 países y mira cambiar los ingresos, la pobreza, el empleo y la esperanza de vida junto al país sin tocar.",
+    "seoTitle": "Simulador de economía: renta básica, impuestos, salario mínimo",
     "sub": "Economía y sociedad"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Tu propio país (a partir de {from})",
     "this": "Este país"
+  },
+  "question": {
+    "aging": "¿Qué pasaría si la natalidad de un país se desplomara?",
+    "build": "¿Qué pasaría si un país construyera carreteras, trenes y centrales?",
+    "corr": "¿Qué pasaría si un país redujera la corrupción a la mitad?",
+    "drought": "¿Qué pasaría si un país sufriera años de sequía?",
+    "edu": "¿Qué pasaría si un país duplicara el gasto en educación?",
+    "health": "¿Qué pasaría si un país tuviera sanidad gratuita para todos?",
+    "minwage": "¿Qué pasaría si un país subiera el salario mínimo?",
+    "oil": "¿Qué pasaría si un país descubriera enormes reservas de petróleo?",
+    "open": "¿Qué pasaría si un país abriera sus fronteras a los migrantes?",
+    "pandemic": "¿Qué pasaría si una pandemia golpeara a un país?",
+    "robots": "¿Qué pasaría si los robots hicieran la mitad del trabajo en las fábricas?",
+    "taxcut": "¿Qué pasaría si un país bajara los impuestos a todos?",
+    "taxrich": "¿Qué pasaría si un país subiera los impuestos a los ricos?",
+    "trade": "¿Qué pasaría si un país cerrara sus fronteras al comercio?",
+    "ubi": "¿Qué pasaría si un país tuviera una renta básica universal?",
+    "war": "¿Qué pasaría si un país entrara en guerra?"
   },
   "speed": {
     "0": "3 meses/s",

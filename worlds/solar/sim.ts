@@ -81,6 +81,7 @@ const BG = Array.from({ length: 140 }, (_, i) => [((Math.sin(i * 12.9898) * 4375
 export const solar: Sandbox<W, P> = {
   ...meta,
   intro: "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
+  seo: { title: "Solar System Simulator: What if the Sun disappeared?", description: "Real Newtonian gravity for the Sun and eight planets. Double the Sun's mass, remove it, turn Jupiter into a star or throw in your own planet, and watch the orbits change." },
   messages: MESSAGES,
   hint: "Drag to throw a planet. Changes add up.",
   controls: [
@@ -92,6 +93,18 @@ export const solar: Sandbox<W, P> = {
     ["jupstar", "Jupiter ignites into a star"], ["bh", "A black hole flies through"], ["stop", "Earth stops in its orbit"],
     ["mars", "Move Earth to Mars’s orbit"],
   ],
+  // The question each what-if's page answers, and its frozen URL words (change 0033).
+  questions: {
+    sun2: { q: "What if the Sun were twice as massive?", slug: "sun-twice-as-massive" },
+    nosun: { q: "What if the Sun disappeared?", slug: "sun-disappears" },
+    giant: { q: "What if the Sun became a red giant?", slug: "sun-becomes-red-giant" },
+    jupstar: { q: "What if Jupiter became a star?", slug: "jupiter-becomes-a-star" },
+    bh: { q: "What if a black hole flew through the solar system?", slug: "black-hole-flies-through-solar-system" },
+    stop: { q: "What if Earth stopped orbiting the Sun?", slug: "earth-stops-orbiting" },
+    mars: { q: "What if Earth were in Mars's orbit?", slug: "earth-in-mars-orbit" },
+  },
+  // The run behind its what-if pages: times read, step and the metric the answer names (change 0033)
+  answer: { at: [1, 5, 20], shot: 1 },
   speeds: [[1 / 12, "1 mo/s"], [0.5, "6 mo/s"], [2, "2 yr/s"], [10, "10 yr/s"]],
   defaultSpeed: 1,
   fmtT: fmtDur,

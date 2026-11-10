@@ -93,6 +93,8 @@
   "meta": {
     "intro": "Milchstraße und Andromeda auf ihrem echten Kollisionskurs, im Zeitraffer. Jeder Punkt ist ein Stern.",
     "name": "Galaxien",
+    "seoDescription": "Sieh zu, wie Milchstraße und Andromeda kollidieren, oder schicke weitere Galaxien los. Lass die Dunkle Materie verschwinden, ändere Kurs oder Drehung und vergleiche mit dem unberührten Himmel. Kostenlos, im Browser.",
+    "seoTitle": "Galaxien-Kollisionssimulator: Milchstraße trifft Andromeda",
     "sub": "Kollisionen"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Weggeschleuderte Sterne",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "Was wäre, wenn ein Schwarzes Loch so schwer wie eine Galaxie in der Milchstraße wäre?",
+    "bullet": "Was wäre, wenn eine Galaxie mitten durch die Milchstraße schießen würde?",
+    "flipmw": "Was wäre, wenn sich die Milchstraße andersherum drehen würde?",
+    "freeze": "Was wäre, wenn die Sterne der Milchstraße nicht mehr kreisen würden?",
+    "headon": "Was wäre, wenn Andromeda frontal mit der Milchstraße zusammenstoßen würde?",
+    "miss": "Was wäre, wenn Andromeda die Milchstraße verfehlen würde?",
+    "nodm": "Was wäre, wenn die Dunkle Materie verschwinden würde?",
+    "reverse": "Was wäre, wenn Andromeda umkehren würde?",
+    "ring": "Was wäre, wenn eine kleine Galaxie durchs Zentrum der Milchstraße schlüge?",
+    "stop": "Was wäre, wenn Andromeda plötzlich stehen bliebe?",
+    "swarm": "Was wäre, wenn noch mehr Galaxien in die Milchstraße stürzen würden?",
+    "third": "Was wäre, wenn eine dritte Galaxie in den Crash Milchstraße–Andromeda geriete?"
   },
   "speed": {
     "0": "5 Mio. J./s",

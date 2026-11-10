@@ -145,5 +145,26 @@
       "h": "Anwendbares Recht",
       "p1": "Für diese Bedingungen gilt das Recht {country}, ohne dir den Schutz des Rechts an deinem Wohnort zu nehmen."
     }
+  },
+  "whatif": {
+    "answer": "In diesem Modell, bis {time}: {label} {alt} mit der Änderung, {base} ohne sie.",
+    "description": "{answer} Sieh Schritt für Schritt, was passiert, und probiere es selbst in einem kostenlosen Simulator aus.",
+    "fork": "Die Änderung passiert bei {time}, nach einem kurzen Lauf der Welt, wie sie ist. Gleicher Start, gleicher Zufall: Nur die Änderung ist anders.",
+    "run": "Dieses Was-wäre-wenn starten",
+    "runNote": "Öffnet den Live-Simulator mit dieser Änderung. Ändere noch mehr und sieh zu, wie sich die zwei Zukünfte trennen.",
+    "picture": "{world} bei {time}",
+    "noChange": "Ohne Änderung",
+    "withIt": "Mit dem Was-wäre-wenn",
+    "numbers": "Die Zahlen",
+    "measure": "Messgröße",
+    "by": "Bis {time}",
+    "steps": "Was passiert, Schritt für Schritt",
+    "onlyAlt": "Nur mit der Änderung",
+    "onlyBase": "Nur ohne die Änderung",
+    "stepsNone": "Kein Ereignis unterscheidet die zwei Welten: Die Änderung zeigt sich in den Zahlen.",
+    "model": "Über dieses Modell",
+    "more": "Mehr Was-wäre-wenn: {world}",
+    "others": "Andere Welten",
+    "open": "{world} öffnen"
   }
 }

@@ -3,6 +3,7 @@ import { createT, merge, type T } from "@/lib/i18n";
 import { loadMessages } from "@/lib/i18n/load";
 import { EN_SHARED } from "@/lib/i18n/english";
 import { pageMetadata } from "@/lib/i18n/seo";
+import { whatifHref } from "@/lib/seo/whatifPages";
 import { SANDBOXES } from "@/worlds/sims";
 import { MODES, SANDBOX_KEYS, WORLDS, modeHref, type Mode } from "@/worlds/registry";
 
@@ -22,10 +23,13 @@ const or = (t: T, key: string, english: string, values?: Record<string, string |
 
 export interface PageCopy {
   title: string;
+  /** What the <head> and search results show (change 0033): the words people search for. */
+  searchTitle: string;
+  searchDescription: string;
   heading: string;
   description: string;
-  /** World pages: the what-if questions. */
-  whatifs: string[];
+  /** World pages: the what-ifs, linked to their own page where it is built in this language (change 0033). */
+  whatifs: { label: string; href: string | null }[];
   /** Links to every other page in this language. */
   links: { href: string; name: string; sub: string }[];
   linksHeading: string;
@@ -44,20 +48,32 @@ export function pageCopy(locale: string, mode: Mode): PageCopy {
   const links = MODES.filter((m) => m !== mode).map((m) => ({ href: modeHref(m, locale), name: worldName(t, m), sub: worldSub(t, m) }));
   const common = { links, linksHeading: t("common.intro.worlds"), whatifsHeading: t("common.intro.whatifs"), disclaimer: t("shell.disclaimer.body") };
   if (mode === "scale") {
-    return { ...common, title: t("common.site.name"), heading: t("common.site.name"), description: t("common.site.description"), whatifs: [] };
+    return {
+      ...common, title: t("common.site.name"), heading: t("common.site.name"), description: t("common.site.description"),
+      searchTitle: t("common.site.title"), searchDescription: t("common.site.searchDescription"), whatifs: [],
+    };
   }
   const sb = SANDBOXES[mode];
   const name = worldName(t, mode);
+  const title = t("common.site.titleWorld", { world: name });
+  const description = or(t, `${mode}.meta.intro`, sb.intro);
   return {
     ...common,
-    title: t("common.site.titleWorld", { world: name }),
+    title,
+    searchTitle: sb.seo ? t("common.site.titleWorld", { world: or(t, `${mode}.meta.seoTitle`, sb.seo.title) }) : title,
+    searchDescription: sb.seo ? or(t, `${mode}.meta.seoDescription`, sb.seo.description) : description,
     heading: name,
-    description: or(t, `${mode}.meta.intro`, sb.intro),
-    whatifs: sb.whatifs.map(([id, label]) => or(t, `${mode}.whatif.${id}`, label)),
+    description,
+    whatifs: sb.whatifs.map(([id, label]) => {
+      const href = whatifHref(sb, id, locale);
+      return { label: href ? or(t, `${mode}.question.${id}`, sb.questions![id].q) : or(t, `${mode}.whatif.${id}`, label), href };
+    }),
   };
 }
 
 export function pageMeta(locale: string, mode: Mode): Metadata {
   const c = pageCopy(locale, mode);
-  return pageMetadata({ locale, path: modeHref(mode), title: c.title, description: c.description });
+  // Worlds share a picture of their own stage (change 0033, tests/og-images.test.ts draws public/og/<world>.png).
+  const image = mode === "scale" ? undefined : { url: `/og/${mode}.png`, alt: c.searchTitle };
+  return pageMetadata({ locale, path: modeHref(mode), title: c.searchTitle, description: c.searchDescription, image });
 }

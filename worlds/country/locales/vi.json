@@ -7,9 +7,18 @@
     "3": "Cuộc sống yên ổn và mọi người phần lớn tin tưởng nhau."
   },
   "ctl": {
-    "corr": { "label": "Tham nhũng", "unit": "/100" },
-    "edu": { "label": "Trường học", "unit": "/100" },
-    "gdp": { "label": "Thu nhập bình quân", "unit": "nghìn $/năm" },
+    "corr": {
+      "label": "Tham nhũng",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Trường học",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Thu nhập bình quân",
+      "unit": "nghìn $/năm"
+    },
     "gov": {
       "label": "Chính quyền",
       "opt": {
@@ -24,10 +33,22 @@
       "policy-sizes-used-by-your-next-click": "Mức chính sách (dùng cho lần bấm tiếp theo)",
       "public-life": "Đời sống chung"
     },
-    "jobless": { "label": "Thất nghiệp", "unit": "%" },
-    "life": { "label": "Y tế: tuổi thọ", "unit": "năm" },
-    "pop": { "label": "Dân số", "unit": "triệu" },
-    "popg": { "label": "Tăng dân số", "unit": "%/năm" },
+    "jobless": {
+      "label": "Thất nghiệp",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Y tế: tuổi thọ",
+      "unit": "năm"
+    },
+    "pop": {
+      "label": "Dân số",
+      "unit": "triệu"
+    },
+    "popg": {
+      "label": "Tăng dân số",
+      "unit": "%/năm"
+    },
     "preset": {
       "group": {
         "0": "Châu Âu",
@@ -84,14 +105,37 @@
         "za": "Nam Phi"
       }
     },
-    "res": { "label": "Tài nguyên (dầu, kim loại)", "unit": "/100" },
-    "s_cut": { "label": "Giảm thuế", "unit": "điểm" },
-    "s_open": { "label": "Số hộ mới đến" },
-    "s_rich": { "label": "Thuế thêm cho người giàu nhất", "unit": "điểm" },
-    "s_ubi": { "label": "Mức thu nhập cơ bản", "unit": "% thu nhập trung bình" },
-    "s_wage": { "label": "Tăng lương tối thiểu", "unit": "%" },
-    "s_war": { "label": "Thời gian chiến tranh", "unit": "năm" },
-    "tax": { "label": "Thuế", "unit": "% thu nhập" }
+    "res": {
+      "label": "Tài nguyên (dầu, kim loại)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Giảm thuế",
+      "unit": "điểm"
+    },
+    "s_open": {
+      "label": "Số hộ mới đến"
+    },
+    "s_rich": {
+      "label": "Thuế thêm cho người giàu nhất",
+      "unit": "điểm"
+    },
+    "s_ubi": {
+      "label": "Mức thu nhập cơ bản",
+      "unit": "% thu nhập trung bình"
+    },
+    "s_wage": {
+      "label": "Tăng lương tối thiểu",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Thời gian chiến tranh",
+      "unit": "năm"
+    },
+    "tax": {
+      "label": "Thuế",
+      "unit": "% thu nhập"
+    }
   },
   "diff": {
     "calmer": "{n, plural, other {yên bình hơn # điểm}}",
@@ -146,7 +190,12 @@
     "u": "Bất ổn: biểu tình lớn tràn ngập đường phố",
     "wend": "Chiến tranh kết thúc; bùng nổ tái thiết bắt đầu"
   },
-  "group": { "0": "Tiền bạc", "1": "Dịch vụ", "2": "Xã hội", "3": "Cú sốc" },
+  "group": {
+    "0": "Tiền bạc",
+    "1": "Dịch vụ",
+    "2": "Xã hội",
+    "3": "Cú sốc"
+  },
   "info": {
     "about": "Về các con số",
     "aboutText": "Số liệu ban đầu là giá trị làm tròn, gần đúng từ giữa thập niên 2020. Sau đó đất nước chạy theo quy tắc đơn giản: nó cho thấy các yếu tố tác động nhau thế nào, không phải dự báo.",
@@ -162,6 +211,8 @@
   "meta": {
     "intro": "Một con phố trong nước, và cũng đất nước ấy như 100 người từ nghèo nhất đến giàu nhất. Chọn một nước, rồi tạo thay đổi: chúng cộng dồn.",
     "name": "Quốc gia",
+    "seoDescription": "Thử thu nhập cơ bản phổ quát, lương tối thiểu cao hơn hay đánh thuế người giàu nhất ở 41 nước, xem thu nhập gia đình, nghèo đói, việc làm, tuổi thọ đổi thay.",
+    "seoTitle": "Mô phỏng kinh tế: Thu nhập cơ bản, thuế, lương tối thiểu",
     "sub": "Kinh tế & xã hội"
   },
   "metric": {
@@ -204,9 +255,36 @@
     "ownFrom": "Đất nước của riêng bạn (từ {from})",
     "this": "Đất nước này"
   },
-  "speed": { "0": "3 tháng/s", "1": "1 năm/s", "2": "3 năm/s", "3": "8 năm/s" },
+  "question": {
+    "aging": "Điều gì xảy ra nếu tỷ lệ sinh của một quốc gia lao dốc?",
+    "build": "Điều gì xảy ra nếu một quốc gia xây đường bộ, đường sắt và điện lực?",
+    "corr": "Điều gì xảy ra nếu một quốc gia giảm một nửa tham nhũng?",
+    "drought": "Điều gì xảy ra nếu một quốc gia hạn hán nhiều năm liền?",
+    "edu": "Điều gì xảy ra nếu một quốc gia tăng gấp đôi chi tiêu cho giáo dục?",
+    "health": "Điều gì xảy ra nếu một quốc gia miễn phí y tế cho mọi người?",
+    "minwage": "Điều gì xảy ra nếu một quốc gia tăng lương tối thiểu?",
+    "oil": "Điều gì xảy ra nếu một quốc gia phát hiện trữ lượng dầu khổng lồ?",
+    "open": "Điều gì xảy ra nếu một quốc gia mở cửa biên giới cho người nhập cư?",
+    "pandemic": "Điều gì xảy ra nếu một đại dịch tấn công một quốc gia?",
+    "robots": "Điều gì xảy ra nếu robot làm một nửa công việc trong nhà máy?",
+    "taxcut": "Điều gì xảy ra nếu một quốc gia giảm thuế cho mọi người?",
+    "taxrich": "Điều gì xảy ra nếu một quốc gia đánh thuế người giàu cao hơn?",
+    "trade": "Điều gì xảy ra nếu một quốc gia đóng cửa với thương mại?",
+    "ubi": "Điều gì xảy ra nếu một quốc gia có thu nhập cơ bản phổ quát?",
+    "war": "Điều gì xảy ra nếu một quốc gia lâm vào chiến tranh?"
+  },
+  "speed": {
+    "0": "3 tháng/s",
+    "1": "1 năm/s",
+    "2": "3 năm/s",
+    "3": "8 năm/s"
+  },
   "stage": {
-    "band": { "0": "NGHÈO", "1": "ĐỦ SỐNG", "2": "KHÁ GIẢ" },
+    "band": {
+      "0": "NGHÈO",
+      "1": "ĐỦ SỐNG",
+      "2": "KHÁ GIẢ"
+    },
     "clinic": "TRẠM Y TẾ +",
     "fam": "một gia đình điển hình có {usd} mỗi tháng",
     "jobless": "{n}/100 người lớn thất nghiệp",

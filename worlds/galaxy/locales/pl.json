@@ -93,6 +93,8 @@
   "meta": {
     "intro": "Droga Mleczna i Andromeda na ich prawdziwym kursie kolizyjnym, przyspieszonym. Każda kropka to gwiazda.",
     "name": "Galaktyki",
+    "seoDescription": "Zobacz zderzenie Drogi Mlecznej z Andromedą albo dodaj kolejne galaktyki. Usuń ciemną materię, zmień kurs lub obrót i porównaj z nietkniętym niebem. Za darmo, w przeglądarce.",
+    "seoTitle": "Symulator zderzenia galaktyk: Droga Mleczna i Andromeda",
     "sub": "Zderzenia"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Wyrzucone gwiazdy",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "Co by było, gdyby w Drodze Mlecznej pojawiła się czarna dziura masy galaktyki?",
+    "bullet": "Co by było, gdyby galaktyka przeleciała prosto przez Drogę Mleczną?",
+    "flipmw": "Co by było, gdyby Droga Mleczna obracała się w drugą stronę?",
+    "freeze": "Co by było, gdyby gwiazdy Drogi Mlecznej przestały krążyć?",
+    "headon": "Co by było, gdyby Andromeda zderzyła się czołowo z Drogą Mleczną?",
+    "miss": "Co by było, gdyby Andromeda minęła Drogę Mleczną?",
+    "nodm": "Co by było, gdyby ciemna materia zniknęła?",
+    "reverse": "Co by było, gdyby Andromeda zawróciła?",
+    "ring": "Co by było, gdyby mała galaktyka przebiła centrum Drogi Mlecznej?",
+    "stop": "Co by było, gdyby Andromeda nagle się zatrzymała?",
+    "swarm": "Co by było, gdyby więcej galaktyk wpadło do Drogi Mlecznej?",
+    "third": "Co by było, gdyby trzecia galaktyka dołączyła do zderzenia z Andromedą?"
   },
   "speed": {
     "0": "5 mln lat/s",

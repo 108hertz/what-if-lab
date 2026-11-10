@@ -10,10 +10,10 @@ export const SITE_RAW = {
   /** Country whose law governs the terms, e.g. "Germany". */
   country: "TODO_COUNTRY",
   /** Contact email for privacy and other questions. */
-  email: "TODO_EMAIL",
+  email: "1008hertz@gmail.com",
   /** Full profile URLs. */
-  instagram: "TODO_INSTAGRAM_URL",
-  tiktok: "TODO_TIKTOK_URL",
+  instagram: "https://www.instagram.com/what.if.we.try/",
+  tiktok: "https://www.tiktok.com/@what.if.we.try.this",
   /** Date the privacy policy and terms last changed (YYYY-MM-DD). */
   updated: "2026-11-10",
 } as const;

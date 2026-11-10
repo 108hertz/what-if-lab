@@ -22,8 +22,12 @@
       "li2": "A what-if forks the running world: the changed world plays on the stage while the unchanged one runs alongside, and the chart shows where they differ.",
       "li3": "The same settings always give the same result, so a run can be shared and checked."
     },
-    "worlds": { "h": "The worlds" },
-    "note": { "h": "A model, not a forecast" },
+    "worlds": {
+      "h": "The worlds"
+    },
+    "note": {
+      "h": "A model, not a forecast"
+    },
     "follow": {
       "h": "Follow us",
       "p1": "Short clips of the strangest what-ifs, and new worlds as they arrive.",
@@ -38,7 +42,9 @@
     "title": "Privacy policy · What-If Lab",
     "description": "What What-If Lab collects, why, and the choices you have: cookieless visit counts, Google Analytics only if you accept.",
     "heading": "Privacy policy",
-    "intro": { "p1": "This policy explains what What-If Lab (\"we\") collects when you use the site, and why." },
+    "intro": {
+      "p1": "This policy explains what What-If Lab (\"we\") collects when you use the site, and why."
+    },
     "short": {
       "h": "In short",
       "li1": "You don't need an account, and we don't ask for your name or email.",
@@ -46,7 +52,10 @@
       "li3": "We count visits without cookies. Google Analytics runs only if you accept it.",
       "li4": "We don't sell your data."
     },
-    "who": { "h": "Who is responsible", "p1": "What-If Lab is run by {operator}, who is responsible for the data described here." },
+    "who": {
+      "h": "Who is responsible",
+      "p1": "What-If Lab is run by {operator}, who is responsible for the data described here."
+    },
     "collect": {
       "h": "What we collect",
       "p1": "Visit statistics (always). Our host, Vercel, counts page views with Vercel Web Analytics. It uses no cookies and does not follow you across sites. It records the page, the site that sent you, your country, browser, operating system and type of device, and we only see totals.",
@@ -90,7 +99,9 @@
     "title": "Terms of use · What-If Lab",
     "description": "The rules for using What-If Lab: a free, rule-based simulator for learning and fun, not a forecast or advice.",
     "heading": "Terms of use",
-    "intro": { "p1": "These terms apply to your use of What-If Lab. By using the site you agree to them." },
+    "intro": {
+      "p1": "These terms apply to your use of What-If Lab. By using the site you agree to them."
+    },
     "what": {
       "h": "What the site is",
       "p1": "What-If Lab is a set of rule-based simulations. Every result comes from simple models with rounded or made-up numbers. It is for learning, curiosity and fun. It is not a forecast, and not scientific, medical, financial, legal or parenting advice."
@@ -134,5 +145,26 @@
       "h": "Governing law",
       "p1": "These terms are governed by the laws of {country}, without taking away the protection of the law where you live."
     }
+  },
+  "whatif": {
+    "answer": "In this model, by {time}: {label} {alt} with the change, {base} without it.",
+    "description": "{answer} See what happens step by step, then run it yourself in a free simulator.",
+    "fork": "The change is made at {time}, after a short run of the world as it is. Same start, same chance: only the change differs.",
+    "run": "Run this what-if",
+    "runNote": "Opens the live simulator with this change made. Change anything else and watch the two futures part.",
+    "picture": "{world} at {time}",
+    "noChange": "No change",
+    "withIt": "With the what-if",
+    "numbers": "The numbers",
+    "measure": "Measure",
+    "by": "By {time}",
+    "steps": "What happens, step by step",
+    "onlyAlt": "Only with the change",
+    "onlyBase": "Only without the change",
+    "stepsNone": "No event differs between the two worlds: the change shows in the numbers.",
+    "model": "About this model",
+    "more": "More what-ifs in {world}",
+    "others": "Other worlds",
+    "open": "Open {world}"
   }
 }

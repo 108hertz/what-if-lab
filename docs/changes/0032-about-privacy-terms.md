@@ -84,3 +84,6 @@ site. Analytics with consent (change 0027) and, later, ads and Premium need a pr
   (not an "i", which the simulation label already uses). Words live in a separate `pages` namespace, outside `SHARED_NS`,
   so the long text only reaches the pre-rendered HTML. The theme toggle on these pages loads in the browser only (it reads
   the page's theme on first render).
+- 2026-11-10 — contact email and Instagram (what.if.we.try) / TikTok (@what.if.we.try.this) filled in; profile picture
+  exported from the favicon to `docs/brand/` (square, no rounded corners, mark inside the circle crop). Operator and country
+  still placeholders.

@@ -164,6 +164,8 @@
     "hint": "Każde zwierzę jest trochę inne. Te najlepiej dopasowane mają więcej młodych. Naciśnij start i wybierz zmianę.",
     "intro": "Do pięciu gatunków zwierząt dzieli jedno miejsce. Każde zwierzę jest trochę inne; te najlepiej dopasowane mają więcej młodych, więc ciała zmieniają się z czasem. Wybierz świat albo zbuduj własny i wprowadzaj zmiany: sumują się.",
     "name": "Zwierzęta",
+    "seoDescription": "Umieść do pięciu z 21 zwierząt w jednym miejscu i obserwuj ewolucję szybkości, wielkości i zmysłów. Sprowadź epokę lodowcową lub chorobę i zobacz, kto przetrwa.",
+    "seoTitle": "Symulator ewolucji: drapieżniki, ofiary i dobór naturalny",
     "sub": "Ewolucja"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Co jeśli {many} znikną?",
     "reserve": "Co jeśli powstanie tu rezerwat?",
     "warm": "Co jeśli zrobi się o 3 °C cieplej?"
+  },
+  "question": {
+    "add": "Co by było, gdyby pojawiło się nowe zwierzę?",
+    "cool": "Co by było, gdyby nadeszła epoka lodowcowa?",
+    "disease": "Co by było, gdyby wśród dzikich zwierząt rozprzestrzeniła się choroba?",
+    "drought": "Co by było, gdyby przez rok nie padał deszcz?",
+    "fire": "Co by było, gdyby przeszedł pożar?",
+    "habitat": "Co by było, gdyby zniknęła połowa siedlisk?",
+    "hunt": "Co by było, gdyby ludzie polowali na jakieś zwierzę?",
+    "invasive": "Co by było, gdyby pojawił się szybko rozmnażający się gatunek inwazyjny?",
+    "move": "Co by było, gdyby zwierzęta żyły w odwrotnym klimacie?",
+    "rain": "Co by było, gdyby przez lata padało dużo deszczu?",
+    "remove": "Co by było, gdyby jedno zwierzę zniknęło z sieci pokarmowej?",
+    "reserve": "Co by było, gdyby teren stał się rezerwatem przyrody?",
+    "warm": "Co by było, gdyby klimat ocieplił się o 3 °C dla dzikich zwierząt?"
   },
   "sp": {
     "bear": {

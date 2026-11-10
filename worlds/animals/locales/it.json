@@ -164,6 +164,8 @@
     "hint": "Ogni animale è un po' diverso. Chi si adatta meglio fa più cuccioli. Premi play e scegli un cambiamento.",
     "intro": "Fino a cinque tipi di animali condividono lo stesso luogo. Ogni animale è un po' diverso; chi si adatta meglio fa più cuccioli, quindi i corpi cambiano nel tempo. Scegli un mondo o costruisci il tuo, poi fai dei cambiamenti: si sommano.",
     "name": "Animali",
+    "seoDescription": "Metti fino a cinque di 21 animali nello stesso posto e guarda evolvere velocità, dimensioni e sensi. Porta un’era glaciale, un incendio o una malattia, o togli una specie, e guarda chi sopravvive.",
+    "seoTitle": "Simulatore di evoluzione: predatori, prede e selezione naturale",
     "sub": "Evoluzione"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "E se sparissero questi animali ({many})?",
     "reserve": "E se diventasse una riserva protetta?",
     "warm": "E se facesse 3 °C più caldo?"
+  },
+  "question": {
+    "add": "E se arrivasse un nuovo animale?",
+    "cool": "E se arrivasse un’era glaciale?",
+    "disease": "E se una malattia si diffondesse tra gli animali selvatici?",
+    "drought": "E se passasse un anno senza pioggia?",
+    "fire": "E se un incendio boschivo devastasse la zona?",
+    "habitat": "E se si perdesse metà dell’habitat?",
+    "hunt": "E se le persone cacciassero un animale?",
+    "invasive": "E se arrivasse una specie invasiva che si riproduce in fretta?",
+    "move": "E se gli animali vivessero nel clima opposto?",
+    "rain": "E se ci fossero anni di buone piogge?",
+    "remove": "E se un animale scomparisse da una rete alimentare?",
+    "reserve": "E se il territorio diventasse una riserva protetta?",
+    "warm": "E se il clima diventasse più caldo di 3 °C per gli animali selvatici?"
   },
   "sp": {
     "bear": {

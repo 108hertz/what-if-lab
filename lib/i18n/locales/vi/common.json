@@ -3,7 +3,9 @@
   "site": {
     "name": "What-If Lab",
     "description": "Phóng to từ một proton đến cả vũ trụ quan sát được, mở một thế giới, thay đổi nó bằng các giả thuyết “nếu như” và so sánh tương lai của nó với thế giới vẫn giữ nguyên.",
-    "titleWorld": "{world} · What-If Lab"
+    "titleWorld": "{world} · What-If Lab",
+    "title": "What-If Lab: Mô phỏng \"Nếu như\" từ proton đến thiên hà",
+    "searchDescription": "Trình mô phỏng \"nếu như\" miễn phí ngay trên trình duyệt. Phóng từ proton ra vũ trụ, rồi thay đổi Hệ Mặt Trời, khí hậu Trái Đất hay một quốc gia và xem tương lai rẽ nhánh."
   },
   "none": "—",
   "scale": {

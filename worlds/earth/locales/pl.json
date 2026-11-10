@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Miasteczko nad fiordem, dziś. Patrz na śnieg, las, pola i port, gdy mijają dekady.",
     "name": "Ziemia",
+    "seoDescription": "Zatrzymaj emisje, posadź bilion drzew lub pozwól rozmarznąć wiecznej zmarzlinie i obserwuj ocieplenie, poziom morza, śnieg i plony obok świata bez zmian.",
+    "seoTitle": "Symulator zmian klimatu: co jeśli zatrzymamy emisje?",
     "sub": "Klimat"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "metan −{n}%",
     "trees": "{n} bln drzew",
     "wall": "wał {n} m"
+  },
+  "question": {
+    "amazon": "Co by było, gdyby las deszczowy Amazonii zmienił się w step?",
+    "dac": "Co by było, gdybyśmy wyciągali CO₂ z powietrza?",
+    "double": "Co by było, gdyby emisje dwutlenku węgla się podwoiły?",
+    "ev": "Co by było, gdyby świat szybko przeszedł na czystą energię?",
+    "geo": "Co by było, gdybyśmy przyciemnili Słońce aerozolami na 30 lat?",
+    "melt": "Co by było, gdyby lądolód Antarktydy Zachodniej się zawalił?",
+    "methane": "Co by było, gdybyśmy o połowę zmniejszyli emisje metanu?",
+    "permafrost": "Co by było, gdyby wieczna zmarzlina szybko odtajała?",
+    "seawall": "Co by było, gdyby nadmorskie miasteczko zbudowało wał o wysokości 3 m?",
+    "trees": "Co by było, gdybyśmy posadzili bilion drzew?",
+    "volcano": "Co by było, gdyby wybuchł superwulkan?",
+    "zero": "Co by było, gdybyśmy dziś zatrzymali wszystkie emisje CO₂?"
   },
   "speed": {
     "0": "1 rok/s",

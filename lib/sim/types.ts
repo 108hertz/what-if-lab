@@ -42,6 +42,35 @@ export type Control =
     };
 
 export type WhatIf = [id: string, label: string];
+
+/**
+ * A what-if's own page (change 0033): the question people type into a search box, and the English words in its URL
+ * (`/lab/<world>/<slug>`). The slug is frozen once shipped: ranked URLs must never break.
+ */
+export interface WhatIfQuestion {
+  q: string;
+  slug: string;
+}
+
+/**
+ * The run behind every what-if page of a world (change 0033): the default world runs to `fork`, the what-if is made,
+ * and both worlds run on; the page reads them at each time in `at` (world time, ascending; the last is the horizon).
+ */
+export interface AnswerSetup {
+  /** World time of the what-if. Default: what the `#whatif=` link waits (1.5 s at the default speed). */
+  fork?: number;
+  at: number[];
+  /** Metrics the page shows, in order. Default: all of them. */
+  metrics?: string[];
+  /** Metrics the first sentence may name (default: `metrics`): the one whose two worlds end furthest apart. */
+  key?: string[];
+  /** How "furthest apart" is measured: relative (default) or absolute (for counts out of the same total). */
+  keyBy?: "rel" | "abs";
+  /** Sim step. Default: one 30 fps frame at the default speed. */
+  dt?: number;
+  /** World time of the page's pictures, after the fork and up to the horizon. Default: the horizon. */
+  shot?: number;
+}
 export type Speed = [unitsPerSecond: number, label: string];
 
 export interface Metric {
@@ -131,6 +160,8 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   name: string;
   sub: string;
   intro: string;
+  /** Search title (without the site name) and description for the world's page (change 0033): the words people search for. */
+  seo?: { title: string; description: string };
   hint?: string;
   /**
    * The world's English words as ICU messages, keyed relative to the world (change 0025): event lines (`ev.*`) and the
@@ -139,6 +170,18 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   messages: Record<string, string>;
   controls: Control[];
   whatifs: WhatIf[];
+  /**
+   * The question for each what-if that gets its own page (change 0033), keyed by what-if id. A what-if left out has no
+   * page (e.g. one that only makes sense with the visitor's own settings).
+   */
+  questions?: Record<string, WhatIfQuestion>;
+  /** How a what-if's page computes its answer (change 0033, lib/seo/answer.ts). */
+  answer?: AnswerSetup;
+  /**
+   * A metric's name in this world, when its label is a slot (animals: "Animal 1" is the wolves): a key of the world's
+   * `messages` plus values, or null to keep the label. Read by the what-if pages; must not change the world.
+   */
+  metricName?(w: W, k: string): { k: string; v?: Values } | null;
   speeds: Speed[];
   defaultSpeed: number;
   /** Stop advancing once world.t reaches this. */

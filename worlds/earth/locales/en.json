@@ -123,6 +123,8 @@
   "meta": {
     "intro": "A fjord town today. Watch the snow, the forest, the fields and the harbour as decades pass.",
     "name": "Earth",
+    "seoDescription": "Stop emissions, plant a trillion trees or let the permafrost thaw, and watch warming, sea level, snow and crops change over the years next to the world left as it is.",
+    "seoTitle": "Climate Change Simulator: What if we stopped emissions?",
     "sub": "Climate"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "methane −{n}%",
     "trees": "{n} trillion trees",
     "wall": "{n} m sea wall"
+  },
+  "question": {
+    "amazon": "What if the Amazon rainforest turned to grassland?",
+    "dac": "What if we pulled CO₂ out of the air?",
+    "double": "What if carbon emissions doubled?",
+    "ev": "What if the world switched fast to clean energy?",
+    "geo": "What if we dimmed sunlight with aerosols for 30 years?",
+    "melt": "What if the West Antarctic ice sheet collapsed?",
+    "methane": "What if we cut methane emissions in half?",
+    "permafrost": "What if the permafrost thawed fast?",
+    "seawall": "What if a coastal town built a 3 m sea wall?",
+    "trees": "What if we planted a trillion trees?",
+    "volcano": "What if a supervolcano erupted?",
+    "zero": "What if we stopped all carbon emissions today?"
   },
   "speed": {
     "0": "1 yr/s",

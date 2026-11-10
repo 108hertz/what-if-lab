@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Sebuah jalan di negara itu, dan negara yang sama sebagai 100 orang dari termiskin hingga terkaya. Pilih negara, lalu buat perubahan: semuanya bertambah.",
     "name": "Negara",
+    "seoDescription": "Coba pendapatan dasar universal, upah minimum lebih tinggi, atau pajak orang terkaya di 41 negara, lalu lihat pendapatan keluarga, kemiskinan, pekerjaan, dan usia hidup berubah.",
+    "seoTitle": "Simulator Ekonomi: Pendapatan Dasar, Pajak, Upah Minimum",
     "sub": "Ekonomi & masyarakat"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Negaramu sendiri (dari {from})",
     "this": "Negara ini"
+  },
+  "question": {
+    "aging": "Bagaimana jika angka kelahiran suatu negara anjlok?",
+    "build": "Bagaimana jika suatu negara membangun jalan, rel kereta, dan pembangkit listrik?",
+    "corr": "Bagaimana jika suatu negara memangkas korupsi hingga separuhnya?",
+    "drought": "Bagaimana jika suatu negara dilanda kekeringan bertahun-tahun?",
+    "edu": "Bagaimana jika suatu negara menggandakan anggaran pendidikan?",
+    "health": "Bagaimana jika suatu negara punya layanan kesehatan gratis untuk semua?",
+    "minwage": "Bagaimana jika suatu negara menaikkan upah minimum?",
+    "oil": "Bagaimana jika suatu negara menemukan cadangan minyak yang besar?",
+    "open": "Bagaimana jika suatu negara membuka perbatasannya bagi migran?",
+    "pandemic": "Bagaimana jika pandemi melanda suatu negara?",
+    "robots": "Bagaimana jika robot mengerjakan separuh pekerjaan pabrik?",
+    "taxcut": "Bagaimana jika suatu negara menurunkan pajak untuk semua orang?",
+    "taxrich": "Bagaimana jika suatu negara menaikkan pajak orang kaya?",
+    "trade": "Bagaimana jika suatu negara menutup perbatasannya untuk perdagangan?",
+    "ubi": "Bagaimana jika suatu negara menerapkan pendapatan dasar universal?",
+    "war": "Bagaimana jika suatu negara berperang?"
   },
   "speed": {
     "0": "3 bln/dtk",

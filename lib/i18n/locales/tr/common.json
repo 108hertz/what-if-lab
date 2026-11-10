@@ -3,7 +3,9 @@
   "site": {
     "name": "What-If Lab",
     "description": "Bir protondan gözlemlenebilir evrene yakınlaş, bir dünya aç, onu “ya … olursa?” sorularıyla değiştir ve geleceğini hiç değişmeyen dünyayla karşılaştır.",
-    "titleWorld": "{world} · What-If Lab"
+    "titleWorld": "{world} · What-If Lab",
+    "title": "What-If Lab: Protondan Gökadalara Ya Olsaydı Simülatörü",
+    "searchDescription": "Tarayıcında ücretsiz bir ya olsaydı simülatörü. Protondan evrene yakınlaş, sonra Güneş Sistemini, Dünya'nın iklimini ya da bir ülkeyi değiştir ve geleceğin ayrışmasını izle."
   },
   "none": "—",
   "scale": {

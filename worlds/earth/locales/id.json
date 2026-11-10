@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Sebuah kota fjord hari ini. Saksikan salju, hutan, ladang, dan pelabuhan seiring berlalunya puluhan tahun.",
     "name": "Bumi",
+    "seoDescription": "Hentikan emisi, tanam satu triliun pohon, atau biarkan permafrost mencair, lalu lihat pemanasan, permukaan laut, salju, dan panen berubah dibanding dunia apa adanya.",
+    "seoTitle": "Simulator Perubahan Iklim: Bagaimana Jika Emisi Berhenti?",
     "sub": "Iklim"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "metana −{n}%",
     "trees": "{n} triliun pohon",
     "wall": "tanggul laut {n} m"
+  },
+  "question": {
+    "amazon": "Bagaimana jika hutan hujan Amazon berubah menjadi padang rumput?",
+    "dac": "Bagaimana jika kita menyedot CO₂ dari udara?",
+    "double": "Bagaimana jika emisi karbon menjadi dua kali lipat?",
+    "ev": "Bagaimana jika dunia cepat beralih ke energi bersih?",
+    "geo": "Bagaimana jika kita meredupkan sinar matahari dengan aerosol selama 30 tahun?",
+    "melt": "Bagaimana jika lapisan es Antarktika Barat runtuh?",
+    "methane": "Bagaimana jika kita memangkas emisi metana hingga separuhnya?",
+    "permafrost": "Bagaimana jika permafrost mencair dengan cepat?",
+    "seawall": "Bagaimana jika kota pesisir membangun tanggul laut setinggi 3 m?",
+    "trees": "Bagaimana jika kita menanam satu triliun pohon?",
+    "volcano": "Bagaimana jika supervolkano meletus?",
+    "zero": "Bagaimana jika kita menghentikan semua emisi karbon hari ini?"
   },
   "speed": {
     "0": "1 thn/dtk",

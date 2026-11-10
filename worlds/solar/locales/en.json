@@ -50,6 +50,8 @@
     "hint": "Drag to throw a planet. Changes add up.",
     "intro": "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
     "name": "Solar system",
+    "seoDescription": "Real Newtonian gravity for the Sun and eight planets. Double the Sun's mass, remove it, turn Jupiter into a star or throw in your own planet, and watch the orbits change.",
+    "seoTitle": "Solar System Simulator: What if the Sun disappeared?",
     "sub": "Gravity"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Uranus",
     "venus": "Venus",
     "yourplanet": "Your planet"
+  },
+  "question": {
+    "bh": "What if a black hole flew through the solar system?",
+    "giant": "What if the Sun became a red giant?",
+    "jupstar": "What if Jupiter became a star?",
+    "mars": "What if Earth were in Mars's orbit?",
+    "nosun": "What if the Sun disappeared?",
+    "stop": "What if Earth stopped orbiting the Sun?",
+    "sun2": "What if the Sun were twice as massive?"
   },
   "speed": {
     "0": "1 mo/s",

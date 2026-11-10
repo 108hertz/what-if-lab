@@ -141,6 +141,7 @@ const thKey = (th: number) => String(th).replace(".", "_");
 export const earth: Sandbox<W, P> = {
   ...meta,
   intro: "A fjord town today. Watch the snow, the forest, the fields and the harbour as decades pass.",
+  seo: { title: "Climate Change Simulator: What if we stopped emissions?", description: "Stop emissions, plant a trillion trees or let the permafrost thaw, and watch warming, sea level, snow and crops change over the years next to the world left as it is." },
   messages: MESSAGES,
   controls: [
     { type: "heading", label: "Air today" },
@@ -174,6 +175,24 @@ export const earth: Sandbox<W, P> = {
     ["permafrost", "Permafrost thaws fast"], ["amazon", "The Amazon turns to grassland"],
     ["melt", "West Antarctic ice sheet collapses"],
   ],
+  // The question each what-if's page answers, and its frozen URL words (change 0033).
+  // "mix" has no page: it is the visitor's own settings.
+  questions: {
+    zero: { q: "What if we stopped all carbon emissions today?", slug: "stop-all-emissions-now" },
+    ev: { q: "What if the world switched fast to clean energy?", slug: "switch-fast-to-clean-energy" },
+    double: { q: "What if carbon emissions doubled?", slug: "emissions-double" },
+    trees: { q: "What if we planted a trillion trees?", slug: "plant-a-trillion-trees" },
+    methane: { q: "What if we cut methane emissions in half?", slug: "cut-methane-in-half" },
+    dac: { q: "What if we pulled CO₂ out of the air?", slug: "pull-co2-out-of-the-air" },
+    seawall: { q: "What if a coastal town built a 3 m sea wall?", slug: "build-a-sea-wall" },
+    volcano: { q: "What if a supervolcano erupted?", slug: "supervolcano-erupts" },
+    geo: { q: "What if we dimmed sunlight with aerosols for 30 years?", slug: "dim-sunlight-with-aerosols" },
+    permafrost: { q: "What if the permafrost thawed fast?", slug: "permafrost-thaws-fast" },
+    amazon: { q: "What if the Amazon rainforest turned to grassland?", slug: "amazon-turns-to-grassland" },
+    melt: { q: "What if the West Antarctic ice sheet collapsed?", slug: "west-antarctic-ice-sheet-collapses" },
+  },
+  // The run behind its what-if pages: times read, step and the metric the answer names (change 0033)
+  answer: { at: [24, 49, 74], key: ["temp", "flood"] },
   speeds: [[1, "1 yr/s"], [5, "5 yr/s"], [20, "20 yr/s"], [60, "60 yr/s"]],
   defaultSpeed: 1,
   fmtT: fmtCalendar,

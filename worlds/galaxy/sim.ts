@@ -215,6 +215,7 @@ const WORDS = { key: "galaxy", messages: MESSAGES };
 export const galaxy: Sandbox<W, P> = {
   ...meta,
   intro: "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
+  seo: { title: "Galaxy Collision Simulator: Milky Way meets Andromeda", description: "Watch the Milky Way and Andromeda collide, or send in more galaxies. Make dark matter vanish, change the aim or the spin and compare with the untouched sky. Free, in your browser." },
   messages: MESSAGES,
   controls: [
     { type: "heading", label: "Starting world" },
@@ -247,6 +248,23 @@ export const galaxy: Sandbox<W, P> = {
     ["reverse", "Andromeda turns around"],
     ["flipmw", "The Milky Way spins the other way"],
   ],
+  // The question each what-if's page answers, and its frozen URL words (change 0033).
+  questions: {
+    headon: { q: "What if Andromeda hit the Milky Way head-on?", slug: "andromeda-hits-milky-way-head-on" },
+    miss: { q: "What if Andromeda missed the Milky Way?", slug: "andromeda-misses-milky-way" },
+    nodm: { q: "What if dark matter disappeared?", slug: "dark-matter-disappears" },
+    bh: { q: "What if a black hole as heavy as a galaxy appeared in the Milky Way?", slug: "galaxy-mass-black-hole-at-milky-way-centre" },
+    third: { q: "What if a third galaxy joined the Milky Way–Andromeda collision?", slug: "third-galaxy-joins-collision" },
+    freeze: { q: "What if the Milky Way's stars stopped orbiting?", slug: "milky-way-stars-stop-orbiting" },
+    swarm: { q: "What if more galaxies fell into the Milky Way?", slug: "more-galaxies-fall-in" },
+    ring: { q: "What if a small galaxy punched through the Milky Way's centre?", slug: "small-galaxy-punches-through-centre" },
+    bullet: { q: "What if a galaxy shot straight through the Milky Way?", slug: "galaxy-shoots-through-milky-way" },
+    stop: { q: "What if Andromeda stopped dead?", slug: "andromeda-stops" },
+    reverse: { q: "What if Andromeda turned around?", slug: "andromeda-turns-around" },
+    flipmw: { q: "What if the Milky Way spun the other way?", slug: "milky-way-spins-backwards" },
+  },
+  // The run behind its what-if pages: times read, step and the metric the answer names (change 0033)
+  answer: { at: [10, 20, 40], shot: 10 },
   speeds: [[0.05, "5 Myr/s"], [0.1, "10 Myr/s"], [0.25, "25 Myr/s"], [0.5, "50 Myr/s"], [1.5, "150 Myr/s"], [4, "400 Myr/s"], [10, "1 Gyr/s"]],
   defaultSpeed: 2,
   fmtT: (t) => fmtYears(t * 1e8),

@@ -52,6 +52,8 @@
   "meta": {
     "intro": "Jedna osoba, 100 równoległych wersji jej życia. Wypróbuj nowe nawyki i zobacz, ile wersji wytrwa i co to zmieni.",
     "name": "Charakter",
+    "seoDescription": "Zacznij nawyk, jak codzienny sport, rzucenie social mediów czy 8 godzin snu, i śledź 100 swoich wersji przez lata: kto wytrwa, kto rzuci i co to zmienia.",
+    "seoTitle": "Symulator nawyków: 100 wersji Twojego życia",
     "sub": "100 równoległych żyć"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Samopoczucie",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "Co by było, gdybyś zaczął dużo pić?",
+    "exercise": "Co by było, gdybyś ćwiczył 30 minut dziennie?",
+    "isolate": "Co by było, gdybyś odsunął się od przyjaciół?",
+    "learn": "Co by było, gdybyś uczył się nowej umiejętności 1 godzinę dziennie?",
+    "meditate": "Co by było, gdybyś medytował 10 minut dziennie?",
+    "read": "Co by było, gdybyś czytał 30 minut dziennie?",
+    "sleep": "Co by było, gdybyś spał 8 godzin o stałych porach?",
+    "smoke": "Co by było, gdybyś zaczął palić?",
+    "social": "Co by było, gdybyś rzucił media społecznościowe?"
   },
   "short": {
     "drink": "Dużo picia",

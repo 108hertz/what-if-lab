@@ -52,6 +52,8 @@
   "meta": {
     "intro": "Una persona, 100 versioni parallele della sua vita. Prova nuove abitudini e guarda quante versioni le mantengono e cosa cambia.",
     "name": "Carattere",
+    "seoDescription": "Inizia un’abitudine come allenarti ogni giorno, lasciare i social o dormire 8 ore e segui 100 versioni di te per anni: chi la mantiene, chi molla e cosa cambia.",
+    "seoTitle": "Simulatore di abitudini: 100 versioni della tua vita",
     "sub": "100 vite parallele"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Benessere",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "E se iniziassi a bere molto?",
+    "exercise": "E se facessi 30 minuti di esercizio ogni giorno?",
+    "isolate": "E se ti allontanassi dai tuoi amici?",
+    "learn": "E se imparassi una nuova abilità 1 ora al giorno?",
+    "meditate": "E se meditassi 10 minuti al giorno?",
+    "read": "E se leggessi 30 minuti al giorno?",
+    "sleep": "E se dormissi 8 ore con orari fissi?",
+    "smoke": "E se iniziassi a fumare?",
+    "social": "E se lasciassi i social?"
   },
   "short": {
     "drink": "Bere molto",

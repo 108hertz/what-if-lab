@@ -7,7 +7,7 @@ import type { AnySandbox, Control, LogEntry, WorldMeta } from "./types";
  * exports; never by step(). English comes from the sandbox itself: its `messages` plus the labels it already has,
  * under keys made from ids, so a world's code keeps its English where it is:
  *
- *   meta.name meta.sub meta.intro meta.hint   whatif.<id>   speed.<i>
+ *   meta.name meta.sub meta.intro meta.hint   whatif.<id>   question.<id>   speed.<i>
  *   ctl.<id>.label  ctl.<id>.unit  ctl.<id>.opt.<value>  ctl.<id>.group.<i>  ctl.h.<slug> (headings)
  *   metric.<k>.label  metric.<k>.unit  metric.<k>.help
  * A key is either words or a group of keys, never both (catalogs are nested JSON).
@@ -21,6 +21,7 @@ export const headingKey = (label: string) => `ctl.h.${slug(label)}`;
 export function sandboxEnglish(sb: AnySandbox): Record<string, string> {
   const out: Record<string, string> = { "meta.name": sb.name, "meta.sub": sb.sub, "meta.intro": sb.intro };
   if (sb.hint) out["meta.hint"] = sb.hint;
+  if (sb.seo) { out["meta.seoTitle"] = sb.seo.title; out["meta.seoDescription"] = sb.seo.description; }
   for (const c of sb.controls as Control[]) {
     if (c.type === "heading") { out[headingKey(c.label)] = c.label; continue; }
     out[`ctl.${c.id}.label`] = c.label;
@@ -31,6 +32,7 @@ export function sandboxEnglish(sb: AnySandbox): Record<string, string> {
     }
   }
   for (const [id, l] of sb.whatifs) out[`whatif.${id}`] = l;
+  for (const [id, x] of Object.entries(sb.questions ?? {})) out[`question.${id}`] = x.q;
   sb.speeds.forEach(([, l], i) => (out[`speed.${i}`] = l));
   for (const m of sb.metrics) {
     out[`metric.${m.k}.label`] = m.label;

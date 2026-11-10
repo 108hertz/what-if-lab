@@ -145,5 +145,26 @@
       "h": "Lei aplicável",
       "p1": "Estes termos são regidos pelas leis de {country}, sem tirar a proteção da lei do lugar onde você mora."
     }
+  },
+  "whatif": {
+    "answer": "Neste modelo, até {time}: {label} {alt} com a mudança, {base} sem ela.",
+    "description": "{answer} Veja o que acontece passo a passo e experimente você mesmo num simulador grátis.",
+    "fork": "A mudança é feita em {time}, depois de o mundo correr um pouco como está. Mesmo início, mesmo acaso: só a mudança difere.",
+    "run": "Executar este e se",
+    "runNote": "Abre o simulador ao vivo com esta mudança feita. Mude o que quiser e veja os dois futuros se separarem.",
+    "picture": "{world} em {time}",
+    "noChange": "Sem mudança",
+    "withIt": "Com o e se",
+    "numbers": "Os números",
+    "measure": "Medida",
+    "by": "Até {time}",
+    "steps": "O que acontece, passo a passo",
+    "onlyAlt": "Só com a mudança",
+    "onlyBase": "Só sem a mudança",
+    "stepsNone": "Nenhum evento distingue os dois mundos: a mudança aparece nos números.",
+    "model": "Sobre este modelo",
+    "more": "Mais e se em {world}",
+    "others": "Outros mundos",
+    "open": "Abrir {world}"
   }
 }

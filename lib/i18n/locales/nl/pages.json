@@ -145,5 +145,26 @@
       "h": "Toepasselijk recht",
       "p1": "Op deze voorwaarden is het recht van {country} van toepassing, zonder je de bescherming van het recht van je woonplaats te ontnemen."
     }
+  },
+  "whatif": {
+    "answer": "In dit model, tegen {time}: {label} {alt} met de verandering, {base} zonder.",
+    "description": "{answer} Zie stap voor stap wat er gebeurt en probeer het zelf in een gratis simulator.",
+    "fork": "De verandering gebeurt op {time}, na een korte run van de wereld zoals hij is. Zelfde start, zelfde toeval: alleen de verandering verschilt.",
+    "run": "Dit wat-als starten",
+    "runNote": "Opent de live simulator met deze verandering. Verander nog meer en zie de twee toekomsten uiteengaan.",
+    "picture": "{world} op {time}",
+    "noChange": "Geen verandering",
+    "withIt": "Met het wat-als",
+    "numbers": "De cijfers",
+    "measure": "Maat",
+    "by": "Tegen {time}",
+    "steps": "Wat er gebeurt, stap voor stap",
+    "onlyAlt": "Alleen met de verandering",
+    "onlyBase": "Alleen zonder de verandering",
+    "stepsNone": "Geen gebeurtenis verschilt tussen de twee werelden: de verandering zie je in de cijfers.",
+    "model": "Over dit model",
+    "more": "Meer wat-als in {world}",
+    "others": "Andere werelden",
+    "open": "{world} openen"
   }
 }

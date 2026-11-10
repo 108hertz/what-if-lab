@@ -50,6 +50,8 @@
     "hint": "Ziehen, um einen Planeten zu werfen. Änderungen addieren sich.",
     "intro": "Echte newtonsche Schwerkraft für die Sonne und acht Planeten. Zieh auf der Bühne, um deinen eigenen Planeten hineinzuwerfen.",
     "name": "Sonnensystem",
+    "seoDescription": "Echte newtonsche Schwerkraft für die Sonne und acht Planeten. Verdopple die Masse der Sonne, entferne sie, mach Jupiter zum Stern oder wirf deinen eigenen Planeten hinein und sieh, wie sich die Bahnen ändern.",
+    "seoTitle": "Sonnensystem-Simulator: Was wäre, wenn die Sonne verschwände?",
     "sub": "Schwerkraft"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Uranus",
     "venus": "Venus",
     "yourplanet": "Dein Planet"
+  },
+  "question": {
+    "bh": "Was wäre, wenn ein Schwarzes Loch durch das Sonnensystem fliegen würde?",
+    "giant": "Was wäre, wenn die Sonne zum Roten Riesen würde?",
+    "jupstar": "Was wäre, wenn Jupiter ein Stern würde?",
+    "mars": "Was wäre, wenn die Erde auf der Umlaufbahn des Mars wäre?",
+    "nosun": "Was wäre, wenn die Sonne verschwinden würde?",
+    "stop": "Was wäre, wenn die Erde nicht mehr um die Sonne kreisen würde?",
+    "sun2": "Was wäre, wenn die Sonne doppelt so schwer wäre?"
   },
   "speed": {
     "0": "1 Mon./s",

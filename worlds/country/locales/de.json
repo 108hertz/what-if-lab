@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Eine Straße im Land, und dasselbe Land als 100 Menschen, von den Ärmsten bis zu den Reichsten. Wähle ein Land, dann ändere etwas: Die Änderungen addieren sich.",
     "name": "Länder",
+    "seoDescription": "Probiere ein bedingungsloses Grundeinkommen, einen höheren Mindestlohn oder höhere Steuern für die Reichsten in 41 Ländern aus und sieh, wie sich Einkommen, Armut, Jobs und Lebenserwartung neben dem unveränderten Land ändern.",
+    "seoTitle": "Wirtschaftssimulator: Grundeinkommen, Steuern, Mindestlohn",
     "sub": "Wirtschaft & Gesellschaft"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Dein eigenes Land (aus {from})",
     "this": "Dieses Land"
+  },
+  "question": {
+    "aging": "Was wäre, wenn die Geburtenrate eines Landes einbrechen würde?",
+    "build": "Was wäre, wenn ein Land Straßen, Bahnstrecken und Kraftwerke bauen würde?",
+    "corr": "Was wäre, wenn ein Land die Korruption halbieren würde?",
+    "drought": "Was wäre, wenn ein Land jahrelang Dürre hätte?",
+    "edu": "Was wäre, wenn ein Land seine Bildungsausgaben verdoppeln würde?",
+    "health": "Was wäre, wenn ein Land kostenlose Gesundheitsversorgung für alle hätte?",
+    "minwage": "Was wäre, wenn ein Land den Mindestlohn erhöhen würde?",
+    "oil": "Was wäre, wenn ein Land riesige Ölvorkommen entdecken würde?",
+    "open": "Was wäre, wenn ein Land seine Grenzen für Migranten öffnen würde?",
+    "pandemic": "Was wäre, wenn eine Pandemie ein Land treffen würde?",
+    "robots": "Was wäre, wenn Roboter die Hälfte der Fabrikarbeit erledigen würden?",
+    "taxcut": "Was wäre, wenn ein Land die Steuern für alle senken würde?",
+    "taxrich": "Was wäre, wenn ein Land die Reichen stärker besteuern würde?",
+    "trade": "Was wäre, wenn ein Land seine Grenzen für den Handel schließen würde?",
+    "ubi": "Was wäre, wenn ein Land ein bedingungsloses Grundeinkommen hätte?",
+    "war": "Was wäre, wenn ein Land in den Krieg ziehen würde?"
   },
   "speed": {
     "0": "3 Mon./s",

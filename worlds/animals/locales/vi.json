@@ -164,6 +164,8 @@
     "hint": "Mỗi con vật hơi khác nhau. Con nào hợp nhất sẽ đẻ nhiều con hơn. Bấm chạy và chọn một thay đổi.",
     "intro": "Tối đa năm loài cùng chung một nơi. Mỗi con hơi khác nhau; con nào hợp nhất sẽ đẻ nhiều con hơn, nên cơ thể thay đổi theo thời gian. Chọn một thế giới hoặc tự tạo, rồi tạo thay đổi: chúng cộng dồn.",
     "name": "Động vật",
+    "seoDescription": "Đặt tối đa năm trong 21 loài vào một nơi và xem tốc độ, kích thước, giác quan tiến hóa. Gây ra kỷ băng hà, cháy rừng, dịch bệnh hay loại bỏ một loài, rồi xem ai sống sót.",
+    "seoTitle": "Mô phỏng tiến hóa: Thú săn mồi, con mồi và chọn lọc tự nhiên",
     "sub": "Tiến hoá"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Nếu {many} biến mất thì sao?",
     "reserve": "Nếu nơi này thành khu bảo tồn thì sao?",
     "warm": "Nếu trời ấm hơn 3 °C thì sao?"
+  },
+  "question": {
+    "add": "Điều gì xảy ra nếu một loài động vật mới chuyển đến?",
+    "cool": "Điều gì xảy ra nếu kỷ băng hà đến?",
+    "disease": "Điều gì xảy ra nếu dịch bệnh lây lan giữa các loài động vật hoang dã?",
+    "drought": "Điều gì xảy ra nếu cả một năm không có mưa?",
+    "fire": "Điều gì xảy ra nếu một trận cháy rừng quét qua?",
+    "habitat": "Điều gì xảy ra nếu một nửa môi trường sống bị mất?",
+    "hunt": "Điều gì xảy ra nếu con người săn bắt một loài động vật?",
+    "invasive": "Điều gì xảy ra nếu một loài xâm lấn sinh sản nhanh xuất hiện?",
+    "move": "Điều gì xảy ra nếu động vật sống ở khí hậu ngược lại?",
+    "rain": "Điều gì xảy ra nếu mưa thuận nhiều năm liền?",
+    "remove": "Điều gì xảy ra nếu một loài động vật biến mất khỏi lưới thức ăn?",
+    "reserve": "Điều gì xảy ra nếu vùng đất trở thành khu bảo tồn?",
+    "warm": "Điều gì xảy ra với động vật hoang dã nếu khí hậu ấm lên 3 °C?"
   },
   "sp": {
     "bear": {

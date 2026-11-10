@@ -164,6 +164,8 @@
     "hint": "Each animal is a little different. The ones that fit best have more babies. Press play and pick a change.",
     "intro": "Up to five kinds of animal share one place. Each animal is a little different; the ones that fit best have more babies, so bodies change over time. Pick a world or build your own, then make changes: they add up.",
     "name": "Animals",
+    "seoDescription": "Put up to five of 21 animals in one place and watch speed, size and senses evolve. Bring an ice age, a wildfire or a sickness, or remove a species, and see who survives.",
+    "seoTitle": "Evolution Simulator: Predators, Prey and Natural Selection",
     "sub": "Evolution"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "What if the {many} disappeared?",
     "reserve": "What if it became a protected reserve?",
     "warm": "What if it got 3 °C warmer?"
+  },
+  "question": {
+    "add": "What if a new animal moved in?",
+    "cool": "What if an ice age came?",
+    "disease": "What if a disease spread among wild animals?",
+    "drought": "What if a year passed without rain?",
+    "fire": "What if a wildfire swept through?",
+    "habitat": "What if half the habitat were lost?",
+    "hunt": "What if people hunted an animal?",
+    "invasive": "What if a fast-breeding invasive species arrived?",
+    "move": "What if animals lived in the opposite climate?",
+    "rain": "What if there were years of good rain?",
+    "remove": "What if an animal disappeared from a food web?",
+    "reserve": "What if the land became a protected reserve?",
+    "warm": "What if the climate got 3 °C warmer for wild animals?"
   },
   "sp": {
     "bear": {

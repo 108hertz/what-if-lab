@@ -164,6 +164,8 @@
     "hint": "Cada animal es un poco distinto. Los que mejor encajan tienen más crías. Pulsa reproducir y elige un cambio.",
     "intro": "Hasta cinco tipos de animal comparten un lugar. Cada animal es un poco distinto; los que mejor encajan tienen más crías, así que los cuerpos cambian con el tiempo. Elige un mundo o crea el tuyo, y haz cambios: se suman.",
     "name": "Animales",
+    "seoDescription": "Pon hasta cinco de 21 animales en un mismo lugar y mira evolucionar la velocidad, el tamaño y los sentidos. Trae una glaciación, un incendio o una enfermedad, o quita una especie, y mira quién sobrevive.",
+    "seoTitle": "Simulador de evolución: depredadores, presas y selección natural",
     "sub": "Evolución"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "¿Y si no hubiera {many}?",
     "reserve": "¿Y si se convirtiera en una reserva protegida?",
     "warm": "¿Y si hiciera 3 °C más de calor?"
+  },
+  "question": {
+    "add": "¿Qué pasaría si llegara un animal nuevo?",
+    "cool": "¿Qué pasaría si llegara una edad de hielo?",
+    "disease": "¿Qué pasaría si una enfermedad se propagara entre los animales salvajes?",
+    "drought": "¿Qué pasaría si pasara un año sin llover?",
+    "fire": "¿Qué pasaría si arrasara un incendio forestal?",
+    "habitat": "¿Qué pasaría si se perdiera la mitad del hábitat?",
+    "hunt": "¿Qué pasaría si la gente cazara a un animal?",
+    "invasive": "¿Qué pasaría si llegara una especie invasora que se reproduce rápido?",
+    "move": "¿Qué pasaría si los animales vivieran en el clima opuesto?",
+    "rain": "¿Qué pasaría si hubiera años de buenas lluvias?",
+    "remove": "¿Qué pasaría si un animal desapareciera de una red trófica?",
+    "reserve": "¿Qué pasaría si la zona se convirtiera en una reserva protegida?",
+    "warm": "¿Qué pasaría si el clima se calentara 3 °C para los animales salvajes?"
   },
   "sp": {
     "bear": {

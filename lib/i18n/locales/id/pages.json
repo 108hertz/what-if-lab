@@ -145,5 +145,26 @@
       "h": "Hukum yang berlaku",
       "p1": "Ketentuan ini diatur oleh hukum {country}, tanpa menghilangkan perlindungan hukum di tempat Anda tinggal."
     }
+  },
+  "whatif": {
+    "answer": "Dalam model ini, pada {time}: {label} {alt} dengan perubahan, {base} tanpanya.",
+    "description": "{answer} Lihat apa yang terjadi langkah demi langkah, lalu jalankan sendiri di simulator gratis.",
+    "fork": "Perubahan dibuat pada {time}, setelah dunia berjalan sebentar apa adanya. Awal sama, peluang sama: hanya perubahannya yang beda.",
+    "run": "Jalankan bagaimana jika ini",
+    "runNote": "Membuka simulator langsung dengan perubahan ini. Ubah hal lain dan lihat dua masa depan berpisah.",
+    "picture": "{world} pada {time}",
+    "noChange": "Tanpa perubahan",
+    "withIt": "Dengan bagaimana jika",
+    "numbers": "Angka-angkanya",
+    "measure": "Ukuran",
+    "by": "Pada {time}",
+    "steps": "Apa yang terjadi, langkah demi langkah",
+    "onlyAlt": "Hanya dengan perubahan",
+    "onlyBase": "Hanya tanpa perubahan",
+    "stepsNone": "Tidak ada peristiwa yang berbeda di kedua dunia: perubahannya terlihat di angka.",
+    "model": "Tentang model ini",
+    "more": "Bagaimana jika lainnya di {world}",
+    "others": "Dunia lain",
+    "open": "Buka {world}"
   }
 }

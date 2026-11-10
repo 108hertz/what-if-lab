@@ -14,10 +14,17 @@
     "yourplanet": "hành tinh của bạn"
   },
   "ctl": {
-    "sunm": { "label": "Khối lượng Mặt Trời", "unit": "× Mặt Trời" },
+    "sunm": {
+      "label": "Khối lượng Mặt Trời",
+      "unit": "× Mặt Trời"
+    },
     "view": {
       "label": "Góc nhìn",
-      "opt": { "inner": "Hành tinh vòng trong", "mid": "Đến Sao Mộc", "outer": "Cả hệ" }
+      "opt": {
+        "inner": "Hành tinh vòng trong",
+        "mid": "Đến Sao Mộc",
+        "outer": "Cả hệ"
+      }
     }
   },
   "ev": {
@@ -35,17 +42,31 @@
     "swallowed": "{body} bị sao khổng lồ đỏ nuốt chửng",
     "throw": "Bạn ném vào một hành tinh mới"
   },
-  "info": { "changed": "Có thay đổi", "now": "Trái Đất hiện tại" },
+  "info": {
+    "changed": "Có thay đổi",
+    "now": "Trái Đất hiện tại"
+  },
   "meta": {
     "hint": "Kéo để ném một hành tinh. Thay đổi cộng dồn.",
     "intro": "Lực hấp dẫn Newton thật cho Mặt Trời và tám hành tinh. Kéo trên sân khấu để ném vào hành tinh của riêng bạn.",
     "name": "Hệ Mặt Trời",
+    "seoDescription": "Hấp dẫn Newton thật cho Mặt Trời và tám hành tinh. Nhân đôi khối lượng Mặt Trời, xóa nó, biến Sao Mộc thành sao hay ném hành tinh riêng của bạn và xem quỹ đạo đổi thay.",
+    "seoTitle": "Mô phỏng Hệ Mặt Trời: Nếu Mặt Trời biến mất thì sao?",
     "sub": "Lực hấp dẫn"
   },
   "metric": {
-    "dist": { "label": "Khoảng cách Trái Đất–Mặt Trời", "unit": "AU" },
-    "temp": { "label": "Nhiệt độ Trái Đất", "unit": "°C" },
-    "year": { "label": "Độ dài một năm", "unit": "ngày" }
+    "dist": {
+      "label": "Khoảng cách Trái Đất–Mặt Trời",
+      "unit": "AU"
+    },
+    "temp": {
+      "label": "Nhiệt độ Trái Đất",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Độ dài một năm",
+      "unit": "ngày"
+    }
   },
   "name": {
     "blackhole": "Hố đen",
@@ -59,7 +80,21 @@
     "venus": "Sao Kim",
     "yourplanet": "Hành tinh của bạn"
   },
-  "speed": { "0": "1 tháng/s", "1": "6 tháng/s", "2": "2 năm/s", "3": "10 năm/s" },
+  "question": {
+    "bh": "Điều gì xảy ra nếu một lỗ đen bay qua Hệ Mặt Trời?",
+    "giant": "Điều gì xảy ra nếu Mặt Trời trở thành sao khổng lồ đỏ?",
+    "jupstar": "Điều gì xảy ra nếu Sao Mộc trở thành một ngôi sao?",
+    "mars": "Điều gì xảy ra nếu Trái Đất nằm trên quỹ đạo của Sao Hỏa?",
+    "nosun": "Điều gì xảy ra nếu Mặt Trời biến mất?",
+    "stop": "Điều gì xảy ra nếu Trái Đất ngừng quay quanh Mặt Trời?",
+    "sun2": "Điều gì xảy ra nếu Mặt Trời nặng gấp đôi?"
+  },
+  "speed": {
+    "0": "1 tháng/s",
+    "1": "6 tháng/s",
+    "2": "2 năm/s",
+    "3": "10 năm/s"
+  },
   "status": {
     "boiling": "đại dương sôi",
     "destroyed": "bị phá huỷ",

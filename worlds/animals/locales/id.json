@@ -164,6 +164,8 @@
     "hint": "Setiap hewan sedikit berbeda. Yang paling cocok punya lebih banyak anak. Tekan putar dan pilih perubahan.",
     "intro": "Hingga lima jenis hewan berbagi satu tempat. Setiap hewan sedikit berbeda; yang paling cocok punya lebih banyak anak, jadi tubuh mereka berubah seiring waktu. Pilih dunia atau buat sendiri, lalu buat perubahan: semuanya bertambah.",
     "name": "Hewan",
+    "seoDescription": "Taruh hingga lima dari 21 hewan di satu tempat dan saksikan kecepatan, ukuran, dan indra berevolusi. Datangkan zaman es atau penyakit, lalu lihat siapa bertahan.",
+    "seoTitle": "Simulator Evolusi: Predator, Mangsa, dan Seleksi Alam",
     "sub": "Evolusi"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Bagaimana jika {many} menghilang?",
     "reserve": "Bagaimana jika tempat ini jadi cagar alam?",
     "warm": "Bagaimana jika suhu naik 3 °C?"
+  },
+  "question": {
+    "add": "Bagaimana jika hewan baru datang dan menetap?",
+    "cool": "Bagaimana jika zaman es datang?",
+    "disease": "Bagaimana jika penyakit menyebar di antara hewan liar?",
+    "drought": "Bagaimana jika setahun berlalu tanpa hujan?",
+    "fire": "Bagaimana jika kebakaran hutan melanda?",
+    "habitat": "Bagaimana jika separuh habitat hilang?",
+    "hunt": "Bagaimana jika manusia memburu seekor hewan?",
+    "invasive": "Bagaimana jika spesies invasif yang cepat berkembang biak datang?",
+    "move": "Bagaimana jika hewan hidup di iklim yang berlawanan?",
+    "rain": "Bagaimana jika hujan turun dengan baik selama bertahun-tahun?",
+    "remove": "Bagaimana jika seekor hewan hilang dari jaring makanan?",
+    "reserve": "Bagaimana jika lahan itu menjadi kawasan konservasi?",
+    "warm": "Bagaimana jika iklim 3 °C lebih hangat bagi hewan liar?"
   },
   "sp": {
     "bear": {

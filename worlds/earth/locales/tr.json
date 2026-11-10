@@ -1,10 +1,22 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "co2": { "label": "Havadaki CO₂", "unit": "ppm" },
-    "emis": { "label": "Yıllık CO₂ salımı", "unit": "Gt" },
-    "forest": { "label": "Orman örtüsü", "unit": "kara yüzdesi" },
-    "front": { "label": "Kıyı yüksekliği", "unit": "m, deniz üstü" },
+    "co2": {
+      "label": "Havadaki CO₂",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Yıllık CO₂ salımı",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Orman örtüsü",
+      "unit": "kara yüzdesi"
+    },
+    "front": {
+      "label": "Kıyı yüksekliği",
+      "unit": "m, deniz üstü"
+    },
     "h": {
       "air-today": "Bugünkü hava",
       "emissions": "Salımlar",
@@ -12,14 +24,38 @@
       "planet": "Gezegen",
       "your-town": "Kasaban"
     },
-    "mDac": { "label": "CO₂ giderme", "unit": "Gt/yıl" },
-    "mDim": { "label": "Güneşi karartan aerosoller", "unit": "%" },
-    "mEm": { "label": "Salım değişimi", "unit": "%" },
-    "mMeth": { "label": "Metan azaltımı", "unit": "%" },
-    "mTrees": { "label": "Dikilen ağaç", "unit": "trilyon" },
-    "mWall": { "label": "Deniz duvarı", "unit": "m" },
-    "mYrs": { "label": "Süre", "unit": "yıl" },
-    "meth": { "label": "Havadaki metan", "unit": "ppb" },
+    "mDac": {
+      "label": "CO₂ giderme",
+      "unit": "Gt/yıl"
+    },
+    "mDim": {
+      "label": "Güneşi karartan aerosoller",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Salım değişimi",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Metan azaltımı",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Dikilen ağaç",
+      "unit": "trilyon"
+    },
+    "mWall": {
+      "label": "Deniz duvarı",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "Süre",
+      "unit": "yıl"
+    },
+    "meth": {
+      "label": "Havadaki metan",
+      "unit": "ppb"
+    },
     "path": {
       "label": "Salımların gidişi",
       "opt": {
@@ -28,7 +64,10 @@
         "grow": "Artmaya devam eder"
       }
     },
-    "sens": { "label": "İklim duyarlılığı", "unit": "°C / 2× CO₂" },
+    "sens": {
+      "label": "İklim duyarlılığı",
+      "unit": "°C / 2× CO₂"
+    },
     "tip": {
       "label": "Devrilme noktaları",
       "opt": {
@@ -36,7 +75,10 @@
         "on": "Açık: donmuş toprak ve buz tabakaları devrilebilir"
       }
     },
-    "uptake": { "label": "Okyanus ve toprak emilimi", "unit": "bugünün %'si" }
+    "uptake": {
+      "label": "Okyanus ve toprak emilimi",
+      "unit": "bugünün %'si"
+    }
   },
   "ev": {
     "apply": {
@@ -81,15 +123,35 @@
   "meta": {
     "intro": "Bugün bir fiyort kasabası. On yıllar geçerken kara, ormana, tarlalara ve limana bak.",
     "name": "Dünya",
+    "seoDescription": "Salımları durdur, trilyon ağaç dik ya da permafrostu erit; ısınma, deniz seviyesi, kar ve ürünlerin yıllar içinde değişimini olduğu gibi kalan dünyayla karşılaştır.",
+    "seoTitle": "İklim Değişikliği Simülatörü: Ya salımları durdursak?",
     "sub": "İklim"
   },
   "metric": {
-    "co2": { "label": "CO₂", "unit": "ppm" },
-    "crops": { "label": "Ürünler", "unit": "endeks" },
-    "flood": { "label": "Sel", "unit": "evlerin %'si" },
-    "sea": { "label": "Deniz seviyesi", "unit": "m" },
-    "snow": { "label": "Kar", "unit": "bugünün %'si" },
-    "temp": { "label": "Isınma", "unit": "°C" }
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Ürünler",
+      "unit": "endeks"
+    },
+    "flood": {
+      "label": "Sel",
+      "unit": "evlerin %'si"
+    },
+    "sea": {
+      "label": "Deniz seviyesi",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Kar",
+      "unit": "bugünün %'si"
+    },
+    "temp": {
+      "label": "Isınma",
+      "unit": "°C"
+    }
   },
   "mix": {
     "dac": "yılda {n} Gt CO₂ giderildi",
@@ -99,6 +161,20 @@
     "meth": "metan −%{n}",
     "trees": "{n} trilyon ağaç",
     "wall": "{n} m deniz duvarı"
+  },
+  "question": {
+    "amazon": "Amazon yağmur ormanı otlağa dönüşseydi ne olurdu?",
+    "dac": "Havadan CO₂ çekseydik ne olurdu?",
+    "double": "Karbon emisyonları iki katına çıksaydı ne olurdu?",
+    "ev": "Dünya hızla temiz enerjiye geçseydi ne olurdu?",
+    "geo": "Güneş ışığını 30 yıl boyunca aerosollerle azaltsaydık ne olurdu?",
+    "melt": "Batı Antarktika buz tabakası çökseydi ne olurdu?",
+    "methane": "Metan emisyonlarını yarıya indirseydik ne olurdu?",
+    "permafrost": "Permafrost hızla çözülseydi ne olurdu?",
+    "seawall": "Bir kıyı kasabası 3 m'lik bir deniz duvarı inşa etseydi ne olurdu?",
+    "trees": "Bir trilyon ağaç dikseydik ne olurdu?",
+    "volcano": "Bir süper yanardağ patlasaydı ne olurdu?",
+    "zero": "Bugün tüm karbon emisyonlarını durdursaydık ne olurdu?"
   },
   "speed": {
     "0": "1 yıl/sn",

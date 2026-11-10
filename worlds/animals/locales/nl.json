@@ -164,6 +164,8 @@
     "hint": "Elk dier is een beetje anders. Wie het best past, krijgt meer jongen. Druk op afspelen en kies een wijziging.",
     "intro": "Tot vijf diersoorten delen één plek. Elk dier is een beetje anders; wie het best past, krijgt meer jongen, dus lichamen veranderen met de tijd. Kies een wereld of bouw je eigen, en verander dingen: ze tellen op.",
     "name": "Dieren",
+    "seoDescription": "Zet tot vijf van 21 dieren op één plek en zie snelheid, grootte en zintuigen evolueren. Breng een ijstijd, bosbrand of ziekte, of haal een soort weg en zie wie overleeft.",
+    "seoTitle": "Evolutiesimulator: roofdieren, prooi en natuurlijke selectie",
     "sub": "Evolutie"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Wat als de {many} verdwenen?",
     "reserve": "Wat als het een beschermd natuurgebied werd?",
     "warm": "Wat als het 3 °C warmer werd?"
+  },
+  "question": {
+    "add": "Wat als er een nieuw dier bij kwam wonen?",
+    "cool": "Wat als er een ijstijd kwam?",
+    "disease": "Wat als een ziekte zich onder wilde dieren verspreidde?",
+    "drought": "Wat als het een jaar lang niet regende?",
+    "fire": "Wat als er een natuurbrand overheen raasde?",
+    "habitat": "Wat als de helft van het leefgebied verdween?",
+    "hunt": "Wat als mensen op een dier gingen jagen?",
+    "invasive": "Wat als er een snel voortplantende invasieve soort kwam?",
+    "move": "Wat als dieren in het tegenovergestelde klimaat leefden?",
+    "rain": "Wat als er jarenlang genoeg regen viel?",
+    "remove": "Wat als een dier uit een voedselweb verdween?",
+    "reserve": "Wat als het land een beschermd natuurgebied werd?",
+    "warm": "Wat als het klimaat 3 °C warmer werd voor wilde dieren?"
   },
   "sp": {
     "bear": {

@@ -164,6 +164,8 @@
     "hint": "Her hayvan biraz farklı. En iyi uyum sağlayanlar daha çok yavru yapar. Oynat'a bas ve bir değişiklik seç.",
     "intro": "Beş türe kadar hayvan aynı yeri paylaşır. Her hayvan biraz farklıdır; en iyi uyum sağlayanlar daha çok yavru yapar, böylece bedenler zamanla değişir. Bir dünya seç ya da kendi dünyanı kur, sonra değişiklik yap: birbirine eklenirler.",
     "name": "Hayvanlar",
+    "seoDescription": "21 hayvandan beşine kadarını aynı yere koy; hız, boyut ve duyuların evrimini izle. Buzul çağı, orman yangını ya da hastalık getir, bir türü çıkar ve kimin hayatta kaldığını gör.",
+    "seoTitle": "Evrim Simülatörü: Avcılar, Av Hayvanları ve Doğal Seçilim",
     "sub": "Evrim"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Ya {many} yok olursa?",
     "reserve": "Ya burası koruma alanı olursa?",
     "warm": "Ya hava 3 °C ısınırsa?"
+  },
+  "question": {
+    "add": "Yeni bir hayvan gelip yerleşseydi ne olurdu?",
+    "cool": "Bir buzul çağı gelseydi ne olurdu?",
+    "disease": "Yaban hayvanları arasında bir hastalık yayılsaydı ne olurdu?",
+    "drought": "Bir yıl boyunca hiç yağmur yağmasaydı ne olurdu?",
+    "fire": "Bir orman yangını her yeri sarsaydı ne olurdu?",
+    "habitat": "Yaşam alanının yarısı yok olsaydı ne olurdu?",
+    "hunt": "İnsanlar bir hayvanı avlasaydı ne olurdu?",
+    "invasive": "Hızlı üreyen istilacı bir tür gelseydi ne olurdu?",
+    "move": "Hayvanlar tam tersi bir iklimde yaşasaydı ne olurdu?",
+    "rain": "Yıllarca bol yağmur yağsaydı ne olurdu?",
+    "remove": "Bir hayvan besin ağından yok olsaydı ne olurdu?",
+    "reserve": "Bu bölge koruma alanı olsaydı ne olurdu?",
+    "warm": "İklim yaban hayvanları için 3 °C ısınsaydı ne olurdu?"
   },
   "sp": {
     "bear": {

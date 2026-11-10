@@ -93,6 +93,8 @@
   "meta": {
     "intro": "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
     "name": "Galaxies",
+    "seoDescription": "Watch the Milky Way and Andromeda collide, or send in more galaxies. Make dark matter vanish, change the aim or the spin and compare with the untouched sky. Free, in your browser.",
+    "seoTitle": "Galaxy Collision Simulator: Milky Way meets Andromeda",
     "sub": "Collisions"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Stars thrown out",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "What if a black hole as heavy as a galaxy appeared in the Milky Way?",
+    "bullet": "What if a galaxy shot straight through the Milky Way?",
+    "flipmw": "What if the Milky Way spun the other way?",
+    "freeze": "What if the Milky Way's stars stopped orbiting?",
+    "headon": "What if Andromeda hit the Milky Way head-on?",
+    "miss": "What if Andromeda missed the Milky Way?",
+    "nodm": "What if dark matter disappeared?",
+    "reverse": "What if Andromeda turned around?",
+    "ring": "What if a small galaxy punched through the Milky Way's centre?",
+    "stop": "What if Andromeda stopped dead?",
+    "swarm": "What if more galaxies fell into the Milky Way?",
+    "third": "What if a third galaxy joined the Milky Way–Andromeda collision?"
   },
   "speed": {
     "0": "5 Myr/s",

@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Een straat in het land, en hetzelfde land als 100 mensen van arm naar rijk. Kies een land en verander dingen: ze tellen op.",
     "name": "Landen",
+    "seoDescription": "Probeer basisinkomen, hoger minimumloon of rijkenbelasting in 41 landen en zie inkomen, armoede, banen en levensduur veranderen naast het land zoals het was.",
+    "seoTitle": "Economiesimulator: basisinkomen, belasting, minimumloon",
     "sub": "Economie en samenleving"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Je eigen land (op basis van {from})",
     "this": "Dit land"
+  },
+  "question": {
+    "aging": "Wat als het geboortecijfer van een land instortte?",
+    "build": "Wat als een land wegen, spoor en elektriciteit aanlegde?",
+    "corr": "Wat als een land de corruptie halveerde?",
+    "drought": "Wat als een land jarenlang droogte had?",
+    "edu": "Wat als een land twee keer zoveel aan onderwijs uitgaf?",
+    "health": "Wat als een land gratis zorg voor iedereen had?",
+    "minwage": "Wat als een land het minimumloon verhoogde?",
+    "oil": "Wat als een land enorme oliereserves ontdekte?",
+    "open": "Wat als een land zijn grenzen openstelde voor migranten?",
+    "pandemic": "Wat als een pandemie een land trof?",
+    "robots": "Wat als robots de helft van het fabriekswerk deden?",
+    "taxcut": "Wat als een land de belasting voor iedereen verlaagde?",
+    "taxrich": "Wat als een land de rijken zwaarder belastte?",
+    "trade": "Wat als een land zijn grenzen sloot voor handel?",
+    "ubi": "Wat als een land een basisinkomen invoerde?",
+    "war": "Wat als een land ten oorlog trok?"
   },
   "speed": {
     "0": "3 mnd/s",

@@ -3,7 +3,9 @@
   "site": {
     "name": "What-If Lab",
     "description": "Zooma da un protone all'universo osservabile, apri un mondo, cambialo con i \"e se…\" e confronta il suo futuro con quello del mondo rimasto com'era.",
-    "titleWorld": "{world} · What-If Lab"
+    "titleWorld": "{world} · What-If Lab",
+    "title": "What-If Lab: simulatore di «E se…?» dai protoni alle galassie",
+    "searchDescription": "Un simulatore di «E se…?» gratuito nel tuo browser. Fai zoom da un protone all’universo, poi cambia il sistema solare, il clima della Terra o un paese e guarda il futuro dividersi."
   },
   "none": "—",
   "scale": {

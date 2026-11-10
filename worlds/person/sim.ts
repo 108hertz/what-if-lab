@@ -62,6 +62,7 @@ const MESSAGES: Record<string, string> = {
 export const person: Sandbox<W, P> = {
   ...meta,
   intro: "One person, 100 parallel versions of their life. Try new habits and see how many stick with it and what it changes.",
+  seo: { title: "Habit Simulator: 100 Versions of Your Life", description: "Start a habit like daily exercise, quitting social media or 8 hours of sleep and follow 100 versions of yourself for years: who keeps it, who quits and what it changes." },
   messages: MESSAGES,
   controls: [
     { type: "range", id: "age", label: "Age", min: 16, max: 75, step: 1, val: 30, unit: "yrs" },
@@ -72,6 +73,20 @@ export const person: Sandbox<W, P> = {
     { type: "range", id: "mood", label: "Current wellbeing", min: 0, max: 100, step: 1, val: 60 },
   ],
   whatifs: WHATIFS,
+  // The question each what-if's page answers, and its frozen URL words (change 0033).
+  questions: {
+    exercise: { q: "What if you exercised 30 minutes every day?", slug: "exercise-30-minutes-a-day" },
+    social: { q: "What if you quit social media?", slug: "quit-social-media" },
+    sleep: { q: "What if you slept 8 hours on a fixed schedule?", slug: "sleep-8-hours" },
+    read: { q: "What if you read 30 minutes a day?", slug: "read-30-minutes-a-day" },
+    meditate: { q: "What if you meditated 10 minutes a day?", slug: "meditate-10-minutes-a-day" },
+    learn: { q: "What if you learned a skill 1 hour a day?", slug: "learn-a-skill-1-hour-a-day" },
+    drink: { q: "What if you started drinking heavily?", slug: "start-drinking-heavily" },
+    isolate: { q: "What if you pulled away from your friends?", slug: "pull-away-from-friends" },
+    smoke: { q: "What if you started smoking?", slug: "start-smoking" },
+  },
+  // The run behind its what-if pages: times read, step and the metric the answer names (change 0033)
+  answer: { at: [0.25, 1, 5], key: ["well", "health", "social", "career"] },
   speeds: [[1 / 52, "1 wk/s"], [1 / 12, "1 mo/s"], [0.5, "6 mo/s"], [2, "2 yr/s"]],
   defaultSpeed: 1,
   fmtT: fmtDur,

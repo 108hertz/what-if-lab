@@ -1,12 +1,25 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "age": { "label": "年龄", "unit": "岁" },
-    "disc": { "label": "自律" },
-    "health": { "label": "目前健康" },
-    "mood": { "label": "目前幸福感" },
-    "soc": { "label": "社交性" },
-    "stress": { "label": "压力水平" }
+    "age": {
+      "label": "年龄",
+      "unit": "岁"
+    },
+    "disc": {
+      "label": "自律"
+    },
+    "health": {
+      "label": "目前健康"
+    },
+    "mood": {
+      "label": "目前幸福感"
+    },
+    "soc": {
+      "label": "社交性"
+    },
+    "stress": {
+      "label": "压力水平"
+    }
   },
   "dim": {
     "career": "事业与技能",
@@ -39,14 +52,42 @@
   "meta": {
     "intro": "一个人，100 个平行版本的人生。试试新习惯，看看有多少版本能坚持下去，又会改变什么。",
     "name": "性格",
+    "seoDescription": "开始一个习惯，如每天锻炼、戒掉社交媒体或睡足8小时，追踪100个“你”多年的变化：谁坚持、谁放弃，又会带来什么改变。",
+    "seoTitle": "习惯模拟器：你人生的100个版本",
     "sub": "100 种平行人生"
   },
   "metric": {
-    "career": { "label": "事业与技能", "unit": "/100" },
-    "health": { "label": "健康", "unit": "/100" },
-    "kept": { "label": "仍在坚持", "unit": "%" },
-    "social": { "label": "人际关系", "unit": "/100" },
-    "well": { "label": "幸福感", "unit": "/100" }
+    "career": {
+      "label": "事业与技能",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "健康",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "仍在坚持",
+      "unit": "%"
+    },
+    "social": {
+      "label": "人际关系",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "幸福感",
+      "unit": "/100"
+    }
+  },
+  "question": {
+    "drink": "如果你开始酗酒会怎样？",
+    "exercise": "如果你每天锻炼30分钟会怎样？",
+    "isolate": "如果你疏远了朋友会怎样？",
+    "learn": "如果你每天花1小时学一项技能会怎样？",
+    "meditate": "如果你每天冥想10分钟会怎样？",
+    "read": "如果你每天阅读30分钟会怎样？",
+    "sleep": "如果你按固定作息每天睡8小时会怎样？",
+    "smoke": "如果你开始吸烟会怎样？",
+    "social": "如果你戒掉社交媒体会怎样？"
   },
   "short": {
     "drink": "开始酗酒",

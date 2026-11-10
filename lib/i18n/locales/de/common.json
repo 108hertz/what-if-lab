@@ -3,7 +3,9 @@
   "site": {
     "name": "What-If Lab",
     "description": "Zoome vom Proton bis zum beobachtbaren Universum, öffne eine Welt, ändere sie mit Was-wäre-wenns und vergleiche ihre Zukunft mit der unveränderten Welt.",
-    "titleWorld": "{world} · What-If Lab"
+    "titleWorld": "{world} · What-If Lab",
+    "title": "What-If Lab: Was-wäre-wenn-Simulator von Protonen bis Galaxien",
+    "searchDescription": "Ein kostenloser Was-wäre-wenn-Simulator im Browser. Zoome von einem Proton bis zum Universum, verändere dann das Sonnensystem, das Erdklima oder ein Land und sieh zu, wie sich die Zukunft aufspaltet."
   },
   "none": "—",
   "scale": {

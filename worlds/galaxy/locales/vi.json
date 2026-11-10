@@ -1,29 +1,70 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "aim": { "label": "Lệch khỏi tâm", "unit": "nghìn nas" },
-    "bhm": { "label": "Khối lượng hố đen", "unit": "× Ngân Hà" },
-    "count": { "label": "Số thiên hà rơi vào" },
-    "dm": { "label": "Vật chất tối", "unit": "×" },
-    "dmleft": { "label": "Lực hấp dẫn còn lại", "unit": "%" },
-    "fly": { "label": "Tốc độ lao qua", "unit": "km/s" },
-    "h": { "starting-world": "Thế giới ban đầu", "what-if-settings": "Cài đặt nếu như" },
-    "mass": { "label": "Khối lượng Andromeda", "unit": "× Ngân Hà" },
+    "aim": {
+      "label": "Lệch khỏi tâm",
+      "unit": "nghìn nas"
+    },
+    "bhm": {
+      "label": "Khối lượng hố đen",
+      "unit": "× Ngân Hà"
+    },
+    "count": {
+      "label": "Số thiên hà rơi vào"
+    },
+    "dm": {
+      "label": "Vật chất tối",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Lực hấp dẫn còn lại",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Tốc độ lao qua",
+      "unit": "km/s"
+    },
+    "h": {
+      "starting-world": "Thế giới ban đầu",
+      "what-if-settings": "Cài đặt nếu như"
+    },
+    "mass": {
+      "label": "Khối lượng Andromeda",
+      "unit": "× Ngân Hà"
+    },
     "neigh": {
       "label": "Láng giềng lúc đầu",
-      "opt": { "m33": "Tam Giác", "m33lmc": "Tam Giác + LMC", "none": "Không có" }
+      "opt": {
+        "m33": "Tam Giác",
+        "m33lmc": "Tam Giác + LMC",
+        "none": "Không có"
+      }
     },
     "shape": {
       "label": "Hình dạng Andromeda",
-      "opt": { "elliptical": "Elip", "spiral": "Xoắn ốc" }
+      "opt": {
+        "elliptical": "Elip",
+        "spiral": "Xoắn ốc"
+      }
     },
-    "size": { "label": "Kích thước của chúng", "unit": "× Ngân Hà" },
-    "speed": { "label": "Tốc độ tiến lại", "unit": "km/s" },
+    "size": {
+      "label": "Kích thước của chúng",
+      "unit": "× Ngân Hà"
+    },
+    "speed": {
+      "label": "Tốc độ tiến lại",
+      "unit": "km/s"
+    },
     "spin": {
       "label": "Andromeda quay",
-      "opt": { "against": "Ngược chiều ta", "same": "Cùng chiều ta" }
+      "opt": {
+        "against": "Ngược chiều ta",
+        "same": "Cùng chiều ta"
+      }
     },
-    "stars": { "label": "Số sao mỗi thiên hà" }
+    "stars": {
+      "label": "Số sao mỗi thiên hà"
+    }
   },
   "ev": {
     "bhBig": "Một hố đen nặng gấp {x} lần Ngân Hà xuất hiện ở tâm",
@@ -52,13 +93,40 @@
   "meta": {
     "intro": "Ngân Hà và Andromeda, trên đường va chạm thật của chúng, được tua nhanh. Mỗi chấm là một ngôi sao.",
     "name": "Thiên hà",
+    "seoDescription": "Xem Ngân Hà và Andromeda va chạm, hoặc thêm nhiều thiên hà. Cho vật chất tối biến mất, đổi hướng hay độ quay rồi so với bầu trời nguyên vẹn. Miễn phí, ngay trên trình duyệt.",
+    "seoTitle": "Mô phỏng va chạm thiên hà: Ngân Hà gặp Andromeda",
     "sub": "Va chạm"
   },
   "metric": {
-    "disc": { "label": "Sao trong đĩa", "unit": "%" },
-    "galaxies": { "label": "Thiên hà còn lại" },
-    "sep": { "label": "Khoảng cách", "unit": "nghìn nas" },
-    "thrown": { "label": "Sao bị văng ra", "unit": "%" }
+    "disc": {
+      "label": "Sao trong đĩa",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Thiên hà còn lại"
+    },
+    "sep": {
+      "label": "Khoảng cách",
+      "unit": "nghìn nas"
+    },
+    "thrown": {
+      "label": "Sao bị văng ra",
+      "unit": "%"
+    }
+  },
+  "question": {
+    "bh": "Điều gì xảy ra nếu một lỗ đen nặng như cả thiên hà xuất hiện trong Dải Ngân Hà?",
+    "bullet": "Điều gì xảy ra nếu một thiên hà lao thẳng xuyên qua Dải Ngân Hà?",
+    "flipmw": "Điều gì xảy ra nếu Dải Ngân Hà quay theo chiều ngược lại?",
+    "freeze": "Điều gì xảy ra nếu các ngôi sao trong Dải Ngân Hà ngừng quay quanh tâm?",
+    "headon": "Điều gì xảy ra nếu Andromeda đâm trực diện vào Dải Ngân Hà?",
+    "miss": "Điều gì xảy ra nếu Andromeda trượt qua Dải Ngân Hà?",
+    "nodm": "Điều gì xảy ra nếu vật chất tối biến mất?",
+    "reverse": "Điều gì xảy ra nếu Andromeda quay đầu?",
+    "ring": "Điều gì xảy ra nếu một thiên hà nhỏ xuyên qua tâm Dải Ngân Hà?",
+    "stop": "Điều gì xảy ra nếu Andromeda dừng hẳn lại?",
+    "swarm": "Điều gì xảy ra nếu nhiều thiên hà hơn rơi vào Dải Ngân Hà?",
+    "third": "Điều gì xảy ra nếu một thiên hà thứ ba tham gia vụ va chạm giữa Dải Ngân Hà và Andromeda?"
   },
   "speed": {
     "0": "5 tr năm/s",
@@ -69,7 +137,9 @@
     "5": "400 tr năm/s",
     "6": "1 tỷ năm/s"
   },
-  "stage": { "scale": "{n} năm ánh sáng" },
+  "stage": {
+    "scale": "{n} năm ánh sáng"
+  },
   "whatif": {
     "bh": "Một hố đen nặng như cả thiên hà xuất hiện ở tâm ta",
     "bullet": "Một thiên hà lao thẳng xuyên qua",

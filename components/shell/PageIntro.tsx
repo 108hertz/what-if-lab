@@ -1,4 +1,5 @@
-import type { Mode } from "@/worlds/registry";
+import { modeHref, type Mode } from "@/worlds/registry";
+import { homeLd, ldJson, worldLd } from "@/lib/seo/jsonld";
 import { pageCopy } from "./pageCopy";
 
 /**
@@ -8,6 +9,10 @@ import { pageCopy } from "./pageCopy";
  */
 export default function PageIntro({ locale, mode }: { locale: string; mode: Mode }) {
   const c = pageCopy(locale, mode);
+  // Structured data (change 0033): the site on the home page, a free web app + breadcrumb on each world.
+  const ld = mode === "scale"
+    ? homeLd(locale, c.searchDescription)
+    : worldLd({ locale, path: modeHref(mode), name: c.heading, description: c.searchDescription, homeName: pageCopy(locale, "scale").heading });
   return (
     <main className="page-intro">
       <h1 className="title">{c.heading}</h1>
@@ -16,7 +21,7 @@ export default function PageIntro({ locale, mode }: { locale: string; mode: Mode
       {c.whatifs.length > 0 && (
         <section>
           <h2 className="headline">{c.whatifsHeading}</h2>
-          <ul>{c.whatifs.map((w) => <li key={w} className="desc">{w}</li>)}</ul>
+          <ul>{c.whatifs.map((w) => <li key={w.label} className="desc">{w.href ? <a href={w.href}>{w.label}</a> : w.label}</li>)}</ul>
         </section>
       )}
       <nav aria-label={c.linksHeading}>
@@ -27,6 +32,7 @@ export default function PageIntro({ locale, mode }: { locale: string; mode: Mode
           ))}
         </ul>
       </nav>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ldJson(ld) }} />
     </main>
   );
 }

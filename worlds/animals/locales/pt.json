@@ -164,6 +164,8 @@
     "hint": "Cada animal é um pouco diferente. Os que se adaptam melhor têm mais filhotes. Aperte rodar e escolha uma mudança.",
     "intro": "Até cinco tipos de animal dividem um lugar. Cada animal é um pouco diferente; os que se adaptam melhor têm mais filhotes, então os corpos mudam com o tempo. Escolha um mundo ou monte o seu e faça mudanças: elas se somam.",
     "name": "Animais",
+    "seoDescription": "Coloque até cinco de 21 animais no mesmo lugar e veja velocidade, tamanho e sentidos evoluírem. Traga uma era do gelo, um incêndio ou uma doença, ou remova uma espécie, e veja quem sobrevive.",
+    "seoTitle": "Simulador de evolução: predadores, presas e seleção natural",
     "sub": "Evolução"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "E se {many} sumissem?",
     "reserve": "E se virasse uma reserva protegida?",
     "warm": "E se esquentasse 3 °C?"
+  },
+  "question": {
+    "add": "E se um novo animal chegasse?",
+    "cool": "E se viesse uma era do gelo?",
+    "disease": "E se uma doença se espalhasse entre os animais selvagens?",
+    "drought": "E se passasse um ano sem chuva?",
+    "fire": "E se um incêndio florestal devastasse a região?",
+    "habitat": "E se metade do habitat fosse perdida?",
+    "hunt": "E se as pessoas caçassem um animal?",
+    "invasive": "E se chegasse uma espécie invasora que se reproduz rápido?",
+    "move": "E se os animais vivessem no clima oposto?",
+    "rain": "E se houvesse anos de chuva boa?",
+    "remove": "E se um animal sumisse de uma cadeia alimentar?",
+    "reserve": "E se a área virasse uma reserva protegida?",
+    "warm": "E se o clima ficasse 3 °C mais quente para os animais selvagens?"
   },
   "sp": {
     "bear": {

@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Un pueblo de fiordo hoy. Mira la nieve, el bosque, los campos y el puerto mientras pasan las décadas.",
     "name": "Tierra",
+    "seoDescription": "Frena las emisiones, planta un billón de árboles o deja que se derrita el permafrost, y mira cómo cambian el calentamiento, el nivel del mar, la nieve y las cosechas junto al mundo sin tocar.",
+    "seoTitle": "Simulador de cambio climático: ¿y si paramos las emisiones?",
     "sub": "Clima"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "metano −{n} %",
     "trees": "{n} billones de árboles",
     "wall": "dique de {n} m"
+  },
+  "question": {
+    "amazon": "¿Qué pasaría si la selva amazónica se convirtiera en sabana?",
+    "dac": "¿Qué pasaría si extrajéramos el CO₂ del aire?",
+    "double": "¿Qué pasaría si las emisiones de carbono se duplicaran?",
+    "ev": "¿Qué pasaría si el mundo cambiara rápido a energía limpia?",
+    "geo": "¿Qué pasaría si atenuáramos la luz solar con aerosoles durante 30 años?",
+    "melt": "¿Qué pasaría si colapsara la capa de hielo de la Antártida Occidental?",
+    "methane": "¿Qué pasaría si redujéramos a la mitad las emisiones de metano?",
+    "permafrost": "¿Qué pasaría si el permafrost se derritiera rápido?",
+    "seawall": "¿Qué pasaría si un pueblo costero construyera un dique de 3 m?",
+    "trees": "¿Qué pasaría si plantáramos un billón de árboles?",
+    "volcano": "¿Qué pasaría si entrara en erupción un supervolcán?",
+    "zero": "¿Qué pasaría si dejáramos hoy todas las emisiones de carbono?"
   },
   "speed": {
     "0": "1 año/s",

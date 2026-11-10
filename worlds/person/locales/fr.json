@@ -1,12 +1,25 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "age": { "label": "Âge", "unit": "ans" },
-    "disc": { "label": "Autodiscipline" },
-    "health": { "label": "Santé actuelle" },
-    "mood": { "label": "Bien-être actuel" },
-    "soc": { "label": "Sociabilité" },
-    "stress": { "label": "Niveau de stress" }
+    "age": {
+      "label": "Âge",
+      "unit": "ans"
+    },
+    "disc": {
+      "label": "Autodiscipline"
+    },
+    "health": {
+      "label": "Santé actuelle"
+    },
+    "mood": {
+      "label": "Bien-être actuel"
+    },
+    "soc": {
+      "label": "Sociabilité"
+    },
+    "stress": {
+      "label": "Niveau de stress"
+    }
   },
   "dim": {
     "career": "Carrière et compétences",
@@ -39,14 +52,42 @@
   "meta": {
     "intro": "Une personne, 100 versions parallèles de sa vie. Essayez de nouvelles habitudes et voyez combien tiennent le coup et ce que ça change.",
     "name": "Caractère",
+    "seoDescription": "Lancez une habitude comme le sport quotidien, quitter les réseaux sociaux ou dormir 8 heures et suivez 100 versions de vous pendant des années : qui la garde, qui abandonne et ce que ça change.",
+    "seoTitle": "Simulateur d’habitudes : 100 versions de votre vie",
     "sub": "100 vies parallèles"
   },
   "metric": {
-    "career": { "label": "Carrière et compétences", "unit": "/100" },
-    "health": { "label": "Santé", "unit": "/100" },
-    "kept": { "label": "Continue encore", "unit": "%" },
-    "social": { "label": "Relations", "unit": "/100" },
-    "well": { "label": "Bien-être", "unit": "/100" }
+    "career": {
+      "label": "Carrière et compétences",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Santé",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Continue encore",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Relations",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Bien-être",
+      "unit": "/100"
+    }
+  },
+  "question": {
+    "drink": "Et si tu commençais à boire beaucoup ?",
+    "exercise": "Et si tu faisais 30 minutes de sport chaque jour ?",
+    "isolate": "Et si tu t’éloignais de tes amis ?",
+    "learn": "Et si tu apprenais une compétence 1 heure par jour ?",
+    "meditate": "Et si tu méditais 10 minutes par jour ?",
+    "read": "Et si tu lisais 30 minutes par jour ?",
+    "sleep": "Et si tu dormais 8 heures à heures fixes ?",
+    "smoke": "Et si tu commençais à fumer ?",
+    "social": "Et si tu quittais les réseaux sociaux ?"
   },
   "short": {
     "drink": "Boire beaucoup",

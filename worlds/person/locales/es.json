@@ -52,6 +52,8 @@
   "meta": {
     "intro": "Una persona, 100 versiones paralelas de su vida. Prueba hábitos nuevos y mira cuántas versiones los mantienen y qué cambia.",
     "name": "Carácter",
+    "seoDescription": "Empieza un hábito como hacer ejercicio a diario, dejar las redes sociales o dormir 8 horas y sigue a 100 versiones de ti durante años: quién lo mantiene, quién lo deja y qué cambia.",
+    "seoTitle": "Simulador de hábitos: 100 versiones de tu vida",
     "sub": "100 vidas paralelas"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Bienestar",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "¿Qué pasaría si empezaras a beber mucho?",
+    "exercise": "¿Qué pasaría si hicieras ejercicio 30 minutos al día?",
+    "isolate": "¿Qué pasaría si te alejaras de tus amigos?",
+    "learn": "¿Qué pasaría si aprendieras una habilidad 1 hora al día?",
+    "meditate": "¿Qué pasaría si meditaras 10 minutos al día?",
+    "read": "¿Qué pasaría si leyeras 30 minutos al día?",
+    "sleep": "¿Qué pasaría si durmieras 8 horas con un horario fijo?",
+    "smoke": "¿Qué pasaría si empezaras a fumar?",
+    "social": "¿Qué pasaría si dejaras las redes sociales?"
   },
   "short": {
     "drink": "Beber mucho",

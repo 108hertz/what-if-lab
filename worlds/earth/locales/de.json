@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Eine Fjordstadt heute. Beobachte Schnee, Wald, Felder und Hafen, während die Jahrzehnte vergehen.",
     "name": "Erde",
+    "seoDescription": "Stoppe die Emissionen, pflanze eine Billion Bäume oder lass den Permafrost auftauen und sieh, wie sich Erwärmung, Meeresspiegel, Schnee und Ernten über die Jahre verändern, neben der unveränderten Welt.",
+    "seoTitle": "Klimawandel-Simulator: Was wäre, wenn wir die Emissionen stoppen?",
     "sub": "Klima"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "Methan −{n} %",
     "trees": "{n} Billionen Bäume",
     "wall": "{n} m hoher Deich"
+  },
+  "question": {
+    "amazon": "Was wäre, wenn der Amazonas-Regenwald zur Savanne würde?",
+    "dac": "Was wäre, wenn wir CO₂ aus der Luft holen würden?",
+    "double": "Was wäre, wenn sich die CO₂-Emissionen verdoppeln würden?",
+    "ev": "Was wäre, wenn die Welt schnell auf saubere Energie umsteigen würde?",
+    "geo": "Was wäre, wenn wir 30 Jahre lang das Sonnenlicht mit Aerosolen dämpften?",
+    "melt": "Was wäre, wenn der Westantarktische Eisschild zusammenbrechen würde?",
+    "methane": "Was wäre, wenn wir die Methanemissionen halbieren würden?",
+    "permafrost": "Was wäre, wenn der Permafrost schnell auftauen würde?",
+    "seawall": "Was wäre, wenn eine Küstenstadt einen 3 m hohen Deich bauen würde?",
+    "trees": "Was wäre, wenn wir eine Billion Bäume pflanzen würden?",
+    "volcano": "Was wäre, wenn ein Supervulkan ausbrechen würde?",
+    "zero": "Was wäre, wenn wir heute alle CO₂-Emissionen stoppen würden?"
   },
   "speed": {
     "0": "1 J./s",

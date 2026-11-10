@@ -50,6 +50,8 @@
     "hint": "Seret untuk melempar planet. Perubahan bertambah.",
     "intro": "Gravitasi Newton sungguhan untuk Matahari dan delapan planet. Seret di panggung untuk melempar planetmu sendiri.",
     "name": "Tata surya",
+    "seoDescription": "Gravitasi Newton sungguhan untuk Matahari dan delapan planet. Gandakan massa Matahari, hapus, ubah Jupiter jadi bintang, atau lempar planetmu sendiri dan lihat orbitnya berubah.",
+    "seoTitle": "Simulator Tata Surya: Bagaimana Jika Matahari Lenyap?",
     "sub": "Gravitasi"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Uranus",
     "venus": "Venus",
     "yourplanet": "Planetmu"
+  },
+  "question": {
+    "bh": "Bagaimana jika lubang hitam melintasi tata surya?",
+    "giant": "Bagaimana jika Matahari menjadi raksasa merah?",
+    "jupstar": "Bagaimana jika Jupiter menjadi bintang?",
+    "mars": "Bagaimana jika Bumi berada di orbit Mars?",
+    "nosun": "Bagaimana jika Matahari menghilang?",
+    "stop": "Bagaimana jika Bumi berhenti mengorbit Matahari?",
+    "sun2": "Bagaimana jika massa Matahari dua kali lipat?"
   },
   "speed": {
     "0": "1 bln/dtk",

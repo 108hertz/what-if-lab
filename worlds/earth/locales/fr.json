@@ -1,10 +1,22 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "co2": { "label": "CO₂ dans l’air", "unit": "ppm" },
-    "emis": { "label": "Émissions de CO₂ par an", "unit": "Gt" },
-    "forest": { "label": "Couverture forestière", "unit": "% des terres" },
-    "front": { "label": "Hauteur du front de mer", "unit": "m au-dessus de la mer" },
+    "co2": {
+      "label": "CO₂ dans l’air",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Émissions de CO₂ par an",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Couverture forestière",
+      "unit": "% des terres"
+    },
+    "front": {
+      "label": "Hauteur du front de mer",
+      "unit": "m au-dessus de la mer"
+    },
     "h": {
       "air-today": "L’air aujourd’hui",
       "emissions": "Émissions",
@@ -12,14 +24,38 @@
       "planet": "Planète",
       "your-town": "Votre ville"
     },
-    "mDac": { "label": "Retrait de CO₂", "unit": "Gt par an" },
-    "mDim": { "label": "Aérosols qui voilent le soleil", "unit": "%" },
-    "mEm": { "label": "Changer les émissions de", "unit": "%" },
-    "mMeth": { "label": "Baisse du méthane", "unit": "%" },
-    "mTrees": { "label": "Arbres plantés", "unit": "billions" },
-    "mWall": { "label": "Digue", "unit": "m" },
-    "mYrs": { "label": "En", "unit": "ans" },
-    "meth": { "label": "Méthane dans l’air", "unit": "ppb" },
+    "mDac": {
+      "label": "Retrait de CO₂",
+      "unit": "Gt par an"
+    },
+    "mDim": {
+      "label": "Aérosols qui voilent le soleil",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Changer les émissions de",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Baisse du méthane",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Arbres plantés",
+      "unit": "billions"
+    },
+    "mWall": {
+      "label": "Digue",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "En",
+      "unit": "ans"
+    },
+    "meth": {
+      "label": "Méthane dans l’air",
+      "unit": "ppb"
+    },
     "path": {
       "label": "Évolution des émissions",
       "opt": {
@@ -28,7 +64,10 @@
         "grow": "Hausse continue"
       }
     },
-    "sens": { "label": "Sensibilité du climat", "unit": "°C par CO₂ doublé" },
+    "sens": {
+      "label": "Sensibilité du climat",
+      "unit": "°C par CO₂ doublé"
+    },
     "tip": {
       "label": "Points de bascule",
       "opt": {
@@ -36,7 +75,10 @@
         "on": "Activés : pergélisol et calottes peuvent basculer"
       }
     },
-    "uptake": { "label": "Absorption par l’océan et les sols", "unit": "% d’aujourd’hui" }
+    "uptake": {
+      "label": "Absorption par l’océan et les sols",
+      "unit": "% d’aujourd’hui"
+    }
   },
   "ev": {
     "apply": {
@@ -81,15 +123,35 @@
   "meta": {
     "intro": "Une ville de fjord aujourd’hui. Regardez la neige, la forêt, les champs et le port au fil des décennies.",
     "name": "Terre",
+    "seoDescription": "Arrêtez les émissions, plantez mille milliards d’arbres ou laissez le pergélisol dégeler, et regardez le réchauffement, le niveau de la mer, la neige et les récoltes changer au fil des ans, à côté du monde laissé tel quel.",
+    "seoTitle": "Simulateur de changement climatique : et si on stoppait les émissions ?",
     "sub": "Climat"
   },
   "metric": {
-    "co2": { "label": "CO₂", "unit": "ppm" },
-    "crops": { "label": "Récoltes", "unit": "indice" },
-    "flood": { "label": "Inondations", "unit": "% des maisons" },
-    "sea": { "label": "Niveau de la mer", "unit": "m" },
-    "snow": { "label": "Neige", "unit": "% d’aujourd’hui" },
-    "temp": { "label": "Réchauffement", "unit": "°C" }
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Récoltes",
+      "unit": "indice"
+    },
+    "flood": {
+      "label": "Inondations",
+      "unit": "% des maisons"
+    },
+    "sea": {
+      "label": "Niveau de la mer",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Neige",
+      "unit": "% d’aujourd’hui"
+    },
+    "temp": {
+      "label": "Réchauffement",
+      "unit": "°C"
+    }
   },
   "mix": {
     "dac": "{n} Gt de CO₂ retirées par an",
@@ -99,6 +161,20 @@
     "meth": "méthane −{n} %",
     "trees": "{n} billions d’arbres",
     "wall": "digue de {n} m"
+  },
+  "question": {
+    "amazon": "Et si la forêt amazonienne devenait une savane ?",
+    "dac": "Et si on retirait le CO₂ de l’air ?",
+    "double": "Et si les émissions de carbone doublaient ?",
+    "ev": "Et si le monde passait vite aux énergies propres ?",
+    "geo": "Et si on atténuait la lumière du Soleil avec des aérosols pendant 30 ans ?",
+    "melt": "Et si la calotte glaciaire de l’Antarctique de l’Ouest s’effondrait ?",
+    "methane": "Et si on réduisait de moitié les émissions de méthane ?",
+    "permafrost": "Et si le pergélisol dégelait rapidement ?",
+    "seawall": "Et si une ville côtière construisait une digue de 3 m ?",
+    "trees": "Et si on plantait mille milliards d’arbres ?",
+    "volcano": "Et si un supervolcan entrait en éruption ?",
+    "zero": "Et si on arrêtait toutes les émissions de carbone aujourd’hui ?"
   },
   "speed": {
     "0": "1 an/s",

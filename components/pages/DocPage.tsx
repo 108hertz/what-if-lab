@@ -21,7 +21,7 @@ const PATH: Record<DocKind, string> = { about: "/about", privacy: "/privacy", te
 const SKIP = new Set(["title", "description", "heading"]);
 const EN_PAGES = catalog("pages", en as Json);
 
-function pagesT(locale: string): T {
+export function pagesT(locale: string): T {
   return createT({ locale, messages: locale === DEFAULT_LOCALE ? {} : merge(serverMessages(locale), loadPages(locale)), fallback: merge(EN_SHARED, EN_PAGES) });
 }
 const serverMessages = (locale: string) => pageMessages(locale).messages;

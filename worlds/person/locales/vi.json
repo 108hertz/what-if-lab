@@ -1,12 +1,25 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "age": { "label": "Tuổi", "unit": "tuổi" },
-    "disc": { "label": "Kỷ luật bản thân" },
-    "health": { "label": "Sức khoẻ hiện tại" },
-    "mood": { "label": "Tinh thần hiện tại" },
-    "soc": { "label": "Độ hoà đồng" },
-    "stress": { "label": "Mức căng thẳng" }
+    "age": {
+      "label": "Tuổi",
+      "unit": "tuổi"
+    },
+    "disc": {
+      "label": "Kỷ luật bản thân"
+    },
+    "health": {
+      "label": "Sức khoẻ hiện tại"
+    },
+    "mood": {
+      "label": "Tinh thần hiện tại"
+    },
+    "soc": {
+      "label": "Độ hoà đồng"
+    },
+    "stress": {
+      "label": "Mức căng thẳng"
+    }
   },
   "dim": {
     "career": "Sự nghiệp & kỹ năng",
@@ -39,14 +52,42 @@
   "meta": {
     "intro": "Một người, 100 phiên bản song song của cuộc đời họ. Thử thói quen mới và xem bao nhiêu người giữ được và nó thay đổi điều gì.",
     "name": "Tính cách",
+    "seoDescription": "Bắt đầu thói quen như tập thể dục mỗi ngày, bỏ mạng xã hội hay ngủ 8 tiếng và theo dõi 100 phiên bản của bạn nhiều năm: ai giữ được, ai bỏ cuộc và nó thay đổi gì.",
+    "seoTitle": "Mô phỏng thói quen: 100 phiên bản cuộc đời bạn",
     "sub": "100 cuộc đời song song"
   },
   "metric": {
-    "career": { "label": "Sự nghiệp & kỹ năng", "unit": "/100" },
-    "health": { "label": "Sức khoẻ", "unit": "/100" },
-    "kept": { "label": "Vẫn đang làm", "unit": "%" },
-    "social": { "label": "Các mối quan hệ", "unit": "/100" },
-    "well": { "label": "Tinh thần", "unit": "/100" }
+    "career": {
+      "label": "Sự nghiệp & kỹ năng",
+      "unit": "/100"
+    },
+    "health": {
+      "label": "Sức khoẻ",
+      "unit": "/100"
+    },
+    "kept": {
+      "label": "Vẫn đang làm",
+      "unit": "%"
+    },
+    "social": {
+      "label": "Các mối quan hệ",
+      "unit": "/100"
+    },
+    "well": {
+      "label": "Tinh thần",
+      "unit": "/100"
+    }
+  },
+  "question": {
+    "drink": "Điều gì xảy ra nếu bạn bắt đầu uống rượu nhiều?",
+    "exercise": "Điều gì xảy ra nếu bạn tập thể dục 30 phút mỗi ngày?",
+    "isolate": "Điều gì xảy ra nếu bạn xa lánh bạn bè?",
+    "learn": "Điều gì xảy ra nếu bạn học một kỹ năng 1 giờ mỗi ngày?",
+    "meditate": "Điều gì xảy ra nếu bạn thiền 10 phút mỗi ngày?",
+    "read": "Điều gì xảy ra nếu bạn đọc sách 30 phút mỗi ngày?",
+    "sleep": "Điều gì xảy ra nếu bạn ngủ 8 tiếng theo giờ cố định?",
+    "smoke": "Điều gì xảy ra nếu bạn bắt đầu hút thuốc?",
+    "social": "Điều gì xảy ra nếu bạn bỏ mạng xã hội?"
   },
   "short": {
     "drink": "Uống rượu nhiều",
@@ -59,7 +100,12 @@
     "smoke": "Hút thuốc",
     "social": "Bỏ mạng xã hội"
   },
-  "speed": { "0": "1 tuần/s", "1": "1 tháng/s", "2": "6 tháng/s", "3": "2 năm/s" },
+  "speed": {
+    "0": "1 tuần/s",
+    "1": "1 tháng/s",
+    "2": "6 tháng/s",
+    "3": "2 năm/s"
+  },
   "stage": {
     "caption": "{what} · nụ cười = tinh thần · độ sáng = sức khoẻ",
     "many": "{h, plural, other {# thói quen}} · {n}/100 vẫn giữ ít nhất một",

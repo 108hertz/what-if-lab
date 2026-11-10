@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Ulica w kraju i ten sam kraj jako 100 osób, od najbiedniejszej do najbogatszej. Wybierz kraj i wprowadzaj zmiany: sumują się.",
     "name": "Kraje",
+    "seoDescription": "Wypróbuj dochód podstawowy, wyższą płacę minimalną lub podatek dla najbogatszych w 41 krajach i zobacz, jak zmieniają się dochody, bieda, praca i długość życia.",
+    "seoTitle": "Symulator ekonomii: dochód podstawowy i płaca minimalna",
     "sub": "Gospodarka i społeczeństwo"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Twój własny kraj (na bazie: {from})",
     "this": "Ten kraj"
+  },
+  "question": {
+    "aging": "Co by było, gdyby w kraju załamał się wskaźnik urodzeń?",
+    "build": "Co by było, gdyby kraj zbudował drogi, koleje i elektrownie?",
+    "corr": "Co by było, gdyby kraj o połowę ograniczył korupcję?",
+    "drought": "Co by było, gdyby kraj nawiedziła wieloletnia susza?",
+    "edu": "Co by było, gdyby kraj podwoił wydatki na edukację?",
+    "health": "Co by było, gdyby kraj miał darmową opiekę zdrowotną dla wszystkich?",
+    "minwage": "Co by było, gdyby kraj podniósł płacę minimalną?",
+    "oil": "Co by było, gdyby kraj odkrył ogromne złoża ropy?",
+    "open": "Co by było, gdyby kraj otworzył granice dla migrantów?",
+    "pandemic": "Co by było, gdyby kraj dotknęła pandemia?",
+    "robots": "Co by było, gdyby roboty wykonywały połowę pracy w fabrykach?",
+    "taxcut": "Co by było, gdyby kraj obniżył podatki wszystkim?",
+    "taxrich": "Co by było, gdyby kraj mocniej opodatkował bogatych?",
+    "trade": "Co by było, gdyby kraj zamknął granice dla handlu?",
+    "ubi": "Co by było, gdyby kraj wprowadził dochód podstawowy?",
+    "war": "Co by było, gdyby kraj przystąpił do wojny?"
   },
   "speed": {
     "0": "3 mies./s",

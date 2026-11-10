@@ -21,12 +21,15 @@ export const absUrl = (path: string, origin = siteOrigin()): string => (path ===
  * hreflang map for an English path: every ready language plus x-default (English).
  * Keys are BCP-47 tags, values absolute URLs.
  */
-export function alternates(path: string, origin = siteOrigin()): Record<string, string> {
+export function alternates(path: string, origin = siteOrigin(), only?: readonly string[]): Record<string, string> {
   const out: Record<string, string> = {};
-  for (const l of READY_LOCALES()) out[l.tag] = absUrl(localePath(l.code, path), origin);
+  for (const l of READY_LOCALES().filter((x) => !only || only.includes(x.code))) out[l.tag] = absUrl(localePath(l.code, path), origin);
   out["x-default"] = absUrl(localePath(DEFAULT_LOCALE, path), origin);
   return out;
 }
+
+/** The share card every page uses (public/og.png, drawn by scripts/brand-images.mjs). */
+export const SHARE_IMAGE = { url: "/og.png", width: 1200, height: 630, alt: "What-If Lab: change one thing in a world and watch its future split." } as const;
 
 export interface PageSeo {
   locale: string;
@@ -34,21 +37,28 @@ export interface PageSeo {
   path: string;
   title: string;
   description: string;
+  /** The page's own share picture (change 0033: a world's stage, public/og/<world>.png); the shared card otherwise. */
+  image?: { url: string; alt: string };
+  /** The page exists only in these languages (what-if pages, change 0033): hreflang lists just them. Default: every ready one. */
+  locales?: readonly string[];
 }
 
 /**
  * Metadata for one page in one language. A language that is not ready yet builds its pages but keeps them out
  * of search (noindex) and out of hreflang, so half-translated pages never compete with English.
  */
-export function pageMetadata({ locale, path, title, description }: PageSeo, origin = siteOrigin()): Metadata {
+export function pageMetadata({ locale, path, title, description, image, locales }: PageSeo, origin = siteOrigin()): Metadata {
   const info = localeInfo(locale);
+  const img = image ? { ...SHARE_IMAGE, ...image } : SHARE_IMAGE;
   const url = absUrl(localePath(info.code, path), origin);
-  const ready = info.ready;
+  const ready = info.ready && (!locales || locales.includes(info.code));
+  const others = READY_LOCALES().filter((l) => l.code !== info.code && (!locales || locales.includes(l.code)));
+  const many = !locales || locales.length > 1;
   return {
     metadataBase: new URL(origin),
     title,
     description,
-    alternates: { canonical: url, ...(ready ? { languages: alternates(path, origin) } : {}) },
+    alternates: { canonical: url, ...(ready && many ? { languages: alternates(path, origin, locales) } : {}) },
     ...(ready ? {} : { robots: { index: false, follow: true } }),
     openGraph: {
       type: "website",
@@ -57,15 +67,24 @@ export function pageMetadata({ locale, path, title, description }: PageSeo, orig
       title,
       description,
       locale: info.og,
-      ...(ready ? { alternateLocale: READY_LOCALES().filter((l) => l.code !== info.code).map((l) => l.og) } : {}),
+      ...(ready && others.length ? { alternateLocale: others.map((l) => l.og) } : {}),
+      images: [img],
     },
+    twitter: { card: "summary_large_image", title, description, images: [{ url: img.url, alt: img.alt }] },
   };
 }
 
-/** Every ready language's URL of every English path, with its alternates, for sitemap.xml. */
-export function sitemapEntries(paths: string[], origin = siteOrigin()) {
+/**
+ * Every ready language's URL of every English path, with its alternates, for sitemap.xml. `lastModified` (change 0033) is
+ * the build's date: every page is rebuilt from the same code on each deploy.
+ */
+export function sitemapEntries(paths: string[], origin = siteOrigin(), lastModified = new Date().toISOString().slice(0, 10), only?: readonly string[]) {
+  const langs = READY_LOCALES().filter((l) => !only || only.includes(l.code));
   return paths.flatMap((path) =>
-    READY_LOCALES().map((l) => ({ url: absUrl(localePath(l.code, path), origin), alternates: { languages: alternates(path, origin) } })),
+    langs.map((l) => ({
+      url: absUrl(localePath(l.code, path), origin), lastModified,
+      ...(langs.length > 1 ? { alternates: { languages: alternates(path, origin, only) } } : {}),
+    })),
   );
 }
 

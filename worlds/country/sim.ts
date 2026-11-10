@@ -359,6 +359,7 @@ function people(w: W): { figs: Figure[]; tally: Tally } {
 export const country: Sandbox<W, P> = {
   ...meta,
   intro: "A street in the country, and the same country as 100 people from poorest to richest. Pick a country, then make changes: they add up.",
+  seo: { title: "Economy Simulator: Basic Income, Taxes, Minimum Wage", description: "Try universal basic income, a higher minimum wage or taxing the richest in 41 countries and see family income, poverty, jobs and lifespan change next to the country left as it was." },
   messages: MESSAGES,
   controls: [
     { type: "select", id: "preset", label: "Country", options: COUNTRY_OPTIONS, groups: COUNTRY_GROUPS, val: "dk" },
@@ -389,6 +390,27 @@ export const country: Sandbox<W, P> = {
     ["open", "Open the borders to migrants"], ["aging", "Birth rate collapses"], ["robots", "Robots do half the factory work"], ["trade", "Close the borders to trade"],
     ["oil", "Discover huge oil reserves"], ["war", "Fight a war"], ["pandemic", "A pandemic hits"], ["drought", "Years of drought"],
   ],
+  // The question each what-if's page answers, and its frozen URL words (change 0033).
+  questions: {
+    ubi: { q: "What if a country had universal basic income?", slug: "universal-basic-income" },
+    minwage: { q: "What if a country raised the minimum wage?", slug: "raise-the-minimum-wage" },
+    taxrich: { q: "What if a country taxed the rich more?", slug: "tax-the-rich" },
+    taxcut: { q: "What if a country cut taxes for everyone?", slug: "cut-taxes-for-everyone" },
+    edu: { q: "What if a country doubled education spending?", slug: "double-education-spending" },
+    health: { q: "What if a country had free healthcare for everyone?", slug: "free-healthcare-for-everyone" },
+    build: { q: "What if a country built roads, rail and power?", slug: "build-roads-rail-and-power" },
+    corr: { q: "What if a country cut corruption in half?", slug: "cut-corruption-in-half" },
+    open: { q: "What if a country opened its borders to migrants?", slug: "open-borders-to-migrants" },
+    aging: { q: "What if a country's birth rate collapsed?", slug: "birth-rate-collapses" },
+    robots: { q: "What if robots did half the factory work?", slug: "robots-do-half-the-factory-work" },
+    trade: { q: "What if a country closed its borders to trade?", slug: "close-borders-to-trade" },
+    oil: { q: "What if a country discovered huge oil reserves?", slug: "discover-huge-oil-reserves" },
+    war: { q: "What if a country went to war?", slug: "country-goes-to-war" },
+    pandemic: { q: "What if a pandemic hit a country?", slug: "pandemic-hits" },
+    drought: { q: "What if a country had years of drought?", slug: "years-of-drought" },
+  },
+  // The run behind its what-if pages: times read, step and the metric the answer names (change 0033)
+  answer: { at: [5, 10, 25] },
   speeds: [[0.25, "3 mo/s"], [1, "1 yr/s"], [3, "3 yr/s"], [8, "8 yr/s"]],
   defaultSpeed: 1,
   fmtT: fmtCalendar,

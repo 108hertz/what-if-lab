@@ -44,6 +44,7 @@ npm run build      # production build (must pass before committing)
 npm run typecheck  # tsc --noEmit
 npm test           # vitest: every sandbox × every what-if, determinism, engine behaviour
 npm run i18n:extract  # write each world's English (labels + messages) to worlds/<key>/locales/en.json for translators
+npm run og:images  # redraw each world's share picture, public/og/<world>.png (after changing a world's stage)
 ```
 
 Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.

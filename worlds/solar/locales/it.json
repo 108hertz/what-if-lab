@@ -50,6 +50,8 @@
     "hint": "Trascina per lanciare un pianeta. I cambiamenti si sommano.",
     "intro": "Vera gravità newtoniana per il Sole e gli otto pianeti. Trascina sulla scena per lanciare un tuo pianeta.",
     "name": "Sistema solare",
+    "seoDescription": "Vera gravità newtoniana per il Sole e gli otto pianeti. Raddoppia la massa del Sole, toglilo, trasforma Giove in una stella o lancia un tuo pianeta e guarda le orbite cambiare.",
+    "seoTitle": "Simulatore del sistema solare: e se il Sole sparisse?",
     "sub": "Gravità"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Urano",
     "venus": "Venere",
     "yourplanet": "Il tuo pianeta"
+  },
+  "question": {
+    "bh": "E se un buco nero attraversasse il sistema solare?",
+    "giant": "E se il Sole diventasse una gigante rossa?",
+    "jupstar": "E se Giove diventasse una stella?",
+    "mars": "E se la Terra fosse sull’orbita di Marte?",
+    "nosun": "E se il Sole scomparisse?",
+    "stop": "E se la Terra smettesse di orbitare intorno al Sole?",
+    "sun2": "E se il Sole avesse il doppio della massa?"
   },
   "speed": {
     "0": "1 mese/s",

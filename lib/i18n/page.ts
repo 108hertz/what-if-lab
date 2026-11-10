@@ -18,3 +18,14 @@ export const pageT = (): T => current;
 export function setPageT(t: T): void {
   current = t;
 }
+
+/**
+ * Run `fn` with the page's language set to `t`, then put the previous one back. For build-time pages that say a world's
+ * words outside React (change 0033): one build process renders pages in many languages, and an earlier page's
+ * I18nProvider may have left its own language here.
+ */
+export function withPageT<R>(t: T, fn: () => R): R {
+  const prev = current;
+  current = t;
+  try { return fn(); } finally { current = prev; }
+}

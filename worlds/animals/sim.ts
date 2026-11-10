@@ -374,6 +374,7 @@ const metricsFor = (k: string, label: string, unit: string, d: number) =>
 export const animals: Sandbox<W, P> = {
   ...meta,
   intro: "Up to five kinds of animal share one place. Each animal is a little different; the ones that fit best have more babies, so bodies change over time. Pick a world or build your own, then make changes: they add up.",
+  seo: { title: "Evolution Simulator: Predators, Prey and Natural Selection", description: "Put up to five of 21 animals in one place and watch speed, size and senses evolve. Bring an ice age, a wildfire or a sickness, or remove a species, and see who survives." },
   messages: MESSAGES,
   hint: "Each animal is a little different. The ones that fit best have more babies. Press play and pick a change.",
   controls: [
@@ -395,6 +396,26 @@ export const animals: Sandbox<W, P> = {
     ["warm", "3 °C warmer"], ["cool", "An ice age"], ["drought", "A year without rain"], ["rain", "Years of good rain"], ["fire", "A wildfire"],
     ["habitat", "Half the land lost"], ["reserve", "A protected reserve"], ["hunt", "People hunt an animal"], ["move", "The opposite climate"],
   ],
+  // The question each what-if's page answers, and its frozen URL words (change 0033).
+  questions: {
+    remove: { q: "What if an animal disappeared from a food web?", slug: "an-animal-disappears" },
+    add: { q: "What if a new animal moved in?", slug: "a-new-animal-moves-in" },
+    disease: { q: "What if a disease spread among wild animals?", slug: "a-disease-spreads" },
+    invasive: { q: "What if a fast-breeding invasive species arrived?", slug: "invasive-species-arrives" },
+    warm: { q: "What if the climate got 3 °C warmer for wild animals?", slug: "climate-3-degrees-warmer" },
+    cool: { q: "What if an ice age came?", slug: "an-ice-age" },
+    drought: { q: "What if a year passed without rain?", slug: "a-year-without-rain" },
+    rain: { q: "What if there were years of good rain?", slug: "years-of-good-rain" },
+    fire: { q: "What if a wildfire swept through?", slug: "a-wildfire" },
+    habitat: { q: "What if half the habitat were lost?", slug: "half-the-habitat-lost" },
+    reserve: { q: "What if the land became a protected reserve?", slug: "a-protected-reserve" },
+    hunt: { q: "What if people hunted an animal?", slug: "people-hunt-an-animal" },
+    move: { q: "What if animals lived in the opposite climate?", slug: "the-opposite-climate" },
+  },
+  // The run behind its what-if pages: times read, step and the metric the answer names (change 0033)
+  answer: { at: [30, 90, 180], dt: 0.1, metrics: ["n0", "n1", "n2", "n3", "n4", "food"], key: ["n0", "n1", "n2", "n3", "n4"] },
+  // A slot's count is named by its species ("Wolves") on the what-if pages
+  metricName: (w, k) => { const m = /^n(\d)$/.exec(k), id = m ? w.cast[+m[1]] : undefined; return id ? { k: `sp.${id}.pl` } : null; },
   speeds: [[1, "1 d/s"], [3, "3 d/s"], [10, "10 d/s"], [30, "30 d/s"]],
   defaultSpeed: 1,
   fmtT: (t) => say()("time.day", { n: Math.floor(t) }),

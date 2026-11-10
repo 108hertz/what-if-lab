@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Een fjordstadje vandaag. Kijk naar de sneeuw, het bos, de akkers en de haven terwijl de decennia voorbijgaan.",
     "name": "Aarde",
+    "seoDescription": "Stop de uitstoot, plant een biljoen bomen of laat de permafrost smelten en zie opwarming, zeespiegel, sneeuw en oogsten veranderen naast de wereld zoals die was.",
+    "seoTitle": "Klimaatsimulator: wat als de uitstoot stopt?",
     "sub": "Klimaat"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "methaan −{n}%",
     "trees": "{n} biljoen bomen",
     "wall": "zeewering van {n} m"
+  },
+  "question": {
+    "amazon": "Wat als het Amazoneregenwoud in grasland veranderde?",
+    "dac": "Wat als we CO₂ uit de lucht haalden?",
+    "double": "Wat als de CO₂-uitstoot verdubbelde?",
+    "ev": "Wat als de wereld snel overstapte op schone energie?",
+    "geo": "Wat als we het zonlicht 30 jaar dimden met aerosolen?",
+    "melt": "Wat als de West-Antarctische ijskap instortte?",
+    "methane": "Wat als we de methaanuitstoot halveerden?",
+    "permafrost": "Wat als de permafrost snel ontdooide?",
+    "seawall": "Wat als een kustplaats een zeewering van 3 m bouwde?",
+    "trees": "Wat als we een biljoen bomen plantten?",
+    "volcano": "Wat als een supervulkaan uitbarstte?",
+    "zero": "Wat als we vandaag alle CO₂-uitstoot stopten?"
   },
   "speed": {
     "0": "1 jr/s",

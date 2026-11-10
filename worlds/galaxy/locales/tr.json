@@ -1,32 +1,70 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "aim": { "label": "Merkezden sapma", "unit": "bin ışık yılı" },
-    "bhm": { "label": "Kara delik kütlesi", "unit": "× Samanyolu" },
-    "count": { "label": "Düşen gökadalar" },
-    "dm": { "label": "Karanlık madde", "unit": "×" },
-    "dmleft": { "label": "Kalan kütleçekim", "unit": "%" },
-    "fly": { "label": "Geçiş hızı", "unit": "km/sn" },
+    "aim": {
+      "label": "Merkezden sapma",
+      "unit": "bin ışık yılı"
+    },
+    "bhm": {
+      "label": "Kara delik kütlesi",
+      "unit": "× Samanyolu"
+    },
+    "count": {
+      "label": "Düşen gökadalar"
+    },
+    "dm": {
+      "label": "Karanlık madde",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Kalan kütleçekim",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Geçiş hızı",
+      "unit": "km/sn"
+    },
     "h": {
       "starting-world": "Başlangıç dünyası",
       "what-if-settings": "Değişiklik ayarları"
     },
-    "mass": { "label": "Andromeda kütlesi", "unit": "× Samanyolu" },
+    "mass": {
+      "label": "Andromeda kütlesi",
+      "unit": "× Samanyolu"
+    },
     "neigh": {
       "label": "Başlangıçtaki komşular",
-      "opt": { "m33": "Üçgen", "m33lmc": "Üçgen + BMB", "none": "Yok" }
+      "opt": {
+        "m33": "Üçgen",
+        "m33lmc": "Üçgen + BMB",
+        "none": "Yok"
+      }
     },
     "shape": {
       "label": "Andromeda'nın biçimi",
-      "opt": { "elliptical": "Eliptik", "spiral": "Sarmal" }
+      "opt": {
+        "elliptical": "Eliptik",
+        "spiral": "Sarmal"
+      }
     },
-    "size": { "label": "Boyutları", "unit": "× Samanyolu" },
-    "speed": { "label": "Yaklaşma hızı", "unit": "km/sn" },
+    "size": {
+      "label": "Boyutları",
+      "unit": "× Samanyolu"
+    },
+    "speed": {
+      "label": "Yaklaşma hızı",
+      "unit": "km/sn"
+    },
     "spin": {
       "label": "Andromeda'nın dönüşü",
-      "opt": { "against": "Bizimkinin tersine", "same": "Bizimkiyle aynı yönde" }
+      "opt": {
+        "against": "Bizimkinin tersine",
+        "same": "Bizimkiyle aynı yönde"
+      }
     },
-    "stars": { "label": "Gökada başına yıldız" }
+    "stars": {
+      "label": "Gökada başına yıldız"
+    }
   },
   "ev": {
     "bhBig": "Merkezde Samanyolu'nun {x} katı ağırlığında bir kara delik belirir",
@@ -55,13 +93,40 @@
   "meta": {
     "intro": "Samanyolu ve Andromeda, gerçek çarpışma rotalarında, hızlandırılmış. Her nokta bir yıldız.",
     "name": "Gökadalar",
+    "seoDescription": "Samanyolu ile Andromeda'nın çarpışmasını izle ya da daha fazla gökada ekle. Karanlık maddeyi yok et, yönü değiştir, dokunulmamış gökyüzüyle karşılaştır. Ücretsiz.",
+    "seoTitle": "Gökada Çarpışma Simülatörü: Samanyolu ve Andromeda",
     "sub": "Çarpışmalar"
   },
   "metric": {
-    "disc": { "label": "Diskteki yıldızlar", "unit": "%" },
-    "galaxies": { "label": "Kalan gökadalar" },
-    "sep": { "label": "Aradaki uzaklık", "unit": "bin ışık yılı" },
-    "thrown": { "label": "Fırlatılan yıldızlar", "unit": "%" }
+    "disc": {
+      "label": "Diskteki yıldızlar",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Kalan gökadalar"
+    },
+    "sep": {
+      "label": "Aradaki uzaklık",
+      "unit": "bin ışık yılı"
+    },
+    "thrown": {
+      "label": "Fırlatılan yıldızlar",
+      "unit": "%"
+    }
+  },
+  "question": {
+    "bh": "Samanyolu'nda galaksi kadar ağır bir kara delik belirseydi ne olurdu?",
+    "bullet": "Bir galaksi Samanyolu'nun içinden dosdoğru geçseydi ne olurdu?",
+    "flipmw": "Samanyolu ters yöne dönseydi ne olurdu?",
+    "freeze": "Samanyolu'nun yıldızları yörüngede dönmeyi bıraksaydı ne olurdu?",
+    "headon": "Andromeda Samanyolu'na kafa kafaya çarpsaydı ne olurdu?",
+    "miss": "Andromeda Samanyolu'nu ıskalasaydı ne olurdu?",
+    "nodm": "Karanlık madde yok olsaydı ne olurdu?",
+    "reverse": "Andromeda geri dönseydi ne olurdu?",
+    "ring": "Küçük bir galaksi Samanyolu'nun merkezini delip geçseydi ne olurdu?",
+    "stop": "Andromeda aniden dursaydı ne olurdu?",
+    "swarm": "Samanyolu'na daha fazla galaksi düşseydi ne olurdu?",
+    "third": "Samanyolu–Andromeda çarpışmasına üçüncü bir galaksi katılsaydı ne olurdu?"
   },
   "speed": {
     "0": "5 milyon yıl/sn",
@@ -72,7 +137,9 @@
     "5": "400 milyon yıl/sn",
     "6": "1 milyar yıl/sn"
   },
-  "stage": { "scale": "{n} ışık yılı" },
+  "stage": {
+    "scale": "{n} ışık yılı"
+  },
   "whatif": {
     "bh": "Merkezimizde gökada ağırlığında bir kara delik belirir",
     "bullet": "Bir gökada dosdoğru içinden geçer",

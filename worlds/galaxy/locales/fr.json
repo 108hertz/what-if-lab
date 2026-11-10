@@ -1,17 +1,37 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "aim": { "label": "Visée décentrée", "unit": "kal" },
-    "bhm": { "label": "Masse du trou noir", "unit": "× Voie lactée" },
-    "count": { "label": "Galaxies qui tombent" },
-    "dm": { "label": "Matière noire", "unit": "×" },
-    "dmleft": { "label": "Gravité restante", "unit": "%" },
-    "fly": { "label": "Vitesse de traversée", "unit": "km/s" },
+    "aim": {
+      "label": "Visée décentrée",
+      "unit": "kal"
+    },
+    "bhm": {
+      "label": "Masse du trou noir",
+      "unit": "× Voie lactée"
+    },
+    "count": {
+      "label": "Galaxies qui tombent"
+    },
+    "dm": {
+      "label": "Matière noire",
+      "unit": "×"
+    },
+    "dmleft": {
+      "label": "Gravité restante",
+      "unit": "%"
+    },
+    "fly": {
+      "label": "Vitesse de traversée",
+      "unit": "km/s"
+    },
     "h": {
       "starting-world": "Monde de départ",
       "what-if-settings": "Réglages des « et si »"
     },
-    "mass": { "label": "Masse d’Andromède", "unit": "× Voie lactée" },
+    "mass": {
+      "label": "Masse d’Andromède",
+      "unit": "× Voie lactée"
+    },
     "neigh": {
       "label": "Voisines au départ",
       "opt": {
@@ -27,8 +47,14 @@
         "spiral": "Spirale"
       }
     },
-    "size": { "label": "Leur taille", "unit": "× Voie lactée" },
-    "speed": { "label": "Vitesse d’approche", "unit": "km/s" },
+    "size": {
+      "label": "Leur taille",
+      "unit": "× Voie lactée"
+    },
+    "speed": {
+      "label": "Vitesse d’approche",
+      "unit": "km/s"
+    },
     "spin": {
       "label": "Rotation d’Andromède",
       "opt": {
@@ -36,7 +62,9 @@
         "same": "Même sens que la nôtre"
       }
     },
-    "stars": { "label": "Étoiles par galaxie" }
+    "stars": {
+      "label": "Étoiles par galaxie"
+    }
   },
   "ev": {
     "bhBig": "Un trou noir {x} fois plus lourd que la Voie lactée apparaît en son centre",
@@ -65,13 +93,40 @@
   "meta": {
     "intro": "La Voie lactée et Andromède, sur leur vraie trajectoire de collision, en accéléré. Chaque point est une étoile.",
     "name": "Galaxies",
+    "seoDescription": "Regardez la Voie lactée et Andromède entrer en collision, ou envoyez d’autres galaxies. Faites disparaître la matière noire, changez la visée ou la rotation et comparez avec le ciel intact. Gratuit, dans votre navigateur.",
+    "seoTitle": "Simulateur de collision de galaxies : Voie lactée et Andromède",
     "sub": "Collisions"
   },
   "metric": {
-    "disc": { "label": "Étoiles dans un disque", "unit": "%" },
-    "galaxies": { "label": "Galaxies restantes" },
-    "sep": { "label": "Distance", "unit": "kal" },
-    "thrown": { "label": "Étoiles éjectées", "unit": "%" }
+    "disc": {
+      "label": "Étoiles dans un disque",
+      "unit": "%"
+    },
+    "galaxies": {
+      "label": "Galaxies restantes"
+    },
+    "sep": {
+      "label": "Distance",
+      "unit": "kal"
+    },
+    "thrown": {
+      "label": "Étoiles éjectées",
+      "unit": "%"
+    }
+  },
+  "question": {
+    "bh": "Et si un trou noir aussi lourd qu’une galaxie apparaissait dans la Voie lactée ?",
+    "bullet": "Et si une galaxie traversait la Voie lactée de part en part ?",
+    "flipmw": "Et si la Voie lactée tournait dans l’autre sens ?",
+    "freeze": "Et si les étoiles de la Voie lactée cessaient d’orbiter ?",
+    "headon": "Et si Andromède percutait la Voie lactée de plein fouet ?",
+    "miss": "Et si Andromède manquait la Voie lactée ?",
+    "nodm": "Et si la matière noire disparaissait ?",
+    "reverse": "Et si Andromède faisait demi-tour ?",
+    "ring": "Et si une petite galaxie traversait le centre de la Voie lactée ?",
+    "stop": "Et si Andromède s’arrêtait net ?",
+    "swarm": "Et si d’autres galaxies tombaient dans la Voie lactée ?",
+    "third": "Et si une troisième galaxie rejoignait la collision Voie lactée–Andromède ?"
   },
   "speed": {
     "0": "5 Ma/s",

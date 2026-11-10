@@ -145,5 +145,26 @@
       "h": "Luật áp dụng",
       "p1": "Các điều khoản này được điều chỉnh bởi luật của {country}, mà không làm mất sự bảo vệ của luật nơi bạn sống."
     }
+  },
+  "whatif": {
+    "answer": "Trong mô hình này, đến {time}: {label} {alt} khi có thay đổi, {base} khi không.",
+    "description": "{answer} Xem điều gì xảy ra từng bước, rồi tự chạy thử trong một trình mô phỏng miễn phí.",
+    "fork": "Thay đổi được thực hiện lúc {time}, sau khi thế giới chạy một lúc như vốn có. Cùng khởi đầu, cùng may rủi: chỉ khác ở thay đổi.",
+    "run": "Chạy giả sử này",
+    "runNote": "Mở trình mô phỏng trực tiếp với thay đổi này. Đổi thêm bất cứ gì và xem hai tương lai tách ra.",
+    "picture": "{world} lúc {time}",
+    "noChange": "Không thay đổi",
+    "withIt": "Với giả sử",
+    "numbers": "Các con số",
+    "measure": "Thước đo",
+    "by": "Đến {time}",
+    "steps": "Điều gì xảy ra, từng bước",
+    "onlyAlt": "Chỉ khi có thay đổi",
+    "onlyBase": "Chỉ khi không thay đổi",
+    "stepsNone": "Không có sự kiện nào khác nhau giữa hai thế giới: thay đổi thể hiện ở con số.",
+    "model": "Về mô hình này",
+    "more": "Thêm giả sử trong {world}",
+    "others": "Thế giới khác",
+    "open": "Mở {world}"
   }
 }

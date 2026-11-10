@@ -7,9 +7,18 @@
     "3": "La vie est calme et les gens se font en général confiance."
   },
   "ctl": {
-    "corr": { "label": "Corruption", "unit": "/100" },
-    "edu": { "label": "Écoles", "unit": "/100" },
-    "gdp": { "label": "Revenu par personne", "unit": "k$ par an" },
+    "corr": {
+      "label": "Corruption",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Écoles",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Revenu par personne",
+      "unit": "k$ par an"
+    },
     "gov": {
       "label": "Régime",
       "opt": {
@@ -24,10 +33,22 @@
       "policy-sizes-used-by-your-next-click": "Ampleur des mesures (pour votre prochain clic)",
       "public-life": "Vie publique"
     },
-    "jobless": { "label": "Sans emploi", "unit": "%" },
-    "life": { "label": "Santé : espérance de vie", "unit": "ans" },
-    "pop": { "label": "Population", "unit": "millions" },
-    "popg": { "label": "Croissance démographique", "unit": "% par an" },
+    "jobless": {
+      "label": "Sans emploi",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Santé : espérance de vie",
+      "unit": "ans"
+    },
+    "pop": {
+      "label": "Population",
+      "unit": "millions"
+    },
+    "popg": {
+      "label": "Croissance démographique",
+      "unit": "% par an"
+    },
     "preset": {
       "group": {
         "0": "Europe",
@@ -84,14 +105,37 @@
         "za": "Afrique du Sud"
       }
     },
-    "res": { "label": "Ressources naturelles (pétrole, métaux)", "unit": "/100" },
-    "s_cut": { "label": "Baisse d’impôts", "unit": "points" },
-    "s_open": { "label": "Foyers arrivants" },
-    "s_rich": { "label": "Impôt en plus pour les plus riches", "unit": "points" },
-    "s_ubi": { "label": "Montant du revenu de base", "unit": "% du revenu moyen" },
-    "s_wage": { "label": "Hausse du salaire minimum", "unit": "%" },
-    "s_war": { "label": "Durée de la guerre", "unit": "ans" },
-    "tax": { "label": "Impôts", "unit": "% du revenu" }
+    "res": {
+      "label": "Ressources naturelles (pétrole, métaux)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Baisse d’impôts",
+      "unit": "points"
+    },
+    "s_open": {
+      "label": "Foyers arrivants"
+    },
+    "s_rich": {
+      "label": "Impôt en plus pour les plus riches",
+      "unit": "points"
+    },
+    "s_ubi": {
+      "label": "Montant du revenu de base",
+      "unit": "% du revenu moyen"
+    },
+    "s_wage": {
+      "label": "Hausse du salaire minimum",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Durée de la guerre",
+      "unit": "ans"
+    },
+    "tax": {
+      "label": "Impôts",
+      "unit": "% du revenu"
+    }
   },
   "diff": {
     "calmer": "{n, plural, one {# point de calme en plus} many {# points de calme en plus} other {# points de calme en plus}}",
@@ -167,6 +211,8 @@
   "meta": {
     "intro": "Une rue du pays, et le même pays vu comme 100 personnes, des plus pauvres aux plus riches. Choisissez un pays, puis faites des changements : ils s’additionnent.",
     "name": "Pays",
+    "seoDescription": "Essayez le revenu universel, un salaire minimum plus élevé ou taxer les plus riches dans 41 pays et voyez revenus, pauvreté, emploi et espérance de vie changer à côté du pays laissé tel quel.",
+    "seoTitle": "Simulateur d’économie : revenu de base, impôts, salaire minimum",
     "sub": "Économie et société"
   },
   "metric": {
@@ -208,6 +254,24 @@
   "name": {
     "ownFrom": "Votre propre pays (à partir de {from})",
     "this": "Ce pays"
+  },
+  "question": {
+    "aging": "Et si la natalité d’un pays s’effondrait ?",
+    "build": "Et si un pays construisait routes, voies ferrées et centrales électriques ?",
+    "corr": "Et si un pays réduisait de moitié la corruption ?",
+    "drought": "Et si un pays subissait des années de sécheresse ?",
+    "edu": "Et si un pays doublait ses dépenses d’éducation ?",
+    "health": "Et si un pays offrait des soins de santé gratuits à tous ?",
+    "minwage": "Et si un pays augmentait le salaire minimum ?",
+    "oil": "Et si un pays découvrait d’énormes réserves de pétrole ?",
+    "open": "Et si un pays ouvrait ses frontières aux migrants ?",
+    "pandemic": "Et si une pandémie frappait un pays ?",
+    "robots": "Et si les robots faisaient la moitié du travail en usine ?",
+    "taxcut": "Et si un pays baissait les impôts pour tout le monde ?",
+    "taxrich": "Et si un pays taxait davantage les riches ?",
+    "trade": "Et si un pays fermait ses frontières au commerce ?",
+    "ubi": "Et si un pays instaurait un revenu universel ?",
+    "war": "Et si un pays entrait en guerre ?"
   },
   "speed": {
     "0": "3 mois/s",

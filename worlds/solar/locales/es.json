@@ -50,6 +50,8 @@
     "hint": "Arrastra para lanzar un planeta. Los cambios se suman.",
     "intro": "Gravedad newtoniana real para el Sol y los ocho planetas. Arrastra sobre el escenario para lanzar tu propio planeta.",
     "name": "Sistema solar",
+    "seoDescription": "Gravedad newtoniana real para el Sol y los ocho planetas. Duplica la masa del Sol, quítalo, convierte Júpiter en estrella o lanza tu propio planeta y mira cambiar las órbitas.",
+    "seoTitle": "Simulador del sistema solar: ¿y si el Sol desapareciera?",
     "sub": "Gravedad"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Urano",
     "venus": "Venus",
     "yourplanet": "Tu planeta"
+  },
+  "question": {
+    "bh": "¿Qué pasaría si un agujero negro atravesara el sistema solar?",
+    "giant": "¿Qué pasaría si el Sol se convirtiera en una gigante roja?",
+    "jupstar": "¿Qué pasaría si Júpiter se convirtiera en una estrella?",
+    "mars": "¿Qué pasaría si la Tierra estuviera en la órbita de Marte?",
+    "nosun": "¿Qué pasaría si el Sol desapareciera?",
+    "stop": "¿Qué pasaría si la Tierra dejara de orbitar alrededor del Sol?",
+    "sun2": "¿Qué pasaría si el Sol tuviera el doble de masa?"
   },
   "speed": {
     "0": "1 mes/s",

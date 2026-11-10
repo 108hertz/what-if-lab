@@ -93,6 +93,8 @@
   "meta": {
     "intro": "La Via Lattea e Andromeda, sulla loro vera rotta di collisione, accelerata. Ogni punto è una stella.",
     "name": "Galassie",
+    "seoDescription": "Guarda la Via Lattea e Andromeda scontrarsi, o lancia altre galassie. Fai sparire la materia oscura, cambia la mira o la rotazione e confronta con il cielo intatto. Gratis, nel tuo browser.",
+    "seoTitle": "Simulatore di collisione tra galassie: Via Lattea e Andromeda",
     "sub": "Collisioni"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Stelle espulse",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "E se nella Via Lattea comparisse un buco nero pesante come una galassia?",
+    "bullet": "E se una galassia attraversasse da parte a parte la Via Lattea?",
+    "flipmw": "E se la Via Lattea girasse al contrario?",
+    "freeze": "E se le stelle della Via Lattea smettessero di orbitare?",
+    "headon": "E se Andromeda si scontrasse frontalmente con la Via Lattea?",
+    "miss": "E se Andromeda mancasse la Via Lattea?",
+    "nodm": "E se la materia oscura scomparisse?",
+    "reverse": "E se Andromeda facesse dietrofront?",
+    "ring": "E se una piccola galassia attraversasse il centro della Via Lattea?",
+    "stop": "E se Andromeda si fermasse di colpo?",
+    "swarm": "E se altre galassie cadessero nella Via Lattea?",
+    "third": "E se una terza galassia entrasse nello scontro Via Lattea–Andromeda?"
   },
   "speed": {
     "0": "5 mln anni/s",

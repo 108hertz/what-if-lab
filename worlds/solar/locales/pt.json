@@ -50,6 +50,8 @@
     "hint": "Arraste para jogar um planeta. As mudanças se somam.",
     "intro": "Gravidade newtoniana de verdade para o Sol e oito planetas. Arraste no palco para jogar seu próprio planeta.",
     "name": "Sistema Solar",
+    "seoDescription": "Gravidade newtoniana de verdade para o Sol e os oito planetas. Dobre a massa do Sol, tire-o, transforme Júpiter em estrela ou jogue seu próprio planeta e veja as órbitas mudarem.",
+    "seoTitle": "Simulador do sistema solar: e se o Sol desaparecesse?",
     "sub": "Gravidade"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Urano",
     "venus": "Vênus",
     "yourplanet": "Seu planeta"
+  },
+  "question": {
+    "bh": "E se um buraco negro passasse pelo sistema solar?",
+    "giant": "E se o Sol virasse uma gigante vermelha?",
+    "jupstar": "E se Júpiter virasse uma estrela?",
+    "mars": "E se a Terra estivesse na órbita de Marte?",
+    "nosun": "E se o Sol desaparecesse?",
+    "stop": "E se a Terra parasse de orbitar o Sol?",
+    "sun2": "E se o Sol tivesse o dobro da massa?"
   },
   "speed": {
     "0": "1 mês/s",

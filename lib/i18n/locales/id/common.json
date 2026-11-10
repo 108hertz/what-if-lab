@@ -3,7 +3,9 @@
   "site": {
     "name": "What-If Lab",
     "description": "Perbesar dari proton hingga alam semesta teramati, buka sebuah dunia, ubah dengan what-if, lalu bandingkan masa depannya dengan dunia yang dibiarkan apa adanya.",
-    "titleWorld": "{world} · What-If Lab"
+    "titleWorld": "{world} · What-If Lab",
+    "title": "What-If Lab: Simulator Bagaimana Jika, Proton hingga Galaksi",
+    "searchDescription": "Simulator bagaimana jika gratis di browsermu. Zoom dari proton ke alam semesta, lalu ubah tata surya, iklim Bumi, atau sebuah negara dan lihat masa depan terbelah."
   },
   "none": "—",
   "scale": {

@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Uma cidade num fiorde, hoje. Veja a neve, a floresta, os campos e o porto com o passar das décadas.",
     "name": "Terra",
+    "seoDescription": "Pare as emissões, plante um trilhão de árvores ou deixe o permafrost derreter e veja o aquecimento, o nível do mar, a neve e as colheitas mudarem ao longo dos anos ao lado do mundo sem alteração.",
+    "seoTitle": "Simulador de mudança climática: e se parássemos as emissões?",
     "sub": "Clima"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "metano −{n}%",
     "trees": "{n, plural, one {# trilhão de árvores} other {# trilhões de árvores}}",
     "wall": "muro de {n} m contra o mar"
+  },
+  "question": {
+    "amazon": "E se a Floresta Amazônica virasse savana?",
+    "dac": "E se tirássemos o CO₂ do ar?",
+    "double": "E se as emissões de carbono dobrassem?",
+    "ev": "E se o mundo mudasse rápido para energia limpa?",
+    "geo": "E se escurecêssemos a luz do Sol com aerossóis por 30 anos?",
+    "melt": "E se a camada de gelo da Antártida Ocidental colapsasse?",
+    "methane": "E se cortássemos pela metade as emissões de metano?",
+    "permafrost": "E se o permafrost derretesse rápido?",
+    "seawall": "E se uma cidade costeira construísse um muro de contenção de 3 m?",
+    "trees": "E se plantássemos um trilhão de árvores?",
+    "volcano": "E se um supervulcão entrasse em erupção?",
+    "zero": "E se parássemos hoje todas as emissões de carbono?"
   },
   "speed": {
     "0": "1 ano/s",

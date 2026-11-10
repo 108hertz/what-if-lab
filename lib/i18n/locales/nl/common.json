@@ -3,7 +3,9 @@
   "site": {
     "name": "What-If Lab",
     "description": "Zoom van een proton naar het waarneembare heelal, open een wereld, verander die met wat-als-vragen en vergelijk haar toekomst met de wereld zoals ze was.",
-    "titleWorld": "{world} · What-If Lab"
+    "titleWorld": "{world} · What-If Lab",
+    "title": "What-If Lab: wat-als-simulator van proton tot sterrenstelsel",
+    "searchDescription": "Een gratis wat-als-simulator in je browser. Zoom van een proton naar het heelal, verander dan het zonnestelsel, het klimaat of een land en zie de toekomst zich splitsen."
   },
   "none": "—",
   "scale": {

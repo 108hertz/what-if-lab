@@ -14,7 +14,10 @@
     "yourplanet": "votre planète"
   },
   "ctl": {
-    "sunm": { "label": "Masse du Soleil", "unit": "× Soleil" },
+    "sunm": {
+      "label": "Masse du Soleil",
+      "unit": "× Soleil"
+    },
     "view": {
       "label": "Vue",
       "opt": {
@@ -47,12 +50,23 @@
     "hint": "Glissez pour lancer une planète. Les changements s’additionnent.",
     "intro": "La vraie gravité de Newton pour le Soleil et les huit planètes. Glissez sur la scène pour lancer votre propre planète.",
     "name": "Système solaire",
+    "seoDescription": "La vraie gravité de Newton pour le Soleil et les huit planètes. Doublez la masse du Soleil, retirez-le, transformez Jupiter en étoile ou lancez votre propre planète et regardez les orbites changer.",
+    "seoTitle": "Simulateur du système solaire : et si le Soleil disparaissait ?",
     "sub": "Gravité"
   },
   "metric": {
-    "dist": { "label": "Distance Terre–Soleil", "unit": "UA" },
-    "temp": { "label": "Température de la Terre", "unit": "°C" },
-    "year": { "label": "Durée de l’année", "unit": "jours" }
+    "dist": {
+      "label": "Distance Terre–Soleil",
+      "unit": "UA"
+    },
+    "temp": {
+      "label": "Température de la Terre",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Durée de l’année",
+      "unit": "jours"
+    }
   },
   "name": {
     "blackhole": "Trou noir",
@@ -65,6 +79,15 @@
     "uranus": "Uranus",
     "venus": "Vénus",
     "yourplanet": "Votre planète"
+  },
+  "question": {
+    "bh": "Et si un trou noir traversait le système solaire ?",
+    "giant": "Et si le Soleil devenait une géante rouge ?",
+    "jupstar": "Et si Jupiter devenait une étoile ?",
+    "mars": "Et si la Terre était sur l’orbite de Mars ?",
+    "nosun": "Et si le Soleil disparaissait ?",
+    "stop": "Et si la Terre cessait de tourner autour du Soleil ?",
+    "sun2": "Et si le Soleil était deux fois plus massif ?"
   },
   "speed": {
     "0": "1 mois/s",

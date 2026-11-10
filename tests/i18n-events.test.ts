@@ -46,5 +46,5 @@ describe.each(SANDBOX_KEYS)("%s events", (key) => {
     setPageT(createT({ locale: "de", messages: { [`${key}.${en[0].k}`]: "Übersetzt" } }));
     expect(events(key)).toEqual(en);
     expect(eventText(sb, en[0])).toBe("Übersetzt");
-  });
+  }, 30_000); // two full runs; child takes ~4 s alone, more while the answer tests run beside it
 });

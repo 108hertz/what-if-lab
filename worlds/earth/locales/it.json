@@ -123,6 +123,8 @@
   "meta": {
     "intro": "Una città sul fiordo, oggi. Guarda la neve, il bosco, i campi e il porto mentre passano i decenni.",
     "name": "Terra",
+    "seoDescription": "Ferma le emissioni, pianta mille miliardi di alberi o lascia sciogliere il permafrost e guarda come cambiano riscaldamento, livello del mare, neve e raccolti negli anni, accanto al mondo lasciato com’è.",
+    "seoTitle": "Simulatore del cambiamento climatico: e se fermassimo le emissioni?",
     "sub": "Clima"
   },
   "metric": {
@@ -159,6 +161,20 @@
     "meth": "metano −{n}%",
     "trees": "{n} mila miliardi di alberi",
     "wall": "diga di {n} m"
+  },
+  "question": {
+    "amazon": "E se la foresta amazzonica diventasse savana?",
+    "dac": "E se togliessimo la CO₂ dall’aria?",
+    "double": "E se le emissioni di carbonio raddoppiassero?",
+    "ev": "E se il mondo passasse in fretta all’energia pulita?",
+    "geo": "E se oscurassimo la luce del Sole con aerosol per 30 anni?",
+    "melt": "E se la calotta glaciale dell’Antartide occidentale collassasse?",
+    "methane": "E se dimezzassimo le emissioni di metano?",
+    "permafrost": "E se il permafrost si sciogliesse in fretta?",
+    "seawall": "E se una città costiera costruisse una diga marina di 3 m?",
+    "trees": "E se piantassimo mille miliardi di alberi?",
+    "volcano": "E se eruttasse un supervulcano?",
+    "zero": "E se fermassimo oggi tutte le emissioni di carbonio?"
   },
   "speed": {
     "0": "1 anno/s",

@@ -7,9 +7,18 @@
     "3": "Hayat sakin ve insanlar çoğunlukla birbirine güveniyor."
   },
   "ctl": {
-    "corr": { "label": "Yolsuzluk", "unit": "/100" },
-    "edu": { "label": "Okullar", "unit": "/100" },
-    "gdp": { "label": "Kişi başı gelir", "unit": "bin $/yıl" },
+    "corr": {
+      "label": "Yolsuzluk",
+      "unit": "/100"
+    },
+    "edu": {
+      "label": "Okullar",
+      "unit": "/100"
+    },
+    "gdp": {
+      "label": "Kişi başı gelir",
+      "unit": "bin $/yıl"
+    },
     "gov": {
       "label": "Yönetim",
       "opt": {
@@ -24,10 +33,22 @@
       "policy-sizes-used-by-your-next-click": "Politika boyutları (bir sonraki tıklamanda kullanılır)",
       "public-life": "Kamusal yaşam"
     },
-    "jobless": { "label": "İşsiz", "unit": "%" },
-    "life": { "label": "Sağlık: yaşam süresi", "unit": "yıl" },
-    "pop": { "label": "Nüfus", "unit": "milyon" },
-    "popg": { "label": "Nüfus artışı", "unit": "%/yıl" },
+    "jobless": {
+      "label": "İşsiz",
+      "unit": "%"
+    },
+    "life": {
+      "label": "Sağlık: yaşam süresi",
+      "unit": "yıl"
+    },
+    "pop": {
+      "label": "Nüfus",
+      "unit": "milyon"
+    },
+    "popg": {
+      "label": "Nüfus artışı",
+      "unit": "%/yıl"
+    },
     "preset": {
       "group": {
         "0": "Avrupa",
@@ -84,14 +105,37 @@
         "za": "Güney Afrika"
       }
     },
-    "res": { "label": "Doğal kaynaklar (petrol, metaller)", "unit": "/100" },
-    "s_cut": { "label": "Vergi indirimi", "unit": "puan" },
-    "s_open": { "label": "Gelen yeni haneler" },
-    "s_rich": { "label": "En zenginlere ek vergi", "unit": "puan" },
-    "s_ubi": { "label": "Temel gelir miktarı", "unit": "ortalama gelirin %'si" },
-    "s_wage": { "label": "Asgari ücret artışı", "unit": "%" },
-    "s_war": { "label": "Savaş süresi", "unit": "yıl" },
-    "tax": { "label": "Vergiler", "unit": "gelirin %'si" }
+    "res": {
+      "label": "Doğal kaynaklar (petrol, metaller)",
+      "unit": "/100"
+    },
+    "s_cut": {
+      "label": "Vergi indirimi",
+      "unit": "puan"
+    },
+    "s_open": {
+      "label": "Gelen yeni haneler"
+    },
+    "s_rich": {
+      "label": "En zenginlere ek vergi",
+      "unit": "puan"
+    },
+    "s_ubi": {
+      "label": "Temel gelir miktarı",
+      "unit": "ortalama gelirin %'si"
+    },
+    "s_wage": {
+      "label": "Asgari ücret artışı",
+      "unit": "%"
+    },
+    "s_war": {
+      "label": "Savaş süresi",
+      "unit": "yıl"
+    },
+    "tax": {
+      "label": "Vergiler",
+      "unit": "gelirin %'si"
+    }
   },
   "diff": {
     "calmer": "{n, plural, one {# puan daha sakin} other {# puan daha sakin}}",
@@ -167,6 +211,8 @@
   "meta": {
     "intro": "Ülkeden bir sokak ve aynı ülke, en yoksuldan en zengine 100 kişi olarak. Bir ülke seç, sonra değişiklik yap: birbirine eklenirler.",
     "name": "Ülkeler",
+    "seoDescription": "41 ülkede evrensel temel gelir, daha yüksek asgari ücret ya da en zenginlere vergiyi dene; aile geliri, yoksulluk, iş ve ömrün, olduğu gibi kalan ülkeye göre değişimini gör.",
+    "seoTitle": "Ekonomi Simülatörü: Temel Gelir, Vergi, Asgari Ücret",
     "sub": "Ekonomi ve toplum"
   },
   "metric": {
@@ -208,6 +254,24 @@
   "name": {
     "ownFrom": "Kendi ülken ({from} temelli)",
     "this": "Bu ülke"
+  },
+  "question": {
+    "aging": "Bir ülkede doğum oranı çökseydi ne olurdu?",
+    "build": "Bir ülke yol, demiryolu ve enerji altyapısı kursaydı ne olurdu?",
+    "corr": "Bir ülke yolsuzluğu yarıya indirseydi ne olurdu?",
+    "drought": "Bir ülke yıllarca kuraklık yaşasaydı ne olurdu?",
+    "edu": "Bir ülke eğitim harcamalarını iki katına çıkarsaydı ne olurdu?",
+    "health": "Bir ülkede herkese ücretsiz sağlık hizmeti olsaydı ne olurdu?",
+    "minwage": "Bir ülke asgari ücreti artırsaydı ne olurdu?",
+    "oil": "Bir ülke büyük petrol rezervleri bulsaydı ne olurdu?",
+    "open": "Bir ülke sınırlarını göçmenlere açsaydı ne olurdu?",
+    "pandemic": "Bir ülkeyi salgın vursaydı ne olurdu?",
+    "robots": "Fabrika işlerinin yarısını robotlar yapsaydı ne olurdu?",
+    "taxcut": "Bir ülke herkesin vergisini düşürseydi ne olurdu?",
+    "taxrich": "Bir ülke zenginlerden daha fazla vergi alsaydı ne olurdu?",
+    "trade": "Bir ülke sınırlarını ticarete kapatsaydı ne olurdu?",
+    "ubi": "Bir ülkede evrensel temel gelir olsaydı ne olurdu?",
+    "war": "Bir ülke savaşa girseydi ne olurdu?"
   },
   "speed": {
     "0": "3 ay/sn",

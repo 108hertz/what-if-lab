@@ -1,10 +1,22 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "co2": { "label": "CO₂ trong không khí", "unit": "ppm" },
-    "emis": { "label": "Lượng CO₂ thải mỗi năm", "unit": "Gt" },
-    "forest": { "label": "Độ che phủ rừng", "unit": "% đất liền" },
-    "front": { "label": "Độ cao bờ biển", "unit": "m trên mực biển" },
+    "co2": {
+      "label": "CO₂ trong không khí",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "Lượng CO₂ thải mỗi năm",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "Độ che phủ rừng",
+      "unit": "% đất liền"
+    },
+    "front": {
+      "label": "Độ cao bờ biển",
+      "unit": "m trên mực biển"
+    },
     "h": {
       "air-today": "Không khí hôm nay",
       "emissions": "Phát thải",
@@ -12,14 +24,38 @@
       "planet": "Hành tinh",
       "your-town": "Thị trấn của bạn"
     },
-    "mDac": { "label": "Hút bớt CO₂", "unit": "Gt mỗi năm" },
-    "mDim": { "label": "Sol khí làm mờ nắng", "unit": "%" },
-    "mEm": { "label": "Đổi lượng phát thải", "unit": "%" },
-    "mMeth": { "label": "Cắt giảm metan", "unit": "%" },
-    "mTrees": { "label": "Cây được trồng", "unit": "nghìn tỷ" },
-    "mWall": { "label": "Đê biển", "unit": "m" },
-    "mYrs": { "label": "Trong vòng", "unit": "năm" },
-    "meth": { "label": "Metan trong không khí", "unit": "ppb" },
+    "mDac": {
+      "label": "Hút bớt CO₂",
+      "unit": "Gt mỗi năm"
+    },
+    "mDim": {
+      "label": "Sol khí làm mờ nắng",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "Đổi lượng phát thải",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "Cắt giảm metan",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "Cây được trồng",
+      "unit": "nghìn tỷ"
+    },
+    "mWall": {
+      "label": "Đê biển",
+      "unit": "m"
+    },
+    "mYrs": {
+      "label": "Trong vòng",
+      "unit": "năm"
+    },
+    "meth": {
+      "label": "Metan trong không khí",
+      "unit": "ppb"
+    },
     "path": {
       "label": "Xu hướng phát thải",
       "opt": {
@@ -28,12 +64,21 @@
         "grow": "Tiếp tục tăng"
       }
     },
-    "sens": { "label": "Độ nhạy khí hậu", "unit": "°C mỗi lần CO₂ ×2" },
+    "sens": {
+      "label": "Độ nhạy khí hậu",
+      "unit": "°C mỗi lần CO₂ ×2"
+    },
     "tip": {
       "label": "Điểm tới hạn",
-      "opt": { "off": "Tắt", "on": "Bật: băng vĩnh cửu và dải băng có thể sụp" }
+      "opt": {
+        "off": "Tắt",
+        "on": "Bật: băng vĩnh cửu và dải băng có thể sụp"
+      }
     },
-    "uptake": { "label": "Đại dương và đất hấp thụ", "unit": "% so với nay" }
+    "uptake": {
+      "label": "Đại dương và đất hấp thụ",
+      "unit": "% so với nay"
+    }
   },
   "ev": {
     "apply": {
@@ -78,15 +123,35 @@
   "meta": {
     "intro": "Một thị trấn bên vịnh hẹp ngày nay. Hãy ngắm tuyết, rừng, đồng ruộng và bến cảng khi các thập kỷ trôi qua.",
     "name": "Trái Đất",
+    "seoDescription": "Ngừng phát thải, trồng một nghìn tỷ cây hay để băng vĩnh cửu tan, rồi xem nhiệt độ, mực nước biển, tuyết và mùa màng đổi qua các năm bên cạnh thế giới để nguyên.",
+    "seoTitle": "Mô phỏng biến đổi khí hậu: Nếu ngừng phát thải thì sao?",
     "sub": "Khí hậu"
   },
   "metric": {
-    "co2": { "label": "CO₂", "unit": "ppm" },
-    "crops": { "label": "Mùa màng", "unit": "chỉ số" },
-    "flood": { "label": "Ngập lụt", "unit": "% số nhà" },
-    "sea": { "label": "Mực nước biển", "unit": "m" },
-    "snow": { "label": "Tuyết", "unit": "% so với nay" },
-    "temp": { "label": "Mức ấm lên", "unit": "°C" }
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "Mùa màng",
+      "unit": "chỉ số"
+    },
+    "flood": {
+      "label": "Ngập lụt",
+      "unit": "% số nhà"
+    },
+    "sea": {
+      "label": "Mực nước biển",
+      "unit": "m"
+    },
+    "snow": {
+      "label": "Tuyết",
+      "unit": "% so với nay"
+    },
+    "temp": {
+      "label": "Mức ấm lên",
+      "unit": "°C"
+    }
   },
   "mix": {
     "dac": "hút {n} Gt CO₂ mỗi năm",
@@ -97,7 +162,26 @@
     "trees": "{n} nghìn tỷ cây",
     "wall": "đê biển {n} m"
   },
-  "speed": { "0": "1 năm/s", "1": "5 năm/s", "2": "20 năm/s", "3": "60 năm/s" },
+  "question": {
+    "amazon": "Điều gì xảy ra nếu rừng mưa Amazon biến thành đồng cỏ?",
+    "dac": "Điều gì xảy ra nếu chúng ta hút CO₂ ra khỏi không khí?",
+    "double": "Điều gì xảy ra nếu lượng khí thải carbon tăng gấp đôi?",
+    "ev": "Điều gì xảy ra nếu thế giới nhanh chóng chuyển sang năng lượng sạch?",
+    "geo": "Điều gì xảy ra nếu chúng ta làm mờ ánh nắng bằng sol khí trong 30 năm?",
+    "melt": "Điều gì xảy ra nếu dải băng Tây Nam Cực sụp đổ?",
+    "methane": "Điều gì xảy ra nếu chúng ta cắt giảm một nửa khí thải mê-tan?",
+    "permafrost": "Điều gì xảy ra nếu băng vĩnh cửu tan nhanh?",
+    "seawall": "Điều gì xảy ra nếu một thị trấn ven biển xây đê biển cao 3 m?",
+    "trees": "Điều gì xảy ra nếu chúng ta trồng một nghìn tỷ cây xanh?",
+    "volcano": "Điều gì xảy ra nếu một siêu núi lửa phun trào?",
+    "zero": "Điều gì xảy ra nếu chúng ta ngừng mọi khí thải carbon ngay hôm nay?"
+  },
+  "speed": {
+    "0": "1 năm/s",
+    "1": "5 năm/s",
+    "2": "20 năm/s",
+    "3": "60 năm/s"
+  },
   "stage": {
     "gauge": "{n} m",
     "readout": "{temp} °C · biển +{sea} m · {co2} ppm",

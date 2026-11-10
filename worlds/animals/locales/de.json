@@ -164,6 +164,8 @@
     "hint": "Jedes Tier ist ein bisschen anders. Die, die am besten passen, haben mehr Junge. Drück auf Start und wähle eine Änderung.",
     "intro": "Bis zu fünf Tierarten teilen sich einen Ort. Jedes Tier ist ein bisschen anders; die, die am besten passen, haben mehr Junge, also ändern sich die Körper mit der Zeit. Wähle eine Welt oder bau deine eigene, dann ändere etwas: Die Änderungen addieren sich.",
     "name": "Tiere",
+    "seoDescription": "Setze bis zu fünf von 21 Tieren an einen Ort und sieh, wie sich Tempo, Größe und Sinne entwickeln. Löse eine Eiszeit, einen Waldbrand oder eine Seuche aus oder entferne eine Art und sieh, wer überlebt.",
+    "seoTitle": "Evolutionssimulator: Raubtiere, Beute und natürliche Selektion",
     "sub": "Evolution"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Was, wenn {many} verschwinden würden?",
     "reserve": "Was, wenn es ein Schutzgebiet würde?",
     "warm": "Was, wenn es 3 °C wärmer würde?"
+  },
+  "question": {
+    "add": "Was wäre, wenn ein neues Tier zuziehen würde?",
+    "cool": "Was wäre, wenn eine Eiszeit käme?",
+    "disease": "Was wäre, wenn sich eine Krankheit unter Wildtieren ausbreiten würde?",
+    "drought": "Was wäre, wenn ein Jahr lang kein Regen fiele?",
+    "fire": "Was wäre, wenn ein Waldbrand durchs Gebiet fegen würde?",
+    "habitat": "Was wäre, wenn die Hälfte des Lebensraums verloren ginge?",
+    "hunt": "Was wäre, wenn Menschen ein Tier jagen würden?",
+    "invasive": "Was wäre, wenn eine sich schnell vermehrende invasive Art käme?",
+    "move": "Was wäre, wenn Tiere im entgegengesetzten Klima leben würden?",
+    "rain": "Was wäre, wenn es jahrelang gut regnen würde?",
+    "remove": "Was wäre, wenn ein Tier aus einem Nahrungsnetz verschwinden würde?",
+    "reserve": "Was wäre, wenn das Gebiet ein Schutzgebiet würde?",
+    "warm": "Was wäre, wenn das Klima für Wildtiere 3 °C wärmer würde?"
   },
   "sp": {
     "bear": {

@@ -93,6 +93,8 @@
   "meta": {
     "intro": "De Melkweg en Andromeda, op hun echte botsingskoers, versneld. Elke stip is een ster.",
     "name": "Sterrenstelsels",
+    "seoDescription": "Zie de Melkweg en Andromeda botsen of voeg stelsels toe. Laat donkere materie verdwijnen, verander koers of draaiing en vergelijk met het origineel. Gratis, in je browser.",
+    "seoTitle": "Sterrenstelsel simulator: Melkweg botst met Andromeda",
     "sub": "Botsingen"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Weggeslingerde sterren",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "Wat als een zwart gat zo zwaar als een sterrenstelsel in de Melkweg opdook?",
+    "bullet": "Wat als een sterrenstelsel dwars door de Melkweg schoot?",
+    "flipmw": "Wat als de Melkweg de andere kant op draaide?",
+    "freeze": "Wat als de sterren van de Melkweg stopten met hun baan?",
+    "headon": "Wat als Andromeda frontaal op de Melkweg botste?",
+    "miss": "Wat als Andromeda de Melkweg miste?",
+    "nodm": "Wat als donkere materie verdween?",
+    "reverse": "Wat als Andromeda omkeerde?",
+    "ring": "Wat als een klein sterrenstelsel door het centrum van de Melkweg schoot?",
+    "stop": "Wat als Andromeda plotseling stilstond?",
+    "swarm": "Wat als er meer sterrenstelsels in de Melkweg vielen?",
+    "third": "Wat als een derde stelsel meedeed aan de botsing van Melkweg en Andromeda?"
   },
   "speed": {
     "0": "5 mln. jr/s",

@@ -52,6 +52,8 @@
   "meta": {
     "intro": "Ein Mensch, 100 parallele Versionen seines Lebens. Probier neue Gewohnheiten aus und sieh, wie viele dabeibleiben und was es ändert.",
     "name": "Charakter",
+    "seoDescription": "Starte eine Gewohnheit wie täglichen Sport, Social-Media-Verzicht oder 8 Stunden Schlaf und verfolge 100 Versionen von dir über Jahre: wer dranbleibt, wer aufgibt und was sich ändert.",
+    "seoTitle": "Gewohnheiten-Simulator: 100 Versionen deines Lebens",
     "sub": "100 parallele Leben"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Wohlbefinden",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "Was wäre, wenn du anfangen würdest, viel zu trinken?",
+    "exercise": "Was wäre, wenn du jeden Tag 30 Minuten Sport machen würdest?",
+    "isolate": "Was wäre, wenn du dich von deinen Freunden zurückziehen würdest?",
+    "learn": "Was wäre, wenn du jeden Tag 1 Stunde eine Fähigkeit lernen würdest?",
+    "meditate": "Was wäre, wenn du jeden Tag 10 Minuten meditieren würdest?",
+    "read": "Was wäre, wenn du jeden Tag 30 Minuten lesen würdest?",
+    "sleep": "Was wäre, wenn du zu festen Zeiten 8 Stunden schlafen würdest?",
+    "smoke": "Was wäre, wenn du anfangen würdest zu rauchen?",
+    "social": "Was wäre, wenn du mit Social Media aufhören würdest?"
   },
   "short": {
     "drink": "Viel Alkohol",

@@ -52,6 +52,8 @@
   "meta": {
     "intro": "Eén persoon, 100 parallelle versies van zijn of haar leven. Probeer nieuwe gewoontes en zie hoeveel versies het volhouden en wat het verandert.",
     "name": "Karakter",
+    "seoDescription": "Begin een gewoonte zoals dagelijks sporten, stoppen met social media of 8 uur slapen en volg 100 versies van jezelf jarenlang: wie volhoudt, wie stopt en wat het verandert.",
+    "seoTitle": "Gewoontesimulator: 100 versies van jouw leven",
     "sub": "100 parallelle levens"
   },
   "metric": {
@@ -75,6 +77,17 @@
       "label": "Welzijn",
       "unit": "/100"
     }
+  },
+  "question": {
+    "drink": "Wat als je veel ging drinken?",
+    "exercise": "Wat als je elke dag 30 minuten bewoog?",
+    "isolate": "Wat als je je terugtrok van je vrienden?",
+    "learn": "Wat als je elke dag 1 uur een vaardigheid oefende?",
+    "meditate": "Wat als je 10 minuten per dag mediteerde?",
+    "read": "Wat als je 30 minuten per dag las?",
+    "sleep": "Wat als je 8 uur sliep op vaste tijden?",
+    "smoke": "Wat als je begon met roken?",
+    "social": "Wat als je stopte met sociale media?"
   },
   "short": {
     "drink": "Veel gaan drinken",

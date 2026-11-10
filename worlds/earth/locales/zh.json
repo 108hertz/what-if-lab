@@ -1,10 +1,22 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
   "ctl": {
-    "co2": { "label": "空气中的 CO₂", "unit": "ppm" },
-    "emis": { "label": "每年 CO₂ 排放", "unit": "Gt" },
-    "forest": { "label": "森林覆盖", "unit": "% 陆地" },
-    "front": { "label": "海滨高度", "unit": "米（海拔）" },
+    "co2": {
+      "label": "空气中的 CO₂",
+      "unit": "ppm"
+    },
+    "emis": {
+      "label": "每年 CO₂ 排放",
+      "unit": "Gt"
+    },
+    "forest": {
+      "label": "森林覆盖",
+      "unit": "% 陆地"
+    },
+    "front": {
+      "label": "海滨高度",
+      "unit": "米（海拔）"
+    },
     "h": {
       "air-today": "今天的空气",
       "emissions": "排放",
@@ -12,14 +24,38 @@
       "planet": "行星",
       "your-town": "你的小镇"
     },
-    "mDac": { "label": "CO₂ 移除", "unit": "Gt/年" },
-    "mDim": { "label": "遮阳气溶胶", "unit": "%" },
-    "mEm": { "label": "排放变化", "unit": "%" },
-    "mMeth": { "label": "甲烷削减", "unit": "%" },
-    "mTrees": { "label": "种树", "unit": "万亿棵" },
-    "mWall": { "label": "海堤", "unit": "米" },
-    "mYrs": { "label": "用时", "unit": "年" },
-    "meth": { "label": "空气中的甲烷", "unit": "ppb" },
+    "mDac": {
+      "label": "CO₂ 移除",
+      "unit": "Gt/年"
+    },
+    "mDim": {
+      "label": "遮阳气溶胶",
+      "unit": "%"
+    },
+    "mEm": {
+      "label": "排放变化",
+      "unit": "%"
+    },
+    "mMeth": {
+      "label": "甲烷削减",
+      "unit": "%"
+    },
+    "mTrees": {
+      "label": "种树",
+      "unit": "万亿棵"
+    },
+    "mWall": {
+      "label": "海堤",
+      "unit": "米"
+    },
+    "mYrs": {
+      "label": "用时",
+      "unit": "年"
+    },
+    "meth": {
+      "label": "空气中的甲烷",
+      "unit": "ppb"
+    },
     "path": {
       "label": "排放走向",
       "opt": {
@@ -28,7 +64,10 @@
         "grow": "继续增长"
       }
     },
-    "sens": { "label": "气候敏感度", "unit": "°C / CO₂ 翻倍" },
+    "sens": {
+      "label": "气候敏感度",
+      "unit": "°C / CO₂ 翻倍"
+    },
     "tip": {
       "label": "临界点",
       "opt": {
@@ -36,7 +75,10 @@
         "on": "开：永久冻土和冰盖可能越过临界点"
       }
     },
-    "uptake": { "label": "海洋和土壤吸收", "unit": "% 相对今天" }
+    "uptake": {
+      "label": "海洋和土壤吸收",
+      "unit": "% 相对今天"
+    }
   },
   "ev": {
     "apply": {
@@ -81,15 +123,35 @@
   "meta": {
     "intro": "今天的一座峡湾小镇。看着几十年过去，雪、森林、田野和港口如何变化。",
     "name": "地球",
+    "seoDescription": "停止排放、种下一万亿棵树，或让永久冻土融化，看升温、海平面、积雪和农作物多年的变化，并与不变的世界对比。",
+    "seoTitle": "气候变化模拟器：如果停止排放会怎样？",
     "sub": "气候"
   },
   "metric": {
-    "co2": { "label": "CO₂", "unit": "ppm" },
-    "crops": { "label": "农作物", "unit": "指数" },
-    "flood": { "label": "被淹", "unit": "% 房屋" },
-    "sea": { "label": "海平面", "unit": "米" },
-    "snow": { "label": "积雪", "unit": "% 相对今天" },
-    "temp": { "label": "升温", "unit": "°C" }
+    "co2": {
+      "label": "CO₂",
+      "unit": "ppm"
+    },
+    "crops": {
+      "label": "农作物",
+      "unit": "指数"
+    },
+    "flood": {
+      "label": "被淹",
+      "unit": "% 房屋"
+    },
+    "sea": {
+      "label": "海平面",
+      "unit": "米"
+    },
+    "snow": {
+      "label": "积雪",
+      "unit": "% 相对今天"
+    },
+    "temp": {
+      "label": "升温",
+      "unit": "°C"
+    }
   },
   "mix": {
     "dac": "每年移除 {n} Gt CO₂",
@@ -99,6 +161,20 @@
     "meth": "甲烷 −{n}%",
     "trees": "{n} 万亿棵树",
     "wall": "{n} 米海堤"
+  },
+  "question": {
+    "amazon": "如果亚马孙雨林变成草原会怎样？",
+    "dac": "如果我们从空气中抽走CO₂会怎样？",
+    "double": "如果碳排放翻倍会怎样？",
+    "ev": "如果全世界迅速转向清洁能源会怎样？",
+    "geo": "如果我们用气溶胶遮挡阳光30年会怎样？",
+    "melt": "如果西南极冰盖崩塌会怎样？",
+    "methane": "如果我们把甲烷排放减半会怎样？",
+    "permafrost": "如果永久冻土迅速融化会怎样？",
+    "seawall": "如果一个海边小镇建起3 m高的海堤会怎样？",
+    "trees": "如果我们种下一万亿棵树会怎样？",
+    "volcano": "如果超级火山喷发会怎样？",
+    "zero": "如果我们今天停止所有碳排放会怎样？"
   },
   "speed": {
     "0": "每秒1年",

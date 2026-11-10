@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Uma rua do país e o mesmo país como 100 pessoas, da mais pobre à mais rica. Escolha um país e faça mudanças: elas se somam.",
     "name": "Países",
+    "seoDescription": "Teste renda básica universal, um salário mínimo maior ou taxar os mais ricos em 41 países e veja renda, pobreza, empregos e expectativa de vida mudarem ao lado do país sem alteração.",
+    "seoTitle": "Simulador de economia: renda básica, impostos, salário mínimo",
     "sub": "Economia e sociedade"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Seu próprio país (a partir de {from})",
     "this": "Este país"
+  },
+  "question": {
+    "aging": "E se a taxa de natalidade de um país despencasse?",
+    "build": "E se um país construísse estradas, ferrovias e usinas de energia?",
+    "corr": "E se um país cortasse a corrupção pela metade?",
+    "drought": "E se um país enfrentasse anos de seca?",
+    "edu": "E se um país dobrasse os gastos com educação?",
+    "health": "E se um país tivesse saúde gratuita para todos?",
+    "minwage": "E se um país aumentasse o salário mínimo?",
+    "oil": "E se um país descobrisse enormes reservas de petróleo?",
+    "open": "E se um país abrisse as fronteiras para imigrantes?",
+    "pandemic": "E se uma pandemia atingisse um país?",
+    "robots": "E se robôs fizessem metade do trabalho nas fábricas?",
+    "taxcut": "E se um país cortasse impostos para todos?",
+    "taxrich": "E se um país taxasse mais os ricos?",
+    "trade": "E se um país fechasse as fronteiras ao comércio?",
+    "ubi": "E se um país tivesse renda básica universal?",
+    "war": "E se um país entrasse em guerra?"
   },
   "speed": {
     "0": "3 meses/s",

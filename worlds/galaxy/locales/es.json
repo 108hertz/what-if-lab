@@ -93,6 +93,8 @@
   "meta": {
     "intro": "La Vía Láctea y Andrómeda, en su verdadero rumbo de choque, a cámara rápida. Cada punto es una estrella.",
     "name": "Galaxias",
+    "seoDescription": "Mira chocar la Vía Láctea y Andrómeda, o lanza más galaxias. Haz desaparecer la materia oscura, cambia la puntería o el giro y compáralo con el cielo intacto. Gratis, en tu navegador.",
+    "seoTitle": "Simulador de choque de galaxias: la Vía Láctea y Andrómeda",
     "sub": "Choques"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Estrellas expulsadas",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "¿Qué pasaría si un agujero negro del peso de una galaxia surgiera en la Vía Láctea?",
+    "bullet": "¿Qué pasaría si una galaxia atravesara la Vía Láctea?",
+    "flipmw": "¿Qué pasaría si la Vía Láctea girara al revés?",
+    "freeze": "¿Qué pasaría si las estrellas de la Vía Láctea dejaran de orbitar?",
+    "headon": "¿Qué pasaría si Andrómeda chocara de frente con la Vía Láctea?",
+    "miss": "¿Qué pasaría si Andrómeda no chocara con la Vía Láctea?",
+    "nodm": "¿Qué pasaría si la materia oscura desapareciera?",
+    "reverse": "¿Qué pasaría si Andrómeda diera media vuelta?",
+    "ring": "¿Qué pasaría si una galaxia pequeña atravesara el centro de la Vía Láctea?",
+    "stop": "¿Qué pasaría si Andrómeda se detuviera en seco?",
+    "swarm": "¿Qué pasaría si más galaxias cayeran en la Vía Láctea?",
+    "third": "¿Qué pasaría si una tercera galaxia entrara en el choque Vía Láctea–Andrómeda?"
   },
   "speed": {
     "0": "5 Ma/s",

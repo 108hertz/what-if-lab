@@ -3,6 +3,7 @@
 import { useEffect, useReducer } from "react";
 import { SimEngine } from "@/lib/sim/engine";
 import { defaultParams } from "@/lib/sim/core";
+import { DEEPLINK_BASELINE_S, whatifFromHash } from "@/lib/sim/deeplink";
 import type { AnySandbox, ParamValue, SandboxKey } from "@/lib/sim/types";
 import { track } from "../privacy/track";
 
@@ -62,5 +63,33 @@ export function useWorldEngine(sb: AnySandbox): [SimEngine, () => void] {
     const id = setInterval(rerender, UI_REFRESH_MS);
     return () => clearInterval(id);
   }, []);
+  useEffect(() => {
+    let stop = openLinkedWhatif(engine, rerender);
+    // A link pasted into the address bar of a lab that is already open changes only the hash.
+    const onHash = () => { stop?.(); stop = openLinkedWhatif(engine, rerender); };
+    window.addEventListener("hashchange", onHash);
+    return () => { stop?.(); window.removeEventListener("hashchange", onHash); };
+  }, [engine]);
   return [engine, rerender];
+}
+
+/**
+ * `/lab/<world>#whatif=<id>` (change 0033, step 3): start the world clean, let it run a short baseline, then make the
+ * what-if as its button would. The hash is dropped once used, so Reset and later copies of the address are plain again.
+ * Returns a cancel for the pending what-if (React may mount twice in development).
+ */
+function openLinkedWhatif(engine: SimEngine, done: () => void): (() => void) | undefined {
+  const id = whatifFromHash(window.location.hash, engine.sb);
+  if (!id) return;
+  // A world already running in this tab (opened earlier in the visit) starts again; the plain reset, so analytics
+  // doesn't count a Reset the visitor never pressed.
+  if (engine.entries.length || engine.base.t > 0) SimEngine.prototype.reset.call(engine);
+  done();
+  const timer = setTimeout(() => {
+    engine.change(id);
+    const { pathname, search } = window.location;
+    window.history.replaceState(window.history.state, "", pathname + search);
+    done();
+  }, DEEPLINK_BASELINE_S * 1000);
+  return () => clearTimeout(timer);
 }

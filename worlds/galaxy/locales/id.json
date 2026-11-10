@@ -93,6 +93,8 @@
   "meta": {
     "intro": "Bima Sakti dan Andromeda, di jalur tabrakan aslinya, dipercepat. Setiap titik adalah bintang.",
     "name": "Galaksi",
+    "seoDescription": "Saksikan Bima Sakti dan Andromeda bertabrakan, atau kirim lebih banyak galaksi. Hilangkan materi gelap, ubah arah atau putaran, bandingkan dengan langit asli. Gratis.",
+    "seoTitle": "Simulator Tabrakan Galaksi: Bima Sakti Bertemu Andromeda",
     "sub": "Tabrakan"
   },
   "metric": {
@@ -111,6 +113,20 @@
       "label": "Bintang terlempar",
       "unit": "%"
     }
+  },
+  "question": {
+    "bh": "Bagaimana jika lubang hitam seberat galaksi muncul di Bima Sakti?",
+    "bullet": "Bagaimana jika sebuah galaksi melesat menembus Bima Sakti?",
+    "flipmw": "Bagaimana jika Bima Sakti berputar ke arah sebaliknya?",
+    "freeze": "Bagaimana jika bintang-bintang Bima Sakti berhenti mengorbit?",
+    "headon": "Bagaimana jika Andromeda menabrak Bima Sakti secara langsung?",
+    "miss": "Bagaimana jika Andromeda tidak menabrak Bima Sakti?",
+    "nodm": "Bagaimana jika materi gelap menghilang?",
+    "reverse": "Bagaimana jika Andromeda berbalik arah?",
+    "ring": "Bagaimana jika galaksi kecil menembus pusat Bima Sakti?",
+    "stop": "Bagaimana jika Andromeda berhenti total?",
+    "swarm": "Bagaimana jika lebih banyak galaksi jatuh ke Bima Sakti?",
+    "third": "Bagaimana jika galaksi ketiga ikut dalam tabrakan Bima Sakti–Andromeda?"
   },
   "speed": {
     "0": "5 jt thn/dtk",

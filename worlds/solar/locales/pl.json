@@ -50,6 +50,8 @@
     "hint": "Przeciągnij, aby rzucić planetę. Zmiany się sumują.",
     "intro": "Prawdziwa grawitacja Newtona dla Słońca i ośmiu planet. Przeciągnij po scenie, aby wrzucić własną planetę.",
     "name": "Układ Słoneczny",
+    "seoDescription": "Prawdziwa grawitacja Newtona dla Słońca i ośmiu planet. Podwój masę Słońca, usuń je, zrób z Jowisza gwiazdę lub wrzuć własną planetę i patrz, jak zmieniają się orbity.",
+    "seoTitle": "Symulator Układu Słonecznego: co jeśli Słońce zniknie?",
     "sub": "Grawitacja"
   },
   "metric": {
@@ -77,6 +79,15 @@
     "uranus": "Uran",
     "venus": "Wenus",
     "yourplanet": "Twoja planeta"
+  },
+  "question": {
+    "bh": "Co by było, gdyby czarna dziura przeleciała przez Układ Słoneczny?",
+    "giant": "Co by było, gdyby Słońce stało się czerwonym olbrzymem?",
+    "jupstar": "Co by było, gdyby Jowisz stał się gwiazdą?",
+    "mars": "Co by było, gdyby Ziemia krążyła po orbicie Marsa?",
+    "nosun": "Co by było, gdyby Słońce zniknęło?",
+    "stop": "Co by było, gdyby Ziemia przestała krążyć wokół Słońca?",
+    "sun2": "Co by było, gdyby Słońce miało dwa razy większą masę?"
   },
   "speed": {
     "0": "1 mies./s",

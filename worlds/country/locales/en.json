@@ -211,6 +211,8 @@
   "meta": {
     "intro": "A street in the country, and the same country as 100 people from poorest to richest. Pick a country, then make changes: they add up.",
     "name": "Countries",
+    "seoDescription": "Try universal basic income, a higher minimum wage or taxing the richest in 41 countries and see family income, poverty, jobs and lifespan change next to the country left as it was.",
+    "seoTitle": "Economy Simulator: Basic Income, Taxes, Minimum Wage",
     "sub": "Economy & society"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Your own country (from {from})",
     "this": "This country"
+  },
+  "question": {
+    "aging": "What if a country's birth rate collapsed?",
+    "build": "What if a country built roads, rail and power?",
+    "corr": "What if a country cut corruption in half?",
+    "drought": "What if a country had years of drought?",
+    "edu": "What if a country doubled education spending?",
+    "health": "What if a country had free healthcare for everyone?",
+    "minwage": "What if a country raised the minimum wage?",
+    "oil": "What if a country discovered huge oil reserves?",
+    "open": "What if a country opened its borders to migrants?",
+    "pandemic": "What if a pandemic hit a country?",
+    "robots": "What if robots did half the factory work?",
+    "taxcut": "What if a country cut taxes for everyone?",
+    "taxrich": "What if a country taxed the rich more?",
+    "trade": "What if a country closed its borders to trade?",
+    "ubi": "What if a country had universal basic income?",
+    "war": "What if a country went to war?"
   },
   "speed": {
     "0": "3 mo/s",

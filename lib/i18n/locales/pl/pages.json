@@ -145,5 +145,26 @@
       "h": "Prawo właściwe",
       "p1": "Regulamin podlega prawu {country}, bez odbierania ci ochrony prawa miejsca, w którym mieszkasz."
     }
+  },
+  "whatif": {
+    "answer": "W tym modelu, do {time}: {label} {alt} ze zmianą, {base} bez niej.",
+    "description": "{answer} Zobacz krok po kroku, co się dzieje, i uruchom to sam w darmowym symulatorze.",
+    "fork": "Zmiana następuje w {time}, po krótkim biegu świata takiego, jaki jest. Ten sam start, ten sam przypadek: różni się tylko zmiana.",
+    "run": "Uruchom to co jeśli",
+    "runNote": "Otwiera symulator na żywo z tą zmianą. Zmień coś jeszcze i patrz, jak rozchodzą się dwie przyszłości.",
+    "picture": "{world}: {time}",
+    "noChange": "Bez zmiany",
+    "withIt": "Z co jeśli",
+    "numbers": "Liczby",
+    "measure": "Miara",
+    "by": "Do {time}",
+    "steps": "Co się dzieje, krok po kroku",
+    "onlyAlt": "Tylko ze zmianą",
+    "onlyBase": "Tylko bez zmiany",
+    "stepsNone": "Żadne zdarzenie nie różni obu światów: zmianę widać w liczbach.",
+    "model": "O tym modelu",
+    "more": "Więcej co jeśli: {world}",
+    "others": "Inne światy",
+    "open": "Otwórz: {world}"
   }
 }

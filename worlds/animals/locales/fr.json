@@ -164,6 +164,8 @@
     "hint": "Chaque animal est un peu différent. Les mieux adaptés ont plus de petits. Lancez la lecture et choisissez un changement.",
     "intro": "Jusqu’à cinq espèces partagent un même lieu. Chaque animal est un peu différent ; les mieux adaptés ont plus de petits, donc les corps changent avec le temps. Choisissez un monde ou créez le vôtre, puis faites des changements : ils s’additionnent.",
     "name": "Animaux",
+    "seoDescription": "Placez jusqu’à cinq des 21 animaux au même endroit et regardez la vitesse, la taille et les sens évoluer. Provoquez une glaciation, un incendie ou une maladie, ou retirez une espèce, et voyez qui survit.",
+    "seoTitle": "Simulateur d’évolution : prédateurs, proies et sélection naturelle",
     "sub": "Évolution"
   },
   "metric": {
@@ -291,6 +293,21 @@
     "remove": "Et si les {many} disparaissaient ?",
     "reserve": "Et si le lieu devenait une réserve protégée ?",
     "warm": "Et s’il faisait 3 °C de plus ?"
+  },
+  "question": {
+    "add": "Et si un nouvel animal s’installait ?",
+    "cool": "Et si une ère glaciaire arrivait ?",
+    "disease": "Et si une maladie se propageait chez les animaux sauvages ?",
+    "drought": "Et si une année entière passait sans pluie ?",
+    "fire": "Et si un feu de forêt ravageait la région ?",
+    "habitat": "Et si la moitié de l’habitat disparaissait ?",
+    "hunt": "Et si les humains chassaient un animal ?",
+    "invasive": "Et si une espèce invasive qui se reproduit vite arrivait ?",
+    "move": "Et si les animaux vivaient dans le climat opposé ?",
+    "rain": "Et s’il y avait des années de bonnes pluies ?",
+    "remove": "Et si un animal disparaissait d’un réseau trophique ?",
+    "reserve": "Et si le territoire devenait une réserve protégée ?",
+    "warm": "Et si le climat se réchauffait de 3 °C pour les animaux sauvages ?"
   },
   "sp": {
     "bear": {

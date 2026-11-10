@@ -14,10 +14,17 @@
     "yourplanet": "senin gezegenin"
   },
   "ctl": {
-    "sunm": { "label": "Güneş kütlesi", "unit": "× Güneş" },
+    "sunm": {
+      "label": "Güneş kütlesi",
+      "unit": "× Güneş"
+    },
     "view": {
       "label": "Görünüm",
-      "opt": { "inner": "İç gezegenler", "mid": "Jüpiter'e kadar", "outer": "Tüm sistem" }
+      "opt": {
+        "inner": "İç gezegenler",
+        "mid": "Jüpiter'e kadar",
+        "outer": "Tüm sistem"
+      }
     }
   },
   "ev": {
@@ -43,12 +50,23 @@
     "hint": "Gezegen fırlatmak için sürükle. Değişiklikler birbirine eklenir.",
     "intro": "Güneş ve sekiz gezegen için gerçek Newton kütleçekimi. Kendi gezegenini fırlatmak için sahnede sürükle.",
     "name": "Güneş Sistemi",
+    "seoDescription": "Güneş ve sekiz gezegen için gerçek Newton kütleçekimi. Güneş'in kütlesini ikiye katla, kaldır, Jüpiter'i yıldıza çevir ya da kendi gezegenini fırlat; yörüngelerin değişimini izle.",
+    "seoTitle": "Güneş Sistemi Simülatörü: Ya Güneş yok olsaydı?",
     "sub": "Kütleçekim"
   },
   "metric": {
-    "dist": { "label": "Dünya–Güneş uzaklığı", "unit": "AB" },
-    "temp": { "label": "Dünya sıcaklığı", "unit": "°C" },
-    "year": { "label": "Yılın uzunluğu", "unit": "gün" }
+    "dist": {
+      "label": "Dünya–Güneş uzaklığı",
+      "unit": "AB"
+    },
+    "temp": {
+      "label": "Dünya sıcaklığı",
+      "unit": "°C"
+    },
+    "year": {
+      "label": "Yılın uzunluğu",
+      "unit": "gün"
+    }
   },
   "name": {
     "blackhole": "Kara delik",
@@ -61,6 +79,15 @@
     "uranus": "Uranüs",
     "venus": "Venüs",
     "yourplanet": "Senin gezegenin"
+  },
+  "question": {
+    "bh": "Güneş Sistemi'nden bir kara delik geçseydi ne olurdu?",
+    "giant": "Güneş kırmızı dev olsaydı ne olurdu?",
+    "jupstar": "Jüpiter bir yıldız olsaydı ne olurdu?",
+    "mars": "Dünya Mars'ın yörüngesinde olsaydı ne olurdu?",
+    "nosun": "Güneş yok olsaydı ne olurdu?",
+    "stop": "Dünya Güneş'in etrafında dönmeyi bıraksaydı ne olurdu?",
+    "sun2": "Güneş iki kat daha kütleli olsaydı ne olurdu?"
   },
   "speed": {
     "0": "1 ay/sn",

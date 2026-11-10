@@ -211,6 +211,8 @@
   "meta": {
     "intro": "Una strada del paese, e lo stesso paese come 100 persone dalla più povera alla più ricca. Scegli un paese, poi fai dei cambiamenti: si sommano.",
     "name": "Paesi",
+    "seoDescription": "Prova il reddito universale di base, un salario minimo più alto o tasse sui più ricchi in 41 paesi e guarda come cambiano reddito, povertà, lavoro e aspettativa di vita accanto al paese lasciato com’era.",
+    "seoTitle": "Simulatore di economia: reddito di base, tasse, salario minimo",
     "sub": "Economia e società"
   },
   "metric": {
@@ -252,6 +254,24 @@
   "name": {
     "ownFrom": "Il tuo paese (partendo da {from})",
     "this": "Questo paese"
+  },
+  "question": {
+    "aging": "E se la natalità di un paese crollasse?",
+    "build": "E se un paese costruisse strade, ferrovie e centrali elettriche?",
+    "corr": "E se un paese dimezzasse la corruzione?",
+    "drought": "E se un paese avesse anni di siccità?",
+    "edu": "E se un paese raddoppiasse la spesa per l’istruzione?",
+    "health": "E se un paese avesse sanità gratuita per tutti?",
+    "minwage": "E se un paese alzasse il salario minimo?",
+    "oil": "E se un paese scoprisse enormi riserve di petrolio?",
+    "open": "E se un paese aprisse le frontiere ai migranti?",
+    "pandemic": "E se una pandemia colpisse un paese?",
+    "robots": "E se i robot facessero metà del lavoro in fabbrica?",
+    "taxcut": "E se un paese tagliasse le tasse a tutti?",
+    "taxrich": "E se un paese tassasse di più i ricchi?",
+    "trade": "E se un paese chiudesse le frontiere al commercio?",
+    "ubi": "E se un paese avesse un reddito di base universale?",
+    "war": "E se un paese entrasse in guerra?"
   },
   "speed": {
     "0": "3 mesi/s",
