@@ -36,6 +36,12 @@ const GLYPHS = {
   copy: <><rect x="8.5" y="8.5" width="11" height="11" rx="1.5" /><path d="M15.5 8.5V5.5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3" /></>,
   noads: <><rect x="4" y="6" width="16" height="12" rx="1.5" strokeDasharray="2 2" /><path d="M5 19L19 5" /></>,
 
+  // Site menu and socials (change 0032): generic shapes, always paired with a visible name.
+  dots: <><circle cx="6" cy="12" r="1" fill="currentColor" /><circle cx="12" cy="12" r="1" fill="currentColor" /><circle cx="18" cy="12" r="1" fill="currentColor" /></>,
+  camera: <><rect x="4" y="4" width="16" height="16" rx="4.5" /><circle cx="12" cy="12" r="3.6" /><circle cx="16.8" cy="7.2" r="0.6" fill="currentColor" /></>,
+  note: <><path d="M13 4.5v10.2a3.2 3.2 0 1 1-2.2-3.05" /><path d="M13 4.5c.6 2.4 2.4 4 5 4.2" /></>,
+  external: <><path d="M13.5 5.5h5v5" /><path d="M18.5 5.5l-7 7" /><path d="M17 14v4.5H5.5V7H10" /></>,
+
   // World glyphs
   scale: <><path d="M3.5 16h17" /><path d="M5 16v-3M8.5 16v-5M12 16v-7M15.5 16v-5M19 16v-3" /></>,
   galaxy: <><circle cx="12" cy="12" r="1.3" /><path d="M12 12c3-.5 4 2.5 2 4.5s-7 1.5-8-2.5S8 5 12.5 5s7.5 4 6.5 8" strokeDasharray="0.1 2.6" /></>,

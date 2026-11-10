@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { LOCALES, localeInfo, localePath, splitLocale, type LocaleInfo } from "@/lib/i18n";
 import { Icon } from "../ui/Icon";
 import { useLocale, useT } from "../i18n/I18nProvider";
+import { track } from "../privacy/track";
 
 /**
  * Language menu and the "Also in …" hint (change 0025). Lists languages by their own names and opens the same page in
@@ -65,7 +66,7 @@ export default function LangMenu() {
         <ul className="popover langmenu-list" id="lang-list" ref={list} onKeyDown={onKey} aria-label={t("shell.lang.label")}>
           {langs.map((l) => (
             <li key={l.code}>
-              <a href={href(l.code)} hrefLang={l.tag} lang={l.tag} dir={l.dir} aria-current={l.code === locale ? "page" : undefined} onClick={() => store.set("lang", l.code)}>
+              <a href={href(l.code)} hrefLang={l.tag} lang={l.tag} dir={l.dir} aria-current={l.code === locale ? "page" : undefined} onClick={() => { store.set("lang", l.code); track("language", { to: l.code, from: locale }); }}>
                 <span>{l.name}</span>
                 {!l.ready && <span className="sub">{t("shell.lang.draft")}</span>}
               </a>

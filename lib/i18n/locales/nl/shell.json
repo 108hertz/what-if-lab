@@ -31,5 +31,19 @@
     "body": "Alles hier is een model gebouwd op wetenschappelijke theorieën en afgeronde getallen. De uitkomsten zijn geen echte gegevens en geen voorspellingen over echte mensen, plaatsen of de toekomst.",
     "use": "Gebruik het om te spelen, te ontdekken en te zien hoe het zou kunnen gaan als…",
     "ok": "Begrepen"
+  },
+  "site": {
+    "menu": "Over ons, privacy en voorwaarden",
+    "about": "Over What-If Lab",
+    "privacy": "Privacybeleid",
+    "terms": "Gebruiksvoorwaarden",
+    "settings": "Privacyinstellingen"
+  },
+  "consent": {
+    "label": "Keuze voor statistieken",
+    "text": "We tellen bezoeken zonder cookies. Mogen we ook Google Analytics (cookies) gebruiken om te zien welke wat-als mensen proberen?",
+    "accept": "Accepteren",
+    "decline": "Weigeren",
+    "policy": "Privacybeleid"
   }
 }

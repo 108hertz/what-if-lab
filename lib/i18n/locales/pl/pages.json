@@ -1,0 +1,149 @@
+{
+  "_status": "Machine draft (change 0032), awaiting native review. The English version applies.",
+  "common": {
+    "updated": "Ostatnia zmiana: {date}",
+    "contact": "Pytania? Napisz na {email}.",
+    "contactSoon": "Wkrótce dodamy tu adres kontaktowy.",
+    "operatorFallback": "zespół What-If Lab",
+    "countryFallback": "kraju, w którym działa operator serwisu",
+    "translated": "Ta strona jest tłumaczeniem. Wiążąca jest wersja angielska.",
+    "readEnglish": "Czytaj po angielsku",
+    "back": "Wróć do laboratorium",
+    "footer": "Serwis"
+  },
+  "about": {
+    "title": "O What-If Lab",
+    "description": "What-If Lab to darmowy symulator oparty na regułach do pytań „co by było, gdyby…”: od protonu po wszechświat, otwórz świat i go zmień.",
+    "heading": "O nas",
+    "lede": "What-If Lab to darmowy symulator do pytań „co by było, gdyby…”. Przybliżaj od protonu po obserwowalny wszechświat, otwórz świat, zmień jedną rzecz i patrz, jak rozchodzą się dwie przyszłości.",
+    "how": {
+      "h": "Jak to działa",
+      "li1": "Każdy świat działa na prostych modelach opartych na regułach, w twojej przeglądarce. Bez AI i bez danych na żywo.",
+      "li2": "„Co jeśli” rozgałęzia działający świat: zmieniony świat gra na scenie, a niezmieniony toczy się obok, a wykres pokazuje, gdzie się różnią.",
+      "li3": "Te same ustawienia zawsze dają ten sam wynik, więc symulację można udostępnić i sprawdzić."
+    },
+    "worlds": {
+      "h": "Światy"
+    },
+    "note": {
+      "h": "Model, nie prognoza"
+    },
+    "follow": {
+      "h": "Obserwuj nas",
+      "p1": "Krótkie klipy z najdziwniejszych „co jeśli” i nowe światy, gdy tylko się pojawią.",
+      "soon": "Nasze strony na Instagramie i TikToku są w drodze."
+    },
+    "made": {
+      "h": "Kto to robi",
+      "p1": "What-If Lab tworzy {operator}, inspirując się eksploratorami skali, piaskownicami grawitacji i symulacjami małych stworzeń."
+    }
+  },
+  "privacy": {
+    "title": "Polityka prywatności · What-If Lab",
+    "description": "Co zbiera What-If Lab, po co i jaki masz wybór: wizyty liczone bez cookie, Google Analytics tylko po akceptacji.",
+    "heading": "Polityka prywatności",
+    "intro": {
+      "p1": "Ta polityka wyjaśnia, co What-If Lab („my”) zbiera, gdy korzystasz z serwisu, i dlaczego."
+    },
+    "short": {
+      "h": "W skrócie",
+      "li1": "Nie potrzebujesz konta i nie pytamy o imię ani e-mail.",
+      "li2": "Symulacje działają w całości w twojej przeglądarce; twoje ustawienia i „co jeśli” nie są do nas wysyłane.",
+      "li3": "Liczymy wizyty bez cookie. Google Analytics działa tylko po twojej akceptacji.",
+      "li4": "Nie sprzedajemy twoich danych."
+    },
+    "who": {
+      "h": "Administrator",
+      "p1": "What-If Lab prowadzi {operator}, administrator opisanych tu danych."
+    },
+    "collect": {
+      "h": "Co zbieramy",
+      "p1": "Statystyki wizyt (zawsze). Nasz hosting, Vercel, liczy odsłony za pomocą Vercel Web Analytics. Nie używa cookie i nie śledzi cię między serwisami. Zapisuje stronę, serwis, z którego przyszedłeś, kraj, przeglądarkę, system i typ urządzenia, a my widzimy tylko sumy.",
+      "p2": "Google Analytics (tylko po akceptacji). Jeśli wybierzesz Akceptuję, Google Analytics 4 zapisuje pliki cookie (_ga, _ga_…), by odróżniać wizyty, i rejestruje oglądane strony oraz działania, takie jak sprawdzenie „co jeśli”, zaznaczenie zmiany, Reset, eksport wideo czy zmiana języka. Google przetwarza to dla nas jako dostawca usług; GA4 nie przechowuje adresów IP. Jeśli wybierzesz Odrzucam, Google Analytics nie jest ładowany.",
+      "p3": "Logi serwera. Jak każdy hosting, Vercel krótko przetwarza twój adres IP i dane żądania, by dostarczać strony i dbać o bezpieczeństwo usługi."
+    },
+    "device": {
+      "h": "Zapisane na twoim urządzeniu",
+      "p1": "Używamy pamięci lokalnej przeglądarki, nie cookie, do zapisania motywu, wybranego języka, tego, czy widziałeś notkę o symulacji, twojego wyboru analityki i zapisanych stylów eksportu. Zostaje to na twoim urządzeniu i możesz to usunąć w ustawieniach przeglądarki."
+    },
+    "later": {
+      "h": "Konta, Premium i reklamy",
+      "p1": "Konta, Premium i reklamy nie są jeszcze włączone. Zanim to nastąpi, ta polityka wskaże dostawców (Clerk dla kont i płatności, Google AdSense dla reklam), a my zapytamy cię ponownie tam, gdzie wymaga tego prawo."
+    },
+    "basis": {
+      "h": "Podstawa prawna",
+      "p1": "Statystyki wizyt bez cookie opierają się na naszym prawnie uzasadnionym interesie w rozumieniu, jak korzysta się z serwisu. Google Analytics opiera się na twojej zgodzie, którą możesz w każdej chwili wycofać."
+    },
+    "rights": {
+      "h": "Twoje prawa",
+      "p1": "W zależności od miejsca zamieszkania (np. na mocy RODO, brytyjskiego RODO lub prawa Kalifornii) możesz żądać dostępu do swoich danych, ich poprawienia lub usunięcia, sprzeciwić się ich użyciu albo złożyć skargę do organu ochrony danych. Ponieważ nie mamy kont, jedyne dane, które mogłyby cię zidentyfikować, ma Google Analytics, i to tylko po twojej akceptacji; napisz do nas, pomożemy."
+    },
+    "choice": {
+      "h": "Zmiana wyboru",
+      "p1": "Otwórz menu (…) w prawym górnym rogu dowolnej strony i wybierz Ustawienia prywatności, by ponownie zaakceptować lub odrzucić Google Analytics. Odrzucenie zatrzymuje je i usuwa jego cookie z tego serwisu."
+    },
+    "children": {
+      "h": "Dzieci",
+      "p1": "Serwis jest dla wszystkich i nadaje się do użytku w szkole. Świadomie nie zbieramy danych osobowych dzieci, a Google Analytics działa dopiero po czyjejś akceptacji."
+    },
+    "transfers": {
+      "h": "Przekazywanie danych za granicę",
+      "p1": "Vercel i Google mogą przetwarzać dane poza twoim krajem, także w Stanach Zjednoczonych, z zabezpieczeniami takimi jak standardowe klauzule umowne UE."
+    },
+    "changes": {
+      "h": "Zmiany tej polityki",
+      "p1": "Jeśli zmienimy tę politykę, zaktualizujemy datę na górze, a przy ważnych zmianach ponownie zapytamy o twój wybór."
+    }
+  },
+  "terms": {
+    "title": "Regulamin · What-If Lab",
+    "description": "Zasady korzystania z What-If Lab: darmowy symulator oparty na regułach do nauki i zabawy, nie prognoza ani porada.",
+    "heading": "Regulamin",
+    "intro": {
+      "p1": "Ten regulamin dotyczy korzystania z What-If Lab. Korzystając z serwisu, akceptujesz go."
+    },
+    "what": {
+      "h": "Czym jest serwis",
+      "p1": "What-If Lab to zbiór symulacji opartych na regułach. Każdy wynik pochodzi z prostych modeli z zaokrąglonymi lub zmyślonymi liczbami. Służy do nauki, z ciekawości i dla zabawy. Nie jest prognozą ani poradą naukową, medyczną, finansową, prawną czy wychowawczą."
+    },
+    "use": {
+      "h": "Korzystanie z serwisu",
+      "p1": "Możesz korzystać z serwisu za darmo w celach osobistych, edukacyjnych i niekomercyjnych, także na lekcjach. Prosimy nie:",
+      "li1": "próbować psuć, przeciążać ani zakłócać serwisu;",
+      "li2": "kopiować ani pobierać serwisu na dużą skalę ani używać automatów do generowania ruchu;",
+      "li3": "przedstawiać wyników What-If Lab jako prawdziwych prognoz ani jako czegoś, co popieramy."
+    },
+    "exports": {
+      "h": "Eksportowane filmy",
+      "p1": "Możesz udostępniać filmy wyeksportowane z serwisu, także w mediach społecznościowych i w szkole, o ile zostaje w nich nazwa What-If Lab i nie przedstawiasz ich jako prognoz dotyczących prawdziwego świata."
+    },
+    "ours": {
+      "h": "Nasze treści",
+      "p1": "Kod, projekt, teksty, rysunki i nazwa What-If Lab należą do {operator}. Poza tym, na co pozwala regulamin, zapytaj przed ich ponownym użyciem."
+    },
+    "premium": {
+      "h": "Premium",
+      "p1": "Premium nie jest jeszcze w sprzedaży. Gdy będzie, cena, odnawianie i warunki rezygnacji zostaną pokazane przed płatnością i dodane tutaj."
+    },
+    "warranty": {
+      "h": "Bez gwarancji",
+      "p1": "Serwis jest udostępniany „tak jak jest”. Staramy się, by działał i był poprawny, ale nie możemy obiecać, że zawsze będzie dostępny, bezbłędny ani odpowiedni do konkretnego celu."
+    },
+    "liability": {
+      "h": "Odpowiedzialność",
+      "p1": "W zakresie dozwolonym przez prawo nie odpowiadamy za straty wynikające z korzystania z serwisu ani z decyzji podjętych na podstawie jego symulacji. Nic tu nie ogranicza praw konsumenta, których prawo nie pozwala ograniczyć."
+    },
+    "links": {
+      "h": "Inne serwisy",
+      "p1": "Linki do innych serwisów, np. naszych stron na Instagramie i TikToku, są dla wygody; obowiązują tam zasady tych serwisów."
+    },
+    "changes": {
+      "h": "Zmiany regulaminu",
+      "p1": "Możemy aktualizować ten regulamin. Data na górze wskazuje obecną wersję; dalsze korzystanie z serwisu po zmianie oznacza jej akceptację."
+    },
+    "law": {
+      "h": "Prawo właściwe",
+      "p1": "Regulamin podlega prawu {country}, bez odbierania ci ochrony prawa miejsca, w którym mieszkasz."
+    }
+  }
+}

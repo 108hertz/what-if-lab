@@ -1,6 +1,6 @@
 # Product plan
 
-_Last updated: 2026-11-02_
+_Last updated: 2026-11-10_
 
 ## Goal
 
@@ -29,7 +29,7 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
 
 | Tier | Price | What you get |
 | --- | --- | --- |
-| Free | $0 | All worlds, all what-ifs, scale explorer, share links. Ads in reserved slots away from the stage. |
+| Free | $0 | All worlds, all what-ifs, scale explorer, share links, a landscape video of any run. Ads in reserved slots away from the stage. |
 | Premium | $15 / year | No ads · up to 4 parallel what-ifs · Monte-Carlo outcome ranges · timeline scrubbing/replay · saved scenarios · export studio (video in four sizes, pictures, subtitles/caption/story text, slides PDF; your own text, fonts, colours, picture grade and length — built; GIF, CSV later) · early access to new worlds |
 
 Feature specs: [ads](./features/ads.md), [premium](./features/premium.md).
@@ -52,7 +52,8 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [x] Sim engine, 7 worlds, scale explorer, tests
 - [x] Docs, planning process, Claude skills
 - [ ] Static export + hosting ([ADR 0001](./decisions/0001-static-site-no-backend.md)) — change 0002
-- [ ] Privacy-friendly analytics (cookieless) — change 0002
+- [x] Privacy-friendly analytics: Vercel Web Analytics (cookieless) + GA4 after consent — [change 0027](./changes/0027-analytics-consent-bot-protection.md)
+- [x] About, Privacy policy, Terms of use in 20 languages — [change 0032](./changes/0032-about-privacy-terms.md) (operator details to fill in)
 
 ### Phase 1 — Darkroom UI
 - [x] Design tokens, themes, typography, icons — [change 0003](./changes/0003-darkroom-visual-language.md)
@@ -71,9 +72,10 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [ ] More worlds (cities, biomes, history scenarios)
 
 ### Phase 3 — Revenue
-- [ ] Consent management + side-rail ads ([ADR 0003](./decisions/0003-advertising.md))
+- [ ] Consent management + side-rail ads ([ADR 0003](./decisions/0003-advertising.md)); analytics consent banner done (0027), Google's certified CMP comes with ads
 - [x] Accounts + Premium checkout with Clerk, no ads for Premium ([ADR 0008](./decisions/0008-accounts-and-billing-clerk.md), [change 0020](./changes/0020-accounts-premium-exports.md)); goes live when the Clerk key is set
 - [x] Premium exports: phone video, YouTube video, slides ([change 0020](./changes/0020-accounts-premium-exports.md))
+- [x] Free quick export: one landscape video, no editing ([change 0031](./changes/0031-free-quick-export.md))
 - [x] Export studio: styled video, pictures, text and slides; text placement, fonts, colours, grade, length ([change 0022](./changes/0022-export-studio.md))
 - [ ] Premium features: multi what-if, Monte-Carlo, scrubbing, saved scenarios
 

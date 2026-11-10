@@ -20,7 +20,7 @@ const read = (p: string) => (existsSync(join(ROOT, p)) ? (JSON.parse(readFileSyn
 
 /** [English file, the file for a language] for every catalog. */
 const PAIRS: [string, (code: string) => string][] = [
-  ...SHARED_NS.map((ns) => [`lib/i18n/locales/en/${ns}.json`, (c: string) => `lib/i18n/locales/${c}/${ns}.json`] as [string, (c: string) => string]),
+  ...[...SHARED_NS, "pages"].map((ns) => [`lib/i18n/locales/en/${ns}.json`, (c: string) => `lib/i18n/locales/${c}/${ns}.json`] as [string, (c: string) => string]),
   ...SANDBOX_KEYS.map((k) => [`worlds/${k}/locales/en.json`, (c: string) => `worlds/${k}/locales/${c}.json`] as [string, (c: string) => string]),
 ];
 

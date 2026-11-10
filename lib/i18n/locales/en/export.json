@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · seed {seed}",
     "freeText": "Your text"
+  },
+  "quick": {
+    "open": "Export this run as a video",
+    "title": "Export video",
+    "download": "Download video",
+    "what": "A {s}-second landscape video of this run, with the title, the what-if and the result, ready for YouTube or to share.",
+    "noVideo": "This browser can't record video. Try a recent Chrome, Edge, Firefox or Safari.",
+    "more": "More sizes, pictures, text, slides and your own style come with Premium."
   }
 }

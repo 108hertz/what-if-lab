@@ -1,0 +1,149 @@
+{
+  "_status": "Machine draft (change 0032), awaiting native review. The English version applies.",
+  "common": {
+    "updated": "Laatst bijgewerkt: {date}",
+    "contact": "Vragen? Mail naar {email}.",
+    "contactSoon": "Hier komt binnenkort een contactadres.",
+    "operatorFallback": "het What-If Lab-team",
+    "countryFallback": "het land waar de beheerder van de site gevestigd is",
+    "translated": "Deze pagina is een vertaling. De Engelse versie is bepalend.",
+    "readEnglish": "Lees in het Engels",
+    "back": "Terug naar het lab",
+    "footer": "Site"
+  },
+  "about": {
+    "title": "Over What-If Lab",
+    "description": "What-If Lab is een gratis, op regels gebaseerde simulator voor 'wat als…'-vragen: van proton tot heelal, open een wereld en verander hem.",
+    "heading": "Over ons",
+    "lede": "What-If Lab is een gratis simulator voor 'wat als…'-vragen. Zoom van een proton naar het waarneembare heelal, open een wereld, verander één ding en zie twee toekomsten uit elkaar gaan.",
+    "how": {
+      "h": "Hoe het werkt",
+      "li1": "Elke wereld draait op eenvoudige, op regels gebaseerde modellen in je browser. Geen AI en geen live data.",
+      "li2": "Een wat-als splitst de lopende wereld: de veranderde wereld speelt op het podium terwijl de onveranderde ernaast doorloopt, en de grafiek toont waar ze verschillen.",
+      "li3": "Dezelfde instellingen geven altijd hetzelfde resultaat, dus een run kun je delen en controleren."
+    },
+    "worlds": {
+      "h": "De werelden"
+    },
+    "note": {
+      "h": "Een model, geen voorspelling"
+    },
+    "follow": {
+      "h": "Volg ons",
+      "p1": "Korte clips van de vreemdste wat-als, en nieuwe werelden zodra ze er zijn.",
+      "soon": "Onze Instagram- en TikTok-pagina's komen eraan."
+    },
+    "made": {
+      "h": "Wie het maakt",
+      "p1": "What-If Lab wordt gemaakt door {operator}, geïnspireerd door schaalverkenners, zwaartekrachtzandbakken en simulaties van kleine wezens."
+    }
+  },
+  "privacy": {
+    "title": "Privacybeleid · What-If Lab",
+    "description": "Wat What-If Lab verzamelt, waarom en welke keuzes je hebt: bezoeken geteld zonder cookies, Google Analytics alleen als je het accepteert.",
+    "heading": "Privacybeleid",
+    "intro": {
+      "p1": "Dit beleid legt uit wat What-If Lab ('wij') verzamelt als je de site gebruikt, en waarom."
+    },
+    "short": {
+      "h": "Kort gezegd",
+      "li1": "Je hebt geen account nodig en we vragen niet naar je naam of e-mail.",
+      "li2": "Simulaties draaien volledig in je browser; je instellingen en wat-als worden niet naar ons gestuurd.",
+      "li3": "We tellen bezoeken zonder cookies. Google Analytics draait alleen als je het accepteert.",
+      "li4": "We verkopen je gegevens niet."
+    },
+    "who": {
+      "h": "Wie is verantwoordelijk",
+      "p1": "What-If Lab wordt beheerd door {operator}, verantwoordelijk voor de hier beschreven gegevens."
+    },
+    "collect": {
+      "h": "Wat we verzamelen",
+      "p1": "Bezoekstatistieken (altijd). Onze host, Vercel, telt paginaweergaven met Vercel Web Analytics. Het gebruikt geen cookies en volgt je niet over sites heen. Het registreert de pagina, de site waar je vandaan komt, je land, browser, besturingssysteem en type apparaat, en wij zien alleen totalen.",
+      "p2": "Google Analytics (alleen als je accepteert). Kies je Accepteren, dan plaatst Google Analytics 4 cookies (_ga, _ga_…) om bezoeken te onderscheiden en registreert het de pagina's die je bekijkt en acties zoals een wat-als proberen, een verandering aan- of uitvinken, Reset, een video exporteren of de taal wijzigen. Google verwerkt dit voor ons als dienstverlener; GA4 bewaart geen IP-adressen. Kies je Weigeren, dan wordt Google Analytics nooit geladen.",
+      "p3": "Serverlogs. Zoals elke webhost verwerkt Vercel kort je IP-adres en verzoekgegevens om pagina's te leveren en de dienst veilig te houden."
+    },
+    "device": {
+      "h": "Opgeslagen op je apparaat",
+      "p1": "We gebruiken de lokale opslag van je browser, geen cookies, voor je thema, je taalkeuze, of je de simulatienotitie hebt gezien, je keuze voor statistieken en exportstijlen die je bewaart. Dit blijft op je apparaat en je kunt het wissen in de browserinstellingen."
+    },
+    "later": {
+      "h": "Accounts, Premium en advertenties",
+      "p1": "Accounts, Premium en advertenties staan nog niet aan. Voordat ze aangaan, noemt dit beleid de aanbieders (Clerk voor accounts en betalingen, Google AdSense voor advertenties) en vragen we het je opnieuw waar de wet dat vereist."
+    },
+    "basis": {
+      "h": "Rechtsgrond",
+      "p1": "Bezoekstatistieken zonder cookies berusten op ons gerechtvaardigd belang om te begrijpen hoe de site wordt gebruikt. Google Analytics berust op je toestemming, die je altijd kunt intrekken."
+    },
+    "rights": {
+      "h": "Je rechten",
+      "p1": "Afhankelijk van waar je woont (bijvoorbeeld onder de AVG, de Britse AVG of Californisch recht) kun je vragen je persoonsgegevens in te zien, te corrigeren of te wissen, bezwaar maken tegen het gebruik of een klacht indienen bij je toezichthouder. Omdat we geen accounts hebben, liggen de enige gegevens die jou kunnen identificeren bij Google Analytics, en alleen als je hebt geaccepteerd; neem contact op en we helpen je."
+    },
+    "choice": {
+      "h": "Je keuze wijzigen",
+      "p1": "Open het menu (…) rechtsboven op elke pagina en kies Privacyinstellingen om Google Analytics opnieuw te accepteren of te weigeren. Weigeren stopt het en verwijdert de cookies ervan van deze site."
+    },
+    "children": {
+      "h": "Kinderen",
+      "p1": "De site is voor een breed publiek en geschikt voor school. We verzamelen niet bewust persoonsgegevens van kinderen, en Google Analytics draait pas nadat iemand het accepteert."
+    },
+    "transfers": {
+      "h": "Internationale doorgifte",
+      "p1": "Vercel en Google kunnen gegevens buiten je land verwerken, ook in de Verenigde Staten, met waarborgen zoals de standaardcontractbepalingen van de EU."
+    },
+    "changes": {
+      "h": "Wijzigingen in dit beleid",
+      "p1": "Als we dit beleid wijzigen, passen we de datum bovenaan aan en vragen we bij belangrijke wijzigingen opnieuw om je keuze."
+    }
+  },
+  "terms": {
+    "title": "Gebruiksvoorwaarden · What-If Lab",
+    "description": "De regels voor What-If Lab: een gratis, op regels gebaseerde simulator om te leren en plezier te hebben, geen voorspelling of advies.",
+    "heading": "Gebruiksvoorwaarden",
+    "intro": {
+      "p1": "Deze voorwaarden gelden voor je gebruik van What-If Lab. Door de site te gebruiken ga je ermee akkoord."
+    },
+    "what": {
+      "h": "Wat de site is",
+      "p1": "What-If Lab is een verzameling op regels gebaseerde simulaties. Elk resultaat komt uit eenvoudige modellen met afgeronde of verzonnen getallen. Het is om te leren, uit nieuwsgierigheid en voor de lol. Het is geen voorspelling en geen wetenschappelijk, medisch, financieel, juridisch of opvoedkundig advies."
+    },
+    "use": {
+      "h": "De site gebruiken",
+      "p1": "Je mag de site gratis gebruiken voor persoonlijke, educatieve en niet-commerciële doelen, ook in de klas. Doe alsjeblieft niet:",
+      "li1": "proberen de site te breken, te overbelasten of te verstoren;",
+      "li2": "de site op grote schaal kopiëren of scrapen, of automatische tools gebruiken om verkeer te maken;",
+      "li3": "resultaten van What-If Lab presenteren als echte voorspellingen of als iets wat wij onderschrijven."
+    },
+    "exports": {
+      "h": "Video's die je exporteert",
+      "p1": "Je mag video's die je van de site exporteert delen, ook op sociale media en in de klas, zolang de naam What-If Lab erin blijft staan en je ze niet presenteert als voorspellingen over de echte wereld."
+    },
+    "ours": {
+      "h": "Onze inhoud",
+      "p1": "De code, het ontwerp, de teksten, de tekeningen en de naam What-If Lab zijn van {operator}. Vraag het eerst als je ze verder wilt gebruiken dan deze voorwaarden toestaan."
+    },
+    "premium": {
+      "h": "Premium",
+      "p1": "Premium is nog niet te koop. Zodra het dat is, worden prijs, verlenging en opzegvoorwaarden vóór betaling getoond en hier toegevoegd."
+    },
+    "warranty": {
+      "h": "Geen garanties",
+      "p1": "De site wordt geleverd 'zoals hij is'. We doen ons best hem werkend en juist te houden, maar kunnen niet beloven dat hij altijd beschikbaar, foutloos of geschikt voor een bepaald doel is."
+    },
+    "liability": {
+      "h": "Aansprakelijkheid",
+      "p1": "Voor zover de wet het toestaat, zijn we niet aansprakelijk voor verlies door het gebruik van de site of door beslissingen op basis van de simulaties. Niets hier beperkt rechten die je als consument hebt en die de wet niet laat beperken."
+    },
+    "links": {
+      "h": "Andere sites",
+      "p1": "Links naar andere sites, zoals onze Instagram- en TikTok-pagina's, zijn er voor het gemak; daar gelden de voorwaarden van die sites."
+    },
+    "changes": {
+      "h": "Wijzigingen in deze voorwaarden",
+      "p1": "We kunnen deze voorwaarden bijwerken. De datum bovenaan toont de huidige versie; wie de site na een wijziging blijft gebruiken, accepteert die."
+    },
+    "law": {
+      "h": "Toepasselijk recht",
+      "p1": "Op deze voorwaarden is het recht van {country} van toepassing, zonder je de bescherming van het recht van je woonplaats te ontnemen."
+    }
+  }
+}

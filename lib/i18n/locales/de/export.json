@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · Seed {seed}",
     "freeText": "Dein Text"
+  },
+  "quick": {
+    "open": "Diesen Lauf als Video exportieren",
+    "title": "Video exportieren",
+    "download": "Video herunterladen",
+    "what": "Ein {s} Sekunden langes Querformat-Video dieses Laufs mit Titel, Was-wäre-wenn und Ergebnis, fertig für YouTube oder zum Teilen.",
+    "noVideo": "Dieser Browser kann kein Video aufnehmen. Versuche ein aktuelles Chrome, Edge, Firefox oder Safari.",
+    "more": "Weitere Formate, Bilder, Text, Folien und dein eigener Stil mit Premium."
   }
 }

@@ -31,5 +31,19 @@
     "body": "Tudo aqui é um modelo feito de teorias científicas e números arredondados. Os resultados não são dados reais nem previsões sobre pessoas, lugares ou o futuro reais.",
     "use": "Use para brincar, explorar e ver o que poderia acontecer se…",
     "ok": "Entendi"
+  },
+  "site": {
+    "menu": "Sobre, privacidade e termos",
+    "about": "Sobre o What-If Lab",
+    "privacy": "Política de privacidade",
+    "terms": "Termos de uso",
+    "settings": "Configurações de privacidade"
+  },
+  "consent": {
+    "label": "Escolha de análise",
+    "text": "Contamos as visitas sem cookies. Podemos usar também o Google Analytics (cookies) para ver quais hipóteses as pessoas testam?",
+    "accept": "Aceitar",
+    "decline": "Recusar",
+    "policy": "Política de privacidade"
   }
 }

@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · tohum {seed}",
     "freeText": "Metnin"
+  },
+  "quick": {
+    "open": "Bu çalışmayı video olarak dışa aktar",
+    "title": "Video dışa aktar",
+    "download": "Videoyu indir",
+    "what": "Bu çalışmanın başlık, \"ya olursa\" ve sonuçla birlikte {s} saniyelik yatay videosu; YouTube'a ya da paylaşmaya hazır.",
+    "noVideo": "Bu tarayıcı video kaydedemiyor. Güncel bir Chrome, Edge, Firefox veya Safari deneyin.",
+    "more": "Daha fazla boyut, görsel, metin, slayt ve kendi stiliniz Premium ile."
   }
 }

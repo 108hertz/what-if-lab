@@ -30,7 +30,9 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0024](./0024-one-world-tick-changes-reset.md) | One world on the stage, every change on a tick list, Reset everything; side by side only in exports | 1 · 3 | shipped |
 | [0025](./0025-languages-base-and-seo.md) | Languages: translation base, language URLs and SEO, first 5 of 20 languages | 4 | shipped |
 | [0026](./0026-boot-scene.md) | Boot scene: the world assembles from light before the console opens | 1 | shipped |
-| [0027](./0027-analytics-consent-bot-protection.md) | Analytics (Cloudflare + GA4), Google consent banner, bot protection, privacy page | 0 · 3 | proposed |
+| [0027](./0027-analytics-consent-bot-protection.md) | Analytics (Vercel + GA4) and a consent banner | 0 · 3 | shipped |
 | [0028](./0028-simulation-disclaimer.md) | "A model, not a forecast": first-open disclaimer and a standing label | 1 | shipped |
 | [0029](./0029-world-tabs.md) | World tabs side by side; whatever doesn't fit goes under "More" | 1 | in-progress |
 | [0030](./0030-lost-in-space-404.md) | "Lost in space" 404: the boot scene's sparks as an astronaut adrift | 1 | shipped |
+| [0031](./0031-free-quick-export.md) | Free quick export: one landscape video, no editing | 2 · 3 | shipped |
+| [0032](./0032-about-privacy-terms.md) | About (Instagram, TikTok), Privacy policy and Terms of use pages | 2 · 3 | shipped |

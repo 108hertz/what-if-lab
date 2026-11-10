@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Barlow, Barlow_Semi_Condensed, JetBrains_Mono, Noto_Sans, Noto_Sans_Arabic, Noto_Sans_Bengali, Noto_Sans_Devanagari, Noto_Sans_Thai } from "next/font/google";
 import { localeInfo } from "@/lib/i18n";
+import VercelAnalytics from "../privacy/VercelAnalytics";
 
 /**
  * The <html> both root layouts render (change 0025): app/(en) for English, app/[lang] for the rest.
@@ -44,6 +45,7 @@ export default function RootShell({ locale, children }: { locale: string; childr
     <html lang={info.tag} dir={info.dir} className={FONT_VARS} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
+        <VercelAnalytics />
       </head>
       <body>{children}</body>
     </html>

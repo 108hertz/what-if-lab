@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · ziarno {seed}",
     "freeText": "Twój tekst"
+  },
+  "quick": {
+    "open": "Eksportuj tę symulację jako wideo",
+    "title": "Eksport wideo",
+    "download": "Pobierz wideo",
+    "what": "Poziome wideo z tej symulacji ({s} s) z tytułem, „co jeśli” i wynikiem, gotowe na YouTube albo do udostępnienia.",
+    "noVideo": "Ta przeglądarka nie nagrywa wideo. Spróbuj aktualnego Chrome, Edge, Firefoksa lub Safari.",
+    "more": "Więcej rozmiarów, obrazy, tekst, slajdy i własny styl w Premium."
   }
 }

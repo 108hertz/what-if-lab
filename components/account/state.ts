@@ -123,6 +123,13 @@ export const adsAllowed = (a: Pick<Account, "isPremium">) => !a.isPremium;
 /** Video and slide exports are a Premium tool. */
 export const canExport = (a: Pick<Account, "isPremium">) => a.isPremium;
 
+/**
+ * Which export a visitor gets (change 0031): Premium (and the dev simulation) opens the full studio; everyone else,
+ * accounts on or off, gets Quick export — one landscape video in the default style, nothing to edit.
+ */
+export type ExportLevel = "full" | "quick";
+export const exportLevel = (a: Pick<Account, "isPremium">): ExportLevel => (a.isPremium ? "full" : "quick");
+
 // ——— Local hints (browser storage; every access guarded) ———
 
 const HINT_KEY = "wil.premium";

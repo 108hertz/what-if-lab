@@ -1,0 +1,149 @@
+{
+  "_status": "Machine draft (change 0032), awaiting native review. The English version applies.",
+  "common": {
+    "updated": "Terakhir diperbarui {date}",
+    "contact": "Ada pertanyaan? Tulis ke {email}.",
+    "contactSoon": "Alamat kontak akan segera ditambahkan di sini.",
+    "operatorFallback": "tim What-If Lab",
+    "countryFallback": "negara tempat pengelola situs berada",
+    "translated": "Halaman ini adalah terjemahan. Versi bahasa Inggris yang berlaku.",
+    "readEnglish": "Baca dalam bahasa Inggris",
+    "back": "Kembali ke lab",
+    "footer": "Situs"
+  },
+  "about": {
+    "title": "Tentang What-If Lab",
+    "description": "What-If Lab adalah simulator gratis berbasis aturan untuk pertanyaan \"bagaimana jika…\": dari proton ke alam semesta, buka dunia dan ubahlah.",
+    "heading": "Tentang",
+    "lede": "What-If Lab adalah simulator gratis untuk pertanyaan \"bagaimana jika…\". Perbesar dari proton ke alam semesta teramati, buka sebuah dunia, ubah satu hal, dan lihat dua masa depan berpisah.",
+    "how": {
+      "h": "Cara kerjanya",
+      "li1": "Setiap dunia berjalan dengan model sederhana berbasis aturan di browser Anda. Tanpa AI dan tanpa data langsung.",
+      "li2": "Sebuah skenario mencabangkan dunia yang sedang berjalan: dunia yang diubah tampil di panggung sementara yang tidak diubah berjalan di sampingnya, dan grafik menunjukkan di mana keduanya berbeda.",
+      "li3": "Pengaturan yang sama selalu memberi hasil yang sama, jadi sebuah simulasi bisa dibagikan dan diperiksa."
+    },
+    "worlds": {
+      "h": "Dunia-dunia"
+    },
+    "note": {
+      "h": "Model, bukan ramalan"
+    },
+    "follow": {
+      "h": "Ikuti kami",
+      "p1": "Klip pendek dari skenario paling aneh, dan dunia baru begitu tiba.",
+      "soon": "Halaman Instagram dan TikTok kami sedang disiapkan."
+    },
+    "made": {
+      "h": "Siapa pembuatnya",
+      "p1": "What-If Lab dibuat oleh {operator}, terinspirasi oleh penjelajah skala, kotak pasir gravitasi, dan simulasi makhluk kecil."
+    }
+  },
+  "privacy": {
+    "title": "Kebijakan privasi · What-If Lab",
+    "description": "Apa yang dikumpulkan What-If Lab, mengapa, dan pilihan Anda: kunjungan dihitung tanpa cookie, Google Analytics hanya jika Anda setuju.",
+    "heading": "Kebijakan privasi",
+    "intro": {
+      "p1": "Kebijakan ini menjelaskan apa yang dikumpulkan What-If Lab (\"kami\") saat Anda memakai situs ini, dan mengapa."
+    },
+    "short": {
+      "h": "Singkatnya",
+      "li1": "Anda tidak perlu akun, dan kami tidak meminta nama atau email Anda.",
+      "li2": "Simulasi berjalan sepenuhnya di browser Anda; pengaturan dan skenario Anda tidak dikirim ke kami.",
+      "li3": "Kami menghitung kunjungan tanpa cookie. Google Analytics hanya berjalan jika Anda menerimanya.",
+      "li4": "Kami tidak menjual data Anda."
+    },
+    "who": {
+      "h": "Siapa yang bertanggung jawab",
+      "p1": "What-If Lab dikelola oleh {operator}, yang bertanggung jawab atas data yang dijelaskan di sini."
+    },
+    "collect": {
+      "h": "Apa yang kami kumpulkan",
+      "p1": "Statistik kunjungan (selalu). Penyedia hosting kami, Vercel, menghitung tampilan halaman dengan Vercel Web Analytics. Ini tidak memakai cookie dan tidak mengikuti Anda antarsitus. Yang dicatat: halaman, situs perujuk, negara, browser, sistem operasi, dan jenis perangkat Anda, dan kami hanya melihat totalnya.",
+      "p2": "Google Analytics (hanya jika Anda setuju). Jika Anda memilih Terima, Google Analytics 4 memasang cookie (_ga, _ga_…) untuk membedakan kunjungan dan mencatat halaman yang Anda lihat serta tindakan seperti mencoba skenario, mencentang perubahan, Reset, mengekspor video, atau mengganti bahasa. Google memprosesnya untuk kami sebagai penyedia layanan; GA4 tidak menyimpan alamat IP. Jika Anda memilih Tolak, Google Analytics tidak pernah dimuat.",
+      "p3": "Log server. Seperti hosting web lainnya, Vercel memproses alamat IP dan detail permintaan Anda sebentar untuk mengirim halaman dan menjaga keamanan layanan."
+    },
+    "device": {
+      "h": "Disimpan di perangkat Anda",
+      "p1": "Kami memakai penyimpanan lokal browser, bukan cookie, untuk tema, pilihan bahasa, apakah Anda sudah melihat catatan simulasi, pilihan analitik, dan gaya ekspor yang Anda simpan. Semua itu tetap di perangkat Anda, dan bisa dihapus lewat pengaturan browser."
+    },
+    "later": {
+      "h": "Akun, Premium, dan iklan",
+      "p1": "Akun, Premium, dan iklan belum diaktifkan. Sebelum diaktifkan, kebijakan ini akan menyebut penyedianya (Clerk untuk akun dan pembayaran, Google AdSense untuk iklan) dan kami akan bertanya lagi bila hukum mewajibkannya."
+    },
+    "basis": {
+      "h": "Dasar hukum",
+      "p1": "Statistik kunjungan tanpa cookie didasarkan pada kepentingan sah kami untuk memahami cara situs dipakai. Google Analytics didasarkan pada persetujuan Anda, yang bisa Anda tarik kapan saja."
+    },
+    "rights": {
+      "h": "Hak Anda",
+      "p1": "Tergantung tempat tinggal Anda (misalnya menurut UU PDP, GDPR, GDPR Inggris, atau hukum California), Anda dapat meminta melihat, memperbaiki, atau menghapus data pribadi Anda, menolak penggunaannya, atau mengadu ke otoritas perlindungan data. Karena kami tidak menyimpan akun, satu-satunya data yang bisa mengenali Anda ada di Google Analytics, dan hanya jika Anda menerimanya; hubungi kami dan kami akan membantu."
+    },
+    "choice": {
+      "h": "Mengubah pilihan Anda",
+      "p1": "Buka menu (…) di kanan atas halaman mana pun dan pilih Pengaturan privasi untuk menerima atau menolak Google Analytics lagi. Menolak akan menghentikannya dan menghapus cookie-nya dari situs ini."
+    },
+    "children": {
+      "h": "Anak-anak",
+      "p1": "Situs ini untuk umum dan cocok untuk sekolah. Kami tidak dengan sengaja mengumpulkan data pribadi anak-anak, dan Google Analytics hanya berjalan setelah seseorang menerimanya."
+    },
+    "transfers": {
+      "h": "Transfer internasional",
+      "p1": "Vercel dan Google dapat memproses data di luar negara Anda, termasuk di Amerika Serikat, dengan perlindungan seperti Klausul Kontrak Standar UE."
+    },
+    "changes": {
+      "h": "Perubahan kebijakan ini",
+      "p1": "Jika kami mengubah kebijakan ini, kami akan memperbarui tanggal di atas dan, untuk perubahan penting, menanyakan pilihan Anda lagi."
+    }
+  },
+  "terms": {
+    "title": "Ketentuan penggunaan · What-If Lab",
+    "description": "Aturan memakai What-If Lab: simulator gratis berbasis aturan untuk belajar dan bersenang-senang, bukan ramalan atau nasihat.",
+    "heading": "Ketentuan penggunaan",
+    "intro": {
+      "p1": "Ketentuan ini berlaku untuk penggunaan What-If Lab oleh Anda. Dengan memakai situs ini, Anda menyetujuinya."
+    },
+    "what": {
+      "h": "Apa situs ini",
+      "p1": "What-If Lab adalah kumpulan simulasi berbasis aturan. Setiap hasil berasal dari model sederhana dengan angka yang dibulatkan atau dikarang. Ini untuk belajar, rasa ingin tahu, dan hiburan. Ini bukan ramalan, dan bukan nasihat ilmiah, medis, keuangan, hukum, atau pengasuhan."
+    },
+    "use": {
+      "h": "Memakai situs",
+      "p1": "Anda boleh memakai situs ini secara gratis untuk tujuan pribadi, pendidikan, dan nonkomersial, termasuk di kelas. Mohon jangan:",
+      "li1": "mencoba merusak, membebani, atau mengganggu situs;",
+      "li2": "menyalin atau mengikis situs dalam skala besar, atau memakai alat otomatis untuk membuat lalu lintas;",
+      "li3": "menyajikan hasil What-If Lab sebagai ramalan nyata atau sebagai sesuatu yang kami dukung."
+    },
+    "exports": {
+      "h": "Video yang Anda ekspor",
+      "p1": "Anda boleh membagikan video yang diekspor dari situs ini, termasuk di media sosial dan di kelas, selama nama What-If Lab di dalamnya tetap ada dan Anda tidak menyajikannya sebagai ramalan dunia nyata."
+    },
+    "ours": {
+      "h": "Konten kami",
+      "p1": "Kode, desain, teks, gambar, dan nama What-If Lab adalah milik {operator}. Di luar yang diizinkan ketentuan ini, mohon bertanya sebelum memakainya kembali."
+    },
+    "premium": {
+      "h": "Premium",
+      "p1": "Premium belum dijual. Saat sudah dijual, harga, perpanjangan, dan ketentuan pembatalannya akan ditampilkan sebelum Anda membayar dan ditambahkan di sini."
+    },
+    "warranty": {
+      "h": "Tanpa jaminan",
+      "p1": "Situs ini disediakan \"apa adanya\". Kami berusaha agar tetap berfungsi dan benar, tetapi tidak bisa menjanjikan situs selalu tersedia, bebas kesalahan, atau cocok untuk tujuan tertentu."
+    },
+    "liability": {
+      "h": "Tanggung jawab",
+      "p1": "Sejauh diizinkan hukum, kami tidak bertanggung jawab atas kerugian akibat penggunaan situs atau keputusan berdasarkan simulasinya. Tidak ada di sini yang membatasi hak Anda sebagai konsumen yang menurut hukum tidak boleh dibatasi."
+    },
+    "links": {
+      "h": "Situs lain",
+      "p1": "Tautan ke situs lain, seperti halaman Instagram dan TikTok kami, disediakan demi kemudahan; di sana berlaku ketentuan situs tersebut."
+    },
+    "changes": {
+      "h": "Perubahan ketentuan ini",
+      "p1": "Kami dapat memperbarui ketentuan ini. Tanggal di atas menunjukkan versi yang berlaku; memakai situs setelah ada perubahan berarti Anda menerimanya."
+    },
+    "law": {
+      "h": "Hukum yang berlaku",
+      "p1": "Ketentuan ini diatur oleh hukum {country}, tanpa menghilangkan perlindungan hukum di tempat Anda tinggal."
+    }
+  }
+}

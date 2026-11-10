@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · seed {seed}",
     "freeText": "Teksmu"
+  },
+  "quick": {
+    "open": "Ekspor simulasi ini sebagai video",
+    "title": "Ekspor video",
+    "download": "Unduh video",
+    "what": "Video lanskap {s} detik dari simulasi ini, dengan judul, skenario, dan hasilnya, siap untuk YouTube atau dibagikan.",
+    "noVideo": "Browser ini tidak bisa merekam video. Coba Chrome, Edge, Firefox, atau Safari versi terbaru.",
+    "more": "Lebih banyak ukuran, gambar, teks, slide, dan gaya Anda sendiri dengan Premium."
   }
 }

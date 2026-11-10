@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · 种子 {seed}",
     "freeText": "你的文字"
+  },
+  "quick": {
+    "open": "将本次运行导出为视频",
+    "title": "导出视频",
+    "download": "下载视频",
+    "what": "本次运行的 {s} 秒横屏视频，带标题、假设和结果，可直接用于 YouTube 或分享。",
+    "noVideo": "此浏览器无法录制视频。请试试新版 Chrome、Edge、Firefox 或 Safari。",
+    "more": "更多尺寸、图片、文字、幻灯片和自定义样式，尽在 Premium。"
   }
 }

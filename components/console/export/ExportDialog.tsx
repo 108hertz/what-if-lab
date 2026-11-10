@@ -7,8 +7,9 @@ import { Scrubber } from "@/lib/export/scrub";
 import { SIZES, defaultStyle, parseStyle, withSize, type ExportStyle, type LayerId, type SizeId } from "@/lib/export/style";
 import Dialog from "../../ui/Dialog";
 import { Icon } from "../../ui/Icon";
-import { PREMIUM_ON_SALE, useAccount, usePremium } from "../../account/context";
-import { canExport } from "../../account/state";
+import { useAccount, usePremium } from "../../account/context";
+import { canExport, exportLevel } from "../../account/state";
+import QuickExport from "./QuickExport";
 import { registerStudioFonts } from "./fonts";
 import PreviewCanvas from "./PreviewCanvas";
 import { LookTab, OutputTab, TextTab, TimingTab, type Out } from "./StudioControls";
@@ -30,17 +31,21 @@ const mb = (n: number) => (n / 1048576 < 0.1 ? S("mbSmall") : S("mb", { n: Math.
 /** Studio words in the page's language (change 0025). */
 const S = (k: string, v?: Record<string, string | number>) => pageT()(`export.studio.${k}`, v);
 
-/** Transport button (before full screen). Every world gets it through the shared Transport. */
+/**
+ * Transport button (before full screen). Every world gets it through the shared Transport. Shown to everyone
+ * (change 0031): Premium opens the studio, everyone else Quick export (one landscape video, nothing to edit).
+ */
 export function ExportButton({ engine }: { engine: SimEngine }) {
   const [open, setOpen] = useState(false);
-  if (!PREMIUM_ON_SALE) return null;
+  const full = exportLevel(useAccount()) === "full";
+  const label = full ? S("open") : pageT()("export.quick.open");
   return (
     <>
-      <button type="button" className="btn export-btn" aria-label={S("open")} title={S("open")} onClick={() => setOpen(true)}>
+      <button type="button" className="btn export-btn" aria-label={label} title={label} onClick={() => setOpen(true)}>
         <Icon name="download" size={18} />
         <span className="btn-text">{S("button")}</span>
       </button>
-      {open && <ExportDialog engine={engine} onClose={() => setOpen(false)} />}
+      {open && (full ? <ExportDialog engine={engine} onClose={() => setOpen(false)} /> : <QuickExport engine={engine} onClose={() => setOpen(false)} />)}
     </>
   );
 }

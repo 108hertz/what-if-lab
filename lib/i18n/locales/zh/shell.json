@@ -31,5 +31,19 @@
     "body": "这里的一切都是基于科学理论和取整数字建立的模型。结果不是真实数据，也不是对真实的人、地点或未来的预测。",
     "use": "用它来玩、探索，看看如果……可能会怎样",
     "ok": "知道了"
+  },
+  "site": {
+    "menu": "关于、隐私与条款",
+    "about": "关于 What-If Lab",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "settings": "隐私设置"
+  },
+  "consent": {
+    "label": "统计分析选择",
+    "text": "我们不用 Cookie 统计访问量。可以同时使用 Google Analytics（Cookie）来了解大家在尝试哪些假设吗？",
+    "accept": "接受",
+    "decline": "拒绝",
+    "policy": "隐私政策"
   }
 }

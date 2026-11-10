@@ -1,12 +1,12 @@
 # Export studio: video, pictures, text and slides, styled your way
 
-- **Status:** live (Premium)
-- **Tier:** premium (free visitors can open the studio and try every setting on the live preview; downloading
-  and copying say *Unlock with Premium*)
+- **Status:** live — Quick export for everyone (change 0031), the studio for Premium
+- **Tier:** both: free visitors (and every visitor while accounts are off) get **Quick export**, one landscape video in
+  the default look; Premium opens the full studio
 - **Owner area:** `lib/export/` (style, replay, scrubber, frames, text; framework-free),
   `components/console/export/` (studio, preview, controls, fonts, MediaRecorder, fflate, jsPDF, saved styles),
   `components/console/Transport.tsx`, `lib/sim/engine.ts` (`origin`)
-- **Changes:** [0020](../changes/0020-accounts-premium-exports.md) (first exports),
+- **Changes:** [0031](../changes/0031-free-quick-export.md) (free quick export), [0020](../changes/0020-accounts-premium-exports.md) (first exports),
   [0022](../changes/0022-export-studio.md) (the studio), [0024](../changes/0024-one-world-tick-changes-reset.md) (side by side only here)
 - **Decision:** [ADR 0008](../decisions/0008-accounts-and-billing-clerk.md)
 
@@ -25,7 +25,12 @@ exist (revenue). Creators get raw pieces in their own style; teachers get pictur
 ## Behaviour
 
 - **Entry:** the download glyph on the transport, before full screen (label "Export" from 1440 px). Shown in
-  every world because it lives in the shared Transport. Hidden in production builds without accounts.
+  every world because it lives in the shared Transport, to every visitor (change 0031).
+- **Quick export (free, change 0031):** a sheet with the live preview (play, scrub) and one button, *Download video*:
+  1920 × 1080, the default Control Room style (`quickStyle()` = `defaultStyle("youtube")`), changed world only,
+  pick-for-me length, the default text layers (brand, what-if, numbers, result). Nothing can be edited. Same render path,
+  progress, cancel, *Download again* and errors as the studio. When Premium is on sale, one quiet line links to it.
+  Everything below describes the Premium studio.
 - **Layout:** a large sheet over the console. ≥ 1024 px: the preview on the left, settings on the right in four
   tabs (Output · Text · Look · Timing); only the settings column scrolls. Below 1024 px: preview on top (about
   40 % of the height), tabs under it. Footer: spec line, one sentence on what's inside, *My styles*, and one

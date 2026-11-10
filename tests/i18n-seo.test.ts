@@ -1,3 +1,4 @@
+import { SITE_PAGES } from "@/lib/site";
 import { describe, expect, it } from "vitest";
 import { LOCALES } from "@/lib/i18n";
 import { PLACEHOLDER_ORIGIN, absUrl, alternates, pageMetadata, siteOrigin, sitemapEntries } from "@/lib/i18n/seo";
@@ -58,7 +59,7 @@ describe("sitemap and robots", () => {
   it("lists every page once per ready language", () => {
     const s = sitemap();
     const ready = LOCALES.filter((l) => l.ready).length;
-    expect(s).toHaveLength(MODES.length * ready);
+    expect(s).toHaveLength((MODES.length + SITE_PAGES.length) * ready); // + About, Privacy, Terms (change 0032)
     expect(new Set(s.map((e) => e.url)).size).toBe(s.length);
     for (const e of s) expect(e.alternates?.languages).toHaveProperty(["x-default"]);
     expect(sitemapEntries(["/"], O)[0].url).toBe("https://lab.test/");

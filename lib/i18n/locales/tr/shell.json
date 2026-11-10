@@ -31,5 +31,19 @@
     "body": "Buradaki her şey bilimsel kuramlar ve yuvarlanmış sayılarla kurulmuş bir modeldir. Sonuçlar gerçek veri değildir; gerçek insanlar, yerler ya da gelecek hakkında tahmin de değildir.",
     "use": "Oynamak, keşfetmek ve şöyle olsaydı neler olabileceğini görmek için kullan…",
     "ok": "Anladım"
+  },
+  "site": {
+    "menu": "Hakkında, gizlilik ve koşullar",
+    "about": "What-If Lab hakkında",
+    "privacy": "Gizlilik politikası",
+    "terms": "Kullanım koşulları",
+    "settings": "Gizlilik ayarları"
+  },
+  "consent": {
+    "label": "Analiz tercihi",
+    "text": "Ziyaretleri çerezsiz sayıyoruz. İnsanların hangi \"ya olursa\"ları denediğini görmek için Google Analytics (çerezler) de kullanabilir miyiz?",
+    "accept": "Kabul et",
+    "decline": "Reddet",
+    "policy": "Gizlilik politikası"
   }
 }

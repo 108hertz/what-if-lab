@@ -5,9 +5,15 @@ import type { NextConfig } from "next";
 const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || (vercelProd ? `https://${vercelProd}` : "");
 
+// GA4 (change 0027): the Firebase project "what-if-108hertz" web app's measurement ID — Firebase Analytics on the web
+// is GA4, so the consent-gated gtag loader feeds it without the Firebase SDK. NEXT_PUBLIC_GA_ID wins; otherwise only
+// Vercel production builds get it, so dev and preview deploys send nothing.
+const FIREBASE_GA_ID = "G-WX6WYV2D6D";
+const gaId = process.env.NEXT_PUBLIC_GA_ID || (process.env.VERCEL_ENV === "production" ? FIREBASE_GA_ID : "");
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  env: { NEXT_PUBLIC_SITE_URL: siteUrl },
+  env: { NEXT_PUBLIC_SITE_URL: siteUrl, NEXT_PUBLIC_GA_ID: gaId },
   // ADR 0001: a static export, no server. Accounts and Premium (ADR 0008) run entirely in the browser.
   output: "export",
   // Change 0025: two root layouts (app/(en), app/[lang]) share one 404 page, app/global-not-found.tsx.

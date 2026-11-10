@@ -31,5 +31,19 @@
     "body": "Tout ici est un modèle construit à partir de théories scientifiques et de chiffres arrondis. Les résultats ne sont pas des données réelles ni des prédictions sur de vraies personnes, de vrais lieux ou l’avenir.",
     "use": "Utilisez-le pour jouer, explorer et voir ce qui pourrait arriver si…",
     "ok": "Compris"
+  },
+  "site": {
+    "menu": "À propos, confidentialité et conditions",
+    "about": "À propos de What-If Lab",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "settings": "Paramètres de confidentialité"
+  },
+  "consent": {
+    "label": "Choix de mesure d'audience",
+    "text": "Nous comptons les visites sans cookies. Pouvons-nous aussi utiliser Google Analytics (cookies) pour voir quels « et si » les gens essaient ?",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "policy": "Politique de confidentialité"
   }
 }

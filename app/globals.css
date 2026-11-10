@@ -580,6 +580,21 @@ td.a { color: var(--alt); }
 .export-progress .bar { height: 2px; overflow: hidden; background: var(--muted-line); }
 .export-progress .bar i { display: block; height: 100%; background: var(--signal); transform-origin: left center; transition: transform var(--d-ctl) var(--ease-out); }
 
+/* Quick export (change 0031, free): one landscape preview and one button; the sheet sizes to the 16:9 picture */
+.sheet.quick { width: min(960px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); overflow: hidden; }
+.sheet.quick .sheet-body { min-height: 0; }
+.quick-preview { flex: 0 1 auto; min-height: 0; height: min(54vw, calc(100dvh - 260px), 560px); display: flex; flex-direction: column; }
+.quick-preview .studio-view { flex: 1 1 auto; }
+.linkbtn { padding: 0; border: 0; background: none; color: var(--label-2); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.linkbtn:hover { color: var(--label); }
+.linkbtn:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+@media (max-width: 767px) {
+  .sheet.quick { width: 100%; }
+  .quick-preview { height: min(62vw, 42dvh); }
+  .sheet.quick .studio-foot { flex-direction: column; align-items: stretch; }
+  .sheet.quick .studio-foot .sheet-actions .btn { flex: 1 1 auto; }
+}
+
 /* Export studio (change 0022): preview on the left, settings on the right; one viewport, only the settings scroll */
 .sheet.studio { width: min(1240px, calc(100vw - 32px)); height: calc(100dvh - 32px); max-height: none; overflow: hidden; }
 .sheet.studio .sheet-body { height: 100%; min-height: 0; }
@@ -825,3 +840,50 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 @media (min-width: 768px) { .sheet.disclaimer { width: min(420px, calc(100vw - 32px)); } }
 .disclaimer .disclaimer-use { color: var(--label); }
 .page-intro .disclaimer-line { color: var(--alt); }
+
+/* Site menu (change 0032): the language menu's popover, with buttons as well as links */
+.sitemenu-list, .sitemenu .langmenu-list { width: min(260px, calc(100vw - 24px)); }
+.sitemenu .langmenu-list button {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); width: 100%; min-height: 40px; padding: 0 var(--s-2);
+  border: 0; border-inline-start: 2px solid transparent; border-radius: var(--r-ctl); background: none; color: var(--label); font-size: var(--t-small); text-align: start; cursor: pointer;
+}
+.sitemenu .langmenu-list button:hover, .sitemenu .langmenu-list button:focus-visible { background: var(--surface); outline: none; }
+.sitemenu .langmenu-list .icon[data-icon="external"] { color: var(--label-2); }
+.sitemenu-ico { display: inline-flex; align-items: center; gap: var(--s-2); }
+.sitemenu-sep { height: 1px; margin: var(--s-1) var(--s-2); background: var(--separator); }
+
+/* Consent banner (change 0027): a small panel bottom-left, under any dialog, never over the transport on wide screens */
+.consent {
+  position: fixed; z-index: 40; inset-inline-start: max(var(--s-3), env(safe-area-inset-left, 0px)); bottom: max(var(--s-3), env(safe-area-inset-bottom, 0px));
+  width: min(360px, calc(100vw - 2 * var(--s-3))); display: grid; gap: var(--s-3); padding: var(--s-4);
+  background: var(--surface); border: 1px solid var(--separator); border-radius: var(--r-card);
+}
+.consent .small { margin: 0; color: var(--label); line-height: 1.45; }
+.consent a { color: var(--label-2); text-decoration: underline; text-underline-offset: 3px; }
+.consent a:hover { color: var(--label); }
+.consent-actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-2); }
+.consent-actions .btn { justify-content: center; background: var(--panel); }
+@media (max-width: 1023px) { .consent { bottom: max(72px, env(safe-area-inset-bottom, 0px)); } }
+@media (prefers-reduced-motion: no-preference) { .consent { animation: consent-in var(--d-ctl) var(--ease-out); } }
+@keyframes consent-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* Site pages (change 0032): About, Privacy, Terms read like a document and scroll; nav on top, one 68ch column */
+.doc { min-height: 100dvh; display: flex; flex-direction: column; padding: env(safe-area-inset-top, 0px) max(var(--s-2), env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(var(--s-2), env(safe-area-inset-left, 0px)); }
+.doc-main { flex: 1 1 auto; width: 100%; max-width: calc(68ch + 2 * var(--s-4)); margin: 0 auto; padding: var(--s-6) var(--s-4) var(--s-7); display: grid; gap: var(--s-7); align-content: start; }
+.doc-body { display: grid; gap: var(--s-5); }
+.doc-body > .title { font-size: var(--t-title); }
+.doc-body .desc, .doc-body .desc-lg { max-width: 68ch; }
+.doc-section { display: grid; gap: var(--s-3); }
+.doc-section .headline { margin: 0; padding-top: var(--s-3); border-top: 1px solid var(--separator); }
+.doc-list { margin: 0; padding-inline-start: 1.2em; display: grid; gap: var(--s-2); }
+.doc-list li::marker { color: var(--label-2); }
+.doc-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.doc-links a { display: inline-flex; min-height: 36px; align-items: center; padding: 0 var(--s-3); border: 1px solid var(--separator); border-radius: var(--r-ctl); color: var(--label); text-decoration: none; font-size: var(--t-small); }
+.doc-links a:hover { border-color: var(--label-2); background: var(--surface); }
+.doc-socials { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.doc-socials .btn { text-decoration: none; }
+.doc-quiet, .doc-date { color: var(--label-2); }
+.doc a:not(.btn):not(.wordmark):not(.doc-links a) { color: var(--label); text-decoration: underline; text-decoration-color: var(--separator); text-underline-offset: 3px; }
+.doc a:not(.btn):not(.wordmark):hover { text-decoration-color: var(--signal); }
+.doc-foot { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--separator); font-size: var(--t-small); }
+.doc-foot a[aria-current="page"] { color: var(--label-2) !important; text-decoration: none !important; }

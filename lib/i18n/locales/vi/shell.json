@@ -31,5 +31,19 @@
     "body": "Mọi thứ ở đây là một mô hình dựng từ các lý thuyết khoa học và những con số làm tròn. Kết quả không phải dữ liệu thật và không phải dự đoán về con người, nơi chốn hay tương lai thật.",
     "use": "Hãy dùng nó để chơi, khám phá và xem điều gì có thể xảy ra nếu…",
     "ok": "Đã hiểu"
+  },
+  "site": {
+    "menu": "Giới thiệu, quyền riêng tư và điều khoản",
+    "about": "Giới thiệu What-If Lab",
+    "privacy": "Chính sách quyền riêng tư",
+    "terms": "Điều khoản sử dụng",
+    "settings": "Cài đặt quyền riêng tư"
+  },
+  "consent": {
+    "label": "Lựa chọn phân tích",
+    "text": "Chúng tôi đếm lượt truy cập không dùng cookie. Chúng tôi có thể dùng thêm Google Analytics (cookie) để xem mọi người thử những giả định nào không?",
+    "accept": "Đồng ý",
+    "decline": "Từ chối",
+    "policy": "Chính sách quyền riêng tư"
   }
 }

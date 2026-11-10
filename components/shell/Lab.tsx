@@ -16,6 +16,9 @@ import WorldMenu from "./WorldMenu";
 import ThemeToggle from "./ThemeToggle";
 import LangMenu, { LangHint } from "./LangMenu";
 import Disclaimer from "./Disclaimer";
+import SiteMenu from "./SiteMenu";
+import { track } from "../privacy/track";
+import { CONSENT_EVENT } from "../privacy/consent";
 import { useHref, useT } from "../i18n/I18nProvider";
 
 /**
@@ -48,6 +51,13 @@ function Shell({ mode }: { mode: Mode }) {
   const World = mode === "scale" ? null : WORLD_VIEWS[mode];
   const href = useHref();
   const t = useT();
+  // Analytics (change 0027): which world is open; sent once the visitor has accepted (also right after they accept).
+  useEffect(() => {
+    const send = () => track("world_open", { world: mode });
+    send();
+    window.addEventListener(CONSENT_EVENT, send);
+    return () => window.removeEventListener(CONSENT_EVENT, send);
+  }, [mode]);
 
   return (
     <div className={`app${World ? "" : " is-scale"}${rails ? " has-rails" : ""}`} data-world={mode}>
@@ -63,6 +73,7 @@ function Shell({ mode }: { mode: Mode }) {
           <LangHint />
           <LangMenu />
           <ThemeToggle />
+          <SiteMenu />
         </div>
       </header>
       {rails && <AdSlot size="rail" />}

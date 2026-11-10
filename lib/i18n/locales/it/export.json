@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · seme {seed}",
     "freeText": "Il tuo testo"
+  },
+  "quick": {
+    "open": "Esporta questa simulazione come video",
+    "title": "Esporta video",
+    "download": "Scarica video",
+    "what": "Un video orizzontale di {s} secondi di questa simulazione, con titolo, ipotesi e risultato, pronto per YouTube o da condividere.",
+    "noVideo": "Questo browser non può registrare video. Prova un Chrome, Edge, Firefox o Safari recente.",
+    "more": "Altri formati, immagini, testo, slide e il tuo stile con Premium."
   }
 }

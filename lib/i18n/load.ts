@@ -37,3 +37,13 @@ export interface PageMessages {
 export function pageMessages(locale: string, world?: string): PageMessages {
   return { locale, messages: locale === DEFAULT_LOCALE ? {} : loadMessages(locale, world) };
 }
+
+/**
+ * The site pages' words (change 0032: About, Privacy, Terms) — namespace "pages", kept out of SHARED_NS so the long text
+ * only ever reaches the server-rendered page, never the lab's client messages.
+ */
+export const PAGES_NS = "pages";
+export function loadPages(locale: string): Messages {
+  const json = read(`lib/i18n/locales/${locale}/${PAGES_NS}.json`);
+  return json ? catalog(PAGES_NS, json) : {};
+}

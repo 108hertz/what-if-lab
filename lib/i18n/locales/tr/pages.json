@@ -1,0 +1,149 @@
+{
+  "_status": "Machine draft (change 0032), awaiting native review. The English version applies.",
+  "common": {
+    "updated": "Son güncelleme: {date}",
+    "contact": "Sorunuz mu var? {email} adresine yazın.",
+    "contactSoon": "Yakında buraya bir iletişim adresi eklenecek.",
+    "operatorFallback": "What-If Lab ekibi",
+    "countryFallback": "sitenin işletmecisinin bulunduğu ülke",
+    "translated": "Bu sayfa bir çeviridir. Geçerli olan İngilizce sürümdür.",
+    "readEnglish": "İngilizce oku",
+    "back": "Laboratuvara dön",
+    "footer": "Site"
+  },
+  "about": {
+    "title": "What-If Lab hakkında",
+    "description": "What-If Lab, \"ya şöyle olursa…\" soruları için ücretsiz, kurallara dayalı bir simülatör: protondan evrene, bir dünya açın ve değiştirin.",
+    "heading": "Hakkında",
+    "lede": "What-If Lab, \"ya şöyle olursa…\" soruları için ücretsiz bir simülatör. Bir protondan gözlemlenebilir evrene yakınlaşın, bir dünya açın, tek bir şeyi değiştirin ve iki geleceğin ayrılışını izleyin.",
+    "how": {
+      "h": "Nasıl çalışır",
+      "li1": "Her dünya, tarayıcınızda basit ve kurallara dayalı modellerle çalışır. Yapay zekâ yok, canlı veri yok.",
+      "li2": "Bir \"ya olursa\" çalışan dünyayı ikiye ayırır: değişen dünya sahnede oynarken değişmeyen yanında sürer ve grafik nerede ayrıldıklarını gösterir.",
+      "li3": "Aynı ayarlar her zaman aynı sonucu verir; böylece bir çalışma paylaşılabilir ve kontrol edilebilir."
+    },
+    "worlds": {
+      "h": "Dünyalar"
+    },
+    "note": {
+      "h": "Bir model, tahmin değil"
+    },
+    "follow": {
+      "h": "Bizi takip edin",
+      "p1": "En tuhaf \"ya olursa\"lardan kısa klipler ve gelir gelmez yeni dünyalar.",
+      "soon": "Instagram ve TikTok sayfalarımız yolda."
+    },
+    "made": {
+      "h": "Kim yapıyor",
+      "p1": "What-If Lab'i {operator} yapıyor; ölçek gezginlerinden, yerçekimi kum havuzlarından ve küçük canlı simülasyonlarından esinlenerek."
+    }
+  },
+  "privacy": {
+    "title": "Gizlilik politikası · What-If Lab",
+    "description": "What-If Lab'in neyi, neden topladığı ve seçenekleriniz: çerezsiz ziyaret sayımı, Google Analytics yalnızca kabul ederseniz.",
+    "heading": "Gizlilik politikası",
+    "intro": {
+      "p1": "Bu politika, siteyi kullandığınızda What-If Lab'in (\"biz\") neyi ve neden topladığını açıklar."
+    },
+    "short": {
+      "h": "Kısaca",
+      "li1": "Hesaba ihtiyacınız yok; adınızı veya e-postanızı sormuyoruz.",
+      "li2": "Simülasyonlar tamamen tarayıcınızda çalışır; ayarlarınız ve \"ya olursa\"larınız bize gönderilmez.",
+      "li3": "Ziyaretleri çerezsiz sayıyoruz. Google Analytics yalnızca kabul ederseniz çalışır.",
+      "li4": "Verilerinizi satmıyoruz."
+    },
+    "who": {
+      "h": "Veri sorumlusu",
+      "p1": "What-If Lab'i, burada anlatılan verilerden sorumlu olan {operator} işletir."
+    },
+    "collect": {
+      "h": "Ne topluyoruz",
+      "p1": "Ziyaret istatistikleri (her zaman). Barındırma sağlayıcımız Vercel, sayfa görüntülemelerini Vercel Web Analytics ile sayar. Çerez kullanmaz ve sizi siteler arasında izlemez. Sayfayı, sizi yönlendiren siteyi, ülkenizi, tarayıcınızı, işletim sisteminizi ve cihaz türünüzü kaydeder; biz yalnızca toplamları görürüz.",
+      "p2": "Google Analytics (yalnızca kabul ederseniz). Kabul et'i seçerseniz Google Analytics 4, ziyaretleri ayırt etmek için çerezler (_ga, _ga_…) yerleştirir ve görüntülediğiniz sayfaları ve bir \"ya olursa\" denemek, bir değişikliği işaretlemek, Sıfırla, video dışa aktarmak veya dil değiştirmek gibi eylemleri kaydeder. Google bunu bizim için hizmet sağlayıcı olarak işler; GA4 IP adreslerini saklamaz. Reddet'i seçerseniz Google Analytics hiç yüklenmez.",
+      "p3": "Sunucu kayıtları. Her web barındırıcısı gibi Vercel de sayfaları sunmak ve hizmeti güvende tutmak için IP adresinizi ve istek ayrıntılarını kısa süre işler."
+    },
+    "device": {
+      "h": "Cihazınızda saklananlar",
+      "p1": "Temanız, dil seçiminiz, simülasyon notunu görüp görmediğiniz, analiz tercihiniz ve kaydettiğiniz dışa aktarma stilleri için çerez değil tarayıcınızın yerel depolamasını kullanırız. Bunlar cihazınızda kalır; tarayıcı ayarlarından silebilirsiniz."
+    },
+    "later": {
+      "h": "Hesaplar, Premium ve reklamlar",
+      "p1": "Hesaplar, Premium ve reklamlar henüz açık değil. Açılmadan önce bu politika sağlayıcıları (hesaplar ve ödemeler için Clerk, reklamlar için Google AdSense) belirtecek ve yasanın gerektirdiği yerlerde size yeniden soracağız."
+    },
+    "basis": {
+      "h": "Hukuki dayanak",
+      "p1": "Çerezsiz ziyaret istatistikleri, sitenin nasıl kullanıldığını anlamaya yönelik meşru menfaatimize dayanır. Google Analytics, istediğiniz zaman geri çekebileceğiniz rızanıza dayanır."
+    },
+    "rights": {
+      "h": "Haklarınız",
+      "p1": "Yaşadığınız yere bağlı olarak (örneğin KVKK, GDPR, Birleşik Krallık GDPR'ı veya Kaliforniya yasası kapsamında) kişisel verilerinizi görmeyi, düzeltmeyi veya silmeyi isteyebilir, kullanımına itiraz edebilir ya da veri koruma kurumuna şikâyette bulunabilirsiniz. Hesap tutmadığımız için sizi tanımlayabilecek tek veri Google Analytics'tedir ve yalnızca kabul ettiyseniz; bize yazın, yardımcı olalım."
+    },
+    "choice": {
+      "h": "Tercihinizi değiştirme",
+      "p1": "Herhangi bir sayfanın sağ üstündeki menüyü (…) açın ve Google Analytics'i yeniden kabul etmek veya reddetmek için Gizlilik ayarları'nı seçin. Reddetmek onu durdurur ve çerezlerini bu siteden siler."
+    },
+    "children": {
+      "h": "Çocuklar",
+      "p1": "Site genel kitleye yöneliktir ve okulda kullanıma uygundur. Çocuklardan bilerek kişisel veri toplamayız; Google Analytics de ancak biri kabul ettikten sonra çalışır."
+    },
+    "transfers": {
+      "h": "Yurt dışına aktarım",
+      "p1": "Vercel ve Google, verileri ülkeniz dışında, Amerika Birleşik Devletleri dahil, AB Standart Sözleşme Maddeleri gibi güvencelerle işleyebilir."
+    },
+    "changes": {
+      "h": "Bu politikadaki değişiklikler",
+      "p1": "Bu politikayı değiştirirsek üstteki tarihi güncelleriz ve önemli değişikliklerde tercihinizi yeniden sorarız."
+    }
+  },
+  "terms": {
+    "title": "Kullanım koşulları · What-If Lab",
+    "description": "What-If Lab'i kullanma kuralları: öğrenmek ve eğlenmek için ücretsiz, kurallara dayalı bir simülatör; tahmin ya da tavsiye değil.",
+    "heading": "Kullanım koşulları",
+    "intro": {
+      "p1": "Bu koşullar What-If Lab'i kullanımınız için geçerlidir. Siteyi kullanarak bunları kabul edersiniz."
+    },
+    "what": {
+      "h": "Site nedir",
+      "p1": "What-If Lab, kurallara dayalı simülasyonlardan oluşur. Her sonuç, yuvarlanmış veya uydurulmuş sayılarla çalışan basit modellerden gelir. Öğrenmek, merak ve eğlence içindir. Bir tahmin değildir; bilimsel, tıbbi, finansal, hukuki veya ebeveynlik tavsiyesi de değildir."
+    },
+    "use": {
+      "h": "Siteyi kullanmak",
+      "p1": "Siteyi kişisel, eğitsel ve ticari olmayan amaçlarla, sınıfta da dahil olmak üzere ücretsiz kullanabilirsiniz. Lütfen şunları yapmayın:",
+      "li1": "siteyi bozmaya, aşırı yüklemeye veya aksatmaya çalışmak;",
+      "li2": "siteyi büyük ölçekte kopyalamak veya kazımak ya da trafik üretmek için otomatik araçlar kullanmak;",
+      "li3": "What-If Lab sonuçlarını gerçek tahminler ya da bizim onayladığımız şeyler gibi sunmak."
+    },
+    "exports": {
+      "h": "Dışa aktardığınız videolar",
+      "p1": "Siteden dışa aktardığınız videoları, sosyal medyada ve sınıfta da dahil olmak üzere paylaşabilirsiniz; yeter ki içlerindeki What-If Lab adı kalsın ve onları gerçek dünya tahminleri gibi sunmayın."
+    },
+    "ours": {
+      "h": "İçeriğimiz",
+      "p1": "Sitenin kodu, tasarımı, metinleri, çizimleri ve What-If Lab adı {operator} kişisine/şirketine aittir. Bu koşulların izin verdiğinin ötesinde yeniden kullanmadan önce lütfen sorun."
+    },
+    "premium": {
+      "h": "Premium",
+      "p1": "Premium henüz satışta değil. Satışa çıktığında fiyatı, yenilenmesi ve iptal koşulları ödemeden önce gösterilecek ve buraya eklenecek."
+    },
+    "warranty": {
+      "h": "Garanti yok",
+      "p1": "Site \"olduğu gibi\" sunulur. Çalışır ve doğru tutmaya çalışırız, ancak her zaman erişilebilir, hatasız veya belirli bir amaca uygun olacağına söz veremeyiz."
+    },
+    "liability": {
+      "h": "Sorumluluk",
+      "p1": "Yasanın izin verdiği ölçüde, sitenin kullanımından veya simülasyonlarına dayanan kararlardan doğan kayıplardan sorumlu değiliz. Buradaki hiçbir şey, yasanın sınırlanmasına izin vermediği tüketici haklarınızı sınırlamaz."
+    },
+    "links": {
+      "h": "Diğer siteler",
+      "p1": "Instagram ve TikTok sayfalarımız gibi diğer sitelere bağlantılar kolaylık içindir; orada o sitelerin kendi koşulları geçerlidir."
+    },
+    "changes": {
+      "h": "Bu koşullardaki değişiklikler",
+      "p1": "Bu koşulları güncelleyebiliriz. Üstteki tarih geçerli sürümü gösterir; bir değişiklikten sonra siteyi kullanmak onu kabul ettiğiniz anlamına gelir."
+    },
+    "law": {
+      "h": "Uygulanacak hukuk",
+      "p1": "Bu koşullar, yaşadığınız yerin hukukunun sağladığı korumayı ortadan kaldırmadan {country} yasalarına tabidir."
+    }
+  }
+}

@@ -31,5 +31,19 @@
     "body": "Wszystko tutaj to model zbudowany z teorii naukowych i zaokrąglonych liczb. Wyniki nie są prawdziwymi danymi ani prognozami dotyczącymi prawdziwych ludzi, miejsc czy przyszłości.",
     "use": "Używaj go, by się bawić, odkrywać i sprawdzać, co mogłoby się stać, gdyby…",
     "ok": "Rozumiem"
+  },
+  "site": {
+    "menu": "O nas, prywatność i regulamin",
+    "about": "O What-If Lab",
+    "privacy": "Polityka prywatności",
+    "terms": "Regulamin",
+    "settings": "Ustawienia prywatności"
+  },
+  "consent": {
+    "label": "Wybór analityki",
+    "text": "Liczymy wizyty bez plików cookie. Czy możemy też używać Google Analytics (cookie), by widzieć, jakie „co jeśli” ludzie sprawdzają?",
+    "accept": "Akceptuję",
+    "decline": "Odrzucam",
+    "policy": "Polityka prywatności"
   }
 }

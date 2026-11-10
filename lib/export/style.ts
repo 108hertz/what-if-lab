@@ -301,6 +301,10 @@ export function defaultLayers(size: SizeId): Record<LayerId, Layer> {
 
 export const DEFAULT_TIMING: Timing = { runS: null, introS: 1.2, outroS: 2.5, ease: false };
 
+/** Quick export (change 0031, free): always the landscape video in the default look, nothing edited. */
+export const QUICK_SIZE: SizeId = "youtube";
+export const quickStyle = (): ExportStyle => defaultStyle(QUICK_SIZE);
+
 export function defaultStyle(size: SizeId = "youtube"): ExportStyle {
   return {
     v: 1,

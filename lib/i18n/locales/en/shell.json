@@ -31,5 +31,19 @@
     "body": "Everything here is a model built from scientific theories and rounded numbers. The results are not real data and not predictions about real people, places or the future.",
     "use": "Use it to play, explore and see how things might turn out if…",
     "ok": "Got it"
+  },
+  "site": {
+    "menu": "About, privacy and terms",
+    "about": "About What-If Lab",
+    "privacy": "Privacy policy",
+    "terms": "Terms of use",
+    "settings": "Privacy settings"
+  },
+  "consent": {
+    "label": "Analytics choice",
+    "text": "We count visits without cookies. May we also use Google Analytics (cookies) to see which what-ifs people try?",
+    "accept": "Accept",
+    "decline": "Decline",
+    "policy": "Privacy policy"
   }
 }

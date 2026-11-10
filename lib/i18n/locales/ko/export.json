@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · 시드 {seed}",
     "freeText": "내 글"
+  },
+  "quick": {
+    "open": "이번 실행을 동영상으로 내보내기",
+    "title": "동영상 내보내기",
+    "download": "동영상 다운로드",
+    "what": "제목, 만약에, 결과가 담긴 이번 실행의 {s}초 가로 동영상. YouTube나 공유용으로 바로 쓸 수 있어요.",
+    "noVideo": "이 브라우저는 동영상을 녹화할 수 없어요. 최신 Chrome, Edge, Firefox, Safari를 사용해 보세요.",
+    "more": "더 많은 크기, 그림, 텍스트, 슬라이드와 나만의 스타일은 Premium에서."
   }
 }

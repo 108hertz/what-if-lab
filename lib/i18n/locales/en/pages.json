@@ -1,0 +1,138 @@
+{
+  "_status": "English source (change 0032). Rendered at build time only; never shipped to the browser as messages.",
+  "common": {
+    "updated": "Last updated {date}",
+    "contact": "Questions? Write to {email}.",
+    "contactSoon": "A contact address will be added here soon.",
+    "operatorFallback": "the What-If Lab team",
+    "countryFallback": "the country where the site's operator is based",
+    "translated": "This page is a translation. The English version is the one that applies.",
+    "readEnglish": "Read it in English",
+    "back": "Back to the lab",
+    "footer": "Site"
+  },
+  "about": {
+    "title": "About What-If Lab",
+    "description": "What-If Lab is a free, rule-based simulator for \"what happens if…\" questions: zoom from a proton to the universe, open a world and change it.",
+    "heading": "About",
+    "lede": "What-If Lab is a free simulator for \"what happens if…\" questions. Zoom from a proton to the observable universe, open a world, change one thing and watch two futures part ways.",
+    "how": {
+      "h": "How it works",
+      "li1": "Every world runs on simple, rule-based models in your browser. No AI and no live data.",
+      "li2": "A what-if forks the running world: the changed world plays on the stage while the unchanged one runs alongside, and the chart shows where they differ.",
+      "li3": "The same settings always give the same result, so a run can be shared and checked."
+    },
+    "worlds": { "h": "The worlds" },
+    "note": { "h": "A model, not a forecast" },
+    "follow": {
+      "h": "Follow us",
+      "p1": "Short clips of the strangest what-ifs, and new worlds as they arrive.",
+      "soon": "Our Instagram and TikTok pages are on their way."
+    },
+    "made": {
+      "h": "Who makes it",
+      "p1": "What-If Lab is made by {operator}, inspired by zoomable scale explorers, gravity sandboxes and little creature simulations."
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy · What-If Lab",
+    "description": "What What-If Lab collects, why, and the choices you have: cookieless visit counts, Google Analytics only if you accept.",
+    "heading": "Privacy policy",
+    "intro": { "p1": "This policy explains what What-If Lab (\"we\") collects when you use the site, and why." },
+    "short": {
+      "h": "In short",
+      "li1": "You don't need an account, and we don't ask for your name or email.",
+      "li2": "Simulations run entirely in your browser; your settings and what-ifs are not sent to us.",
+      "li3": "We count visits without cookies. Google Analytics runs only if you accept it.",
+      "li4": "We don't sell your data."
+    },
+    "who": { "h": "Who is responsible", "p1": "What-If Lab is run by {operator}, who is responsible for the data described here." },
+    "collect": {
+      "h": "What we collect",
+      "p1": "Visit statistics (always). Our host, Vercel, counts page views with Vercel Web Analytics. It uses no cookies and does not follow you across sites. It records the page, the site that sent you, your country, browser, operating system and type of device, and we only see totals.",
+      "p2": "Google Analytics (only if you accept). If you choose Accept, Google Analytics 4 sets cookies (_ga, _ga_…) to tell visits apart and records the pages you view and actions such as trying a what-if, ticking a change, Reset, exporting a video or changing the language. Google processes this for us as a service provider; GA4 does not store IP addresses. If you choose Decline, Google Analytics is never loaded.",
+      "p3": "Server logs. Like any website host, Vercel briefly processes your IP address and request details to deliver pages and keep the service secure."
+    },
+    "device": {
+      "h": "Stored on your device",
+      "p1": "We use your browser's local storage, not cookies, for your theme, your language choice, whether you have seen the simulation note, your analytics choice and any export styles you save. It stays on your device, and you can clear it in your browser's settings."
+    },
+    "later": {
+      "h": "Accounts, Premium and ads",
+      "p1": "Accounts, Premium and ads are not switched on yet. Before they are, this policy will name the providers (Clerk for accounts and payments, Google AdSense for ads) and you will be asked again where the law requires it."
+    },
+    "basis": {
+      "h": "Legal basis",
+      "p1": "Cookieless visit statistics rely on our legitimate interest in understanding how the site is used. Google Analytics relies on your consent, which you can withdraw at any time."
+    },
+    "rights": {
+      "h": "Your rights",
+      "p1": "Depending on where you live (for example under the GDPR, the UK GDPR or California law) you can ask to see, correct or delete personal data about you, object to its use, or complain to your data protection authority. Because we hold no accounts, the only data that could identify you is held by Google Analytics, and only if you accepted it; contact us and we will help."
+    },
+    "choice": {
+      "h": "Changing your choice",
+      "p1": "Open the menu (…) at the top right of any page and choose Privacy settings to accept or decline Google Analytics again. Declining stops it and removes its cookies from this site."
+    },
+    "children": {
+      "h": "Children",
+      "p1": "The site is for a general audience and suits school use. We don't knowingly collect personal data from children, and Google Analytics only runs after someone accepts it."
+    },
+    "transfers": {
+      "h": "International transfers",
+      "p1": "Vercel and Google may process data outside your country, including in the United States, under safeguards such as the EU Standard Contractual Clauses."
+    },
+    "changes": {
+      "h": "Changes to this policy",
+      "p1": "If we change this policy we will update the date at the top and, for important changes, ask for your choice again."
+    }
+  },
+  "terms": {
+    "title": "Terms of use · What-If Lab",
+    "description": "The rules for using What-If Lab: a free, rule-based simulator for learning and fun, not a forecast or advice.",
+    "heading": "Terms of use",
+    "intro": { "p1": "These terms apply to your use of What-If Lab. By using the site you agree to them." },
+    "what": {
+      "h": "What the site is",
+      "p1": "What-If Lab is a set of rule-based simulations. Every result comes from simple models with rounded or made-up numbers. It is for learning, curiosity and fun. It is not a forecast, and not scientific, medical, financial, legal or parenting advice."
+    },
+    "use": {
+      "h": "Using the site",
+      "p1": "You may use the site for free for personal, educational and non-commercial purposes, including in classrooms. Please don't:",
+      "li1": "try to break, overload or disrupt the site;",
+      "li2": "copy or scrape the site at scale, or use automated tools to create traffic;",
+      "li3": "present What-If Lab's results as real predictions, or as something we endorse."
+    },
+    "exports": {
+      "h": "Videos you export",
+      "p1": "You may share videos you export from the site, including on social media and in class, as long as the What-If Lab name shown in them stays and you don't present them as real-world predictions."
+    },
+    "ours": {
+      "h": "Our content",
+      "p1": "The site's code, design, text, drawings and the What-If Lab name belong to {operator}. Beyond what these terms allow, please ask before reusing them."
+    },
+    "premium": {
+      "h": "Premium",
+      "p1": "Premium is not on sale yet. When it is, its price, renewal and cancellation terms will be shown before you pay and added here."
+    },
+    "warranty": {
+      "h": "No guarantees",
+      "p1": "The site is provided \"as is\". We try to keep it working and correct, but we can't promise it will always be available, free of errors or suitable for a particular purpose."
+    },
+    "liability": {
+      "h": "Liability",
+      "p1": "As far as the law allows, we are not liable for any loss arising from your use of the site or from decisions based on its simulations. Nothing here limits rights you have as a consumer that the law does not allow to be limited."
+    },
+    "links": {
+      "h": "Other sites",
+      "p1": "Links to other sites, such as our Instagram and TikTok pages, are there for convenience; those sites' own terms apply there."
+    },
+    "changes": {
+      "h": "Changes to these terms",
+      "p1": "We may update these terms. The date at the top shows the current version; using the site after a change means you accept it."
+    },
+    "law": {
+      "h": "Governing law",
+      "p1": "These terms are governed by the laws of {country}, without taking away the protection of the law where you live."
+    }
+  }
+}

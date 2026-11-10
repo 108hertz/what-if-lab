@@ -4,6 +4,7 @@ import { useEffect, useReducer } from "react";
 import { SimEngine } from "@/lib/sim/engine";
 import { defaultParams } from "@/lib/sim/core";
 import type { AnySandbox, ParamValue, SandboxKey } from "@/lib/sim/types";
+import { track } from "../privacy/track";
 
 /**
  * Client-side singletons. Living at module level means a running world keeps going
@@ -16,7 +17,7 @@ const presets = new Map<SandboxKey, [id: string, value: ParamValue]>();
 export function getEngine(sb: AnySandbox): SimEngine {
   let e = engines.get(sb.key);
   if (!e) {
-    e = new SimEngine(sb, defaultParams(sb));
+    e = instrument(new SimEngine(sb, defaultParams(sb)));
     engines.set(sb.key, e);
   }
   const pre = presets.get(sb.key);
@@ -27,6 +28,22 @@ export function getEngine(sb: AnySandbox): SimEngine {
       e.restart();
     }
   }
+  return e;
+}
+
+/**
+ * Analytics (change 0027): the live engine reports what visitors do — a what-if, ticking a change, Reset — to `track`,
+ * which sends nothing until the visitor accepts. Wraps this one instance only; replays and exports never report, and the
+ * sim (lib/sim) knows nothing about it.
+ */
+function instrument(e: SimEngine): SimEngine {
+  const world = e.sb.key;
+  // toggle() goes through setOn(), so wrapping setOn covers both.
+  const change = e.change.bind(e), reset = e.reset.bind(e), setOn = e.setOn.bind(e), setAll = e.setAll.bind(e);
+  e.change = (id) => { change(id); track("fork", { world, whatif: id }); };
+  e.reset = () => { reset(); track("reset", { world }); };
+  e.setOn = (key, on) => { setOn(key, on); track("change_toggle", { world, on }); };
+  e.setAll = (on) => { setAll(on); track("change_toggle", { world, on, all: true }); };
   return e;
 }
 

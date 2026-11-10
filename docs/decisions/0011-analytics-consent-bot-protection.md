@@ -1,6 +1,6 @@
-# 0011 — Analytics, consent and bot protection
+# 0011 — Analytics and consent
 
-- **Status:** proposed · amends [ADR 0001](./0001-static-site-no-backend.md) ("analytics: cookieless") and makes
+- **Status:** accepted (2026-11-10) · amends [ADR 0001](./0001-static-site-no-backend.md) ("analytics: cookieless") and makes
   [ADR 0003](./0003-advertising.md)'s CMP concrete
 - **Date:** 2026-11-09
 
@@ -33,20 +33,19 @@ Facts that shape the choice:
 Consent: Google's CMP (certified, no UI of ours) vs. a Control Room-styled banner of our own (not certified ⇒ no
 personalised ads in Europe) vs. a paid certified CMP (Cookiebot, Usercentrics: ~€10–50/month, more styling).
 
-## Decision (proposed)
+## Decision (proposed, revised 2026-11-10 with the owner)
 
-- **Hosting + bots: A — Cloudflare.** Bot Fight Mode on, a WAF rule that challenges known bad bots, cache everything
-  static. No Turnstile (we have no forms).
-- **Analytics, two layers:** Cloudflare Web Analytics (cookieless, always on, no consent needed) for the honest traffic
-  number; **GA4** loaded through **Consent Mode v2 basic** — no Google tag request at all until the visitor accepts.
-- **Consent: Google's certified CMP** from AdSense "Privacy & messaging" (GDPR + US states), opened again from a
-  "Privacy settings" link. Its look is set in the AdSense UI to the nearest Control Room colours.
+- **Hosting stays on Vercel; no bot protection layer for now** (owner, 2026-11-10). Cloudflare in front of the domain was
+  considered and set aside; revisit before ads (invalid traffic) — options above. While ads are off the Hobby plan is
+  fine; turning ads on means Vercel Pro or revisiting option A.
+- **Analytics, two layers:** **Vercel Web Analytics** (cookieless, always on, no consent needed) for the honest traffic
+  number; **GA4** through **Consent Mode v2 basic** — no Google request until the visitor accepts.
+- **Consent, for now: our own Control Room banner** (GA4 only; certification is required for ads, not for analytics).
+  When ads turn on it is replaced by Google's certified CMP from AdSense "Privacy & messaging".
 
 ## Consequences
 
-- ADR 0001's "cookieless analytics" becomes "cookieless by default; cookie analytics and ads only after consent".
-- Needs an AdSense account (and its publisher ID) before the CMP can show; GA4 can start earlier in regions that don't
-  need consent only if we accept that — we won't: GA waits for the CMP.
-- A privacy & cookies page is required (ADR 0003) and must be translated (change 0025).
-- Two public IDs become build-time env vars (`NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_ADSENSE_CLIENT`); still no secrets.
+- ADR 0001's "cookieless analytics" becomes "cookieless by default; cookie analytics (and later ads) only after consent".
+- One new dependency (`@vercel/analytics`) and one public ID (`NEXT_PUBLIC_GA_ID`); still no secrets.
+- Privacy policy and terms pages are required and translated (change 0032).
 - Implemented in [change 0027](../changes/0027-analytics-consent-bot-protection.md).

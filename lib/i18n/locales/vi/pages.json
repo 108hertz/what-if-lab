@@ -1,0 +1,149 @@
+{
+  "_status": "Machine draft (change 0032), awaiting native review. The English version applies.",
+  "common": {
+    "updated": "Cập nhật lần cuối: {date}",
+    "contact": "Có câu hỏi? Hãy viết tới {email}.",
+    "contactSoon": "Địa chỉ liên hệ sẽ sớm được thêm vào đây.",
+    "operatorFallback": "nhóm What-If Lab",
+    "countryFallback": "quốc gia nơi đơn vị vận hành trang đặt trụ sở",
+    "translated": "Trang này là bản dịch. Bản tiếng Anh là bản có hiệu lực.",
+    "readEnglish": "Đọc bằng tiếng Anh",
+    "back": "Quay lại phòng thí nghiệm",
+    "footer": "Trang web"
+  },
+  "about": {
+    "title": "Giới thiệu What-If Lab",
+    "description": "What-If Lab là trình mô phỏng miễn phí dựa trên quy tắc cho câu hỏi \"nếu như…\": từ proton đến vũ trụ, mở một thế giới và thay đổi nó.",
+    "heading": "Giới thiệu",
+    "lede": "What-If Lab là trình mô phỏng miễn phí cho những câu hỏi \"nếu như…\". Phóng từ một proton đến vũ trụ quan sát được, mở một thế giới, đổi một điều và xem hai tương lai tách ra.",
+    "how": {
+      "h": "Cách hoạt động",
+      "li1": "Mỗi thế giới chạy bằng các mô hình đơn giản dựa trên quy tắc ngay trong trình duyệt của bạn. Không AI, không dữ liệu trực tiếp.",
+      "li2": "Một giả định tách thế giới đang chạy: thế giới đã đổi hiện trên sân khấu, còn thế giới không đổi chạy song song, và biểu đồ cho thấy chúng khác nhau ở đâu.",
+      "li3": "Cùng cài đặt luôn cho cùng kết quả, nên một lượt chạy có thể được chia sẻ và kiểm tra."
+    },
+    "worlds": {
+      "h": "Các thế giới"
+    },
+    "note": {
+      "h": "Một mô hình, không phải dự báo"
+    },
+    "follow": {
+      "h": "Theo dõi chúng tôi",
+      "p1": "Clip ngắn về những giả định kỳ lạ nhất, và thế giới mới ngay khi ra mắt.",
+      "soon": "Trang Instagram và TikTok của chúng tôi sắp có."
+    },
+    "made": {
+      "h": "Ai làm ra",
+      "p1": "What-If Lab do {operator} làm ra, lấy cảm hứng từ các trình khám phá thang đo, hộp cát trọng lực và mô phỏng sinh vật nhỏ."
+    }
+  },
+  "privacy": {
+    "title": "Chính sách quyền riêng tư · What-If Lab",
+    "description": "What-If Lab thu thập gì, vì sao và bạn có lựa chọn nào: đếm lượt truy cập không cookie, Google Analytics chỉ khi bạn đồng ý.",
+    "heading": "Chính sách quyền riêng tư",
+    "intro": {
+      "p1": "Chính sách này giải thích What-If Lab (\"chúng tôi\") thu thập gì khi bạn dùng trang, và vì sao."
+    },
+    "short": {
+      "h": "Tóm tắt",
+      "li1": "Bạn không cần tài khoản, và chúng tôi không hỏi tên hay email của bạn.",
+      "li2": "Mô phỏng chạy hoàn toàn trong trình duyệt; cài đặt và giả định của bạn không được gửi cho chúng tôi.",
+      "li3": "Chúng tôi đếm lượt truy cập không dùng cookie. Google Analytics chỉ chạy khi bạn đồng ý.",
+      "li4": "Chúng tôi không bán dữ liệu của bạn."
+    },
+    "who": {
+      "h": "Bên chịu trách nhiệm",
+      "p1": "What-If Lab do {operator} vận hành, là bên chịu trách nhiệm về dữ liệu nêu ở đây."
+    },
+    "collect": {
+      "h": "Chúng tôi thu thập gì",
+      "p1": "Thống kê truy cập (luôn có). Nhà cung cấp lưu trữ của chúng tôi, Vercel, đếm lượt xem trang bằng Vercel Web Analytics. Công cụ này không dùng cookie và không theo dõi bạn giữa các trang. Nó ghi lại trang, trang đã dẫn bạn tới, quốc gia, trình duyệt, hệ điều hành và loại thiết bị, và chúng tôi chỉ thấy số tổng.",
+      "p2": "Google Analytics (chỉ khi bạn đồng ý). Nếu bạn chọn Đồng ý, Google Analytics 4 đặt cookie (_ga, _ga_…) để phân biệt lượt truy cập và ghi lại các trang bạn xem cùng các thao tác như thử một giả định, đánh dấu một thay đổi, Đặt lại, xuất video hoặc đổi ngôn ngữ. Google xử lý việc này cho chúng tôi với tư cách nhà cung cấp dịch vụ; GA4 không lưu địa chỉ IP. Nếu bạn chọn Từ chối, Google Analytics sẽ không bao giờ được tải.",
+      "p3": "Nhật ký máy chủ. Như mọi dịch vụ lưu trữ web, Vercel xử lý ngắn gọn địa chỉ IP và chi tiết yêu cầu để phục vụ trang và giữ dịch vụ an toàn."
+    },
+    "device": {
+      "h": "Lưu trên thiết bị của bạn",
+      "p1": "Chúng tôi dùng bộ nhớ cục bộ của trình duyệt, không phải cookie, để lưu giao diện, ngôn ngữ đã chọn, việc bạn đã xem ghi chú mô phỏng chưa, lựa chọn phân tích và các kiểu xuất bạn lưu. Chúng ở lại trên thiết bị của bạn, và bạn có thể xoá trong cài đặt trình duyệt."
+    },
+    "later": {
+      "h": "Tài khoản, Premium và quảng cáo",
+      "p1": "Tài khoản, Premium và quảng cáo chưa được bật. Trước khi bật, chính sách này sẽ nêu tên các nhà cung cấp (Clerk cho tài khoản và thanh toán, Google AdSense cho quảng cáo) và chúng tôi sẽ hỏi lại bạn khi luật yêu cầu."
+    },
+    "basis": {
+      "h": "Cơ sở pháp lý",
+      "p1": "Thống kê truy cập không cookie dựa trên lợi ích chính đáng của chúng tôi trong việc hiểu cách trang được dùng. Google Analytics dựa trên sự đồng ý của bạn, mà bạn có thể rút lại bất cứ lúc nào."
+    },
+    "rights": {
+      "h": "Quyền của bạn",
+      "p1": "Tuỳ nơi bạn sống (ví dụ theo GDPR, GDPR của Anh hoặc luật California), bạn có thể yêu cầu xem, sửa hoặc xoá dữ liệu cá nhân của mình, phản đối việc sử dụng hoặc khiếu nại với cơ quan bảo vệ dữ liệu. Vì chúng tôi không giữ tài khoản, dữ liệu duy nhất có thể nhận diện bạn nằm ở Google Analytics, và chỉ khi bạn đã đồng ý; hãy liên hệ, chúng tôi sẽ giúp."
+    },
+    "choice": {
+      "h": "Thay đổi lựa chọn",
+      "p1": "Mở menu (…) ở góc trên bên phải của bất kỳ trang nào và chọn Cài đặt quyền riêng tư để đồng ý hoặc từ chối Google Analytics lần nữa. Từ chối sẽ dừng nó và xoá cookie của nó khỏi trang này."
+    },
+    "children": {
+      "h": "Trẻ em",
+      "p1": "Trang dành cho mọi đối tượng và phù hợp dùng ở trường. Chúng tôi không cố ý thu thập dữ liệu cá nhân của trẻ em, và Google Analytics chỉ chạy sau khi có người đồng ý."
+    },
+    "transfers": {
+      "h": "Chuyển dữ liệu ra nước ngoài",
+      "p1": "Vercel và Google có thể xử lý dữ liệu ngoài quốc gia của bạn, kể cả tại Hoa Kỳ, với các biện pháp bảo vệ như Điều khoản Hợp đồng Mẫu của EU."
+    },
+    "changes": {
+      "h": "Thay đổi chính sách này",
+      "p1": "Nếu thay đổi chính sách này, chúng tôi sẽ cập nhật ngày ở trên và, với thay đổi quan trọng, hỏi lại lựa chọn của bạn."
+    }
+  },
+  "terms": {
+    "title": "Điều khoản sử dụng · What-If Lab",
+    "description": "Quy tắc dùng What-If Lab: trình mô phỏng miễn phí dựa trên quy tắc để học và giải trí, không phải dự báo hay lời khuyên.",
+    "heading": "Điều khoản sử dụng",
+    "intro": {
+      "p1": "Các điều khoản này áp dụng cho việc bạn sử dụng What-If Lab. Khi dùng trang, bạn đồng ý với chúng."
+    },
+    "what": {
+      "h": "Trang này là gì",
+      "p1": "What-If Lab là tập hợp các mô phỏng dựa trên quy tắc. Mỗi kết quả đến từ các mô hình đơn giản với con số được làm tròn hoặc tự đặt. Trang dành cho việc học, sự tò mò và giải trí. Đây không phải dự báo, cũng không phải lời khuyên khoa học, y tế, tài chính, pháp lý hay nuôi dạy con."
+    },
+    "use": {
+      "h": "Sử dụng trang",
+      "p1": "Bạn có thể dùng trang miễn phí cho mục đích cá nhân, giáo dục và phi thương mại, kể cả trong lớp học. Vui lòng không:",
+      "li1": "cố làm hỏng, làm quá tải hoặc gây gián đoạn trang;",
+      "li2": "sao chép hoặc thu thập trang ở quy mô lớn, hay dùng công cụ tự động để tạo lưu lượng;",
+      "li3": "trình bày kết quả của What-If Lab như dự đoán thật hoặc như điều chúng tôi xác nhận."
+    },
+    "exports": {
+      "h": "Video bạn xuất",
+      "p1": "Bạn có thể chia sẻ video xuất từ trang, kể cả trên mạng xã hội và trong lớp, miễn là giữ tên What-If Lab hiện trong video và không trình bày chúng như dự đoán về thế giới thực."
+    },
+    "ours": {
+      "h": "Nội dung của chúng tôi",
+      "p1": "Mã nguồn, thiết kế, văn bản, hình vẽ và tên What-If Lab thuộc về {operator}. Ngoài những gì điều khoản này cho phép, vui lòng hỏi trước khi dùng lại."
+    },
+    "premium": {
+      "h": "Premium",
+      "p1": "Premium chưa được bán. Khi mở bán, giá, gia hạn và điều kiện huỷ sẽ được hiển thị trước khi bạn thanh toán và được bổ sung tại đây."
+    },
+    "warranty": {
+      "h": "Không bảo đảm",
+      "p1": "Trang được cung cấp \"nguyên trạng\". Chúng tôi cố gắng giữ trang hoạt động và chính xác, nhưng không thể hứa trang luôn sẵn sàng, không lỗi hay phù hợp cho một mục đích cụ thể."
+    },
+    "liability": {
+      "h": "Trách nhiệm",
+      "p1": "Trong phạm vi luật cho phép, chúng tôi không chịu trách nhiệm cho tổn thất phát sinh từ việc dùng trang hoặc từ quyết định dựa trên mô phỏng của trang. Không điều gì ở đây giới hạn quyền người tiêu dùng mà luật không cho phép giới hạn."
+    },
+    "links": {
+      "h": "Trang khác",
+      "p1": "Liên kết tới trang khác, như trang Instagram và TikTok của chúng tôi, chỉ để thuận tiện; ở đó áp dụng điều khoản của các trang ấy."
+    },
+    "changes": {
+      "h": "Thay đổi các điều khoản này",
+      "p1": "Chúng tôi có thể cập nhật các điều khoản này. Ngày ở trên cho biết phiên bản hiện hành; tiếp tục dùng trang sau thay đổi nghĩa là bạn chấp nhận nó."
+    },
+    "law": {
+      "h": "Luật áp dụng",
+      "p1": "Các điều khoản này được điều chỉnh bởi luật của {country}, mà không làm mất sự bảo vệ của luật nơi bạn sống."
+    }
+  }
+}

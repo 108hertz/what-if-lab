@@ -54,6 +54,9 @@ Run `npm run typecheck && npm test` after any change to `lib/` or `worlds/`.
 app/                      Next.js App Router (static). / = scale, /lab/[world] = a world
 components/
   shell/                  Lab (nav, world switcher, account menu, ≥1600 px ad rails), LabClient (ssr:false), Tabs, WorldMenu (world tabs + More), ThemeToggle
+  privacy/                analytics (change 0027): Vercel script, GA4 after consent (ConsentBanner, consent.ts rules), track();
+                          never imported by lib/ or worlds/
+  pages/                  About, Privacy, Terms (change 0032): DocPage (build-time text from locales/<code>/pages.json), DocNav
   account/                useAccount() adapter: state.ts (pure rules), context.tsx (provider), clerk.tsx (the only Clerk import,
                           lazy), AccountMenu, PremiumDialog. No key ⇒ everything free, as before
   console/                shared world-console blocks: StandardConsole, Stage (+ StageInteraction), Transport,

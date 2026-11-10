@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · hạt giống {seed}",
     "freeText": "Chữ của bạn"
+  },
+  "quick": {
+    "open": "Xuất lượt chạy này thành video",
+    "title": "Xuất video",
+    "download": "Tải video",
+    "what": "Video ngang dài {s} giây của lượt chạy này, có tiêu đề, giả định và kết quả, sẵn sàng cho YouTube hoặc để chia sẻ.",
+    "noVideo": "Trình duyệt này không quay được video. Hãy thử Chrome, Edge, Firefox hoặc Safari bản mới.",
+    "more": "Thêm kích thước, ảnh, văn bản, trang chiếu và phong cách riêng với Premium."
   }
 }

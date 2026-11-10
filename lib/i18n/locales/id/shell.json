@@ -31,5 +31,19 @@
     "body": "Semua di sini adalah model yang dibangun dari teori ilmiah dan angka yang dibulatkan. Hasilnya bukan data nyata dan bukan prediksi tentang orang, tempat, atau masa depan yang nyata.",
     "use": "Gunakan untuk bermain, menjelajah, dan melihat apa yang mungkin terjadi jika…",
     "ok": "Mengerti"
+  },
+  "site": {
+    "menu": "Tentang, privasi, dan ketentuan",
+    "about": "Tentang What-If Lab",
+    "privacy": "Kebijakan privasi",
+    "terms": "Ketentuan penggunaan",
+    "settings": "Pengaturan privasi"
+  },
+  "consent": {
+    "label": "Pilihan analitik",
+    "text": "Kami menghitung kunjungan tanpa cookie. Bolehkah kami juga memakai Google Analytics (cookie) untuk melihat skenario mana yang dicoba orang?",
+    "accept": "Terima",
+    "decline": "Tolak",
+    "policy": "Kebijakan privasi"
   }
 }

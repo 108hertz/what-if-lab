@@ -312,5 +312,13 @@
     },
     "worldText": "{world} · seed {seed}",
     "freeText": "Jouw tekst"
+  },
+  "quick": {
+    "open": "Deze run als video exporteren",
+    "title": "Video exporteren",
+    "download": "Video downloaden",
+    "what": "Een liggende video van {s} seconden van deze run, met de titel, de wat-als en de uitkomst, klaar voor YouTube of om te delen.",
+    "noVideo": "Deze browser kan geen video opnemen. Probeer een recente Chrome, Edge, Firefox of Safari.",
+    "more": "Meer formaten, afbeeldingen, tekst, dia's en je eigen stijl met Premium."
   }
 }
