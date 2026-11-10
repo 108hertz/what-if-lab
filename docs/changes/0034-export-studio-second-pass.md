@@ -171,3 +171,7 @@ After each step I redeploy the preview so you can try it.
     `.next-build`), and `.claude/launch.json` has a `premium-preview` server on port 5051.
 - 2026-11-10 — dev builds (`npm run dev`) now show the account menu and Simulate Premium too (`ACCOUNTS_ON = ACCOUNTS_LAUNCHED || CONFIG.dev`);
   production builds still hide them until launch.
+- 2026-11-10 — Vercel preview builds failed: Google Fonts sometimes answers with font links without a file extension
+  (`/l/font?kit=…`), which next/font 15.5 can't read. The studio's 11 faces are now stored in the repo
+  (`public/fonts/studio/`, 51 woff2 files, 1.25 MB, fetched by the browser only when drawn) with a generated stylesheet
+  (`npm run fonts:studio` → `components/console/export/studio-fonts.css`). The site's own fonts still use next/font/google.

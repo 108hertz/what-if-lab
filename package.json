@@ -12,7 +12,8 @@
     "test:watch": "vitest",
     "i18n:extract": "I18N_WRITE=1 vitest run tests/i18n-extract.test.ts",
     "og:images": "OG_WRITE=1 vitest run tests/og-images.test.ts",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "fonts:studio": "node scripts/studio-fonts.mjs"
   },
   "dependencies": {
     "@clerk/localizations": "4.23.0",
