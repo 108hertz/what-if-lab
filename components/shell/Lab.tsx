@@ -68,12 +68,15 @@ function Shell({ mode }: { mode: Mode }) {
         </Link>
         <WorldMenu mode={mode} />
         <div className="nav-end">
-          {PREMIUM_ON_SALE && <AccountMenu />}
+          {/* Phones (< 768 px) keep only the simulation label and the site menu; account, language and theme move into it. */}
+          <div className="nav-wide">{PREMIUM_ON_SALE && <AccountMenu />}</div>
           <Disclaimer />
-          <LangHint />
-          <LangMenu />
-          <ThemeToggle />
-          <SiteMenu />
+          <div className="nav-wide">
+            <LangHint />
+            <LangMenu />
+            <ThemeToggle />
+          </div>
+          <SiteMenu settings={{ account: PREMIUM_ON_SALE }} />
         </div>
       </header>
       {rails && <AdSlot size="rail" />}

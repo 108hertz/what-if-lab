@@ -26,10 +26,12 @@ function useOtherHref(): (code: string) => string {
   return (code) => localePath(code, english);
 }
 
+/** Whether there is more than one language to pick. */
+export const hasLanguages = () => listed().length > 1;
+
 export default function LangMenu() {
   const t = useT();
   const locale = useLocale();
-  const href = useOtherHref();
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
   const btn = useRef<HTMLButtonElement>(null);
@@ -64,17 +66,29 @@ export default function LangMenu() {
       </button>
       {open && (
         <ul className="popover langmenu-list" id="lang-list" ref={list} onKeyDown={onKey} aria-label={t("shell.lang.label")}>
-          {langs.map((l) => (
-            <li key={l.code}>
-              <a href={href(l.code)} hrefLang={l.tag} lang={l.tag} dir={l.dir} aria-current={l.code === locale ? "page" : undefined} onClick={() => { store.set("lang", l.code); track("language", { to: l.code, from: locale }); }}>
-                <span>{l.name}</span>
-                {!l.ready && <span className="sub">{t("shell.lang.draft")}</span>}
-              </a>
-            </li>
-          ))}
+          <LangItems />
         </ul>
       )}
     </div>
+  );
+}
+
+/** One link per listed language, the current one marked. Also the language view of the site menu on phones. */
+export function LangItems() {
+  const t = useT();
+  const locale = useLocale();
+  const href = useOtherHref();
+  return (
+    <>
+      {listed().map((l) => (
+        <li key={l.code}>
+          <a href={href(l.code)} hrefLang={l.tag} lang={l.tag} dir={l.dir} aria-current={l.code === locale ? "page" : undefined} onClick={() => { store.set("lang", l.code); track("language", { to: l.code, from: locale }); }}>
+            <span>{l.name}</span>
+            {!l.ready && <span className="sub">{t("shell.lang.draft")}</span>}
+          </a>
+        </li>
+      ))}
+    </>
   );
 }
 
