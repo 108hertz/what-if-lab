@@ -77,5 +77,30 @@
     "label": "Iklan",
     "promo": "Bebas iklan dengan Premium · $15/thn",
     "short": "Iklan"
+  },
+  "phone": {
+    "close": "Tutup",
+    "speedLabel": "Kecepatan: {speed}. Ubah kecepatan",
+    "speedTitle": "Seberapa cepat waktu berjalan",
+    "speedNote": "Berapa banyak waktu berlalu di dunia untuk setiap detik yang kamu tonton.",
+    "whatIf": "Bagaimana jika…",
+    "whatIfTitle": "Bagaimana jika…",
+    "results": "Hasil",
+    "now": "Sekarang",
+    "chart": "Grafik",
+    "about": "Tentang",
+    "openResults": "Lihat hasil",
+    "closeResults": "Kembali ke dunia",
+    "pickFirst": "Pilih satu “bagaimana jika” untuk mengubah dunia",
+    "onCount": "{n, plural, other {# perubahan aktif}}",
+    "why": "Kenapa"
+  },
+  "speed": {
+    "d": "{n, plural, other {# hari}} per detik",
+    "wk": "{n, plural, other {# minggu}} per detik",
+    "mo": "{n, plural, other {# bulan}} per detik",
+    "yr": "{n, plural, other {# tahun}} per detik",
+    "myr": "{n, plural, other {# juta tahun}} per detik",
+    "gyr": "{n, plural, other {# miliar tahun}} per detik"
   }
 }

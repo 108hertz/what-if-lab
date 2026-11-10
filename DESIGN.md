@@ -288,8 +288,13 @@ viewport (`100dvh`) and never scroll the page; only named regions scroll interna
   framed unit: stage, transport strip, results strip (chart | timeline; chart | right now | timeline at
   ≥ 1440). 200 px results, 160 px under 760 px tall.
 - **Compact desktop (1024–1279):** centre · a 300 px dock panel (Ask · Tune · Read).
-- **Phone / tablet (< 1024):** stage and transport on top, a dock panel (Ask · Tune · Read · Log) under it.
-- **Phones held sideways (≤ 520 tall):** stage beside the dock.
+- **Phone / tablet (< 1024, change 0035):** the shared `PhoneConsole`. The stage and a compact transport fill most of the
+  height. Under them sit the results strip (the first readout in both channels and the newest log line; it rises to about
+  half the screen with Now · Chart · Log · About tabs while the stage shrinks to a live strip). Then a tool bar:
+  **What if…** (amber edge and soft fill, mono count of changes that are on), **Tune**, **Export**. What if… and Tune open
+  as tool sheets. While nothing has changed, one line above the bar says "Pick a what-if to change the world".
+- **Phones held sideways (≤ 520 tall):** stage and transport left; an 88 px tool rail right (What if… · Tune · Results ·
+  Export); sheets and the results open from the right edge.
 - **Rhythm:** 4-pt spacing; panel padding / gap 12 / 14 below 1280, 16 / 16 from 1280; page gutter 8 px
   on phones, 12 px from 1024.
 - **Ads ([ADR 0007](docs/decisions/0007-ad-slots-per-world.md)):** sizes and positions unchanged; an empty
@@ -392,6 +397,23 @@ Under it: the title in Title, one line in Body (ink-2), the one primary button "
   goes on ×, Escape, a click elsewhere or switching.
 - **Sheets** (Premium, exports): raised, 6 px, max 480 px, bottom-docked below 768 px; inside, the one
   signal button is the main action, the rest are secondary.
+- **Tool sheets** (phones, change 0035; `components/console/phone/Sheet.tsx`): raised, a track edge, 6 px top corners,
+  a 36 × 4 px grabber, a condensed Heading-sm title with an optional mono count, ×. They fit their content up to 72 dvh,
+  docked to the bottom (to the right edge, full height, when sideways). The scrim is lighter than the modal one
+  (45 % stage), so the stage stays readable above. Drag down, Escape or a tap outside closes them. Picking a what-if
+  closes its sheet so the change is seen happening.
+- **Compact transport** (phones): Play/Pause as a 52 × 44 filled icon (label from 480 px); a **speed button** that
+  takes the rest of the row (Micro "SPEED", the current speed in mono, chevron) and opens the speed sheet: every speed
+  as a 48 px row, mono value in signal plus the same speed in words ("6 months every second", `console.speed.*`),
+  the chosen one with a signal bar and tick; Reset and Full screen as icons. The world clock stays on the stage.
+- **Results strip** (`ResultsDrawer`): panel tone, 6 px, a grabber row. Closed it is 76 px (the peek); open it is
+  54 dvh with a word tab track. Its height follows the finger while dragging and snaps with `--d-ctl`; it flashes
+  amber-soft once when a change is made. The stage keeps running at the top.
+- **Phone export editor** (< 768 px): the studio goes full screen. Title, the one primary (EXPORT) and × on top; the
+  preview fills the rest beside a 64 px **tool rail** (ground fill, 54 px tools with a glyph and a Micro label; the
+  chosen one raised with a signal bar on its inner edge): Output, Text, Intro, Sound, Look, Timing, Styles. A tool's
+  settings open in a panel under the preview (the preview shrinks to 44 % and keeps playing); ✓ or the same tool closes
+  it. Quick export (free) uses the same full-screen frame without the rail.
 
 ## Do's and Don'ts
 

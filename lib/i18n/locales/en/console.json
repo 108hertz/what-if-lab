@@ -77,5 +77,30 @@
     "label": "Advertisement",
     "promo": "Ad-free with Premium · $15/yr",
     "short": "Ad"
+  },
+  "phone": {
+    "close": "Close",
+    "speedLabel": "Speed: {speed}. Change speed",
+    "speedTitle": "How fast time runs",
+    "speedNote": "How much time passes in the world for every second you watch.",
+    "whatIf": "What if…",
+    "whatIfTitle": "What if…",
+    "results": "Results",
+    "now": "Now",
+    "chart": "Chart",
+    "about": "About",
+    "openResults": "Show the results",
+    "closeResults": "Back to the world",
+    "pickFirst": "Pick a what-if to change the world",
+    "onCount": "{n, plural, one {# change on} other {# changes on}}",
+    "why": "Why"
+  },
+  "speed": {
+    "d": "{n, plural, one {# day} other {# days}} every second",
+    "wk": "{n, plural, one {# week} other {# weeks}} every second",
+    "mo": "{n, plural, one {# month} other {# months}} every second",
+    "yr": "{n, plural, one {# year} other {# years}} every second",
+    "myr": "{n, plural, one {# million years} other {# million years}} every second",
+    "gyr": "{n, plural, one {# billion years} other {# billion years}} every second"
   }
 }

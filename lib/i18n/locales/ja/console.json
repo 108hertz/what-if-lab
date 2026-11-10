@@ -77,5 +77,30 @@
     "label": "広告",
     "promo": "Premiumで広告なし · 年$15",
     "short": "広告"
+  },
+  "phone": {
+    "close": "閉じる",
+    "speedLabel": "速さ：{speed}。速さを変える",
+    "speedTitle": "時間の進む速さ",
+    "speedNote": "見ている1秒ごとに、世界でどれだけの時間が進むか。",
+    "whatIf": "もしも…",
+    "whatIfTitle": "もしも…",
+    "results": "結果",
+    "now": "いま",
+    "chart": "グラフ",
+    "about": "この世界について",
+    "openResults": "結果を見る",
+    "closeResults": "世界に戻る",
+    "pickFirst": "「もしも」を選んで世界を変えよう",
+    "onCount": "{n, plural, other {# 件の変更がオン}}",
+    "why": "なぜ"
+  },
+  "speed": {
+    "d": "{n, plural, other {毎秒 # 日}}",
+    "wk": "{n, plural, other {毎秒 # 週}}",
+    "mo": "{n, plural, other {毎秒 # か月}}",
+    "yr": "{n, plural, other {毎秒 # 年}}",
+    "myr": "{n, plural, other {毎秒 # 百万年}}",
+    "gyr": "{n, plural, other {毎秒 # 十億年}}"
   }
 }

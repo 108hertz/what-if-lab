@@ -18,6 +18,7 @@ import { traitWord } from "./words";
 import { worldSay } from "@/lib/sim/say";
 import { useT } from "@/components/i18n/I18nProvider";
 import { pointAt, setHeroKid, setStageTrait, setStageView, stageView, tapAt, type StageView } from "./scene";
+import PhoneConsole from "@/components/console/phone/PhoneConsole";
 import s from "./child.module.css";
 
 /**
@@ -102,6 +103,21 @@ export default function ChildConsole() {
   const chart = <ChildChart engine={engine} view={view} setView={setView} trait={trait} setTrait={setTrait} />;
   const log = <div className="log-box"><h3 className="headline">{t("console.timeline.title")}</h3><ChildTimeline engine={engine} /></div>;
 
+  // Phones (change 0035): the life fills the screen; changes and the family open as sheets
+  if (!desk) {
+    return (
+      <PhoneConsole engine={engine} onChange={onChange} className={s.vars} onReset={() => setKid(-1)}
+        stage={(
+          <Stage engine={engine} onChange={onChange} interaction={stageInput}>
+            <StageControls view={sview} setView={pickView} trait={trait} setTrait={setTrait} kid={kid} setKid={setKid} />
+          </Stage>
+        )}
+        whatIf={<ChangeList engine={engine} onChange={onChange} />}
+        tune={<><FamilyPicker engine={engine} onChange={onChange} /><ParentCards engine={engine} onChange={onChange} /><HomeSettings engine={engine} onChange={onChange} />{tune}</>}
+        tabs={[[t("console.phone.now"), <>{meet}{story}</>], [t("console.phone.chart"), chart], [t("console.phone.why"), why], [t("console.dock.log"), log], [t("console.phone.about"), <><WorldHeader engine={engine} />{science}</>]]} />
+    );
+  }
+
   let side: ReactNode;
   if (full) {
     side = (
@@ -110,19 +126,12 @@ export default function ChildConsole() {
         {!rails && <AdSlot size="box" promo />}
       </aside>
     );
-  } else if (desk) {
+  } else {
     side = (
       <div className="dock-col">
         <Dock key="desk" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{meet}{why}{science}</>]]} />
         <AdSlot size="box" promo />
       </div>
-    );
-  } else {
-    side = (
-      <>
-        <Dock key="phone" tabs={[[t("console.dock.ask"), ask], [t("console.dock.tune"), tune], [t("console.dock.read"), <>{meet}{chart}{why}{science}</>], [t("console.dock.log"), log]]} />
-        <AdSlot size="banner" />
-      </>
     );
   }
 
@@ -134,7 +143,7 @@ export default function ChildConsole() {
           <StageControls view={sview} setView={pickView} trait={trait} setTrait={setTrait} kid={kid} setKid={setKid} />
         </Stage>
         <Transport engine={engine} onChange={onChange} fullscreen={fs} onReset={() => setKid(-1)} />
-        {desk && !fs.on && <div className={`results country-results ${s.results}`}>{chart}{log}</div>}
+        {!fs.on && <div className={`results country-results ${s.results}`}>{chart}{log}</div>}
       </section>
       {side}
     </main>

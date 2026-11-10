@@ -77,5 +77,30 @@
     "label": "Publicidade",
     "promo": "Sem anúncios com Premium · $15/ano",
     "short": "Anúncio"
+  },
+  "phone": {
+    "close": "Fechar",
+    "speedLabel": "Velocidade: {speed}. Mudar a velocidade",
+    "speedTitle": "Quão rápido o tempo passa",
+    "speedNote": "Quanto tempo passa no mundo a cada segundo que você assiste.",
+    "whatIf": "E se…",
+    "whatIfTitle": "E se…",
+    "results": "Resultados",
+    "now": "Agora",
+    "chart": "Gráfico",
+    "about": "Sobre",
+    "openResults": "Ver os resultados",
+    "closeResults": "Voltar ao mundo",
+    "pickFirst": "Escolha um “e se” para mudar o mundo",
+    "onCount": "{n, plural, one {# mudança ativa} other {# mudanças ativas}}",
+    "why": "Por quê"
+  },
+  "speed": {
+    "d": "{n, plural, one {# dia} other {# dias}} por segundo",
+    "wk": "{n, plural, one {# semana} other {# semanas}} por segundo",
+    "mo": "{n, plural, one {# mês} other {# meses}} por segundo",
+    "yr": "{n, plural, one {# ano} other {# anos}} por segundo",
+    "myr": "{n, plural, one {# milhão de anos} other {# milhões de anos}} por segundo",
+    "gyr": "{n, plural, one {# bilhão de anos} other {# bilhões de anos}} por segundo"
   }
 }

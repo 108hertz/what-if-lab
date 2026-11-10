@@ -77,5 +77,30 @@
     "label": "Advertentie",
     "promo": "Zonder advertenties met Premium · $15/jr",
     "short": "Adv."
+  },
+  "phone": {
+    "close": "Sluiten",
+    "speedLabel": "Snelheid: {speed}. Snelheid wijzigen",
+    "speedTitle": "Hoe snel de tijd gaat",
+    "speedNote": "Hoeveel tijd er in de wereld verstrijkt per seconde dat je kijkt.",
+    "whatIf": "Wat als…",
+    "whatIfTitle": "Wat als…",
+    "results": "Resultaten",
+    "now": "Nu",
+    "chart": "Grafiek",
+    "about": "Over",
+    "openResults": "Resultaten tonen",
+    "closeResults": "Terug naar de wereld",
+    "pickFirst": "Kies een wat-als om de wereld te veranderen",
+    "onCount": "{n, plural, one {# wijziging aan} other {# wijzigingen aan}}",
+    "why": "Waarom"
+  },
+  "speed": {
+    "d": "{n, plural, one {# dag} other {# dagen}} per seconde",
+    "wk": "{n, plural, one {# week} other {# weken}} per seconde",
+    "mo": "{n, plural, one {# maand} other {# maanden}} per seconde",
+    "yr": "{n, plural, one {# jaar} other {# jaar}} per seconde",
+    "myr": "{n, plural, one {# miljoen jaar} other {# miljoen jaar}} per seconde",
+    "gyr": "{n, plural, one {# miljard jaar} other {# miljard jaar}} per seconde"
   }
 }

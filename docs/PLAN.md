@@ -77,6 +77,7 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [x] Premium exports: phone video, YouTube video, slides ([change 0020](./changes/0020-accounts-premium-exports.md))
 - [x] Free quick export: one landscape video, no editing ([change 0031](./changes/0031-free-quick-export.md))
 - [x] Export studio: styled video, pictures, text and slides; text placement, fonts, colours, grade, length ([change 0022](./changes/0022-export-studio.md))
+- [x] Phones: the world fills the screen, tools as sheets, results rise from the bottom ([change 0035](./changes/0035-phone-console-and-studio.md))
 - [ ] Premium features: multi what-if, Monte-Carlo, scrubbing, saved scenarios
 
 ### Phase 4 — Scale
