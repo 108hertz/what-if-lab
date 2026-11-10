@@ -54,7 +54,9 @@
       "output": "Wynik",
       "text": "Tekst",
       "look": "Wygląd",
-      "timing": "Czas"
+      "timing": "Czas",
+      "intro": "Intro",
+      "sound": "Dźwięk"
     },
     "mb": "{n} MB",
     "mbSmall": "poniżej 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "w lewo",
         "right": "w prawo",
         "down": "w dół"
-      }
+      },
+      "onTheVideo": "W filmie",
+      "preset": {
+        "all": "Wszystko",
+        "stage": "Tylko scena",
+        "text": "Tylko tekst"
+      },
+      "picturePieces": "Obraz",
+      "textPieces": "Tekst",
+      "piece": {
+        "stage": "Sam świat",
+        "label": "Etykieta świata",
+        "clock": "Zegar",
+        "frame": "Ramka sceny",
+        "seam": "Linia między dwoma światami",
+        "chart": "Wykres pod sceną",
+        "cards": "Cień za tytułem i wynikiem"
+      },
+      "titleFace": "Czcionka tytułu ({font})",
+      "bodyFace": "Czcionka tekstu ({font})",
+      "fontFallback": "{font} · litery urządzenia dla tego języka",
+      "italic": "Kursywa",
+      "letterSpacing": "Odstęp liter",
+      "lineHeight": "Wysokość wiersza",
+      "outline": "Obrys",
+      "shadow": "Cień",
+      "narrationLines": "Linie narracji",
+      "narrationNote": "Napisane na podstawie przebiegu i zsynchronizowane z filmem. Wpisz coś w miejsce linii, aby ją zmienić; wyczyść, aby wrócić. Te same linie trafiają do pliku napisów.",
+      "narrationLine": "Linia {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Bez sceny intro: zamiast niej pojawia się zwykły tytuł otwierający (Tekst → Tytuł otwierający).",
+      "length": "Długość",
+      "tooShort": "Daj intro trochę czasu, inaczej się nie pokaże.",
+      "bigLine": "Duża linia",
+      "smallLine": "Mała linia",
+      "tokens": "Możesz użyć {list}",
+      "accent": "Kolor akcentu",
+      "fontsNote": "Czcionki pochodzą z Wygląd → Czcionka tytułu i Czcionka tekstu.",
+      "mine": "Moje intra",
+      "mineNote": "Zapisz to intro z tekstem, kolorem i długością i używaj go w każdym świecie. Zostaje w tej przeglądarce.",
+      "saved": "Zapisano w tej przeglądarce.",
+      "namePlaceholder": "Nazwij to intro",
+      "nameLabel": "Nazwa intro",
+      "save": "Zapisz",
+      "delete": "Usuń {name}",
+      "copy": "Kopiuj",
+      "copied": "Intro skopiowane. Wklej je na innym urządzeniu.",
+      "cantCopy": "Nie udało się tu skopiować.",
+      "paste": "Wklej",
+      "off": "Bez intro",
+      "pastePlaceholder": "Wklej tu skopiowane intro",
+      "pasteLabel": "Wklej intro",
+      "notIntro": "To nie jest intro What-If Lab.",
+      "use": "Użyj tego intro"
+    },
+    "sound": {
+      "privacy": "Dźwięk zostaje na tym urządzeniu: nic nie jest wysyłane i nie zostaje zachowany po zamknięciu studia.",
+      "voice": "Twój głos",
+      "voiceNote": "Naciśnij Nagraj: podgląd odtwarza się od początku, a ty mówisz na jego tle. Na końcu zatrzyma się sam.",
+      "record": "Nagraj lektora",
+      "again": "Nagraj ponownie",
+      "stop": "Stop",
+      "remove": "Usuń",
+      "recording": "Nagrywanie",
+      "yourTake": "Twoje nagranie",
+      "volume": "Głośność",
+      "startsAt": "Zaczyna się od",
+      "atStart": "początku",
+      "offsetS": "{n} s",
+      "file": "Plik audio",
+      "fileNote": "Lektor lub muzyka z twojego urządzenia (MP3, WAV, M4A). Używaj tylko dźwięku, do którego masz prawa.",
+      "addFile": "Dodaj plik",
+      "replaceFile": "Zamień plik",
+      "fadeIn": "Narastanie",
+      "fadeOut": "Wyciszanie",
+      "duck": "Ścisz plik, gdy mówi twój głos",
+      "noMic": "Brak mikrofonu albo nie zezwolono na niego. Zezwól na mikrofon dla tej strony i spróbuj ponownie.",
+      "takeFailed": "Nie udało się zachować tego nagrania. Spróbuj ponownie.",
+      "cantRead": "Nie udało się odczytać pliku. Spróbuj MP3, WAV lub M4A.",
+      "unsupported": "Ta przeglądarka nie może dodać dźwięku do filmu. Spróbuj aktualnego Chrome, Edge lub Firefoksa.",
+      "captionsNote": "Nie masz czasu nagrywać? Włącz Narrację (karta Tekst), aby mieć linie w filmie, albo użyj pliku napisów z głosem swojej aplikacji.",
+      "silent": "Ta przeglądarka nagrała to bez dźwięku."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Karta wyniku",
       "free1": "Twój tekst 1",
       "free2": "Twój tekst 2",
-      "free3": "Twój tekst 3"
+      "free3": "Twój tekst 3",
+      "captions": "Narracja"
     },
     "layerWhat": {
       "brand": "Nazwa w rogu",
@@ -291,7 +377,8 @@
       "outro": "Na scenie na końcu",
       "free1": "Cokolwiek chcesz",
       "free2": "Cokolwiek chcesz",
-      "free3": "Cokolwiek chcesz"
+      "free3": "Cokolwiek chcesz",
+      "captions": "Linie na dole, zsynchronizowane z przebiegiem"
     },
     "token": {
       "whatif": "„co jeśli”",
@@ -311,7 +398,25 @@
       "vignette": "Ciemne brzegi"
     },
     "worldText": "{world} · ziarno {seed}",
-    "freeText": "Twój tekst"
+    "freeText": "Twój tekst",
+    "intro": {
+      "none": "Brak",
+      "question": "Pytanie",
+      "countdown": "Odliczanie",
+      "guess": "Najpierw zgadnij",
+      "cinema": "Kinowy",
+      "zoom": "Przybliżenie",
+      "thenNow": "Przed i po"
+    },
+    "introWhat": {
+      "none": "Zwykły tytuł otwierający",
+      "question": "„Co jeśli” pojawia się słowo po słowie",
+      "countdown": "3 · 2 · 1 nad sceną",
+      "guess": "Czas na zgadywanie przed startem",
+      "cinema": "Czarne pasy, nazwa świata, tytuł",
+      "zoom": "Scena rośnie, aż wypełni kadr",
+      "thenNow": "Bez zmiany, potem przejście do zmiany"
+    }
   },
   "quick": {
     "open": "Eksportuj tę symulację jako wideo",
@@ -320,5 +425,33 @@
     "what": "Poziome wideo z tej symulacji ({s} s) z tytułem, „co jeśli” i wynikiem, gotowe na YouTube albo do udostępnienia.",
     "noVideo": "Ta przeglądarka nie nagrywa wideo. Spróbuj aktualnego Chrome, Edge, Firefoksa lub Safari.",
     "more": "Więcej rozmiarów, obrazy, tekst, slajdy i własny styl w Premium."
+  },
+  "intro": {
+    "before": "Przed zmianą",
+    "after": "Po zmianie",
+    "question": {
+      "kicker": "Co jeśli…",
+      "line": "Sprawdźmy."
+    },
+    "countdown": {
+      "kicker": "Przygotuj się",
+      "line": "Start za"
+    },
+    "guess": {
+      "kicker": "Najpierw pomyśl",
+      "line": "Jak myślisz, co się stanie?"
+    },
+    "cinema": {
+      "kicker": "Przedstawia",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Przyjrzyj się",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Przed i po",
+      "line": "{world}"
+    }
   }
 }

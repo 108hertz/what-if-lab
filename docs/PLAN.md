@@ -30,7 +30,7 @@ share. Success = **traffic** (organic search + shares), funded by **side-rail ad
 | Tier | Price | What you get |
 | --- | --- | --- |
 | Free | $0 | All worlds, all what-ifs, scale explorer, share links, a landscape video of any run. Ads in reserved slots away from the stage. |
-| Premium | $15 / year | No ads · up to 4 parallel what-ifs · Monte-Carlo outcome ranges · timeline scrubbing/replay · saved scenarios · export studio (video in four sizes, pictures, subtitles/caption/story text, slides PDF; your own text, fonts, colours, picture grade and length — built; GIF, CSV later) · early access to new worlds |
+| Premium | $15 / year | No ads · up to 4 parallel what-ifs · Monte-Carlo outcome ranges · timeline scrubbing/replay · saved scenarios · export studio (video in four sizes, pictures, subtitles/caption/story text, slides PDF; your own text, fonts, colours, picture grade and length; every piece removable, intro templates, voice-over and audio files, narration captions — built; GIF, CSV later) · early access to new worlds |
 
 Feature specs: [ads](./features/ads.md), [premium](./features/premium.md).
 
@@ -77,6 +77,7 @@ Each item gets a change doc in [`changes/`](./changes/) before work starts.
 - [x] Premium exports: phone video, YouTube video, slides ([change 0020](./changes/0020-accounts-premium-exports.md))
 - [x] Free quick export: one landscape video, no editing ([change 0031](./changes/0031-free-quick-export.md))
 - [x] Export studio: styled video, pictures, text and slides; text placement, fonts, colours, grade, length ([change 0022](./changes/0022-export-studio.md))
+- [ ] Export studio, second pass: every piece removable, more fonts and text options, voice-over and audio files, narration captions, intro templates, a Premium preview link on Vercel ([change 0034](./changes/0034-export-studio-second-pass.md)) — built, awaiting browser checks on Safari/Firefox and the first preview deploy
 - [ ] Premium features: multi what-if, Monte-Carlo, scrubbing, saved scenarios
 
 ### Phase 4 — Scale

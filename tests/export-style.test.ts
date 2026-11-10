@@ -6,8 +6,10 @@ import { FONT, STAGE } from "@/lib/sim/draw";
 import { FPS, Replay, clipFrames, frameSteps, planReplay, runToEnd } from "@/lib/export/replay";
 import { Scrubber } from "@/lib/export/scrub";
 import { paint } from "@/lib/export/frame";
-import { toCaption, toSrt, toStory, videoTime } from "@/lib/export/text";
+import { narration, toCaption, toSrt, toStory, videoTime } from "@/lib/export/text";
+import { cueAt } from "@/lib/export/frame";
 import {
+  ALL_PIECES, FONTS, INTRO_IDS, NO_INTRO, fontCovers, quickStyle, scriptOf,
   LAYER_IDS, SIZE_IDS, THEMES, THEME_IDS, contrast, defaultLayers, defaultStyle, parseStyle, withSize, withTheme,
 } from "@/lib/export/style";
 
@@ -53,7 +55,7 @@ describe("export style", () => {
     expect(bad!.layers.title.size).toBe(120);
     expect(bad!.layers.title.color).toBe(defaultStyle().layers.title.color);
     expect(parseStyle("not json")).toBeNull();
-    expect(parseStyle({ v: 2 })).toBeNull();
+    expect(parseStyle({ v: 3 })).toBeNull();
   });
 
   it("moves untouched layers to the new size's places, keeps moved ones", () => {
@@ -166,5 +168,72 @@ describe("export text", () => {
     expect(md).toContain("## The setup");
     expect(md).toContain("## What changed");
     for (const m of e.sb.metrics) expect(md).toContain(m.label.replace(/\|/g, "\\|"));
+  });
+});
+
+describe("export studio, second pass (change 0034)", () => {
+  it("reads v1 styles: the stage labels follow the old switch, the new fields take their defaults", () => {
+    const v1 = { ...JSON.parse(JSON.stringify(defaultStyle("phone"))), v: 1, layout: { split: "row", stage: "fill", chart: true, hud: false, cards: false } };
+    delete v1.pieces; delete v1.intro;
+    for (const id of LAYER_IDS) { delete v1.layers[id].tracking; delete v1.layers[id].italic; }
+    const s = parseStyle(v1)!;
+    expect(s.v).toBe(2);
+    expect(s.pieces).toEqual({ ...ALL_PIECES, label: false, clock: false });
+    expect(s.intro).toEqual(NO_INTRO);
+    expect(s.layout).toEqual({ split: "row", stage: "fill", chart: true, cards: false });
+    expect(s.layers.title.tracking).toBe(0);
+    expect(s.layers.title.leading).toBe(1);
+    expect(s.layers.title.italic).toBe(false);
+  });
+
+  it("round-trips pieces, intros, per-layer fonts and typography; clamps the rest", () => {
+    const d = defaultStyle();
+    const s = { ...d, pieces: { ...ALL_PIECES, frame: false, seam: false }, intro: { template: "countdown" as const, title: "Go {world}", line: "", accent: "#FF0000" },
+      layers: { ...d.layers, title: { ...d.layers.title, font: "pixel" as const, tracking: 9, leading: 1.4, outline: 3, shadow: 0.5, italic: true } } };
+    const back = parseStyle(JSON.stringify(s))!;
+    expect(back.pieces).toEqual(s.pieces);
+    expect(back.intro).toEqual(s.intro);
+    expect(back.layers.title).toEqual({ ...s.layers.title, tracking: 0.5 });
+    expect(parseStyle({ ...s, intro: { template: "nope" } })!.intro.template).toBe("none");
+    expect(parseStyle({ ...s, layers: { title: { font: "comic" } } })!.layers.title.font).toBe(d.layers.title.font);
+  });
+
+  it("keeps the free quick export exactly as before: no intro, no narration, every piece", () => {
+    const q = quickStyle();
+    expect(q.intro.template).toBe("none");
+    expect(q.layers.captions.show).toBe(false);
+    expect(q.pieces).toEqual(ALL_PIECES);
+    expect(q.clean).toBe(false);
+    for (const id of LAYER_IDS) {
+      const l = q.layers[id];
+      expect([l.tracking, l.leading, l.outline, l.shadow, l.italic]).toEqual([0, 1, 0, 0, false]);
+    }
+  });
+
+  it("says which fonts draw a language's letters themselves", () => {
+    expect(scriptOf("de")).toBe("latin");
+    expect(scriptOf("ru")).toBe("cyrillic");
+    expect(scriptOf("ja")).toBe("other");
+    for (const [id] of FONTS) expect(fontCovers(id, "en")).toBe(true);
+    expect(fontCovers("serif", "ru")).toBe(true);
+    expect(fontCovers("bebas", "ru")).toBe(false);
+    expect(fontCovers("site", "ja")).toBe(false);
+    expect(INTRO_IDS.length).toBe(6);
+  });
+
+  it("narration lines are the subtitles' timing, take edits, and show one at a time", () => {
+    const e = forked();
+    const plan = planReplay(e);
+    const a = new Scrubber(plan).finish();
+    const x = { plan, summary: a.summary, world: e.sb.name, intro: e.sb.intro, map: a.map };
+    const cues = narration(x);
+    expect(cues.length).toBeGreaterThanOrEqual(2);
+    expect(toSrt(x).split("-->").length - 1).toBe(cues.length);
+    const edited = narration(x, { 0: "My own first line" });
+    expect(edited[0].say).toBe("My own first line");
+    expect(toSrt(x, { 0: "My own first line" })).toContain("My own first line");
+    const mid = Math.round(((cues[0].a + cues[0].b) / 2) * FPS);
+    expect(cueAt(cues, mid)?.txt).toBe(cues[0].say);
+    expect(cueAt(cues, Math.round(cues[cues.length - 1].b * FPS) + 5)).toBeNull();
   });
 });

@@ -19,6 +19,8 @@ export const CONFIG: AccountConfig = readConfig({
   plan: process.env.NEXT_PUBLIC_PREMIUM_PLAN,
   planId: process.env.NEXT_PUBLIC_CLERK_PREMIUM_PLAN_ID,
   nodeEnv: process.env.NODE_ENV,
+  vercelEnv: process.env.NEXT_PUBLIC_VERCEL_ENV,
+  previewFlag: process.env.NEXT_PUBLIC_PREMIUM_PREVIEW,
 });
 
 /**
@@ -27,8 +29,12 @@ export const CONFIG: AccountConfig = readConfig({
  * them so the Premium simulation can be used.
  */
 /** Launch switch: the site goes live without accounts or Premium. While false, Clerk never loads and no Premium entry
- * point (account menu, export button, upsell) is shown, even with a key set or in dev. Flip to true to bring them back. */
-export const ACCOUNTS_ON = false;
+ * point (account menu, export button, upsell) is shown in a production build, even with a key set. Flip to true to bring
+ * them back. */
+export const ACCOUNTS_LAUNCHED = false;
+/** On when launched, and always in dev and on Premium preview builds (change 0034: Vercel previews), so Premium can be
+ * tried with Simulate Premium. Never on in a production build before launch. */
+export const ACCOUNTS_ON = ACCOUNTS_LAUNCHED || CONFIG.dev;
 
 export const PREMIUM_ON_SALE = ACCOUNTS_ON && (!!CONFIG.publishableKey || CONFIG.dev);
 

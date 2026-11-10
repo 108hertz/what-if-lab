@@ -34,6 +34,17 @@ describe("config", () => {
     expect(readConfig({ nodeEnv: "production" }).dev).toBe(false);
     expect(readConfig({ nodeEnv: "development" }).dev).toBe(true);
   });
+
+  it("turns the Premium preview on for Vercel previews and the local flag, never on Vercel production", () => {
+    expect(readConfig({ nodeEnv: "production" }).preview).toBe(false);
+    const prev = readConfig({ nodeEnv: "production", vercelEnv: "preview" });
+    expect(prev.preview).toBe(true);
+    expect(prev.dev).toBe(true);
+    expect(readConfig({ nodeEnv: "production", previewFlag: "1" }).preview).toBe(true);
+    const prod = readConfig({ nodeEnv: "production", vercelEnv: "production", previewFlag: "1" });
+    expect(prod.preview).toBe(false);
+    expect(prod.dev).toBe(false);
+  });
 });
 
 describe("resolveAccount", () => {

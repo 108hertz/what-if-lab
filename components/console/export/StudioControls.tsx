@@ -6,21 +6,21 @@ import { autoRunS } from "@/lib/export/replay";
 import type { TimelineItem } from "@/lib/sim/engine";
 import { gradeSupported } from "@/lib/export/frame";
 import {
-  COLOR_KEYS, FONTS, INTRO_RANGE, LAYERS, NO_GRADE, OUTRO_RANGE, RUN_RANGE, SIZES, SIZE_IDS, THEMES, THEME_IDS, TOKENS,
-  colorOf, contrast, isHex, type ColorKey, type ExportStyle, type Grade, type Layer, type LayerId, type SizeId,
+  ALL_PIECES, COLOR_KEYS, FONTS, INTRO_RANGE, LAYERS, LAYER_IDS, NO_GRADE, OUTRO_RANGE, RUN_RANGE, SIZE_IDS, THEMES, THEME_IDS, TOKENS,
+  colorOf, contrast, fontCovers, isHex, type ColorKey, type ExportStyle, type Grade, type Layer, type LayerId, type Pieces, type SizeId,
 } from "@/lib/export/style";
 import { Icon, type IconName } from "../../ui/Icon";
 import { pageT } from "@/lib/i18n/page";
 
 /** Studio words in the page's language (change 0025): C() for the controls, N() for names of style parts. */
-const C = (k: string, v?: Record<string, string | number>) => pageT()(`export.studio.ctl.${k}`, v);
-const N = (group: string, id: string) => pageT()(`export.style.${group}.${id}`);
+export const C = (k: string, v?: Record<string, string | number>) => pageT()(`export.studio.ctl.${k}`, v);
+export const N = (group: string, id: string) => pageT()(`export.style.${group}.${id}`);
 
-type Set = (fn: (s: ExportStyle) => ExportStyle) => void;
+export type Set = (fn: (s: ExportStyle) => ExportStyle) => void;
 
 // ——— Small fields (the console's own control rows) ———
 
-function Range({ label, value, min, max, step, out, onChange }: { label: string; value: number; min: number; max: number; step: number; out: string; onChange: (v: number) => void }) {
+export function Range({ label, value, min, max, step, out, onChange }: { label: string; value: number; min: number; max: number; step: number; out: string; onChange: (v: number) => void }) {
   const id = useId();
   return (
     <label className="ctl" htmlFor={id}>
@@ -32,7 +32,7 @@ function Range({ label, value, min, max, step, out, onChange }: { label: string;
   );
 }
 
-function Seg<T extends string | number>({ label, value, options, onChange }: { label: string; value: T; options: [T, string, IconName?][]; onChange: (v: T) => void }) {
+export function Seg<T extends string | number>({ label, value, options, onChange }: { label: string; value: T; options: [T, string, IconName?][]; onChange: (v: T) => void }) {
   return (
     <div className="studio-field">
       <span className="ctl-l">{label}</span>
@@ -47,7 +47,7 @@ function Seg<T extends string | number>({ label, value, options, onChange }: { l
   );
 }
 
-function Check({ label, checked, onChange, note }: { label: string; checked: boolean; onChange: (v: boolean) => void; note?: string }) {
+export function Check({ label, checked, onChange, note }: { label: string; checked: boolean; onChange: (v: boolean) => void; note?: string }) {
   return (
     <label className="studio-check">
       <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />
@@ -56,7 +56,7 @@ function Check({ label, checked, onChange, note }: { label: string; checked: boo
   );
 }
 
-function Select<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: [T, string][]; onChange: (v: T) => void }) {
+export function Select<T extends string>({ label, value, options, onChange }: { label: string; value: T; options: [T, string][]; onChange: (v: T) => void }) {
   const id = useId();
   return (
     <label className="ctl" htmlFor={id}>
@@ -71,7 +71,7 @@ function Select<T extends string>({ label, value, options, onChange }: { label: 
   );
 }
 
-function ColorField({ label, value, onChange }: { label: string; value: string; onChange: (hex: string) => void }) {
+export function ColorField({ label, value, onChange }: { label: string; value: string; onChange: (hex: string) => void }) {
   const id = useId();
   const six = value.slice(0, 7);
   return (
@@ -86,8 +86,8 @@ function ColorField({ label, value, onChange }: { label: string; value: string; 
   );
 }
 
-const pct = (v: number) => `${v > 0 ? "+" : ""}${Math.round(v * 100)}`;
-const secs = (v: number) => C("secs", { n: v.toFixed(v < 10 && v % 1 ? 1 : 0) });
+export const pct = (v: number) => `${v > 0 ? "+" : ""}${Math.round(v * 100)}`;
+export const secs = (v: number) => C("secs", { n: v.toFixed(v < 10 && v % 1 ? 1 : 0) });
 
 // ——— Output ———
 
@@ -112,10 +112,59 @@ export function OutputTab({ out, setOut, style, set, onSize }: { out: Out; setOu
       {(out === "video" || out === "images") && (
         <Seg label={C("size")} value={style.size} options={SIZE_IDS.map((s) => [s, N("size", s), SIZE_ICON[s]])} onChange={onSize} />
       )}
-      {out === "video" && (
-        <Check label={C("cleanVideo")} note={C("theStageOnlyNo")} checked={style.clean} onChange={(v) => set((s) => ({ ...s, clean: v }))} />
-      )}
+      {(out === "video" || out === "images") && <PiecesList style={style} set={set} />}
     </>
+  );
+}
+
+// ——— Pieces (change 0034): every piece of the picture can be left out ———
+
+type PieceRow = { k: "piece"; id: keyof Pieces } | { k: "layer"; id: LayerId } | { k: "chart" } | { k: "cards" };
+const PICTURE: PieceRow[] = [
+  { k: "piece", id: "stage" }, { k: "piece", id: "label" }, { k: "piece", id: "clock" }, { k: "piece", id: "frame" },
+  { k: "piece", id: "seam" }, { k: "chart" }, { k: "cards" },
+];
+
+type Preset = "all" | "stage" | "text";
+function applyPreset(s: ExportStyle, p: Preset): ExportStyle {
+  if (p === "stage") return { ...s, clean: true, pieces: { ...s.pieces, stage: true } };
+  const layers = { ...s.layers };
+  // "Everything" brings back the default text pieces (your own texts and narration stay as they are)
+  if (p === "all") for (const id of ["brand", "world", "title", "metric", "intro", "outro"] as const) layers[id] = { ...layers[id], show: true };
+  return { ...s, clean: false, layers, pieces: p === "all" ? { ...ALL_PIECES } : { ...s.pieces, stage: false } };
+}
+
+function PiecesList({ style, set }: { style: ExportStyle; set: Set }) {
+  const P = style.pieces, L = style.layout;
+  const both = L.split !== "alt" && L.split !== "base";
+  const on = (r: PieceRow) => r.k === "piece" ? P[r.id] : r.k === "chart" ? L.chart : r.k === "cards" ? L.cards : style.layers[r.id].show;
+  const flip = (r: PieceRow, v: boolean) => set((s) => {
+    if (r.k === "piece") return { ...s, pieces: { ...s.pieces, [r.id]: v } };
+    if (r.k === "chart") return { ...s, layout: { ...s.layout, chart: v } };
+    if (r.k === "cards") return { ...s, layout: { ...s.layout, cards: v } };
+    return { ...s, clean: v ? false : s.clean, layers: { ...s.layers, [r.id]: { ...s.layers[r.id], show: v } } };
+  });
+  const name = (r: PieceRow) => r.k === "layer" ? N("layer", r.id) : C(`piece.${r.k === "piece" ? r.id : r.k}`);
+  const preset: Preset | null = style.clean ? "stage" : !P.stage ? "text" : Object.values(P).every(Boolean) ? "all" : null;
+  return (
+    <div className="studio-group" role="group" aria-label={C("onTheVideo")}>
+      <h3 className="headline">{C("onTheVideo")}</h3>
+      <div className="seg studio-seg" role="radiogroup" aria-label={C("onTheVideo")}>
+        {(["all", "stage", "text"] as Preset[]).map((p) => (
+          <button key={p} type="button" role="radio" aria-checked={preset === p} onClick={() => set((s) => applyPreset(s, p))}>{C(`preset.${p}`)}</button>
+        ))}
+      </div>
+      <div className="studio-pieces">
+        <span className="ctl-l">{C("picturePieces")}</span>
+        {PICTURE.filter((r) => !(r.k === "piece" && r.id === "seam" && !both)).map((r, i) => (
+          <Check key={i} label={name(r)} checked={on(r)} onChange={(v) => flip(r, v)} />
+        ))}
+        <span className="ctl-l">{C("textPieces")}</span>
+        {LAYER_IDS.map((id) => (
+          <Check key={id} label={N("layer", id)} checked={!style.clean && style.layers[id].show} onChange={(v) => flip({ k: "layer", id }, v)} />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -163,7 +212,14 @@ const ANCHORS: [0 | 0.5 | 1, 0 | 0.5 | 1][] = [[0, 0], [0.5, 0], [1, 0], [0, 0.5
 const ANCHOR_NAME = (ax: number, ay: number) => C(`anchor.${ax * 2}${ay * 2}`);
 const MARGIN = 0.045;
 
-export function TextTab({ style, set, selected, select }: { style: ExportStyle; set: Set; selected: LayerId | null; select: (id: LayerId | null) => void }) {
+export interface NarrationEdit {
+  /** The lines as written from the run (before edits), in order. */
+  lines: string[];
+  edits: Record<number, string>;
+  setEdit(i: number, s: string | null): void;
+}
+
+export function TextTab({ style, set, selected, select, narration }: { style: ExportStyle; set: Set; selected: LayerId | null; select: (id: LayerId | null) => void; narration: NarrationEdit }) {
   const area = useRef<HTMLTextAreaElement>(null);
   const setL = (id: LayerId, p: Partial<Layer>) => set((s) => ({ ...s, layers: { ...s.layers, [id]: { ...s.layers[id], ...p } } }));
   const l = selected ? style.layers[selected] : null;
@@ -192,12 +248,12 @@ export function TextTab({ style, set, selected, select }: { style: ExportStyle; 
           </div>
         ); })}
       </div>
-      <Check label={C("worldLabelsOnThe")} checked={style.layout.hud} onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, hud: v } }))} />
       <Check label={C("shadeTheStageBehind")} checked={style.layout.cards} onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, cards: v } }))} />
       {selected && l && (
         <div className="studio-group" aria-label={C("layerSettings", { name: N("layer", selected) })}>
           <h3 className="headline">{N("layer", selected)}</h3>
-          {selected !== "metric" && (
+          {selected === "captions" && <NarrationLines n={narration} />}
+          {selected !== "metric" && selected !== "captions" && (
             <div className="studio-field">
               <label className="ctl-l" htmlFor={`w-${selected}`}>{C("words")}</label>
               <textarea id={`w-${selected}`} ref={area} className="studio-words" rows={2} maxLength={280} value={l.text} onChange={(e) => setL(selected, { text: e.target.value })} />
@@ -229,10 +285,17 @@ export function TextTab({ style, set, selected, select }: { style: ExportStyle; 
           <Range label={C("size")} value={l.size} min={8} max={96} step={1} out={`${l.size}`} onChange={(v) => setL(selected, { size: v })} />
           <Range label={C("width")} value={l.w} min={0.1} max={1} step={0.01} out={`${Math.round(l.w * 100)} %`} onChange={(v) => setL(selected, { w: v })} />
           {selected !== "metric" && <Range label={C("mostLines")} value={l.lines} min={1} max={8} step={1} out={`${l.lines}`} onChange={(v) => setL(selected, { lines: v })} />}
-          <Seg label={C("font")} value={l.font} options={[["title", C("title")], ["body", C("body")]]} onChange={(v) => setL(selected, { font: v })} />
+          <Select label={C("font")} value={l.font} onChange={(v) => setL(selected, { font: v })}
+            options={[["title", C("titleFace", { font: fontName(style.fonts.title) })], ["body", C("bodyFace", { font: fontName(style.fonts.body) })],
+              ...FONTS.map(([id, n]) => [id, fontCovers(id, pageT().tag) ? n : C("fontFallback", { font: n })] as [Layer["font"], string])]} />
           <Seg label={C("weight")} value={l.weight} options={[[400, C("regular")], [500, C("medium")], [700, C("bold")]]} onChange={(v) => setL(selected, { weight: v })} />
           <Seg label={C("lineUp")} value={l.align} options={[["left", C("left")], ["center", C("centre")], ["right", C("right")]]} onChange={(v) => setL(selected, { align: v })} />
           <Check label={C("capitalLetters")} checked={l.upper} onChange={(v) => setL(selected, { upper: v })} />
+          <Check label={C("italic")} checked={l.italic} onChange={(v) => setL(selected, { italic: v })} />
+          <Range label={C("letterSpacing")} value={l.tracking} min={-0.1} max={0.5} step={0.01} out={`${Math.round(l.tracking * 100)}`} onChange={(v) => setL(selected, { tracking: v })} />
+          <Range label={C("lineHeight")} value={l.leading} min={0.7} max={2} step={0.05} out={`${l.leading.toFixed(2)}×`} onChange={(v) => setL(selected, { leading: v })} />
+          <Range label={C("outline")} value={l.outline} min={0} max={8} step={0.5} out={`${l.outline}`} onChange={(v) => setL(selected, { outline: v })} />
+          <Range label={C("shadow")} value={l.shadow} min={0} max={1} step={0.05} out={`${Math.round(l.shadow * 100)}`} onChange={(v) => setL(selected, { shadow: v })} />
           <div className="studio-field">
             <Select label={C("colour")} value={isKey ? l.color : "custom"} options={colorOpts} onChange={(v) => setL(selected, { color: v === "custom" ? fg.slice(0, 7) : v })} />
             {!isKey && <ColorField label={C("textColour")} value={l.color} onChange={(v) => setL(selected, { color: v })} />}
@@ -243,6 +306,24 @@ export function TextTab({ style, set, selected, select }: { style: ExportStyle; 
         </div>
       )}
     </>
+  );
+}
+
+const fontOptions = () => FONTS.map(([id, n]) => [id, fontCovers(id, pageT().tag) ? n : C("fontFallback", { font: n })] as [typeof id, string]);
+const fontName = (id: string) => FONTS.find((f) => f[0] === id)?.[1] ?? id;
+
+/** Narration lines (change 0034): written from the run, each one can be rewritten; empty = back to the written line. */
+function NarrationLines({ n }: { n: NarrationEdit }) {
+  return (
+    <div className="studio-field">
+      <span className="ctl-l">{C("narrationLines")}</span>
+      <p className="small studio-note">{C("narrationNote")}</p>
+      {n.lines.length === 0 && <p className="small studio-note">{pageT()("export.studio.preparing")}</p>}
+      {n.lines.map((line, i) => (
+        <textarea key={i} className="studio-words" rows={2} maxLength={280} aria-label={C("narrationLine", { i: i + 1 })}
+          placeholder={line} value={n.edits[i] ?? ""} onChange={(e) => n.setEdit(i, e.target.value || null)} />
+      ))}
+    </div>
   );
 }
 
@@ -285,8 +366,8 @@ export function LookTab({ style, set }: { style: ExportStyle; set: Set }) {
           {COLOR_KEYS.map(([k]) => <ColorField key={k} label={N("color", k)} value={style.colors[k]} onChange={(v) => setC(k, v)} />)}
         </div>
       </details>
-      <Select label={C("titleFont")} value={style.fonts.title} options={FONTS} onChange={(v) => set((s) => ({ ...s, fonts: { ...s.fonts, title: v } }))} />
-      <Select label={C("bodyFont")} value={style.fonts.body} options={FONTS} onChange={(v) => set((s) => ({ ...s, fonts: { ...s.fonts, body: v } }))} />
+      <Select label={C("titleFont")} value={style.fonts.title} options={fontOptions()} onChange={(v) => set((s) => ({ ...s, fonts: { ...s.fonts, title: v } }))} />
+      <Select label={C("bodyFont")} value={style.fonts.body} options={fontOptions()} onChange={(v) => set((s) => ({ ...s, fonts: { ...s.fonts, body: v } }))} />
       <Seg label={C("worlds")} value={lay.split} options={[["alt", C("changedOnly")], ["auto", C("bothFit")], ["row", C("sideBySide")], ["column", C("stacked")], ["base", C("noChangeOnly")]]}
         onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, split: v } }))} />
       <Seg label={C("stage")} value={lay.stage} options={[["framed", C("framed")], ["fill", C("fullFrame")], ["small", C("small")]]} onChange={(v) => set((s) => ({ ...s, layout: { ...s.layout, stage: v } }))} />

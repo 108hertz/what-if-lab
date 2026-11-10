@@ -61,8 +61,14 @@ export interface AccountConfig {
   plan: string;
   /** Optional plan id (cplan_…) for checkout; looked up by slug when missing. */
   planId: string | null;
-  /** Development build: allows the Premium simulation. */
+  /** Development or preview build: allows the Premium simulation. */
   dev: boolean;
+  /**
+   * Premium preview build (change 0034): a Vercel preview deployment, or a local build with NEXT_PUBLIC_PREMIUM_PREVIEW=1.
+   * Turns the Premium entry points on while accounts are not launched, so every Premium feature can be tried. Never true
+   * on a Vercel production build, whatever else is set.
+   */
+  preview: boolean;
   /** Why a supplied key was rejected, for a console warning. */
   rejected: string | null;
 }
@@ -71,9 +77,10 @@ export const DEFAULT_PLAN = "premium";
 
 /** Reads the build-time public env. Rejects anything that looks like a secret so it can never be used client-side. */
 export function readConfig(env: {
-  key?: string; plan?: string; planId?: string; nodeEnv?: string;
+  key?: string; plan?: string; planId?: string; nodeEnv?: string; vercelEnv?: string; previewFlag?: string;
 }): AccountConfig {
   const raw = env.key?.trim() || "";
+  const preview = env.vercelEnv !== "production" && (env.vercelEnv === "preview" || env.previewFlag?.trim() === "1");
   let publishableKey: string | null = null, rejected: string | null = null;
   if (raw) {
     if (/^pk_(test|live)_[A-Za-z0-9+/=_-]+$/.test(raw)) publishableKey = raw;
@@ -83,7 +90,8 @@ export function readConfig(env: {
     publishableKey,
     plan: env.plan?.trim() || DEFAULT_PLAN,
     planId: env.planId?.trim() || null,
-    dev: env.nodeEnv !== "production",
+    dev: env.nodeEnv !== "production" || preview,
+    preview,
     rejected,
   };
 }

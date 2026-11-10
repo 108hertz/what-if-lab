@@ -52,21 +52,37 @@ export function resultLine(plan: ReplayPlan, summary: ReplaySummary): string {
   return first + "." + (d ? ` ${d.txt}.` : "");
 }
 
-/** Timed subtitles that match the video frame for frame. */
-export function toSrt(x: TextInput): string {
+/**
+ * One narration line (change 0034): seconds into the video, the spoken-style words for the captions layer, and the
+ * subtitle form (time · who, then the words). An edited line replaces both.
+ */
+export interface Cue { a: number; b: number; say: string; srt: string }
+
+/** The run told in timed lines: the question, the moments only one world had, the result. Edits by index. */
+export function narration(x: TextInput, edits: Record<number, string> = {}): Cue[] {
   const { plan, summary, map } = x;
-  type Cue = { a: number; b: number; txt: string };
   const cues: Cue[] = [];
   const runStart = plan.intro / FPS, runEnd = (plan.intro + plan.frames) / FPS, total = (plan.intro + plan.frames + plan.outro) / FPS;
-  cues.push({ a: 0, b: Math.max(runStart, Math.min(2.5, runEnd)), txt: headline(plan, x.world) });
+  const head = headline(plan, x.world);
+  cues.push({ a: 0, b: Math.max(runStart, Math.min(2.5, runEnd)), say: head, srt: head });
   for (const e of shownEvents(plan, summary.events)) {
     const a = Math.max(videoTime(plan, map, e.t), cues[cues.length - 1].b);
     if (a >= runEnd) break;
-    cues.push({ a, b: Math.min(a + 3, runEnd), txt: `${plan.sb.fmtT(e.t)} · ${who(plan, e)}\n${eventText(plan.sb, e)}` });
+    const say = eventText(plan.sb, e);
+    cues.push({ a, b: Math.min(a + 3, runEnd), say, srt: `${plan.sb.fmtT(e.t)} · ${who(plan, e)}\n${say}` });
   }
   for (let i = 0; i < cues.length - 1; i++) cues[i].b = Math.min(cues[i].b, cues[i + 1].a);
-  cues.push({ a: Math.max(runEnd, cues[cues.length - 1].b), b: Math.max(total, runEnd + 2), txt: resultLine(plan, summary) });
-  return cues.filter((c) => c.b > c.a).map((c, i) => `${i + 1}\n${srtTime(c.a)} --> ${srtTime(c.b)}\n${c.txt}\n`).join("\n");
+  const res = resultLine(plan, summary);
+  cues.push({ a: Math.max(runEnd, cues[cues.length - 1].b), b: Math.max(total, runEnd + 2), say: res, srt: res });
+  return cues.filter((c) => c.b > c.a).map((c, i) => {
+    const ed = edits[i];
+    return typeof ed === "string" && ed.trim() ? { ...c, say: ed.trim(), srt: ed.trim() } : c;
+  });
+}
+
+/** Timed subtitles that match the video frame for frame. */
+export function toSrt(x: TextInput, edits?: Record<number, string>): string {
+  return narration(x, edits).map((c, i) => `${i + 1}\n${srtTime(c.a)} --> ${srtTime(c.b)}\n${c.srt}\n`).join("\n");
 }
 
 /** A caption to paste under a post. */

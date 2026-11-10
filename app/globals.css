@@ -667,6 +667,25 @@ td.a { color: var(--alt); }
 .studio-themes button[aria-checked="true"], .studio-custom { border-color: var(--signal); }
 .studio-swatch { display: flex; width: 100%; height: 14px; border-radius: 2px; overflow: hidden; border: 1px solid var(--separator); }
 .studio-swatch i { flex: 1 1 0; }
+/* Change 0034: six tabs scroll sideways when they don't fit; pieces list, intro cards, sound wave and mic meter */
+.studio-tabs { overflow-x: auto; scrollbar-width: none; }
+.studio-tabs::-webkit-scrollbar { display: none; }
+.studio-tabs button { flex: 1 0 auto; padding: 0 var(--s-2); }
+.studio-pieces { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-3); }
+.studio-pieces .ctl-l { grid-column: 1 / -1; padding-top: var(--s-3); }
+.studio-pieces .studio-check { min-height: 40px; }
+.studio-intros { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-2); }
+.studio-intros button {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 64px; padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--separator); border-radius: var(--r-ctl); background: transparent; color: var(--label); text-align: start; cursor: pointer;
+}
+.studio-intros button:hover { border-color: var(--muted-line); }
+.studio-intros button[aria-checked="true"] { border-color: var(--signal); background: var(--panel); }
+.studio-intros button:focus-visible { outline: 2px solid var(--signal); outline-offset: 1px; }
+.studio-wave { display: block; width: 100%; height: 32px; color: var(--label-2); background: var(--bg); border: 1px solid var(--separator); border-radius: var(--r-ctl); }
+.studio-meter { display: flex; align-items: center; gap: var(--s-3); }
+.studio-meter i { flex: 1 1 auto; height: 6px; border-radius: 2px; background: var(--signal); transform-origin: left center; transition: transform var(--d-fast) linear; }
+@media (prefers-reduced-motion: reduce) { .studio-meter i { transition: none; } }
 .studio-more summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: var(--t-small); color: var(--label-2); }
 .studio-more summary:hover { color: var(--label); }
 .studio-colors { display: flex; flex-direction: column; gap: var(--s-1); }

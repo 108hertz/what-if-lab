@@ -54,7 +54,9 @@
       "output": "Output",
       "text": "Text",
       "look": "Look",
-      "timing": "Timing"
+      "timing": "Timing",
+      "intro": "Intro",
+      "sound": "Sound"
     },
     "mb": "{n} MB",
     "mbSmall": "under 0.1 MB",
@@ -233,7 +235,90 @@
         "left": "left",
         "right": "right",
         "down": "down"
-      }
+      },
+      "onTheVideo": "On the video",
+      "preset": {
+        "all": "Everything",
+        "stage": "Stage only",
+        "text": "Text only"
+      },
+      "picturePieces": "Picture",
+      "textPieces": "Text",
+      "piece": {
+        "stage": "The world itself",
+        "label": "World name tag",
+        "clock": "Clock",
+        "frame": "Stage frame",
+        "seam": "Line between the two worlds",
+        "chart": "Chart under the stage",
+        "cards": "Shade behind the opening and result"
+      },
+      "titleFace": "Title font ({font})",
+      "bodyFace": "Body font ({font})",
+      "fontFallback": "{font} · device letters for this language",
+      "italic": "Italic",
+      "letterSpacing": "Letter spacing",
+      "lineHeight": "Line height",
+      "outline": "Outline",
+      "shadow": "Shadow",
+      "narrationLines": "Narration lines",
+      "narrationNote": "Written from the run, timed to the video. Type over any line to change it; empty it to go back. The same lines go into the subtitles file.",
+      "narrationLine": "Line {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "No intro scene: the plain opening title shows instead (Text → Opening title).",
+      "length": "Length",
+      "tooShort": "Give the intro some time, or it won't show.",
+      "bigLine": "Big line",
+      "smallLine": "Small line",
+      "tokens": "You can use {list}",
+      "accent": "Accent colour",
+      "fontsNote": "Fonts come from Look → Title font and Body font.",
+      "mine": "My intros",
+      "mineNote": "Save this intro with its words, colour and length, and use it on any world. Kept in this browser.",
+      "saved": "Saved in this browser.",
+      "namePlaceholder": "Name this intro",
+      "nameLabel": "Intro name",
+      "save": "Save",
+      "delete": "Delete {name}",
+      "copy": "Copy",
+      "copied": "Intro copied. Paste it on another device.",
+      "cantCopy": "Couldn't copy here.",
+      "paste": "Paste",
+      "off": "No intro",
+      "pastePlaceholder": "Paste a copied intro here",
+      "pasteLabel": "Paste an intro",
+      "notIntro": "That isn't a What-If Lab intro.",
+      "use": "Use this intro"
+    },
+    "sound": {
+      "privacy": "Sound stays on this device: nothing is uploaded, and it isn't kept when you close the studio.",
+      "voice": "Your voice",
+      "voiceNote": "Press Record: the preview plays from the start while you talk over it. It stops by itself at the end.",
+      "record": "Record voice-over",
+      "again": "Record again",
+      "stop": "Stop",
+      "remove": "Remove",
+      "recording": "Recording",
+      "yourTake": "Your take",
+      "volume": "Volume",
+      "startsAt": "Starts at",
+      "atStart": "the start",
+      "offsetS": "{n} s",
+      "file": "Audio file",
+      "fileNote": "A voice-over or music from your device (MP3, WAV, M4A). Use only sound you have the right to use.",
+      "addFile": "Add a file",
+      "replaceFile": "Replace the file",
+      "fadeIn": "Fade in",
+      "fadeOut": "Fade out",
+      "duck": "Lower the file while your voice speaks",
+      "noMic": "No microphone, or it wasn't allowed. Allow the microphone for this site and try again.",
+      "takeFailed": "Couldn't keep that take. Try again.",
+      "cantRead": "Couldn't read that file. Try an MP3, WAV or M4A.",
+      "unsupported": "This browser can't add sound to a video. Try a recent Chrome, Edge or Firefox.",
+      "captionsNote": "No time to record? Turn on Narration (Text tab) for lines on the video, or use the subtitles file with your app's own voice.",
+      "silent": "This browser recorded it without sound."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Result card",
       "free1": "Your text 1",
       "free2": "Your text 2",
-      "free3": "Your text 3"
+      "free3": "Your text 3",
+      "captions": "Narration"
     },
     "layerWhat": {
       "brand": "The name in the corner",
@@ -291,7 +377,8 @@
       "outro": "Over the stage at the end",
       "free1": "Anything you like",
       "free2": "Anything you like",
-      "free3": "Anything you like"
+      "free3": "Anything you like",
+      "captions": "Lines along the bottom, timed to the run"
     },
     "token": {
       "whatif": "the what-if",
@@ -311,7 +398,25 @@
       "vignette": "Dark edges"
     },
     "worldText": "{world} · seed {seed}",
-    "freeText": "Your text"
+    "freeText": "Your text",
+    "intro": {
+      "none": "None",
+      "question": "Question",
+      "countdown": "Countdown",
+      "guess": "Guess first",
+      "cinema": "Cinematic",
+      "zoom": "Zoom in",
+      "thenNow": "Before and after"
+    },
+    "introWhat": {
+      "none": "The plain opening title",
+      "question": "The what-if types on, word by word",
+      "countdown": "3 · 2 · 1 over the stage",
+      "guess": "Time to guess before it runs",
+      "cinema": "Black bars, the world's name, the title",
+      "zoom": "The stage grows to fill the frame",
+      "thenNow": "No change, then a wipe to the change"
+    }
   },
   "quick": {
     "open": "Export this run as a video",
@@ -320,5 +425,33 @@
     "what": "A {s}-second landscape video of this run, with the title, the what-if and the result, ready for YouTube or to share.",
     "noVideo": "This browser can't record video. Try a recent Chrome, Edge, Firefox or Safari.",
     "more": "More sizes, pictures, text, slides and your own style come with Premium."
+  },
+  "intro": {
+    "before": "Before the change",
+    "after": "After the change",
+    "question": {
+      "kicker": "What if…",
+      "line": "Let's find out."
+    },
+    "countdown": {
+      "kicker": "Get ready",
+      "line": "Starting in"
+    },
+    "guess": {
+      "kicker": "Think first",
+      "line": "What do you think will happen?"
+    },
+    "cinema": {
+      "kicker": "Presenting",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Look closer",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Before and after",
+      "line": "{world}"
+    }
   }
 }

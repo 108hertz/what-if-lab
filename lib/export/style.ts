@@ -110,7 +110,10 @@ export function contrast(a: string, b: string): number {
 
 // ——— Fonts ———
 
-export type FontId = "site" | "condensed" | "mono" | "serif" | "rounded" | "slab" | "hand" | "poster";
+export type FontId =
+  | "site" | "condensed" | "mono" | "serif" | "rounded" | "slab" | "hand" | "poster"
+  // Change 0034
+  | "geo" | "bebas" | "grotesk" | "lora" | "marker" | "pixel";
 
 export const FONTS: [FontId, string][] = [
   ["site", "Barlow"],
@@ -121,7 +124,35 @@ export const FONTS: [FontId, string][] = [
   ["slab", "Roboto Slab"],
   ["hand", "Caveat"],
   ["poster", "Anton"],
+  ["geo", "Montserrat"],
+  ["bebas", "Bebas Neue"],
+  ["grotesk", "Space Grotesk"],
+  ["lora", "Lora"],
+  ["marker", "Permanent Marker"],
+  ["pixel", "Press Start 2P"],
 ];
+
+/**
+ * Letters a face draws itself (change 0034). Anything else falls back, glyph by glyph, to the site's own Noto faces and
+ * the device's Chinese, Japanese and Korean fonts, so every language still shows; the Text tab says when that happens.
+ */
+export type Script = "latin" | "latin-ext" | "vietnamese" | "cyrillic" | "other";
+const L3: Script[] = ["latin", "latin-ext", "vietnamese"];
+export const FONT_SCRIPTS: Record<FontId, Script[]> = {
+  site: L3, condensed: L3, mono: [...L3, "cyrillic"], serif: [...L3, "cyrillic"], rounded: [...L3, "cyrillic"],
+  slab: [...L3, "cyrillic"], hand: ["latin", "latin-ext", "cyrillic"], poster: L3, geo: [...L3, "cyrillic"],
+  bebas: ["latin", "latin-ext"], grotesk: L3, lora: [...L3, "cyrillic"], marker: ["latin"], pixel: ["latin", "latin-ext", "cyrillic"],
+};
+/** Which letters a page language needs. */
+export function scriptOf(lang: string): Script {
+  const l = lang.toLowerCase().split("-")[0];
+  if (["en", "de", "es", "fr", "it", "nl", "pt", "id"].includes(l)) return "latin";
+  if (["pl", "tr"].includes(l)) return "latin-ext";
+  if (l === "vi") return "vietnamese";
+  if (["ru", "uk"].includes(l)) return "cyrillic";
+  return "other";
+}
+export const fontCovers = (f: FontId, lang: string) => FONT_SCRIPTS[f].includes(scriptOf(lang));
 
 /**
  * Canvas font-family strings per font. Plain fallbacks here; the export studio registers the self-hosted
@@ -136,6 +167,12 @@ export const FONT_FAMILIES: Record<FontId, string> = {
   slab: "Rockwell, Georgia, serif",
   hand: "'Comic Sans MS', cursive",
   poster: "Impact, 'Arial Narrow', sans-serif",
+  geo: "'Avenir Next', system-ui, sans-serif",
+  bebas: "Impact, 'Arial Narrow', sans-serif",
+  grotesk: "system-ui, sans-serif",
+  lora: "Georgia, serif",
+  marker: "'Comic Sans MS', cursive",
+  pixel: "ui-monospace, monospace",
 };
 
 export function registerFonts(map: Partial<Record<FontId, string>>): void {
@@ -144,7 +181,7 @@ export function registerFonts(map: Partial<Record<FontId, string>>): void {
 
 // ——— Text layers ———
 
-export type LayerId = "brand" | "world" | "title" | "metric" | "intro" | "outro" | "free1" | "free2" | "free3";
+export type LayerId = "brand" | "world" | "title" | "metric" | "intro" | "outro" | "captions" | "free1" | "free2" | "free3";
 export type When = "all" | "intro" | "run" | "outro";
 export type Box = "none" | "scrim" | "solid";
 export type Align = "left" | "center" | "right";
@@ -164,13 +201,20 @@ export interface Layer {
   /** Main size in logical px (the frame is drawn at ×2). */
   size: number;
   color: ColorKey | string;
-  font: "title" | "body";
+  /** The style's title or body face, or any face by id (change 0034). */
+  font: "title" | "body" | FontId;
   weight: 400 | 500 | 700;
   align: Align;
   upper: boolean;
   box: Box;
   when: When;
   lines: number;
+  /** Change 0034: letter spacing (em), line height (× the layer's own), outline (px), shadow (0–1), italic. */
+  tracking: number;
+  leading: number;
+  outline: number;
+  shadow: number;
+  italic: boolean;
 }
 
 /** Names and what each layer is, for the Text tab. */
@@ -181,6 +225,7 @@ export const LAYERS: [LayerId, string, string][] = [
   ["metric", "Key numbers", "The number that changed most, for both worlds"],
   ["intro", "Opening title", "Over the stage before it runs"],
   ["outro", "Result card", "Over the stage at the end"],
+  ["captions", "Narration", "Spoken-style lines along the bottom, timed to the run"],
   ["free1", "Your text 1", "Anything you like"],
   ["free2", "Your text 2", "Anything you like"],
   ["free3", "Your text 3", "Anything you like"],
@@ -228,18 +273,43 @@ export interface Timing {
   ease: boolean;
 }
 export const RUN_RANGE = [3, 60] as const;
-export const INTRO_RANGE = [0, 5] as const;
+export const INTRO_RANGE = [0, 6] as const;
 export const OUTRO_RANGE = [0, 8] as const;
 
+/**
+ * Intro scenes (change 0034): played over the opening hold (Timing → opening title) instead of the plain title card.
+ * Each is drawn by `lib/export/intro.ts` as a pure function of the frame.
+ */
+export type IntroId = "question" | "countdown" | "guess" | "cinema" | "zoom" | "thenNow";
+export const INTRO_IDS: IntroId[] = ["question", "countdown", "guess", "cinema", "zoom", "thenNow"];
+export interface Intro {
+  template: IntroId | "none";
+  /** Big line ({tokens} allowed) and a small line; empty small line = the template's own default words. */
+  title: string;
+  line: string;
+  /** Colour the template uses for its accents. */
+  accent: ColorKey | string;
+}
+export const NO_INTRO: Intro = { template: "none", title: "{whatif}", line: "", accent: "alt" };
+
+/**
+ * Pieces of the picture that can be left out (change 0034). Text pieces are the layers' own `show`.
+ * `stage` off = text on the plain background only.
+ */
+export interface Pieces { stage: boolean; label: boolean; clock: boolean; frame: boolean; seam: boolean }
+export const ALL_PIECES: Pieces = { stage: true, label: true, clock: true, frame: true, seam: true };
+
 export interface ExportStyle {
-  v: 1;
+  v: 2;
   size: SizeId;
   theme: ThemeId | "custom";
   colors: Palette;
   grade: Grade;
   fonts: { title: FontId; body: FontId };
   layers: Record<LayerId, Layer>;
-  layout: { split: Split; stage: StageMode; chart: boolean; hud: boolean; cards: boolean };
+  layout: { split: Split; stage: StageMode; chart: boolean; cards: boolean };
+  pieces: Pieces;
+  intro: Intro;
   timing: Timing;
   /** Video without burned-in text: the stage only. */
   clean: boolean;
@@ -269,7 +339,7 @@ export function chartRect(size: SizeId, mode: StageMode): [number, number, numbe
 
 const layer = (o: Partial<Layer>): Layer => ({
   show: true, text: "", x: 0.5, y: 0.5, ax: 0, ay: 0, w: 0.9, size: 18, color: "ink", font: "body", weight: 500,
-  align: "left", upper: false, box: "none", when: "all", lines: 3, ...o,
+  align: "left", upper: false, box: "none", when: "all", lines: 3, tracking: 0, leading: 1, outline: 0, shadow: 0, italic: false, ...o,
 });
 
 /** Today's look (change 0020) for a size, as layers. */
@@ -293,6 +363,8 @@ export function defaultLayers(size: SizeId): Record<LayerId, Layer> {
       : layer({ x: fx(24), y: fy(h - (size === "phone" ? 176 : size === "square" ? 112 : 150) + 30), w: (w - 48) / w, size: size === "phone" ? 41 : 29 }),
     intro: layer({ text: "{whatif}", ...card, size: big, lines: 4, when: "intro", font: "title" }),
     outro: layer({ text: "{result}", ...card, size: big, lines: 3, when: "outro", font: "title" }),
+    // Narration (change 0034): off by default, so the default look is unchanged
+    captions: layer({ show: false, text: "", x: 0.5, y: fy(wide ? h - 132 : h - 210), ax: 0.5, ay: 1, w: wide ? 0.7 : 0.86, size: wide ? 20 : 24, align: "center", box: "scrim", lines: 3, when: "run" }),
     free1: free(0.5),
     free2: free(0.3),
     free3: free(0.7),
@@ -307,14 +379,16 @@ export const quickStyle = (): ExportStyle => defaultStyle(QUICK_SIZE);
 
 export function defaultStyle(size: SizeId = "youtube"): ExportStyle {
   return {
-    v: 1,
+    v: 2,
     size,
     theme: "control",
     colors: { ...THEMES.control.colors },
     grade: { ...NO_GRADE },
     fonts: { title: "condensed", body: "site" },
     layers: defaultLayers(size),
-    layout: { split: "alt", stage: "framed", chart: false, hud: true, cards: true },
+    layout: { split: "alt", stage: "framed", chart: false, cards: true },
+    pieces: { ...ALL_PIECES },
+    intro: { ...NO_INTRO },
     timing: { ...DEFAULT_TIMING },
     clean: false,
   };
@@ -345,6 +419,7 @@ function parseLayer(v: unknown, d: Layer): Layer {
   const o = obj(v);
   const anchor = (x: unknown, dd: 0 | 0.5 | 1) => (x === 0 || x === 0.5 || x === 1 ? x : dd);
   const color = typeof o.color === "string" && (COLOR_IDS.includes(o.color as ColorKey) || isHex(o.color)) ? o.color : d.color;
+  const font = o.font === "title" || o.font === "body" || FONT_IDS.includes(o.font as FontId) ? (o.font as Layer["font"]) : d.font;
   return {
     show: bool(o.show, d.show),
     text: typeof o.text === "string" ? o.text.slice(0, 280) : d.text,
@@ -352,13 +427,15 @@ function parseLayer(v: unknown, d: Layer): Layer {
     ax: anchor(o.ax, d.ax), ay: anchor(o.ay, d.ay),
     w: num(o.w, 0.1, 1, d.w), size: num(o.size, 8, 120, d.size),
     color,
-    font: pick(o.font, ["title", "body"] as const, d.font),
+    font,
     weight: o.weight === 400 || o.weight === 500 || o.weight === 700 ? o.weight : d.weight,
     align: pick(o.align, ["left", "center", "right"] as const, d.align),
     upper: bool(o.upper, d.upper),
     box: pick(o.box, ["none", "scrim", "solid"] as const, d.box),
     when: pick(o.when, ["all", "intro", "run", "outro"] as const, d.when),
     lines: Math.round(num(o.lines, 1, 8, d.lines)),
+    tracking: num(o.tracking, -0.1, 0.5, d.tracking), leading: num(o.leading, 0.7, 2, d.leading),
+    outline: num(o.outline, 0, 8, d.outline), shadow: num(o.shadow, 0, 1, d.shadow), italic: bool(o.italic, d.italic),
   };
 }
 
@@ -367,16 +444,19 @@ export function parseStyle(input: unknown): ExportStyle | null {
   let raw: unknown = input;
   if (typeof input === "string") { try { raw = JSON.parse(input); } catch { return null; } }
   const o = obj(raw);
-  if (o.v !== 1) return null;
+  // v1 (change 0022) styles read fine: the new fields take their defaults, `hud` becomes the label and clock pieces
+  if (o.v !== 1 && o.v !== 2) return null;
   const size = pick(o.size, SIZE_IDS, "youtube");
   const d = defaultStyle(size);
   const c = obj(o.colors), g = obj(o.grade), f = obj(o.fonts), ly = obj(o.layers), lo = obj(o.layout), t = obj(o.timing);
+  const pc = obj(o.pieces), it = obj(o.intro);
+  const hud = bool(lo.hud, true);
   const colors = { ...d.colors };
   for (const k of COLOR_IDS) if (isHex(c[k])) colors[k] = c[k] as string;
   const layers = { ...d.layers };
   for (const id of LAYER_IDS) layers[id] = parseLayer(ly[id], d.layers[id]);
   return {
-    v: 1,
+    v: 2,
     size,
     theme: o.theme === "custom" ? "custom" : pick(o.theme, THEME_IDS, "control"),
     colors,
@@ -389,7 +469,16 @@ export function parseStyle(input: unknown): ExportStyle | null {
     layout: {
       split: pick(lo.split, ["auto", "row", "column", "alt", "base"] as const, "alt"),
       stage: pick(lo.stage, ["framed", "fill", "small"] as const, "framed"),
-      chart: bool(lo.chart, false), hud: bool(lo.hud, true), cards: bool(lo.cards, true),
+      chart: bool(lo.chart, false), cards: bool(lo.cards, true),
+    },
+    pieces: {
+      stage: bool(pc.stage, true), label: bool(pc.label, hud), clock: bool(pc.clock, hud), frame: bool(pc.frame, true), seam: bool(pc.seam, true),
+    },
+    intro: {
+      template: it.template === "none" ? "none" : pick(it.template, INTRO_IDS, "none"),
+      title: typeof it.title === "string" ? it.title.slice(0, 280) : NO_INTRO.title,
+      line: typeof it.line === "string" ? it.line.slice(0, 280) : "",
+      accent: typeof it.accent === "string" && (COLOR_IDS.includes(it.accent as ColorKey) || isHex(it.accent)) ? it.accent : NO_INTRO.accent,
     },
     timing: {
       runS: t.runS === null || t.runS === undefined ? null : num(t.runS, RUN_RANGE[0], RUN_RANGE[1], 10),

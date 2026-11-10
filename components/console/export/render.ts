@@ -10,7 +10,8 @@ import {
   slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
 } from "@/lib/export/frame";
 import { FONT_FAMILIES, SIZES, type ExportStyle } from "@/lib/export/style";
-import { toCaption, toSrt, toStory } from "@/lib/export/text";
+import { narration, toCaption, toSrt, toStory } from "@/lib/export/text";
+import { hasSound, playSound, soundStream, type Sound } from "./sound";
 import { pageT } from "@/lib/i18n/page";
 
 const S = (k: string, v?: Record<string, string | number>) => pageT()(`export.studio.${k}`, v);
@@ -22,7 +23,19 @@ export interface Progress {
   note: string;
 }
 
-export interface Meta { key: string; world: string; intro: string }
+export interface Meta {
+  key: string;
+  world: string;
+  intro: string;
+  /** Narration lines rewritten by the visitor, by index (change 0034). */
+  lines?: Record<number, string>;
+}
+
+/** What the frames need to know about the clip: the world, the run's summary and samples, and the narration. */
+export function clipInfo(a: Analysis, meta: Meta) {
+  const x = { plan: a.plan, summary: a.summary, world: meta.world, intro: meta.intro, map: a.map };
+  return { world: meta.world, summary: a.summary, samples: a.samples, cues: narration(x, meta.lines) };
+}
 
 export class Cancelled extends Error {
   constructor() { super(S("errors.cancelled")); this.name = "Cancelled"; }
@@ -42,10 +55,12 @@ export async function analyse(scrub: Scrubber, onProgress?: (p: Progress) => voi
   return scrub.result!;
 }
 
-/** Wait for the style's two faces (self-hosted, loaded on demand) so the first frame isn't in a fallback font. */
+/** Wait for the style's faces (self-hosted, loaded on demand) so the first frame isn't in a fallback font. */
 export async function loadFonts(style: ExportStyle): Promise<void> {
   if (typeof document === "undefined" || !document.fonts) return;
-  const fams = [FONT_FAMILIES[style.fonts.title], FONT_FAMILIES[style.fonts.body]];
+  const ids = new Set([style.fonts.title, style.fonts.body]);
+  for (const l of Object.values(style.layers)) if (l.show && l.font !== "title" && l.font !== "body") ids.add(l.font);
+  const fams = [...ids].map((id) => FONT_FAMILIES[id]);
   try {
     await Promise.race([
       Promise.all(fams.flatMap((f) => ["400", "500", "700"].map((w) => document.fonts.load(`${w} 24px ${f}`)))),
@@ -65,11 +80,19 @@ const VIDEO_TYPES: [mime: string, ext: "mp4" | "webm"][] = [
   ["video/webm", "webm"],
 ];
 
-/** The best recording format this browser offers, or null when it cannot record a canvas. */
-export function videoSupport(): { mime: string; ext: "mp4" | "webm" } | null {
+/** The same formats with a sound track (change 0034). */
+const AV_TYPES: [string, "mp4" | "webm"][] = [
+  ["video/mp4;codecs=avc1.640028,mp4a.40.2", "mp4"],
+  ["video/mp4;codecs=avc1,mp4a.40.2", "mp4"],
+  ["video/webm;codecs=vp9,opus", "webm"],
+  ["video/webm;codecs=vp8,opus", "webm"],
+];
+
+/** The best recording format this browser offers (with sound when asked), or null when it cannot record a canvas. */
+export function videoSupport(withSound = false): { mime: string; ext: "mp4" | "webm" } | null {
   if (typeof window === "undefined" || typeof MediaRecorder === "undefined") return null;
   if (typeof HTMLCanvasElement.prototype.captureStream !== "function") return null;
-  for (const [mime, ext] of VIDEO_TYPES) {
+  for (const [mime, ext] of withSound ? AV_TYPES : VIDEO_TYPES) {
     try { if (MediaRecorder.isTypeSupported(mime)) return { mime, ext }; } catch { /* keep looking */ }
   }
   return null;
@@ -91,9 +114,12 @@ const stepAt = (a: Analysis, f: number) => {
   return ph.at === "intro" ? 0 : ph.at === "outro" ? a.plan.steps : a.map[ph.i];
 };
 
-export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Meta, onProgress: (p: Progress) => void, signal: AbortSignal): Promise<{ blob: Blob; ext: string }> {
-  const support = videoSupport();
+export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Meta, onProgress: (p: Progress) => void, signal: AbortSignal, sound?: Sound): Promise<{ blob: Blob; ext: string; silent: boolean }> {
+  // Sound only when this browser can put it in the file; otherwise the video records silent and says so
+  const avSupport = sound && hasSound(sound) ? videoSupport(true) : null;
+  const support = avSupport ?? videoSupport();
   if (!support) throw new Error(S("errors.noRecord"));
+  const withSound = !!avSupport;
   const a = await analyse(scrub, (p) => onProgress({ done: p.done * 0.1, note: p.note }), signal);
   await loadFonts(style);
   const plan = a.plan;
@@ -103,18 +129,22 @@ export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Met
   ctx.setTransform(EXPORT_SCALE, 0, 0, EXPORT_SCALE, 0, 0);
   const stream = canvas.captureStream(0);
   const track = stream.getVideoTracks()[0] as MediaStreamTrack & { requestFrame?: () => void };
-  const rec = new MediaRecorder(stream, { mimeType: support.mime, videoBitsPerSecond: 10_000_000 });
+  const audio = withSound ? soundStream() : null;
+  if (audio) stream.addTrack(audio.track);
+  const rec = new MediaRecorder(stream, { mimeType: support.mime, videoBitsPerSecond: 10_000_000, ...(audio ? { audioBitsPerSecond: 192_000 } : {}) });
   const chunks: Blob[] = [];
   rec.ondataavailable = (e) => { if (e.data.size) chunks.push(e.data); };
   const stopped = new Promise<void>((r) => { rec.onstop = () => r(); });
   const r = scrub.atStep(0);
   const total = clipFrames(plan);
-  const info = { world: meta.world, summary: a.summary, samples: a.samples };
+  const info = clipInfo(a, meta);
   const draw = (f: number) => paint(style, () => drawVideoFrame(ctx, style, r, info, f));
+  let mix: { stop(): void } | null = null;
   try {
-    // Frames are drawn in real time: MediaRecorder stamps them with the wall clock.
+    // Frames are drawn in real time: MediaRecorder stamps them with the wall clock, and the sound shares that clock.
     draw(0);
     rec.start(1000);
+    if (audio && sound) mix = playSound(sound, 0, total / FPS, audio.dest);
     const t0 = performance.now();
     for (let f = 0; f < total; f++) {
       check(signal);
@@ -125,11 +155,14 @@ export async function recordVideo(scrub: Scrubber, style: ExportStyle, meta: Met
       const wait = t0 + ((f + 1) * 1000) / FPS - performance.now();
       await sleep(Math.max(0, wait));
     }
+    // Let the last frame's sound reach the recorder
+    if (mix) await sleep(150);
     rec.stop();
     await stopped;
     onProgress({ done: 1, note: S("progress.saving") });
-    return { blob: new Blob(chunks, { type: support.mime.split(";")[0] }), ext: support.ext };
+    return { blob: new Blob(chunks, { type: support.mime.split(";")[0] }), ext: support.ext, silent: !!sound && hasSound(sound) && !withSound };
   } finally {
+    mix?.stop();
     if (rec.state !== "inactive") rec.stop();
     stream.getTracks().forEach((t) => t.stop());
     canvas.remove();
@@ -158,7 +191,7 @@ export async function renderStills(scrub: Scrubber, style: ExportStyle, meta: Me
   const canvas = document.createElement("canvas");
   canvas.width = W; canvas.height = H;
   const ctx = canvas.getContext("2d")!;
-  const info = { world: meta.world, summary: a.summary, samples: a.samples };
+  const info = clipInfo(a, meta);
   const total = clipFrames(plan);
   const moments = keyMoments(plan, a.summary.events, 4).filter((s) => s < plan.steps);
   type Shot = [name: string, draw: () => void];
@@ -196,7 +229,7 @@ export interface TextFiles { srt: string; caption: string; story: string }
 
 export function renderText(a: Analysis, meta: Meta): TextFiles {
   const x = { plan: a.plan, summary: a.summary, world: meta.world, intro: meta.intro, map: a.map };
-  return { srt: toSrt(x), caption: toCaption(x), story: toStory(x) };
+  return { srt: toSrt(x, meta.lines), caption: toCaption(x), story: toStory(x) };
 }
 
 // ——— Slides ———

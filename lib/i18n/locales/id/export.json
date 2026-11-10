@@ -54,7 +54,9 @@
       "output": "Hasil",
       "text": "Teks",
       "look": "Tampilan",
-      "timing": "Waktu"
+      "timing": "Waktu",
+      "intro": "Intro",
+      "sound": "Suara"
     },
     "mb": "{n} MB",
     "mbSmall": "di bawah 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "kiri",
         "right": "kanan",
         "down": "bawah"
-      }
+      },
+      "onTheVideo": "Di video",
+      "preset": {
+        "all": "Semua",
+        "stage": "Panggung saja",
+        "text": "Teks saja"
+      },
+      "picturePieces": "Gambar",
+      "textPieces": "Teks",
+      "piece": {
+        "stage": "Dunianya sendiri",
+        "label": "Label nama dunia",
+        "clock": "Jam",
+        "frame": "Bingkai panggung",
+        "seam": "Garis di antara dua dunia",
+        "chart": "Grafik di bawah panggung",
+        "cards": "Bayangan di balik judul dan hasil"
+      },
+      "titleFace": "Font judul ({font})",
+      "bodyFace": "Font teks ({font})",
+      "fontFallback": "{font} · huruf perangkat untuk bahasa ini",
+      "italic": "Miring",
+      "letterSpacing": "Jarak huruf",
+      "lineHeight": "Tinggi baris",
+      "outline": "Garis tepi",
+      "shadow": "Bayangan",
+      "narrationLines": "Baris narasi",
+      "narrationNote": "Ditulis dari jalannya simulasi, disesuaikan dengan video. Ketik di atas baris untuk mengubahnya; kosongkan untuk kembali. Baris yang sama masuk ke file subtitel.",
+      "narrationLine": "Baris {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Tanpa adegan intro: judul pembuka biasa yang muncul (Teks → Judul pembuka).",
+      "length": "Durasi",
+      "tooShort": "Beri intro sedikit waktu, kalau tidak ia tidak akan tampil.",
+      "bigLine": "Baris besar",
+      "smallLine": "Baris kecil",
+      "tokens": "Kamu bisa memakai {list}",
+      "accent": "Warna aksen",
+      "fontsNote": "Font diambil dari Tampilan → Font judul dan Font teks.",
+      "mine": "Intro saya",
+      "mineNote": "Simpan intro ini dengan teks, warna, dan durasinya, lalu pakai di dunia mana saja. Disimpan di browser ini.",
+      "saved": "Tersimpan di browser ini.",
+      "namePlaceholder": "Beri nama intro ini",
+      "nameLabel": "Nama intro",
+      "save": "Simpan",
+      "delete": "Hapus {name}",
+      "copy": "Salin",
+      "copied": "Intro disalin. Tempel di perangkat lain.",
+      "cantCopy": "Tidak bisa menyalin di sini.",
+      "paste": "Tempel",
+      "off": "Tanpa intro",
+      "pastePlaceholder": "Tempel intro yang disalin di sini",
+      "pasteLabel": "Tempel intro",
+      "notIntro": "Itu bukan intro What-If Lab.",
+      "use": "Pakai intro ini"
+    },
+    "sound": {
+      "privacy": "Suara tetap di perangkat ini: tidak ada yang diunggah, dan tidak disimpan saat studio ditutup.",
+      "voice": "Suaramu",
+      "voiceNote": "Tekan Rekam: pratinjau diputar dari awal sementara kamu bicara di atasnya. Berhenti sendiri di akhir.",
+      "record": "Rekam sulih suara",
+      "again": "Rekam lagi",
+      "stop": "Berhenti",
+      "remove": "Hapus",
+      "recording": "Merekam",
+      "yourTake": "Rekamanmu",
+      "volume": "Volume",
+      "startsAt": "Mulai pada",
+      "atStart": "awal",
+      "offsetS": "{n} dtk",
+      "file": "File audio",
+      "fileNote": "Sulih suara atau musik dari perangkatmu (MP3, WAV, M4A). Pakai hanya suara yang boleh kamu gunakan.",
+      "addFile": "Tambah file",
+      "replaceFile": "Ganti file",
+      "fadeIn": "Masuk perlahan",
+      "fadeOut": "Keluar perlahan",
+      "duck": "Kecilkan file saat suaramu bicara",
+      "noMic": "Tidak ada mikrofon, atau tidak diizinkan. Izinkan mikrofon untuk situs ini lalu coba lagi.",
+      "takeFailed": "Rekaman itu tidak bisa disimpan. Coba lagi.",
+      "cantRead": "File itu tidak bisa dibaca. Coba MP3, WAV, atau M4A.",
+      "unsupported": "Browser ini tidak bisa menambahkan suara ke video. Coba Chrome, Edge, atau Firefox terbaru.",
+      "captionsNote": "Tidak sempat merekam? Nyalakan Narasi (tab Teks) untuk baris di video, atau pakai file subtitel dengan suara dari aplikasimu.",
+      "silent": "Browser ini merekamnya tanpa suara."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Kartu hasil",
       "free1": "Teksmu 1",
       "free2": "Teksmu 2",
-      "free3": "Teksmu 3"
+      "free3": "Teksmu 3",
+      "captions": "Narasi"
     },
     "layerWhat": {
       "brand": "Nama di pojok",
@@ -291,7 +377,8 @@
       "outro": "Di atas panggung di akhir",
       "free1": "Apa saja yang kamu mau",
       "free2": "Apa saja yang kamu mau",
-      "free3": "Apa saja yang kamu mau"
+      "free3": "Apa saja yang kamu mau",
+      "captions": "Baris di bagian bawah, sesuai jalannya simulasi"
     },
     "token": {
       "whatif": "what-if-nya",
@@ -311,7 +398,25 @@
       "vignette": "Tepi gelap"
     },
     "worldText": "{world} · seed {seed}",
-    "freeText": "Teksmu"
+    "freeText": "Teksmu",
+    "intro": {
+      "none": "Tidak ada",
+      "question": "Pertanyaan",
+      "countdown": "Hitung mundur",
+      "guess": "Tebak dulu",
+      "cinema": "Sinematik",
+      "zoom": "Perbesar",
+      "thenNow": "Sebelum dan sesudah"
+    },
+    "introWhat": {
+      "none": "Judul pembuka biasa",
+      "question": "\"Bagaimana jika\" muncul kata demi kata",
+      "countdown": "3 · 2 · 1 di atas panggung",
+      "guess": "Waktu menebak sebelum dimulai",
+      "cinema": "Pita hitam, nama dunia, judul",
+      "zoom": "Panggung membesar hingga memenuhi bingkai",
+      "thenNow": "Tanpa perubahan, lalu sapuan ke perubahan"
+    }
   },
   "quick": {
     "open": "Ekspor simulasi ini sebagai video",
@@ -320,5 +425,33 @@
     "what": "Video lanskap {s} detik dari simulasi ini, dengan judul, skenario, dan hasilnya, siap untuk YouTube atau dibagikan.",
     "noVideo": "Browser ini tidak bisa merekam video. Coba Chrome, Edge, Firefox, atau Safari versi terbaru.",
     "more": "Lebih banyak ukuran, gambar, teks, slide, dan gaya Anda sendiri dengan Premium."
+  },
+  "intro": {
+    "before": "Sebelum perubahan",
+    "after": "Sesudah perubahan",
+    "question": {
+      "kicker": "Bagaimana jika…",
+      "line": "Mari kita cari tahu."
+    },
+    "countdown": {
+      "kicker": "Bersiaplah",
+      "line": "Mulai dalam"
+    },
+    "guess": {
+      "kicker": "Pikirkan dulu",
+      "line": "Menurutmu apa yang akan terjadi?"
+    },
+    "cinema": {
+      "kicker": "Mempersembahkan",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Lihat lebih dekat",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Sebelum dan sesudah",
+      "line": "{world}"
+    }
   }
 }

@@ -14,3 +14,5 @@ coverage
 
 # Claude Code worktrees (local only; also keeps them out of `vercel deploy` uploads)
 .claude/worktrees/
+/.next-preview/
+/.next-build/

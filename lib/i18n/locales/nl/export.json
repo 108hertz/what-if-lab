@@ -54,7 +54,9 @@
       "output": "Uitvoer",
       "text": "Tekst",
       "look": "Uiterlijk",
-      "timing": "Timing"
+      "timing": "Timing",
+      "intro": "Intro",
+      "sound": "Geluid"
     },
     "mb": "{n} MB",
     "mbSmall": "minder dan 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "links",
         "right": "rechts",
         "down": "beneden"
-      }
+      },
+      "onTheVideo": "In de video",
+      "preset": {
+        "all": "Alles",
+        "stage": "Alleen het podium",
+        "text": "Alleen tekst"
+      },
+      "picturePieces": "Beeld",
+      "textPieces": "Tekst",
+      "piece": {
+        "stage": "De wereld zelf",
+        "label": "Naamlabel van de wereld",
+        "clock": "Klok",
+        "frame": "Podiumrand",
+        "seam": "Lijn tussen de twee werelden",
+        "chart": "Grafiek onder het podium",
+        "cards": "Schaduw achter titel en resultaat"
+      },
+      "titleFace": "Titellettertype ({font})",
+      "bodyFace": "Tekstlettertype ({font})",
+      "fontFallback": "{font} · letters van het apparaat voor deze taal",
+      "italic": "Cursief",
+      "letterSpacing": "Letterafstand",
+      "lineHeight": "Regelhoogte",
+      "outline": "Omlijning",
+      "shadow": "Schaduw",
+      "narrationLines": "Vertelregels",
+      "narrationNote": "Geschreven uit de run, getimed op de video. Typ over een regel om hem te veranderen; maak hem leeg om terug te gaan. Dezelfde regels gaan in het ondertitelbestand.",
+      "narrationLine": "Regel {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Geen introscène: in plaats daarvan verschijnt de gewone openingstitel (Tekst → Openingstitel).",
+      "length": "Lengte",
+      "tooShort": "Geef de intro wat tijd, anders is hij niet te zien.",
+      "bigLine": "Grote regel",
+      "smallLine": "Kleine regel",
+      "tokens": "Je kunt {list} gebruiken",
+      "accent": "Accentkleur",
+      "fontsNote": "Lettertypes komen uit Uiterlijk → Titellettertype en Tekstlettertype.",
+      "mine": "Mijn intro's",
+      "mineNote": "Bewaar deze intro met tekst, kleur en lengte en gebruik hem in elke wereld. Blijft in deze browser.",
+      "saved": "Bewaard in deze browser.",
+      "namePlaceholder": "Geef deze intro een naam",
+      "nameLabel": "Naam van de intro",
+      "save": "Bewaren",
+      "delete": "{name} verwijderen",
+      "copy": "Kopiëren",
+      "copied": "Intro gekopieerd. Plak hem op een ander apparaat.",
+      "cantCopy": "Kopiëren lukte hier niet.",
+      "paste": "Plakken",
+      "off": "Geen intro",
+      "pastePlaceholder": "Plak hier een gekopieerde intro",
+      "pasteLabel": "Een intro plakken",
+      "notIntro": "Dat is geen What-If Lab-intro.",
+      "use": "Deze intro gebruiken"
+    },
+    "sound": {
+      "privacy": "Geluid blijft op dit apparaat: er wordt niets geüpload en het blijft niet bewaard als je de studio sluit.",
+      "voice": "Je stem",
+      "voiceNote": "Druk op Opnemen: de voorvertoning speelt vanaf het begin terwijl je eroverheen praat. Aan het eind stopt hij vanzelf.",
+      "record": "Voice-over opnemen",
+      "again": "Opnieuw opnemen",
+      "stop": "Stop",
+      "remove": "Verwijderen",
+      "recording": "Bezig met opnemen",
+      "yourTake": "Je opname",
+      "volume": "Volume",
+      "startsAt": "Begint bij",
+      "atStart": "het begin",
+      "offsetS": "{n} s",
+      "file": "Audiobestand",
+      "fileNote": "Een voice-over of muziek van je apparaat (MP3, WAV, M4A). Gebruik alleen geluid dat je mag gebruiken.",
+      "addFile": "Een bestand toevoegen",
+      "replaceFile": "Het bestand vervangen",
+      "fadeIn": "Invloeien",
+      "fadeOut": "Uitvloeien",
+      "duck": "Het bestand zachter terwijl je stem spreekt",
+      "noMic": "Geen microfoon, of die werd niet toegestaan. Sta de microfoon toe voor deze site en probeer het opnieuw.",
+      "takeFailed": "Die opname kon niet bewaard worden. Probeer het opnieuw.",
+      "cantRead": "Dat bestand kon niet gelezen worden. Probeer MP3, WAV of M4A.",
+      "unsupported": "Deze browser kan geen geluid aan een video toevoegen. Probeer een recente Chrome, Edge of Firefox.",
+      "captionsNote": "Geen tijd om op te nemen? Zet Vertelling aan (tab Tekst) voor regels in de video, of gebruik het ondertitelbestand met de stem van je app.",
+      "silent": "Deze browser heeft het zonder geluid opgenomen."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Uitkomstkaart",
       "free1": "Jouw tekst 1",
       "free2": "Jouw tekst 2",
-      "free3": "Jouw tekst 3"
+      "free3": "Jouw tekst 3",
+      "captions": "Vertelling"
     },
     "layerWhat": {
       "brand": "De naam in de hoek",
@@ -291,7 +377,8 @@
       "outro": "Over het podium aan het eind",
       "free1": "Alles wat je wilt",
       "free2": "Alles wat je wilt",
-      "free3": "Alles wat je wilt"
+      "free3": "Alles wat je wilt",
+      "captions": "Regels onderaan, getimed op de run"
     },
     "token": {
       "whatif": "de wat-als",
@@ -311,7 +398,25 @@
       "vignette": "Donkere randen"
     },
     "worldText": "{world} · seed {seed}",
-    "freeText": "Jouw tekst"
+    "freeText": "Jouw tekst",
+    "intro": {
+      "none": "Geen",
+      "question": "Vraag",
+      "countdown": "Aftellen",
+      "guess": "Eerst raden",
+      "cinema": "Filmisch",
+      "zoom": "Inzoomen",
+      "thenNow": "Voor en na"
+    },
+    "introWhat": {
+      "none": "De gewone openingstitel",
+      "question": "Het wat-als verschijnt woord voor woord",
+      "countdown": "3 · 2 · 1 over het podium",
+      "guess": "Tijd om te raden voordat het begint",
+      "cinema": "Zwarte balken, de naam van de wereld, de titel",
+      "zoom": "Het podium groeit tot het beeld vol is",
+      "thenNow": "Zonder verandering, dan een veeg naar de verandering"
+    }
   },
   "quick": {
     "open": "Deze run als video exporteren",
@@ -320,5 +425,33 @@
     "what": "Een liggende video van {s} seconden van deze run, met de titel, de wat-als en de uitkomst, klaar voor YouTube of om te delen.",
     "noVideo": "Deze browser kan geen video opnemen. Probeer een recente Chrome, Edge, Firefox of Safari.",
     "more": "Meer formaten, afbeeldingen, tekst, dia's en je eigen stijl met Premium."
+  },
+  "intro": {
+    "before": "Voor de verandering",
+    "after": "Na de verandering",
+    "question": {
+      "kicker": "Wat als…",
+      "line": "Laten we het uitzoeken."
+    },
+    "countdown": {
+      "kicker": "Maak je klaar",
+      "line": "Begint over"
+    },
+    "guess": {
+      "kicker": "Eerst nadenken",
+      "line": "Wat denk je dat er gebeurt?"
+    },
+    "cinema": {
+      "kicker": "Presenteert",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Kijk beter",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Voor en na",
+      "line": "{world}"
+    }
   }
 }

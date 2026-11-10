@@ -13,9 +13,13 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID || (process.env.VERCEL_ENV === "produ
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  env: { NEXT_PUBLIC_SITE_URL: siteUrl, NEXT_PUBLIC_GA_ID: gaId },
+  // Change 0034: Vercel's own environment (production / preview / development), so preview builds can turn the Premium
+  // simulation on. Read from Vercel at build time; it is "" off Vercel.
+  env: { NEXT_PUBLIC_SITE_URL: siteUrl, NEXT_PUBLIC_GA_ID: gaId, NEXT_PUBLIC_VERCEL_ENV: process.env.VERCEL_ENV || "" },
   // ADR 0001: a static export, no server. Accounts and Premium (ADR 0008) run entirely in the browser.
   output: "export",
+  // A second dev server in the same folder (e.g. the Premium preview on another port) needs its own build folder.
+  ...(process.env.NEXT_DIST_DIR ? { distDir: process.env.NEXT_DIST_DIR } : {}),
   // Change 0025: two root layouts (app/(en), app/[lang]) share one 404 page, app/global-not-found.tsx.
   experimental: { globalNotFound: true },
 };

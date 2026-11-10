@@ -37,3 +37,4 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0031](./0031-free-quick-export.md) | Free quick export: one landscape video, no editing | 2 · 3 | shipped |
 | [0032](./0032-about-privacy-terms.md) | About (Instagram, TikTok), Privacy policy and Terms of use pages | 2 · 3 | shipped |
 | [0033](./0033-search-traffic.md) | Search traffic: a page for every what-if, previews, structured data, every search engine | 2 | in-progress |
+| [0034](./0034-export-studio-second-pass.md) | Export studio, second pass: pick every piece, fonts, voice-over, intro templates, Premium preview link | 3 | in-progress |

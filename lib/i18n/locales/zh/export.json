@@ -54,7 +54,9 @@
       "output": "输出",
       "text": "文字",
       "look": "外观",
-      "timing": "时间"
+      "timing": "时间",
+      "intro": "片头",
+      "sound": "声音"
     },
     "mb": "{n} MB",
     "mbSmall": "不到 0.1 MB",
@@ -233,7 +235,90 @@
         "left": "左",
         "right": "右",
         "down": "下"
-      }
+      },
+      "onTheVideo": "视频里显示",
+      "preset": {
+        "all": "全部",
+        "stage": "只有舞台",
+        "text": "只有文字"
+      },
+      "picturePieces": "画面",
+      "textPieces": "文字",
+      "piece": {
+        "stage": "世界本身",
+        "label": "世界名称标签",
+        "clock": "时钟",
+        "frame": "舞台边框",
+        "seam": "两个世界之间的线",
+        "chart": "舞台下方的图表",
+        "cards": "标题和结果后面的阴影"
+      },
+      "titleFace": "标题字体（{font}）",
+      "bodyFace": "正文字体（{font}）",
+      "fontFallback": "{font} · 此语言使用设备字体",
+      "italic": "斜体",
+      "letterSpacing": "字间距",
+      "lineHeight": "行高",
+      "outline": "描边",
+      "shadow": "阴影",
+      "narrationLines": "旁白",
+      "narrationNote": "根据这次运行写成，与视频同步。在某一行上改写即可修改；清空即可恢复。同样的句子也会写入字幕文件。",
+      "narrationLine": "第 {i} 行"
+    },
+    "intro": {
+      "template": "片头",
+      "noneNote": "没有片头场景：改为显示简单的开场标题（文字 → 开场标题）。",
+      "length": "时长",
+      "tooShort": "给片头留点时间，否则不会显示。",
+      "bigLine": "大字",
+      "smallLine": "小字",
+      "tokens": "可以使用 {list}",
+      "accent": "强调色",
+      "fontsNote": "字体来自 外观 → 标题字体 和 正文字体。",
+      "mine": "我的片头",
+      "mineNote": "保存这个片头的文字、颜色和时长，在任何世界都能用。保存在此浏览器中。",
+      "saved": "已保存在此浏览器中。",
+      "namePlaceholder": "给这个片头起个名字",
+      "nameLabel": "片头名称",
+      "save": "保存",
+      "delete": "删除 {name}",
+      "copy": "复制",
+      "copied": "片头已复制。在另一台设备上粘贴即可。",
+      "cantCopy": "无法在此复制。",
+      "paste": "粘贴",
+      "off": "不要片头",
+      "pastePlaceholder": "在这里粘贴复制的片头",
+      "pasteLabel": "粘贴片头",
+      "notIntro": "这不是 What-If Lab 的片头。",
+      "use": "使用这个片头"
+    },
+    "sound": {
+      "privacy": "声音只留在这台设备上：不会上传，关闭工作室后也不会保留。",
+      "voice": "你的声音",
+      "voiceNote": "按\"录音\"：预览从头播放，你在上面说话。到结尾会自动停止。",
+      "record": "录制配音",
+      "again": "重新录制",
+      "stop": "停止",
+      "remove": "移除",
+      "recording": "正在录音",
+      "yourTake": "你的录音",
+      "volume": "音量",
+      "startsAt": "开始于",
+      "atStart": "开头",
+      "offsetS": "{n} 秒",
+      "file": "音频文件",
+      "fileNote": "来自你设备的配音或音乐（MP3、WAV、M4A）。请只使用你有权使用的声音。",
+      "addFile": "添加文件",
+      "replaceFile": "替换文件",
+      "fadeIn": "淡入",
+      "fadeOut": "淡出",
+      "duck": "你说话时调低文件音量",
+      "noMic": "没有麦克风，或未获允许。请允许此网站使用麦克风后重试。",
+      "takeFailed": "无法保留这次录音。请重试。",
+      "cantRead": "无法读取该文件。请尝试 MP3、WAV 或 M4A。",
+      "unsupported": "此浏览器无法给视频添加声音。请尝试最新的 Chrome、Edge 或 Firefox。",
+      "captionsNote": "没时间录音？在\"文字\"标签中打开旁白，让句子显示在视频里；也可以把字幕文件交给你应用自带的朗读声音。",
+      "silent": "此浏览器录制的视频没有声音。"
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "结果卡片",
       "free1": "你的文字 1",
       "free2": "你的文字 2",
-      "free3": "你的文字 3"
+      "free3": "你的文字 3",
+      "captions": "旁白"
     },
     "layerWhat": {
       "brand": "角落里的名字",
@@ -291,7 +377,8 @@
       "outro": "结束时覆盖在舞台上",
       "free1": "随你写什么",
       "free2": "随你写什么",
-      "free3": "随你写什么"
+      "free3": "随你写什么",
+      "captions": "底部的句子，与运行同步"
     },
     "token": {
       "whatif": "“如果”",
@@ -311,7 +398,25 @@
       "vignette": "暗角"
     },
     "worldText": "{world} · 种子 {seed}",
-    "freeText": "你的文字"
+    "freeText": "你的文字",
+    "intro": {
+      "none": "无",
+      "question": "提问",
+      "countdown": "倒计时",
+      "guess": "先猜一猜",
+      "cinema": "电影感",
+      "zoom": "放大",
+      "thenNow": "前后对比"
+    },
+    "introWhat": {
+      "none": "简单的开场标题",
+      "question": "\"如果\"逐词出现",
+      "countdown": "舞台上的 3 · 2 · 1",
+      "guess": "开始前留出猜测时间",
+      "cinema": "黑边、世界名称、标题",
+      "zoom": "舞台放大直到填满画面",
+      "thenNow": "先是不变的世界，再划到改变后"
+    }
   },
   "quick": {
     "open": "将本次运行导出为视频",
@@ -320,5 +425,33 @@
     "what": "本次运行的 {s} 秒横屏视频，带标题、假设和结果，可直接用于 YouTube 或分享。",
     "noVideo": "此浏览器无法录制视频。请试试新版 Chrome、Edge、Firefox 或 Safari。",
     "more": "更多尺寸、图片、文字、幻灯片和自定义样式，尽在 Premium。"
+  },
+  "intro": {
+    "before": "改变之前",
+    "after": "改变之后",
+    "question": {
+      "kicker": "如果……",
+      "line": "一起看看吧。"
+    },
+    "countdown": {
+      "kicker": "准备好",
+      "line": "即将开始"
+    },
+    "guess": {
+      "kicker": "先想一想",
+      "line": "你觉得会发生什么？"
+    },
+    "cinema": {
+      "kicker": "呈现",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "凑近看看",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "前后对比",
+      "line": "{world}"
+    }
   }
 }

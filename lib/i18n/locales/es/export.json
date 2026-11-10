@@ -54,7 +54,9 @@
       "output": "Salida",
       "text": "Texto",
       "look": "Aspecto",
-      "timing": "Tiempos"
+      "timing": "Tiempos",
+      "intro": "Intro",
+      "sound": "Sonido"
     },
     "mb": "{n} MB",
     "mbSmall": "menos de 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "la izquierda",
         "right": "la derecha",
         "down": "abajo"
-      }
+      },
+      "onTheVideo": "En el vídeo",
+      "preset": {
+        "all": "Todo",
+        "stage": "Solo el escenario",
+        "text": "Solo texto"
+      },
+      "picturePieces": "Imagen",
+      "textPieces": "Texto",
+      "piece": {
+        "stage": "El mundo en sí",
+        "label": "Etiqueta del mundo",
+        "clock": "Reloj",
+        "frame": "Marco del escenario",
+        "seam": "Línea entre los dos mundos",
+        "chart": "Gráfico bajo el escenario",
+        "cards": "Sombra tras el título y el resultado"
+      },
+      "titleFace": "Fuente del título ({font})",
+      "bodyFace": "Fuente del texto ({font})",
+      "fontFallback": "{font} · letras del dispositivo para este idioma",
+      "italic": "Cursiva",
+      "letterSpacing": "Espaciado de letras",
+      "lineHeight": "Altura de línea",
+      "outline": "Contorno",
+      "shadow": "Sombra",
+      "narrationLines": "Líneas de narración",
+      "narrationNote": "Escritas a partir de la simulación y sincronizadas con el vídeo. Escribe sobre una línea para cambiarla; vacíala para volver. Las mismas líneas van al archivo de subtítulos.",
+      "narrationLine": "Línea {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Sin escena de intro: se muestra el título de apertura simple (Texto → Título de apertura).",
+      "length": "Duración",
+      "tooShort": "Dale algo de tiempo a la intro o no se verá.",
+      "bigLine": "Línea grande",
+      "smallLine": "Línea pequeña",
+      "tokens": "Puedes usar {list}",
+      "accent": "Color de acento",
+      "fontsNote": "Las fuentes vienen de Aspecto → Fuente del título y Fuente del texto.",
+      "mine": "Mis intros",
+      "mineNote": "Guarda esta intro con su texto, color y duración, y úsala en cualquier mundo. Se guarda en este navegador.",
+      "saved": "Guardado en este navegador.",
+      "namePlaceholder": "Ponle nombre a esta intro",
+      "nameLabel": "Nombre de la intro",
+      "save": "Guardar",
+      "delete": "Borrar {name}",
+      "copy": "Copiar",
+      "copied": "Intro copiada. Pégala en otro dispositivo.",
+      "cantCopy": "No se pudo copiar aquí.",
+      "paste": "Pegar",
+      "off": "Sin intro",
+      "pastePlaceholder": "Pega aquí una intro copiada",
+      "pasteLabel": "Pegar una intro",
+      "notIntro": "Eso no es una intro de What-If Lab.",
+      "use": "Usar esta intro"
+    },
+    "sound": {
+      "privacy": "El sonido se queda en este dispositivo: no se sube nada y no se guarda al cerrar el estudio.",
+      "voice": "Tu voz",
+      "voiceNote": "Pulsa Grabar: la vista previa se reproduce desde el principio mientras hablas encima. Se detiene sola al final.",
+      "record": "Grabar voz en off",
+      "again": "Grabar de nuevo",
+      "stop": "Parar",
+      "remove": "Quitar",
+      "recording": "Grabando",
+      "yourTake": "Tu toma",
+      "volume": "Volumen",
+      "startsAt": "Empieza en",
+      "atStart": "el principio",
+      "offsetS": "{n} s",
+      "file": "Archivo de audio",
+      "fileNote": "Una voz en off o música de tu dispositivo (MP3, WAV, M4A). Usa solo sonido que tengas derecho a usar.",
+      "addFile": "Añadir un archivo",
+      "replaceFile": "Cambiar el archivo",
+      "fadeIn": "Entrada gradual",
+      "fadeOut": "Salida gradual",
+      "duck": "Bajar el archivo mientras habla tu voz",
+      "noMic": "No hay micrófono o no se permitió. Permite el micrófono para este sitio e inténtalo de nuevo.",
+      "takeFailed": "No se pudo guardar esa toma. Inténtalo de nuevo.",
+      "cantRead": "No se pudo leer ese archivo. Prueba con MP3, WAV o M4A.",
+      "unsupported": "Este navegador no puede añadir sonido a un vídeo. Prueba un Chrome, Edge o Firefox reciente.",
+      "captionsNote": "¿Sin tiempo para grabar? Activa Narración (pestaña Texto) para ver líneas en el vídeo, o usa el archivo de subtítulos con la voz de tu app.",
+      "silent": "Este navegador lo grabó sin sonido."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Tarjeta de resultado",
       "free1": "Tu texto 1",
       "free2": "Tu texto 2",
-      "free3": "Tu texto 3"
+      "free3": "Tu texto 3",
+      "captions": "Narración"
     },
     "layerWhat": {
       "brand": "El nombre en la esquina",
@@ -291,7 +377,8 @@
       "outro": "Sobre el escenario al final",
       "free1": "Lo que quieras",
       "free2": "Lo que quieras",
-      "free3": "Lo que quieras"
+      "free3": "Lo que quieras",
+      "captions": "Líneas en la parte de abajo, sincronizadas con la simulación"
     },
     "token": {
       "whatif": "el «¿y si…?»",
@@ -311,7 +398,25 @@
       "vignette": "Bordes oscuros"
     },
     "worldText": "{world} · semilla {seed}",
-    "freeText": "Tu texto"
+    "freeText": "Tu texto",
+    "intro": {
+      "none": "Ninguna",
+      "question": "Pregunta",
+      "countdown": "Cuenta atrás",
+      "guess": "Adivina primero",
+      "cinema": "Cine",
+      "zoom": "Acercar",
+      "thenNow": "Antes y después"
+    },
+    "introWhat": {
+      "none": "El título de apertura simple",
+      "question": "El «y si» aparece palabra por palabra",
+      "countdown": "3 · 2 · 1 sobre el escenario",
+      "guess": "Tiempo para adivinar antes de empezar",
+      "cinema": "Barras negras, el nombre del mundo, el título",
+      "zoom": "El escenario crece hasta llenar el encuadre",
+      "thenNow": "Sin cambio y luego un barrido al cambio"
+    }
   },
   "quick": {
     "open": "Exportar esta simulación como vídeo",
@@ -320,5 +425,33 @@
     "what": "Un vídeo horizontal de {s} segundos de esta simulación, con el título, la hipótesis y el resultado, listo para YouTube o para compartir.",
     "noVideo": "Este navegador no puede grabar vídeo. Prueba con un Chrome, Edge, Firefox o Safari recientes.",
     "more": "Más tamaños, imágenes, texto, diapositivas y tu propio estilo con Premium."
+  },
+  "intro": {
+    "before": "Antes del cambio",
+    "after": "Después del cambio",
+    "question": {
+      "kicker": "¿Y si…?",
+      "line": "Vamos a descubrirlo."
+    },
+    "countdown": {
+      "kicker": "Prepárate",
+      "line": "Empieza en"
+    },
+    "guess": {
+      "kicker": "Piensa primero",
+      "line": "¿Qué crees que pasará?"
+    },
+    "cinema": {
+      "kicker": "Presentamos",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Mira más de cerca",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Antes y después",
+      "line": "{world}"
+    }
   }
 }

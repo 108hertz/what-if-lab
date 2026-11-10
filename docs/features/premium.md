@@ -52,7 +52,11 @@ Exports also turn what-ifs into shareable clips (traffic).
   (`wil.premium` in localStorage); a definite free/signed-out answer clears it. Storage access is always guarded.
 - **No key (dev, tests, CI, forks):** status `off`, everything free, ads as before. Production builds show no
   account button, no export button and plain-text slot upsell. Dev builds show the account button with a
-  **Simulate Premium** switch (`wil.devPremium`, dev only, never in production builds).
+  **Simulate Premium** switch (`wil.devPremium`, dev only, never in production builds). Change 0034: Vercel **preview**
+  deployments (`VERCEL_ENV=preview`, passed to the page as `NEXT_PUBLIC_VERCEL_ENV`) and local builds with
+  `NEXT_PUBLIC_PREMIUM_PREVIEW=1` count as test builds: they show the account menu and the switch even while
+  `ACCOUNTS_LAUNCHED` is false, so every Premium feature can be tried on a preview link. A Vercel production build never
+  does, whatever is set (`readConfig`, `tests/account.test.ts`).
 - **Secrets:** only the publishable key is read; anything that looks like `sk_…` is refused with a console warning.
 
 ## Setup (owner, in the Clerk dashboard)

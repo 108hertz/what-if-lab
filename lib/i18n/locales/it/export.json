@@ -54,7 +54,9 @@
       "output": "Formato",
       "text": "Testo",
       "look": "Aspetto",
-      "timing": "Tempi"
+      "timing": "Tempi",
+      "intro": "Intro",
+      "sound": "Suono"
     },
     "mb": "{n} MB",
     "mbSmall": "meno di 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "a sinistra",
         "right": "a destra",
         "down": "in giù"
-      }
+      },
+      "onTheVideo": "Nel video",
+      "preset": {
+        "all": "Tutto",
+        "stage": "Solo la scena",
+        "text": "Solo testo"
+      },
+      "picturePieces": "Immagine",
+      "textPieces": "Testo",
+      "piece": {
+        "stage": "Il mondo stesso",
+        "label": "Etichetta del mondo",
+        "clock": "Orologio",
+        "frame": "Cornice della scena",
+        "seam": "Linea tra i due mondi",
+        "chart": "Grafico sotto la scena",
+        "cards": "Ombra dietro titolo e risultato"
+      },
+      "titleFace": "Carattere del titolo ({font})",
+      "bodyFace": "Carattere del testo ({font})",
+      "fontFallback": "{font} · lettere del dispositivo per questa lingua",
+      "italic": "Corsivo",
+      "letterSpacing": "Spaziatura lettere",
+      "lineHeight": "Altezza riga",
+      "outline": "Contorno",
+      "shadow": "Ombra",
+      "narrationLines": "Righe di narrazione",
+      "narrationNote": "Scritte dalla simulazione e sincronizzate col video. Riscrivi una riga per cambiarla; svuotala per tornare indietro. Le stesse righe finiscono nel file dei sottotitoli.",
+      "narrationLine": "Riga {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Nessuna scena di intro: appare il titolo di apertura semplice (Testo → Titolo di apertura).",
+      "length": "Durata",
+      "tooShort": "Dai un po' di tempo all'intro, altrimenti non si vedrà.",
+      "bigLine": "Riga grande",
+      "smallLine": "Riga piccola",
+      "tokens": "Puoi usare {list}",
+      "accent": "Colore d'accento",
+      "fontsNote": "I caratteri vengono da Aspetto → Carattere del titolo e Carattere del testo.",
+      "mine": "Le mie intro",
+      "mineNote": "Salva questa intro con testo, colore e durata e usala in qualsiasi mondo. Resta in questo browser.",
+      "saved": "Salvata in questo browser.",
+      "namePlaceholder": "Dai un nome a questa intro",
+      "nameLabel": "Nome dell'intro",
+      "save": "Salva",
+      "delete": "Elimina {name}",
+      "copy": "Copia",
+      "copied": "Intro copiata. Incollala su un altro dispositivo.",
+      "cantCopy": "Impossibile copiare qui.",
+      "paste": "Incolla",
+      "off": "Nessuna intro",
+      "pastePlaceholder": "Incolla qui un'intro copiata",
+      "pasteLabel": "Incolla un'intro",
+      "notIntro": "Questa non è un'intro di What-If Lab.",
+      "use": "Usa questa intro"
+    },
+    "sound": {
+      "privacy": "Il suono resta su questo dispositivo: non viene caricato nulla e non viene tenuto quando chiudi lo studio.",
+      "voice": "La tua voce",
+      "voiceNote": "Premi Registra: l'anteprima parte dall'inizio mentre ci parli sopra. Si ferma da sola alla fine.",
+      "record": "Registra la voce fuori campo",
+      "again": "Registra di nuovo",
+      "stop": "Ferma",
+      "remove": "Rimuovi",
+      "recording": "Registrazione in corso",
+      "yourTake": "La tua ripresa",
+      "volume": "Volume",
+      "startsAt": "Inizia a",
+      "atStart": "l'inizio",
+      "offsetS": "{n} s",
+      "file": "File audio",
+      "fileNote": "Una voce fuori campo o musica dal tuo dispositivo (MP3, WAV, M4A). Usa solo suoni che hai il diritto di usare.",
+      "addFile": "Aggiungi un file",
+      "replaceFile": "Sostituisci il file",
+      "fadeIn": "Dissolvenza in entrata",
+      "fadeOut": "Dissolvenza in uscita",
+      "duck": "Abbassa il file mentre parla la tua voce",
+      "noMic": "Nessun microfono, o non è stato consentito. Consenti il microfono per questo sito e riprova.",
+      "takeFailed": "Impossibile tenere quella ripresa. Riprova.",
+      "cantRead": "Impossibile leggere quel file. Prova con MP3, WAV o M4A.",
+      "unsupported": "Questo browser non può aggiungere suono a un video. Prova un Chrome, Edge o Firefox recente.",
+      "captionsNote": "Niente tempo per registrare? Attiva Narrazione (scheda Testo) per righe sul video, oppure usa il file dei sottotitoli con la voce della tua app.",
+      "silent": "Questo browser l'ha registrato senza suono."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Scheda del risultato",
       "free1": "Il tuo testo 1",
       "free2": "Il tuo testo 2",
-      "free3": "Il tuo testo 3"
+      "free3": "Il tuo testo 3",
+      "captions": "Narrazione"
     },
     "layerWhat": {
       "brand": "Il nome nell'angolo",
@@ -291,7 +377,8 @@
       "outro": "Sopra la scena alla fine",
       "free1": "Quello che vuoi",
       "free2": "Quello che vuoi",
-      "free3": "Quello che vuoi"
+      "free3": "Quello che vuoi",
+      "captions": "Righe in basso, sincronizzate con la simulazione"
     },
     "token": {
       "whatif": "il \"e se\"",
@@ -311,7 +398,25 @@
       "vignette": "Bordi scuri"
     },
     "worldText": "{world} · seme {seed}",
-    "freeText": "Il tuo testo"
+    "freeText": "Il tuo testo",
+    "intro": {
+      "none": "Nessuna",
+      "question": "Domanda",
+      "countdown": "Conto alla rovescia",
+      "guess": "Prima indovina",
+      "cinema": "Cinema",
+      "zoom": "Zoom avanti",
+      "thenNow": "Prima e dopo"
+    },
+    "introWhat": {
+      "none": "Il titolo di apertura semplice",
+      "question": "Il «e se» appare parola per parola",
+      "countdown": "3 · 2 · 1 sopra la scena",
+      "guess": "Tempo per indovinare prima che parta",
+      "cinema": "Bande nere, il nome del mondo, il titolo",
+      "zoom": "La scena cresce fino a riempire l'inquadratura",
+      "thenNow": "Senza cambiamento, poi una tendina verso il cambiamento"
+    }
   },
   "quick": {
     "open": "Esporta questa simulazione come video",
@@ -320,5 +425,33 @@
     "what": "Un video orizzontale di {s} secondi di questa simulazione, con titolo, ipotesi e risultato, pronto per YouTube o da condividere.",
     "noVideo": "Questo browser non può registrare video. Prova un Chrome, Edge, Firefox o Safari recente.",
     "more": "Altri formati, immagini, testo, slide e il tuo stile con Premium."
+  },
+  "intro": {
+    "before": "Prima del cambiamento",
+    "after": "Dopo il cambiamento",
+    "question": {
+      "kicker": "E se…",
+      "line": "Scopriamolo."
+    },
+    "countdown": {
+      "kicker": "Preparati",
+      "line": "Si parte tra"
+    },
+    "guess": {
+      "kicker": "Prima pensaci",
+      "line": "Cosa pensi che succederà?"
+    },
+    "cinema": {
+      "kicker": "Presenta",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Guarda da vicino",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Prima e dopo",
+      "line": "{world}"
+    }
   }
 }

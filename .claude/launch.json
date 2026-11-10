@@ -4,8 +4,20 @@
     {
       "name": "dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 5050
+    },
+    {
+      "name": "premium-preview",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "NEXT_DIST_DIR=.next-preview NEXT_PUBLIC_PREMIUM_PREVIEW=1 npx next dev -p 5051"
+      ],
+      "port": 5051
     }
   ]
 }

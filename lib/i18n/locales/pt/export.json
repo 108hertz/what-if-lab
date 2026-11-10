@@ -54,7 +54,9 @@
       "output": "Saída",
       "text": "Texto",
       "look": "Visual",
-      "timing": "Tempo"
+      "timing": "Tempo",
+      "intro": "Intro",
+      "sound": "Som"
     },
     "mb": "{n} MB",
     "mbSmall": "menos de 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "a esquerda",
         "right": "a direita",
         "down": "baixo"
-      }
+      },
+      "onTheVideo": "No vídeo",
+      "preset": {
+        "all": "Tudo",
+        "stage": "Só o palco",
+        "text": "Só texto"
+      },
+      "picturePieces": "Imagem",
+      "textPieces": "Texto",
+      "piece": {
+        "stage": "O próprio mundo",
+        "label": "Etiqueta do mundo",
+        "clock": "Relógio",
+        "frame": "Moldura do palco",
+        "seam": "Linha entre os dois mundos",
+        "chart": "Gráfico sob o palco",
+        "cards": "Sombra atrás do título e do resultado"
+      },
+      "titleFace": "Fonte do título ({font})",
+      "bodyFace": "Fonte do texto ({font})",
+      "fontFallback": "{font} · letras do aparelho para este idioma",
+      "italic": "Itálico",
+      "letterSpacing": "Espaço entre letras",
+      "lineHeight": "Altura da linha",
+      "outline": "Contorno",
+      "shadow": "Sombra",
+      "narrationLines": "Linhas de narração",
+      "narrationNote": "Escritas a partir da simulação, sincronizadas com o vídeo. Escreva por cima de uma linha para mudá-la; apague-a para voltar. As mesmas linhas vão para o arquivo de legendas.",
+      "narrationLine": "Linha {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Sem cena de intro: aparece o título de abertura simples (Texto → Título de abertura).",
+      "length": "Duração",
+      "tooShort": "Dê um tempo à intro, senão ela não aparece.",
+      "bigLine": "Linha grande",
+      "smallLine": "Linha pequena",
+      "tokens": "Você pode usar {list}",
+      "accent": "Cor de destaque",
+      "fontsNote": "As fontes vêm de Visual → Fonte do título e Fonte do texto.",
+      "mine": "Minhas intros",
+      "mineNote": "Salve esta intro com o texto, a cor e a duração, e use-a em qualquer mundo. Fica neste navegador.",
+      "saved": "Salvo neste navegador.",
+      "namePlaceholder": "Dê um nome a esta intro",
+      "nameLabel": "Nome da intro",
+      "save": "Salvar",
+      "delete": "Apagar {name}",
+      "copy": "Copiar",
+      "copied": "Intro copiada. Cole-a em outro aparelho.",
+      "cantCopy": "Não foi possível copiar aqui.",
+      "paste": "Colar",
+      "off": "Sem intro",
+      "pastePlaceholder": "Cole aqui uma intro copiada",
+      "pasteLabel": "Colar uma intro",
+      "notIntro": "Isso não é uma intro do What-If Lab.",
+      "use": "Usar esta intro"
+    },
+    "sound": {
+      "privacy": "O som fica neste aparelho: nada é enviado, e ele não é guardado quando você fecha o estúdio.",
+      "voice": "Sua voz",
+      "voiceNote": "Toque em Gravar: a prévia toca desde o início enquanto você fala por cima. Ela para sozinha no final.",
+      "record": "Gravar narração",
+      "again": "Gravar de novo",
+      "stop": "Parar",
+      "remove": "Remover",
+      "recording": "Gravando",
+      "yourTake": "Sua gravação",
+      "volume": "Volume",
+      "startsAt": "Começa em",
+      "atStart": "o início",
+      "offsetS": "{n} s",
+      "file": "Arquivo de áudio",
+      "fileNote": "Uma narração ou música do seu aparelho (MP3, WAV, M4A). Use só sons que você tem o direito de usar.",
+      "addFile": "Adicionar um arquivo",
+      "replaceFile": "Trocar o arquivo",
+      "fadeIn": "Entrada suave",
+      "fadeOut": "Saída suave",
+      "duck": "Abaixar o arquivo enquanto sua voz fala",
+      "noMic": "Sem microfone, ou ele não foi permitido. Permita o microfone para este site e tente de novo.",
+      "takeFailed": "Não foi possível guardar essa gravação. Tente de novo.",
+      "cantRead": "Não foi possível ler esse arquivo. Tente MP3, WAV ou M4A.",
+      "unsupported": "Este navegador não consegue adicionar som a um vídeo. Tente um Chrome, Edge ou Firefox recente.",
+      "captionsNote": "Sem tempo para gravar? Ative Narração (aba Texto) para ter linhas no vídeo, ou use o arquivo de legendas com a voz do seu app.",
+      "silent": "Este navegador gravou sem som."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Cartão do resultado",
       "free1": "Seu texto 1",
       "free2": "Seu texto 2",
-      "free3": "Seu texto 3"
+      "free3": "Seu texto 3",
+      "captions": "Narração"
     },
     "layerWhat": {
       "brand": "O nome no canto",
@@ -291,7 +377,8 @@
       "outro": "Sobre o palco no fim",
       "free1": "O que você quiser",
       "free2": "O que você quiser",
-      "free3": "O que você quiser"
+      "free3": "O que você quiser",
+      "captions": "Linhas na parte de baixo, sincronizadas com a simulação"
     },
     "token": {
       "whatif": "a hipótese",
@@ -311,7 +398,25 @@
       "vignette": "Bordas escuras"
     },
     "worldText": "{world} · semente {seed}",
-    "freeText": "Seu texto"
+    "freeText": "Seu texto",
+    "intro": {
+      "none": "Nenhuma",
+      "question": "Pergunta",
+      "countdown": "Contagem regressiva",
+      "guess": "Adivinhe primeiro",
+      "cinema": "Cinema",
+      "zoom": "Aproximar",
+      "thenNow": "Antes e depois"
+    },
+    "introWhat": {
+      "none": "O título de abertura simples",
+      "question": "O \"e se\" aparece palavra por palavra",
+      "countdown": "3 · 2 · 1 sobre o palco",
+      "guess": "Tempo para adivinhar antes de começar",
+      "cinema": "Barras pretas, o nome do mundo, o título",
+      "zoom": "O palco cresce até encher o quadro",
+      "thenNow": "Sem mudança, depois uma transição para a mudança"
+    }
   },
   "quick": {
     "open": "Exportar esta simulação como vídeo",
@@ -320,5 +425,33 @@
     "what": "Um vídeo horizontal de {s} segundos desta simulação, com o título, a hipótese e o resultado, pronto para o YouTube ou para compartilhar.",
     "noVideo": "Este navegador não consegue gravar vídeo. Tente um Chrome, Edge, Firefox ou Safari recente.",
     "more": "Mais tamanhos, imagens, texto, slides e seu próprio estilo com o Premium."
+  },
+  "intro": {
+    "before": "Antes da mudança",
+    "after": "Depois da mudança",
+    "question": {
+      "kicker": "E se…",
+      "line": "Vamos descobrir."
+    },
+    "countdown": {
+      "kicker": "Prepare-se",
+      "line": "Começa em"
+    },
+    "guess": {
+      "kicker": "Pense primeiro",
+      "line": "O que você acha que vai acontecer?"
+    },
+    "cinema": {
+      "kicker": "Apresenta",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Olhe mais de perto",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Antes e depois",
+      "line": "{world}"
+    }
   }
 }

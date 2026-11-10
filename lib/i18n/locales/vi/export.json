@@ -54,7 +54,9 @@
       "output": "Đầu ra",
       "text": "Chữ",
       "look": "Giao diện",
-      "timing": "Thời lượng"
+      "timing": "Thời lượng",
+      "intro": "Mở đầu",
+      "sound": "Âm thanh"
     },
     "mb": "{n} MB",
     "mbSmall": "dưới 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "sang trái",
         "right": "sang phải",
         "down": "xuống"
-      }
+      },
+      "onTheVideo": "Trong video",
+      "preset": {
+        "all": "Tất cả",
+        "stage": "Chỉ sân khấu",
+        "text": "Chỉ chữ"
+      },
+      "picturePieces": "Hình ảnh",
+      "textPieces": "Chữ",
+      "piece": {
+        "stage": "Chính thế giới",
+        "label": "Nhãn tên thế giới",
+        "clock": "Đồng hồ",
+        "frame": "Khung sân khấu",
+        "seam": "Đường giữa hai thế giới",
+        "chart": "Biểu đồ dưới sân khấu",
+        "cards": "Bóng mờ sau tiêu đề và kết quả"
+      },
+      "titleFace": "Phông tiêu đề ({font})",
+      "bodyFace": "Phông nội dung ({font})",
+      "fontFallback": "{font} · chữ của thiết bị cho ngôn ngữ này",
+      "italic": "Nghiêng",
+      "letterSpacing": "Giãn chữ",
+      "lineHeight": "Chiều cao dòng",
+      "outline": "Viền chữ",
+      "shadow": "Bóng",
+      "narrationLines": "Các dòng thuyết minh",
+      "narrationNote": "Viết từ lần chạy, khớp thời gian với video. Gõ đè lên một dòng để đổi; xóa trống để quay lại. Các dòng này cũng vào tệp phụ đề.",
+      "narrationLine": "Dòng {i}"
+    },
+    "intro": {
+      "template": "Mở đầu",
+      "noneNote": "Không có cảnh mở đầu: thay vào đó là tiêu đề mở đầu đơn giản (Chữ → Tiêu đề mở đầu).",
+      "length": "Độ dài",
+      "tooShort": "Hãy cho phần mở đầu chút thời gian, nếu không nó sẽ không hiện.",
+      "bigLine": "Dòng lớn",
+      "smallLine": "Dòng nhỏ",
+      "tokens": "Bạn có thể dùng {list}",
+      "accent": "Màu nhấn",
+      "fontsNote": "Phông chữ lấy từ Giao diện → Phông tiêu đề và Phông nội dung.",
+      "mine": "Mở đầu của tôi",
+      "mineNote": "Lưu phần mở đầu này với chữ, màu và độ dài, rồi dùng ở bất kỳ thế giới nào. Lưu trong trình duyệt này.",
+      "saved": "Đã lưu trong trình duyệt này.",
+      "namePlaceholder": "Đặt tên cho phần mở đầu",
+      "nameLabel": "Tên phần mở đầu",
+      "save": "Lưu",
+      "delete": "Xóa {name}",
+      "copy": "Sao chép",
+      "copied": "Đã sao chép phần mở đầu. Dán vào thiết bị khác.",
+      "cantCopy": "Không sao chép được ở đây.",
+      "paste": "Dán",
+      "off": "Không mở đầu",
+      "pastePlaceholder": "Dán phần mở đầu đã sao chép vào đây",
+      "pasteLabel": "Dán phần mở đầu",
+      "notIntro": "Đó không phải phần mở đầu của What-If Lab.",
+      "use": "Dùng phần mở đầu này"
+    },
+    "sound": {
+      "privacy": "Âm thanh ở lại trên thiết bị này: không có gì được tải lên, và không được giữ khi bạn đóng studio.",
+      "voice": "Giọng của bạn",
+      "voiceNote": "Nhấn Ghi âm: bản xem trước phát từ đầu trong khi bạn nói đè lên. Tự dừng ở cuối.",
+      "record": "Ghi lời thuyết minh",
+      "again": "Ghi lại",
+      "stop": "Dừng",
+      "remove": "Bỏ",
+      "recording": "Đang ghi",
+      "yourTake": "Bản ghi của bạn",
+      "volume": "Âm lượng",
+      "startsAt": "Bắt đầu tại",
+      "atStart": "đầu",
+      "offsetS": "{n} giây",
+      "file": "Tệp âm thanh",
+      "fileNote": "Lời thuyết minh hoặc nhạc từ thiết bị của bạn (MP3, WAV, M4A). Chỉ dùng âm thanh bạn có quyền sử dụng.",
+      "addFile": "Thêm tệp",
+      "replaceFile": "Thay tệp",
+      "fadeIn": "Tăng dần",
+      "fadeOut": "Giảm dần",
+      "duck": "Hạ tệp xuống khi giọng bạn nói",
+      "noMic": "Không có micro, hoặc chưa được cho phép. Hãy cho phép micro với trang này rồi thử lại.",
+      "takeFailed": "Không giữ được bản ghi đó. Thử lại nhé.",
+      "cantRead": "Không đọc được tệp đó. Thử MP3, WAV hoặc M4A.",
+      "unsupported": "Trình duyệt này không thêm được âm thanh vào video. Thử Chrome, Edge hoặc Firefox mới.",
+      "captionsNote": "Không kịp ghi âm? Bật Thuyết minh (thẻ Chữ) để có dòng chữ trong video, hoặc dùng tệp phụ đề với giọng đọc của ứng dụng bạn.",
+      "silent": "Trình duyệt này đã ghi video không có tiếng."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Thẻ kết quả",
       "free1": "Chữ của bạn 1",
       "free2": "Chữ của bạn 2",
-      "free3": "Chữ của bạn 3"
+      "free3": "Chữ của bạn 3",
+      "captions": "Thuyết minh"
     },
     "layerWhat": {
       "brand": "Tên ở góc",
@@ -291,7 +377,8 @@
       "outro": "Trên sân khấu lúc kết thúc",
       "free1": "Bất cứ điều gì bạn muốn",
       "free2": "Bất cứ điều gì bạn muốn",
-      "free3": "Bất cứ điều gì bạn muốn"
+      "free3": "Bất cứ điều gì bạn muốn",
+      "captions": "Các dòng ở dưới, khớp với lần chạy"
     },
     "token": {
       "whatif": "nếu như",
@@ -311,7 +398,25 @@
       "vignette": "Viền tối"
     },
     "worldText": "{world} · hạt giống {seed}",
-    "freeText": "Chữ của bạn"
+    "freeText": "Chữ của bạn",
+    "intro": {
+      "none": "Không",
+      "question": "Câu hỏi",
+      "countdown": "Đếm ngược",
+      "guess": "Đoán trước",
+      "cinema": "Điện ảnh",
+      "zoom": "Phóng to",
+      "thenNow": "Trước và sau"
+    },
+    "introWhat": {
+      "none": "Tiêu đề mở đầu đơn giản",
+      "question": "\"Nếu như\" hiện từng chữ một",
+      "countdown": "3 · 2 · 1 trên sân khấu",
+      "guess": "Thời gian đoán trước khi chạy",
+      "cinema": "Dải đen, tên thế giới, tiêu đề",
+      "zoom": "Sân khấu lớn dần đến khi đầy khung",
+      "thenNow": "Không thay đổi, rồi chuyển sang thay đổi"
+    }
   },
   "quick": {
     "open": "Xuất lượt chạy này thành video",
@@ -320,5 +425,33 @@
     "what": "Video ngang dài {s} giây của lượt chạy này, có tiêu đề, giả định và kết quả, sẵn sàng cho YouTube hoặc để chia sẻ.",
     "noVideo": "Trình duyệt này không quay được video. Hãy thử Chrome, Edge, Firefox hoặc Safari bản mới.",
     "more": "Thêm kích thước, ảnh, văn bản, trang chiếu và phong cách riêng với Premium."
+  },
+  "intro": {
+    "before": "Trước thay đổi",
+    "after": "Sau thay đổi",
+    "question": {
+      "kicker": "Nếu như…",
+      "line": "Cùng tìm hiểu nhé."
+    },
+    "countdown": {
+      "kicker": "Chuẩn bị",
+      "line": "Bắt đầu sau"
+    },
+    "guess": {
+      "kicker": "Nghĩ trước đã",
+      "line": "Bạn nghĩ điều gì sẽ xảy ra?"
+    },
+    "cinema": {
+      "kicker": "Giới thiệu",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Nhìn kỹ hơn",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Trước và sau",
+      "line": "{world}"
+    }
   }
 }

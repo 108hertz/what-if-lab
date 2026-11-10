@@ -12,19 +12,22 @@ import { canExport, exportLevel } from "../../account/state";
 import QuickExport from "./QuickExport";
 import { registerStudioFonts } from "./fonts";
 import PreviewCanvas from "./PreviewCanvas";
-import { LookTab, OutputTab, TextTab, TimingTab, type Out } from "./StudioControls";
-import { Cancelled, exportName, loadFonts, recordVideo, renderSlides, renderStills, renderText, save, saveBlob, videoSupport, zip, type Meta, type Progress } from "./render";
+import { LookTab, OutputTab, TextTab, TimingTab, type NarrationEdit, type Out } from "./StudioControls";
+import { IntroTab, SoundTab, type SoundCtl } from "./StudioMore";
+import { Cancelled, clipInfo, exportName, loadFonts, recordVideo, renderSlides, renderStills, renderText, save, saveBlob, videoSupport, zip, type Meta, type Progress } from "./render";
+import { NO_SOUND, audioContext, hasSound, playSound, type Mix, type Sound } from "./sound";
+import { narration } from "@/lib/export/text";
 import { deleteStyle, lastStyle, rememberStyle, saveStyle, savedStyles, type SavedStyle } from "./styles";
 import { pageT } from "@/lib/i18n/page";
 import { worldSay } from "@/lib/sim/say";
 
-type Tab = "output" | "text" | "look" | "timing";
-const TABS: Tab[] = ["output", "text", "look", "timing"];
+type Tab = "output" | "text" | "intro" | "sound" | "look" | "timing";
+const TABS: Tab[] = ["output", "text", "intro", "sound", "look", "timing"];
 
 type Phase =
   | { at: "idle" }
   | { at: "working"; p: Progress }
-  | { at: "done"; url: string; name: string; size: number }
+  | { at: "done"; url: string; name: string; size: number; silent?: boolean }
   | { at: "error"; msg: string };
 
 const mb = (n: number) => (n / 1048576 < 0.1 ? S("mbSmall") : S("mb", { n: Math.round(n / 104857.6) / 10 }));
@@ -56,7 +59,10 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
   const premium = usePremium();
   const allowed = canExport(account);
   const sb = engine.sb;
-  const meta: Meta = useMemo(() => ({ key: sb.key, world: worldSay(sb)("meta.name"), intro: worldSay(sb)("meta.intro") }), [sb]);
+  // Change 0034: rewritten narration lines and the sound live only in this studio (never in a saved style)
+  const [lines, setLines] = useState<Record<number, string>>({});
+  const [sound, setSound] = useState<Sound>(NO_SOUND);
+  const meta: Meta = useMemo(() => ({ key: sb.key, world: worldSay(sb)("meta.name"), intro: worldSay(sb)("meta.intro"), lines }), [sb, lines]);
   const narrow = () => window.matchMedia("(max-width: 767px)").matches;
 
   registerStudioFonts();
@@ -111,6 +117,29 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
 
   const a = ready > 0 ? scrub.result : null;
   const texts = useMemo(() => (a ? renderText(a, meta) : null), [a, meta]);
+  const cues = useMemo(() => (a ? clipInfo(a, meta).cues : undefined), [a, meta]);
+  const written = useMemo(() => (a ? narration({ plan: a.plan, summary: a.summary, world: meta.world, intro: meta.intro, map: a.map }).map((c) => c.say) : []), [a, meta.world, meta.intro]);
+  const narrationEdit: NarrationEdit = {
+    lines: written, edits: lines,
+    setEdit: (i, v) => setLines((l) => { const n = { ...l }; if (v == null) delete n[i]; else n[i] = v; return n; }),
+  };
+
+  // Preview playback carries the sound; the voice take plays the preview from the start
+  const [command, setCommand] = useState<{ kind: "playFromStart" | "stop"; n: number } | null>(null);
+  const mix = useRef<Mix | null>(null);
+  const recordingTake = useRef(false);
+  const onPlay = useCallback((playing: boolean, frame: number) => {
+    mix.current?.stop(); mix.current = null;
+    if (!playing || recordingTake.current || !hasSound(sound)) return;
+    mix.current = playSound(sound, frame / FPS, clipFrames(plan) / FPS, audioContext().destination);
+  }, [sound, plan]);
+  useEffect(() => () => { mix.current?.stop(); }, []);
+  const soundCtl: SoundCtl = {
+    sound, setSound, clipS: clipFrames(plan) / FPS,
+    // While recording a take, the preview plays without the take's own sound (other sound would leak into the mic)
+    playFromStart: () => { recordingTake.current = true; setCommand((c) => ({ kind: "playFromStart", n: (c?.n ?? 0) + 1 })); },
+    stopPreview: () => { recordingTake.current = false; setCommand((c) => ({ kind: "stop", n: (c?.n ?? 0) + 1 })); },
+  };
   const clipS = clipFrames(plan) / FPS;
   const runS = plan.frames / FPS;
   const span = S("span", { from: sb.fmtT(plan.t0), to: sb.fmtT(plan.t1) });
@@ -134,7 +163,7 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
     setPhase({ at: "working", p: { done: 0, note: S("progress.starting") } });
     const onProgress = (p: Progress) => setPhase({ at: "working", p });
     try {
-      let blob: Blob, name: string;
+      let blob: Blob, name: string, silent = false;
       if (out === "slides") {
         blob = await renderSlides(scrub, style, meta, onProgress, ctl.signal);
         name = exportName(sb.key, plan.label, "slides", "pdf");
@@ -149,13 +178,16 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
         blob = await zip([{ name: `${base}.srt`, blob: t.srt }, { name: `${base}-caption.txt`, blob: t.caption }, { name: `${base}-story.md`, blob: t.story }]);
         name = exportName(sb.key, plan.label, "text", "zip");
       } else {
-        const o = await recordVideo(scrub, style, meta, onProgress, ctl.signal);
+        mix.current?.stop(); mix.current = null;
+        setCommand((c) => ({ kind: "stop", n: (c?.n ?? 0) + 1 }));
+        const o = await recordVideo(scrub, style, meta, onProgress, ctl.signal, sound);
         blob = o.blob;
+        silent = o.silent;
         name = exportName(sb.key, plan.label, style.clean ? `${style.size}-clean` : style.size, o.ext);
       }
       const url = URL.createObjectURL(blob);
       save(url, name);
-      setPhase({ at: "done", url, name, size: blob.size });
+      setPhase({ at: "done", url, name, size: blob.size, silent });
     } catch (e) {
       if (e instanceof Cancelled) setPhase({ at: "idle" });
       else setPhase({ at: "error", msg: e instanceof Error ? e.message : S("error") });
@@ -216,7 +248,7 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
     <Dialog open onClose={onClose} title={S("title")} className="export studio" locked={working} closeLabel={S("close")}>
       <div className="studio-main">
         <PreviewCanvas scrub={scrub} ready={ready} style={style} slides={out === "slides"} world={say("meta.name")} intro={say("meta.intro")}
-          selected={tab === "text" ? selected : null} jump={jump} onSelect={select} onMove={move} />
+          selected={tab === "text" ? selected : null} jump={jump} onSelect={select} onMove={move} cues={cues} command={command} onPlay={onPlay} />
         <div className="studio-side">
           <div className="seg studio-tabs" role="tablist" aria-label={S("settings")}>
             {TABS.map((t) => (
@@ -231,7 +263,9 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
                   {textTab}
                 </>
               )}
-              {tab === "text" && <TextTab style={style} set={setStyle} selected={selected} select={select} />}
+              {tab === "text" && <TextTab style={style} set={setStyle} selected={selected} select={select} narration={narrationEdit} />}
+              {tab === "intro" && <IntroTab style={style} set={setStyle} onPick={() => setCommand((c) => ({ kind: "playFromStart", n: (c?.n ?? 0) + 1 }))} />}
+              {tab === "sound" && <SoundTab ctl={soundCtl} />}
               {tab === "look" && <LookTab style={style} set={setStyle} />}
               {tab === "timing" && (
                 <TimingTab style={style} set={setStyle} plan={plan} range={range} setRange={setRange} events={a?.summary.events ?? []} />
@@ -249,7 +283,7 @@ export default function ExportDialog({ engine, onClose }: { engine: SimEngine; o
               <p className="small">{S(out === "video" ? "keepOpen" : "noteEnd", { note: phase.p.note })}</p>
             </div>
           ) : phase.at === "done" ? (
-            <p className="small export-done" role="status">{S("saved")} <span className="num">{phase.name}</span> ({mb(phase.size)}).</p>
+            <p className="small export-done" role="status">{S("saved")} <span className="num">{phase.name}</span> ({mb(phase.size)}).{phase.silent ? ` ${pageT()("export.studio.sound.silent")}` : ""}</p>
           ) : phase.at === "error" ? (
             <p className="small is-error" role="alert">{phase.msg}</p>
           ) : (

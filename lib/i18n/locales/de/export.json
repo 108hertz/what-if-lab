@@ -54,7 +54,9 @@
       "output": "Ausgabe",
       "text": "Text",
       "look": "Look",
-      "timing": "Timing"
+      "timing": "Timing",
+      "intro": "Intro",
+      "sound": "Ton"
     },
     "mb": "{n} MB",
     "mbSmall": "unter 0,1 MB",
@@ -233,7 +235,90 @@
         "left": "links",
         "right": "rechts",
         "down": "unten"
-      }
+      },
+      "onTheVideo": "Im Video",
+      "preset": {
+        "all": "Alles",
+        "stage": "Nur die Bühne",
+        "text": "Nur Text"
+      },
+      "picturePieces": "Bild",
+      "textPieces": "Text",
+      "piece": {
+        "stage": "Die Welt selbst",
+        "label": "Namensschild der Welt",
+        "clock": "Uhr",
+        "frame": "Bühnenrahmen",
+        "seam": "Linie zwischen den beiden Welten",
+        "chart": "Diagramm unter der Bühne",
+        "cards": "Schatten hinter Titel und Ergebnis"
+      },
+      "titleFace": "Titelschrift ({font})",
+      "bodyFace": "Textschrift ({font})",
+      "fontFallback": "{font} · Gerätebuchstaben für diese Sprache",
+      "italic": "Kursiv",
+      "letterSpacing": "Zeichenabstand",
+      "lineHeight": "Zeilenhöhe",
+      "outline": "Kontur",
+      "shadow": "Schatten",
+      "narrationLines": "Erzählzeilen",
+      "narrationNote": "Aus dem Lauf geschrieben, passend zum Video getimt. Überschreibe eine Zeile, um sie zu ändern; leere sie, um zurückzukehren. Dieselben Zeilen kommen in die Untertiteldatei.",
+      "narrationLine": "Zeile {i}"
+    },
+    "intro": {
+      "template": "Intro",
+      "noneNote": "Keine Intro-Szene: Stattdessen erscheint der einfache Eröffnungstitel (Text → Eröffnungstitel).",
+      "length": "Länge",
+      "tooShort": "Gib dem Intro etwas Zeit, sonst ist es nicht zu sehen.",
+      "bigLine": "Große Zeile",
+      "smallLine": "Kleine Zeile",
+      "tokens": "Du kannst {list} verwenden",
+      "accent": "Akzentfarbe",
+      "fontsNote": "Die Schriften kommen aus Aussehen → Titelschrift und Textschrift.",
+      "mine": "Meine Intros",
+      "mineNote": "Speichere dieses Intro mit Text, Farbe und Länge und nutze es in jeder Welt. Bleibt in diesem Browser.",
+      "saved": "In diesem Browser gespeichert.",
+      "namePlaceholder": "Intro benennen",
+      "nameLabel": "Name des Intros",
+      "save": "Speichern",
+      "delete": "{name} löschen",
+      "copy": "Kopieren",
+      "copied": "Intro kopiert. Füge es auf einem anderen Gerät ein.",
+      "cantCopy": "Kopieren war hier nicht möglich.",
+      "paste": "Einfügen",
+      "off": "Kein Intro",
+      "pastePlaceholder": "Kopiertes Intro hier einfügen",
+      "pasteLabel": "Intro einfügen",
+      "notIntro": "Das ist kein What-If-Lab-Intro.",
+      "use": "Dieses Intro verwenden"
+    },
+    "sound": {
+      "privacy": "Der Ton bleibt auf diesem Gerät: Nichts wird hochgeladen, und er wird nicht behalten, wenn du das Studio schließt.",
+      "voice": "Deine Stimme",
+      "voiceNote": "Drücke Aufnehmen: Die Vorschau läuft von Anfang an, während du darüber sprichst. Am Ende stoppt sie von selbst.",
+      "record": "Sprachaufnahme starten",
+      "again": "Neu aufnehmen",
+      "stop": "Stopp",
+      "remove": "Entfernen",
+      "recording": "Aufnahme läuft",
+      "yourTake": "Deine Aufnahme",
+      "volume": "Lautstärke",
+      "startsAt": "Beginnt bei",
+      "atStart": "dem Anfang",
+      "offsetS": "{n} s",
+      "file": "Audiodatei",
+      "fileNote": "Eine Sprachaufnahme oder Musik von deinem Gerät (MP3, WAV, M4A). Nutze nur Ton, für den du die Rechte hast.",
+      "addFile": "Datei hinzufügen",
+      "replaceFile": "Datei ersetzen",
+      "fadeIn": "Einblenden",
+      "fadeOut": "Ausblenden",
+      "duck": "Datei leiser, während deine Stimme spricht",
+      "noMic": "Kein Mikrofon oder nicht erlaubt. Erlaube das Mikrofon für diese Seite und versuche es erneut.",
+      "takeFailed": "Diese Aufnahme konnte nicht behalten werden. Versuche es erneut.",
+      "cantRead": "Diese Datei konnte nicht gelesen werden. Versuche MP3, WAV oder M4A.",
+      "unsupported": "Dieser Browser kann einem Video keinen Ton hinzufügen. Versuche ein aktuelles Chrome, Edge oder Firefox.",
+      "captionsNote": "Keine Zeit zum Aufnehmen? Schalte Erzählung ein (Tab Text) für Zeilen im Video, oder nutze die Untertiteldatei mit der Stimme deiner App.",
+      "silent": "Dieser Browser hat es ohne Ton aufgenommen."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Ergebniskarte",
       "free1": "Dein Text 1",
       "free2": "Dein Text 2",
-      "free3": "Dein Text 3"
+      "free3": "Dein Text 3",
+      "captions": "Erzählung"
     },
     "layerWhat": {
       "brand": "Der Name in der Ecke",
@@ -291,7 +377,8 @@
       "outro": "Über der Bühne am Ende",
       "free1": "Was du willst",
       "free2": "Was du willst",
-      "free3": "Was du willst"
+      "free3": "Was du willst",
+      "captions": "Zeilen am unteren Rand, getimt zum Lauf"
     },
     "token": {
       "whatif": "Was-wäre-wenn",
@@ -311,7 +398,25 @@
       "vignette": "Dunkle Ränder"
     },
     "worldText": "{world} · Seed {seed}",
-    "freeText": "Dein Text"
+    "freeText": "Dein Text",
+    "intro": {
+      "none": "Keins",
+      "question": "Frage",
+      "countdown": "Countdown",
+      "guess": "Erst raten",
+      "cinema": "Kino",
+      "zoom": "Heranzoomen",
+      "thenNow": "Vorher und nachher"
+    },
+    "introWhat": {
+      "none": "Der einfache Eröffnungstitel",
+      "question": "Das Was-wäre-wenn erscheint Wort für Wort",
+      "countdown": "3 · 2 · 1 über der Bühne",
+      "guess": "Zeit zum Raten, bevor es läuft",
+      "cinema": "Schwarze Balken, der Name der Welt, der Titel",
+      "zoom": "Die Bühne wächst, bis sie das Bild füllt",
+      "thenNow": "Ohne Änderung, dann ein Wischen zur Änderung"
+    }
   },
   "quick": {
     "open": "Diesen Lauf als Video exportieren",
@@ -320,5 +425,33 @@
     "what": "Ein {s} Sekunden langes Querformat-Video dieses Laufs mit Titel, Was-wäre-wenn und Ergebnis, fertig für YouTube oder zum Teilen.",
     "noVideo": "Dieser Browser kann kein Video aufnehmen. Versuche ein aktuelles Chrome, Edge, Firefox oder Safari.",
     "more": "Weitere Formate, Bilder, Text, Folien und dein eigener Stil mit Premium."
+  },
+  "intro": {
+    "before": "Vor der Änderung",
+    "after": "Nach der Änderung",
+    "question": {
+      "kicker": "Was wäre, wenn…",
+      "line": "Finden wir es heraus."
+    },
+    "countdown": {
+      "kicker": "Mach dich bereit",
+      "line": "Gleich geht's los"
+    },
+    "guess": {
+      "kicker": "Erst überlegen",
+      "line": "Was glaubst du, wird passieren?"
+    },
+    "cinema": {
+      "kicker": "Präsentiert",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Genauer hinsehen",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Vorher und nachher",
+      "line": "{world}"
+    }
   }
 }

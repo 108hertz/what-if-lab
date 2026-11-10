@@ -54,7 +54,9 @@
       "output": "出力",
       "text": "テキスト",
       "look": "見た目",
-      "timing": "タイミング"
+      "timing": "タイミング",
+      "intro": "イントロ",
+      "sound": "サウンド"
     },
     "mb": "{n} MB",
     "mbSmall": "0.1 MB未満",
@@ -233,7 +235,90 @@
         "left": "左",
         "right": "右",
         "down": "下"
-      }
+      },
+      "onTheVideo": "動画に入れるもの",
+      "preset": {
+        "all": "すべて",
+        "stage": "ステージのみ",
+        "text": "テキストのみ"
+      },
+      "picturePieces": "映像",
+      "textPieces": "テキスト",
+      "piece": {
+        "stage": "世界そのもの",
+        "label": "世界の名札",
+        "clock": "時計",
+        "frame": "ステージの枠",
+        "seam": "2つの世界の境目",
+        "chart": "ステージの下のグラフ",
+        "cards": "タイトルと結果の背後の影"
+      },
+      "titleFace": "タイトルのフォント（{font}）",
+      "bodyFace": "本文のフォント（{font}）",
+      "fontFallback": "{font} · この言語は端末の文字で表示",
+      "italic": "斜体",
+      "letterSpacing": "文字間隔",
+      "lineHeight": "行の高さ",
+      "outline": "縁取り",
+      "shadow": "影",
+      "narrationLines": "ナレーション",
+      "narrationNote": "シミュレーションから書かれ、動画に合わせて表示されます。書き換えると変わり、空にすると元に戻ります。同じ文が字幕ファイルにも入ります。",
+      "narrationLine": "{i} 行目"
+    },
+    "intro": {
+      "template": "イントロ",
+      "noneNote": "イントロなし：代わりにシンプルな冒頭タイトルが出ます（テキスト → 冒頭タイトル）。",
+      "length": "長さ",
+      "tooShort": "イントロに少し時間をとらないと表示されません。",
+      "bigLine": "大きい行",
+      "smallLine": "小さい行",
+      "tokens": "{list} が使えます",
+      "accent": "アクセントカラー",
+      "fontsNote": "フォントは「見た目 → タイトルのフォント／本文のフォント」で選びます。",
+      "mine": "マイ・イントロ",
+      "mineNote": "このイントロを文・色・長さごと保存して、どの世界でも使えます。このブラウザに保存されます。",
+      "saved": "このブラウザに保存しました。",
+      "namePlaceholder": "イントロの名前",
+      "nameLabel": "イントロ名",
+      "save": "保存",
+      "delete": "{name} を削除",
+      "copy": "コピー",
+      "copied": "イントロをコピーしました。別の端末に貼り付けてください。",
+      "cantCopy": "ここではコピーできませんでした。",
+      "paste": "貼り付け",
+      "off": "イントロなし",
+      "pastePlaceholder": "コピーしたイントロをここに貼り付け",
+      "pasteLabel": "イントロを貼り付け",
+      "notIntro": "What-If Lab のイントロではありません。",
+      "use": "このイントロを使う"
+    },
+    "sound": {
+      "privacy": "音はこの端末の中だけで扱われます：何もアップロードされず、スタジオを閉じると残りません。",
+      "voice": "あなたの声",
+      "voiceNote": "「録音」を押すと、プレビューが最初から再生され、その上に話せます。最後で自動的に止まります。",
+      "record": "ナレーションを録音",
+      "again": "録り直す",
+      "stop": "停止",
+      "remove": "外す",
+      "recording": "録音中",
+      "yourTake": "あなたのテイク",
+      "volume": "音量",
+      "startsAt": "開始位置",
+      "atStart": "最初",
+      "offsetS": "{n} 秒",
+      "file": "音声ファイル",
+      "fileNote": "端末にあるナレーションや音楽（MP3、WAV、M4A）。使う権利のある音だけを使ってください。",
+      "addFile": "ファイルを追加",
+      "replaceFile": "ファイルを差し替え",
+      "fadeIn": "フェードイン",
+      "fadeOut": "フェードアウト",
+      "duck": "声が入る間はファイルを小さく",
+      "noMic": "マイクがないか、許可されていません。このサイトでマイクを許可してもう一度お試しください。",
+      "takeFailed": "そのテイクを残せませんでした。もう一度お試しください。",
+      "cantRead": "ファイルを読み込めませんでした。MP3、WAV、M4A をお試しください。",
+      "unsupported": "このブラウザでは動画に音を入れられません。最新の Chrome、Edge、Firefox をお試しください。",
+      "captionsNote": "録音する時間がない？「テキスト」タブでナレーションをオンにすると動画に文が出ます。字幕ファイルをアプリの読み上げに使うこともできます。",
+      "silent": "このブラウザでは音なしで録画されました。"
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "結果カード",
       "free1": "自由テキスト1",
       "free2": "自由テキスト2",
-      "free3": "自由テキスト3"
+      "free3": "自由テキスト3",
+      "captions": "ナレーション"
     },
     "layerWhat": {
       "brand": "隅に入る名前",
@@ -291,7 +377,8 @@
       "outro": "最後のステージの上に",
       "free1": "好きな内容を",
       "free2": "好きな内容を",
-      "free3": "好きな内容を"
+      "free3": "好きな内容を",
+      "captions": "下に出る文、シミュレーションに合わせて表示"
     },
     "token": {
       "whatif": "もしも",
@@ -311,7 +398,25 @@
       "vignette": "周辺を暗く"
     },
     "worldText": "{world} · シード {seed}",
-    "freeText": "あなたのテキスト"
+    "freeText": "あなたのテキスト",
+    "intro": {
+      "none": "なし",
+      "question": "問いかけ",
+      "countdown": "カウントダウン",
+      "guess": "まず予想",
+      "cinema": "シネマ",
+      "zoom": "ズームイン",
+      "thenNow": "ビフォー・アフター"
+    },
+    "introWhat": {
+      "none": "シンプルな冒頭タイトル",
+      "question": "「もしも」が一語ずつ現れる",
+      "countdown": "ステージの上に 3 · 2 · 1",
+      "guess": "始まる前に予想する時間",
+      "cinema": "黒帯、世界の名前、タイトル",
+      "zoom": "ステージが広がって画面いっぱいに",
+      "thenNow": "変化なしから、変化へワイプ"
+    }
   },
   "quick": {
     "open": "この実行を動画として書き出す",
@@ -320,5 +425,33 @@
     "what": "この実行の {s} 秒の横長動画。タイトル、もしも、結果入りで、YouTube やシェアにそのまま使えます。",
     "noVideo": "このブラウザは動画を録画できません。最新の Chrome、Edge、Firefox、Safari をお試しください。",
     "more": "サイズの追加、画像、テキスト、スライド、自分だけのスタイルは Premium で。"
+  },
+  "intro": {
+    "before": "変える前",
+    "after": "変えた後",
+    "question": {
+      "kicker": "もしも…",
+      "line": "確かめてみよう。"
+    },
+    "countdown": {
+      "kicker": "準備はいい？",
+      "line": "スタートまで"
+    },
+    "guess": {
+      "kicker": "まず考えて",
+      "line": "どうなると思う？"
+    },
+    "cinema": {
+      "kicker": "プレゼンツ",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "よく見て",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "ビフォー・アフター",
+      "line": "{world}"
+    }
   }
 }

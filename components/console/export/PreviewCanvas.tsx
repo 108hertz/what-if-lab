@@ -5,6 +5,7 @@ import { STAGE } from "@/lib/sim/draw";
 import { FPS, Replay, clipFrames, clipPhase, keyMetric } from "@/lib/export/replay";
 import type { Scrubber } from "@/lib/export/scrub";
 import { SLIDE_SIZE, drawVideoFrame, paint, slideTitle, type ClipInfo, type LayerBox } from "@/lib/export/frame";
+import type { Cue } from "@/lib/export/text";
 import { SIZES, type ExportStyle, type LayerId } from "@/lib/export/style";
 import { Icon } from "../../ui/Icon";
 import { pageT } from "@/lib/i18n/page";
@@ -17,7 +18,7 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).
  * The studio preview (change 0022): any frame of the clip, drawn by the same code that renders the file.
  * Drag a text layer to move it; arrow keys nudge the selected one. Plays at 30 fps when asked.
  */
-export default function PreviewCanvas({ scrub, ready, style, slides, world, intro, selected, jump, onSelect, onMove }: {
+export default function PreviewCanvas({ scrub, ready, style, slides, world, intro, selected, jump, onSelect, onMove, cues, command, onPlay }: {
   scrub: Scrubber;
   /** Bumps when the scrubber finishes its analysis. */
   ready: number;
@@ -30,6 +31,12 @@ export default function PreviewCanvas({ scrub, ready, style, slides, world, intr
   jump: { frame: number; n: number } | null;
   onSelect: (id: LayerId) => void;
   onMove: (id: LayerId, x: number, y: number) => void;
+  /** Narration lines for the captions layer (change 0034). */
+  cues?: Cue[];
+  /** Play from the start or stop, from outside (the Sound tab's voice take, an intro pick); changes `n` to repeat. */
+  command?: { kind: "playFromStart" | "stop"; n: number } | null;
+  /** Told when playback starts (with the frame it starts from) and stops, so the studio can play the sound along. */
+  onPlay?: (playing: boolean, frame: number) => void;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLCanvasElement>(null);
@@ -80,7 +87,7 @@ export default function PreviewCanvas({ scrub, ready, style, slides, world, intr
     if (playing) play.current = r;
     const first = r.samples[r.samples.length - 1] ?? { t: plan.t0, ...r.read() };
     const summary = a?.summary ?? { end: first, metric: keyMetric(plan.sb, first), events: [] };
-    const info: ClipInfo = { world, summary, samples: a?.samples };
+    const info: ClipInfo = { world, summary, samples: a?.samples, cues };
     if (slides) {
       paint(style, () => slideTitle(ctx, { world, intro, plan, summary, samples: a?.samples ?? r.samples, index: 1, total: 1 }, a ? scrub.atStep(0) : r));
       boxes.current = [];
@@ -94,7 +101,17 @@ export default function PreviewCanvas({ scrub, ready, style, slides, world, intr
       ctx.strokeRect(sel.x - 4, sel.y - 4, sel.w + 8, sel.h + 8);
       ctx.restore();
     }
-  }, [scrub, ready, style, frame, selected, fit, size.w, slides, world, intro, plan, playing]);
+  }, [scrub, ready, style, frame, selected, fit, size.w, slides, world, intro, plan, playing, cues]);
+
+  // Outside commands and the sound alongside playback (change 0034)
+  useEffect(() => {
+    if (!command || !scrub.result) return;
+    if (command.kind === "playFromStart") { setFrame(0); if (playing) onPlay?.(true, 0); else setPlaying(true); }
+    else setPlaying(false);
+  }, [command]); // eslint-disable-line react-hooks/exhaustive-deps
+  const frameRef = useRef(frame);
+  frameRef.current = frame;
+  useEffect(() => { onPlay?.(playing, frameRef.current); }, [playing]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Playback
   useEffect(() => {

@@ -15,10 +15,12 @@ import { pageT } from "../i18n/page";
 const ex = (k: string, v?: Record<string, string | number>) => pageT()(`export.${k}`, v);
 const exU = (k: string, v?: Record<string, string | number>) => ex(k, v).toLocaleUpperCase(pageT().tag);
 import type { Control, Metric } from "../sim/types";
-import { type Replay, type ReplayPlan, type ReplaySample, type ReplaySummary } from "./replay";
+import { FPS, type Replay, type ReplayPlan, type ReplaySample, type ReplaySummary } from "./replay";
+import type { Cue } from "./text";
+import { INTROS } from "./intro";
 import {
   FONT_FAMILIES, LAYER_IDS, NO_GRADE, SIZES, THEMES, chartRect, colorOf, isNeutral, stageRect,
-  type ExportStyle, type Grade, type Layer, type LayerId, type Palette, type Split,
+  type ExportStyle, type Grade, type Layer, type LayerId, type Palette, type Pieces, type Split,
 } from "./style";
 
 export const SLIDE_SIZE = { W: 1920, H: 1080, w: 960, h: 540 };
@@ -211,7 +213,8 @@ function overlays(ctx: CanvasRenderingContext2D, w: number, h: number, g: Grade)
 // ——— The stage ———
 
 export interface StageOpts {
-  hud?: boolean;
+  /** Which stage pieces to draw (change 0034); all by default. */
+  pieces?: Partial<Pieces>;
   radius?: number;
 }
 
@@ -223,7 +226,9 @@ export interface StageOpts {
  */
 export function drawStage(ctx: CanvasRenderingContext2D, r: Replay, x: number, y: number, w: number, h: number, split: Exclude<Split, "auto">, opts: StageOpts = {}) {
   const sb = r.plan.sb;
-  const hud = opts.hud ?? true, rad = opts.radius ?? 6;
+  const pc = opts.pieces ?? {};
+  const showLabel = pc.label ?? true, showClock = pc.clock ?? true, showSeam = pc.seam ?? true;
+  const rad = opts.radius ?? 6, showFrame = (pc.frame ?? true) && rad > 0;
   ctx.save();
   ctx.beginPath(); ctx.roundRect(x, y, w, h, rad); ctx.clip();
   ctx.fillStyle = C.stage; ctx.fillRect(x, y, w, h);
@@ -256,22 +261,22 @@ export function drawStage(ctx: CanvasRenderingContext2D, r: Replay, x: number, y
       sb.draw({ ctx, ...dc }, p.world);
     }
     if (graded) overlays(ctx, p.w, p.h, G);
-    if (hud) {
+    if (showLabel || showClock) {
       const label = p.alt ? r.plan.label : r.alt ? ex("noChange") : ex("asItIs");
-      const lw = channelTag(ctx, label.toLocaleUpperCase(pageT().tag), 8, 8, p.alt, p.w - 60);
+      const lw = showLabel ? channelTag(ctx, label.toLocaleUpperCase(pageT().tag), 8, 8, p.alt, p.w - 60) : 0;
       const time = sb.fmtT(p.world.t);
       ctx.font = `500 12px ${FONT.mono}`;
       const tw = ctx.measureText(time).width;
-      if (p.w > lw + tw + 50) chip(ctx, time, p.w - tw - 24, 8, STAGE.ink, `500 12px ${FONT.mono}`);
+      if (showClock && p.w > lw + tw + 50) chip(ctx, time, p.w - tw - 24, 8, STAGE.ink, `500 12px ${FONT.mono}`);
     }
     ctx.restore();
   }
-  if (panes.length === 2) {
+  if (panes.length === 2 && showSeam) {
     if (split === "row") dashed(ctx, x + w / 2, y, x + w / 2, y + h);
     else dashed(ctx, x, y + h / 2, x + w, y + h / 2);
   }
   ctx.restore();
-  if (rad > 0) {
+  if (showFrame) {
     ctx.strokeStyle = C.frame; ctx.lineWidth = 1;
     ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, rad); ctx.stroke();
   }
@@ -345,6 +350,17 @@ export interface ClipInfo {
   summary: ReplaySummary;
   /** Every sample of the shown part (from the analysis run), so the chart strip keeps one scale. */
   samples?: ReplaySample[];
+  /** Narration lines for the captions layer (change 0034; `narration()` in text.ts). */
+  cues?: Cue[];
+}
+
+/** The narration line on screen at a video frame, with how visible it is (short fades between lines). */
+export function cueAt(cues: Cue[] | undefined, frame: number): { txt: string; a: number } | null {
+  if (!cues) return null;
+  const s = frame / FPS;
+  const c = cues.find((q) => s >= q.a && s < q.b);
+  if (!c) return null;
+  return { txt: c.say, a: Math.max(0, Math.min(1, (s - c.a) / 0.25, (c.b - s) / 0.25)) };
 }
 
 /** Title shown before the run: the what-if as a question-sized line, or what happens next without one. */
@@ -384,12 +400,27 @@ function rowWidth(ctx: CanvasRenderingContext2D, r: Row): number {
 
 export interface LayerBox { id: LayerId; x: number; y: number; w: number; h: number }
 
+/** Letter spacing in px where the browser supports it (canvas `letterSpacing`); elsewhere text is set as before. */
+function setSpacing(ctx: CanvasRenderingContext2D, px: number) {
+  if ("letterSpacing" in ctx) (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = `${Math.round(px * 100) / 100}px`;
+}
+
+/** Dark outline for light text, light for dark. */
+function outlineFor(color: string): string {
+  if (!/^#[0-9a-f]{6}/i.test(color)) return "#000000";
+  const v = [1, 3, 5].map((i) => parseInt(color.slice(i, i + 2), 16));
+  return 0.299 * v[0] + 0.587 * v[1] + 0.114 * v[2] > 140 ? "#000000" : "#FFFFFF";
+}
+
 /** Build, place and draw one layer; returns where it went. */
-function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: ExportStyle, plan: ReplayPlan, info: ClipInfo, now: ReplaySample, a: number): LayerBox | null {
+function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: ExportStyle, plan: ReplayPlan, info: ClipInfo, now: ReplaySample, a: number, frame: number): LayerBox | null {
   const { w: FW, h: FH } = SIZES[style.size];
   const maxW = Math.max(40, l.w * FW);
-  const fam = l.font === "title" ? F.title : F.body;
+  const fam = l.font === "title" ? F.title : l.font === "body" ? F.body : FONT_FAMILIES[l.font];
   const weight = (l.font === "title" && l.weight === 500 ? 600 : l.weight) as Weight;
+  const it = l.italic ? "italic " : "";
+  const LH = l.leading || 1;
+  const spacing = (px: number) => setSpacing(ctx, l.tracking * px);
   const color = colorOf(style, l.color);
   const up = (s: string) => (l.upper ? s.toUpperCase() : s);
   const kick = Math.max(10, Math.round(l.size * 0.3));
@@ -397,14 +428,14 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
   const m = info.summary.metric;
   const rows: Row[] = [];
   const textRow = (s: string, px: number, col: string, font: string, maxLines: number, lh = 1.08): Row => {
-    ctx.font = font;
-    return { k: "text", lines: wrap(ctx, s, maxW, maxLines), px, lh, color: col, font };
+    ctx.font = font; spacing(px);
+    return { k: "text", lines: wrap(ctx, s, maxW, maxLines), px, lh: lh * LH, color: col, font };
   };
   const pair = (smp: ReplaySample): Row => ({
     k: "pair", px: l.size, base: fmtMetric(m, smp.base[m.k]), alt: smp.alt ? fmtMetric(m, smp.alt[m.k]) : null,
     altLabel: exU("withChanges"), font: fontStr(l.size, weight === 400 ? 500 : weight, F.num),
   });
-  const main = fontStr(l.size, weight, fam);
+  const main = it + fontStr(l.size, weight, fam);
   if (id === "metric") {
     rows.push(textRow(m.label.toUpperCase(), kick, color, kickFont, 1), { k: "gap", px: 8 }, pair(now));
   } else if (id === "intro") {
@@ -421,11 +452,17 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
       const px = Math.max(14, Math.round(l.size * 0.44));
       rows.push({ k: "gap", px: 10 }, textRow(up(body), px, col, fontStr(px, 500, F.body), l.lines, 1.35));
     }
+  } else if (id === "captions") {
+    const cue = cueAt(info.cues, frame);
+    if (!cue || cue.a <= 0) { setSpacing(ctx, 0); return null; }
+    a *= cue.a;
+    rows.push(textRow(up(cue.txt), l.size, color, main, l.lines, 1.25));
   } else {
     const s = up(fillTokens(l.text, plan, info)).trim();
-    if (!s) return null;
+    if (!s) { setSpacing(ctx, 0); return null; }
     rows.push(textRow(s, l.size, color, main, l.lines));
   }
+  spacing(l.size);
   const bw = Math.min(maxW, Math.max(...rows.map((r) => rowWidth(ctx, r))));
   const bh = rows.reduce((s, r) => s + rowHeight(r), 0);
   const left = l.x * FW - l.ax * bw, top = l.y * FH - l.ay * bh;
@@ -439,10 +476,22 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
   const xAt = (rw: number) => (l.align === "left" ? left : l.align === "center" ? left + (bw - rw) / 2 : left + bw - rw);
   let y = top;
   ctx.textBaseline = "alphabetic";
+  // Change 0034: a drop shadow and an outline keep words readable straight on the stage
+  if (l.shadow > 0) {
+    ctx.shadowColor = `rgba(0,0,0,${(0.35 + 0.5 * l.shadow).toFixed(3)})`;
+    ctx.shadowBlur = 4 + 14 * l.shadow; ctx.shadowOffsetY = 1 + 3 * l.shadow;
+  }
   for (const r of rows) {
     if (r.k === "text") {
-      ctx.font = r.font; ctx.fillStyle = r.color;
-      r.lines.forEach((ln, i) => ctx.fillText(ln, xAt(ctx.measureText(ln).width), y + r.px * 0.86 + i * r.px * r.lh));
+      ctx.font = r.font; spacing(r.px); ctx.fillStyle = r.color;
+      r.lines.forEach((ln, i) => {
+        const tx = xAt(ctx.measureText(ln).width), ty = y + r.px * 0.86 + i * r.px * r.lh;
+        if (l.outline > 0) {
+          ctx.lineJoin = "round"; ctx.lineWidth = l.outline * 2; ctx.strokeStyle = outlineFor(r.color);
+          ctx.strokeText(ln, tx, ty);
+        }
+        ctx.fillText(ln, tx, ty);
+      });
     } else if (r.k === "pair") {
       ctx.font = r.font;
       const bwid = Math.max(ctx.measureText(r.base).width, 60);
@@ -459,6 +508,7 @@ function drawLayer(ctx: CanvasRenderingContext2D, id: LayerId, l: Layer, style: 
     }
     y += rowHeight(r);
   }
+  setSpacing(ctx, 0);
   ctx.restore();
   return { id, x: left, y: top, w: bw, h: bh };
 }
@@ -487,10 +537,17 @@ export function drawVideoFrame(ctx: CanvasRenderingContext2D, style: ExportStyle
   const { w, h } = SIZES[style.size];
   const plan = r.plan, m = info.summary.metric;
   const now = r.samples[r.samples.length - 1] ?? info.summary.end;
-  const L = style.layout;
+  const L = style.layout, P = style.pieces;
   ctx.fillStyle = C.bg; ctx.fillRect(0, 0, w, h);
   const st = stageRect(style.size, L.stage, L.chart);
-  drawStage(ctx, r, ...st, splitFor(style, st[2], st[3]), { hud: L.hud, radius: L.stage === "fill" ? 0 : 6 });
+  const radius = L.stage === "fill" ? 0 : 6;
+  const stage = (rect: [number, number, number, number], split: Exclude<Split, "auto">) => {
+    if (P.stage) drawStage(ctx, r, ...rect, split, { pieces: P, radius });
+  };
+  // Change 0034: an intro template draws the stage its own way during the opening hold, then its words fade out
+  const intro = style.clean ? null : introAt(style, plan, frame);
+  if (intro) intro.draw(ctx, style, r, info, st, stage);
+  else stage(st, splitFor(style, st[2], st[3]));
   if (L.chart) {
     const [cx, cy, cw, ch] = chartRect(style.size, L.stage);
     if (L.stage === "fill") { ctx.fillStyle = C.bg; ctx.fillRect(0, cy - 8, w, h - cy + 8); }
@@ -501,11 +558,12 @@ export function drawVideoFrame(ctx: CanvasRenderingContext2D, style: ExportStyle
   if (L.cards) {
     for (const id of ["intro", "outro"] as const) {
       const l = style.layers[id];
+      if (id === "intro" && style.intro.template !== "none") continue;
       const a = l.show ? layerAlpha(l, plan, frame) : 0;
       if (a <= 0) continue;
       ctx.save();
       ctx.globalAlpha = a;
-      ctx.beginPath(); ctx.roundRect(st[0], st[1], st[2], st[3], L.stage === "fill" ? 0 : 6); ctx.clip();
+      ctx.beginPath(); ctx.roundRect(st[0], st[1], st[2], st[3], radius); ctx.clip();
       ctx.fillStyle = alpha(C.stage, 0.9); ctx.fillRect(st[0], st[1], st[2], st[3]);
       ctx.restore();
     }
@@ -514,12 +572,42 @@ export function drawVideoFrame(ctx: CanvasRenderingContext2D, style: ExportStyle
   for (const id of LAYER_IDS) {
     const l = style.layers[id];
     if (!l.show) continue;
+    if (id === "intro" && style.intro.template !== "none") continue;
     const a = layerAlpha(l, plan, frame);
     if (a <= 0.001) continue;
-    const b = drawLayer(ctx, id, l, style, plan, info, now, a);
+    const b = drawLayer(ctx, id, l, style, plan, info, now, a, frame);
     if (b) boxes.push(b);
   }
   return boxes;
+}
+
+/** The intro template in play at a frame, if any: during the opening hold and while its words fade after it. */
+function introAt(style: ExportStyle, plan: ReplayPlan, frame: number) {
+  const I = style.intro;
+  if (I.template === "none" || plan.intro <= 0 || frame >= plan.intro + FADE_FRAMES) return null;
+  const tpl = INTROS[I.template];
+  const hold = frame < plan.intro;
+  return {
+    draw(ctx: CanvasRenderingContext2D, st: ExportStyle, r: Replay, info: ClipInfo, rect: [number, number, number, number], stage: (rc: [number, number, number, number], split: Exclude<Split, "auto">) => void) {
+      const { w, h } = SIZES[st.size];
+      const say = (k: string) => ex(`intro.${I.template}.${k}`);
+      tpl({
+        ctx, w, h, st: rect,
+        p: hold ? frame / plan.intro : 1, sec: frame / FPS, dur: plan.intro / FPS,
+        out: hold ? 1 : Math.max(0, 1 - (frame - plan.intro) / FADE_FRAMES), hold,
+        title: fillTokens(I.title || "{whatif}", plan, info),
+        line: fillTokens(I.line.trim() || say("line"), plan, info),
+        kicker: say("kicker"),
+        accent: colorOf(st, I.accent),
+        colors: { bg: C.bg, ink: C.ink, ink2: C.ink2, stage: C.stage, stageInk: C.stageInk },
+        fonts: { title: F.title, body: F.body },
+        before: exU("intro.before"), after: exU("intro.after"),
+        hasAlt: !!r.alt,
+        stage: (rc, world) => stage(rc, world === "base" ? "base" : splitFor(st, rc[2], rc[3])),
+        wrap,
+      });
+    },
+  };
 }
 
 // ——— Stills ———
@@ -528,7 +616,7 @@ export function drawVideoFrame(ctx: CanvasRenderingContext2D, style: ExportStyle
 export function drawStageStill(ctx: CanvasRenderingContext2D, style: ExportStyle, r: Replay) {
   const { w, h } = SIZES[style.size];
   ctx.fillStyle = C.stage; ctx.fillRect(0, 0, w, h);
-  drawStage(ctx, r, 0, 0, w, h, splitFor(style, w, h), { hud: style.layout.hud, radius: 0 });
+  drawStage(ctx, r, 0, 0, w, h, splitFor(style, w, h), { pieces: style.pieces, radius: 0 });
 }
 
 /** The chart alone, on the background (call inside `paint`). */

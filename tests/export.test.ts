@@ -7,7 +7,8 @@ import { FPS, MAX_RUN_S, MIN_RUN_S, SUB, Replay, clipFrames, keyMoments, planRep
 import {
   drawChartStill, drawStage, drawStageStill, drawVideoFrame, paint, slideMoment, slideOutcome, slideSetup, slideTitle, slideWhatIf, type SlideCtx,
 } from "@/lib/export/frame";
-import { SIZES, SIZE_IDS, defaultStyle, parseStyle, withTheme } from "@/lib/export/style";
+import { ALL_PIECES, INTRO_IDS, SIZES, SIZE_IDS, defaultStyle, parseStyle, withTheme } from "@/lib/export/style";
+import { narration } from "@/lib/export/text";
 import type { AnySandbox } from "@/lib/sim/types";
 import { Scrubber } from "@/lib/export/scrub";
 import { exportName } from "@/components/console/export/render";
@@ -105,7 +106,7 @@ describe.each(SANDBOX_KEYS)("%s export", (key) => {
     const ctx = fakeCtx();
     const styled = { ...withTheme(defaultStyle("phone"), "paper"), grade: { brightness: 0.2, contrast: 0.1, saturation: -0.3, warmth: 0.4, hue: 20, vignette: 0.5 } };
     for (const size of SIZE_IDS) {
-      for (const style of [defaultStyle(size), { ...styled, size }, { ...defaultStyle(size), clean: true, layout: { split: "alt" as const, stage: "fill" as const, chart: true, hud: false, cards: false } }]) {
+      for (const style of [defaultStyle(size), { ...styled, size }, { ...defaultStyle(size), clean: true, layout: { split: "alt" as const, stage: "fill" as const, chart: true, cards: false } }]) {
         for (const f of [0, plan.intro + 1, plan.intro + Math.floor(plan.frames / 2), clipFrames(plan) - 1]) {
           const r = scrub.at(f);
           paint(style, () => drawVideoFrame(ctx, style, r, { world: sb.name, summary, samples: a.samples }, f));
@@ -129,6 +130,33 @@ describe.each(SANDBOX_KEYS)("%s export", (key) => {
       slideMoment(ctx, s(4), r);
       slideOutcome(ctx, s(8));
     });
+  });
+});
+
+describe.each(SANDBOX_KEYS)("%s export: intros, pieces and narration (change 0034)", (key) => {
+  const sb = SANDBOXES[key] as AnySandbox;
+  it("draws every intro template, every piece off and narration, and never changes the run", () => {
+    const plan = planReplay(forkedEngine(key), { timing: { runS: 3, introS: 3, outroS: 1, ease: false } });
+    const scrub = new Scrubber(plan);
+    const a = scrub.finish();
+    const ctx = fakeCtx();
+    const cues = narration({ plan, summary: a.summary, world: sb.name, intro: sb.intro, map: a.map });
+    const info = { world: sb.name, summary: a.summary, samples: a.samples, cues };
+    const base = defaultStyle("phone");
+    const before = JSON.stringify(scrub.at(clipFrames(plan) - 1).read());
+    const styles = [
+      ...INTRO_IDS.map((template) => ({ ...base, intro: { ...base.intro, template } })),
+      { ...base, pieces: { stage: false, label: false, clock: false, frame: false, seam: false }, layout: { ...base.layout, split: "auto" as const } },
+      { ...base, layers: { ...base.layers, captions: { ...base.layers.captions, show: true, outline: 2, shadow: 1, tracking: 0.1, italic: true, font: "lora" as const } } },
+    ];
+    for (const style of styles) {
+      for (const f of [0, Math.floor(plan.intro / 2), plan.intro - 1, plan.intro + 3, plan.intro + Math.floor(plan.frames / 2), clipFrames(plan) - 1]) {
+        paint(style, () => drawVideoFrame(ctx, style, scrub.at(f), info, f));
+      }
+    }
+    // The intro only picks what is drawn: the run ends in the same place
+    expect(JSON.stringify(scrub.at(clipFrames(plan) - 1).read())).toBe(before);
+    expect(ALL_PIECES.stage).toBe(true);
   });
 });
 

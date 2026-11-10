@@ -54,7 +54,9 @@
       "output": "Çıktı",
       "text": "Metin",
       "look": "Görünüm",
-      "timing": "Zamanlama"
+      "timing": "Zamanlama",
+      "intro": "Giriş",
+      "sound": "Ses"
     },
     "mb": "{n} MB",
     "mbSmall": "0,1 MB'tan az",
@@ -233,7 +235,90 @@
         "left": "sola",
         "right": "sağa",
         "down": "aşağı"
-      }
+      },
+      "onTheVideo": "Videoda",
+      "preset": {
+        "all": "Her şey",
+        "stage": "Yalnız sahne",
+        "text": "Yalnız metin"
+      },
+      "picturePieces": "Görüntü",
+      "textPieces": "Metin",
+      "piece": {
+        "stage": "Dünyanın kendisi",
+        "label": "Dünya etiketi",
+        "clock": "Saat",
+        "frame": "Sahne çerçevesi",
+        "seam": "İki dünya arasındaki çizgi",
+        "chart": "Sahnenin altındaki grafik",
+        "cards": "Başlık ve sonucun arkasındaki gölge"
+      },
+      "titleFace": "Başlık yazı tipi ({font})",
+      "bodyFace": "Metin yazı tipi ({font})",
+      "fontFallback": "{font} · bu dil için cihaz harfleri",
+      "italic": "İtalik",
+      "letterSpacing": "Harf aralığı",
+      "lineHeight": "Satır yüksekliği",
+      "outline": "Dış çizgi",
+      "shadow": "Gölge",
+      "narrationLines": "Anlatım satırları",
+      "narrationNote": "Simülasyondan yazıldı, videoya göre zamanlandı. Değiştirmek için bir satırın üstüne yazın; geri dönmek için boşaltın. Aynı satırlar altyazı dosyasına da gider.",
+      "narrationLine": "Satır {i}"
+    },
+    "intro": {
+      "template": "Giriş",
+      "noneNote": "Giriş sahnesi yok: onun yerine sade açılış başlığı görünür (Metin → Açılış başlığı).",
+      "length": "Uzunluk",
+      "tooShort": "Girişe biraz zaman verin, yoksa görünmez.",
+      "bigLine": "Büyük satır",
+      "smallLine": "Küçük satır",
+      "tokens": "{list} kullanabilirsiniz",
+      "accent": "Vurgu rengi",
+      "fontsNote": "Yazı tipleri Görünüm → Başlık yazı tipi ve Metin yazı tipinden gelir.",
+      "mine": "Girişlerim",
+      "mineNote": "Bu girişi metni, rengi ve uzunluğuyla kaydedin ve her dünyada kullanın. Bu tarayıcıda saklanır.",
+      "saved": "Bu tarayıcıda kaydedildi.",
+      "namePlaceholder": "Bu girişe ad verin",
+      "nameLabel": "Giriş adı",
+      "save": "Kaydet",
+      "delete": "{name} sil",
+      "copy": "Kopyala",
+      "copied": "Giriş kopyalandı. Başka bir cihaza yapıştırın.",
+      "cantCopy": "Burada kopyalanamadı.",
+      "paste": "Yapıştır",
+      "off": "Giriş yok",
+      "pastePlaceholder": "Kopyalanan girişi buraya yapıştırın",
+      "pasteLabel": "Giriş yapıştır",
+      "notIntro": "Bu bir What-If Lab girişi değil.",
+      "use": "Bu girişi kullan"
+    },
+    "sound": {
+      "privacy": "Ses bu cihazda kalır: hiçbir şey yüklenmez ve stüdyoyu kapattığınızda saklanmaz.",
+      "voice": "Sesiniz",
+      "voiceNote": "Kaydet'e basın: siz üstüne konuşurken önizleme baştan oynar. Sonunda kendiliğinden durur.",
+      "record": "Seslendirme kaydet",
+      "again": "Yeniden kaydet",
+      "stop": "Durdur",
+      "remove": "Kaldır",
+      "recording": "Kaydediliyor",
+      "yourTake": "Kaydınız",
+      "volume": "Ses düzeyi",
+      "startsAt": "Başlangıç",
+      "atStart": "baştan",
+      "offsetS": "{n} sn",
+      "file": "Ses dosyası",
+      "fileNote": "Cihazınızdan bir seslendirme veya müzik (MP3, WAV, M4A). Yalnızca kullanma hakkınız olan sesleri kullanın.",
+      "addFile": "Dosya ekle",
+      "replaceFile": "Dosyayı değiştir",
+      "fadeIn": "Yavaşça aç",
+      "fadeOut": "Yavaşça kapat",
+      "duck": "Sesiniz konuşurken dosyayı kıs",
+      "noMic": "Mikrofon yok ya da izin verilmedi. Bu site için mikrofona izin verip tekrar deneyin.",
+      "takeFailed": "Bu kayıt saklanamadı. Tekrar deneyin.",
+      "cantRead": "Bu dosya okunamadı. MP3, WAV veya M4A deneyin.",
+      "unsupported": "Bu tarayıcı videoya ses ekleyemiyor. Güncel bir Chrome, Edge veya Firefox deneyin.",
+      "captionsNote": "Kaydetmeye vaktiniz yok mu? Videoda satırlar için Anlatım'ı (Metin sekmesi) açın ya da altyazı dosyasını uygulamanızın kendi sesiyle kullanın.",
+      "silent": "Bu tarayıcı sessiz kaydetti."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "Sonuç kartı",
       "free1": "Metnin 1",
       "free2": "Metnin 2",
-      "free3": "Metnin 3"
+      "free3": "Metnin 3",
+      "captions": "Anlatım"
     },
     "layerWhat": {
       "brand": "Köşedeki ad",
@@ -291,7 +377,8 @@
       "outro": "Sonda sahnenin üstünde",
       "free1": "Ne istersen",
       "free2": "Ne istersen",
-      "free3": "Ne istersen"
+      "free3": "Ne istersen",
+      "captions": "Altta, simülasyona göre zamanlanmış satırlar"
     },
     "token": {
       "whatif": "değişiklik",
@@ -311,7 +398,25 @@
       "vignette": "Koyu kenarlar"
     },
     "worldText": "{world} · tohum {seed}",
-    "freeText": "Metnin"
+    "freeText": "Metnin",
+    "intro": {
+      "none": "Yok",
+      "question": "Soru",
+      "countdown": "Geri sayım",
+      "guess": "Önce tahmin et",
+      "cinema": "Sinema",
+      "zoom": "Yakınlaş",
+      "thenNow": "Önce ve sonra"
+    },
+    "introWhat": {
+      "none": "Sade açılış başlığı",
+      "question": "\"Ya şöyle olsaydı\" kelime kelime yazılır",
+      "countdown": "Sahne üstünde 3 · 2 · 1",
+      "guess": "Başlamadan önce tahmin etme zamanı",
+      "cinema": "Siyah şeritler, dünyanın adı, başlık",
+      "zoom": "Sahne kareyi doldurana kadar büyür",
+      "thenNow": "Değişiklik yok, sonra değişikliğe geçiş"
+    }
   },
   "quick": {
     "open": "Bu çalışmayı video olarak dışa aktar",
@@ -320,5 +425,33 @@
     "what": "Bu çalışmanın başlık, \"ya olursa\" ve sonuçla birlikte {s} saniyelik yatay videosu; YouTube'a ya da paylaşmaya hazır.",
     "noVideo": "Bu tarayıcı video kaydedemiyor. Güncel bir Chrome, Edge, Firefox veya Safari deneyin.",
     "more": "Daha fazla boyut, görsel, metin, slayt ve kendi stiliniz Premium ile."
+  },
+  "intro": {
+    "before": "Değişiklikten önce",
+    "after": "Değişiklikten sonra",
+    "question": {
+      "kicker": "Ya şöyle olsaydı…",
+      "line": "Hadi öğrenelim."
+    },
+    "countdown": {
+      "kicker": "Hazır ol",
+      "line": "Başlıyor"
+    },
+    "guess": {
+      "kicker": "Önce düşün",
+      "line": "Sence ne olacak?"
+    },
+    "cinema": {
+      "kicker": "Sunar",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "Daha yakından bak",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "Önce ve sonra",
+      "line": "{world}"
+    }
   }
 }

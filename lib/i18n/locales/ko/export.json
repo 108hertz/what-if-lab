@@ -54,7 +54,9 @@
       "output": "결과물",
       "text": "글자",
       "look": "모양",
-      "timing": "시간"
+      "timing": "시간",
+      "intro": "인트로",
+      "sound": "소리"
     },
     "mb": "{n} MB",
     "mbSmall": "0.1 MB 미만",
@@ -233,7 +235,90 @@
         "left": "왼쪽으로",
         "right": "오른쪽으로",
         "down": "아래로"
-      }
+      },
+      "onTheVideo": "영상에 넣을 것",
+      "preset": {
+        "all": "전부",
+        "stage": "무대만",
+        "text": "글자만"
+      },
+      "picturePieces": "그림",
+      "textPieces": "글자",
+      "piece": {
+        "stage": "세계 자체",
+        "label": "세계 이름표",
+        "clock": "시계",
+        "frame": "무대 테두리",
+        "seam": "두 세계 사이의 선",
+        "chart": "무대 아래 그래프",
+        "cards": "제목과 결과 뒤 그림자"
+      },
+      "titleFace": "제목 글꼴 ({font})",
+      "bodyFace": "본문 글꼴 ({font})",
+      "fontFallback": "{font} · 이 언어는 기기 글자로 표시",
+      "italic": "기울임",
+      "letterSpacing": "자간",
+      "lineHeight": "줄 높이",
+      "outline": "외곽선",
+      "shadow": "그림자",
+      "narrationLines": "내레이션 줄",
+      "narrationNote": "실행 내용으로 쓰이고 영상에 맞춰 나옵니다. 줄 위에 새로 쓰면 바뀌고, 비우면 원래대로 돌아갑니다. 같은 줄이 자막 파일에도 들어갑니다.",
+      "narrationLine": "{i}번째 줄"
+    },
+    "intro": {
+      "template": "인트로",
+      "noneNote": "인트로 장면 없음: 대신 간단한 시작 제목이 나옵니다 (글자 → 시작 제목).",
+      "length": "길이",
+      "tooShort": "인트로에 시간을 조금 주세요. 아니면 보이지 않아요.",
+      "bigLine": "큰 줄",
+      "smallLine": "작은 줄",
+      "tokens": "{list}를 쓸 수 있어요",
+      "accent": "강조 색",
+      "fontsNote": "글꼴은 모양 → 제목 글꼴과 본문 글꼴에서 정합니다.",
+      "mine": "내 인트로",
+      "mineNote": "이 인트로를 글, 색, 길이와 함께 저장해 어느 세계에서든 쓰세요. 이 브라우저에 보관됩니다.",
+      "saved": "이 브라우저에 저장했어요.",
+      "namePlaceholder": "인트로 이름 짓기",
+      "nameLabel": "인트로 이름",
+      "save": "저장",
+      "delete": "{name} 삭제",
+      "copy": "복사",
+      "copied": "인트로를 복사했어요. 다른 기기에 붙여 넣으세요.",
+      "cantCopy": "여기서는 복사할 수 없었어요.",
+      "paste": "붙여넣기",
+      "off": "인트로 없음",
+      "pastePlaceholder": "복사한 인트로를 여기에 붙여 넣으세요",
+      "pasteLabel": "인트로 붙여넣기",
+      "notIntro": "What-If Lab 인트로가 아니에요.",
+      "use": "이 인트로 쓰기"
+    },
+    "sound": {
+      "privacy": "소리는 이 기기에만 머뭅니다: 아무것도 올라가지 않고, 스튜디오를 닫으면 남지 않아요.",
+      "voice": "내 목소리",
+      "voiceNote": "녹음을 누르면 미리보기가 처음부터 재생되고 그 위에 말하면 돼요. 끝에서 저절로 멈춰요.",
+      "record": "내레이션 녹음",
+      "again": "다시 녹음",
+      "stop": "정지",
+      "remove": "빼기",
+      "recording": "녹음 중",
+      "yourTake": "내 녹음",
+      "volume": "음량",
+      "startsAt": "시작 위치",
+      "atStart": "처음",
+      "offsetS": "{n}초",
+      "file": "오디오 파일",
+      "fileNote": "기기에 있는 내레이션이나 음악 (MP3, WAV, M4A). 쓸 권리가 있는 소리만 쓰세요.",
+      "addFile": "파일 추가",
+      "replaceFile": "파일 바꾸기",
+      "fadeIn": "페이드 인",
+      "fadeOut": "페이드 아웃",
+      "duck": "목소리가 나올 때 파일 소리 줄이기",
+      "noMic": "마이크가 없거나 허용되지 않았어요. 이 사이트에 마이크를 허용하고 다시 시도하세요.",
+      "takeFailed": "그 녹음을 남길 수 없었어요. 다시 시도하세요.",
+      "cantRead": "파일을 읽을 수 없었어요. MP3, WAV, M4A를 시도해 보세요.",
+      "unsupported": "이 브라우저는 영상에 소리를 넣을 수 없어요. 최신 Chrome, Edge, Firefox를 써 보세요.",
+      "captionsNote": "녹음할 시간이 없나요? 글자 탭에서 내레이션을 켜면 영상에 줄이 나와요. 자막 파일을 앱의 읽어 주기 목소리에 쓸 수도 있어요.",
+      "silent": "이 브라우저는 소리 없이 녹화했어요."
     }
   },
   "style": {
@@ -280,7 +365,8 @@
       "outro": "결과 카드",
       "free1": "내 글 1",
       "free2": "내 글 2",
-      "free3": "내 글 3"
+      "free3": "내 글 3",
+      "captions": "내레이션"
     },
     "layerWhat": {
       "brand": "구석의 이름",
@@ -291,7 +377,8 @@
       "outro": "끝날 때 무대 위에",
       "free1": "원하는 무엇이든",
       "free2": "원하는 무엇이든",
-      "free3": "원하는 무엇이든"
+      "free3": "원하는 무엇이든",
+      "captions": "아래쪽 줄, 실행에 맞춰 나옴"
     },
     "token": {
       "whatif": "'만약'",
@@ -311,7 +398,25 @@
       "vignette": "어두운 가장자리"
     },
     "worldText": "{world} · 시드 {seed}",
-    "freeText": "내 글"
+    "freeText": "내 글",
+    "intro": {
+      "none": "없음",
+      "question": "질문",
+      "countdown": "카운트다운",
+      "guess": "먼저 맞혀 보기",
+      "cinema": "시네마",
+      "zoom": "확대",
+      "thenNow": "전과 후"
+    },
+    "introWhat": {
+      "none": "간단한 시작 제목",
+      "question": "'만약'이 한 단어씩 나타남",
+      "countdown": "무대 위 3 · 2 · 1",
+      "guess": "시작 전에 맞혀 볼 시간",
+      "cinema": "검은 띠, 세계 이름, 제목",
+      "zoom": "무대가 커지며 화면을 채움",
+      "thenNow": "바꾸지 않은 세계에서 바꾼 세계로 넘김"
+    }
   },
   "quick": {
     "open": "이번 실행을 동영상으로 내보내기",
@@ -320,5 +425,33 @@
     "what": "제목, 만약에, 결과가 담긴 이번 실행의 {s}초 가로 동영상. YouTube나 공유용으로 바로 쓸 수 있어요.",
     "noVideo": "이 브라우저는 동영상을 녹화할 수 없어요. 최신 Chrome, Edge, Firefox, Safari를 사용해 보세요.",
     "more": "더 많은 크기, 그림, 텍스트, 슬라이드와 나만의 스타일은 Premium에서."
+  },
+  "intro": {
+    "before": "바꾸기 전",
+    "after": "바꾼 후",
+    "question": {
+      "kicker": "만약…",
+      "line": "알아볼까요?"
+    },
+    "countdown": {
+      "kicker": "준비하세요",
+      "line": "시작까지"
+    },
+    "guess": {
+      "kicker": "먼저 생각해 보세요",
+      "line": "어떤 일이 일어날 것 같나요?"
+    },
+    "cinema": {
+      "kicker": "제공",
+      "line": "{world}"
+    },
+    "zoom": {
+      "kicker": "가까이 보기",
+      "line": "{world}"
+    },
+    "thenNow": {
+      "kicker": "전과 후",
+      "line": "{world}"
+    }
   }
 }
