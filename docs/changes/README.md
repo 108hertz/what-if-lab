@@ -39,3 +39,6 @@ get it approved, then implement step by step. Or ask Claude: `/plan-change <what
 | [0033](./0033-search-traffic.md) | Search traffic: a page for every what-if, previews, structured data, every search engine | 2 | in-progress |
 | [0034](./0034-export-studio-second-pass.md) | Export studio, second pass: pick every piece, fonts, voice-over, intro templates, Premium preview link | 3 | in-progress |
 | [0035](./0035-phone-console-and-studio.md) | Phones: the world fills the screen, tools as sheets, results rise from the bottom; full-screen export editor with a tool rail | 1 · 3 | shipped |
+| [0036](./0036-space-camera-3d.md) | Space camera: zoom, pan and a 3D view in the solar and galaxy worlds | 1 | proposed |
+| [0037](./0037-solar-star-systems.md) | Solar world: pick a star system, compare their sizes | 1 | proposed |
+| [0038](./0038-galaxy-catalogue.md) | Galaxy world: pick the galaxies, compare their sizes | 1 | proposed |
