@@ -830,7 +830,7 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 @keyframes tip-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .theme-tip { animation: none; } }
 .langmenu { position: relative; }
-.langmenu-list { inset-inline-start: auto; inset-inline-end: 0; width: min(240px, calc(100vw - 24px)); gap: 0; padding: var(--s-1); max-height: min(70dvh, 520px); overflow-y: auto; }
+.langmenu-list { list-style: none; margin: 0; inset-inline-start: auto; inset-inline-end: 0; width: min(240px, calc(100vw - 24px)); gap: 0; padding: var(--s-1); max-height: min(70dvh, 520px); overflow-y: auto; }
 .langmenu-list a { display: flex; align-items: center; justify-content: space-between; gap: var(--s-2); min-height: 40px; padding: 0 var(--s-2); border-radius: var(--r-ctl); color: var(--label); text-decoration: none; font-size: var(--t-small); }
 .langmenu-list a:hover, .langmenu-list a:focus-visible { background: var(--surface); outline: none; }
 .langmenu-list a { border-inline-start: 2px solid transparent; }
@@ -853,7 +853,7 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 .disclaimer-chip:hover { background: color-mix(in srgb, var(--alt) 12%, transparent); }
 .disclaimer-chip:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
 @media (max-width: 767px) {
-  .disclaimer-chip { width: 44px; min-height: 44px; justify-content: center; padding: 0; margin: 0; border-color: transparent; }
+  .disclaimer-chip { width: 36px; min-height: 36px; justify-content: center; padding: 0; margin: 0 var(--s-1); }
   .disclaimer-chip-text { display: none; }
 }
 @media (min-width: 768px) { .sheet.disclaimer { width: min(420px, calc(100vw - 32px)); } }
@@ -870,6 +870,26 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 .sitemenu .langmenu-list .icon[data-icon="external"] { color: var(--label-2); }
 .sitemenu-ico { display: inline-flex; align-items: center; gap: var(--s-2); }
 .sitemenu-sep { height: 1px; margin: var(--s-1) var(--s-2); background: var(--separator); }
+/* Phones (< 768 px): the lab bar keeps the world tabs, the simulation label and this menu; account, language and theme
+   leave the bar for rows at the top of this menu (sitemenu-phone), so the current world's name fits and nothing hangs
+   off-screen. From 768 px the buttons are back in the bar and the rows hide. */
+.nav-wide { display: contents; }
+@media (max-width: 767px) { .nav-wide { display: none; } }
+@media (min-width: 768px) { .sitemenu-phone { display: none; } }
+.sitemenu-aside { display: inline-flex; align-items: center; gap: var(--s-1); min-width: 0; color: var(--label-2); font-size: var(--t-micro); }
+.sitemenu-aside-text { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* The chevron glyph points down: turn it to "›" for a row that opens a view and "‹" for back, mirrored right to left */
+.sitemenu-aside .icon { transform: rotate(-90deg); }
+.sitemenu-back .icon { transform: rotate(90deg); }
+[dir="rtl"] .sitemenu-aside .icon { transform: rotate(90deg); }
+[dir="rtl"] .sitemenu-back .icon { transform: rotate(-90deg); }
+.sitemenu-back {
+  display: flex; align-items: center; width: 100%; min-height: 40px; padding: 0 var(--s-2); border: 0; border-radius: var(--r-ctl);
+  background: none; color: var(--label-2); font-size: var(--t-small); text-align: start; cursor: pointer;
+}
+.sitemenu-back:hover, .sitemenu-back:focus-visible { background: var(--surface); color: var(--label); outline: none; }
+.sitemenu-account .sitemenu-back { margin: calc(-1 * var(--s-2)) calc(-1 * var(--s-3)) 0; width: calc(100% + 2 * var(--s-3)); }
+.sitemenu .sitemenu-account { width: min(320px, calc(100vw - 24px)); max-height: calc(100dvh - 72px); overflow-y: auto; }
 
 /* Consent banner (change 0027): a small panel bottom-left, under any dialog, never over the transport on wide screens */
 .consent {

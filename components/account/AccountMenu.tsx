@@ -25,7 +25,6 @@ function statusLine(a: Account, t: T): string {
  */
 export default function AccountMenu() {
   const a = useAccount();
-  const premium = usePremium();
   const t = useT();
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
@@ -51,10 +50,7 @@ export default function AccountMenu() {
     items[(i + d + items.length) % items.length]?.focus();
   };
 
-  const run = (fn: () => void) => () => { setOpen(false); fn(); };
-  const signedIn = a.status === "free" || a.status === "premium";
-  const label = signedIn ? a.user?.name ?? t("account.menu.account") : a.status === "signed-out" ? t("account.menu.signIn") : t("account.menu.account");
-  const plan = a.isPremium ? t("account.menu.premium") : signedIn ? t("account.menu.free") : null;
+  const { label, plan } = useAccountLabel();
 
   return (
     <div className="account" ref={wrap}>
@@ -72,46 +68,70 @@ export default function AccountMenu() {
       </button>
       {open && (
         <div className="popover account-menu" id="account-menu" ref={panel} onKeyDown={onKey}>
-          <div className="account-who">
-            {signedIn && a.user ? (
-              <>
-                <span className="account-who-name">{a.user.name}</span>
-                {a.user.email && <span className="small account-who-mail">{a.user.email}</span>}
-              </>
-            ) : (
-              <span className="account-who-name">{t("account.menu.yourAccount")}</span>
-            )}
-            {plan && <span className="micro">{t("account.menu.plan", { plan })}</span>}
-          </div>
-          <p className={`small account-note${a.status === "error" ? " is-error" : ""}`} role={a.status === "error" ? "alert" : undefined}>
-            {statusLine(a, t)}
-            {a.status === "error" && a.isPremium && " " + t("account.status.keepPremium")}
-          </p>
-          <div className="account-actions">
-            {a.status === "signed-out" && (
-              <>
-                <button className="menu-row" onClick={run(a.signIn)}>{t("account.menu.signIn")}</button>
-                <button className="menu-row" onClick={run(a.signUp)}>{t("account.menu.createAccount")}</button>
-              </>
-            )}
-            {(a.status === "signed-out" || a.status === "free") && (
-              <button className="menu-row" onClick={run(() => premium.open("menu"))}>
-                {t("account.menu.goPremium")} <span className="menu-aside">{t("account.menu.price")}</span>
-              </button>
-            )}
-            {a.status === "premium" && <button className="menu-row" onClick={run(a.manage)}>{t("account.menu.manage")}</button>}
-            {signedIn && <button className="menu-row" onClick={run(a.profile)}>{t("account.menu.settings")}</button>}
-            {signedIn && <button className="menu-row" onClick={run(a.signOut)}>{t("account.menu.signOut")}</button>}
-            {a.status === "error" && <button className="menu-row" onClick={run(a.retry)}>{t("account.menu.retry")}</button>}
-          </div>
-          {a.devPremium && (
-            <label className="menu-row dev-toggle">
-              <input type="checkbox" checked={a.devPremium.on} onChange={(e) => a.devPremium?.set(e.target.checked)} />
-              <span>{t("account.menu.devPremium")} <span className="menu-aside">{t("account.menu.devOnly")}</span></span>
-            </label>
-          )}
+          <AccountPanel onDone={() => setOpen(false)} />
         </div>
       )}
     </div>
+  );
+}
+
+/** The button label and plan name for the current account state. */
+export function useAccountLabel(): { label: string; plan: string | null; signedIn: boolean } {
+  const a = useAccount();
+  const t = useT();
+  const signedIn = a.status === "free" || a.status === "premium";
+  const label = signedIn ? a.user?.name ?? t("account.menu.account") : a.status === "signed-out" ? t("account.menu.signIn") : t("account.menu.account");
+  const plan = a.isPremium ? t("account.menu.premium") : signedIn ? t("account.menu.free") : null;
+  return { label, plan, signedIn };
+}
+
+/** What the account popover holds: who you are, the status line and the actions. Also shown inside the site menu on phones. */
+export function AccountPanel({ onDone }: { onDone: () => void }) {
+  const a = useAccount();
+  const premium = usePremium();
+  const t = useT();
+  const { plan, signedIn } = useAccountLabel();
+  const run = (fn: () => void) => () => { onDone(); fn(); };
+  return (
+    <>
+      <div className="account-who">
+        {signedIn && a.user ? (
+          <>
+            <span className="account-who-name">{a.user.name}</span>
+            {a.user.email && <span className="small account-who-mail">{a.user.email}</span>}
+          </>
+        ) : (
+          <span className="account-who-name">{t("account.menu.yourAccount")}</span>
+        )}
+        {plan && <span className="micro">{t("account.menu.plan", { plan })}</span>}
+      </div>
+      <p className={`small account-note${a.status === "error" ? " is-error" : ""}`} role={a.status === "error" ? "alert" : undefined}>
+        {statusLine(a, t)}
+        {a.status === "error" && a.isPremium && " " + t("account.status.keepPremium")}
+      </p>
+      <div className="account-actions">
+        {a.status === "signed-out" && (
+          <>
+            <button className="menu-row" onClick={run(a.signIn)}>{t("account.menu.signIn")}</button>
+            <button className="menu-row" onClick={run(a.signUp)}>{t("account.menu.createAccount")}</button>
+          </>
+        )}
+        {(a.status === "signed-out" || a.status === "free") && (
+          <button className="menu-row" onClick={run(() => premium.open("menu"))}>
+            {t("account.menu.goPremium")} <span className="menu-aside">{t("account.menu.price")}</span>
+          </button>
+        )}
+        {a.status === "premium" && <button className="menu-row" onClick={run(a.manage)}>{t("account.menu.manage")}</button>}
+        {signedIn && <button className="menu-row" onClick={run(a.profile)}>{t("account.menu.settings")}</button>}
+        {signedIn && <button className="menu-row" onClick={run(a.signOut)}>{t("account.menu.signOut")}</button>}
+        {a.status === "error" && <button className="menu-row" onClick={run(a.retry)}>{t("account.menu.retry")}</button>}
+      </div>
+      {a.devPremium && (
+        <label className="menu-row dev-toggle">
+          <input type="checkbox" checked={a.devPremium.on} onChange={(e) => a.devPremium?.set(e.target.checked)} />
+          <span>{t("account.menu.devPremium")} <span className="menu-aside">{t("account.menu.devOnly")}</span></span>
+        </label>
+      )}
+    </>
   );
 }

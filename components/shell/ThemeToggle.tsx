@@ -10,6 +10,17 @@ const store = {
   set: (k: string, v: string) => { try { localStorage.setItem(k, v); } catch {} },
 };
 
+const THEME_EVENT = "lab:theme";
+
+/** Switch the chrome's theme and remember it for this browser. Returns whether it is now light. */
+export function setTheme(light: boolean): boolean {
+  if (light) document.documentElement.dataset.theme = "light";
+  else delete document.documentElement.dataset.theme;
+  store.set("theme", light ? "light" : "dark");
+  window.dispatchEvent(new Event(THEME_EVENT));
+  return light;
+}
+
 /**
  * Graphite (default) ↔ day shift. Only the chrome changes; the stage stays dark. Saved per browser.
  * First visit: once the boot scene has gone, a small tip under the button says light is one click away. It shows once per
@@ -38,6 +49,13 @@ export default function ThemeToggle() {
     return () => { mo.disconnect(); clearTimeout(timer); };
   }, []);
 
+  // The site menu can switch the theme too (phones): follow it.
+  useEffect(() => {
+    const sync = () => setLight(document.documentElement.dataset.theme === "light");
+    window.addEventListener(THEME_EVENT, sync);
+    return () => window.removeEventListener(THEME_EVENT, sync);
+  }, []);
+
   useEffect(() => {
     if (!tip) return;
     const key = (e: KeyboardEvent) => { if (e.key === "Escape") setTip(false); };
@@ -48,12 +66,8 @@ export default function ThemeToggle() {
   }, [tip]);
 
   const toggle = () => {
-    const next = !light;
-    setLight(next);
+    setLight(setTheme(!light));
     setTip(false);
-    if (next) document.documentElement.dataset.theme = "light";
-    else delete document.documentElement.dataset.theme;
-    store.set("theme", next ? "light" : "dark");
   };
   return (
     <div className="themetoggle" ref={wrap}>
