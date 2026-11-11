@@ -1,6 +1,6 @@
 # Space camera: zoom, pan, 3D view
 
-- **Status:** planned
+- **Status:** in-progress
 - **Tier:** free
 - **Owner area:** `lib/sim` · `components`
 - **Changes:** [0036](../changes/0036-space-camera-3d.md)
@@ -19,7 +19,13 @@ worlds get longer and people use the view bar.
 
 - Wheel / pinch zoom towards the pointer; drag rotates; right-drag, Shift-drag or two fingers pan; double-click resets.
 - Keys: `+` / `−` zoom, arrows rotate, `0` reset.
-- View bar on the stage: Top · Tilted · Edge-on, zoom − / +, Follow; solar adds Look / Throw.
+- View bar on the stage (bottom right): Top · Tilted · Edge-on, reset (crosshair), zoom − / +; solar adds Look / Throw
+  (Look is the default). Below 768 px the framings and reset fold behind one orbit button.
+- The camera always follows each world's centre (the Sun; the galaxies' own auto camera); panning and zooming are offsets from it.
+- Solar's "View" setting still picks the starting zoom (inner planets squeezed, to Jupiter, whole system).
+- Tilted solar views show each planet's real orbital tilt (drawn only). Galaxy discs are thin and puff up when disturbed;
+  bulges and ellipticals are round (drawn only, from each star's hash).
+- Orthographic projection; with no camera set (exports, what-if pages) each stage looks exactly as before.
 - The camera is view only: it never changes the simulation, forks, replays, tests or exports.
 - The physics stays flat (all orbits in one plane); depth you see when tilting is drawn, not simulated.
 
@@ -29,6 +35,6 @@ worlds get longer and people use the view bar.
 
 ## Acceptance checks
 
-- [ ] Zoom, rotate, pan and reset work with mouse, trackpad, touch and keys.
-- [ ] Throwing a planet works at any angle in Throw mode.
-- [ ] `npm test` determinism unchanged.
+- [ ] Zoom, rotate, pan and reset work with mouse, trackpad, touch and keys (mouse + keys checked in Chrome; touch and trackpad not yet).
+- [x] Throwing a planet works at a turned angle in Throw mode.
+- [x] `npm test` determinism unchanged.

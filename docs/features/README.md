@@ -13,7 +13,7 @@
 | [Languages](./languages.md) | planned | free |
 | [Analytics and consent](./analytics-and-consent.md) | live in code; on with IDs | both |
 | [Site pages: About, Privacy, Terms](./site-pages.md) | live (placeholders) | free |
-| [Space camera: zoom, pan, 3D view](./space-camera.md) | planned | free |
+| [Space camera: zoom, pan, 3D view](./space-camera.md) | in-progress | free |
 | [Space catalogues: star systems and galaxies](./space-catalogues.md) | planned | free |
 
 New feature? Copy [`_TEMPLATE.md`](./_TEMPLATE.md) and add a row here.

@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Palco da simulação",
-    "edge": "What-If Lab · Semente {seed}"
+    "edge": "What-If Lab · Semente {seed}",
+    "view": {
+      "label": "Vista",
+      "top": "De cima",
+      "tilted": "Inclinada",
+      "edge": "De lado",
+      "zoomIn": "Aproximar",
+      "zoomOut": "Afastar",
+      "reset": "Repor vista",
+      "tool": "O que arrastar faz",
+      "look": "Olhar",
+      "throw": "Lançar"
+    }
   },
   "timeline": {
     "title": "Linha do tempo",

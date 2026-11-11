@@ -46,7 +46,7 @@ function srtTime(s: number): string {
 /** The result in one line: "Temperature at 2100: no change 2.1 °C, what if 1.4 °C. 0.7 °C cooler." */
 export function resultLine(plan: ReplayPlan, summary: ReplaySummary): string {
   const m = summary.metric, end = summary.end;
-  const v = { metric: worldSay(plan.sb)(`metric.${m.k}.label`), t: plan.sb.fmtT(end.t), base: fmtMetric(m, end.base[m.k]) };
+  const v = { metric: worldSay(plan.sb, plan.params)(`metric.${m.k}.label`), t: plan.sb.fmtT(end.t), base: fmtMetric(m, end.base[m.k]) };
   const first = end.alt ? X("resultAlt", { ...v, alt: fmtMetric(m, end.alt[m.k]) }) : X("result", v);
   const d = describeDiff(m, end);
   return first + "." + (d ? ` ${d.txt}.` : "");
@@ -116,7 +116,7 @@ export function toStory(x: TextInput): string {
   }
   out.push(`## ${X("storyChanges")}`, "");
   if (!plan.hasWhatIf) out.push(X("storyNoWhatIf"));
-  else if (plan.changes.length) for (const c of plan.changes) out.push(`- ${sb.fmtT(c.t)}: ${sb.whatifs.some((w) => w[0] === c.id) ? worldSay(sb)(`whatif.${c.id}`) : c.id}`);
+  else if (plan.changes.length) for (const c of plan.changes) out.push(`- ${sb.fmtT(c.t)}: ${sb.whatifs.some((w) => w[0] === c.id) ? worldSay(sb, plan.params)(`whatif.${c.id}`) : c.id}`);
   else out.push(`- ${plan.label}`);
   out.push("");
   const evs = shownEvents(plan, summary.events, 40);
@@ -125,7 +125,7 @@ export function toStory(x: TextInput): string {
   for (const e of evs) out.push(`- **${sb.fmtT(e.t)}** (${who(plan, e).toLowerCase()}): ${eventText(sb, e)}`);
   out.push("", `## ${X("storyChangedBy", { t: sb.fmtT(end.t) })}`, "");
   out.push(end.alt ? `| ${X("storyNumber")} | ${X("noChange")} | ${X("withChanges")} |` : `| ${X("storyNumber")} | ${X("noChange")} |`, end.alt ? "| --- | --- | --- |" : "| --- | --- |");
-  for (const m of sb.metrics) out.push(`| ${cell(worldSay(sb)(`metric.${m.k}.label`))} | ${cell(fmtMetric(m, end.base[m.k]))} |${end.alt ? ` ${cell(fmtMetric(m, end.alt[m.k]))} |` : ""}`);
+  for (const m of sb.metrics) out.push(`| ${cell(worldSay(sb, plan.params)(`metric.${m.k}.label`))} | ${cell(fmtMetric(m, end.base[m.k]))} |${end.alt ? ` ${cell(fmtMetric(m, end.alt[m.k]))} |` : ""}`);
   out.push("", resultLine(plan, summary), "");
   return out.join("\n");
 }

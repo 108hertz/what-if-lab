@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "cmp": {
+    "bh": "buraco negro de {mass} sóis",
+    "cap": "As massas são limitadas para a simulação funcionar: {them} é desenhada com {x}× a massa de {ours} (na verdade cerca de {real}×).",
+    "facts": "{kind} · {stars} estrelas · {mass} sóis de massa",
+    "kly": "{n, number} al",
+    "note": "Diâmetro em escala logarítmica; as estimativas variam. Uma linha escolhe a galáxia que chega. A simulação ajusta as duas ao seu próprio tamanho e número de estrelas.",
+    "ours": "A nossa",
+    "title": "Comparar tamanhos"
+  },
   "ctl": {
     "aim": {
       "label": "Mira fora do centro",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Massa do buraco negro",
-      "unit": "× Via Láctea"
+      "unit": "× nossa galáxia"
     },
     "count": {
       "label": "Galáxias que caem"
@@ -29,8 +38,8 @@
       "what-if-settings": "Ajustes das hipóteses"
     },
     "mass": {
-      "label": "Massa de Andrômeda",
-      "unit": "× Via Láctea"
+      "label": "Massa da galáxia que chega",
+      "unit": "× nossa galáxia"
     },
     "neigh": {
       "label": "Vizinhas no início",
@@ -40,23 +49,43 @@
         "none": "Nenhuma"
       }
     },
+    "ours": {
+      "label": "Nossa galáxia",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grande Nuvem de Magalhães",
+        "m101": "Cata-vento (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andrômeda (M31)",
+        "m33": "Triângulo (M33)",
+        "m51": "Rodamoinho (M51)",
+        "m87": "M87",
+        "mw": "Via Láctea",
+        "smc": "Pequena Nuvem de Magalhães"
+      }
+    },
+    "rsize": {
+      "label": "Tamanho da galáxia que chega",
+      "unit": "× nossa galáxia"
+    },
     "shape": {
-      "label": "Forma de Andrômeda",
+      "label": "Forma da galáxia que chega",
       "opt": {
         "elliptical": "Elíptica",
+        "irregular": "Irregular",
         "spiral": "Espiral"
       }
     },
     "size": {
       "label": "Tamanho delas",
-      "unit": "× Via Láctea"
+      "unit": "× nossa galáxia"
     },
     "speed": {
       "label": "Velocidade de aproximação",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Andrômeda gira",
+      "label": "A galáxia que chega gira",
       "opt": {
         "against": "Contra a nossa",
         "same": "Como a nossa"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Estrelas por galáxia"
+    },
+    "them": {
+      "label": "Galáxia que chega",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grande Nuvem de Magalhães",
+        "m101": "Cata-vento (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andrômeda (M31)",
+        "m33": "Triângulo (M33)",
+        "m51": "Rodamoinho (M51)",
+        "m87": "M87",
+        "mw": "Via Láctea",
+        "smc": "Pequena Nuvem de Magalhães"
+      }
     }
   },
   "ev": {
-    "bhBig": "Um buraco negro {x}× mais pesado que a Via Láctea surge no centro dela",
-    "bhSmall": "Um buraco negro com {pct}% da massa da Via Láctea surge no centro dela",
+    "bhBig": "Surge no centro um buraco negro {x}× tão pesado quanto {ours}",
+    "bhSmall": "Surge no centro um buraco negro com {pct}% da massa de {ours}",
     "bullet": "Uma galáxia atravessa tudo a {speed} km/s",
-    "closing": "Andrômeda se aproxima a cerca de {speed} km/s",
-    "flipmw": "Todas as estrelas da Via Láctea invertem a órbita",
-    "freeze": "Todas as estrelas da Via Láctea param de orbitar",
-    "headon": "Andrômeda vira direto para o nosso centro",
-    "lmc": "A Grande Nuvem de Magalhães gira em volta da Via Láctea",
+    "closing": "{them} se aproxima a cerca de {speed} km/s",
+    "flipmw": "{ours}: todas as estrelas invertem a órbita",
+    "freeze": "{ours}: todas as estrelas param de orbitar",
+    "headon": "{them} vira direto para o nosso centro",
+    "lmc": "A Grande Nuvem de Magalhães orbita {ours}",
     "merge": "Os núcleos se fundem: uma elíptica gigante, “Lactômeda”",
-    "miss": "Andrômeda é desviada para passar de raspão",
+    "mergeAny": "Os núcleos se fundem numa galáxia elíptica gigante",
+    "miss": "{them} é desviada para uma rota de passagem",
     "nodmAll": "A matéria escura some: a gravidade cai para {left}%, e as estrelas de repente estão rápidas demais",
     "nodmSome": "Parte da matéria escura some: a gravidade cai para {left}%, e as estrelas de repente estão rápidas demais",
     "pass1": "Primeira passagem: as galáxias mergulham uma através da outra",
     "punch": "Uma galáxia anã atravessa o nosso centro",
-    "reverse": "Andrômeda dá meia-volta e se afasta",
+    "reverse": "{them} dá meia-volta e se afasta",
     "ring": "Nosso disco ricocheteia num anel de estrelas que se expande",
-    "stop": "Andrômeda para de vez e começa a cair",
+    "stop": "{them} para de repente e começa a cair",
     "swallowed": "Outra galáxia é engolida",
     "swarm": "{n, plural, one {Mais uma galáxia cai} other {Mais # galáxias caem}}",
     "tails": "Elas se afastam, arrastando longas caudas de maré de estrelas",
     "third": "Uma terceira galáxia (como a do Triângulo) cai",
     "triangulum": "A galáxia do Triângulo chega pelo lado"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "a Grande Nuvem de Magalhães",
+    "m101": "a galáxia Cata-vento",
+    "m104": "a galáxia Sombrero",
+    "m31": "Andrômeda",
+    "m33": "a galáxia do Triângulo",
+    "m51": "a galáxia Rodamoinho",
+    "m87": "M87",
+    "mw": "a Via Láctea",
+    "smc": "a Pequena Nuvem de Magalhães"
+  },
+  "kind": {
+    "elliptical": "elíptica",
+    "irregular": "anã irregular",
+    "spiral": "espiral"
+  },
   "meta": {
+    "hint": "Arraste para girar a vista; role ou faça pinça para aproximar. As mudanças se somam.",
     "intro": "A Via Láctea e Andrômeda, na rota real de colisão, aceleradas. Cada ponto é uma estrela.",
     "name": "Galáxias",
     "seoDescription": "Veja a Via Láctea e Andrômeda colidirem, ou envie mais galáxias. Faça a matéria escura sumir, mude a mira ou o giro e compare com o céu intacto. Grátis, no seu navegador.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Estrelas arremessadas",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Uma das maiores galáxias conhecidas, no coração de um aglomerado de galáxias.",
+    "lmc": "Uma anã que orbita a Via Láctea; pode cair nela em alguns bilhões de anos.",
+    "m101": "Uma enorme espiral vista de frente, quase o dobro do nosso tamanho.",
+    "m104": "Um bojo brilhante e uma faixa escura de poeira, vista quase de lado.",
+    "m31": "A grande galáxia mais próxima, a 2,5 milhões de anos-luz e vindo em nossa direção.",
+    "m33": "A terceira maior galáxia do nosso Grupo Local.",
+    "m51": "Uma grande espiral puxada por uma pequena companheira.",
+    "m87": "Uma bola gigante de estrelas; seu buraco negro foi o primeiro fotografado.",
+    "mw": "Nosso lar: uma espiral barrada, com o Sol a meio caminho da borda.",
+    "smc": "A parceira menor da Grande Nuvem, visível no céu do sul."
+  },
+  "pick": {
+    "intro": "Rota de colisão: {ours} contra {them}, acelerado. Cada ponto é uma estrela.",
+    "whatif": {
+      "flipmw": "{ours} gira ao contrário",
+      "freeze": "{ours}: as estrelas param de orbitar",
+      "headon": "Mire {them} bem no centro",
+      "miss": "Faça {them} passar ao lado",
+      "reverse": "Faça {them} dar meia-volta",
+      "stop": "Pare {them} de repente"
     }
   },
   "question": {

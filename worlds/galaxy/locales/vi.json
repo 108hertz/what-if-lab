@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "hố đen {mass} Mặt Trời",
+    "cap": "Khối lượng được giới hạn để mô phỏng chạy được: {them} được vẽ với {x}× khối lượng {ours} (thực tế khoảng {real}×).",
+    "facts": "{kind} · {stars} ngôi sao · khối lượng {mass} Mặt Trời",
+    "kly": "{n, number} nas",
+    "note": "Đường kính theo thang logarit; các ước tính khác nhau. Một hàng chọn thiên hà đang đến. Mô phỏng thu cả hai về kích thước và số sao của riêng nó.",
+    "ours": "Của ta",
+    "title": "So sánh kích thước"
+  },
   "ctl": {
     "aim": {
       "label": "Lệch khỏi tâm",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Khối lượng hố đen",
-      "unit": "× Ngân Hà"
+      "unit": "× thiên hà của ta"
     },
     "count": {
       "label": "Số thiên hà rơi vào"
@@ -29,8 +38,8 @@
       "what-if-settings": "Cài đặt nếu như"
     },
     "mass": {
-      "label": "Khối lượng Andromeda",
-      "unit": "× Ngân Hà"
+      "label": "Khối lượng thiên hà đang đến",
+      "unit": "× thiên hà của ta"
     },
     "neigh": {
       "label": "Láng giềng lúc đầu",
@@ -40,23 +49,43 @@
         "none": "Không có"
       }
     },
+    "ours": {
+      "label": "Thiên hà của ta",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Đám mây Magellan Lớn",
+        "m101": "Chong Chóng (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Tiên Nữ (M31)",
+        "m33": "Tam Giác (M33)",
+        "m51": "Xoáy Nước (M51)",
+        "m87": "M87",
+        "mw": "Ngân Hà",
+        "smc": "Đám mây Magellan Nhỏ"
+      }
+    },
+    "rsize": {
+      "label": "Kích thước thiên hà đang đến",
+      "unit": "× thiên hà của ta"
+    },
     "shape": {
-      "label": "Hình dạng Andromeda",
+      "label": "Hình dạng thiên hà đang đến",
       "opt": {
         "elliptical": "Elip",
+        "irregular": "Không đều",
         "spiral": "Xoắn ốc"
       }
     },
     "size": {
       "label": "Kích thước của chúng",
-      "unit": "× Ngân Hà"
+      "unit": "× thiên hà của ta"
     },
     "speed": {
       "label": "Tốc độ tiến lại",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Andromeda quay",
+      "label": "Thiên hà đang đến quay",
       "opt": {
         "against": "Ngược chiều ta",
         "same": "Cùng chiều ta"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Số sao mỗi thiên hà"
+    },
+    "them": {
+      "label": "Thiên hà đang đến",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Đám mây Magellan Lớn",
+        "m101": "Chong Chóng (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Tiên Nữ (M31)",
+        "m33": "Tam Giác (M33)",
+        "m51": "Xoáy Nước (M51)",
+        "m87": "M87",
+        "mw": "Ngân Hà",
+        "smc": "Đám mây Magellan Nhỏ"
+      }
     }
   },
   "ev": {
-    "bhBig": "Một hố đen nặng gấp {x} lần Ngân Hà xuất hiện ở tâm",
-    "bhSmall": "Một hố đen bằng {pct}% khối lượng Ngân Hà xuất hiện ở tâm",
+    "bhBig": "Một hố đen nặng gấp {x} lần {ours} xuất hiện ở tâm",
+    "bhSmall": "Một hố đen bằng {pct}% khối lượng {ours} xuất hiện ở tâm",
     "bullet": "Một thiên hà lao thẳng xuyên qua với tốc độ {speed} km/s",
-    "closing": "Andromeda đang tiến lại gần với tốc độ khoảng {speed} km/s",
-    "flipmw": "Mọi ngôi sao của Ngân Hà đảo chiều quỹ đạo",
-    "freeze": "Mọi ngôi sao của Ngân Hà ngừng quay quanh tâm",
-    "headon": "Andromeda chuyển hướng lao thẳng vào tâm ta",
-    "lmc": "Đám Mây Magellan Lớn bay quanh Ngân Hà",
+    "closing": "{them} đang tiến lại gần với tốc độ khoảng {speed} km/s",
+    "flipmw": "Mọi ngôi sao trong {ours} đảo chiều quỹ đạo",
+    "freeze": "Mọi ngôi sao trong {ours} ngừng quay quanh quỹ đạo",
+    "headon": "{them} lao thẳng vào tâm của chúng ta",
+    "lmc": "Đám mây Magellan Lớn quay quanh {ours}",
     "merge": "Hai lõi hợp nhất: một thiên hà elip khổng lồ, “Milkomeda”",
-    "miss": "Andromeda bị đẩy sang đường bay lướt qua",
+    "mergeAny": "Các lõi hợp nhất thành một thiên hà elip khổng lồ",
+    "miss": "{them} bị đẩy sang đường bay lướt qua",
     "nodmAll": "Vật chất tối biến mất: lực hấp dẫn giảm còn {left}%, các ngôi sao bỗng quá nhanh",
     "nodmSome": "Một phần vật chất tối biến mất: lực hấp dẫn giảm còn {left}%, các ngôi sao bỗng quá nhanh",
     "pass1": "Lần lướt đầu: hai thiên hà lao xuyên qua nhau",
     "punch": "Một thiên hà lùn đâm xuyên qua tâm ta",
-    "reverse": "Andromeda quay đầu và đi xa dần",
+    "reverse": "{them} quay đầu và rời xa",
     "ring": "Đĩa của ta bật lại thành một vòng sao nở rộng",
-    "stop": "Andromeda dừng hẳn, rồi bắt đầu rơi vào",
+    "stop": "{them} dừng phắt lại rồi bắt đầu rơi",
     "swallowed": "Thêm một thiên hà bị nuốt chửng",
     "swarm": "{n, plural, =1 {Thêm một thiên hà rơi vào} other {Thêm # thiên hà rơi vào}}",
     "tails": "Chúng văng ra xa, kéo theo những cái đuôi thuỷ triều dài bằng sao",
     "third": "Một thiên hà thứ ba (như Tam Giác) rơi vào",
     "triangulum": "Thiên hà Tam Giác trôi vào từ một bên"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "Đám mây Magellan Lớn",
+    "m101": "thiên hà Chong Chóng",
+    "m104": "thiên hà Sombrero",
+    "m31": "Tiên Nữ",
+    "m33": "thiên hà Tam Giác",
+    "m51": "thiên hà Xoáy Nước",
+    "m87": "M87",
+    "mw": "Ngân Hà",
+    "smc": "Đám mây Magellan Nhỏ"
+  },
+  "kind": {
+    "elliptical": "elip",
+    "irregular": "lùn không đều",
+    "spiral": "xoắn ốc"
+  },
   "meta": {
+    "hint": "Kéo để xoay góc nhìn, cuộn hoặc chụm để phóng to. Các thay đổi cộng dồn.",
     "intro": "Ngân Hà và Andromeda, trên đường va chạm thật của chúng, được tua nhanh. Mỗi chấm là một ngôi sao.",
     "name": "Thiên hà",
     "seoDescription": "Xem Ngân Hà và Andromeda va chạm, hoặc thêm nhiều thiên hà. Cho vật chất tối biến mất, đổi hướng hay độ quay rồi so với bầu trời nguyên vẹn. Miễn phí, ngay trên trình duyệt.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Sao bị văng ra",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Một trong những thiên hà lớn nhất từng biết, ở trung tâm một đám thiên hà.",
+    "lmc": "Một thiên hà lùn quay quanh Ngân Hà; có thể rơi vào trong vài tỉ năm nữa.",
+    "m101": "Một xoắn ốc khổng lồ nhìn thẳng mặt, gần gấp đôi thiên hà của ta.",
+    "m104": "Một chỗ phình sáng và một dải bụi tối, nhìn gần như từ cạnh.",
+    "m31": "Thiên hà lớn gần nhất, cách 2,5 triệu năm ánh sáng và đang tiến về phía ta.",
+    "m33": "Thiên hà lớn thứ ba trong Nhóm Địa phương.",
+    "m51": "Một xoắn ốc lớn bị một bạn đồng hành nhỏ kéo.",
+    "m87": "Một khối cầu sao khổng lồ; hố đen của nó là hố đen đầu tiên được chụp ảnh.",
+    "mw": "Nhà của ta: một thiên hà xoắn ốc có thanh, Mặt Trời ở khoảng giữa đường ra rìa.",
+    "smc": "Bạn đồng hành nhỏ của Đám mây Lớn, thấy được từ bầu trời phía nam."
+  },
+  "pick": {
+    "intro": "Đường va chạm: {ours} gặp {them}, tua nhanh. Mỗi chấm là một ngôi sao.",
+    "whatif": {
+      "flipmw": "Cho {ours} quay ngược chiều",
+      "freeze": "Sao trong {ours} ngừng quay",
+      "headon": "Nhắm {them} vào chính tâm",
+      "miss": "Cho {them} bay lướt qua",
+      "reverse": "Cho {them} quay đầu",
+      "stop": "Dừng phắt {them}"
     }
   },
   "question": {

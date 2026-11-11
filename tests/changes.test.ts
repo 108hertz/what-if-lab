@@ -127,7 +127,9 @@ describe.each(SANDBOX_KEYS)("%s: ticking changes off and on", (key) => {
     expect(e.entries.map((x) => [x.rec.id, x.on])).toEqual([[id, true], [other(sb, id), false]]);
     // The same session with the condition set before anything ran
     const f = new SimEngine(sb, defaultParams(sb));
-    f.setParam(ctl.id, v); f.restart();
+    // Same clock as the session (a new star system would otherwise start at its own speed, change 0037)
+    const speed = f.speedIdx;
+    f.setParam(ctl.id, v); f.speedIdx = speed; f.restart();
     run(f, 30); f.change(id); run(f, 40); f.change(other(sb, id)); run(f, 40);
     f.setOn(f.entries[1].key, false);
     expect(e.base).toEqual(f.base);

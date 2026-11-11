@@ -13,10 +13,29 @@
     "venus": "Venus",
     "yourplanet": "planetmu"
   },
+  "cmp": {
+    "au": "{n} SA",
+    "facts": "{kind} · {mass} M☉ · {n, plural, other {# planet}}",
+    "note": "Lebar orbit terluar, dalam skala logaritmik (tiap tanda 10× lebih lebar). Nilai dibulatkan; perkiraan bisa berbeda.",
+    "title": "Bandingkan ukuran"
+  },
   "ctl": {
     "sunm": {
       "label": "Massa Matahari",
       "unit": "× Matahari"
+    },
+    "sys": {
+      "label": "Sistem bintang",
+      "opt": {
+        "alphacen": "Alpha Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (dua matahari)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Tata Surya",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Tampilan",
@@ -31,13 +50,22 @@
     "bh": "Lubang hitam seberat 4 Matahari masuk dari tepi tata surya",
     "escape": "{body} lepas ke ruang antarbintang",
     "giant": "Matahari membengkak jadi raksasa merah selebar 0,85 SA dan kehilangan sepertiga massanya",
+    "giantStar": "{star} membengkak menjadi raksasa merah selebar 0,85 SA dan kehilangan sepertiga massanya",
+    "ignite": "{body} tumbuh menjadi 0,08 massa Matahari dan menyala sebagai katai merah",
     "intoBh": "{body} jatuh ke dalam lubang hitam",
+    "intoStar": "{body} jatuh ke bintang {star}",
     "intoSun": "{body} jatuh ke Matahari",
     "jupstar": "Massa Jupiter bertambah 80× dan menyala sebagai katai merah",
     "mars": "Bumi dipindah ke orbit Mars",
+    "nostar": "{star} lenyap: planet-planet melesat lurus",
+    "nostars": "Kedua bintang lenyap: planet-planet melesat lurus",
     "nosun": "Matahari lenyap: planet-planet melesat lurus",
+    "out": "{body} dipindah 50 % lebih jauh",
     "smash": "{body} menabrak {other}",
+    "star2": "{star} massanya jadi dua kali: tarikan lebih kuat, cahaya 11× lebih terang",
+    "stars2": "Massa kedua bintang jadi dua kali: tarikan lebih kuat, cahaya 11× lebih terang",
     "stop": "Bumi berhenti total di orbitnya",
+    "stopP": "{body} berhenti mendadak di orbitnya",
     "sun2": "Massa Matahari jadi dua kali: tarikan lebih kuat, sinar 11× lebih terang",
     "swallowed": "{body} ditelan raksasa merah",
     "throw": "Kamu melempar planet baru"
@@ -46,9 +74,15 @@
     "changed": "Dengan perubahan",
     "now": "Bumi sekarang"
   },
+  "kind": {
+    "like": "bintang mirip Matahari",
+    "red": "katai merah",
+    "sun": "Matahari",
+    "two": "dua bintang"
+  },
   "meta": {
-    "hint": "Seret untuk melempar planet. Perubahan bertambah.",
-    "intro": "Gravitasi Newton sungguhan untuk Matahari dan delapan planet. Seret di panggung untuk melempar planetmu sendiri.",
+    "hint": "Seret untuk memutar tampilan. Pilih Lempar untuk menambah planet. Perubahan saling menumpuk.",
+    "intro": "Gravitasi Newton sungguhan untuk Matahari dan delapan planet. Perbesar, putar tampilan, atau pilih Lempar dan seret untuk menambah planetmu sendiri.",
     "name": "Tata surya",
     "seoDescription": "Gravitasi Newton sungguhan untuk Matahari dan delapan planet. Gandakan massa Matahari, hapus, ubah Jupiter jadi bintang, atau lempar planetmu sendiri dan lihat orbitnya berubah.",
     "seoTitle": "Simulator Tata Surya: Bagaimana Jika Matahari Lenyap?",
@@ -80,6 +114,16 @@
     "venus": "Venus",
     "yourplanet": "Planetmu"
   },
+  "note": {
+    "alphacen": "Dua bintang mirip Matahari; belum ada planet yang pasti, jadi Bumi ditaruh di tempat yang sehangat rumah.",
+    "cancri": "Dunia lava dengan tahun 18 jam, dan Jupiter sejauh milik kita.",
+    "kepler11": "Enam planet berdesakan di dalam orbit Venus.",
+    "kepler16": "Planet yang mengitari dua matahari.",
+    "kepler90": "Satu-satunya bintang lain yang diketahui punya delapan planet.",
+    "proxima": "Bintang terdekat dari Matahari, 4,2 tahun cahaya jauhnya.",
+    "sol": "Rumah kita: delapan planet sampai Neptunus.",
+    "trappist": "Tujuh planet seukuran Bumi, semuanya lebih dekat ke bintangnya daripada Merkurius ke Matahari."
+  },
   "question": {
     "bh": "Bagaimana jika lubang hitam melintasi tata surya?",
     "giant": "Bagaimana jika Matahari menjadi raksasa merah?",
@@ -90,10 +134,12 @@
     "sun2": "Bagaimana jika massa Matahari dua kali lipat?"
   },
   "speed": {
-    "0": "1 bln/dtk",
-    "1": "6 bln/dtk",
-    "2": "2 thn/dtk",
-    "3": "10 thn/dtk"
+    "0": "1 hr/dtk",
+    "1": "1 mgg/dtk",
+    "2": "1 bln/dtk",
+    "3": "6 bln/dtk",
+    "4": "2 thn/dtk",
+    "5": "10 thn/dtk"
   },
   "status": {
     "boiling": "lautan mendidih",
@@ -101,6 +147,35 @@
     "flying": "melayang pergi",
     "frozen": "membeku",
     "habitable": "layak huni"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Massa bintang",
+      "sunmUnit": "× asli"
+    },
+    "info": {
+      "now": "{planet} sekarang"
+    },
+    "metric": {
+      "dist": "Jarak {planet}–bintang",
+      "temp": "Suhu {planet}"
+    },
+    "view": {
+      "inner": "Semua planet, direnggangkan",
+      "mid": "Separuh dalam",
+      "outer": "Seluruh sistem, skala asli"
+    },
+    "whatif": {
+      "giant": "Bintang menjadi raksasa merah",
+      "giant2": "Bintang yang lebih besar menjadi raksasa merah",
+      "ignite": "{planet} menyala menjadi bintang",
+      "nostar": "Bintang lenyap",
+      "nostars": "Kedua bintang lenyap",
+      "out": "Pindahkan {planet} 50 % lebih jauh",
+      "star2": "Massa bintang jadi dua kali",
+      "stars2": "Massa kedua bintang jadi dua kali",
+      "stop": "{planet} berhenti di orbitnya"
+    }
   },
   "whatif": {
     "bh": "Lubang hitam melintas",

@@ -18,9 +18,11 @@ function valueText(c: Extract<Control, { type: "range" }>, v: number, say: Say) 
 export default function ControlsForm({ engine, onChange }: { engine: SimEngine; onChange: () => void }) {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pending = useRef(new Set<string>());
-  const say = worldSay(engine.sb);
+  const say = worldSay(engine.sb, engine.params);
   const set = (id: string, value: number | string) => {
     const { restarted, keys } = engine.setParam(id, value);
+    const ctl = engine.sb.controls.find((c) => c.type === "select" && c.id === id);
+    if (ctl?.type === "select" && ctl.fresh) { engine.restart(); onChange(); return; }
     if (restarted) {
       // A starting condition: re-run with it, keeping every change (debounced while a slider is dragged)
       for (const k of keys) pending.current.add(k);

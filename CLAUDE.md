@@ -153,8 +153,15 @@ Each sandbox exports a `Sandbox<World, Params>` object:
 
 - **galaxy**: test-particle stars around softened point-mass cores; crude dynamical friction merges cores.
   Up to 10 galaxies (owner indices never reused), ~4,000-star budget; what-if settings are `live` controls
-  read in `apply()`. Fast passes escape friction only well above escape speed (fly-through aims 80 kly off).
-- **solar**: leapfrog N-body, G = 4π² (AU, yr, M☉), dt ≤ 0.0015 yr; merges on collision radius.
+  read in `apply()`. Fast passes escape friction only well above escape speed (fly-through aims 80 kly off). Galaxy catalogue
+  (change 0038, `data.ts`): `ours` / `them` pickers are `fresh` and pre-fill mass (capped 20×), `rsize` and shape; units stay
+  relative to ours; the default pair's run is pinned by `tests/galaxy-catalogue.test.ts`.
+- **solar**: leapfrog N-body, G = 4π² (AU, yr, M☉), dt ≤ 0.0015 yr; merges on collision radius. Star systems (change 0037,
+  `data.ts`): the `sys` picker is `fresh` (starts over); dt = shortest year / 160 (Solar System stays 0.0015); metrics follow
+  `w.watch`; other systems' words come from `reword()`. The default run is pinned by `tests/solar-systems.test.ts`.
+- **space camera** (change 0036, solar + galaxy): `lib/sim/camera.ts` (orthographic orbit camera), gestures in
+  `components/console/stageCamera.ts`, `ViewBar`. View only: `ui.view` is never in a world or a change recipe; with no
+  camera, draw() gives the old framing. Physics stays planar; depth (solar inclinations, galaxy disc thickness) is draw-only.
 - **earth**: 0-D CO₂ + methane model, forcing (incl. pollution haze ∝ emissions) → temperature with a 35-yr lag;
   sea level from expansion + ice above 2 °C (+ Greenland/West Antarctica when tipping points are on). The
   stage (`worlds/earth/scene.ts`) is a painted fjord town; ambient motion uses a draw-only renderer clock.

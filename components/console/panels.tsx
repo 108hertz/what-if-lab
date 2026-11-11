@@ -5,7 +5,7 @@ import type { SimEngine } from "@/lib/sim/engine";
 import ControlsForm from "./ControlsForm";
 import { Icon } from "../ui/Icon";
 import { useT } from "../i18n/I18nProvider";
-import { worldSay } from "@/lib/sim/say";
+import { whatIfsFor, worldSay } from "@/lib/sim/say";
 
 type P = { engine: SimEngine; onChange: () => void };
 
@@ -39,12 +39,12 @@ export function WorldHeader({ engine }: { engine: SimEngine }) {
 /** The what-ifs to pick (every world stacks them, change 0024). Each pick goes on the "Your changes" list. */
 export function WhatIfList({ engine, onChange }: P) {
   const count = (id: string) => engine.applied.filter((x) => x === id).length;
-  const t = useT(), say = worldSay(engine.sb);
+  const t = useT(), say = worldSay(engine.sb, engine.params), list = whatIfsFor(engine.sb, engine.params);
   return (
     <section>
-      <h3 className="headline">{t("console.whatifs.title")}<span className="hcount">{engine.sb.whatifs.length}</span></h3>
+      <h3 className="headline">{t("console.whatifs.title")}<span className="hcount">{list.length}</span></h3>
       <div className="forks">
-        {engine.sb.whatifs.map(([id]) => {
+        {list.map(([id]) => {
           const n = count(id);
           return (
             <button key={id} className="fork" aria-pressed={n > 0} onClick={() => { engine.change(id); onChange(); }}>
@@ -62,7 +62,7 @@ export function WhatIfList({ engine, onChange }: P) {
 export function Readouts({ engine }: { engine: SimEngine }) {
   const { sb } = engine;
   const { base, alt } = engine.readouts();
-  const t = useT(), say = worldSay(sb);
+  const t = useT(), say = worldSay(sb, engine.params);
   return (
     <section>
       <h3 className="headline">{t("console.readouts.title")}</h3>

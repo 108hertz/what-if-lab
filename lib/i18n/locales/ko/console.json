@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "시뮬레이션 무대",
-    "edge": "What-If Lab · 시드 {seed}"
+    "edge": "What-If Lab · 시드 {seed}",
+    "view": {
+      "label": "보기",
+      "top": "위에서",
+      "tilted": "기울임",
+      "edge": "옆에서",
+      "zoomIn": "확대",
+      "zoomOut": "축소",
+      "reset": "보기 초기화",
+      "tool": "드래그 동작",
+      "look": "보기",
+      "throw": "던지기"
+    }
   },
   "timeline": {
     "title": "타임라인",

@@ -373,7 +373,7 @@ export function fillTokens(s: string, plan: ReplayPlan, info: ClipInfo): string 
   const m = info.summary.metric;
   const d = describeDiff(m, info.summary.end);
   const map: Record<string, string> = {
-    whatif: headline(plan, info.world), world: info.world, metric: worldSay(plan.sb)(`metric.${m.k}.label`), result: d?.txt ?? "",
+    whatif: headline(plan, info.world), world: info.world, metric: worldSay(plan.sb, plan.params)(`metric.${m.k}.label`), result: d?.txt ?? "",
     from: plan.sb.fmtT(plan.t0), to: plan.sb.fmtT(plan.t1), seed: String(plan.seed),
   };
   return s.replace(/\{(\w+)\}/g, (all, k: string) => (k in map ? map[k] : all));
@@ -696,7 +696,7 @@ export function slideWhatIf(ctx: CanvasRenderingContext2D, s: SlideCtx, r: Repla
     for (const c of s.plan.changes.slice(0, 6)) {
       text(ctx, sb.fmtT(c.t), 40, y, 12, C.ink2, 500);
       ctx.font = fontStr(14, 400, F.body);
-      text(ctx, clip(ctx, sb.whatifs.some((x) => x[0] === c.id) ? worldSay(sb)(`whatif.${c.id}`) : c.id, 280), 120, y, 14, C.ink);
+      text(ctx, clip(ctx, sb.whatifs.some((x) => x[0] === c.id) ? worldSay(sb, s.plan.params)(`whatif.${c.id}`) : c.id, 280), 120, y, 14, C.ink);
       y += 22;
     }
   } else {
@@ -745,7 +745,7 @@ export function slideOutcome(ctx: CanvasRenderingContext2D, s: SlideCtx) {
     dashed(ctx, Lx, y, WI, y);
     y += 22;
     ctx.font = fontStr(14, 400, F.body);
-    text(ctx, clip(ctx, worldSay(sb)(`metric.${m.k}.label`), 140), Lx, y, 14, C.ink2);
+    text(ctx, clip(ctx, worldSay(sb, s.plan.params)(`metric.${m.k}.label`), 140), Lx, y, 14, C.ink2);
     ctx.font = fontStr(14, 500, F.num);
     const v = (s2: string, x: number, col: string) => { ctx.font = fontStr(14, 500, F.num); ctx.fillStyle = col; ctx.textAlign = "right"; ctx.fillText(clip(ctx, s2, 116), x, y); ctx.textAlign = "left"; };
     v(fmtMetric(m, end.base[m.k]), NC, C.ink);

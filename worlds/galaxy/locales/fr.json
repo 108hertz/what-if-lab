@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "trou noir de {mass} soleils",
+    "cap": "Les masses sont plafonnées pour que la simulation tienne : {them} est dessinée à {x}× la masse de {ours} (en réalité environ {real}×).",
+    "facts": "{kind} · {stars} étoiles · {mass} soleils de masse",
+    "kly": "{n, number} al",
+    "note": "Diamètre sur une échelle logarithmique ; les estimations varient. Une ligne choisit la galaxie qui arrive. La simulation ramène les deux à sa propre taille et à son nombre d’étoiles.",
+    "ours": "La nôtre",
+    "title": "Comparer les tailles"
+  },
   "ctl": {
     "aim": {
       "label": "Visée décentrée",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Masse du trou noir",
-      "unit": "× Voie lactée"
+      "unit": "× notre galaxie"
     },
     "count": {
       "label": "Galaxies qui tombent"
@@ -29,8 +38,8 @@
       "what-if-settings": "Réglages des « et si »"
     },
     "mass": {
-      "label": "Masse d’Andromède",
-      "unit": "× Voie lactée"
+      "label": "Masse de la galaxie qui arrive",
+      "unit": "× notre galaxie"
     },
     "neigh": {
       "label": "Voisines au départ",
@@ -40,23 +49,43 @@
         "none": "Aucune"
       }
     },
+    "ours": {
+      "label": "Notre galaxie",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grand Nuage de Magellan",
+        "m101": "Moulinet (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromède (M31)",
+        "m33": "Triangle (M33)",
+        "m51": "Tourbillon (M51)",
+        "m87": "M87",
+        "mw": "Voie lactée",
+        "smc": "Petit Nuage de Magellan"
+      }
+    },
+    "rsize": {
+      "label": "Taille de la galaxie qui arrive",
+      "unit": "× notre galaxie"
+    },
     "shape": {
-      "label": "Forme d’Andromède",
+      "label": "Forme de la galaxie qui arrive",
       "opt": {
         "elliptical": "Elliptique",
+        "irregular": "Irrégulière",
         "spiral": "Spirale"
       }
     },
     "size": {
       "label": "Leur taille",
-      "unit": "× Voie lactée"
+      "unit": "× notre galaxie"
     },
     "speed": {
       "label": "Vitesse d’approche",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Rotation d’Andromède",
+      "label": "La galaxie qui arrive tourne",
       "opt": {
         "against": "Contraire à la nôtre",
         "same": "Même sens que la nôtre"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Étoiles par galaxie"
+    },
+    "them": {
+      "label": "Galaxie qui arrive",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grand Nuage de Magellan",
+        "m101": "Moulinet (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromède (M31)",
+        "m33": "Triangle (M33)",
+        "m51": "Tourbillon (M51)",
+        "m87": "M87",
+        "mw": "Voie lactée",
+        "smc": "Petit Nuage de Magellan"
+      }
     }
   },
   "ev": {
-    "bhBig": "Un trou noir {x} fois plus lourd que la Voie lactée apparaît en son centre",
-    "bhSmall": "Un trou noir de {pct} % de la masse de la Voie lactée apparaît en son centre",
+    "bhBig": "Un trou noir {x}× aussi lourd que {ours} apparaît en son centre",
+    "bhSmall": "Un trou noir de {pct} % de la masse de {ours} apparaît en son centre",
     "bullet": "Une galaxie traverse tout droit à {speed} km/s",
-    "closing": "Andromède approche à environ {speed} km/s",
-    "flipmw": "Chaque étoile de la Voie lactée inverse son orbite",
-    "freeze": "Toutes les étoiles de la Voie lactée cessent d’orbiter",
-    "headon": "Andromède fonce droit sur notre centre",
-    "lmc": "Le Grand Nuage de Magellan tourne autour de la Voie lactée",
+    "closing": "{them} approche à environ {speed} km/s",
+    "flipmw": "{ours} : toutes ses étoiles inversent leur orbite",
+    "freeze": "{ours} : toutes ses étoiles cessent d’orbiter",
+    "headon": "{them} fonce droit vers notre centre",
+    "lmc": "Le Grand Nuage de Magellan tourne autour de {ours}",
     "merge": "Les cœurs fusionnent : une galaxie elliptique géante, « Milkomeda »",
-    "miss": "Andromède est déviée sur une trajectoire de survol",
+    "mergeAny": "Les noyaux fusionnent en une galaxie elliptique géante",
+    "miss": "{them} est déviée sur une trajectoire de survol",
     "nodmAll": "La matière noire disparaît : la gravité tombe à {left} %, les étoiles vont soudain trop vite",
     "nodmSome": "Une partie de la matière noire disparaît : la gravité tombe à {left} %, les étoiles vont soudain trop vite",
     "pass1": "Premier passage : les galaxies plongent l’une à travers l’autre",
     "punch": "Une galaxie naine traverse notre centre",
-    "reverse": "Andromède fait demi-tour et s’éloigne",
+    "reverse": "{them} fait demi-tour et s’éloigne",
     "ring": "Notre disque rebondit en un anneau d’étoiles qui s’élargit",
-    "stop": "Andromède s’arrête net, puis commence à tomber",
+    "stop": "{them} s’arrête net, puis commence à tomber",
     "swallowed": "Une autre galaxie est avalée",
     "swarm": "{n, plural, one {Une autre galaxie tombe} many {# galaxies de plus tombent} other {# galaxies de plus tombent}}",
     "tails": "Elles s’écartent en traînant de longues queues de marée d’étoiles",
     "third": "Une troisième galaxie (comme celle du Triangle) tombe",
     "triangulum": "La galaxie du Triangle arrive par le côté"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "le Grand Nuage de Magellan",
+    "m101": "la galaxie du Moulinet",
+    "m104": "la galaxie du Sombrero",
+    "m31": "Andromède",
+    "m33": "la galaxie du Triangle",
+    "m51": "la galaxie du Tourbillon",
+    "m87": "M87",
+    "mw": "la Voie lactée",
+    "smc": "le Petit Nuage de Magellan"
+  },
+  "kind": {
+    "elliptical": "elliptique",
+    "irregular": "naine irrégulière",
+    "spiral": "spirale"
+  },
   "meta": {
+    "hint": "Glissez pour tourner la vue, faites défiler ou pincez pour zoomer. Les changements s’additionnent.",
     "intro": "La Voie lactée et Andromède, sur leur vraie trajectoire de collision, en accéléré. Chaque point est une étoile.",
     "name": "Galaxies",
     "seoDescription": "Regardez la Voie lactée et Andromède entrer en collision, ou envoyez d’autres galaxies. Faites disparaître la matière noire, changez la visée ou la rotation et comparez avec le ciel intact. Gratuit, dans votre navigateur.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Étoiles éjectées",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "L’une des plus grandes galaxies connues, au cœur d’un amas de galaxies.",
+    "lmc": "Une naine en orbite autour de la Voie lactée ; elle pourrait y tomber d’ici quelques milliards d’années.",
+    "m101": "Une immense spirale vue de face, presque deux fois plus grande que la nôtre.",
+    "m104": "Un bulbe brillant et une bande de poussière sombre, vue presque par la tranche.",
+    "m31": "La grande galaxie la plus proche, à 2,5 millions d’années-lumière, qui fonce vers nous.",
+    "m33": "La troisième plus grande galaxie de notre Groupe local.",
+    "m51": "Une grande spirale tirée par une petite compagne.",
+    "m87": "Une boule géante d’étoiles ; son trou noir a été le premier photographié.",
+    "mw": "Notre maison : une spirale barrée, le Soleil à mi-chemin du bord.",
+    "smc": "La petite partenaire du Grand Nuage, visible dans le ciel austral."
+  },
+  "pick": {
+    "intro": "Trajectoire de collision : {ours} rencontre {them}, en accéléré. Chaque point est une étoile.",
+    "whatif": {
+      "flipmw": "{ours} tourne dans l’autre sens",
+      "freeze": "{ours} : les étoiles cessent d’orbiter",
+      "headon": "Viser {them} en plein centre",
+      "miss": "Faire passer {them} à côté",
+      "reverse": "Faire faire demi-tour à {them}",
+      "stop": "Arrêter net {them}"
     }
   },
   "question": {

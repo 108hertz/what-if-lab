@@ -1,6 +1,6 @@
 import { cap1, scoped, type Say } from "@/lib/i18n/t";
 import { pageT } from "@/lib/i18n/page";
-import type { AnySandbox, Control, LogEntry, WorldMeta } from "./types";
+import type { AnySandbox, Control, LogEntry, Params, WhatIf, WorldMeta } from "./types";
 
 /**
  * A world's words in the page's language (change 0025). Used by draw(), shared console blocks, timelines and
@@ -50,9 +50,23 @@ const englishOf = (sb: AnySandbox | Words): Record<string, string> => {
   return e;
 };
 
-/** A world's words: a sandbox (labels + messages) or just `{key, messages}` (e.g. a world's stage code). */
-export function worldSay(sb: AnySandbox | Words): Say {
-  return scoped(pageT(), sb.key, englishOf(sb));
+/**
+ * A world's words: a sandbox (labels + messages) or just `{key, messages}` (e.g. a world's stage code). With the
+ * world's settings `p`, a sandbox's `reword()` may say a label another way (change 0037: "The star doubles in mass").
+ */
+export function worldSay(sb: AnySandbox | Words, p?: Params): Say {
+  const say = scoped(pageT(), sb.key, englishOf(sb));
+  const re = p && "controls" in sb ? sb.reword : undefined;
+  if (!re) return say;
+  return (k, v) => {
+    const r = re(p, k);
+    return r ? say(r.k, r.v ? { ...v, ...r.v } : v) : say(k, v);
+  };
+}
+
+/** The what-ifs offered with these settings (a sandbox's `reword()` can hide one, change 0037). */
+export function whatIfsFor(sb: AnySandbox, p: Params): WhatIf[] {
+  return sb.reword ? sb.whatifs.filter(([id]) => sb.reword!(p, `whatif.${id}`) !== null) : sb.whatifs;
 }
 
 /** A world's name and subtitle for the nav, from its meta (no sandbox loaded). */

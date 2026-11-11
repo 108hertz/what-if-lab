@@ -13,10 +13,29 @@
     "venus": "Venere",
     "yourplanet": "il tuo pianeta"
   },
+  "cmp": {
+    "au": "{n} UA",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# pianeta} other {# pianeti}}",
+    "note": "Larghezza dell’orbita più esterna, in scala logaritmica (ogni tacca è 10× più larga). Valori arrotondati; le stime variano.",
+    "title": "Confronta le dimensioni"
+  },
   "ctl": {
     "sunm": {
       "label": "Massa del Sole",
       "unit": "× Sole"
+    },
+    "sys": {
+      "label": "Sistema stellare",
+      "opt": {
+        "alphacen": "Alfa Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (due soli)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Sistema solare",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Vista",
@@ -31,13 +50,22 @@
     "bh": "Un buco nero di 4 Soli entra dal bordo del sistema",
     "escape": "{body} fugge nello spazio interstellare",
     "giant": "Il Sole si gonfia in una gigante rossa larga 0,85 UA e perde un terzo della sua massa",
+    "giantStar": "{star} si gonfia in una gigante rossa larga 0,85 UA e perde un terzo della massa",
+    "ignite": "{body} cresce fino a 0,08 Soli e si accende come nana rossa",
     "intoBh": "{body} cade nel buco nero",
+    "intoStar": "{body} cade nella stella {star}",
     "intoSun": "{body} cade nel Sole",
     "jupstar": "Giove diventa 80 volte più pesante e si accende come nana rossa",
     "mars": "La Terra viene spostata sull'orbita di Marte",
+    "nostar": "{star} svanisce: i pianeti volano via in linea retta",
+    "nostars": "Entrambe le stelle svaniscono: i pianeti volano via in linea retta",
     "nosun": "Il Sole sparisce: i pianeti volano via in linea retta",
+    "out": "{body} viene spostato del 50 % più in fuori",
     "smash": "{body} si schianta contro {other}",
+    "star2": "{star} raddoppia la massa: attrazione più forte, luce 11× più intensa",
+    "stars2": "Entrambe le stelle raddoppiano la massa: attrazione più forte, luce 11× più intensa",
     "stop": "La Terra si ferma di colpo nella sua orbita",
+    "stopP": "{body} si ferma di colpo nella sua orbita",
     "sun2": "Il Sole raddoppia la sua massa: attrazione più forte, luce 11 volte più intensa",
     "swallowed": "{body} viene inghiottito dalla gigante rossa",
     "throw": "Lanci un nuovo pianeta"
@@ -46,9 +74,15 @@
     "changed": "Con cambiamenti",
     "now": "La Terra adesso"
   },
+  "kind": {
+    "like": "stella simile al Sole",
+    "red": "nana rossa",
+    "sun": "il Sole",
+    "two": "due stelle"
+  },
   "meta": {
-    "hint": "Trascina per lanciare un pianeta. I cambiamenti si sommano.",
-    "intro": "Vera gravità newtoniana per il Sole e gli otto pianeti. Trascina sulla scena per lanciare un tuo pianeta.",
+    "hint": "Trascina per ruotare la vista. Scegli Lancia per aggiungere un pianeta. Le modifiche si sommano.",
+    "intro": "Vera gravità newtoniana per il Sole e gli otto pianeti. Ingrandisci, ruota la vista o scegli Lancia e trascina per aggiungere il tuo pianeta.",
     "name": "Sistema solare",
     "seoDescription": "Vera gravità newtoniana per il Sole e gli otto pianeti. Raddoppia la massa del Sole, toglilo, trasforma Giove in una stella o lancia un tuo pianeta e guarda le orbite cambiare.",
     "seoTitle": "Simulatore del sistema solare: e se il Sole sparisse?",
@@ -80,6 +114,16 @@
     "venus": "Venere",
     "yourplanet": "Il tuo pianeta"
   },
+  "note": {
+    "alphacen": "Due stelle simili al Sole; nessun pianeta confermato, quindi la Terra è messa dove farebbe caldo come a casa.",
+    "cancri": "Un mondo di lava con un anno di 18 ore, e un Giove lontano quanto il nostro.",
+    "kepler11": "Sei pianeti stretti dentro l’orbita di Venere.",
+    "kepler16": "Un pianeta che gira attorno a due soli.",
+    "kepler90": "L’unica altra stella nota con otto pianeti.",
+    "proxima": "La stella più vicina al Sole, a 4,2 anni luce.",
+    "sol": "Casa nostra: otto pianeti fino a Nettuno.",
+    "trappist": "Sette pianeti grandi come la Terra, tutti più vicini alla loro stella di quanto Mercurio lo sia al Sole."
+  },
   "question": {
     "bh": "E se un buco nero attraversasse il sistema solare?",
     "giant": "E se il Sole diventasse una gigante rossa?",
@@ -90,10 +134,12 @@
     "sun2": "E se il Sole avesse il doppio della massa?"
   },
   "speed": {
-    "0": "1 mese/s",
-    "1": "6 mesi/s",
-    "2": "2 anni/s",
-    "3": "10 anni/s"
+    "0": "1 g/s",
+    "1": "1 sett./s",
+    "2": "1 mese/s",
+    "3": "6 mesi/s",
+    "4": "2 anni/s",
+    "5": "10 anni/s"
   },
   "status": {
     "boiling": "oceani in ebollizione",
@@ -101,6 +147,35 @@
     "flying": "vola via",
     "frozen": "tutta ghiacciata",
     "habitable": "abitabile"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Massa della stella",
+      "sunmUnit": "× reale"
+    },
+    "info": {
+      "now": "{planet} ora"
+    },
+    "metric": {
+      "dist": "Distanza {planet}–stella",
+      "temp": "Temperatura di {planet}"
+    },
+    "view": {
+      "inner": "Tutti i pianeti, distanziati",
+      "mid": "Metà interna",
+      "outer": "Sistema intero, in scala reale"
+    },
+    "whatif": {
+      "giant": "La stella diventa una gigante rossa",
+      "giant2": "La stella più grande diventa una gigante rossa",
+      "ignite": "{planet} si accende come stella",
+      "nostar": "La stella scompare",
+      "nostars": "Entrambe le stelle scompaiono",
+      "out": "Sposta {planet} del 50 % più in fuori",
+      "star2": "La stella raddoppia la massa",
+      "stars2": "Entrambe le stelle raddoppiano la massa",
+      "stop": "{planet} si ferma nella sua orbita"
+    }
   },
   "whatif": {
     "bh": "Passa un buco nero",

@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Simulationsbühne",
-    "edge": "What-If Lab · Seed {seed}"
+    "edge": "What-If Lab · Seed {seed}",
+    "view": {
+      "label": "Ansicht",
+      "top": "Von oben",
+      "tilted": "Schräg",
+      "edge": "Von der Seite",
+      "zoomIn": "Vergrößern",
+      "zoomOut": "Verkleinern",
+      "reset": "Ansicht zurücksetzen",
+      "tool": "Was Ziehen tut",
+      "look": "Schauen",
+      "throw": "Werfen"
+    }
   },
   "timeline": {
     "title": "Zeitleiste",

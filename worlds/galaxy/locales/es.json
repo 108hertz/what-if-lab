@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "cmp": {
+    "bh": "agujero negro de {mass} soles",
+    "cap": "Las masas se limitan para que la simulación funcione: {them} se dibuja con {x}× la masa de {ours} (en realidad unas {real}×).",
+    "facts": "{kind} · {stars} estrellas · {mass} soles de masa",
+    "kly": "{n, number} al",
+    "note": "Diámetro en escala logarítmica; las estimaciones varían. Una fila elige la galaxia que llega. La simulación ajusta ambas a su propio tamaño y número de estrellas.",
+    "ours": "La nuestra",
+    "title": "Comparar tamaños"
+  },
   "ctl": {
     "aim": {
       "label": "Desvío del centro",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Masa del agujero negro",
-      "unit": "× Vía Láctea"
+      "unit": "× nuestra galaxia"
     },
     "count": {
       "label": "Galaxias que caen"
@@ -29,8 +38,8 @@
       "what-if-settings": "Ajustes del «¿y si…?»"
     },
     "mass": {
-      "label": "Masa de Andrómeda",
-      "unit": "× Vía Láctea"
+      "label": "Masa de la galaxia que llega",
+      "unit": "× nuestra galaxia"
     },
     "neigh": {
       "label": "Vecinas al inicio",
@@ -40,23 +49,43 @@
         "none": "Ninguna"
       }
     },
+    "ours": {
+      "label": "Nuestra galaxia",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Gran Nube de Magallanes",
+        "m101": "Molinete (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andrómeda (M31)",
+        "m33": "Triángulo (M33)",
+        "m51": "Remolino (M51)",
+        "m87": "M87",
+        "mw": "Vía Láctea",
+        "smc": "Pequeña Nube de Magallanes"
+      }
+    },
+    "rsize": {
+      "label": "Tamaño de la galaxia que llega",
+      "unit": "× nuestra galaxia"
+    },
     "shape": {
-      "label": "Forma de Andrómeda",
+      "label": "Forma de la galaxia que llega",
       "opt": {
         "elliptical": "Elíptica",
+        "irregular": "Irregular",
         "spiral": "Espiral"
       }
     },
     "size": {
       "label": "Su tamaño",
-      "unit": "× Vía Láctea"
+      "unit": "× nuestra galaxia"
     },
     "speed": {
       "label": "Velocidad de acercamiento",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Giro de Andrómeda",
+      "label": "La galaxia que llega gira",
       "opt": {
         "against": "Contrario al nuestro",
         "same": "Igual que el nuestro"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Estrellas por galaxia"
+    },
+    "them": {
+      "label": "Galaxia que llega",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Gran Nube de Magallanes",
+        "m101": "Molinete (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andrómeda (M31)",
+        "m33": "Triángulo (M33)",
+        "m51": "Remolino (M51)",
+        "m87": "M87",
+        "mw": "Vía Láctea",
+        "smc": "Pequeña Nube de Magallanes"
+      }
     }
   },
   "ev": {
-    "bhBig": "Aparece en su centro un agujero negro {x} veces más pesado que la Vía Láctea",
-    "bhSmall": "Aparece en su centro un agujero negro con el {pct} % de la masa de la Vía Láctea",
+    "bhBig": "Aparece en su centro un agujero negro {x}× tan pesado como {ours}",
+    "bhSmall": "Aparece en su centro un agujero negro con el {pct} % de la masa de {ours}",
     "bullet": "Una galaxia atraviesa de lado a lado a {speed} km/s",
-    "closing": "Andrómeda se acerca a unos {speed} km/s",
-    "flipmw": "Todas las estrellas de la Vía Láctea invierten su órbita",
-    "freeze": "Todas las estrellas de la Vía Láctea dejan de orbitar",
-    "headon": "Andrómeda gira directo hacia nuestro centro",
-    "lmc": "La Gran Nube de Magallanes gira alrededor de la Vía Láctea",
+    "closing": "{them} se acerca a unos {speed} km/s",
+    "flipmw": "{ours}: todas sus estrellas invierten su órbita",
+    "freeze": "{ours}: todas sus estrellas dejan de orbitar",
+    "headon": "{them} gira directo hacia nuestro centro",
+    "lmc": "La Gran Nube de Magallanes gira alrededor de {ours}",
     "merge": "Los núcleos se fusionan: una sola galaxia elíptica gigante, «Lactómeda»",
-    "miss": "Andrómeda se desvía hacia una trayectoria de paso",
+    "mergeAny": "Los núcleos se fusionan en una galaxia elíptica gigante",
+    "miss": "{them} se desvía hacia una trayectoria de paso",
     "nodmAll": "La materia oscura desaparece: la gravedad baja al {left} % y las estrellas de pronto van demasiado rápido",
     "nodmSome": "Parte de la materia oscura desaparece: la gravedad baja al {left} % y las estrellas de pronto van demasiado rápido",
     "pass1": "Primer paso: las galaxias se atraviesan",
     "punch": "Una galaxia enana atraviesa nuestro centro",
-    "reverse": "Andrómeda da la vuelta y se aleja",
+    "reverse": "{them} da la vuelta y se aleja",
     "ring": "Nuestro disco rebota en un anillo de estrellas que se expande",
-    "stop": "Andrómeda se frena en seco y luego empieza a caer",
+    "stop": "{them} se detiene en seco y empieza a caer",
     "swallowed": "Otra galaxia es engullida",
     "swarm": "{n, plural, one {Cae otra galaxia} other {Caen # galaxias más}}",
     "tails": "Se separan, arrastrando largas colas de marea hechas de estrellas",
     "third": "Cae una tercera galaxia (como Triángulo)",
     "triangulum": "Triángulo llega flotando por un lado"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "la Gran Nube de Magallanes",
+    "m101": "la galaxia del Molinete",
+    "m104": "la galaxia del Sombrero",
+    "m31": "Andrómeda",
+    "m33": "la galaxia del Triángulo",
+    "m51": "la galaxia del Remolino",
+    "m87": "M87",
+    "mw": "la Vía Láctea",
+    "smc": "la Pequeña Nube de Magallanes"
+  },
+  "kind": {
+    "elliptical": "elíptica",
+    "irregular": "enana irregular",
+    "spiral": "espiral"
+  },
   "meta": {
+    "hint": "Arrastra para girar la vista; desplaza o pellizca para acercar. Los cambios se suman.",
     "intro": "La Vía Láctea y Andrómeda, en su verdadero rumbo de choque, a cámara rápida. Cada punto es una estrella.",
     "name": "Galaxias",
     "seoDescription": "Mira chocar la Vía Láctea y Andrómeda, o lanza más galaxias. Haz desaparecer la materia oscura, cambia la puntería o el giro y compáralo con el cielo intacto. Gratis, en tu navegador.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Estrellas expulsadas",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Una de las mayores galaxias conocidas, en el corazón de un cúmulo de galaxias.",
+    "lmc": "Una enana que orbita la Vía Láctea; podría caer en ella en unos miles de millones de años.",
+    "m101": "Una enorme espiral vista de frente, casi el doble de grande que la nuestra.",
+    "m104": "Un bulbo brillante y una franja de polvo oscura, vista casi de canto.",
+    "m31": "La gran galaxia más cercana, a 2,5 millones de años luz y viniendo hacia nosotros.",
+    "m33": "La tercera galaxia más grande de nuestro Grupo Local.",
+    "m51": "Una gran espiral a la que tira una pequeña compañera.",
+    "m87": "Una bola gigante de estrellas; su agujero negro fue el primero fotografiado.",
+    "mw": "Nuestro hogar: una espiral barrada, con el Sol a medio camino del borde.",
+    "smc": "La compañera menor de la Gran Nube, visible desde el cielo del sur."
+  },
+  "pick": {
+    "intro": "Rumbo de choque: {ours} contra {them}, acelerado. Cada punto es una estrella.",
+    "whatif": {
+      "flipmw": "{ours} gira al revés",
+      "freeze": "{ours}: las estrellas dejan de orbitar",
+      "headon": "Apunta {them} justo al centro",
+      "miss": "Haz que {them} pase de largo",
+      "reverse": "Haz que {them} dé la vuelta",
+      "stop": "Detén en seco {them}"
     }
   },
   "question": {

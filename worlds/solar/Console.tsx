@@ -1,12 +1,29 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import StandardConsole from "@/components/console/StandardConsole";
+import ViewBar from "@/components/console/ViewBar";
 import { useWorldEngine } from "@/components/console/engines";
 import { solar } from "./sim";
-import { throwPlanet } from "./interaction";
+import { SOLAR_PITCH, solarStage } from "./interaction";
+import CompareSizes from "./Compare";
 
-/** The solar world's console. Starts from the standard layout; diverges in its own change. */
+/**
+ * The solar world's console: the standard layout, with the space camera and Look / Throw on the stage (change 0036),
+ * and "Compare sizes" under the settings (change 0037).
+ */
 export default function SolarConsole() {
   const [engine, rerender] = useWorldEngine(solar);
-  return <StandardConsole engine={engine} onChange={rerender} interaction={throwPlanet} />;
+  // A new star system is a new size: the camera goes back to that system's own framing
+  const sys = useRef(engine.params.sys);
+  useEffect(() => {
+    if (sys.current === engine.params.sys) return;
+    sys.current = engine.params.sys;
+    if (engine.ui.view) engine.ui.view = { ...engine.ui.view, zoom: 1, tx: 0, ty: 0, tz: 0 };
+  });
+  return (
+    <StandardConsole engine={engine} onChange={rerender} interaction={solarStage}
+      onStage={<ViewBar engine={engine} onChange={rerender} pitch={SOLAR_PITCH} throwable />}
+      afterTune={<CompareSizes engine={engine} onChange={rerender} />} />
+  );
 }

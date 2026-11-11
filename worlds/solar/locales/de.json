@@ -13,10 +13,29 @@
     "venus": "Venus",
     "yourplanet": "dein Planet"
   },
+  "cmp": {
+    "au": "{n} AE",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# Planet} other {# Planeten}}",
+    "note": "Breite der äußersten Umlaufbahn, logarithmisch (jede Marke ist 10× breiter). Gerundete Werte; Schätzungen schwanken.",
+    "title": "Größen vergleichen"
+  },
   "ctl": {
     "sunm": {
       "label": "Sonnenmasse",
       "unit": "× Sonne"
+    },
+    "sys": {
+      "label": "Sternsystem",
+      "opt": {
+        "alphacen": "Alpha Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (zwei Sonnen)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Sonnensystem",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Ansicht",
@@ -31,13 +50,22 @@
     "bh": "Ein Schwarzes Loch mit 4 Sonnenmassen kommt vom Rand des Systems herein",
     "escape": "{body} entkommt in den interstellaren Raum",
     "giant": "Die Sonne bläht sich zu einem Roten Riesen von 0,85 AE auf und verliert ein Drittel ihrer Masse",
+    "giantStar": "{star} bläht sich zu einem Roten Riesen von 0,85 AE auf und verliert ein Drittel seiner Masse",
+    "ignite": "{body} wächst auf 0,08 Sonnenmassen und leuchtet als Roter Zwerg auf",
     "intoBh": "{body} stürzt ins Schwarze Loch",
+    "intoStar": "{body} stürzt in den Stern {star}",
     "intoSun": "{body} stürzt in die Sonne",
     "jupstar": "Jupiter bekommt 80-mal so viel Masse und leuchtet als Roter Zwerg auf",
     "mars": "Die Erde wird auf die Marsbahn verschoben",
+    "nostar": "{star} verschwindet: Die Planeten fliegen geradeaus davon",
+    "nostars": "Beide Sterne verschwinden: Die Planeten fliegen geradeaus davon",
     "nosun": "Die Sonne verschwindet: Die Planeten fliegen geradeaus davon",
+    "out": "{body} wird 50 % weiter nach außen versetzt",
     "smash": "{body} kracht in {other}",
+    "star2": "{star} verdoppelt seine Masse: stärkere Anziehung, 11× helleres Sternenlicht",
+    "stars2": "Beide Sterne verdoppeln ihre Masse: stärkere Anziehung, 11× helleres Sternenlicht",
     "stop": "Die Erde bleibt auf ihrer Bahn stehen",
+    "stopP": "{body} bleibt auf seiner Bahn stehen",
     "sun2": "Die Sonne verdoppelt ihre Masse: stärkere Anziehung, 11-mal helleres Sonnenlicht",
     "swallowed": "{body} wird vom Roten Riesen verschluckt",
     "throw": "Du wirfst einen neuen Planeten hinein"
@@ -46,9 +74,15 @@
     "changed": "Mit Änderungen",
     "now": "Erde jetzt"
   },
+  "kind": {
+    "like": "sonnenähnlicher Stern",
+    "red": "Roter Zwerg",
+    "sun": "die Sonne",
+    "two": "zwei Sterne"
+  },
   "meta": {
-    "hint": "Ziehen, um einen Planeten zu werfen. Änderungen addieren sich.",
-    "intro": "Echte newtonsche Schwerkraft für die Sonne und acht Planeten. Zieh auf der Bühne, um deinen eigenen Planeten hineinzuwerfen.",
+    "hint": "Ziehen dreht die Ansicht. Wähle Werfen, um einen Planeten hinzuzufügen. Änderungen addieren sich.",
+    "intro": "Echte newtonsche Schwerkraft für die Sonne und acht Planeten. Zoome, dreh die Ansicht oder wähle Werfen und zieh, um deinen eigenen Planeten hinzuzufügen.",
     "name": "Sonnensystem",
     "seoDescription": "Echte newtonsche Schwerkraft für die Sonne und acht Planeten. Verdopple die Masse der Sonne, entferne sie, mach Jupiter zum Stern oder wirf deinen eigenen Planeten hinein und sieh, wie sich die Bahnen ändern.",
     "seoTitle": "Sonnensystem-Simulator: Was wäre, wenn die Sonne verschwände?",
@@ -80,6 +114,16 @@
     "venus": "Venus",
     "yourplanet": "Dein Planet"
   },
+  "note": {
+    "alphacen": "Zwei sonnenähnliche Sterne; kein Planet bestätigt, daher steht die Erde dort, wo es so warm wäre wie zu Hause.",
+    "cancri": "Eine Lavawelt mit einem 18-Stunden-Jahr und ein Jupiter so weit draußen wie unserer.",
+    "kepler11": "Sechs Planeten dicht gepackt innerhalb der Venusbahn.",
+    "kepler16": "Ein Planet, der zwei Sonnen umkreist.",
+    "kepler90": "Der einzige andere bekannte Stern mit acht Planeten.",
+    "proxima": "Der nächste Stern zur Sonne, 4,2 Lichtjahre entfernt.",
+    "sol": "Unser Zuhause: acht Planeten bis zum Neptun.",
+    "trappist": "Sieben erdgroße Planeten, alle näher an ihrem Stern als Merkur an der Sonne."
+  },
   "question": {
     "bh": "Was wäre, wenn ein Schwarzes Loch durch das Sonnensystem fliegen würde?",
     "giant": "Was wäre, wenn die Sonne zum Roten Riesen würde?",
@@ -90,10 +134,12 @@
     "sun2": "Was wäre, wenn die Sonne doppelt so schwer wäre?"
   },
   "speed": {
-    "0": "1 Mon./s",
-    "1": "6 Mon./s",
-    "2": "2 J./s",
-    "3": "10 J./s"
+    "0": "1 T./s",
+    "1": "1 Wo./s",
+    "2": "1 Mon./s",
+    "3": "6 Mon./s",
+    "4": "2 J./s",
+    "5": "10 J./s"
   },
   "status": {
     "boiling": "Ozeane kochen",
@@ -101,6 +147,35 @@
     "flying": "fliegt davon",
     "frozen": "tiefgefroren",
     "habitable": "bewohnbar"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Sternmasse",
+      "sunmUnit": "× echt"
+    },
+    "info": {
+      "now": "{planet} jetzt"
+    },
+    "metric": {
+      "dist": "Abstand {planet}–Stern",
+      "temp": "Temperatur auf {planet}"
+    },
+    "view": {
+      "inner": "Alle Planeten, gespreizt",
+      "mid": "Innere Hälfte",
+      "outer": "Ganzes System, maßstabsgetreu"
+    },
+    "whatif": {
+      "giant": "Der Stern wird ein Roter Riese",
+      "giant2": "Der größere Stern wird ein Roter Riese",
+      "ignite": "{planet} zündet zum Stern",
+      "nostar": "Der Stern verschwindet",
+      "nostars": "Beide Sterne verschwinden",
+      "out": "{planet} 50 % weiter nach außen setzen",
+      "star2": "Der Stern verdoppelt seine Masse",
+      "stars2": "Beide Sterne verdoppeln ihre Masse",
+      "stop": "{planet} bleibt auf seiner Bahn stehen"
+    }
   },
   "whatif": {
     "bh": "Ein Schwarzes Loch fliegt hindurch",

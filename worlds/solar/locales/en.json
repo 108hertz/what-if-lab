@@ -13,10 +13,29 @@
     "venus": "Venus",
     "yourplanet": "your planet"
   },
+  "cmp": {
+    "au": "{n} AU",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# planet} other {# planets}}",
+    "note": "Width of the outermost orbit, on a log scale (each mark is 10× wider). Rounded values; estimates vary.",
+    "title": "Compare sizes"
+  },
   "ctl": {
     "sunm": {
       "label": "Sun mass",
       "unit": "× Sun"
+    },
+    "sys": {
+      "label": "Star system",
+      "opt": {
+        "alphacen": "Alpha Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (two suns)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Solar System",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "View",
@@ -31,13 +50,22 @@
     "bh": "A black hole of 4 Suns enters from the edge of the system",
     "escape": "{body} escapes into interstellar space",
     "giant": "The Sun swells to a red giant 0.85 AU wide and loses a third of its mass",
+    "giantStar": "{star} swells to a red giant 0.85 AU wide and loses a third of its mass",
+    "ignite": "{body} grows to 0.08 Suns and lights up as a red dwarf",
     "intoBh": "{body} falls into the black hole",
+    "intoStar": "{body} falls into {star}",
     "intoSun": "{body} falls into the Sun",
     "jupstar": "Jupiter gains 80× its mass and lights up as a red dwarf",
     "mars": "Earth is moved out to Mars’s orbit",
+    "nostar": "{star} vanishes: planets fly off in straight lines",
+    "nostars": "Both stars vanish: planets fly off in straight lines",
     "nosun": "The Sun vanishes: planets fly off in straight lines",
+    "out": "{body} is moved 50 % further out",
     "smash": "{body} smashes into {other}",
+    "star2": "{star} doubles in mass: stronger pull, starlight 11× brighter",
+    "stars2": "Both stars double in mass: stronger pull, starlight 11× brighter",
     "stop": "Earth stops dead in its orbit",
+    "stopP": "{body} stops dead in its orbit",
     "sun2": "The Sun doubles in mass: stronger pull, sunlight 11× brighter",
     "swallowed": "{body} is swallowed by the red giant",
     "throw": "You throw in a new planet"
@@ -46,9 +74,15 @@
     "changed": "With changes",
     "now": "Earth now"
   },
+  "kind": {
+    "like": "Sun-like star",
+    "red": "red dwarf",
+    "sun": "the Sun",
+    "two": "two stars"
+  },
   "meta": {
-    "hint": "Drag to throw a planet. Changes add up.",
-    "intro": "Real Newtonian gravity for the Sun and eight planets. Drag on the stage to throw in your own planet.",
+    "hint": "Drag to turn the view. Pick Throw to add a planet. Changes add up.",
+    "intro": "Real Newtonian gravity for the Sun and eight planets. Zoom, turn the view, or pick Throw and drag to add your own planet.",
     "name": "Solar system",
     "seoDescription": "Real Newtonian gravity for the Sun and eight planets. Double the Sun's mass, remove it, turn Jupiter into a star or throw in your own planet, and watch the orbits change.",
     "seoTitle": "Solar System Simulator: What if the Sun disappeared?",
@@ -80,6 +114,16 @@
     "venus": "Venus",
     "yourplanet": "Your planet"
   },
+  "note": {
+    "alphacen": "Two Sun-like stars; no planet confirmed, so Earth is placed where it would be as warm as at home.",
+    "cancri": "A lava world with an 18-hour year, and a Jupiter as far out as ours.",
+    "kepler11": "Six planets packed inside Venus's orbit.",
+    "kepler16": "A planet that orbits two suns.",
+    "kepler90": "The only other star known with eight planets.",
+    "proxima": "The nearest star to the Sun, 4.2 light years away.",
+    "sol": "Our home: eight planets out to Neptune.",
+    "trappist": "Seven Earth-size planets, all closer to their star than Mercury is to the Sun."
+  },
   "question": {
     "bh": "What if a black hole flew through the solar system?",
     "giant": "What if the Sun became a red giant?",
@@ -90,10 +134,12 @@
     "sun2": "What if the Sun were twice as massive?"
   },
   "speed": {
-    "0": "1 mo/s",
-    "1": "6 mo/s",
-    "2": "2 yr/s",
-    "3": "10 yr/s"
+    "0": "1 d/s",
+    "1": "1 wk/s",
+    "2": "1 mo/s",
+    "3": "6 mo/s",
+    "4": "2 yr/s",
+    "5": "10 yr/s"
   },
   "status": {
     "boiling": "oceans boiling",
@@ -101,6 +147,35 @@
     "flying": "flying away",
     "frozen": "frozen solid",
     "habitable": "habitable"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Star mass",
+      "sunmUnit": "× real"
+    },
+    "info": {
+      "now": "{planet} now"
+    },
+    "metric": {
+      "dist": "{planet}–star distance",
+      "temp": "{planet} temperature"
+    },
+    "view": {
+      "inner": "All planets, spread out",
+      "mid": "Inner half",
+      "outer": "Whole system, true scale"
+    },
+    "whatif": {
+      "giant": "The star becomes a red giant",
+      "giant2": "The bigger star becomes a red giant",
+      "ignite": "{planet} ignites into a star",
+      "nostar": "The star disappears",
+      "nostars": "Both stars disappear",
+      "out": "Move {planet} 50 % further out",
+      "star2": "The star doubles in mass",
+      "stars2": "Both stars double in mass",
+      "stop": "{planet} stops in its orbit"
+    }
   },
   "whatif": {
     "bh": "A black hole flies through",

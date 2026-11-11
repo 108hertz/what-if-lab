@@ -13,10 +13,29 @@
     "venus": "Wenus",
     "yourplanet": "Twoja planeta"
   },
+  "cmp": {
+    "au": "{n} AU",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# planeta} few {# planety} many {# planet} other {# planety}}",
+    "note": "Szerokość najdalszej orbity w skali logarytmicznej (każda kreska to 10× więcej). Wartości zaokrąglone; szacunki się różnią.",
+    "title": "Porównaj rozmiary"
+  },
   "ctl": {
     "sunm": {
       "label": "Masa Słońca",
       "unit": "× Słońce"
+    },
+    "sys": {
+      "label": "Układ gwiezdny",
+      "opt": {
+        "alphacen": "Alfa Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (dwa słońca)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Układ Słoneczny",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Widok",
@@ -31,13 +50,22 @@
     "bh": "Czarna dziura o masie 4 Słońc wlatuje z krawędzi układu",
     "escape": "{body}: ucieczka w przestrzeń międzygwiezdną",
     "giant": "Słońce puchnie w czerwonego olbrzyma szerokiego na 0,85 AU i traci jedną trzecią masy",
+    "giantStar": "Gwiazda {star} puchnie do czerwonego olbrzyma o średnicy 0,85 AU i traci jedną trzecią masy",
+    "ignite": "{body} rośnie do 0,08 masy Słońca i zapala się jako czerwony karzeł",
     "intoBh": "{body}: wpada do czarnej dziury",
+    "intoStar": "{body} spada na gwiazdę {star}",
     "intoSun": "{body}: wpada w Słońce",
     "jupstar": "Jowisz zyskuje 80× swojej masy i rozbłyska jako czerwony karzeł",
     "mars": "Ziemia zostaje przesunięta na orbitę Marsa",
+    "nostar": "Gwiazda {star} znika: planety odlatują po liniach prostych",
+    "nostars": "Obie gwiazdy znikają: planety odlatują po liniach prostych",
     "nosun": "Słońce znika: planety odlatują po liniach prostych",
+    "out": "{body} zostaje przesunięta o 50 % dalej",
     "smash": "Zderzenie: {body} i {other}",
+    "star2": "Gwiazda {star} podwaja masę: silniejsze przyciąganie, światło 11× jaśniejsze",
+    "stars2": "Obie gwiazdy podwajają masę: silniejsze przyciąganie, światło 11× jaśniejsze",
     "stop": "Ziemia staje w miejscu na swojej orbicie",
+    "stopP": "{body} nagle staje na orbicie",
     "sun2": "Słońce podwaja masę: silniejsze przyciąganie, światło 11× jaśniejsze",
     "swallowed": "{body}: pochłonięcie przez czerwonego olbrzyma",
     "throw": "Wrzucasz nową planetę"
@@ -46,9 +74,15 @@
     "changed": "Ze zmianami",
     "now": "Ziemia teraz"
   },
+  "kind": {
+    "like": "gwiazda podobna do Słońca",
+    "red": "czerwony karzeł",
+    "sun": "Słońce",
+    "two": "dwie gwiazdy"
+  },
   "meta": {
-    "hint": "Przeciągnij, aby rzucić planetę. Zmiany się sumują.",
-    "intro": "Prawdziwa grawitacja Newtona dla Słońca i ośmiu planet. Przeciągnij po scenie, aby wrzucić własną planetę.",
+    "hint": "Przeciągnij, aby obrócić widok. Wybierz Rzuć, aby dodać planetę. Zmiany się sumują.",
+    "intro": "Prawdziwa grawitacja Newtona dla Słońca i ośmiu planet. Przybliżaj, obracaj widok albo wybierz Rzuć i przeciągnij, aby dodać własną planetę.",
     "name": "Układ Słoneczny",
     "seoDescription": "Prawdziwa grawitacja Newtona dla Słońca i ośmiu planet. Podwój masę Słońca, usuń je, zrób z Jowisza gwiazdę lub wrzuć własną planetę i patrz, jak zmieniają się orbity.",
     "seoTitle": "Symulator Układu Słonecznego: co jeśli Słońce zniknie?",
@@ -80,6 +114,16 @@
     "venus": "Wenus",
     "yourplanet": "Twoja planeta"
   },
+  "note": {
+    "alphacen": "Dwie gwiazdy podobne do Słońca; żadnej potwierdzonej planety, więc Ziemia stoi tam, gdzie byłoby tak ciepło jak w domu.",
+    "cancri": "Świat lawy z rokiem trwającym 18 godzin i Jowisz tak daleko jak nasz.",
+    "kepler11": "Sześć planet ściśniętych wewnątrz orbity Wenus.",
+    "kepler16": "Planeta, która krąży wokół dwóch słońc.",
+    "kepler90": "Jedyna inna znana gwiazda z ośmioma planetami.",
+    "proxima": "Najbliższa Słońcu gwiazda, 4,2 roku świetlnego od nas.",
+    "sol": "Nasz dom: osiem planet aż do Neptuna.",
+    "trappist": "Siedem planet wielkości Ziemi, wszystkie bliżej swojej gwiazdy niż Merkury Słońca."
+  },
   "question": {
     "bh": "Co by było, gdyby czarna dziura przeleciała przez Układ Słoneczny?",
     "giant": "Co by było, gdyby Słońce stało się czerwonym olbrzymem?",
@@ -90,10 +134,12 @@
     "sun2": "Co by było, gdyby Słońce miało dwa razy większą masę?"
   },
   "speed": {
-    "0": "1 mies./s",
-    "1": "6 mies./s",
-    "2": "2 lata/s",
-    "3": "10 lat/s"
+    "0": "1 dz./s",
+    "1": "1 tydz./s",
+    "2": "1 mies./s",
+    "3": "6 mies./s",
+    "4": "2 lata/s",
+    "5": "10 lat/s"
   },
   "status": {
     "boiling": "oceany wrą",
@@ -101,6 +147,35 @@
     "flying": "odlatuje",
     "frozen": "zamarznięta",
     "habitable": "nadaje się do życia"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Masa gwiazdy",
+      "sunmUnit": "× prawdziwa"
+    },
+    "info": {
+      "now": "{planet} teraz"
+    },
+    "metric": {
+      "dist": "Odległość {planet}–gwiazda",
+      "temp": "Temperatura na {planet}"
+    },
+    "view": {
+      "inner": "Wszystkie planety, rozsunięte",
+      "mid": "Wewnętrzna połowa",
+      "outer": "Cały układ, w prawdziwej skali"
+    },
+    "whatif": {
+      "giant": "Gwiazda staje się czerwonym olbrzymem",
+      "giant2": "Większa gwiazda staje się czerwonym olbrzymem",
+      "ignite": "{planet} zapala się jak gwiazda",
+      "nostar": "Gwiazda znika",
+      "nostars": "Obie gwiazdy znikają",
+      "out": "Przesuń {planet} o 50 % dalej",
+      "star2": "Gwiazda podwaja masę",
+      "stars2": "Obie gwiazdy podwajają masę",
+      "stop": "{planet} staje na orbicie"
+    }
   },
   "whatif": {
     "bh": "Przelatuje czarna dziura",

@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "zwart gat van {mass} zonsmassa’s",
+    "cap": "Massa’s zijn begrensd zodat de simulatie blijft werken: {them} wordt getekend met {x}× de massa van {ours} (in werkelijkheid zo’n {real}×).",
+    "facts": "{kind} · {stars} sterren · {mass} zonsmassa’s",
+    "kly": "{n, number} lj",
+    "note": "Diameter op een logaritmische schaal; schattingen lopen uiteen. Een rij kiest het naderende stelsel. De simulatie schaalt beide naar haar eigen grootte en aantal sterren.",
+    "ours": "Ons",
+    "title": "Groottes vergelijken"
+  },
   "ctl": {
     "aim": {
       "label": "Mikken naast het midden",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Massa zwart gat",
-      "unit": "× Melkweg"
+      "unit": "× ons stelsel"
     },
     "count": {
       "label": "Stelsels die invallen"
@@ -29,8 +38,8 @@
       "what-if-settings": "Wat-als-instellingen"
     },
     "mass": {
-      "label": "Massa Andromeda",
-      "unit": "× Melkweg"
+      "label": "Massa van het naderende stelsel",
+      "unit": "× ons stelsel"
     },
     "neigh": {
       "label": "Buren bij de start",
@@ -40,23 +49,43 @@
         "none": "Geen"
       }
     },
+    "ours": {
+      "label": "Ons sterrenstelsel",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grote Magelhaense Wolk",
+        "m101": "Windmolen (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Driehoek (M33)",
+        "m51": "Draaikolk (M51)",
+        "m87": "M87",
+        "mw": "Melkweg",
+        "smc": "Kleine Magelhaense Wolk"
+      }
+    },
+    "rsize": {
+      "label": "Grootte van het naderende stelsel",
+      "unit": "× ons stelsel"
+    },
     "shape": {
-      "label": "Vorm van Andromeda",
+      "label": "Vorm van het naderende stelsel",
       "opt": {
         "elliptical": "Elliptisch",
+        "irregular": "Onregelmatig",
         "spiral": "Spiraal"
       }
     },
     "size": {
       "label": "Hun grootte",
-      "unit": "× Melkweg"
+      "unit": "× ons stelsel"
     },
     "speed": {
       "label": "Naderingssnelheid",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Andromeda draait",
+      "label": "Naderend stelsel draait",
       "opt": {
         "against": "Tegen de onze in",
         "same": "Net als de onze"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Sterren per stelsel"
+    },
+    "them": {
+      "label": "Naderend sterrenstelsel",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grote Magelhaense Wolk",
+        "m101": "Windmolen (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Driehoek (M33)",
+        "m51": "Draaikolk (M51)",
+        "m87": "M87",
+        "mw": "Melkweg",
+        "smc": "Kleine Magelhaense Wolk"
+      }
     }
   },
   "ev": {
-    "bhBig": "Een zwart gat {x}× zo zwaar als de Melkweg verschijnt in het midden",
-    "bhSmall": "Een zwart gat met {pct}% van de massa van de Melkweg verschijnt in het midden",
+    "bhBig": "Een zwart gat, {x}× zo zwaar als {ours}, verschijnt in het centrum",
+    "bhSmall": "Een zwart gat met {pct}% van de massa van {ours} verschijnt in het centrum",
     "bullet": "Een sterrenstelsel schiet er recht doorheen met {speed} km/s",
-    "closing": "Andromeda nadert met ongeveer {speed} km/s",
-    "flipmw": "Elke ster van de Melkweg keert haar baan om",
-    "freeze": "Elke ster van de Melkweg stopt met draaien",
-    "headon": "Andromeda koerst recht op ons midden af",
-    "lmc": "De Grote Magelhaense Wolk draait om de Melkweg",
+    "closing": "{them} nadert met zo’n {speed} km/s",
+    "flipmw": "{ours}: alle sterren draaien hun baan om",
+    "freeze": "{ours}: alle sterren stoppen met draaien",
+    "headon": "{them} koerst recht op ons centrum af",
+    "lmc": "De Grote Magelhaense Wolk draait om {ours}",
     "merge": "De kernen smelten samen: één reusachtig elliptisch stelsel, “Melkomeda”",
-    "miss": "Andromeda wordt op een koers langs ons heen geduwd",
+    "mergeAny": "De kernen versmelten tot één reusachtig elliptisch sterrenstelsel",
+    "miss": "{them} wordt op een scheerbaan geduwd",
     "nodmAll": "Donkere materie verdwijnt: de zwaartekracht zakt naar {left}%, sterren zijn ineens te snel",
     "nodmSome": "Een deel van de donkere materie verdwijnt: de zwaartekracht zakt naar {left}%, sterren zijn ineens te snel",
     "pass1": "Eerste passage: de stelsels duiken door elkaar heen",
     "punch": "Een dwergstelsel slaat door ons midden heen",
-    "reverse": "Andromeda keert om en gaat weg",
+    "reverse": "{them} keert om en trekt weg",
     "ring": "Onze schijf veert terug in een uitdijende ring van sterren",
-    "stop": "Andromeda staat stil en begint dan te vallen",
+    "stop": "{them} staat ineens stil en begint te vallen",
     "swallowed": "Weer een stelsel wordt opgeslokt",
     "swarm": "{n, plural, one {Nog een stelsel valt in} other {Nog # stelsels vallen in}}",
     "tails": "Ze zwaaien uit elkaar, met lange getijdenstaarten van sterren",
     "third": "Een derde stelsel (zoals de Driehoeksnevel) valt in",
     "triangulum": "De Driehoeksnevel drijft van opzij binnen"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "de Grote Magelhaense Wolk",
+    "m101": "het Windmolenstelsel",
+    "m104": "het Sombrerostelsel",
+    "m31": "Andromeda",
+    "m33": "de Driehoeknevel",
+    "m51": "het Draaikolkstelsel",
+    "m87": "M87",
+    "mw": "de Melkweg",
+    "smc": "de Kleine Magelhaense Wolk"
+  },
+  "kind": {
+    "elliptical": "elliptisch",
+    "irregular": "onregelmatige dwerg",
+    "spiral": "spiraal"
+  },
   "meta": {
+    "hint": "Sleep om de weergave te draaien, scrol of knijp om te zoomen. Veranderingen stapelen op.",
     "intro": "De Melkweg en Andromeda, op hun echte botsingskoers, versneld. Elke stip is een ster.",
     "name": "Sterrenstelsels",
     "seoDescription": "Zie de Melkweg en Andromeda botsen of voeg stelsels toe. Laat donkere materie verdwijnen, verander koers of draaiing en vergelijk met het origineel. Gratis, in je browser.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Weggeslingerde sterren",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Een van de grootste bekende sterrenstelsels, in het hart van een cluster.",
+    "lmc": "Een dwerg die om de Melkweg draait; hij kan er over een paar miljard jaar in vallen.",
+    "m101": "Een enorme spiraal recht van voren, bijna twee keer zo groot als de onze.",
+    "m104": "Een heldere kern en een donkere stofband, bijna van opzij gezien.",
+    "m31": "Het dichtstbijzijnde grote stelsel, 2,5 miljoen lichtjaar weg en op weg naar ons.",
+    "m33": "Het op twee na grootste stelsel van onze Lokale Groep.",
+    "m51": "Een grote spiraal waaraan een kleine begeleider trekt.",
+    "m87": "Een reusachtige bol van sterren; zijn zwarte gat werd als eerste gefotografeerd.",
+    "mw": "Ons thuis: een balkspiraal, met de Zon ongeveer halverwege naar de rand.",
+    "smc": "De kleinere partner van de Grote Wolk, te zien aan de zuidelijke hemel."
+  },
+  "pick": {
+    "intro": "Op ramkoers: {ours} ontmoet {them}, versneld. Elke stip is een ster.",
+    "whatif": {
+      "flipmw": "{ours} draait de andere kant op",
+      "freeze": "{ours}: sterren stoppen met draaien",
+      "headon": "Richt {them} recht op het centrum",
+      "miss": "Laat {them} voorbijvliegen",
+      "reverse": "Laat {them} omkeren",
+      "stop": "Zet {them} ineens stil"
     }
   },
   "question": {

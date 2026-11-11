@@ -13,10 +13,29 @@
     "venus": "Vênus",
     "yourplanet": "o seu planeta"
   },
+  "cmp": {
+    "au": "{n} UA",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# planeta} other {# planetas}}",
+    "note": "Largura da órbita mais externa, em escala logarítmica (cada marca é 10× maior). Valores arredondados; as estimativas variam.",
+    "title": "Comparar tamanhos"
+  },
   "ctl": {
     "sunm": {
       "label": "Massa do Sol",
       "unit": "× Sol"
+    },
+    "sys": {
+      "label": "Sistema estelar",
+      "opt": {
+        "alphacen": "Alfa Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (dois sóis)",
+        "kepler90": "Kepler-90",
+        "proxima": "Próxima Centauri",
+        "sol": "Sistema Solar",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Vista",
@@ -31,13 +50,22 @@
     "bh": "Um buraco negro de 4 Sóis entra pela borda do sistema",
     "escape": "{body} escapa para o espaço interestelar",
     "giant": "O Sol incha até virar uma gigante vermelha de 0,85 UA e perde um terço da massa",
+    "giantStar": "{star} incha até virar uma gigante vermelha de 0,85 UA e perde um terço da massa",
+    "ignite": "{body} cresce até 0,08 sóis e acende como anã vermelha",
     "intoBh": "{body} cai no buraco negro",
+    "intoStar": "{body} cai na estrela {star}",
     "intoSun": "{body} cai no Sol",
     "jupstar": "Júpiter ganha 80× sua massa e acende como uma anã vermelha",
     "mars": "A Terra é levada para a órbita de Marte",
+    "nostar": "{star} desaparece: os planetas saem voando em linha reta",
+    "nostars": "As duas estrelas desaparecem: os planetas saem voando em linha reta",
     "nosun": "O Sol some: os planetas saem voando em linha reta",
+    "out": "{body} é afastado 50 % para fora",
     "smash": "{body} se choca com {other}",
+    "star2": "{star} dobra de massa: atração mais forte, luz 11× mais forte",
+    "stars2": "As duas estrelas dobram de massa: atração mais forte, luz 11× mais forte",
     "stop": "A Terra para de vez na órbita",
+    "stopP": "{body} para de repente na órbita",
     "sun2": "O Sol dobra de massa: atração mais forte, luz 11× mais forte",
     "swallowed": "A gigante vermelha engole {body}",
     "throw": "Você joga um planeta novo"
@@ -46,9 +74,15 @@
     "changed": "Com mudanças",
     "now": "Terra agora"
   },
+  "kind": {
+    "like": "estrela como o Sol",
+    "red": "anã vermelha",
+    "sun": "o Sol",
+    "two": "duas estrelas"
+  },
   "meta": {
-    "hint": "Arraste para jogar um planeta. As mudanças se somam.",
-    "intro": "Gravidade newtoniana de verdade para o Sol e oito planetas. Arraste no palco para jogar seu próprio planeta.",
+    "hint": "Arraste para girar a vista. Escolha Lançar para adicionar um planeta. As mudanças se somam.",
+    "intro": "Gravidade newtoniana real para o Sol e os oito planetas. Aproxime, gire a vista ou escolha Lançar e arraste para adicionar seu próprio planeta.",
     "name": "Sistema Solar",
     "seoDescription": "Gravidade newtoniana de verdade para o Sol e os oito planetas. Dobre a massa do Sol, tire-o, transforme Júpiter em estrela ou jogue seu próprio planeta e veja as órbitas mudarem.",
     "seoTitle": "Simulador do sistema solar: e se o Sol desaparecesse?",
@@ -80,6 +114,16 @@
     "venus": "Vênus",
     "yourplanet": "Seu planeta"
   },
+  "note": {
+    "alphacen": "Duas estrelas como o Sol; nenhum planeta confirmado, então a Terra é posta onde seria tão quente quanto em casa.",
+    "cancri": "Um mundo de lava com um ano de 18 horas, e um Júpiter tão longe quanto o nosso.",
+    "kepler11": "Seis planetas apertados dentro da órbita de Vênus.",
+    "kepler16": "Um planeta que gira em torno de dois sóis.",
+    "kepler90": "A única outra estrela conhecida com oito planetas.",
+    "proxima": "A estrela mais próxima do Sol, a 4,2 anos-luz.",
+    "sol": "Nossa casa: oito planetas até Netuno.",
+    "trappist": "Sete planetas do tamanho da Terra, todos mais perto da sua estrela do que Mercúrio do Sol."
+  },
   "question": {
     "bh": "E se um buraco negro passasse pelo sistema solar?",
     "giant": "E se o Sol virasse uma gigante vermelha?",
@@ -90,10 +134,12 @@
     "sun2": "E se o Sol tivesse o dobro da massa?"
   },
   "speed": {
-    "0": "1 mês/s",
-    "1": "6 meses/s",
-    "2": "2 anos/s",
-    "3": "10 anos/s"
+    "0": "1 dia/s",
+    "1": "1 sem/s",
+    "2": "1 mês/s",
+    "3": "6 meses/s",
+    "4": "2 anos/s",
+    "5": "10 anos/s"
   },
   "status": {
     "boiling": "oceanos fervendo",
@@ -101,6 +147,35 @@
     "flying": "fugindo",
     "frozen": "congelada",
     "habitable": "habitável"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Massa da estrela",
+      "sunmUnit": "× real"
+    },
+    "info": {
+      "now": "{planet} agora"
+    },
+    "metric": {
+      "dist": "Distância {planet}–estrela",
+      "temp": "Temperatura de {planet}"
+    },
+    "view": {
+      "inner": "Todos os planetas, espaçados",
+      "mid": "Metade interna",
+      "outer": "Sistema inteiro, em escala real"
+    },
+    "whatif": {
+      "giant": "A estrela vira uma gigante vermelha",
+      "giant2": "A estrela maior vira uma gigante vermelha",
+      "ignite": "{planet} acende como estrela",
+      "nostar": "A estrela desaparece",
+      "nostars": "As duas estrelas desaparecem",
+      "out": "Afastar {planet} 50 %",
+      "star2": "A estrela dobra de massa",
+      "stars2": "As duas estrelas dobram de massa",
+      "stop": "{planet} para na órbita"
+    }
   },
   "whatif": {
     "bh": "Um buraco negro passa por aqui",

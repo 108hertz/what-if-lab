@@ -13,10 +13,29 @@
     "venus": "Sao Kim",
     "yourplanet": "hành tinh của bạn"
   },
+  "cmp": {
+    "au": "{n} AU",
+    "facts": "{kind} · {mass} M☉ · {n, plural, other {# hành tinh}}",
+    "note": "Bề rộng quỹ đạo ngoài cùng, theo thang logarit (mỗi vạch rộng gấp 10×). Số đã làm tròn; ước tính có thể khác nhau.",
+    "title": "So sánh kích thước"
+  },
   "ctl": {
     "sunm": {
       "label": "Khối lượng Mặt Trời",
       "unit": "× Mặt Trời"
+    },
+    "sys": {
+      "label": "Hệ sao",
+      "opt": {
+        "alphacen": "Alpha Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (hai mặt trời)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Hệ Mặt Trời",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Góc nhìn",
@@ -31,13 +50,22 @@
     "bh": "Một hố đen nặng 4 Mặt Trời tiến vào từ rìa hệ",
     "escape": "{body} thoát ra không gian liên sao",
     "giant": "Mặt Trời phình thành sao khổng lồ đỏ rộng 0,85 AU và mất một phần ba khối lượng",
+    "giantStar": "{star} phình thành sao khổng lồ đỏ rộng 0,85 AU và mất một phần ba khối lượng",
+    "ignite": "{body} lớn lên tới 0,08 Mặt Trời và bừng sáng thành sao lùn đỏ",
     "intoBh": "{body} rơi vào hố đen",
+    "intoStar": "{body} rơi vào sao {star}",
     "intoSun": "{body} rơi vào Mặt Trời",
     "jupstar": "Sao Mộc nặng thêm gấp 80 lần và bừng sáng thành sao lùn đỏ",
     "mars": "Trái Đất được dời ra quỹ đạo Sao Hoả",
+    "nostar": "{star} biến mất: các hành tinh bay đi theo đường thẳng",
+    "nostars": "Cả hai ngôi sao biến mất: các hành tinh bay đi theo đường thẳng",
     "nosun": "Mặt Trời biến mất: các hành tinh bay đi theo đường thẳng",
+    "out": "{body} bị dời ra xa thêm 50 %",
     "smash": "{body} đâm sầm vào {other}",
+    "star2": "{star} tăng gấp đôi khối lượng: lực hút mạnh hơn, ánh sáng sáng gấp 11×",
+    "stars2": "Cả hai ngôi sao tăng gấp đôi khối lượng: lực hút mạnh hơn, ánh sáng sáng gấp 11×",
     "stop": "Trái Đất dừng hẳn trên quỹ đạo",
+    "stopP": "{body} đột ngột dừng lại trên quỹ đạo",
     "sun2": "Mặt Trời nặng gấp đôi: lực hút mạnh hơn, nắng sáng gấp 11 lần",
     "swallowed": "{body} bị sao khổng lồ đỏ nuốt chửng",
     "throw": "Bạn ném vào một hành tinh mới"
@@ -46,9 +74,15 @@
     "changed": "Có thay đổi",
     "now": "Trái Đất hiện tại"
   },
+  "kind": {
+    "like": "sao giống Mặt Trời",
+    "red": "sao lùn đỏ",
+    "sun": "Mặt Trời",
+    "two": "hai ngôi sao"
+  },
   "meta": {
-    "hint": "Kéo để ném một hành tinh. Thay đổi cộng dồn.",
-    "intro": "Lực hấp dẫn Newton thật cho Mặt Trời và tám hành tinh. Kéo trên sân khấu để ném vào hành tinh của riêng bạn.",
+    "hint": "Kéo để xoay góc nhìn. Chọn Ném để thêm một hành tinh. Các thay đổi cộng dồn.",
+    "intro": "Trọng lực Newton thật cho Mặt Trời và tám hành tinh. Phóng to, xoay góc nhìn, hoặc chọn Ném rồi kéo để thêm hành tinh của bạn.",
     "name": "Hệ Mặt Trời",
     "seoDescription": "Hấp dẫn Newton thật cho Mặt Trời và tám hành tinh. Nhân đôi khối lượng Mặt Trời, xóa nó, biến Sao Mộc thành sao hay ném hành tinh riêng của bạn và xem quỹ đạo đổi thay.",
     "seoTitle": "Mô phỏng Hệ Mặt Trời: Nếu Mặt Trời biến mất thì sao?",
@@ -80,6 +114,16 @@
     "venus": "Sao Kim",
     "yourplanet": "Hành tinh của bạn"
   },
+  "note": {
+    "alphacen": "Hai ngôi sao giống Mặt Trời; chưa có hành tinh nào được xác nhận, nên Trái Đất được đặt ở nơi ấm như ở nhà.",
+    "cancri": "Một thế giới dung nham có năm dài 18 giờ, và một Sao Mộc xa như của chúng ta.",
+    "kepler11": "Sáu hành tinh chen chúc bên trong quỹ đạo Sao Kim.",
+    "kepler16": "Một hành tinh quay quanh hai mặt trời.",
+    "kepler90": "Ngôi sao duy nhất khác được biết có tám hành tinh.",
+    "proxima": "Ngôi sao gần Mặt Trời nhất, cách 4,2 năm ánh sáng.",
+    "sol": "Nhà của chúng ta: tám hành tinh ra tới Sao Hải Vương.",
+    "trappist": "Bảy hành tinh cỡ Trái Đất, đều ở gần sao của chúng hơn Sao Thủy gần Mặt Trời."
+  },
   "question": {
     "bh": "Điều gì xảy ra nếu một lỗ đen bay qua Hệ Mặt Trời?",
     "giant": "Điều gì xảy ra nếu Mặt Trời trở thành sao khổng lồ đỏ?",
@@ -90,10 +134,12 @@
     "sun2": "Điều gì xảy ra nếu Mặt Trời nặng gấp đôi?"
   },
   "speed": {
-    "0": "1 tháng/s",
-    "1": "6 tháng/s",
-    "2": "2 năm/s",
-    "3": "10 năm/s"
+    "0": "1 ngày/s",
+    "1": "1 tuần/s",
+    "2": "1 tháng/s",
+    "3": "6 tháng/s",
+    "4": "2 năm/s",
+    "5": "10 năm/s"
   },
   "status": {
     "boiling": "đại dương sôi",
@@ -101,6 +147,35 @@
     "flying": "đang bay đi",
     "frozen": "đóng băng",
     "habitable": "sống được"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Khối lượng sao",
+      "sunmUnit": "× thật"
+    },
+    "info": {
+      "now": "{planet} bây giờ"
+    },
+    "metric": {
+      "dist": "Khoảng cách {planet}–sao",
+      "temp": "Nhiệt độ {planet}"
+    },
+    "view": {
+      "inner": "Mọi hành tinh, giãn ra",
+      "mid": "Nửa trong",
+      "outer": "Cả hệ, đúng tỉ lệ"
+    },
+    "whatif": {
+      "giant": "Ngôi sao thành sao khổng lồ đỏ",
+      "giant2": "Ngôi sao lớn hơn thành sao khổng lồ đỏ",
+      "ignite": "{planet} bùng cháy thành sao",
+      "nostar": "Ngôi sao biến mất",
+      "nostars": "Cả hai ngôi sao biến mất",
+      "out": "Dời {planet} ra xa thêm 50 %",
+      "star2": "Ngôi sao tăng gấp đôi khối lượng",
+      "stars2": "Cả hai ngôi sao tăng gấp đôi khối lượng",
+      "stop": "{planet} dừng trên quỹ đạo"
+    }
   },
   "whatif": {
     "bh": "Một hố đen bay qua",

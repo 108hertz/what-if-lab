@@ -1,6 +1,6 @@
 # 0036 — Space camera: zoom, pan and a 3D view in the solar and galaxy worlds
 
-- **Status:** proposed
+- **Status:** in-progress
 - **Phase:** 1 (see [PLAN.md](../PLAN.md))
 - **Features:** [Space camera](../features/space-camera.md)
 - **Decisions:** —
@@ -67,13 +67,26 @@ and yaw is free. Zoom limits per world (solar: 0.05–80 AU half-width; galaxy: 
 Mobile: one-finger drag rotates, pinch zooms, two-finger drag pans; in solar's Throw mode one finger throws.
 The view bar collapses to one "View" button opening a small menu below 768 px.
 
+### As built (2026-11-10): where it differs from the plan above
+
+- **Orthographic, not perspective.** Sizes read the same everywhere, and the default view (no camera yet) is exactly the old
+  framing, so exports, what-if pages and OG images don't change.
+- **Solar keeps its "View" select** (Inner planets / Out to Jupiter / Whole system) as zoom stops, including the squeezed
+  inner scale; the camera's zoom multiplies it. No param was removed, so URLs and question pages are untouched.
+- **No Follow button.** Pan and zoom are offsets from each world's own centre (the Sun; the galaxies' auto camera), so the
+  camera always follows; the crosshair button (and double-click, `0`) resets the view.
+- The camera lives in `InteractionState.view` (optional); `SimEngine.record()` leaves it out of change recipes and `reset()` clears it.
+- Files: `lib/sim/camera.ts`, `components/console/stageCamera.ts` (gestures), `components/console/ViewBar.tsx`,
+  `Stage.tsx` (pointer id/button/Shift, wheel, double-click, keys; canvas focusable), `StandardConsole` `onStage` slot,
+  icons `orbit` and `recentre`, `.viewbar` styles, `console.stage.view.*` in 20 languages, new solar hint/intro and a galaxy hint.
+
 ## Steps
 
-1. `lib/sim/camera.ts` + tests (project/unproject round trip, presets, clamps).
-2. `InteractionState.view`, `StageCamera` gestures, `ViewBar`; English strings + all 20 locales.
-3. Solar: camera drawing, inclinations, squeeze option replaces the View select, throw via `toPlane`.
-4. Galaxy: draw-only z, camera projection with the glow buffer, Follow.
-5. Docs: feature doc, world READMEs, CLAUDE.md model notes.
+1. [x] `lib/sim/camera.ts` + tests (`tests/camera.test.ts`: project/unproject round trip, pan, zoom about a point, clamps).
+2. [x] `InteractionState.view`, gestures, `ViewBar`; English strings + all 20 locales.
+3. [x] Solar: camera drawing, real inclinations (draw only), depth order, throw via `toPlane` in Throw mode.
+4. [x] Galaxy: draw-only z (thin discs that puff up when disturbed, round bulges), camera projection with the glow buffer.
+5. [x] Docs: feature doc, world READMEs, CLAUDE.md model notes.
 
 ## Risks and mitigations
 
@@ -86,11 +99,13 @@ The view bar collapses to one "View" button opening a small menu below 768 px.
 
 ## Verification
 
-- [ ] Automated: camera tests; existing determinism tests unchanged (camera never reaches the sim); a test that
-      `draw()` with `ui.view = null` matches today's framing.
-- [ ] Manual: mouse, trackpad pinch, touch (375 px), keyboard; light + dark; full screen; 60 fps check.
-- [ ] Docs: feature doc, READMEs, PLAN.md.
+- [x] Automated: camera tests; every existing test unchanged and green (2,024). Default framing = the old one is shown by
+      the camera test (top view is the identity, tilted squashes y by 0.77) rather than a pixel test.
+- [ ] Manual: checked in Chrome at 1280×800 (Top / Tilted / Edge-on, wheel zoom, drag turn, Throw at a turned angle) and
+      375×812 (view menu, no page scroll). Not yet checked: real trackpad pinch, real touch, Safari/Firefox, light theme, 60 fps on a phone.
+- [ ] `npm run build` not run yet (another session's dev server was using `.next`).
+- [x] Docs: feature doc, READMEs.
 
 ## Log
 
-- 2026-11-10 — proposed.
+- 2026-11-10 — proposed; approved; built (see "As built"). Waiting on the build and device checks.

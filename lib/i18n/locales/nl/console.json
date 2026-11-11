@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Simulatiepodium",
-    "edge": "What-If Lab · Seed {seed}"
+    "edge": "What-If Lab · Seed {seed}",
+    "view": {
+      "label": "Weergave",
+      "top": "Bovenaf",
+      "tilted": "Schuin",
+      "edge": "Van opzij",
+      "zoomIn": "Inzoomen",
+      "zoomOut": "Uitzoomen",
+      "reset": "Weergave herstellen",
+      "tool": "Wat slepen doet",
+      "look": "Kijken",
+      "throw": "Gooien"
+    }
   },
   "timeline": {
     "title": "Tijdlijn",
