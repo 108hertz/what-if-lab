@@ -13,10 +13,29 @@
     "venus": "Venüs",
     "yourplanet": "senin gezegenin"
   },
+  "cmp": {
+    "au": "{n} AB",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# gezegen} other {# gezegen}}",
+    "note": "En dış yörüngenin genişliği, logaritmik ölçekte (her çizgi 10× daha geniş). Yuvarlanmış değerler; tahminler değişir.",
+    "title": "Boyutları karşılaştır"
+  },
   "ctl": {
     "sunm": {
       "label": "Güneş kütlesi",
       "unit": "× Güneş"
+    },
+    "sys": {
+      "label": "Yıldız sistemi",
+      "opt": {
+        "alphacen": "Alfa Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (iki güneş)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Güneş Sistemi",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Görünüm",
@@ -31,13 +50,22 @@
     "bh": "4 Güneş kütlesinde bir kara delik sistemin kenarından girer",
     "escape": "Yıldızlararası uzaya kaçtı: {body}",
     "giant": "Güneş 0,85 AB genişliğinde bir kızıl deve dönüşür ve kütlesinin üçte birini kaybeder",
+    "giantStar": "{star} 0,85 AB genişliğinde bir kırmızı deve şişer ve kütlesinin üçte birini kaybeder",
+    "ignite": "{body} 0,08 Güneş kütlesine büyür ve kırmızı cüce olarak yanar",
     "intoBh": "Kara deliğe düştü: {body}",
+    "intoStar": "{body}, {star} yıldızına düşer",
     "intoSun": "Güneş'e düştü: {body}",
     "jupstar": "Jüpiter'in kütlesi 80 katına çıkar ve kızıl cüce olarak parlar",
     "mars": "Dünya, Mars'ın yörüngesine taşınır",
+    "nostar": "{star} yok olur: gezegenler düz çizgide uçup gider",
+    "nostars": "İki yıldız da yok olur: gezegenler düz çizgide uçup gider",
     "nosun": "Güneş yok olur: gezegenler düz çizgiler hâlinde uçup gider",
+    "out": "{body} yüzde 50 daha dışarı taşınır",
     "smash": "Çarpışma: {body} ve {other}",
+    "star2": "{star} kütlesini ikiye katlar: daha güçlü çekim, 11× daha parlak ışık",
+    "stars2": "İki yıldız da kütlesini ikiye katlar: daha güçlü çekim, 11× daha parlak ışık",
     "stop": "Dünya yörüngesinde olduğu yerde durur",
+    "stopP": "{body} yörüngesinde aniden durur",
     "sun2": "Güneş'in kütlesi iki katına çıkar: daha güçlü çekim, 11 kat parlak güneş ışığı",
     "swallowed": "Kızıl dev yuttu: {body}",
     "throw": "Yeni bir gezegen fırlatıyorsun"
@@ -46,9 +74,15 @@
     "changed": "Değişikliklerle",
     "now": "Şu an Dünya"
   },
+  "kind": {
+    "like": "Güneş benzeri yıldız",
+    "red": "kırmızı cüce",
+    "sun": "Güneş",
+    "two": "iki yıldız"
+  },
   "meta": {
-    "hint": "Gezegen fırlatmak için sürükle. Değişiklikler birbirine eklenir.",
-    "intro": "Güneş ve sekiz gezegen için gerçek Newton kütleçekimi. Kendi gezegenini fırlatmak için sahnede sürükle.",
+    "hint": "Görünümü döndürmek için sürükle. Gezegen eklemek için Fırlat'ı seç. Değişiklikler birikir.",
+    "intro": "Güneş ve sekiz gezegen için gerçek Newton kütleçekimi. Yakınlaştır, görünümü döndür ya da Fırlat'ı seçip sürükleyerek kendi gezegenini ekle.",
     "name": "Güneş Sistemi",
     "seoDescription": "Güneş ve sekiz gezegen için gerçek Newton kütleçekimi. Güneş'in kütlesini ikiye katla, kaldır, Jüpiter'i yıldıza çevir ya da kendi gezegenini fırlat; yörüngelerin değişimini izle.",
     "seoTitle": "Güneş Sistemi Simülatörü: Ya Güneş yok olsaydı?",
@@ -80,6 +114,16 @@
     "venus": "Venüs",
     "yourplanet": "Senin gezegenin"
   },
+  "note": {
+    "alphacen": "Güneş benzeri iki yıldız; doğrulanmış gezegen yok, bu yüzden Dünya evdeki kadar sıcak olacağı yere kondu.",
+    "cancri": "18 saatlik yılı olan bir lav dünyası ve bizimki kadar uzakta bir Jüpiter.",
+    "kepler11": "Venüs'ün yörüngesi içine sıkışmış altı gezegen.",
+    "kepler16": "İki güneşin etrafında dönen bir gezegen.",
+    "kepler90": "Sekiz gezegeni olduğu bilinen diğer tek yıldız.",
+    "proxima": "Güneş'e en yakın yıldız, 4,2 ışık yılı uzakta.",
+    "sol": "Evimiz: Neptün'e kadar sekiz gezegen.",
+    "trappist": "Dünya büyüklüğünde yedi gezegen; hepsi yıldızına, Merkür'ün Güneş'e olduğundan daha yakın."
+  },
   "question": {
     "bh": "Güneş Sistemi'nden bir kara delik geçseydi ne olurdu?",
     "giant": "Güneş kırmızı dev olsaydı ne olurdu?",
@@ -90,10 +134,12 @@
     "sun2": "Güneş iki kat daha kütleli olsaydı ne olurdu?"
   },
   "speed": {
-    "0": "1 ay/sn",
-    "1": "6 ay/sn",
-    "2": "2 yıl/sn",
-    "3": "10 yıl/sn"
+    "0": "1 gün/sn",
+    "1": "1 hafta/sn",
+    "2": "1 ay/sn",
+    "3": "6 ay/sn",
+    "4": "2 yıl/sn",
+    "5": "10 yıl/sn"
   },
   "status": {
     "boiling": "okyanuslar kaynıyor",
@@ -101,6 +147,35 @@
     "flying": "uzaklaşıyor",
     "frozen": "buz tuttu",
     "habitable": "yaşanabilir"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Yıldız kütlesi",
+      "sunmUnit": "× gerçek"
+    },
+    "info": {
+      "now": "{planet} şimdi"
+    },
+    "metric": {
+      "dist": "{planet}–yıldız uzaklığı",
+      "temp": "{planet} sıcaklığı"
+    },
+    "view": {
+      "inner": "Tüm gezegenler, aralıklı",
+      "mid": "İç yarı",
+      "outer": "Tüm sistem, gerçek ölçekte"
+    },
+    "whatif": {
+      "giant": "Yıldız kırmızı dev olur",
+      "giant2": "Büyük yıldız kırmızı dev olur",
+      "ignite": "{planet} yıldız olarak tutuşur",
+      "nostar": "Yıldız yok olur",
+      "nostars": "İki yıldız da yok olur",
+      "out": "{planet} yüzde 50 dışarı taşı",
+      "star2": "Yıldız kütlesini ikiye katlar",
+      "stars2": "İki yıldız da kütlesini ikiye katlar",
+      "stop": "{planet} yörüngesinde durur"
+    }
   },
   "whatif": {
     "bh": "Bir kara delik içinden geçer",

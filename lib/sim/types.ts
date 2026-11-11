@@ -5,6 +5,7 @@ import type { BootShape } from "../boot/shapes";
  */
 
 import type { Values } from "@/lib/i18n/message";
+import type { ViewState } from "./camera";
 
 /**
  * A notable event: a message key in the world's own namespace plus its values (change 0025), never a sentence, so
@@ -37,6 +38,8 @@ export type Control =
   | { type: "range"; id: string; label: string; min: number; max: number; step: number; val: number; unit?: string; live?: boolean }
   | {
       type: "select"; id: string; label: string; options: [value: string, label: string][]; val: string; live?: boolean;
+      /** A different world, not a different start (change 0037, solar's star system): picking one starts over at time 0 with no changes. */
+      fresh?: boolean;
       /** Optional option groups (rendered as <optgroup>); every value must also be in `options`. */
       groups?: [label: string, options: [value: string, label: string][]][];
     };
@@ -121,6 +124,8 @@ export interface InteractionState {
   drag: Drag | null;
   cams: [Camera | null, Camera | null];
   pending: PendingBody | null;
+  /** The space camera (change 0036): view only, set by stage gestures; absent = each world's own default framing. */
+  view?: ViewState;
 }
 
 export interface DrawContext<P> {
@@ -208,6 +213,14 @@ export interface Sandbox<W extends BaseWorld = BaseWorld, P extends Params = Par
   info?(base: W, alt: W | null, p: P): InfoBlock[];
   /** Optional hook to adjust params when one changes (e.g. country presets). */
   onParamChange?(p: P, id: string): P;
+  /**
+   * Words that depend on the starting settings (change 0037, solar's star systems): say `key` (e.g. `whatif.sun2`,
+   * `metric.dist.label`) as another key of the world's `messages`, with values. `null` hides a what-if for these settings;
+   * `undefined` keeps the usual words. Read by `worldSay(sb, p)`; never by the sim.
+   */
+  reword?(p: P, key: string): { k: string; v?: Values } | null | undefined;
+  /** The speed (index into `speeds`) a world with these settings starts at. Default: `defaultSpeed`. */
+  speedFor?(p: P): number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

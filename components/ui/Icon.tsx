@@ -47,6 +47,9 @@ const GLYPHS = {
   chart: <><path d="M4.5 19.5h15" /><path d="M5 15l4.5-5 3.5 3 6-7" /></>,
   clock: <><circle cx="12" cy="12" r="8" /><path d="M12 7.5V12l3 2" /></>,
   look: <><circle cx="12" cy="12" r="8" /><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none" /></>,
+  /** Space camera (change 0036): turn the view (a tilted orbit around a point) and back to the start (a crosshair). */
+  orbit: <><ellipse cx="12" cy="12" rx="8.5" ry="4" /><circle cx="12" cy="12" r="1.6" /><path d="M17.5 5.5l2.5.8-.8 2.5" /></>,
+  recentre: <><circle cx="12" cy="12" r="6" /><path d="M12 3.5v4M12 16.5v4M3.5 12h4M16.5 12h4" /></>,
   layers: <><path d="M12 4.5l8 4-8 4-8-4z" /><path d="M4 12.5l8 4 8-4" /><path d="M4 16.5l8 4 8-4" /></>,
   intro: <><rect x="3.5" y="5" width="17" height="14" rx="1.5" /><path d="M7 10h10M9 14h6" /></>,
 

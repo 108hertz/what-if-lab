@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "सिमुलेशन मंच",
-    "edge": "What-If Lab · सीड {seed}"
+    "edge": "What-If Lab · सीड {seed}",
+    "view": {
+      "label": "दृश्य",
+      "top": "ऊपर से",
+      "tilted": "झुका हुआ",
+      "edge": "किनारे से",
+      "zoomIn": "ज़ूम इन",
+      "zoomOut": "ज़ूम आउट",
+      "reset": "दृश्य रीसेट",
+      "tool": "खींचने से क्या होता है",
+      "look": "देखें",
+      "throw": "फेंकें"
+    }
   },
   "timeline": {
     "title": "समयरेखा",

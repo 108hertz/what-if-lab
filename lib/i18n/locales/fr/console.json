@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Scène de simulation",
-    "edge": "What-If Lab · Graine {seed}"
+    "edge": "What-If Lab · Graine {seed}",
+    "view": {
+      "label": "Vue",
+      "top": "Dessus",
+      "tilted": "Inclinée",
+      "edge": "Par la tranche",
+      "zoomIn": "Zoom avant",
+      "zoomOut": "Zoom arrière",
+      "reset": "Réinitialiser la vue",
+      "tool": "Ce que fait le glisser",
+      "look": "Regarder",
+      "throw": "Lancer"
+    }
   },
   "timeline": {
     "title": "Chronologie",

@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Simulation stage",
-    "edge": "What-If Lab · Seed {seed}"
+    "edge": "What-If Lab · Seed {seed}",
+    "view": {
+      "label": "View",
+      "top": "Top",
+      "tilted": "Tilted",
+      "edge": "Edge-on",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "reset": "Reset view",
+      "tool": "What dragging does",
+      "look": "Look",
+      "throw": "Throw"
+    }
   },
   "timeline": {
     "title": "Timeline",

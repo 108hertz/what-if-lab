@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "模拟舞台",
-    "edge": "What-If Lab · 种子 {seed}"
+    "edge": "What-If Lab · 种子 {seed}",
+    "view": {
+      "label": "视角",
+      "top": "俯视",
+      "tilted": "倾斜",
+      "edge": "侧视",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "reset": "重置视角",
+      "tool": "拖动的作用",
+      "look": "查看",
+      "throw": "投掷"
+    }
   },
   "timeline": {
     "title": "时间线",

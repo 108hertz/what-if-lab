@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Simülasyon sahnesi",
-    "edge": "What-If Lab · Tohum {seed}"
+    "edge": "What-If Lab · Tohum {seed}",
+    "view": {
+      "label": "Görünüm",
+      "top": "Üstten",
+      "tilted": "Eğik",
+      "edge": "Yandan",
+      "zoomIn": "Yakınlaştır",
+      "zoomOut": "Uzaklaştır",
+      "reset": "Görünümü sıfırla",
+      "tool": "Sürüklemenin işi",
+      "look": "Bak",
+      "throw": "Fırlat"
+    }
   },
   "timeline": {
     "title": "Zaman çizelgesi",

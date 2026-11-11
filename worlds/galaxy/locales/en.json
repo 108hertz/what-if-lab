@@ -1,5 +1,14 @@
 {
   "_status": "generated from code by npm run i18n:extract; edit the English in code",
+  "cmp": {
+    "bh": "black hole {mass} Suns",
+    "cap": "Masses are capped so the run stays possible: {them} is drawn at {x}× the mass of {ours} (really about {real}×).",
+    "facts": "{kind} · {stars} stars · {mass} Suns of mass",
+    "kly": "{n, number} ly",
+    "note": "Diameter on a log scale; estimates vary. A row picks the incoming galaxy. The simulation scales both to its own size and star budget.",
+    "ours": "Ours",
+    "title": "Compare sizes"
+  },
   "ctl": {
     "aim": {
       "label": "Aim off-centre",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Black hole mass",
-      "unit": "× Milky Way"
+      "unit": "× our galaxy"
     },
     "count": {
       "label": "Galaxies that fall in"
@@ -29,8 +38,8 @@
       "what-if-settings": "What-if settings"
     },
     "mass": {
-      "label": "Andromeda mass",
-      "unit": "× Milky Way"
+      "label": "Incoming galaxy mass",
+      "unit": "× our galaxy"
     },
     "neigh": {
       "label": "Neighbours at start",
@@ -40,23 +49,43 @@
         "none": "None"
       }
     },
+    "ours": {
+      "label": "Our galaxy",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Large Magellanic Cloud",
+        "m101": "Pinwheel (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Triangulum (M33)",
+        "m51": "Whirlpool (M51)",
+        "m87": "M87",
+        "mw": "Milky Way",
+        "smc": "Small Magellanic Cloud"
+      }
+    },
+    "rsize": {
+      "label": "Incoming galaxy size",
+      "unit": "× our galaxy"
+    },
     "shape": {
-      "label": "Andromeda's shape",
+      "label": "Incoming galaxy's shape",
       "opt": {
         "elliptical": "Elliptical",
+        "irregular": "Irregular",
         "spiral": "Spiral"
       }
     },
     "size": {
       "label": "Their size",
-      "unit": "× Milky Way"
+      "unit": "× our galaxy"
     },
     "speed": {
       "label": "Approach speed",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Andromeda spins",
+      "label": "Incoming galaxy spins",
       "opt": {
         "against": "Against ours",
         "same": "Same way as ours"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Stars per galaxy"
+    },
+    "them": {
+      "label": "Incoming galaxy",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Large Magellanic Cloud",
+        "m101": "Pinwheel (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Triangulum (M33)",
+        "m51": "Whirlpool (M51)",
+        "m87": "M87",
+        "mw": "Milky Way",
+        "smc": "Small Magellanic Cloud"
+      }
     }
   },
   "ev": {
-    "bhBig": "A black hole {x}× as heavy as the Milky Way appears at its centre",
-    "bhSmall": "A black hole of {pct}% the Milky Way’s mass appears at its centre",
+    "bhBig": "A black hole {x}× as heavy as {ours} appears at its centre",
+    "bhSmall": "A black hole of {pct}% the mass of {ours} appears at its centre",
     "bullet": "A galaxy shoots straight through at {speed} km/s",
-    "closing": "Andromeda is closing in at about {speed} km/s",
-    "flipmw": "Every Milky Way star reverses its orbit",
-    "freeze": "Every Milky Way star stops orbiting",
-    "headon": "Andromeda turns straight for our centre",
-    "lmc": "The Large Magellanic Cloud circles the Milky Way",
+    "closing": "{them} is closing in at about {speed} km/s",
+    "flipmw": "Every star in {ours} reverses its orbit",
+    "freeze": "Every star in {ours} stops orbiting",
+    "headon": "{them} turns straight for our centre",
+    "lmc": "The Large Magellanic Cloud circles {ours}",
     "merge": "The cores merge: one giant elliptical galaxy, “Milkomeda”",
-    "miss": "Andromeda is nudged onto a fly-by path",
+    "mergeAny": "The cores merge into one giant elliptical galaxy",
+    "miss": "{them} is nudged onto a fly-by path",
     "nodmAll": "Dark matter vanishes: gravity drops to {left}%, stars are suddenly too fast",
     "nodmSome": "Some dark matter vanishes: gravity drops to {left}%, stars are suddenly too fast",
     "pass1": "First pass: the galaxies plunge through each other",
     "punch": "A dwarf galaxy punches through our centre",
-    "reverse": "Andromeda turns around and heads away",
+    "reverse": "{them} turns around and heads away",
     "ring": "Our disc rebounds into an expanding ring of stars",
-    "stop": "Andromeda stops dead, then starts to fall",
+    "stop": "{them} stops dead, then starts to fall",
     "swallowed": "Another galaxy is swallowed",
     "swarm": "{n, plural, one {Another galaxy falls in} other {# more galaxies fall in}}",
     "tails": "They swing apart, trailing long tidal tails of stars",
     "third": "A third galaxy (like Triangulum) falls in",
     "triangulum": "Triangulum drifts in from the side"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "the Large Magellanic Cloud",
+    "m101": "the Pinwheel Galaxy",
+    "m104": "the Sombrero Galaxy",
+    "m31": "Andromeda",
+    "m33": "Triangulum",
+    "m51": "the Whirlpool Galaxy",
+    "m87": "M87",
+    "mw": "the Milky Way",
+    "smc": "the Small Magellanic Cloud"
+  },
+  "kind": {
+    "elliptical": "elliptical",
+    "irregular": "irregular dwarf",
+    "spiral": "spiral"
+  },
   "meta": {
+    "hint": "Drag to turn the view, scroll or pinch to zoom. Changes add up.",
     "intro": "The Milky Way and Andromeda, on their real collision course, sped up. Each dot is a star.",
     "name": "Galaxies",
     "seoDescription": "Watch the Milky Way and Andromeda collide, or send in more galaxies. Make dark matter vanish, change the aim or the spin and compare with the untouched sky. Free, in your browser.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Stars thrown out",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "One of the largest galaxies known, at the heart of a galaxy cluster.",
+    "lmc": "A dwarf that orbits the Milky Way; it may fall in within a few billion years.",
+    "m101": "A huge face-on spiral, nearly twice our size.",
+    "m104": "A bright bulge and a dark dust lane, seen almost edge-on.",
+    "m31": "The nearest big galaxy, 2.5 million light years away and heading our way.",
+    "m33": "The third-largest galaxy in our Local Group.",
+    "m51": "A grand spiral being pulled at by a small companion.",
+    "m87": "A giant ball of stars; its black hole was the first ever photographed.",
+    "mw": "Our home: a barred spiral, the Sun about halfway out.",
+    "smc": "The Large Cloud's smaller partner, visible from the southern sky."
+  },
+  "pick": {
+    "intro": "A collision course: {ours} meets {them}, sped up. Each dot is a star.",
+    "whatif": {
+      "flipmw": "Spin {ours} the other way",
+      "freeze": "Stars in {ours} stop orbiting",
+      "headon": "Aim {them} dead centre",
+      "miss": "Make {them} fly past",
+      "reverse": "Turn {them} around",
+      "stop": "Stop {them} dead"
     }
   },
   "question": {

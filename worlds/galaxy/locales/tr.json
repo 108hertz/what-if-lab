@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "kara delik: {mass} Güneş",
+    "cap": "Simülasyon çalışsın diye kütleler sınırlanır: {them}, {ours} kütlesinin {x}× katıyla çizilir (gerçekte yaklaşık {real}×).",
+    "facts": "{kind} · {stars} yıldız · {mass} Güneş kütlesi",
+    "kly": "{n, number} ışık yılı",
+    "note": "Çap logaritmik ölçekte; tahminler değişir. Bir satır gelen galaksiyi seçer. Simülasyon ikisini de kendi boyutuna ve yıldız sayısına ölçekler.",
+    "ours": "Bizimki",
+    "title": "Boyutları karşılaştır"
+  },
   "ctl": {
     "aim": {
       "label": "Merkezden sapma",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Kara delik kütlesi",
-      "unit": "× Samanyolu"
+      "unit": "× bizim galaksimiz"
     },
     "count": {
       "label": "Düşen gökadalar"
@@ -29,8 +38,8 @@
       "what-if-settings": "Değişiklik ayarları"
     },
     "mass": {
-      "label": "Andromeda kütlesi",
-      "unit": "× Samanyolu"
+      "label": "Gelen galaksinin kütlesi",
+      "unit": "× bizim galaksimiz"
     },
     "neigh": {
       "label": "Başlangıçtaki komşular",
@@ -40,23 +49,43 @@
         "none": "Yok"
       }
     },
+    "ours": {
+      "label": "Bizim galaksimiz",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Büyük Macellan Bulutu",
+        "m101": "Fırıldak (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Üçgen (M33)",
+        "m51": "Girdap (M51)",
+        "m87": "M87",
+        "mw": "Samanyolu",
+        "smc": "Küçük Macellan Bulutu"
+      }
+    },
+    "rsize": {
+      "label": "Gelen galaksinin boyutu",
+      "unit": "× bizim galaksimiz"
+    },
     "shape": {
-      "label": "Andromeda'nın biçimi",
+      "label": "Gelen galaksinin biçimi",
       "opt": {
         "elliptical": "Eliptik",
+        "irregular": "Düzensiz",
         "spiral": "Sarmal"
       }
     },
     "size": {
       "label": "Boyutları",
-      "unit": "× Samanyolu"
+      "unit": "× bizim galaksimiz"
     },
     "speed": {
       "label": "Yaklaşma hızı",
       "unit": "km/sn"
     },
     "spin": {
-      "label": "Andromeda'nın dönüşü",
+      "label": "Gelen galaksinin dönüşü",
       "opt": {
         "against": "Bizimkinin tersine",
         "same": "Bizimkiyle aynı yönde"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Gökada başına yıldız"
+    },
+    "them": {
+      "label": "Gelen galaksi",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Büyük Macellan Bulutu",
+        "m101": "Fırıldak (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Üçgen (M33)",
+        "m51": "Girdap (M51)",
+        "m87": "M87",
+        "mw": "Samanyolu",
+        "smc": "Küçük Macellan Bulutu"
+      }
     }
   },
   "ev": {
-    "bhBig": "Merkezde Samanyolu'nun {x} katı ağırlığında bir kara delik belirir",
-    "bhSmall": "Merkezde Samanyolu kütlesinin %{pct} kadarı olan bir kara delik belirir",
+    "bhBig": "Merkezinde, {ours} galaksisinin {x}× ağırlığında bir kara delik beliriyor",
+    "bhSmall": "Merkezinde, {ours} galaksisinin kütlesinin %{pct} kadarı bir kara delik beliriyor",
     "bullet": "Bir gökada {speed} km/sn hızla dosdoğru içinden geçer",
-    "closing": "Andromeda yaklaşık {speed} km/sn hızla yaklaşıyor",
-    "flipmw": "Samanyolu'nun her yıldızı yörüngesini tersine çevirir",
-    "freeze": "Samanyolu'nun her yıldızı dönmeyi bırakır",
-    "headon": "Andromeda doğrudan merkezimize yönelir",
-    "lmc": "Büyük Macellan Bulutu Samanyolu'nun çevresinde döner",
+    "closing": "{them} yaklaşık {speed} km/sn hızla yaklaşıyor",
+    "flipmw": "{ours}: tüm yıldızlar yörüngesini tersine çeviriyor",
+    "freeze": "{ours}: tüm yıldızlar yörüngede dönmeyi bırakıyor",
+    "headon": "{them} doğrudan merkezimize yöneliyor",
+    "lmc": "Büyük Macellan Bulutu, {ours} çevresinde dönüyor",
     "merge": "Çekirdekler birleşir: tek bir dev eliptik gökada, “Samandromeda”",
-    "miss": "Andromeda yanından geçecek bir yola itilir",
+    "mergeAny": "Çekirdekler tek bir dev eliptik galakside birleşiyor",
+    "miss": "{them} yanından geçecek bir yola itiliyor",
     "nodmAll": "Karanlık madde yok olur: kütleçekim %{left}'e düşer, yıldızlar birden fazla hızlı kalır",
     "nodmSome": "Karanlık maddenin bir kısmı yok olur: kütleçekim %{left}'e düşer, yıldızlar birden fazla hızlı kalır",
     "pass1": "İlk geçiş: gökadalar birbirinin içinden dalar",
     "punch": "Bir cüce gökada merkezimizi delip geçer",
-    "reverse": "Andromeda geri dönüp uzaklaşır",
+    "reverse": "{them} geri dönüp uzaklaşıyor",
     "ring": "Diskimiz geri seker ve genişleyen bir yıldız halkasına dönüşür",
-    "stop": "Andromeda olduğu yerde durur, sonra düşmeye başlar",
+    "stop": "{them} aniden duruyor, sonra düşmeye başlıyor",
     "swallowed": "Bir gökada daha yutuldu",
     "swarm": "{n, plural, one {Bir gökada daha düşüyor} other {# gökada daha düşüyor}}",
     "tails": "Birbirlerinden uzaklaşırlar, arkalarında uzun gelgit yıldız kuyrukları bırakırlar",
     "third": "Üçüncü bir gökada (Üçgen gibi) düşer",
     "triangulum": "Üçgen Gökadası yandan süzülerek gelir"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "Büyük Macellan Bulutu",
+    "m101": "Fırıldak Galaksisi",
+    "m104": "Sombrero Galaksisi",
+    "m31": "Andromeda",
+    "m33": "Üçgen Galaksisi",
+    "m51": "Girdap Galaksisi",
+    "m87": "M87",
+    "mw": "Samanyolu",
+    "smc": "Küçük Macellan Bulutu"
+  },
+  "kind": {
+    "elliptical": "eliptik",
+    "irregular": "düzensiz cüce",
+    "spiral": "sarmal"
+  },
   "meta": {
+    "hint": "Görünümü döndürmek için sürükle, yakınlaştırmak için kaydır ya da kıstır. Değişiklikler birikir.",
     "intro": "Samanyolu ve Andromeda, gerçek çarpışma rotalarında, hızlandırılmış. Her nokta bir yıldız.",
     "name": "Gökadalar",
     "seoDescription": "Samanyolu ile Andromeda'nın çarpışmasını izle ya da daha fazla gökada ekle. Karanlık maddeyi yok et, yönü değiştir, dokunulmamış gökyüzüyle karşılaştır. Ücretsiz.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Fırlatılan yıldızlar",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Bilinen en büyük galaksilerden biri; bir galaksi kümesinin kalbinde.",
+    "lmc": "Samanyolu çevresinde dönen bir cüce; birkaç milyar yıl içinde içine düşebilir.",
+    "m101": "Yüzden görülen dev bir sarmal; bizimkinin neredeyse iki katı.",
+    "m104": "Parlak bir şişkinlik ve karanlık bir toz şeridi; neredeyse yandan görülür.",
+    "m31": "En yakın büyük galaksi; 2,5 milyon ışık yılı uzakta ve bize doğru geliyor.",
+    "m33": "Yerel Grubumuzun üçüncü büyük galaksisi.",
+    "m51": "Küçük bir eşin çektiği büyük bir sarmal.",
+    "m87": "Dev bir yıldız topu; kara deliği ilk fotoğraflanan oldu.",
+    "mw": "Evimiz: çubuklu bir sarmal, Güneş kenara giden yolun yarısında.",
+    "smc": "Büyük Bulut’un küçük eşi; güney göğünden görülür."
+  },
+  "pick": {
+    "intro": "Çarpışma rotası: {ours} ile {them} buluşuyor, hızlandırılmış. Her nokta bir yıldız.",
+    "whatif": {
+      "flipmw": "{ours} ters yöne dönsün",
+      "freeze": "{ours}: yıldızlar dönmeyi bırakır",
+      "headon": "{them} tam merkeze nişan alsın",
+      "miss": "{them} yanından geçsin",
+      "reverse": "{them} geri dönsün",
+      "stop": "{them} aniden dursun"
     }
   },
   "question": {

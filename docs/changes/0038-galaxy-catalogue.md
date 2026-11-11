@@ -1,6 +1,6 @@
 # 0038 — Galaxy world: pick the galaxies, compare their sizes
 
-- **Status:** proposed
+- **Status:** in-progress
 - **Phase:** 1 (see [PLAN.md](../PLAN.md))
 - **Features:** [Space catalogues](../features/space-catalogues.md)
 - **Decisions:** —
@@ -52,13 +52,36 @@ and a new `rsize` (disc scale). `init()` reads them; irregulars are drawn as a c
 (draw-only, hash-based). Event words use `{name}` refs to `gal.<id>` messages. Default pair reproduces today's
 world exactly (tests check the default run is unchanged).
 
+### As built (2026-11-11): where it differs from the plan above
+
+- **Picking either galaxy starts over** (the select's `fresh`, from 0037), like the star-system picker: re-running a long
+  session would freeze the page. A pick pre-fills **Incoming galaxy mass** (now 0.05–20 × our galaxy), a new **Incoming
+  galaxy size** (0.3–2.5 ×) and **Incoming galaxy's shape** (now with Irregular); the sliders still tweak them.
+- **Everything is relative to our galaxy**: our core weighs 1 and our disc has scale 1. The incoming disc scale is
+  √(diameter ratio), Andromeda kept at the Milky Way's scale as the world always drew it (its bright disc). The length unit
+  follows our galaxy (`lyScale` = diameter / 100 kly), so the scale bar and "Separation" read true for another "ours" (the
+  LMC: a 14,000 ly bar).
+- **Masses**: data uses Milky Way 1.25 and Andromeda 1.5 trillion M☉ (both within published ranges) so the default ratio
+  stays 1.2. Ratios beyond 1/20…20 are capped and "Compare sizes" says so ("IC 1101 is drawn at 20×… really about 80×").
+- **Stability**: a bigger or smaller incoming disc gets star softening scaled with it (`Core.e2` = 0.01 · size²).
+- **Stars**: equal shares while the masses are within 2× (so the default stays 900 + 900), else the heavier gets more,
+  at least 200 each, total unchanged.
+- **Irregulars** (the Magellanic Clouds): no bulge and an even spread of stars (a sim change for irregulars only), drawn
+  without arms, light gathered in five slowly turning star-forming clumps and a faint centre (draw-only, hashed).
+- **Names**: event lines carry `{them}` / `{ours}` refs to `gal.<id>` ("The Whirlpool Galaxy is closing in…"); what-ifs that
+  name Andromeda or the Milky Way are reworded through `reword()` only for other picks, so the default words and the
+  what-if question pages stay as they are. "Milkomeda" is said only for the Milky Way + Andromeda; other pairs "merge into
+  one giant elliptical galaxy".
+- **Compare sizes** is its own small component per world (`worlds/galaxy/Compare.tsx`, the solar one's styles): a row picks
+  the incoming galaxy, our galaxy is tagged "Ours", star and mass counts use the language's compact numbers ("250 billion").
+
 ## Steps
 
-1. `data.ts`, pickers, `onParamChange`, `init()` scaling + tests (default run identical; each galaxy as
+1. [x] `data.ts`, pickers, `onParamChange`, `init()` scaling + tests (default run identical; each galaxy as
    "incoming" × each what-if runs, finite metrics).
-2. Names in event lines and labels; irregular look.
-3. Compare-sizes panel (shared block with 0037 if the shapes match; else per world).
-4. i18n extract + locales; docs.
+2. [x] Names in event lines and labels; irregular look.
+3. [x] Compare-sizes panel (shared block with 0037 if the shapes match; else per world).
+4. [x] i18n extract + locales; docs.
 
 ## Risks and mitigations
 
@@ -70,10 +93,14 @@ world exactly (tests check the default run is unchanged).
 
 ## Verification
 
-- [ ] Automated: default unchanged; every incoming galaxy × every what-if.
-- [ ] Manual: pickers, compare panel, 375 / 1024 / 1600 px, light + dark.
-- [ ] Docs.
+- [x] Automated: default unchanged (readouts, star positions and event keys byte-identical to a run recorded before the
+      change, now pinned in `tests/galaxy-catalogue.test.ts`); every incoming galaxy × every what-if; every galaxy as ours.
+- [ ] Manual: checked at 1280×800 (pickers, IC 1101 cap note, reworded what-ifs, Magellanic Clouds' clumpy look, Compare
+      sizes) and 375×812 (Compare in the settings sheet, no page scroll). Not yet: 1024 / 1600 px, light theme.
+- [ ] `npm run build` (not run: another session's dev server uses `.next`).
+- [x] Docs: feature doc, galaxy README, CLAUDE.md.
 
 ## Log
 
-- 2026-11-10 — proposed.
+- 2026-11-10 — proposed; approved (with 0036).
+- 2026-11-11 — built (see "As built"). Waiting on the build and the remaining manual checks.

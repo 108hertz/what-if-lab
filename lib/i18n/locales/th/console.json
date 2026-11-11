@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "เวทีจำลอง",
-    "edge": "What-If Lab · ซีด {seed}"
+    "edge": "What-If Lab · ซีด {seed}",
+    "view": {
+      "label": "มุมมอง",
+      "top": "ด้านบน",
+      "tilted": "เอียง",
+      "edge": "ด้านข้าง",
+      "zoomIn": "ซูมเข้า",
+      "zoomOut": "ซูมออก",
+      "reset": "รีเซ็ตมุมมอง",
+      "tool": "การลากทำอะไร",
+      "look": "ดู",
+      "throw": "โยน"
+    }
   },
   "timeline": {
     "title": "ไทม์ไลน์",

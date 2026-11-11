@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "シミュレーションのステージ",
-    "edge": "What-If Lab · シード {seed}"
+    "edge": "What-If Lab · シード {seed}",
+    "view": {
+      "label": "表示",
+      "top": "真上",
+      "tilted": "斜め",
+      "edge": "真横",
+      "zoomIn": "拡大",
+      "zoomOut": "縮小",
+      "reset": "表示をリセット",
+      "tool": "ドラッグの動作",
+      "look": "見る",
+      "throw": "投げる"
+    }
   },
   "timeline": {
     "title": "タイムライン",

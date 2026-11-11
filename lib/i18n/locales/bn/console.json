@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "সিমুলেশনের মঞ্চ",
-    "edge": "What-If Lab · সিড {seed}"
+    "edge": "What-If Lab · সিড {seed}",
+    "view": {
+      "label": "দৃশ্য",
+      "top": "উপর থেকে",
+      "tilted": "হেলানো",
+      "edge": "পাশ থেকে",
+      "zoomIn": "বড় করুন",
+      "zoomOut": "ছোট করুন",
+      "reset": "দৃশ্য রিসেট",
+      "tool": "টানলে কী হয়",
+      "look": "দেখা",
+      "throw": "ছোড়া"
+    }
   },
   "timeline": {
     "title": "সময়রেখা",

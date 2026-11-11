@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Scena della simulazione",
-    "edge": "What-If Lab · Seme {seed}"
+    "edge": "What-If Lab · Seme {seed}",
+    "view": {
+      "label": "Vista",
+      "top": "Dall'alto",
+      "tilted": "Inclinata",
+      "edge": "Di taglio",
+      "zoomIn": "Ingrandisci",
+      "zoomOut": "Riduci",
+      "reset": "Ripristina vista",
+      "tool": "Cosa fa il trascinamento",
+      "look": "Guarda",
+      "throw": "Lancia"
+    }
   },
   "timeline": {
     "title": "Cronologia",

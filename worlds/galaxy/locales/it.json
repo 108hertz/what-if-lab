@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "buco nero di {mass} soli",
+    "cap": "Le masse sono limitate perché la simulazione regga: {them} è disegnata con {x}× la massa di {ours} (in realtà circa {real}×).",
+    "facts": "{kind} · {stars} stelle · {mass} soli di massa",
+    "kly": "{n, number} al",
+    "note": "Diametro su scala logaritmica; le stime variano. Una riga sceglie la galassia in arrivo. La simulazione adatta entrambe alla propria scala e al proprio numero di stelle.",
+    "ours": "La nostra",
+    "title": "Confronta le dimensioni"
+  },
   "ctl": {
     "aim": {
       "label": "Mira fuori centro",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Massa del buco nero",
-      "unit": "× Via Lattea"
+      "unit": "× la nostra galassia"
     },
     "count": {
       "label": "Galassie che cadono dentro"
@@ -29,8 +38,8 @@
       "what-if-settings": "Impostazioni dei \"e se\""
     },
     "mass": {
-      "label": "Massa di Andromeda",
-      "unit": "× Via Lattea"
+      "label": "Massa della galassia in arrivo",
+      "unit": "× la nostra galassia"
     },
     "neigh": {
       "label": "Vicine all'inizio",
@@ -40,23 +49,43 @@
         "none": "Nessuna"
       }
     },
+    "ours": {
+      "label": "La nostra galassia",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grande Nube di Magellano",
+        "m101": "Girandola (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Triangolo (M33)",
+        "m51": "Vortice (M51)",
+        "m87": "M87",
+        "mw": "Via Lattea",
+        "smc": "Piccola Nube di Magellano"
+      }
+    },
+    "rsize": {
+      "label": "Dimensione della galassia in arrivo",
+      "unit": "× la nostra galassia"
+    },
     "shape": {
-      "label": "Forma di Andromeda",
+      "label": "Forma della galassia in arrivo",
       "opt": {
         "elliptical": "Ellittica",
+        "irregular": "Irregolare",
         "spiral": "A spirale"
       }
     },
     "size": {
       "label": "Loro dimensione",
-      "unit": "× Via Lattea"
+      "unit": "× la nostra galassia"
     },
     "speed": {
       "label": "Velocità di avvicinamento",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Rotazione di Andromeda",
+      "label": "La galassia in arrivo ruota",
       "opt": {
         "against": "Contraria alla nostra",
         "same": "Come la nostra"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Stelle per galassia"
+    },
+    "them": {
+      "label": "Galassia in arrivo",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Grande Nube di Magellano",
+        "m101": "Girandola (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Triangolo (M33)",
+        "m51": "Vortice (M51)",
+        "m87": "M87",
+        "mw": "Via Lattea",
+        "smc": "Piccola Nube di Magellano"
+      }
     }
   },
   "ev": {
-    "bhBig": "Al centro compare un buco nero {x} volte più pesante della Via Lattea",
-    "bhSmall": "Al centro compare un buco nero con il {pct}% della massa della Via Lattea",
+    "bhBig": "Al centro compare un buco nero {x}× più pesante di {ours}",
+    "bhSmall": "Al centro compare un buco nero con il {pct}% della massa di {ours}",
     "bullet": "Una galassia attraversa tutto in linea retta a {speed} km/s",
-    "closing": "Andromeda si avvicina a circa {speed} km/s",
-    "flipmw": "Ogni stella della Via Lattea inverte la sua orbita",
-    "freeze": "Ogni stella della Via Lattea smette di orbitare",
-    "headon": "Andromeda punta dritta al nostro centro",
-    "lmc": "La Grande Nube di Magellano gira intorno alla Via Lattea",
+    "closing": "{them} si avvicina a circa {speed} km/s",
+    "flipmw": "{ours}: tutte le stelle invertono l’orbita",
+    "freeze": "{ours}: tutte le stelle smettono di orbitare",
+    "headon": "{them} punta dritta verso il nostro centro",
+    "lmc": "La Grande Nube di Magellano orbita attorno a {ours}",
     "merge": "I nuclei si fondono: una sola gigantesca galassia ellittica, “Lattomeda”",
-    "miss": "Andromeda viene spinta su una traiettoria di passaggio",
+    "mergeAny": "I nuclei si fondono in un’unica galassia ellittica gigante",
+    "miss": "{them} viene deviata su una rotta di sorvolo",
     "nodmAll": "La materia oscura sparisce: la gravità scende al {left}%, le stelle sono di colpo troppo veloci",
     "nodmSome": "Parte della materia oscura sparisce: la gravità scende al {left}%, le stelle sono di colpo troppo veloci",
     "pass1": "Primo passaggio: le galassie si tuffano l'una nell'altra",
     "punch": "Una galassia nana sfonda il nostro centro",
-    "reverse": "Andromeda fa inversione e si allontana",
+    "reverse": "{them} fa inversione e si allontana",
     "ring": "Il nostro disco rimbalza in un anello di stelle che si allarga",
-    "stop": "Andromeda si ferma di colpo, poi comincia a cadere",
+    "stop": "{them} si ferma di colpo, poi comincia a cadere",
     "swallowed": "Un'altra galassia viene inghiottita",
     "swarm": "{n, plural, one {Cade dentro un'altra galassia} other {Cadono dentro altre # galassie}}",
     "tails": "Si allontanano oscillando, con lunghe code mareali di stelle",
     "third": "Cade dentro una terza galassia (come quella del Triangolo)",
     "triangulum": "La galassia del Triangolo arriva di lato"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "la Grande Nube di Magellano",
+    "m101": "la galassia Girandola",
+    "m104": "la galassia Sombrero",
+    "m31": "Andromeda",
+    "m33": "la galassia del Triangolo",
+    "m51": "la galassia Vortice",
+    "m87": "M87",
+    "mw": "la Via Lattea",
+    "smc": "la Piccola Nube di Magellano"
+  },
+  "kind": {
+    "elliptical": "ellittica",
+    "irregular": "nana irregolare",
+    "spiral": "spirale"
+  },
   "meta": {
+    "hint": "Trascina per ruotare la vista, scorri o pizzica per ingrandire. Le modifiche si sommano.",
     "intro": "La Via Lattea e Andromeda, sulla loro vera rotta di collisione, accelerata. Ogni punto è una stella.",
     "name": "Galassie",
     "seoDescription": "Guarda la Via Lattea e Andromeda scontrarsi, o lancia altre galassie. Fai sparire la materia oscura, cambia la mira o la rotazione e confronta con il cielo intatto. Gratis, nel tuo browser.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Stelle espulse",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Una delle galassie più grandi conosciute, al centro di un ammasso di galassie.",
+    "lmc": "Una nana che orbita la Via Lattea; potrebbe caderci dentro tra qualche miliardo di anni.",
+    "m101": "Un’enorme spirale vista di fronte, quasi il doppio della nostra.",
+    "m104": "Un rigonfiamento luminoso e una banda di polvere scura, vista quasi di taglio.",
+    "m31": "La grande galassia più vicina, a 2,5 milioni di anni luce e diretta verso di noi.",
+    "m33": "La terza galassia più grande del nostro Gruppo Locale.",
+    "m51": "Una grande spirale tirata da una piccola compagna.",
+    "m87": "Una gigantesca palla di stelle; il suo buco nero è stato il primo fotografato.",
+    "mw": "Casa nostra: una spirale barrata, col Sole a metà strada dal bordo.",
+    "smc": "La compagna minore della Grande Nube, visibile dal cielo australe."
+  },
+  "pick": {
+    "intro": "Rotta di collisione: {ours} incontra {them}, accelerato. Ogni punto è una stella.",
+    "whatif": {
+      "flipmw": "{ours} gira al contrario",
+      "freeze": "{ours}: le stelle smettono di orbitare",
+      "headon": "Punta {them} dritta al centro",
+      "miss": "Fai passare oltre {them}",
+      "reverse": "Fai fare inversione a {them}",
+      "stop": "Ferma di colpo {them}"
     }
   },
   "question": {

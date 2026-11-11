@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "lubang hitam {mass} Matahari",
+    "cap": "Massa dibatasi agar simulasi tetap jalan: {them} digambar {x}× massa {ours} (sebenarnya sekitar {real}×).",
+    "facts": "{kind} · {stars} bintang · massa {mass} Matahari",
+    "kly": "{n, number} tc",
+    "note": "Diameter pada skala logaritmik; perkiraan berbeda-beda. Satu baris memilih galaksi yang datang. Simulasi menyesuaikan keduanya dengan ukuran dan jumlah bintangnya sendiri.",
+    "ours": "Milik kita",
+    "title": "Bandingkan ukuran"
+  },
   "ctl": {
     "aim": {
       "label": "Bidikan meleset",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Massa lubang hitam",
-      "unit": "× Bima Sakti"
+      "unit": "× galaksi kita"
     },
     "count": {
       "label": "Galaksi yang jatuh masuk"
@@ -29,8 +38,8 @@
       "what-if-settings": "Pengaturan what-if"
     },
     "mass": {
-      "label": "Massa Andromeda",
-      "unit": "× Bima Sakti"
+      "label": "Massa galaksi yang datang",
+      "unit": "× galaksi kita"
     },
     "neigh": {
       "label": "Tetangga di awal",
@@ -40,23 +49,43 @@
         "none": "Tidak ada"
       }
     },
+    "ours": {
+      "label": "Galaksi kita",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Awan Magellan Besar",
+        "m101": "Kincir (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Triangulum (M33)",
+        "m51": "Pusaran (M51)",
+        "m87": "M87",
+        "mw": "Bima Sakti",
+        "smc": "Awan Magellan Kecil"
+      }
+    },
+    "rsize": {
+      "label": "Ukuran galaksi yang datang",
+      "unit": "× galaksi kita"
+    },
     "shape": {
-      "label": "Bentuk Andromeda",
+      "label": "Bentuk galaksi yang datang",
       "opt": {
         "elliptical": "Eliptis",
+        "irregular": "Tak beraturan",
         "spiral": "Spiral"
       }
     },
     "size": {
       "label": "Ukurannya",
-      "unit": "× Bima Sakti"
+      "unit": "× galaksi kita"
     },
     "speed": {
       "label": "Kecepatan mendekat",
       "unit": "km/dtk"
     },
     "spin": {
-      "label": "Putaran Andromeda",
+      "label": "Putaran galaksi yang datang",
       "opt": {
         "against": "Berlawanan dengan kita",
         "same": "Searah dengan kita"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Bintang per galaksi"
+    },
+    "them": {
+      "label": "Galaksi yang datang",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Awan Magellan Besar",
+        "m101": "Kincir (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Triangulum (M33)",
+        "m51": "Pusaran (M51)",
+        "m87": "M87",
+        "mw": "Bima Sakti",
+        "smc": "Awan Magellan Kecil"
+      }
     }
   },
   "ev": {
-    "bhBig": "Lubang hitam {x}× seberat Bima Sakti muncul di pusatnya",
-    "bhSmall": "Lubang hitam seberat {pct}% massa Bima Sakti muncul di pusatnya",
+    "bhBig": "Lubang hitam {x}× seberat {ours} muncul di pusatnya",
+    "bhSmall": "Lubang hitam bermassa {pct}% massa {ours} muncul di pusatnya",
     "bullet": "Sebuah galaksi melesat menembus lurus dengan {speed} km/dtk",
-    "closing": "Andromeda mendekat dengan sekitar {speed} km/dtk",
-    "flipmw": "Setiap bintang Bima Sakti membalik arah orbitnya",
-    "freeze": "Setiap bintang Bima Sakti berhenti mengorbit",
-    "headon": "Andromeda berbelok lurus ke pusat kita",
-    "lmc": "Awan Magellan Besar mengitari Bima Sakti",
+    "closing": "{them} mendekat dengan kecepatan sekitar {speed} km/s",
+    "flipmw": "Semua bintang di {ours} membalik orbitnya",
+    "freeze": "Semua bintang di {ours} berhenti mengorbit",
+    "headon": "{them} berbelok lurus ke pusat kita",
+    "lmc": "Awan Magellan Besar mengitari {ours}",
     "merge": "Inti-intinya bergabung: satu galaksi eliptis raksasa, “Milkomeda”",
-    "miss": "Andromeda didorong ke jalur lewat",
+    "mergeAny": "Inti-intinya menyatu menjadi satu galaksi elips raksasa",
+    "miss": "{them} didorong ke jalur lintas",
     "nodmAll": "Materi gelap lenyap: gravitasi turun ke {left}%, bintang tiba-tiba terlalu cepat",
     "nodmSome": "Sebagian materi gelap lenyap: gravitasi turun ke {left}%, bintang tiba-tiba terlalu cepat",
     "pass1": "Lintasan pertama: kedua galaksi saling menembus",
     "punch": "Galaksi kerdil menembus pusat kita",
-    "reverse": "Andromeda berbalik dan menjauh",
+    "reverse": "{them} berbalik dan menjauh",
     "ring": "Cakram kita memantul jadi cincin bintang yang mengembang",
-    "stop": "Andromeda berhenti total, lalu mulai jatuh",
+    "stop": "{them} berhenti mendadak, lalu mulai jatuh",
     "swallowed": "Satu galaksi lagi tertelan",
     "swarm": "{n, plural, =1 {Satu galaksi lagi jatuh masuk} other {# galaksi lagi jatuh masuk}}",
     "tails": "Keduanya berayun menjauh, menyeret ekor pasang surut bintang yang panjang",
     "third": "Galaksi ketiga (seperti Triangulum) jatuh masuk",
     "triangulum": "Triangulum hanyut masuk dari samping"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "Awan Magellan Besar",
+    "m101": "Galaksi Kincir",
+    "m104": "Galaksi Sombrero",
+    "m31": "Andromeda",
+    "m33": "Triangulum",
+    "m51": "Galaksi Pusaran",
+    "m87": "M87",
+    "mw": "Bima Sakti",
+    "smc": "Awan Magellan Kecil"
+  },
+  "kind": {
+    "elliptical": "elips",
+    "irregular": "katai tak beraturan",
+    "spiral": "spiral"
+  },
   "meta": {
+    "hint": "Seret untuk memutar tampilan, gulir atau cubit untuk zoom. Perubahan saling menumpuk.",
     "intro": "Bima Sakti dan Andromeda, di jalur tabrakan aslinya, dipercepat. Setiap titik adalah bintang.",
     "name": "Galaksi",
     "seoDescription": "Saksikan Bima Sakti dan Andromeda bertabrakan, atau kirim lebih banyak galaksi. Hilangkan materi gelap, ubah arah atau putaran, bandingkan dengan langit asli. Gratis.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Bintang terlempar",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Salah satu galaksi terbesar yang dikenal, di jantung gugus galaksi.",
+    "lmc": "Galaksi katai yang mengorbit Bima Sakti; bisa jatuh ke dalamnya dalam beberapa miliar tahun.",
+    "m101": "Spiral raksasa yang terlihat dari depan, hampir dua kali ukuran kita.",
+    "m104": "Tonjolan terang dan jalur debu gelap, terlihat hampir dari samping.",
+    "m31": "Galaksi besar terdekat, 2,5 juta tahun cahaya jauhnya dan menuju ke arah kita.",
+    "m33": "Galaksi terbesar ketiga di Grup Lokal kita.",
+    "m51": "Spiral megah yang ditarik oleh pendamping kecil.",
+    "m87": "Bola bintang raksasa; lubang hitamnya yang pertama kali difoto.",
+    "mw": "Rumah kita: spiral berbatang, Matahari kira-kira di tengah jalan ke tepi.",
+    "smc": "Pasangan kecil Awan Besar, terlihat dari langit selatan."
+  },
+  "pick": {
+    "intro": "Jalur tabrakan: {ours} bertemu {them}, dipercepat. Tiap titik adalah bintang.",
+    "whatif": {
+      "flipmw": "Putar {ours} ke arah sebaliknya",
+      "freeze": "Bintang di {ours} berhenti mengorbit",
+      "headon": "Arahkan {them} tepat ke pusat",
+      "miss": "Buat {them} lewat saja",
+      "reverse": "Putar balik {them}",
+      "stop": "Hentikan {them} mendadak"
     }
   },
   "question": {

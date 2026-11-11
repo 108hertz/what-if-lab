@@ -13,10 +13,29 @@
     "venus": "Vénus",
     "yourplanet": "votre planète"
   },
+  "cmp": {
+    "au": "{n} UA",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# planète} many {# planètes} other {# planètes}}",
+    "note": "Largeur de l’orbite la plus lointaine, en échelle logarithmique (chaque repère est 10× plus large). Valeurs arrondies ; les estimations varient.",
+    "title": "Comparer les tailles"
+  },
   "ctl": {
     "sunm": {
       "label": "Masse du Soleil",
       "unit": "× Soleil"
+    },
+    "sys": {
+      "label": "Système stellaire",
+      "opt": {
+        "alphacen": "Alpha du Centaure A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (deux soleils)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima du Centaure",
+        "sol": "Système solaire",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Vue",
@@ -31,13 +50,22 @@
     "bh": "Un trou noir de 4 soleils entre par le bord du système",
     "escape": "{body} s’échappe dans l’espace interstellaire",
     "giant": "Le Soleil enfle en géante rouge de 0,85 UA de large et perd un tiers de sa masse",
+    "giantStar": "{star} enfle en géante rouge de 0,85 UA et perd un tiers de sa masse",
+    "ignite": "{body} grossit jusqu’à 0,08 Soleil et s’allume en naine rouge",
     "intoBh": "{body} tombe dans le trou noir",
+    "intoStar": "{body} tombe dans l’étoile {star}",
     "intoSun": "{body} tombe dans le Soleil",
     "jupstar": "Jupiter gagne 80 fois sa masse et s’allume en naine rouge",
     "mars": "La Terre est déplacée sur l’orbite de Mars",
+    "nostar": "{star} disparaît : les planètes filent en ligne droite",
+    "nostars": "Les deux étoiles disparaissent : les planètes filent en ligne droite",
     "nosun": "Le Soleil disparaît : les planètes filent en ligne droite",
+    "out": "{body} est éloignée de 50 %",
     "smash": "{body} percute {other}",
+    "star2": "{star} double de masse : attraction plus forte, lumière 11× plus vive",
+    "stars2": "Les deux étoiles doublent de masse : attraction plus forte, lumière 11× plus vive",
     "stop": "La Terre s’arrête net sur son orbite",
+    "stopP": "{body} s’arrête net sur son orbite",
     "sun2": "Le Soleil double de masse : attraction plus forte, lumière 11 fois plus vive",
     "swallowed": "La géante rouge engloutit {body}",
     "throw": "Vous lancez une nouvelle planète"
@@ -46,9 +74,15 @@
     "changed": "Avec changements",
     "now": "La Terre maintenant"
   },
+  "kind": {
+    "like": "étoile comme le Soleil",
+    "red": "naine rouge",
+    "sun": "le Soleil",
+    "two": "deux étoiles"
+  },
   "meta": {
-    "hint": "Glissez pour lancer une planète. Les changements s’additionnent.",
-    "intro": "La vraie gravité de Newton pour le Soleil et les huit planètes. Glissez sur la scène pour lancer votre propre planète.",
+    "hint": "Glissez pour tourner la vue. Choisissez Lancer pour ajouter une planète. Les changements s’additionnent.",
+    "intro": "Une vraie gravité newtonienne pour le Soleil et les huit planètes. Zoomez, tournez la vue, ou choisissez Lancer et glissez pour ajouter votre planète.",
     "name": "Système solaire",
     "seoDescription": "La vraie gravité de Newton pour le Soleil et les huit planètes. Doublez la masse du Soleil, retirez-le, transformez Jupiter en étoile ou lancez votre propre planète et regardez les orbites changer.",
     "seoTitle": "Simulateur du système solaire : et si le Soleil disparaissait ?",
@@ -80,6 +114,16 @@
     "venus": "Vénus",
     "yourplanet": "Votre planète"
   },
+  "note": {
+    "alphacen": "Deux étoiles comme le Soleil ; aucune planète confirmée, la Terre est donc placée là où il ferait aussi chaud que chez nous.",
+    "cancri": "Un monde de lave à l’année de 18 heures, et un Jupiter aussi loin que le nôtre.",
+    "kepler11": "Six planètes serrées à l’intérieur de l’orbite de Vénus.",
+    "kepler16": "Une planète qui tourne autour de deux soleils.",
+    "kepler90": "La seule autre étoile connue avec huit planètes.",
+    "proxima": "L’étoile la plus proche du Soleil, à 4,2 années-lumière.",
+    "sol": "Notre maison : huit planètes jusqu’à Neptune.",
+    "trappist": "Sept planètes de la taille de la Terre, toutes plus près de leur étoile que Mercure du Soleil."
+  },
   "question": {
     "bh": "Et si un trou noir traversait le système solaire ?",
     "giant": "Et si le Soleil devenait une géante rouge ?",
@@ -90,10 +134,12 @@
     "sun2": "Et si le Soleil était deux fois plus massif ?"
   },
   "speed": {
-    "0": "1 mois/s",
-    "1": "6 mois/s",
-    "2": "2 ans/s",
-    "3": "10 ans/s"
+    "0": "1 j/s",
+    "1": "1 sem./s",
+    "2": "1 mois/s",
+    "3": "6 mois/s",
+    "4": "2 ans/s",
+    "5": "10 ans/s"
   },
   "status": {
     "boiling": "océans en ébullition",
@@ -101,6 +147,35 @@
     "flying": "s’éloigne",
     "frozen": "gelée",
     "habitable": "habitable"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Masse de l’étoile",
+      "sunmUnit": "× réelle"
+    },
+    "info": {
+      "now": "{planet} maintenant"
+    },
+    "metric": {
+      "dist": "Distance {planet}–étoile",
+      "temp": "Température de {planet}"
+    },
+    "view": {
+      "inner": "Toutes les planètes, écartées",
+      "mid": "Moitié intérieure",
+      "outer": "Système entier, à l’échelle"
+    },
+    "whatif": {
+      "giant": "L’étoile devient une géante rouge",
+      "giant2": "La plus grosse étoile devient une géante rouge",
+      "ignite": "{planet} s’allume en étoile",
+      "nostar": "L’étoile disparaît",
+      "nostars": "Les deux étoiles disparaissent",
+      "out": "Éloigner {planet} de 50 %",
+      "star2": "L’étoile double de masse",
+      "stars2": "Les deux étoiles doublent de masse",
+      "stop": "{planet} s’arrête sur son orbite"
+    }
   },
   "whatif": {
     "bh": "Un trou noir traverse le système",

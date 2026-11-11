@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "مسرح المحاكاة",
-    "edge": "What-If Lab · البذرة {seed}"
+    "edge": "What-If Lab · البذرة {seed}",
+    "view": {
+      "label": "العرض",
+      "top": "من أعلى",
+      "tilted": "مائل",
+      "edge": "من الجانب",
+      "zoomIn": "تكبير",
+      "zoomOut": "تصغير",
+      "reset": "إعادة العرض",
+      "tool": "ماذا يفعل السحب",
+      "look": "نظر",
+      "throw": "رمي"
+    }
   },
   "timeline": {
     "title": "الخط الزمني",

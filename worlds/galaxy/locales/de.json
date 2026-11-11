@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025, step 14); needs native review",
+  "cmp": {
+    "bh": "Schwarzes Loch mit {mass} Sonnenmassen",
+    "cap": "Massen sind begrenzt, damit die Simulation läuft: {them} wird mit {x}× der Masse von {ours} gezeigt (in Wirklichkeit etwa {real}×).",
+    "facts": "{kind} · {stars} Sterne · {mass} Sonnenmassen",
+    "kly": "{n, number} Lj",
+    "note": "Durchmesser auf logarithmischer Skala; Schätzungen schwanken. Eine Zeile wählt die ankommende Galaxie. Die Simulation bringt beide auf ihre eigene Größe und Sternzahl.",
+    "ours": "Unsere",
+    "title": "Größen vergleichen"
+  },
   "ctl": {
     "aim": {
       "label": "Zielversatz",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Masse des Schwarzen Lochs",
-      "unit": "× Milchstraße"
+      "unit": "× unsere Galaxie"
     },
     "count": {
       "label": "Einfallende Galaxien"
@@ -29,8 +38,8 @@
       "what-if-settings": "Was-wäre-wenn-Einstellungen"
     },
     "mass": {
-      "label": "Masse von Andromeda",
-      "unit": "× Milchstraße"
+      "label": "Masse der ankommenden Galaxie",
+      "unit": "× unsere Galaxie"
     },
     "neigh": {
       "label": "Nachbarn zu Beginn",
@@ -40,23 +49,43 @@
         "none": "Keine"
       }
     },
+    "ours": {
+      "label": "Unsere Galaxie",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Große Magellansche Wolke",
+        "m101": "Feuerrad (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Dreiecksnebel (M33)",
+        "m51": "Whirlpool (M51)",
+        "m87": "M87",
+        "mw": "Milchstraße",
+        "smc": "Kleine Magellansche Wolke"
+      }
+    },
+    "rsize": {
+      "label": "Größe der ankommenden Galaxie",
+      "unit": "× unsere Galaxie"
+    },
     "shape": {
-      "label": "Form von Andromeda",
+      "label": "Form der ankommenden Galaxie",
       "opt": {
         "elliptical": "Elliptisch",
+        "irregular": "Irregulär",
         "spiral": "Spirale"
       }
     },
     "size": {
       "label": "Ihre Größe",
-      "unit": "× Milchstraße"
+      "unit": "× unsere Galaxie"
     },
     "speed": {
       "label": "Annäherungstempo",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Andromeda dreht sich",
+      "label": "Ankommende Galaxie dreht sich",
       "opt": {
         "against": "Gegen unsere",
         "same": "Wie unsere"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Sterne pro Galaxie"
+    },
+    "them": {
+      "label": "Ankommende Galaxie",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Große Magellansche Wolke",
+        "m101": "Feuerrad (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Dreiecksnebel (M33)",
+        "m51": "Whirlpool (M51)",
+        "m87": "M87",
+        "mw": "Milchstraße",
+        "smc": "Kleine Magellansche Wolke"
+      }
     }
   },
   "ev": {
-    "bhBig": "Ein Schwarzes Loch, {x}-mal so schwer wie die Milchstraße, erscheint in ihrem Zentrum",
-    "bhSmall": "Ein Schwarzes Loch mit {pct} % der Masse der Milchstraße erscheint in ihrem Zentrum",
+    "bhBig": "Ein Schwarzes Loch, {x}× so schwer wie {ours}, erscheint im Zentrum",
+    "bhSmall": "Ein Schwarzes Loch mit {pct} % der Masse von {ours} erscheint im Zentrum",
     "bullet": "Eine Galaxie schießt mit {speed} km/s mitten hindurch",
-    "closing": "Andromeda nähert sich mit etwa {speed} km/s",
-    "flipmw": "Jeder Stern der Milchstraße kehrt seine Bahn um",
-    "freeze": "Jeder Stern der Milchstraße hört auf zu kreisen",
-    "headon": "Andromeda hält direkt auf unser Zentrum zu",
-    "lmc": "Die Große Magellansche Wolke umkreist die Milchstraße",
+    "closing": "{them} nähert sich mit etwa {speed} km/s",
+    "flipmw": "{ours}: Alle Sterne kehren ihre Umlaufbahn um",
+    "freeze": "{ours}: Alle Sterne hören auf zu kreisen",
+    "headon": "{them} hält direkt auf unser Zentrum zu",
+    "lmc": "Die Große Magellansche Wolke kreist um {ours}",
     "merge": "Die Kerne verschmelzen: eine riesige elliptische Galaxie, „Milkomeda“",
-    "miss": "Andromeda wird auf eine Vorbeiflugbahn geschubst",
+    "mergeAny": "Die Kerne verschmelzen zu einer riesigen elliptischen Galaxie",
+    "miss": "{them} wird auf eine Vorbeiflug-Bahn gelenkt",
     "nodmAll": "Dunkle Materie verschwindet: Die Schwerkraft fällt auf {left} %, Sterne sind plötzlich zu schnell",
     "nodmSome": "Ein Teil der Dunklen Materie verschwindet: Die Schwerkraft fällt auf {left} %, Sterne sind plötzlich zu schnell",
     "pass1": "Erster Durchgang: Die Galaxien stürzen durcheinander hindurch",
     "punch": "Eine Zwerggalaxie schlägt durch unser Zentrum",
-    "reverse": "Andromeda kehrt um und entfernt sich",
+    "reverse": "{them} kehrt um und entfernt sich",
     "ring": "Unsere Scheibe federt zu einem wachsenden Sternenring zurück",
-    "stop": "Andromeda bleibt stehen und beginnt dann zu fallen",
+    "stop": "{them} bleibt abrupt stehen und beginnt zu fallen",
     "swallowed": "Eine weitere Galaxie wird verschluckt",
     "swarm": "{n, plural, one {Noch eine Galaxie fällt herein} other {# weitere Galaxien fallen herein}}",
     "tails": "Sie schwingen auseinander und ziehen lange Gezeitenschweife aus Sternen hinter sich her",
     "third": "Eine dritte Galaxie (wie die Dreiecksgalaxie) fällt herein",
     "triangulum": "Die Dreiecksgalaxie treibt von der Seite heran"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "die Große Magellansche Wolke",
+    "m101": "die Feuerrad-Galaxie",
+    "m104": "die Sombrero-Galaxie",
+    "m31": "Andromeda",
+    "m33": "der Dreiecksnebel",
+    "m51": "die Whirlpool-Galaxie",
+    "m87": "M87",
+    "mw": "die Milchstraße",
+    "smc": "die Kleine Magellansche Wolke"
+  },
+  "kind": {
+    "elliptical": "elliptisch",
+    "irregular": "irreguläre Zwerggalaxie",
+    "spiral": "Spirale"
+  },
   "meta": {
+    "hint": "Ziehen dreht die Ansicht, Scrollen oder Zwei-Finger-Zoom zoomt. Änderungen addieren sich.",
     "intro": "Milchstraße und Andromeda auf ihrem echten Kollisionskurs, im Zeitraffer. Jeder Punkt ist ein Stern.",
     "name": "Galaxien",
     "seoDescription": "Sieh zu, wie Milchstraße und Andromeda kollidieren, oder schicke weitere Galaxien los. Lass die Dunkle Materie verschwinden, ändere Kurs oder Drehung und vergleiche mit dem unberührten Himmel. Kostenlos, im Browser.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Weggeschleuderte Sterne",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Eine der größten bekannten Galaxien, im Herzen eines Galaxienhaufens.",
+    "lmc": "Eine Zwerggalaxie, die die Milchstraße umkreist; sie könnte in einigen Milliarden Jahren hineinstürzen.",
+    "m101": "Eine riesige Spirale von oben gesehen, fast doppelt so groß wie unsere.",
+    "m104": "Ein heller Kern und ein dunkles Staubband, fast von der Kante gesehen.",
+    "m31": "Die nächste große Galaxie, 2,5 Millionen Lichtjahre entfernt und auf dem Weg zu uns.",
+    "m33": "Die drittgrößte Galaxie unserer Lokalen Gruppe.",
+    "m51": "Eine große Spirale, an der ein kleiner Begleiter zieht.",
+    "m87": "Eine riesige Sternenkugel; ihr Schwarzes Loch wurde als erstes fotografiert.",
+    "mw": "Unser Zuhause: eine Balkenspirale, die Sonne etwa auf halbem Weg nach außen.",
+    "smc": "Die kleinere Partnerin der Großen Wolke, am Südhimmel zu sehen."
+  },
+  "pick": {
+    "intro": "Kollisionskurs: {ours} trifft {them}, im Zeitraffer. Jeder Punkt ist ein Stern.",
+    "whatif": {
+      "flipmw": "{ours} dreht sich andersherum",
+      "freeze": "{ours}: Sterne hören auf zu kreisen",
+      "headon": "{them} genau aufs Zentrum zielen",
+      "miss": "{them} vorbeifliegen lassen",
+      "reverse": "{them} umkehren lassen",
+      "stop": "{them} abrupt anhalten"
     }
   },
   "question": {

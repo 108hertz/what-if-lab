@@ -100,7 +100,7 @@ export class SimEngine {
   constructor(sb: AnySandbox, params: Params, readonly seed = DEFAULT_SEED) {
     this.sb = sb;
     this.params = params;
-    this.speedIdx = sb.defaultSpeed;
+    this.speedIdx = sb.speedFor?.(params) ?? sb.defaultSpeed;
     this.restart();
   }
 
@@ -135,9 +135,9 @@ export class SimEngine {
   /** Reset everything (change 0024): default settings and speed, no changes, time 0, empty history and timeline. */
   reset(): void {
     this.params = defaultParams(this.sb);
-    this.speedIdx = this.sb.defaultSpeed;
+    this.speedIdx = this.sb.speedFor?.(this.params) ?? this.sb.defaultSpeed;
     this.playing = true;
-    this.ui.drag = null; this.ui.pending = null; this.ui.cams = [null, null];
+    this.ui.drag = null; this.ui.pending = null; this.ui.cams = [null, null]; this.ui.view = undefined;
     this.restart();
   }
 
@@ -166,7 +166,9 @@ export class SimEngine {
   applyToAlt(id: string): void { this.change(id); }
 
   private record(t: number, id: string): ChangeRecord {
-    return { t, id, params: { ...this.params }, ui: clone(this.ui) };
+    // The camera is view only (change 0036): it never goes into a change's replay recipe
+    const { view: _view, ...ui } = this.ui;
+    return { t, id, params: { ...this.params }, ui: clone(ui) };
   }
 
   private index(key: number): number {
@@ -236,7 +238,10 @@ export class SimEngine {
     if (last.at === at) last.params = { ...p };
     else this.plog.push({ at, params: { ...p } });
     const keys = Object.keys(p).filter((k) => p[k] !== old[k]);
-    return { restarted: !this.isLive(id), keys };
+    const restarted = !this.isLive(id);
+    // A new starting world may want its own speed (change 0037: TRAPPIST-1's year is 6 days)
+    if (restarted && this.sb.speedFor) this.speedIdx = this.sb.speedFor(p);
+    return { restarted, keys };
   }
 
   private isLive(id: string): boolean {
@@ -384,7 +389,7 @@ export class SimEngine {
   labelOf(id: string): string {
     // In the page's language (change 0025)
     if (id === "throw") return pageT()("console.changes.throw");
-    return this.sb.whatifs.some((x) => x[0] === id) ? worldSay(this.sb)(`whatif.${id}`) : "";
+    return this.sb.whatifs.some((x) => x[0] === id) ? worldSay(this.sb, this.params)(`whatif.${id}`) : "";
   }
 
   /** "A", or for several changes "A + B ×2 + C" in first-made order (changes that are on). */

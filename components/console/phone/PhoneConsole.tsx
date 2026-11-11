@@ -94,7 +94,7 @@ export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, ta
 
 /** The closed results strip: the world's first readout in both worlds, and the newest line of the log. */
 export function Peek({ engine }: { engine: SimEngine }) {
-  const t = useT(), say = worldSay(engine.sb);
+  const t = useT(), say = worldSay(engine.sb, engine.params);
   const m = engine.sb.metrics[0];
   const { base, alt } = engine.readouts();
   const last = engine.timeline(1)[0];

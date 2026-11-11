@@ -13,10 +13,29 @@
     "venus": "Venus",
     "yourplanet": "jouw planeet"
   },
+  "cmp": {
+    "au": "{n} AE",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# planeet} other {# planeten}}",
+    "note": "Breedte van de buitenste baan, op een logaritmische schaal (elk streepje is 10× breder). Afgeronde waarden; schattingen verschillen.",
+    "title": "Groottes vergelijken"
+  },
   "ctl": {
     "sunm": {
       "label": "Massa zon",
       "unit": "× zon"
+    },
+    "sys": {
+      "label": "Sterrenstelsel",
+      "opt": {
+        "alphacen": "Alfa Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (twee zonnen)",
+        "kepler90": "Kepler-90",
+        "proxima": "Proxima Centauri",
+        "sol": "Zonnestelsel",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Beeld",
@@ -31,13 +50,22 @@
     "bh": "Een zwart gat van 4 zonsmassa's komt binnen vanaf de rand van het stelsel",
     "escape": "{body} ontsnapt naar de interstellaire ruimte",
     "giant": "De zon zwelt op tot een rode reus van 0,85 AE breed en verliest een derde van haar massa",
+    "giantStar": "{star} zwelt op tot een rode reus van 0,85 AE en verliest een derde van zijn massa",
+    "ignite": "{body} groeit tot 0,08 zonsmassa en gaat branden als rode dwerg",
     "intoBh": "{body} valt in het zwarte gat",
+    "intoStar": "{body} valt in de ster {star}",
     "intoSun": "{body} valt in de zon",
     "jupstar": "Jupiter krijgt 80× zijn massa en gaat stralen als rode dwerg",
     "mars": "De aarde wordt naar de baan van Mars verplaatst",
+    "nostar": "{star} verdwijnt: de planeten vliegen in rechte lijnen weg",
+    "nostars": "Beide sterren verdwijnen: de planeten vliegen in rechte lijnen weg",
     "nosun": "De zon verdwijnt: de planeten vliegen in rechte lijnen weg",
+    "out": "{body} wordt 50 % verder naar buiten gezet",
     "smash": "{body} botst op {other}",
+    "star2": "{star} verdubbelt in massa: sterkere aantrekking, 11× feller sterrenlicht",
+    "stars2": "Beide sterren verdubbelen in massa: sterkere aantrekking, 11× feller sterrenlicht",
     "stop": "De aarde staat stil in haar baan",
+    "stopP": "{body} staat ineens stil in zijn baan",
     "sun2": "De zon wordt twee keer zo zwaar: sterkere aantrekking, zonlicht 11× feller",
     "swallowed": "{body} wordt opgeslokt door de rode reus",
     "throw": "Je gooit er een nieuwe planeet in"
@@ -46,9 +74,15 @@
     "changed": "Met wijzigingen",
     "now": "Aarde nu"
   },
+  "kind": {
+    "like": "zonachtige ster",
+    "red": "rode dwerg",
+    "sun": "de zon",
+    "two": "twee sterren"
+  },
   "meta": {
-    "hint": "Sleep om een planeet te gooien. Wijzigingen tellen op.",
-    "intro": "Echte zwaartekracht volgens Newton voor de zon en acht planeten. Sleep op het podium om je eigen planeet erin te gooien.",
+    "hint": "Sleep om de weergave te draaien. Kies Gooien om een planeet toe te voegen. Veranderingen stapelen op.",
+    "intro": "Echte newtoniaanse zwaartekracht voor de zon en acht planeten. Zoom, draai de weergave of kies Gooien en sleep om je eigen planeet toe te voegen.",
     "name": "Zonnestelsel",
     "seoDescription": "Echte zwaartekracht voor de zon en acht planeten. Verdubbel de zonmassa, haal de zon weg, maak van Jupiter een ster of gooi je eigen planeet erin en zie de banen veranderen.",
     "seoTitle": "Zonnestelsel simulator: wat als de zon verdween?",
@@ -80,6 +114,16 @@
     "venus": "Venus",
     "yourplanet": "Jouw planeet"
   },
+  "note": {
+    "alphacen": "Twee zonachtige sterren; geen planeet bevestigd, dus de aarde staat waar het net zo warm zou zijn als thuis.",
+    "cancri": "Een lavawereld met een jaar van 18 uur, en een Jupiter even ver weg als de onze.",
+    "kepler11": "Zes planeten dicht op elkaar binnen de baan van Venus.",
+    "kepler16": "Een planeet die om twee zonnen draait.",
+    "kepler90": "De enige andere bekende ster met acht planeten.",
+    "proxima": "De dichtstbijzijnde ster bij de zon, op 4,2 lichtjaar.",
+    "sol": "Ons thuis: acht planeten tot Neptunus.",
+    "trappist": "Zeven planeten zo groot als de aarde, allemaal dichter bij hun ster dan Mercurius bij de zon."
+  },
   "question": {
     "bh": "Wat als een zwart gat door het zonnestelsel vloog?",
     "giant": "Wat als de zon een rode reus werd?",
@@ -90,10 +134,12 @@
     "sun2": "Wat als de zon twee keer zo zwaar was?"
   },
   "speed": {
-    "0": "1 mnd/s",
-    "1": "6 mnd/s",
-    "2": "2 jr/s",
-    "3": "10 jr/s"
+    "0": "1 d/s",
+    "1": "1 wk/s",
+    "2": "1 mnd/s",
+    "3": "6 mnd/s",
+    "4": "2 jr/s",
+    "5": "10 jr/s"
   },
   "status": {
     "boiling": "kokende oceanen",
@@ -101,6 +147,35 @@
     "flying": "vliegt weg",
     "frozen": "bevroren",
     "habitable": "bewoonbaar"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Massa van de ster",
+      "sunmUnit": "× echt"
+    },
+    "info": {
+      "now": "{planet} nu"
+    },
+    "metric": {
+      "dist": "Afstand {planet}–ster",
+      "temp": "Temperatuur op {planet}"
+    },
+    "view": {
+      "inner": "Alle planeten, uit elkaar",
+      "mid": "Binnenste helft",
+      "outer": "Hele stelsel, op ware schaal"
+    },
+    "whatif": {
+      "giant": "De ster wordt een rode reus",
+      "giant2": "De grootste ster wordt een rode reus",
+      "ignite": "{planet} ontbrandt tot ster",
+      "nostar": "De ster verdwijnt",
+      "nostars": "Beide sterren verdwijnen",
+      "out": "{planet} 50 % verder naar buiten",
+      "star2": "De ster verdubbelt in massa",
+      "stars2": "Beide sterren verdubbelen in massa",
+      "stop": "{planet} staat stil in zijn baan"
+    }
   },
   "whatif": {
     "bh": "Er vliegt een zwart gat doorheen",

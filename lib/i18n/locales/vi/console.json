@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Sân khấu mô phỏng",
-    "edge": "What-If Lab · Hạt giống {seed}"
+    "edge": "What-If Lab · Hạt giống {seed}",
+    "view": {
+      "label": "Góc nhìn",
+      "top": "Từ trên",
+      "tilted": "Nghiêng",
+      "edge": "Từ cạnh",
+      "zoomIn": "Phóng to",
+      "zoomOut": "Thu nhỏ",
+      "reset": "Đặt lại góc nhìn",
+      "tool": "Kéo để làm gì",
+      "look": "Xem",
+      "throw": "Ném"
+    }
   },
   "timeline": {
     "title": "Dòng thời gian",

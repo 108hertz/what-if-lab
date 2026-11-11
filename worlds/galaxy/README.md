@@ -8,6 +8,8 @@ the shared tokens (`app/globals.css`), primitives (`components/ui/`) and console
 | --- | --- |
 | `sim.ts` | The rules: `Sandbox` (init, step, apply, read, draw). Framework-free, deterministic. |
 | `meta.ts` | Name and subtitle for the nav (loaded on every page). |
+| `data.ts` | Known galaxies (change 0038): diameter, stars, mass, kind; `pairOf()` turns two picks into starting values. |
+| `Compare.tsx` | "Compare sizes" under the settings (change 0038). |
 | `Console.tsx` | This world's screen. Today: `StandardConsole`. Must keep its ad slots (ADR 0007). |
 
 ## Who it's for
@@ -30,6 +32,14 @@ without dark matter): they don't restart the world and apply at the next fork. U
 4,000-star budget; owner indices are never reused, so tints (`TINT`, 10 colours) and events stay stable.
 The camera follows cores within 640 kly of the heaviest; escapees leave the view.
 
+**Galaxy catalogue** (change 0038): "Our galaxy" and "Incoming galaxy" pick from `data.ts` and start the world over.
+The sim stays relative to our galaxy (core mass 1, disc scale 1; the length unit is our diameter / 100 kly × 40 kly). A pick
+pre-fills the incoming mass (ratio capped 1/20…20×), size (√ of the diameter ratio, 0.3–2.5×, Andromeda kept at 1) and
+shape (spiral, elliptical, or irregular: no bulge, even spread, clumpy look). Star softening scales with the incoming disc.
+Stars stay 900 + 900 while masses are within 2×; otherwise the heavier gets more (≥ 200 each). Event lines name the picks
+through `{ours}` / `{them}` refs; what-ifs that name Andromeda or the Milky Way are reworded only for other picks. The
+default pair's run is pinned by `tests/galaxy-catalogue.test.ts`.
+
 ## How the stage is drawn (change 0009)
 
 Like a long-exposure telescope photo, with everything derived from star-index hashes and sim time (never the RNG):
@@ -39,12 +49,19 @@ discs tilted about 40°, a fixed far-field backdrop, and a camera (`w.cam`) that
 Motion: a two-arm density wave turns and fades as galaxies are disturbed, a starburst follows each close
 passage (`Core.pt`), and merged cores flare (`Core.mt`). Pausing freezes all of it.
 
+## Camera (change 0036)
+
+Zoom, pan and turn the view (Top / Tilted / Edge-on); the default is the old 40° tilt, following the action. The sim is
+planar; each star's height is drawn only (`depth()` in `sim.ts`, from its index hash): thin discs that puff up as they are
+disturbed or merged, round bulges and ellipticals.
+
 ## Questions it should answer best
 
 - What happens when Andromeda hits us — and what if it missed?
 - What does dark matter actually do to a galaxy?
 - What if a giant black hole sat at our centre?
 - What happens when a whole group of galaxies falls together, or a small one hits us dead centre?
+- What if the Milky Way hit IC 1101, or the Whirlpool? How big is Andromeda next to us? (change 0038)
 
 **Changes add up** (change 0015; every change can be ticked off and on in "Your changes", change 0024): one world on the stage; every what-if is applied to the
 same changed world (a black hole *and* two more galaxies, say), with the what-if settings read at each

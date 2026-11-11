@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Escenario de la simulación",
-    "edge": "What-If Lab · Semilla {seed}"
+    "edge": "What-If Lab · Semilla {seed}",
+    "view": {
+      "label": "Vista",
+      "top": "Desde arriba",
+      "tilted": "Inclinada",
+      "edge": "De canto",
+      "zoomIn": "Acercar",
+      "zoomOut": "Alejar",
+      "reset": "Restablecer vista",
+      "tool": "Qué hace arrastrar",
+      "look": "Mirar",
+      "throw": "Lanzar"
+    }
   },
   "timeline": {
     "title": "Cronología",

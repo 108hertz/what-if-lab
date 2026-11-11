@@ -15,7 +15,7 @@ function ChartNote({ engine, m }: { engine: SimEngine; m: Metric }) {
   const { base, alt } = engine.readouts();
   const b = base[m.k], a = alt?.[m.k];
   let gap: ReactNode = null;
-  const t = useT(), help = m.help ? worldSay(engine.sb)(`metric.${m.k}.help`) : undefined;
+  const t = useT(), help = m.help ? worldSay(engine.sb, engine.params)(`metric.${m.k}.help`) : undefined;
   if (alt && b != null && a != null && m.diff) {
     const d = a - b, txt = m.diff(d);
     const good = m.better && txt ? (m.better === "up" ? d > 0 : d < 0) : null;
@@ -28,7 +28,7 @@ export default function HistoryChart({ engine }: { engine: SimEngine }) {
   const [metric, setMetric] = useState(0);
   const ref = useRef<HTMLCanvasElement>(null);
   const m = engine.sb.metrics[Math.min(metric, engine.sb.metrics.length - 1)];
-  const t = useT(), say = worldSay(engine.sb);
+  const t = useT(), say = worldSay(engine.sb, engine.params);
 
   // Redraws on every parent re-render (the Lab refreshes every 300 ms).
   useEffect(() => {

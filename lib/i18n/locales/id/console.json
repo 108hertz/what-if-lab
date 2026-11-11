@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Panggung simulasi",
-    "edge": "What-If Lab · Seed {seed}"
+    "edge": "What-If Lab · Seed {seed}",
+    "view": {
+      "label": "Tampilan",
+      "top": "Atas",
+      "tilted": "Miring",
+      "edge": "Samping",
+      "zoomIn": "Perbesar",
+      "zoomOut": "Perkecil",
+      "reset": "Atur ulang tampilan",
+      "tool": "Fungsi seret",
+      "look": "Lihat",
+      "throw": "Lempar"
+    }
   },
   "timeline": {
     "title": "Linimasa",

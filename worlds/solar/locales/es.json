@@ -13,10 +13,29 @@
     "venus": "Venus",
     "yourplanet": "tu planeta"
   },
+  "cmp": {
+    "au": "{n} UA",
+    "facts": "{kind} · {mass} M☉ · {n, plural, one {# planeta} other {# planetas}}",
+    "note": "Ancho de la órbita más exterior, en escala logarítmica (cada marca es 10× más ancha). Valores redondeados; las estimaciones varían.",
+    "title": "Comparar tamaños"
+  },
   "ctl": {
     "sunm": {
       "label": "Masa del Sol",
       "unit": "× Sol"
+    },
+    "sys": {
+      "label": "Sistema estelar",
+      "opt": {
+        "alphacen": "Alfa Centauri A + B",
+        "cancri": "55 Cancri",
+        "kepler11": "Kepler-11",
+        "kepler16": "Kepler-16 (dos soles)",
+        "kepler90": "Kepler-90",
+        "proxima": "Próxima Centauri",
+        "sol": "Sistema solar",
+        "trappist": "TRAPPIST-1"
+      }
     },
     "view": {
       "label": "Vista",
@@ -31,13 +50,22 @@
     "bh": "Un agujero negro de 4 soles entra por el borde del sistema",
     "escape": "{body} escapa al espacio interestelar",
     "giant": "El Sol se hincha hasta ser una gigante roja de 0,85 UA de ancho y pierde un tercio de su masa",
+    "giantStar": "{star} se hincha hasta ser una gigante roja de 0,85 UA y pierde un tercio de su masa",
+    "ignite": "{body} crece hasta 0,08 soles y se enciende como enana roja",
     "intoBh": "{body} cae en el agujero negro",
+    "intoStar": "{body} cae en la estrella {star}",
     "intoSun": "{body} cae en el Sol",
     "jupstar": "Júpiter gana 80 veces su masa y se enciende como enana roja",
     "mars": "La Tierra se traslada a la órbita de Marte",
+    "nostar": "{star} desaparece: los planetas salen disparados en línea recta",
+    "nostars": "Las dos estrellas desaparecen: los planetas salen disparados en línea recta",
     "nosun": "El Sol desaparece: los planetas salen disparados en línea recta",
+    "out": "{body} se aleja un 50 % más",
     "smash": "{body} choca contra {other}",
+    "star2": "{star} duplica su masa: atracción más fuerte, luz 11× más brillante",
+    "stars2": "Las dos estrellas duplican su masa: atracción más fuerte, luz 11× más brillante",
     "stop": "La Tierra se detiene en seco en su órbita",
+    "stopP": "{body} se detiene en seco en su órbita",
     "sun2": "El Sol duplica su masa: atrae más fuerte y brilla 11 veces más",
     "swallowed": "La gigante roja engulle {body}",
     "throw": "Lanzas un planeta nuevo"
@@ -46,9 +74,15 @@
     "changed": "Con cambios",
     "now": "La Tierra ahora"
   },
+  "kind": {
+    "like": "estrella como el Sol",
+    "red": "enana roja",
+    "sun": "el Sol",
+    "two": "dos estrellas"
+  },
   "meta": {
-    "hint": "Arrastra para lanzar un planeta. Los cambios se suman.",
-    "intro": "Gravedad newtoniana real para el Sol y los ocho planetas. Arrastra sobre el escenario para lanzar tu propio planeta.",
+    "hint": "Arrastra para girar la vista. Elige Lanzar para añadir un planeta. Los cambios se suman.",
+    "intro": "Gravedad newtoniana real para el Sol y los ocho planetas. Acerca, gira la vista o elige Lanzar y arrastra para añadir tu propio planeta.",
     "name": "Sistema solar",
     "seoDescription": "Gravedad newtoniana real para el Sol y los ocho planetas. Duplica la masa del Sol, quítalo, convierte Júpiter en estrella o lanza tu propio planeta y mira cambiar las órbitas.",
     "seoTitle": "Simulador del sistema solar: ¿y si el Sol desapareciera?",
@@ -80,6 +114,16 @@
     "venus": "Venus",
     "yourplanet": "Tu planeta"
   },
+  "note": {
+    "alphacen": "Dos estrellas como el Sol; ningún planeta confirmado, así que la Tierra se pone donde haría tanto calor como en casa.",
+    "cancri": "Un mundo de lava con un año de 18 horas, y un Júpiter tan lejos como el nuestro.",
+    "kepler11": "Seis planetas apretados dentro de la órbita de Venus.",
+    "kepler16": "Un planeta que gira alrededor de dos soles.",
+    "kepler90": "La única otra estrella conocida con ocho planetas.",
+    "proxima": "La estrella más cercana al Sol, a 4,2 años luz.",
+    "sol": "Nuestro hogar: ocho planetas hasta Neptuno.",
+    "trappist": "Siete planetas del tamaño de la Tierra, todos más cerca de su estrella que Mercurio del Sol."
+  },
   "question": {
     "bh": "¿Qué pasaría si un agujero negro atravesara el sistema solar?",
     "giant": "¿Qué pasaría si el Sol se convirtiera en una gigante roja?",
@@ -90,10 +134,12 @@
     "sun2": "¿Qué pasaría si el Sol tuviera el doble de masa?"
   },
   "speed": {
-    "0": "1 mes/s",
-    "1": "6 meses/s",
-    "2": "2 años/s",
-    "3": "10 años/s"
+    "0": "1 d/s",
+    "1": "1 sem/s",
+    "2": "1 mes/s",
+    "3": "6 meses/s",
+    "4": "2 años/s",
+    "5": "10 años/s"
   },
   "status": {
     "boiling": "océanos hirviendo",
@@ -101,6 +147,35 @@
     "flying": "alejándose",
     "frozen": "congelada",
     "habitable": "habitable"
+  },
+  "sys": {
+    "ctl": {
+      "sunm": "Masa de la estrella",
+      "sunmUnit": "× real"
+    },
+    "info": {
+      "now": "{planet} ahora"
+    },
+    "metric": {
+      "dist": "Distancia {planet}–estrella",
+      "temp": "Temperatura de {planet}"
+    },
+    "view": {
+      "inner": "Todos los planetas, separados",
+      "mid": "Mitad interior",
+      "outer": "Sistema entero, a escala real"
+    },
+    "whatif": {
+      "giant": "La estrella se vuelve gigante roja",
+      "giant2": "La estrella mayor se vuelve gigante roja",
+      "ignite": "{planet} se enciende como estrella",
+      "nostar": "La estrella desaparece",
+      "nostars": "Las dos estrellas desaparecen",
+      "out": "Alejar {planet} un 50 %",
+      "star2": "La estrella duplica su masa",
+      "stars2": "Las dos estrellas duplican su masa",
+      "stop": "{planet} se detiene en su órbita"
+    }
   },
   "whatif": {
     "bh": "Pasa un agujero negro",

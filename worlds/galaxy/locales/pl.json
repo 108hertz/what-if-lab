@@ -1,5 +1,14 @@
 {
   "_status": "draft: machine translation (change 0025); needs native review",
+  "cmp": {
+    "bh": "czarna dziura: {mass} Słońc",
+    "cap": "Masy są ograniczone, by symulacja działała: {them} ma {x}× masy galaktyki {ours} (naprawdę około {real}×).",
+    "facts": "{kind} · gwiazdy: {stars} · masa: {mass} Słońc",
+    "kly": "{n, number} lś",
+    "note": "Średnica w skali logarytmicznej; szacunki się różnią. Wiersz wybiera nadlatującą galaktykę. Symulacja skaluje obie do własnego rozmiaru i liczby gwiazd.",
+    "ours": "Nasza",
+    "title": "Porównaj rozmiary"
+  },
   "ctl": {
     "aim": {
       "label": "Celuj obok środka",
@@ -7,7 +16,7 @@
     },
     "bhm": {
       "label": "Masa czarnej dziury",
-      "unit": "× Droga Mleczna"
+      "unit": "× nasza galaktyka"
     },
     "count": {
       "label": "Ile galaktyk wpada"
@@ -29,8 +38,8 @@
       "what-if-settings": "Ustawienia „co jeśli”"
     },
     "mass": {
-      "label": "Masa Andromedy",
-      "unit": "× Droga Mleczna"
+      "label": "Masa nadlatującej galaktyki",
+      "unit": "× nasza galaktyka"
     },
     "neigh": {
       "label": "Sąsiedzi na starcie",
@@ -40,23 +49,43 @@
         "none": "Brak"
       }
     },
+    "ours": {
+      "label": "Nasza galaktyka",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Wielki Obłok Magellana",
+        "m101": "Wiatraczek (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Trójkąt (M33)",
+        "m51": "Wir (M51)",
+        "m87": "M87",
+        "mw": "Droga Mleczna",
+        "smc": "Mały Obłok Magellana"
+      }
+    },
+    "rsize": {
+      "label": "Rozmiar nadlatującej galaktyki",
+      "unit": "× nasza galaktyka"
+    },
     "shape": {
-      "label": "Kształt Andromedy",
+      "label": "Kształt nadlatującej galaktyki",
       "opt": {
         "elliptical": "Eliptyczna",
+        "irregular": "Nieregularna",
         "spiral": "Spiralna"
       }
     },
     "size": {
       "label": "Ich rozmiar",
-      "unit": "× Droga Mleczna"
+      "unit": "× nasza galaktyka"
     },
     "speed": {
       "label": "Prędkość zbliżania",
       "unit": "km/s"
     },
     "spin": {
-      "label": "Obrót Andromedy",
+      "label": "Nadlatująca galaktyka obraca się",
       "opt": {
         "against": "Przeciwnie do naszej",
         "same": "Tak jak nasza"
@@ -64,33 +93,67 @@
     },
     "stars": {
       "label": "Gwiazd na galaktykę"
+    },
+    "them": {
+      "label": "Nadlatująca galaktyka",
+      "opt": {
+        "ic1101": "IC 1101",
+        "lmc": "Wielki Obłok Magellana",
+        "m101": "Wiatraczek (M101)",
+        "m104": "Sombrero (M104)",
+        "m31": "Andromeda (M31)",
+        "m33": "Trójkąt (M33)",
+        "m51": "Wir (M51)",
+        "m87": "M87",
+        "mw": "Droga Mleczna",
+        "smc": "Mały Obłok Magellana"
+      }
     }
   },
   "ev": {
-    "bhBig": "W jej środku pojawia się czarna dziura {x}× cięższa od Drogi Mlecznej",
-    "bhSmall": "W jej środku pojawia się czarna dziura o masie {pct}% Drogi Mlecznej",
+    "bhBig": "W centrum pojawia się czarna dziura {x}× cięższa niż {ours}",
+    "bhSmall": "W centrum pojawia się czarna dziura o masie {pct}% masy galaktyki {ours}",
     "bullet": "Galaktyka przelatuje na wylot z prędkością {speed} km/s",
-    "closing": "Andromeda zbliża się z prędkością około {speed} km/s",
-    "flipmw": "Każda gwiazda Drogi Mlecznej odwraca kierunek orbity",
-    "freeze": "Każda gwiazda Drogi Mlecznej przestaje krążyć",
-    "headon": "Andromeda kieruje się prosto w nasz środek",
-    "lmc": "Wielki Obłok Magellana krąży wokół Drogi Mlecznej",
+    "closing": "{them} zbliża się z prędkością około {speed} km/s",
+    "flipmw": "{ours}: wszystkie gwiazdy odwracają orbitę",
+    "freeze": "{ours}: wszystkie gwiazdy przestają krążyć",
+    "headon": "{them} kieruje się prosto na nasze centrum",
+    "lmc": "Wielki Obłok Magellana krąży wokół galaktyki {ours}",
     "merge": "Jądra się łączą: jedna olbrzymia galaktyka eliptyczna, „Mlekomeda”",
-    "miss": "Andromeda zostaje zepchnięta na tor przelotu obok",
+    "mergeAny": "Jądra łączą się w jedną olbrzymią galaktykę eliptyczną",
+    "miss": "{them} zostaje zepchnięta na tor przelotu",
     "nodmAll": "Ciemna materia znika: grawitacja spada do {left}%, gwiazdy nagle są za szybkie",
     "nodmSome": "Część ciemnej materii znika: grawitacja spada do {left}%, gwiazdy nagle są za szybkie",
     "pass1": "Pierwsze przejście: galaktyki przenikają się nawzajem",
     "punch": "Galaktyka karłowata przebija się przez nasz środek",
-    "reverse": "Andromeda zawraca i się oddala",
+    "reverse": "{them} zawraca i się oddala",
     "ring": "Nasz dysk odbija się w rozszerzający się pierścień gwiazd",
-    "stop": "Andromeda staje w miejscu, a potem zaczyna spadać",
+    "stop": "{them} nagle staje, a potem zaczyna spadać",
     "swallowed": "Kolejna galaktyka zostaje pochłonięta",
     "swarm": "{n, plural, one {Wpada kolejna galaktyka} few {Wpadają # kolejne galaktyki} many {Wpada # kolejnych galaktyk} other {Wpada # kolejnej galaktyki}}",
     "tails": "Rozchodzą się, ciągnąc długie pływowe ogony gwiazd",
     "third": "Wpada trzecia galaktyka (jak Galaktyka Trójkąta)",
     "triangulum": "Galaktyka Trójkąta nadpływa z boku"
   },
+  "gal": {
+    "ic1101": "IC 1101",
+    "lmc": "Wielki Obłok Magellana",
+    "m101": "Galaktyka Wiatraczek",
+    "m104": "Galaktyka Sombrero",
+    "m31": "Andromeda",
+    "m33": "Galaktyka Trójkąta",
+    "m51": "Galaktyka Wir",
+    "m87": "M87",
+    "mw": "Droga Mleczna",
+    "smc": "Mały Obłok Magellana"
+  },
+  "kind": {
+    "elliptical": "eliptyczna",
+    "irregular": "nieregularna karłowata",
+    "spiral": "spiralna"
+  },
   "meta": {
+    "hint": "Przeciągnij, aby obrócić widok; przewiń lub uszczypnij, aby przybliżyć. Zmiany się sumują.",
     "intro": "Droga Mleczna i Andromeda na ich prawdziwym kursie kolizyjnym, przyspieszonym. Każda kropka to gwiazda.",
     "name": "Galaktyki",
     "seoDescription": "Zobacz zderzenie Drogi Mlecznej z Andromedą albo dodaj kolejne galaktyki. Usuń ciemną materię, zmień kurs lub obrót i porównaj z nietkniętym niebem. Za darmo, w przeglądarce.",
@@ -112,6 +175,29 @@
     "thrown": {
       "label": "Wyrzucone gwiazdy",
       "unit": "%"
+    }
+  },
+  "note": {
+    "ic1101": "Jedna z największych znanych galaktyk, w sercu gromady galaktyk.",
+    "lmc": "Karzeł krążący wokół Drogi Mlecznej; może w nią wpaść za kilka miliardów lat.",
+    "m101": "Ogromna spirala widziana z góry, prawie dwa razy większa od naszej.",
+    "m104": "Jasne zgrubienie i ciemny pas pyłu, widziana niemal z boku.",
+    "m31": "Najbliższa duża galaktyka, 2,5 mln lat świetlnych stąd, lecąca w naszą stronę.",
+    "m33": "Trzecia co do wielkości galaktyka naszej Grupy Lokalnej.",
+    "m51": "Wielka spirala, którą szarpie mała towarzyszka.",
+    "m87": "Olbrzymia kula gwiazd; jej czarną dziurę sfotografowano jako pierwszą.",
+    "mw": "Nasz dom: spirala z poprzeczką, Słońce mniej więcej w połowie drogi do brzegu.",
+    "smc": "Mniejsza towarzyszka Wielkiego Obłoku, widoczna na południowym niebie."
+  },
+  "pick": {
+    "intro": "Kurs kolizyjny: {ours} spotyka {them}, przyspieszone. Każda kropka to gwiazda.",
+    "whatif": {
+      "flipmw": "{ours} obraca się w drugą stronę",
+      "freeze": "{ours}: gwiazdy przestają krążyć",
+      "headon": "Wyceluj {them} prosto w centrum",
+      "miss": "Niech {them} przeleci obok",
+      "reverse": "Niech {them} zawróci",
+      "stop": "Zatrzymaj {them} w miejscu"
     }
   },
   "question": {

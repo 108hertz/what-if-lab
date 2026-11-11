@@ -60,7 +60,19 @@
   },
   "stage": {
     "label": "Scena symulacji",
-    "edge": "What-If Lab · Ziarno {seed}"
+    "edge": "What-If Lab · Ziarno {seed}",
+    "view": {
+      "label": "Widok",
+      "top": "Z góry",
+      "tilted": "Ukośnie",
+      "edge": "Z boku",
+      "zoomIn": "Przybliż",
+      "zoomOut": "Oddal",
+      "reset": "Resetuj widok",
+      "tool": "Co robi przeciąganie",
+      "look": "Patrz",
+      "throw": "Rzuć"
+    }
   },
   "timeline": {
     "title": "Oś czasu",
