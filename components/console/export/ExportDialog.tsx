@@ -35,15 +35,16 @@ const S = (k: string, v?: Record<string, string | number>) => pageT()(`export.st
  * Transport button (before full screen). Every world gets it through the shared Transport. Shown to everyone
  * (change 0031): Premium opens the studio, everyone else Quick export (one landscape video, nothing to edit).
  */
-export function ExportButton({ engine }: { engine: SimEngine }) {
+export function ExportButton({ engine, tool }: { engine: SimEngine; tool?: boolean }) {
   const [open, setOpen] = useState(false);
   const full = exportLevel(useAccount()) === "full";
   const label = full ? S("open") : pageT()("export.quick.open");
   return (
     <>
-      <button type="button" className="btn export-btn" aria-label={label} title={label} onClick={() => setOpen(true)}>
-        <Icon name="download" size={18} />
-        <span className="btn-text">{S("button")}</span>
+      {/* `tool`: the phone tool bar's button (change 0035), always with its word */}
+      <button type="button" className={tool ? "tool-btn" : "btn export-btn"} aria-label={label} title={label} onClick={() => setOpen(true)}>
+        <Icon name="download" size={tool ? 20 : 18} />
+        <span className={tool ? "tool-l" : "btn-text"}>{S("button")}</span>
       </button>
       {open && (full ? <ExportDialog engine={engine} onClose={() => setOpen(false)} /> : <QuickExport engine={engine} onClose={() => setOpen(false)} />)}
     </>
