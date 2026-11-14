@@ -198,7 +198,8 @@
       "miss": "让{them}擦肩而过",
       "reverse": "让{them}掉头",
       "stop": "让{them}骤然停下"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "如果银河系里出现一个和星系一样重的黑洞会怎样？",

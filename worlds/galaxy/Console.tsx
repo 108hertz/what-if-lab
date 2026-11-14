@@ -7,6 +7,7 @@ import { useWorldEngine } from "@/components/console/engines";
 import { withCamera } from "@/components/console/stageCamera";
 import { PITCHES } from "@/lib/sim/camera";
 import { galaxy } from "./sim";
+import { worldSay } from "@/lib/sim/say";
 import CompareGalaxies from "./Compare";
 
 /** Discs start tilted about 40° from face-on, as the stage always showed them (change 0009). */
@@ -26,9 +27,13 @@ export default function GalaxyConsole() {
     last.current = pair;
     if (engine.ui.view) engine.ui.view = { ...engine.ui.view, zoom: 1, tx: 0, ty: 0, tz: 0 };
   });
+  const say = worldSay(galaxy);
+  const compare = <CompareGalaxies engine={engine} onChange={rerender} />;
+  const chip = say("pick.chip", { ours: say(`ctl.ours.opt.${engine.params.ours}`), them: say(`ctl.them.opt.${engine.params.them}`) });
   return (
     <StandardConsole engine={engine} onChange={rerender} interaction={stage}
       onStage={<ViewBar engine={engine} onChange={rerender} pitch={PITCH} />}
-      afterTune={<CompareGalaxies engine={engine} onChange={rerender} />} />
+      afterTune={compare}
+      pick={{ label: chip, title: say("cmp.title"), content: compare }} />
   );
 }

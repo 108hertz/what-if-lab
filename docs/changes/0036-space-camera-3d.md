@@ -109,3 +109,4 @@ The view bar collapses to one "View" button opening a small menu below 768 px.
 ## Log
 
 - 2026-11-10 — proposed; approved; built (see "As built"). Waiting on the build and device checks.
+- 2026-11-12 — phones: the button that opens Top / Tilted / Edge-on now says "3D" next to its icon (it was an unlabelled icon). Checked at 375×812.

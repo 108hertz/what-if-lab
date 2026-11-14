@@ -198,7 +198,8 @@
       "miss": "Buat {them} lewat saja",
       "reverse": "Putar balik {them}",
       "stop": "Hentikan {them} mendadak"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Bagaimana jika lubang hitam seberat galaksi muncul di Bima Sakti?",

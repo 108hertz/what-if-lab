@@ -20,7 +20,7 @@ worlds get longer and people use the view bar.
 - Wheel / pinch zoom towards the pointer; drag rotates; right-drag, Shift-drag or two fingers pan; double-click resets.
 - Keys: `+` / `−` zoom, arrows rotate, `0` reset.
 - View bar on the stage (bottom right): Top · Tilted · Edge-on, reset (crosshair), zoom − / +; solar adds Look / Throw
-  (Look is the default). Below 768 px the framings and reset fold behind one orbit button.
+  (Look is the default). Below 768 px the framings and reset fold behind one "3D" button.
 - The camera always follows each world's centre (the Sun; the galaxies' own auto camera); panning and zooming are offsets from it.
 - Solar's "View" setting still picks the starting zoom (inner planets squeezed, to Jupiter, whole system).
 - Tilted solar views show each planet's real orbital tilt (drawn only). Galaxy discs are thin and puff up when disturbed;

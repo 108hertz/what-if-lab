@@ -6,6 +6,7 @@ import ViewBar from "@/components/console/ViewBar";
 import { useWorldEngine } from "@/components/console/engines";
 import { solar } from "./sim";
 import { SOLAR_PITCH, solarStage } from "./interaction";
+import { worldSay } from "@/lib/sim/say";
 import CompareSizes from "./Compare";
 
 /**
@@ -21,9 +22,12 @@ export default function SolarConsole() {
     sys.current = engine.params.sys;
     if (engine.ui.view) engine.ui.view = { ...engine.ui.view, zoom: 1, tx: 0, ty: 0, tz: 0 };
   });
+  const say = worldSay(solar);
+  const compare = <CompareSizes engine={engine} onChange={rerender} />;
   return (
     <StandardConsole engine={engine} onChange={rerender} interaction={solarStage}
       onStage={<ViewBar engine={engine} onChange={rerender} pitch={SOLAR_PITCH} throwable />}
-      afterTune={<CompareSizes engine={engine} onChange={rerender} />} />
+      afterTune={compare}
+      pick={{ label: say(`ctl.sys.opt.${engine.params.sys}`), title: say("cmp.title"), content: compare }} />
   );
 }

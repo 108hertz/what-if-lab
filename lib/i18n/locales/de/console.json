@@ -71,7 +71,8 @@
       "reset": "Ansicht zurücksetzen",
       "tool": "Was Ziehen tut",
       "look": "Schauen",
-      "throw": "Werfen"
+      "throw": "Werfen",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Zurück zur Welt",
     "pickFirst": "Wähle ein Was-wäre-wenn, um die Welt zu ändern",
     "onCount": "{n, plural, one {# Änderung an} other {# Änderungen an}}",
-    "why": "Warum"
+    "why": "Warum",
+    "pick": "{name}: ein anderes wählen oder Größen vergleichen"
   },
   "speed": {
     "d": "{n, plural, one {# Tag} other {# Tage}} pro Sekunde",

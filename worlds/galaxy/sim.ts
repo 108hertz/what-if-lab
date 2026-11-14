@@ -257,6 +257,7 @@ const MESSAGES: Record<string, string> = {
   "pick.whatif.freeze": "Stars in {ours} stop orbiting",
   "pick.whatif.flipmw": "Spin {ours} the other way",
   // "Compare sizes" (change 0038)
+  "pick.chip": "{ours} + {them}",
   "cmp.title": "Compare sizes",
   "cmp.kly": "{n, number} ly",
   "cmp.facts": "{kind} · {stars} stars · {mass} Suns of mass",

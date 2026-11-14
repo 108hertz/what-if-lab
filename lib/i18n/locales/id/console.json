@@ -71,7 +71,8 @@
       "reset": "Atur ulang tampilan",
       "tool": "Fungsi seret",
       "look": "Lihat",
-      "throw": "Lempar"
+      "throw": "Lempar",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Kembali ke dunia",
     "pickFirst": "Pilih satu “bagaimana jika” untuk mengubah dunia",
     "onCount": "{n, plural, other {# perubahan aktif}}",
-    "why": "Kenapa"
+    "why": "Kenapa",
+    "pick": "{name}: pilih yang lain atau bandingkan ukuran"
   },
   "speed": {
     "d": "{n, plural, other {# hari}} per detik",

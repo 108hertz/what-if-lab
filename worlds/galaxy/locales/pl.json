@@ -198,7 +198,8 @@
       "miss": "Niech {them} przeleci obok",
       "reverse": "Niech {them} zawróci",
       "stop": "Zatrzymaj {them} w miejscu"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Co by było, gdyby w Drodze Mlecznej pojawiła się czarna dziura masy galaktyki?",

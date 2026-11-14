@@ -24,6 +24,8 @@ Traffic: each real system or galaxy is a question people search ("what if Earth 
   shape relative to ours; event lines and what-ifs name the picked galaxies.
 - A Compare sizes panel: log-scale bars (orbit size for star systems, diameter for galaxies) with star mass / star count /
   mass and planet count; a row picks that system or incoming galaxy.
+- On phones (< 1024 px) a chip on the stage names the running system or pair ("Solar System", "Milky Way + Andromeda (M31)")
+  and opens Compare sizes in its own sheet; picking a row closes it. The pickers themselves stay in Tune.
 - Values are rounded real estimates, marked as such; sim scaling caps (e.g. IC 1101's mass) are stated.
 - Default picks (Solar System; Milky Way + Andromeda) reproduce today's worlds exactly.
 

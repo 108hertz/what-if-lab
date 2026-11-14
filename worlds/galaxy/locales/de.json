@@ -198,7 +198,8 @@
       "miss": "{them} vorbeifliegen lassen",
       "reverse": "{them} umkehren lassen",
       "stop": "{them} abrupt anhalten"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Was wäre, wenn ein Schwarzes Loch so schwer wie eine Galaxie in der Milchstraße wäre?",

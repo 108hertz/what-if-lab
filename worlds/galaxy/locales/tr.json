@@ -198,7 +198,8 @@
       "miss": "{them} yanından geçsin",
       "reverse": "{them} geri dönsün",
       "stop": "{them} aniden dursun"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Samanyolu'nda galaksi kadar ağır bir kara delik belirseydi ne olurdu?",

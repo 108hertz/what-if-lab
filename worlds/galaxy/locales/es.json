@@ -198,7 +198,8 @@
       "miss": "Haz que {them} pase de largo",
       "reverse": "Haz que {them} dé la vuelta",
       "stop": "Detén en seco {them}"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "¿Qué pasaría si un agujero negro del peso de una galaxia surgiera en la Vía Láctea?",

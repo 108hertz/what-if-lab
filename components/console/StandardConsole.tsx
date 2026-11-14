@@ -23,8 +23,12 @@ import PhoneConsole from "./phone/PhoneConsole";
 /**
  * `onStage`: a world's own controls over the canvas (e.g. the space camera's view bar, change 0036).
  * `afterTune`: a world's own block under its settings (e.g. solar's "Compare sizes", change 0037).
+ * `pick`: on phones, a chip on the stage that opens this in its own sheet (PhoneConsole); it then replaces `afterTune` there.
  */
-export default function StandardConsole({ engine, onChange, interaction, onStage, afterTune }: { engine: SimEngine; onChange: () => void; interaction?: StageInteraction; onStage?: ReactNode; afterTune?: ReactNode }) {
+export default function StandardConsole({ engine, onChange, interaction, onStage, afterTune, pick }: {
+  engine: SimEngine; onChange: () => void; interaction?: StageInteraction; onStage?: ReactNode; afterTune?: ReactNode;
+  pick?: { label: string; title: string; content: ReactNode };
+}) {
   const desk = useMedia("(min-width: 1024px)");
   const full = useMedia("(min-width: 1280px)");
   const wide = useMedia("(min-width: 1440px)");
@@ -47,7 +51,7 @@ export default function StandardConsole({ engine, onChange, interaction, onStage
       <PhoneConsole engine={engine} onChange={onChange}
         stage={<Stage engine={engine} interaction={interaction} onChange={onChange}>{onStage}</Stage>}
         whatIf={<>{engine.entries.length > 0 && <ChangeToggles engine={engine} onChange={onChange} />}<WhatIfList engine={engine} onChange={onChange} /></>}
-        tune={tune}
+        tune={pick ? <TunePanel engine={engine} onChange={onChange} /> : tune} pick={pick}
         tabs={[[t("console.phone.now"), now], [t("console.phone.chart"), chart], [t("console.dock.log"), log], [t("console.phone.about"), <><WorldHeader engine={engine} />{info}</>]]} />
     );
   }
