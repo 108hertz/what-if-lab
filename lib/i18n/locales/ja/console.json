@@ -71,7 +71,8 @@
       "reset": "表示をリセット",
       "tool": "ドラッグの動作",
       "look": "見る",
-      "throw": "投げる"
+      "throw": "投げる",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "世界に戻る",
     "pickFirst": "「もしも」を選んで世界を変えよう",
     "onCount": "{n, plural, other {# 件の変更がオン}}",
-    "why": "なぜ"
+    "why": "なぜ",
+    "pick": "{name}：ほかを選ぶ・大きさを比べる"
   },
   "speed": {
     "d": "{n, plural, other {毎秒 # 日}}",

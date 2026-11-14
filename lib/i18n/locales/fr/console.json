@@ -71,7 +71,8 @@
       "reset": "Réinitialiser la vue",
       "tool": "Ce que fait le glisser",
       "look": "Regarder",
-      "throw": "Lancer"
+      "throw": "Lancer",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Retour au monde",
     "pickFirst": "Choisissez un « et si » pour changer le monde",
     "onCount": "{n, plural, one {# changement actif} other {# changements actifs}}",
-    "why": "Pourquoi"
+    "why": "Pourquoi",
+    "pick": "{name} : en choisir un autre ou comparer les tailles"
   },
   "speed": {
     "d": "{n, plural, one {# jour} other {# jours}} par seconde",

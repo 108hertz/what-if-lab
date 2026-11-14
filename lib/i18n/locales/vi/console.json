@@ -71,7 +71,8 @@
       "reset": "Đặt lại góc nhìn",
       "tool": "Kéo để làm gì",
       "look": "Xem",
-      "throw": "Ném"
+      "throw": "Ném",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Quay lại thế giới",
     "pickFirst": "Chọn một “nếu như” để thay đổi thế giới",
     "onCount": "{n, plural, other {# thay đổi đang bật}}",
-    "why": "Vì sao"
+    "why": "Vì sao",
+    "pick": "{name}: chọn cái khác hoặc so sánh kích thước"
   },
   "speed": {
     "d": "{n, plural, other {# ngày}} mỗi giây",

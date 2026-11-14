@@ -190,6 +190,7 @@
     "smc": "The Large Cloud's smaller partner, visible from the southern sky."
   },
   "pick": {
+    "chip": "{ours} + {them}",
     "intro": "A collision course: {ours} meets {them}, sped up. Each dot is a star.",
     "whatif": {
       "flipmw": "Spin {ours} the other way",

@@ -198,7 +198,8 @@
       "miss": "Laat {them} voorbijvliegen",
       "reverse": "Laat {them} omkeren",
       "stop": "Zet {them} ineens stil"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Wat als een zwart gat zo zwaar als een sterrenstelsel in de Melkweg opdook?",

@@ -519,9 +519,17 @@ td.a { color: var(--alt); }
 .viewbar .iconbtn:hover { background: var(--stage-raised); border-color: var(--stage-line); }
 .viewbar-more, .viewbar-zoom { display: flex; align-items: center; gap: var(--s-1); }
 .viewbar-toggle { display: none; }
+/* Phones (change 0037/0038): the running system or galaxy, as a chip on the stage, top left under the world tag */
+.pick-chip { position: absolute; left: var(--s-2); top: 40px; z-index: 1; display: inline-flex; align-items: center; gap: var(--s-1);
+  max-width: calc(100% - var(--s-4)); min-height: 44px; padding: 0 var(--s-2) 0 var(--s-3); border: 1px solid var(--stage-line); border-radius: var(--r-ctl);
+  background: color-mix(in srgb, var(--stage) 78%, transparent); color: var(--stage-ink); font: inherit; cursor: pointer; }
+.pick-chip:hover { background: var(--stage-raised); }
+.pick-chip:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.pick-chip-l { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pick-sheet .cmp > .headline { display: none; }
 .stage canvas:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
 @media (max-width: 767px) {
-  .viewbar-toggle { display: inline-grid; }
+  .viewbar-toggle { display: inline-flex; align-items: center; gap: var(--s-1); width: auto; padding: 0 var(--s-2); border-color: var(--stage-line); }
   .viewbar-more { display: none; position: absolute; right: 0; bottom: calc(100% + var(--s-1)); padding: var(--s-1); border-radius: var(--r-card);
     background: var(--stage-panel); border: 1px solid var(--stage-line); }
   .viewbar-more.open { display: flex; }
@@ -991,6 +999,7 @@ canvas, input[type="range"], .studio-trim { direction: ltr; }
 .console.phone { --peek-h: 76px; --rise: 54dvh; --open: 0; gap: var(--s-2); overscroll-behavior: contain; }
 .console.phone.results-open { --open: 1; }
 .console.phone .centre { flex: 1 1 auto; min-height: 150px; }
+.console.phone .centre:not(.full) { position: relative; }
 .console.phone .stage { min-height: 72px; }
 
 /* Transport: Play as an icon, one wide speed button, Reset, full screen (the world clock is drawn on the stage) */

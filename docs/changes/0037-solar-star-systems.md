@@ -99,3 +99,4 @@ beyond the draw-only ones from 0036; new what-if landing pages per system (a 003
 
 - 2026-11-10 — proposed; approved (with 0036).
 - 2026-11-11 — built (see "As built"). Waiting on the build and the remaining manual checks.
+- 2026-11-12 — phones: the running system/galaxy is a chip on the stage (top left) that opens "Compare sizes" in its own sheet (`pick` option on `StandardConsole` / `PhoneConsole`; the sheet closes once a row picks); the pickers stay in Tune. Checked at 375×812 and 1280×800 (unchanged).

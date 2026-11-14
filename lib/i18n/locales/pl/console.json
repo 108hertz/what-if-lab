@@ -71,7 +71,8 @@
       "reset": "Resetuj widok",
       "tool": "Co robi przeciąganie",
       "look": "Patrz",
-      "throw": "Rzuć"
+      "throw": "Rzuć",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Wróć do świata",
     "pickFirst": "Wybierz „a co jeśli”, żeby zmienić świat",
     "onCount": "{n, plural, one {# zmiana włączona} few {# zmiany włączone} many {# zmian włączonych} other {# zmiany włączonej}}",
-    "why": "Dlaczego"
+    "why": "Dlaczego",
+    "pick": "{name}: wybierz inny lub porównaj rozmiary"
   },
   "speed": {
     "d": "{n, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} na sekundę",

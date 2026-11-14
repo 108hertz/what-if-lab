@@ -198,7 +198,8 @@
       "miss": "Cho {them} bay lướt qua",
       "reverse": "Cho {them} quay đầu",
       "stop": "Dừng phắt {them}"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Điều gì xảy ra nếu một lỗ đen nặng như cả thiên hà xuất hiện trong Dải Ngân Hà?",

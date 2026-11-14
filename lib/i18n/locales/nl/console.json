@@ -71,7 +71,8 @@
       "reset": "Weergave herstellen",
       "tool": "Wat slepen doet",
       "look": "Kijken",
-      "throw": "Gooien"
+      "throw": "Gooien",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Terug naar de wereld",
     "pickFirst": "Kies een wat-als om de wereld te veranderen",
     "onCount": "{n, plural, one {# wijziging aan} other {# wijzigingen aan}}",
-    "why": "Waarom"
+    "why": "Waarom",
+    "pick": "{name}: kies een andere of vergelijk de groottes"
   },
   "speed": {
     "d": "{n, plural, one {# dag} other {# dagen}} per seconde",

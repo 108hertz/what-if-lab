@@ -10,7 +10,7 @@ import { resetView, setPitch, viewOf, zoomStep } from "./stageCamera";
 /**
  * The space camera's buttons on the stage (change 0036), bottom right: Top · Tilted · Edge-on, zoom − / +, reset,
  * and Look / Throw for worlds with a second drag (solar). Gestures do the same on the canvas (stageCamera.ts).
- * Below 768 px the framings fold behind one "View" button.
+ * Below 768 px the framings fold behind one "3D" button.
  */
 export default function ViewBar({ engine, onChange, pitch, throwable = false }: {
   engine: SimEngine; onChange: () => void; pitch: number; throwable?: boolean;
@@ -35,7 +35,7 @@ export default function ViewBar({ engine, onChange, pitch, throwable = false }: 
         </button>
       </div>
       <button type="button" className="iconbtn viewbar-toggle" aria-expanded={open} aria-label={t("console.stage.view.label")} onClick={() => setOpen(!open)}>
-        <Icon name="orbit" />
+        <Icon name="orbit" /><span className="lbl">{t("console.stage.view.more")}</span>
       </button>
       <div className="viewbar-zoom">
         <button type="button" className="iconbtn" aria-label={t("console.stage.view.zoomOut")} title={t("console.stage.view.zoomOut")} onClick={act(() => zoomStep(engine, pitch, -1))}>

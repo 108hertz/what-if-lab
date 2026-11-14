@@ -198,7 +198,8 @@
       "miss": "Fai passare oltre {them}",
       "reverse": "Fai fare inversione a {them}",
       "stop": "Ferma di colpo {them}"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "E se nella Via Lattea comparisse un buco nero pesante come una galassia?",

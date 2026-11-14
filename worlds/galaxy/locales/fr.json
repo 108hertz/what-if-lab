@@ -198,7 +198,8 @@
       "miss": "Faire passer {them} à côté",
       "reverse": "Faire faire demi-tour à {them}",
       "stop": "Arrêter net {them}"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "Et si un trou noir aussi lourd qu’une galaxie apparaissait dans la Voie lactée ?",

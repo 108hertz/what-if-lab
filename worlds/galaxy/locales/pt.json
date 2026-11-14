@@ -198,7 +198,8 @@
       "miss": "Faça {them} passar ao lado",
       "reverse": "Faça {them} dar meia-volta",
       "stop": "Pare {them} de repente"
-    }
+    },
+    "chip": "{ours} + {them}"
   },
   "question": {
     "bh": "E se um buraco negro tão pesado quanto uma galáxia surgisse na Via Láctea?",

@@ -22,7 +22,7 @@ export const PHONE_SIDEWAYS = "(max-height: 520px)";
  * the 320 × 50 banner (ADR 0007), kept here so no world can drop it. Sideways phones: stage left, a tool rail right,
  * results in a side sheet. Each world passes what goes into each sheet and tab.
  */
-export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, tabs, peek, onReset, className }: {
+export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, tabs, peek, onReset, className, pick }: {
   engine: SimEngine;
   onChange: () => void;
   /** The world's <Stage> (with any on-stage controls). */
@@ -37,13 +37,18 @@ export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, ta
   peek?: ReactNode;
   onReset?: () => void;
   className?: string;
+  /**
+   * A world you can swap (the solar and galaxy catalogues, change 0037/0038): a chip on the stage names what is running
+   * and opens `content` (e.g. "Compare sizes", whose rows pick) in its own sheet, which closes once the label changes.
+   */
+  pick?: { label: string; title: string; content: ReactNode };
 }) {
   const t = useT();
   const host = useRef<HTMLElement>(null);
   const centre = useRef<HTMLElement>(null);
   const fs = useFullscreen(centre);
   const sideways = useMedia(PHONE_SIDEWAYS);
-  const [sheet, setSheet] = useState<null | "whatif" | "tune" | "results">(null);
+  const [sheet, setSheet] = useState<null | "whatif" | "tune" | "results" | "pick">(null);
   const [open, setOpen] = useState(false);
   const close = () => setSheet(null);
 
@@ -55,6 +60,13 @@ export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, ta
     if (made > before.current) { setSheet((s) => (s === "whatif" ? null : s)); setFlash((f) => f + 1); }
     before.current = made;
   }, [made]);
+
+  // A new system or galaxy picked: close its sheet so the new world shows
+  const picked = pick?.label, shown = useRef(picked);
+  useEffect(() => {
+    if (picked !== shown.current) setSheet((s) => (s === "pick" ? null : s));
+    shown.current = picked;
+  }, [picked]);
 
   const on = engine.entries.filter((e) => e.on).length;
   const tool = (id: "whatif" | "tune" | "results", icon: "fork" | "tune" | "chart", label: string, extra?: ReactNode) => (
@@ -69,6 +81,12 @@ export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, ta
     <main className={`console phone${open && !sideways ? " results-open" : ""}${className ? " " + className : ""}`} ref={host}>
       <section className="centre" ref={centre}>
         {stage}
+        {pick && (
+          <button type="button" className="pick-chip" aria-haspopup="dialog" aria-expanded={sheet === "pick"}
+            aria-label={t("console.phone.pick", { name: pick.label })} onClick={() => setSheet("pick")}>
+            <span className="pick-chip-l">{pick.label}</span><Icon name="chevron" size={16} />
+          </button>
+        )}
         <Transport engine={engine} onChange={onChange} fullscreen={fs} onReset={onReset} compact />
       </section>
       {!sideways && (
@@ -87,6 +105,7 @@ export default function PhoneConsole({ engine, onChange, stage, whatIf, tune, ta
       <AdSlot size="banner" />
       <Sheet open={sheet === "whatif"} onClose={close} title={t("console.phone.whatIfTitle")} count={on > 0 ? on : undefined} className="whatif-sheet">{whatIf}</Sheet>
       <Sheet open={sheet === "tune"} onClose={close} title={t("console.tune.title")}>{tune}</Sheet>
+      {pick && <Sheet open={sheet === "pick"} onClose={close} title={pick.title} className="pick-sheet">{pick.content}</Sheet>}
       {sideways && <Sheet open={sheet === "results"} onClose={close} title={t("console.phone.results")} className="results-sheet"><Dock tabs={tabs} /></Sheet>}
     </main>
   );

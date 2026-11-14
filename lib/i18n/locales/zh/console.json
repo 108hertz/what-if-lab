@@ -71,7 +71,8 @@
       "reset": "重置视角",
       "tool": "拖动的作用",
       "look": "查看",
-      "throw": "投掷"
+      "throw": "投掷",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "回到世界",
     "pickFirst": "选一个“如果”来改变世界",
     "onCount": "{n, plural, other {已开启 # 项改变}}",
-    "why": "为什么"
+    "why": "为什么",
+    "pick": "{name}：换一个或比较大小"
   },
   "speed": {
     "d": "{n, plural, other {每秒 # 天}}",

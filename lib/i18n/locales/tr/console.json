@@ -71,7 +71,8 @@
       "reset": "Görünümü sıfırla",
       "tool": "Sürüklemenin işi",
       "look": "Bak",
-      "throw": "Fırlat"
+      "throw": "Fırlat",
+      "more": "3B"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Dünyaya dön",
     "pickFirst": "Dünyayı değiştirmek için bir “ya olsaydı” seç",
     "onCount": "{n, plural, one {# değişiklik açık} other {# değişiklik açık}}",
-    "why": "Neden"
+    "why": "Neden",
+    "pick": "{name}: başkasını seç veya boyutları karşılaştır"
   },
   "speed": {
     "d": "{n, plural, one {saniyede # gün} other {saniyede # gün}}",

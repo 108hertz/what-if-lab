@@ -71,7 +71,8 @@
       "reset": "Repor vista",
       "tool": "O que arrastar faz",
       "look": "Olhar",
-      "throw": "Lançar"
+      "throw": "Lançar",
+      "more": "3D"
     }
   },
   "timeline": {
@@ -105,7 +106,8 @@
     "closeResults": "Voltar ao mundo",
     "pickFirst": "Escolha um “e se” para mudar o mundo",
     "onCount": "{n, plural, one {# mudança ativa} other {# mudanças ativas}}",
-    "why": "Por quê"
+    "why": "Por quê",
+    "pick": "{name}: escolha outro ou compare tamanhos"
   },
   "speed": {
     "d": "{n, plural, one {# dia} other {# dias}} por segundo",
